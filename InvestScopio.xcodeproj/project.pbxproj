@@ -147,6 +147,14 @@
 		4A8E0E7922CD3F6500897D38 /* animatedLogoWhite.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A8E0E6C22CD3F6500897D38 /* animatedLogoWhite.json */; };
 		4A8E0E7A22CD3F6500897D38 /* closePlusAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A8E0E6D22CD3F6500897D38 /* closePlusAnimation.json */; };
 		4A8E0E7B22CD3F6500897D38 /* closePlusAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A8E0E6D22CD3F6500897D38 /* closePlusAnimation.json */; };
+		4AB209CC235BBEF900496895 /* JGFloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB209CB235BBEF900496895 /* JGFloatingTextField.swift */; };
+		4AB209CD235BBEF900496895 /* JGFloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB209CB235BBEF900496895 /* JGFloatingTextField.swift */; };
+		4AB209D0235BBFF600496895 /* JGFloatingTextFieldCodeViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB209CF235BBFF600496895 /* JGFloatingTextFieldCodeViewBuilder.swift */; };
+		4AB209D1235BBFF600496895 /* JGFloatingTextFieldCodeViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB209CF235BBFF600496895 /* JGFloatingTextFieldCodeViewBuilder.swift */; };
+		4AB209D3235BC38C00496895 /* JGFloatingTextFieldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB209D2235BC38C00496895 /* JGFloatingTextFieldFactory.swift */; };
+		4AB209D4235BC38C00496895 /* JGFloatingTextFieldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB209D2235BC38C00496895 /* JGFloatingTextFieldFactory.swift */; };
+		4AB209D6235F99AF00496895 /* JGFloatingTextFieldBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB209D5235F99AF00496895 /* JGFloatingTextFieldBuilderProtocol.swift */; };
+		4AB209D7235F99AF00496895 /* JGFloatingTextFieldBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB209D5235F99AF00496895 /* JGFloatingTextFieldBuilderProtocol.swift */; };
 		4AEE13D22316F139008F6DA1 /* INVSTotalTimesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE13CD2316F139008F6DA1 /* INVSTotalTimesViewController.swift */; };
 		4AEE13D32316F139008F6DA1 /* INVSTotalTimesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE13CD2316F139008F6DA1 /* INVSTotalTimesViewController.swift */; };
 		4AEE13D42316F139008F6DA1 /* INVSTotalTimesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE13CE2316F139008F6DA1 /* INVSTotalTimesPresenter.swift */; };
@@ -386,6 +394,10 @@
 		4A8E0E6B22CD3F6400897D38 /* animatedLogo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animatedLogo.json; sourceTree = "<group>"; };
 		4A8E0E6C22CD3F6500897D38 /* animatedLogoWhite.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animatedLogoWhite.json; sourceTree = "<group>"; };
 		4A8E0E6D22CD3F6500897D38 /* closePlusAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = closePlusAnimation.json; sourceTree = "<group>"; };
+		4AB209CB235BBEF900496895 /* JGFloatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGFloatingTextField.swift; sourceTree = "<group>"; };
+		4AB209CF235BBFF600496895 /* JGFloatingTextFieldCodeViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGFloatingTextFieldCodeViewBuilder.swift; sourceTree = "<group>"; };
+		4AB209D2235BC38C00496895 /* JGFloatingTextFieldFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGFloatingTextFieldFactory.swift; sourceTree = "<group>"; };
+		4AB209D5235F99AF00496895 /* JGFloatingTextFieldBuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGFloatingTextFieldBuilderProtocol.swift; sourceTree = "<group>"; };
 		4AEE13CD2316F139008F6DA1 /* INVSTotalTimesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSTotalTimesViewController.swift; sourceTree = "<group>"; };
 		4AEE13CE2316F139008F6DA1 /* INVSTotalTimesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSTotalTimesPresenter.swift; sourceTree = "<group>"; };
 		4AEE13CF2316F139008F6DA1 /* INVSTotalTimesInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSTotalTimesInteractor.swift; sourceTree = "<group>"; };
@@ -800,6 +812,7 @@
 		4A4C688E2295796100EDC8C6 /* FloatingTextField */ = {
 			isa = PBXGroup;
 			children = (
+				4AB209CE235BBFD000496895 /* JGFloatingTextField */,
 				4A4C688F2295796100EDC8C6 /* INVSFloatingTextField.swift */,
 				4A4C68902295796100EDC8C6 /* INVSFloatingTextFieldValueType.swift */,
 				4A4C68912295796100EDC8C6 /* INVSFloatingTextFieldType.swift */,
@@ -921,6 +934,17 @@
 				4A8E0E3D22CD3EB300897D38 /* INVSSimulationCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4AB209CE235BBFD000496895 /* JGFloatingTextField */ = {
+			isa = PBXGroup;
+			children = (
+				4AB209CB235BBEF900496895 /* JGFloatingTextField.swift */,
+				4AB209CF235BBFF600496895 /* JGFloatingTextFieldCodeViewBuilder.swift */,
+				4AB209D2235BC38C00496895 /* JGFloatingTextFieldFactory.swift */,
+				4AB209D5235F99AF00496895 /* JGFloatingTextFieldBuilderProtocol.swift */,
+			);
+			path = JGFloatingTextField;
 			sourceTree = "<group>";
 		};
 		4AEE13CC2316F139008F6DA1 /* TotalTimes */ = {
@@ -1299,6 +1323,7 @@
 				4A4C68CF2295796200EDC8C6 /* NumberFormatter+INVSExtension.swift in Sources */,
 				4A4C68D72295796200EDC8C6 /* INVSKeyChainWrapper.swift in Sources */,
 				4A27AA99229F6E4D00C45CC5 /* INVSSession.swift in Sources */,
+				4AB209CC235BBEF900496895 /* JGFloatingTextField.swift in Sources */,
 				4A121696229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift in Sources */,
 				4A4C68CE2295796200EDC8C6 /* UIStackview+INVSExtension.swift in Sources */,
 				4A4C68B22295796200EDC8C6 /* INVSSimulatedListViewController.swift in Sources */,
@@ -1306,6 +1331,7 @@
 				4A6E58AE23141B46001E2D3F /* INVSInterestRateWorker.swift in Sources */,
 				4A12631422A7DA99006133E5 /* BankModel.swift in Sources */,
 				4A4C68D22295796200EDC8C6 /* String+INVSExtension.swift in Sources */,
+				4AB209D3235BC38C00496895 /* JGFloatingTextFieldFactory.swift in Sources */,
 				4A22FF382297837B001662FC /* INVSSimulatedContainerViewController.swift in Sources */,
 				4A4C68BE2295796200EDC8C6 /* INVSSimulatorWorker.swift in Sources */,
 				4A0FFEA722B4729100D6A33A /* INVSLoadingButton.swift in Sources */,
@@ -1317,6 +1343,7 @@
 				4A4C68C82295796200EDC8C6 /* INVSKeyboardToolbar.swift in Sources */,
 				4A4C68C72295796200EDC8C6 /* INVSFloatingTextFieldType.swift in Sources */,
 				4A4C68D82295796200EDC8C6 /* INVSCodeView.swift in Sources */,
+				4AB209D6235F99AF00496895 /* JGFloatingTextFieldBuilderProtocol.swift in Sources */,
 				4AEE13D62316F139008F6DA1 /* INVSTotalTimesInteractor.swift in Sources */,
 				4AEE13D82316F139008F6DA1 /* INVSTotalTimesWorker.swift in Sources */,
 				4AFF3E6822BA79E90056A167 /* INVSAccessModel.swift in Sources */,
@@ -1343,6 +1370,7 @@
 				4A0FFEA522B438B000D6A33A /* FirebaseErrorHandler.swift in Sources */,
 				4A4C68C52295796200EDC8C6 /* INVSFloatingTextField.swift in Sources */,
 				4A22FF3C22980B89001662FC /* INVSSimulatedChartsViewController.swift in Sources */,
+				4AB209D0235BBFF600496895 /* JGFloatingTextFieldCodeViewBuilder.swift in Sources */,
 				4A0FFE8222B115E400D6A33A /* INVSLoginViewController.swift in Sources */,
 				4A4C68CA2295796200EDC8C6 /* UIButton+INVSExtension.swift in Sources */,
 				4A4C68CC2295796200EDC8C6 /* UIViewController+INVSExtension.swift in Sources */,
@@ -1413,6 +1441,7 @@
 				4AFF3E8F22BB23F10056A167 /* NumberFormatter+INVSExtension.swift in Sources */,
 				4AFF3E9022BB23F10056A167 /* INVSKeyChainWrapper.swift in Sources */,
 				4AFF3E9122BB23F10056A167 /* INVSSession.swift in Sources */,
+				4AB209CD235BBEF900496895 /* JGFloatingTextField.swift in Sources */,
 				4AFF3E9222BB23F10056A167 /* INVSSimulatedChartsPresenter.swift in Sources */,
 				4AFF3E9322BB23F10056A167 /* UIStackview+INVSExtension.swift in Sources */,
 				4AFF3E9422BB23F10056A167 /* INVSSimulatedListViewController.swift in Sources */,
@@ -1420,6 +1449,7 @@
 				4A6E58AF23141B46001E2D3F /* INVSInterestRateWorker.swift in Sources */,
 				4AFF3E9622BB23F10056A167 /* BankModel.swift in Sources */,
 				4AFF3E9722BB23F10056A167 /* String+INVSExtension.swift in Sources */,
+				4AB209D4235BC38C00496895 /* JGFloatingTextFieldFactory.swift in Sources */,
 				4AFF3E9822BB23F10056A167 /* INVSSimulatedContainerViewController.swift in Sources */,
 				4AFF3E9922BB23F10056A167 /* INVSSimulatorWorker.swift in Sources */,
 				4AFF3E9A22BB23F10056A167 /* INVSLoadingButton.swift in Sources */,
@@ -1431,6 +1461,7 @@
 				4AFF3E9E22BB23F10056A167 /* INVSKeyboardToolbar.swift in Sources */,
 				4AFF3EA022BB23F10056A167 /* INVSFloatingTextFieldType.swift in Sources */,
 				4AFF3EA122BB23F10056A167 /* INVSCodeView.swift in Sources */,
+				4AB209D7235F99AF00496895 /* JGFloatingTextFieldBuilderProtocol.swift in Sources */,
 				4AEE13D72316F139008F6DA1 /* INVSTotalTimesInteractor.swift in Sources */,
 				4AEE13D92316F139008F6DA1 /* INVSTotalTimesWorker.swift in Sources */,
 				4AFF3EA222BB23F10056A167 /* INVSAccessModel.swift in Sources */,
@@ -1457,6 +1488,7 @@
 				4AFF3EB422BB23F10056A167 /* FirebaseErrorHandler.swift in Sources */,
 				4AFF3EB522BB23F10056A167 /* INVSFloatingTextField.swift in Sources */,
 				4AFF3EB622BB23F10056A167 /* INVSSimulatedChartsViewController.swift in Sources */,
+				4AB209D1235BBFF600496895 /* JGFloatingTextFieldCodeViewBuilder.swift in Sources */,
 				4AFF3EB722BB23F10056A167 /* INVSLoginViewController.swift in Sources */,
 				4AFF3EB822BB23F10056A167 /* UIButton+INVSExtension.swift in Sources */,
 				4AFF3EB922BB23F10056A167 /* UIViewController+INVSExtension.swift in Sources */,

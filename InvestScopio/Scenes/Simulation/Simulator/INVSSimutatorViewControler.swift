@@ -32,6 +32,10 @@ public class INVSSimutatorViewControler: UIViewController {
     @IBOutlet weak var initialMonthlyRescueTextField: INVSFloatingTextField!
     @IBOutlet weak var increaseRescueTextField: INVSFloatingTextField!
     @IBOutlet weak var goalIncreaseRescueTextField: INVSFloatingTextField!
+    
+    @IBOutlet weak var testetextfield: JGFloatingTextField!
+    
+    
     @IBOutlet weak var saveButton: UIButton!
     private var saveButtonLayer: CAGradientLayer!
     @IBOutlet weak var clearButton: UIButton!
@@ -95,6 +99,7 @@ public class INVSSimutatorViewControler: UIViewController {
         INVSFloatingTextFieldType.initialMonthlyRescue.setupTextField(withTextField: initialMonthlyRescueTextField, andDelegate: self, valueTypeTextField: .currency, hasInfoButton: true)
         INVSFloatingTextFieldType.increaseRescue.setupTextField(withTextField: increaseRescueTextField, andDelegate: self, valueTypeTextField: .currency, hasInfoButton: true)
         INVSFloatingTextFieldType.goalIncreaseRescue.setupTextField(withTextField: goalIncreaseRescueTextField, andDelegate: self, valueTypeTextField: .currency, hasInfoButton: true)
+        JGFloatingTextFieldFactory.setup(withFloatingTextField: testetextfield)
     }
     
     func setLeftBarButton() {

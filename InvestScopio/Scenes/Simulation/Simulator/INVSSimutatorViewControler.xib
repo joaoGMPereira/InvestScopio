@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14845" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14799.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14819.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,6 +22,7 @@
                 <outlet property="interestRateTextField" destination="BcE-cK-55e" id="3Fz-Al-IgI"/>
                 <outlet property="monthValueTextField" destination="NyD-yS-Qor" id="Q2q-Dx-bwO"/>
                 <outlet property="saveButton" destination="1YL-KQ-qYM" id="y4a-So-wvf"/>
+                <outlet property="testetextfield" destination="j7q-eT-2qk" id="1Yx-u6-ci1"/>
                 <outlet property="totalMonthsTextField" destination="YH0-a3-Hzj" id="LO0-RX-TAK"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Gww-78-krV"/>
             </connections>
@@ -38,37 +39,41 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q9h-TA-256" customClass="INVSFloatingTextField" customModule="InvestScopio" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="51.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NyD-yS-Qor" customClass="INVSFloatingTextField" customModule="InvestScopio" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="59.5" width="375" height="52"/>
+                                    <rect key="frame" x="0.0" y="51" width="375" height="43.5"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="eVq-Pt-N1Y">
-                                    <rect key="frame" x="0.0" y="119.5" width="375" height="51.5"/>
+                                    <rect key="frame" x="0.0" y="102.5" width="375" height="43"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YH0-a3-Hzj" customClass="INVSFloatingTextField" customModule="InvestScopio" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="187" height="51.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="187" height="43"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BcE-cK-55e" customClass="INVSFloatingTextField" customModule="InvestScopio" customModuleProvider="target">
-                                            <rect key="frame" x="188" y="0.0" width="187" height="51.5"/>
+                                            <rect key="frame" x="188" y="0.0" width="187" height="43"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </stackView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWc-Vh-W5Y" customClass="INVSFloatingTextField" customModule="InvestScopio" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="179" width="375" height="51.5"/>
+                                    <rect key="frame" x="0.0" y="153.5" width="375" height="43"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1KE-v8-O7N" customClass="INVSFloatingTextField" customModule="InvestScopio" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="238.5" width="375" height="52"/>
+                                    <rect key="frame" x="0.0" y="204.5" width="375" height="43"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xJ-yc-7VY" customClass="INVSFloatingTextField" customModule="InvestScopio" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="298.5" width="375" height="51.5"/>
+                                    <rect key="frame" x="0.0" y="255.5" width="375" height="43.5"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j7q-eT-2qk" customClass="JGFloatingTextField" customModule="InvestScopio" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="307" width="375" height="43"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                             </subviews>
