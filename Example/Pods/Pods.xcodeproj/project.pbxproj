@@ -1,0 +1,879 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		013996A2AE03CBBD31A2A0224D692839 /* INVSKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8F086960FBFAEA0D91DEEF1ACE7053 /* INVSKeyboardToolbar.swift */; };
+		176FD31D71608CC2745A2666C4093940 /* INVSSimutatorViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6E249C357535556253304296E31E84 /* INVSSimutatorViewControler.swift */; };
+		1B28652D962071F216F59DB4189447E2 /* UIColor+INVSPaletteColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE97B830C38A59700FF4E7AEA90776 /* UIColor+INVSPaletteColors.swift */; };
+		1D61ABC16F459FCD30476E333D57B26B /* InvestScopio-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EF8A6965C34A2D8F26BC788C06F04FAC /* InvestScopio-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		28F0CDA3A3499FEC1387B558F495F498 /* Pods-InvestScopio_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A51397D284E03AC0F6E45DAEB31D3D9A /* Pods-InvestScopio_Tests-dummy.m */; };
+		366617B449E6F6A75494DAF7D2F11B9A /* INVSFloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7069D8EAB3159858D275E5B695DC5 /* INVSFloatingTextField.swift */; };
+		3730FD1CDB329C9D045659305D1941F8 /* Pods-InvestScopio_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 493EE7F7225E31C521148FE30800F0F5 /* Pods-InvestScopio_Example-dummy.m */; };
+		37D46FACD344D5EA1E67829F3F0D3C56 /* String+INVSFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7038E2C71312E900A85314E92A2BA34 /* String+INVSFormat.swift */; };
+		4E52137B2FCB77525903F1DFA0D1B879 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		70446C5AC18F52D12C24D4EDA4240E8B /* NumberFormatter+INVSFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624A16EC85A9259DEA48A91D21840EFF /* NumberFormatter+INVSFormat.swift */; };
+		724F3ED04C34961767A7B5BCAAD8EDD3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9C578949549AE8F99DFA472E48FDC06 /* Images.xcassets */; };
+		793868BA5EE0BB900CB03271B27835AA /* INVSSimutatorViewControler.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA8F5548DA4FB2CB82A47B64FAB4AE /* INVSSimutatorViewControler.xib */; };
+		80675FE58FBBBE46E906485EAA45096F /* Pods-InvestScopio_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FCF531CFC7860AA75A7ED735988B025 /* Pods-InvestScopio_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9C0D3431C6EC6D9E2FD608D045C007F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		B64020DB0721462F3219A1A0F5D48188 /* INVSFloatingTextFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97CBEDA7B5B8605404727788C03F0BE /* INVSFloatingTextFieldType.swift */; };
+		E1023410750B76AF7D961785C11BAC48 /* INVSCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937E50100ADAE8559F347463B2B5C36A /* INVSCodeView.swift */; };
+		E67DF05CA732EDF4B65E46FB177FA5EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		EC6C6CE1FFE14E85D90ADB1FA438EC3A /* Pods-InvestScopio_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 459E2FCD611862018283BE49C49F15E8 /* Pods-InvestScopio_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F730F67960E5CC3E797BF948EC88BA44 /* InvestScopio-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC26AF404C2AC8041E627D6F6B6D5B9 /* InvestScopio-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1908BA4FE4FEE5A998976CD40D120F9C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9E63B97A026DA1C12810E9814F81C0D5;
+			remoteInfo = "Pods-InvestScopio_Example";
+		};
+		9FC45B69B9466424559DB85237861558 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7FE5C1F75F6C599BF90919B517D70002;
+			remoteInfo = InvestScopio;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01A6161D5B7E61788D19BED4C3734999 /* InvestScopio-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "InvestScopio-Info.plist"; sourceTree = "<group>"; };
+		08C8E1BD2A9EA996ACBAB105B907E8E2 /* Pods-InvestScopio_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-InvestScopio_Example-frameworks.sh"; sourceTree = "<group>"; };
+		1AC26AF404C2AC8041E627D6F6B6D5B9 /* InvestScopio-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "InvestScopio-dummy.m"; sourceTree = "<group>"; };
+		1FCF531CFC7860AA75A7ED735988B025 /* Pods-InvestScopio_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-InvestScopio_Example-umbrella.h"; sourceTree = "<group>"; };
+		20A6EFF201ED15B7EB5B7DD94710434C /* Pods-InvestScopio_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-InvestScopio_Tests-Info.plist"; sourceTree = "<group>"; };
+		27FE97B830C38A59700FF4E7AEA90776 /* UIColor+INVSPaletteColors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+INVSPaletteColors.swift"; sourceTree = "<group>"; };
+		2CC7069D8EAB3159858D275E5B695DC5 /* INVSFloatingTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = INVSFloatingTextField.swift; sourceTree = "<group>"; };
+		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3592286B5F5E4B7D6B053ECE15B095BB /* Pods-InvestScopio_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-InvestScopio_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		3C22AACB962E2F1406390F82B64CDF9A /* InvestScopio-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "InvestScopio-prefix.pch"; sourceTree = "<group>"; };
+		459E2FCD611862018283BE49C49F15E8 /* Pods-InvestScopio_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-InvestScopio_Tests-umbrella.h"; sourceTree = "<group>"; };
+		493EE7F7225E31C521148FE30800F0F5 /* Pods-InvestScopio_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-InvestScopio_Example-dummy.m"; sourceTree = "<group>"; };
+		4A8F086960FBFAEA0D91DEEF1ACE7053 /* INVSKeyboardToolbar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = INVSKeyboardToolbar.swift; sourceTree = "<group>"; };
+		4DBA8F5548DA4FB2CB82A47B64FAB4AE /* INVSSimutatorViewControler.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = INVSSimutatorViewControler.xib; sourceTree = "<group>"; };
+		50925BC5A4E649C706883BD3A1310E7A /* Pods-InvestScopio_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-InvestScopio_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5A3721A01DB79398F2C11CFD3A02F7BC /* Pods-InvestScopio_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-InvestScopio_Example.release.xcconfig"; sourceTree = "<group>"; };
+		624A16EC85A9259DEA48A91D21840EFF /* NumberFormatter+INVSFormat.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+INVSFormat.swift"; sourceTree = "<group>"; };
+		67EF63BFAD16D421906B1A749756DE06 /* InvestScopio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = InvestScopio.framework; path = InvestScopio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73433A62949461B494A98324CE01DD7E /* Pods-InvestScopio_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-InvestScopio_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		74D47297726E7C0968F06F8EE2490052 /* Pods-InvestScopio_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-InvestScopio_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		7CAD59ACC746C124DD8A1FE01AC7AC7E /* Pods-InvestScopio_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-InvestScopio_Example-Info.plist"; sourceTree = "<group>"; };
+		7E6E249C357535556253304296E31E84 /* INVSSimutatorViewControler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = INVSSimutatorViewControler.swift; path = InvestScopio/Classes/INVSSimutatorViewControler.swift; sourceTree = "<group>"; };
+		86C20C0874096E65B8B44C5889A2FECF /* InvestScopio.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = InvestScopio.xcconfig; sourceTree = "<group>"; };
+		87658AE1B82201B485327401D74899BF /* Pods-InvestScopio_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-InvestScopio_Tests.modulemap"; sourceTree = "<group>"; };
+		937E50100ADAE8559F347463B2B5C36A /* INVSCodeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = INVSCodeView.swift; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A0466CE42493A2B27552FCEF569E8B5F /* InvestScopio.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = InvestScopio.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A51397D284E03AC0F6E45DAEB31D3D9A /* Pods-InvestScopio_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-InvestScopio_Tests-dummy.m"; sourceTree = "<group>"; };
+		B290CAB1C0667A9341E1080222B3EE8C /* Pods-InvestScopio_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-InvestScopio_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		B51173C46EA6874EF01044DC44E5073B /* InvestScopio.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = InvestScopio.modulemap; sourceTree = "<group>"; };
+		BDBBB3A6A19DFEBC52505729CA4895BA /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		C3D7BF55755402672FE6B13A7AEFE5F8 /* Pods-InvestScopio_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-InvestScopio_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		D270931BD9B0CE23705A4C20EA8A9D72 /* Pods-InvestScopio_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-InvestScopio_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		DC35F4620A9C1865A850BA11F4626AD7 /* Pods_InvestScopio_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_InvestScopio_Tests.framework; path = "Pods-InvestScopio_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DECEDEC127B47DAF1A185ADAB2A1C4FF /* Pods-InvestScopio_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-InvestScopio_Example.modulemap"; sourceTree = "<group>"; };
+		E2A728C2A4D486D4640905C45F8B429A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		EF8A6965C34A2D8F26BC788C06F04FAC /* InvestScopio-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "InvestScopio-umbrella.h"; sourceTree = "<group>"; };
+		F66F18ADB7BAF787A646AC19AF33BECF /* Pods_InvestScopio_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_InvestScopio_Example.framework; path = "Pods-InvestScopio_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7038E2C71312E900A85314E92A2BA34 /* String+INVSFormat.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+INVSFormat.swift"; sourceTree = "<group>"; };
+		F97CBEDA7B5B8605404727788C03F0BE /* INVSFloatingTextFieldType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = INVSFloatingTextFieldType.swift; sourceTree = "<group>"; };
+		F9C578949549AE8F99DFA472E48FDC06 /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4A0B60253DDE6A1C6A114EDAEF796A77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C0D3431C6EC6D9E2FD608D045C007F4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		931796D81DFC01E19597EF55AA088CF2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E52137B2FCB77525903F1DFA0D1B879 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FEF0E3B59B4F00AD94EEB37BA255AC70 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E67DF05CA732EDF4B65E46FB177FA5EC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1DAFFB6EF3555F9DF0BB7E89ADC1B19F /* Pods-InvestScopio_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				87658AE1B82201B485327401D74899BF /* Pods-InvestScopio_Tests.modulemap */,
+				73433A62949461B494A98324CE01DD7E /* Pods-InvestScopio_Tests-acknowledgements.markdown */,
+				74D47297726E7C0968F06F8EE2490052 /* Pods-InvestScopio_Tests-acknowledgements.plist */,
+				A51397D284E03AC0F6E45DAEB31D3D9A /* Pods-InvestScopio_Tests-dummy.m */,
+				20A6EFF201ED15B7EB5B7DD94710434C /* Pods-InvestScopio_Tests-Info.plist */,
+				459E2FCD611862018283BE49C49F15E8 /* Pods-InvestScopio_Tests-umbrella.h */,
+				D270931BD9B0CE23705A4C20EA8A9D72 /* Pods-InvestScopio_Tests.debug.xcconfig */,
+				3592286B5F5E4B7D6B053ECE15B095BB /* Pods-InvestScopio_Tests.release.xcconfig */,
+			);
+			name = "Pods-InvestScopio_Tests";
+			path = "Target Support Files/Pods-InvestScopio_Tests";
+			sourceTree = "<group>";
+		};
+		2B11476B8C1FFAC3CB486CC860B8C08E /* Pods-InvestScopio_Example */ = {
+			isa = PBXGroup;
+			children = (
+				DECEDEC127B47DAF1A185ADAB2A1C4FF /* Pods-InvestScopio_Example.modulemap */,
+				50925BC5A4E649C706883BD3A1310E7A /* Pods-InvestScopio_Example-acknowledgements.markdown */,
+				C3D7BF55755402672FE6B13A7AEFE5F8 /* Pods-InvestScopio_Example-acknowledgements.plist */,
+				493EE7F7225E31C521148FE30800F0F5 /* Pods-InvestScopio_Example-dummy.m */,
+				08C8E1BD2A9EA996ACBAB105B907E8E2 /* Pods-InvestScopio_Example-frameworks.sh */,
+				7CAD59ACC746C124DD8A1FE01AC7AC7E /* Pods-InvestScopio_Example-Info.plist */,
+				1FCF531CFC7860AA75A7ED735988B025 /* Pods-InvestScopio_Example-umbrella.h */,
+				B290CAB1C0667A9341E1080222B3EE8C /* Pods-InvestScopio_Example.debug.xcconfig */,
+				5A3721A01DB79398F2C11CFD3A02F7BC /* Pods-InvestScopio_Example.release.xcconfig */,
+			);
+			name = "Pods-InvestScopio_Example";
+			path = "Target Support Files/Pods-InvestScopio_Example";
+			sourceTree = "<group>";
+		};
+		3D1B810DA972E04CFD906BFA1FBD4D11 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4DBA8F5548DA4FB2CB82A47B64FAB4AE /* INVSSimutatorViewControler.xib */,
+			);
+			name = Classes;
+			path = InvestScopio/Classes;
+			sourceTree = "<group>";
+		};
+		5F2A5A932B1CCD3D453E98E22F8B1F8A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				67EF63BFAD16D421906B1A749756DE06 /* InvestScopio.framework */,
+				F66F18ADB7BAF787A646AC19AF33BECF /* Pods_InvestScopio_Example.framework */,
+				DC35F4620A9C1865A850BA11F4626AD7 /* Pods_InvestScopio_Tests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6A2085437EEA61B2E31BA8FA922F8836 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7FCE2F552B3FF2CB9DE5A13AE943DA94 /* InvestScopio */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		714C8A95A415EAB2CEBCCB74B6D41018 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C4C1C3C9202D09ABF8ADC9C62A48EBE5 /* Assets */,
+				3D1B810DA972E04CFD906BFA1FBD4D11 /* Classes */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		7FCE2F552B3FF2CB9DE5A13AE943DA94 /* InvestScopio */ = {
+			isa = PBXGroup;
+			children = (
+				7E6E249C357535556253304296E31E84 /* INVSSimutatorViewControler.swift */,
+				BB3AA4EE6973D0DEEEC7C3517E1318C1 /* CodeView */,
+				E96FC773141AB1B04E0308C2225491C7 /* FloatingTextField */,
+				9F8BEE956E7D2129D5A0B3B2F1716C43 /* Format */,
+				ADCA9284EFBBE26E8373C541462586DB /* ISPaletteColors */,
+				84FAA34E9011F21CF9AAAE8CC57FED95 /* Pod */,
+				714C8A95A415EAB2CEBCCB74B6D41018 /* Resources */,
+				DDB457B874F06F817A0D2E8D27AF4AE9 /* Support Files */,
+			);
+			name = InvestScopio;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		84FAA34E9011F21CF9AAAE8CC57FED95 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				A0466CE42493A2B27552FCEF569E8B5F /* InvestScopio.podspec */,
+				BDBBB3A6A19DFEBC52505729CA4895BA /* LICENSE */,
+				E2A728C2A4D486D4640905C45F8B429A /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		9F8BEE956E7D2129D5A0B3B2F1716C43 /* Format */ = {
+			isa = PBXGroup;
+			children = (
+				624A16EC85A9259DEA48A91D21840EFF /* NumberFormatter+INVSFormat.swift */,
+				F7038E2C71312E900A85314E92A2BA34 /* String+INVSFormat.swift */,
+			);
+			name = Format;
+			path = InvestScopio/Classes/Format;
+			sourceTree = "<group>";
+		};
+		ADCA9284EFBBE26E8373C541462586DB /* ISPaletteColors */ = {
+			isa = PBXGroup;
+			children = (
+				27FE97B830C38A59700FF4E7AEA90776 /* UIColor+INVSPaletteColors.swift */,
+			);
+			name = ISPaletteColors;
+			path = InvestScopio/Classes/ISPaletteColors;
+			sourceTree = "<group>";
+		};
+		BB3AA4EE6973D0DEEEC7C3517E1318C1 /* CodeView */ = {
+			isa = PBXGroup;
+			children = (
+				937E50100ADAE8559F347463B2B5C36A /* INVSCodeView.swift */,
+			);
+			name = CodeView;
+			path = InvestScopio/Classes/CodeView;
+			sourceTree = "<group>";
+		};
+		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		C4C1C3C9202D09ABF8ADC9C62A48EBE5 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				F9C578949549AE8F99DFA472E48FDC06 /* Images.xcassets */,
+			);
+			name = Assets;
+			path = InvestScopio/Assets;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				6A2085437EEA61B2E31BA8FA922F8836 /* Development Pods */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				5F2A5A932B1CCD3D453E98E22F8B1F8A /* Products */,
+				DA25F4F66660C78D56E5F1E717B192A4 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA25F4F66660C78D56E5F1E717B192A4 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2B11476B8C1FFAC3CB486CC860B8C08E /* Pods-InvestScopio_Example */,
+				1DAFFB6EF3555F9DF0BB7E89ADC1B19F /* Pods-InvestScopio_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		DDB457B874F06F817A0D2E8D27AF4AE9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B51173C46EA6874EF01044DC44E5073B /* InvestScopio.modulemap */,
+				86C20C0874096E65B8B44C5889A2FECF /* InvestScopio.xcconfig */,
+				1AC26AF404C2AC8041E627D6F6B6D5B9 /* InvestScopio-dummy.m */,
+				01A6161D5B7E61788D19BED4C3734999 /* InvestScopio-Info.plist */,
+				3C22AACB962E2F1406390F82B64CDF9A /* InvestScopio-prefix.pch */,
+				EF8A6965C34A2D8F26BC788C06F04FAC /* InvestScopio-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/InvestScopio";
+			sourceTree = "<group>";
+		};
+		E96FC773141AB1B04E0308C2225491C7 /* FloatingTextField */ = {
+			isa = PBXGroup;
+			children = (
+				2CC7069D8EAB3159858D275E5B695DC5 /* INVSFloatingTextField.swift */,
+				F97CBEDA7B5B8605404727788C03F0BE /* INVSFloatingTextFieldType.swift */,
+				4A8F086960FBFAEA0D91DEEF1ACE7053 /* INVSKeyboardToolbar.swift */,
+			);
+			name = FloatingTextField;
+			path = InvestScopio/Classes/FloatingTextField;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8FDE426753433F0375931BDEFD376151 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC6C6CE1FFE14E85D90ADB1FA438EC3A /* Pods-InvestScopio_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A7AD9ED60734BE41A0E9582CCF6B111 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80675FE58FBBBE46E906485EAA45096F /* Pods-InvestScopio_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3829783D1A21F98CBDE0AFF353D0427 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D61ABC16F459FCD30476E333D57B26B /* InvestScopio-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		28BF378D2A607484EFB046AC7A42BF1C /* Pods-InvestScopio_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DCADF5D9E28E62719FDC27D4EBF34B55 /* Build configuration list for PBXNativeTarget "Pods-InvestScopio_Tests" */;
+			buildPhases = (
+				8FDE426753433F0375931BDEFD376151 /* Headers */,
+				1BB2B81E9CD26BBE32EFDE993EDF92FB /* Sources */,
+				4A0B60253DDE6A1C6A114EDAEF796A77 /* Frameworks */,
+				43403DD179C57E99A37339CD39AC7377 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BEA06E5445FD334393AD3248EABEB0BC /* PBXTargetDependency */,
+			);
+			name = "Pods-InvestScopio_Tests";
+			productName = "Pods-InvestScopio_Tests";
+			productReference = DC35F4620A9C1865A850BA11F4626AD7 /* Pods_InvestScopio_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7FE5C1F75F6C599BF90919B517D70002 /* InvestScopio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EFD4DA40C7CECE42DC1E099F51C384E2 /* Build configuration list for PBXNativeTarget "InvestScopio" */;
+			buildPhases = (
+				F3829783D1A21F98CBDE0AFF353D0427 /* Headers */,
+				AA78DB52A9C7FA148CB5F5AE8D2DC568 /* Sources */,
+				FEF0E3B59B4F00AD94EEB37BA255AC70 /* Frameworks */,
+				5E5DB0261C9025723F966AAAD6963AD1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = InvestScopio;
+			productName = InvestScopio;
+			productReference = 67EF63BFAD16D421906B1A749756DE06 /* InvestScopio.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		9E63B97A026DA1C12810E9814F81C0D5 /* Pods-InvestScopio_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 81C84E24E080BD6EE46F754E4CEA13A8 /* Build configuration list for PBXNativeTarget "Pods-InvestScopio_Example" */;
+			buildPhases = (
+				9A7AD9ED60734BE41A0E9582CCF6B111 /* Headers */,
+				5D591A62C917168A70263BD2254BCDA1 /* Sources */,
+				931796D81DFC01E19597EF55AA088CF2 /* Frameworks */,
+				2719A7F37C12BB8948807EFA173CD2AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				71BF22594955BF55A4933D72F41E78FB /* PBXTargetDependency */,
+			);
+			name = "Pods-InvestScopio_Example";
+			productName = "Pods-InvestScopio_Example";
+			productReference = F66F18ADB7BAF787A646AC19AF33BECF /* Pods_InvestScopio_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 5F2A5A932B1CCD3D453E98E22F8B1F8A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7FE5C1F75F6C599BF90919B517D70002 /* InvestScopio */,
+				9E63B97A026DA1C12810E9814F81C0D5 /* Pods-InvestScopio_Example */,
+				28BF378D2A607484EFB046AC7A42BF1C /* Pods-InvestScopio_Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2719A7F37C12BB8948807EFA173CD2AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43403DD179C57E99A37339CD39AC7377 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E5DB0261C9025723F966AAAD6963AD1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				724F3ED04C34961767A7B5BCAAD8EDD3 /* Images.xcassets in Resources */,
+				793868BA5EE0BB900CB03271B27835AA /* INVSSimutatorViewControler.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1BB2B81E9CD26BBE32EFDE993EDF92FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28F0CDA3A3499FEC1387B558F495F498 /* Pods-InvestScopio_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D591A62C917168A70263BD2254BCDA1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3730FD1CDB329C9D045659305D1941F8 /* Pods-InvestScopio_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA78DB52A9C7FA148CB5F5AE8D2DC568 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F730F67960E5CC3E797BF948EC88BA44 /* InvestScopio-dummy.m in Sources */,
+				E1023410750B76AF7D961785C11BAC48 /* INVSCodeView.swift in Sources */,
+				366617B449E6F6A75494DAF7D2F11B9A /* INVSFloatingTextField.swift in Sources */,
+				B64020DB0721462F3219A1A0F5D48188 /* INVSFloatingTextFieldType.swift in Sources */,
+				013996A2AE03CBBD31A2A0224D692839 /* INVSKeyboardToolbar.swift in Sources */,
+				176FD31D71608CC2745A2666C4093940 /* INVSSimutatorViewControler.swift in Sources */,
+				70446C5AC18F52D12C24D4EDA4240E8B /* NumberFormatter+INVSFormat.swift in Sources */,
+				37D46FACD344D5EA1E67829F3F0D3C56 /* String+INVSFormat.swift in Sources */,
+				1B28652D962071F216F59DB4189447E2 /* UIColor+INVSPaletteColors.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		71BF22594955BF55A4933D72F41E78FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = InvestScopio;
+			target = 7FE5C1F75F6C599BF90919B517D70002 /* InvestScopio */;
+			targetProxy = 9FC45B69B9466424559DB85237861558 /* PBXContainerItemProxy */;
+		};
+		BEA06E5445FD334393AD3248EABEB0BC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-InvestScopio_Example";
+			target = 9E63B97A026DA1C12810E9814F81C0D5 /* Pods-InvestScopio_Example */;
+			targetProxy = 1908BA4FE4FEE5A998976CD40D120F9C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0A5D1B52A927CFA51A41FDF2A93FE6C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B290CAB1C0667A9341E1080222B3EE8C /* Pods-InvestScopio_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-InvestScopio_Example/Pods-InvestScopio_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-InvestScopio_Example/Pods-InvestScopio_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		16BCD8B1F082659B16587D2AFCA77192 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D270931BD9B0CE23705A4C20EA8A9D72 /* Pods-InvestScopio_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-InvestScopio_Tests/Pods-InvestScopio_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-InvestScopio_Tests/Pods-InvestScopio_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		257497152829C177993B5EC99C1D227A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		3C96510C44307BFF0C153F6D8513D523 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A3721A01DB79398F2C11CFD3A02F7BC /* Pods-InvestScopio_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-InvestScopio_Example/Pods-InvestScopio_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-InvestScopio_Example/Pods-InvestScopio_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		98BD42C591FB35FB8A852E575F187DBC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86C20C0874096E65B8B44C5889A2FECF /* InvestScopio.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/InvestScopio/InvestScopio-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/InvestScopio/InvestScopio-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/InvestScopio/InvestScopio.modulemap";
+				PRODUCT_MODULE_NAME = InvestScopio;
+				PRODUCT_NAME = InvestScopio;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A02E461B9BF29D2FC9F417AF298D786F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3592286B5F5E4B7D6B053ECE15B095BB /* Pods-InvestScopio_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-InvestScopio_Tests/Pods-InvestScopio_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-InvestScopio_Tests/Pods-InvestScopio_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D2659F51A1F695A30542A9DCC1FB2274 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86C20C0874096E65B8B44C5889A2FECF /* InvestScopio.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/InvestScopio/InvestScopio-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/InvestScopio/InvestScopio-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/InvestScopio/InvestScopio.modulemap";
+				PRODUCT_MODULE_NAME = InvestScopio;
+				PRODUCT_NAME = InvestScopio;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DD8F832993327D1DD8046C3CBCBD97CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD8F832993327D1DD8046C3CBCBD97CD /* Debug */,
+				257497152829C177993B5EC99C1D227A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		81C84E24E080BD6EE46F754E4CEA13A8 /* Build configuration list for PBXNativeTarget "Pods-InvestScopio_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A5D1B52A927CFA51A41FDF2A93FE6C6 /* Debug */,
+				3C96510C44307BFF0C153F6D8513D523 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DCADF5D9E28E62719FDC27D4EBF34B55 /* Build configuration list for PBXNativeTarget "Pods-InvestScopio_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16BCD8B1F082659B16587D2AFCA77192 /* Debug */,
+				A02E461B9BF29D2FC9F417AF298D786F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EFD4DA40C7CECE42DC1E099F51C384E2 /* Build configuration list for PBXNativeTarget "InvestScopio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98BD42C591FB35FB8A852E575F187DBC /* Debug */,
+				D2659F51A1F695A30542A9DCC1FB2274 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

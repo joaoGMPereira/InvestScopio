@@ -1,0 +1,16 @@
+PODS:
+  - InvestScopio (0.1.0)
+
+DEPENDENCIES:
+  - InvestScopio (from `../`)
+
+EXTERNAL SOURCES:
+  InvestScopio:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  InvestScopio: 787e52a192108e5a86268a09be1e33c0ec5fd6f9
+
+PODFILE CHECKSUM: e29d1a482abbdaf6dcc4a92363a6eef31eab46df
+
+COCOAPODS: 1.6.1
