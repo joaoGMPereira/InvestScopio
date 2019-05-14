@@ -45,7 +45,7 @@ public class INVSSimutatorViewControler: UIViewController {
         monthValueTextField.setup(placeholder: "Valor do Aporte", typeTextField: .monthValue, valueTypeTextField: .currency, required: true, color: UIColor.INVSDefault())
         interestRateTextField.setup(placeholder: "Taxa de Juros", typeTextField: .interestRate, valueTypeTextField: .percent, required: true, color: UIColor.INVSDefault())
         totalMonthsTextField.setup(placeholder: "Total de Meses", typeTextField: .totalMonths, valueTypeTextField: .months, required: true, color: UIColor.INVSDefault())
-        monthlyRescueTextField.setup(placeholder: "Resgate Mensal Inicial", typeTextField: .monthlyRescue, valueTypeTextField: .currency, color: UIColor.INVSDefault())
+        monthlyRescueTextField.setup(placeholder: "Resgate Mensal Inicial", typeTextField: .initialMonthlyRescue, valueTypeTextField: .currency, color: UIColor.INVSDefault())
         increaseRescueTextField.setup(placeholder: "Aumento no Resgate", typeTextField: .increaseRescue, valueTypeTextField: .currency, color: UIColor.INVSDefault())
         goalIncreaseRescueTextField.setup(placeholder: "Valor para aumentar o Resgate", typeTextField: .goalIncreaseRescue, valueTypeTextField: .currency, color: UIColor.INVSDefault())
         
@@ -63,7 +63,8 @@ public class INVSSimutatorViewControler: UIViewController {
         interactor?.simulationProjection()
     }
     @IBAction func clearAction(_ sender: Any) {
-        interactor?.clearTextFields()
+        INVSKeyChainWrapper.clear()
+        //interactor?.clearTextFields()
     }
 }
 

@@ -14,7 +14,7 @@ enum INVSFloatingTextFieldType: Int {
     case monthValue
     case interestRate
     case totalMonths
-    case monthlyRescue
+    case initialMonthlyRescue
     case increaseRescue
     case goalIncreaseRescue
     

@@ -1,9 +1,9 @@
 use_frameworks!
 platform :ios, '11.0'
 target 'InvestScopio_Example' do
+  pod 'SwiftKeychainWrapper'
+  
   target 'InvestScopio_Tests' do
     inherit! :search_paths
-
-    
   end
 end

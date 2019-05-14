@@ -47,8 +47,8 @@ class INVSSimulatorWorker: NSObject,INVSSimulatorWorkerProtocol {
                     simulatorModel.interestRate = textField.floatingTextField.text?.convertFormattedToDouble()
                 case .totalMonths:
                     simulatorModel.totalMonths = Int(textField.floatingTextField.text ?? "0")
-                case .monthlyRescue:
-                    simulatorModel.monthlyRescue = textField.floatingTextField.text?.convertFormattedToDouble()
+                case .initialMonthlyRescue:
+                    simulatorModel.initialMonthlyRescue = textField.floatingTextField.text?.convertFormattedToDouble()
                 case .increaseRescue:
                     simulatorModel.increaseRescue = textField.floatingTextField.text?.convertFormattedToDouble()
                 case .goalIncreaseRescue:
