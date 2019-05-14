@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import InvestScopio
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         let homeViewController = INVSSimutatorViewControler.init(nibName: "INVSSimutatorViewControler", bundle: Bundle(for: INVSSimutatorViewControler.self))
-        window!.rootViewController = homeViewController
+        let rootNavigationController = UINavigationController.init(rootViewController: homeViewController)
+        window!.rootViewController = rootNavigationController
         window!.makeKeyAndVisible()
         // Override point for customization after application launch.
         return true

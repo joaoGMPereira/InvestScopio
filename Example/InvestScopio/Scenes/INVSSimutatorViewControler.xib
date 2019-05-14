@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="INVSSimutatorViewControler" customModule="InvestScopio" customModuleProvider="target">
+            <connections>
+                <outlet property="clearButton" destination="fwz-7i-qNv" id="xuy-Ic-GGE"/>
+                <outlet property="goalIncreaseRescueTextField" destination="1xJ-yc-7VY" id="o7z-kd-OWn"/>
+                <outlet property="increaseRescueTextField" destination="1KE-v8-O7N" id="iZp-qS-nmV"/>
+                <outlet property="initialValueTextField" destination="Q9h-TA-256" id="Jq2-sB-3sf"/>
+                <outlet property="interestRateTextField" destination="BcE-cK-55e" id="3Fz-Al-IgI"/>
+                <outlet property="monthValueTextField" destination="NyD-yS-Qor" id="Q2q-Dx-bwO"/>
+                <outlet property="monthlyRescueTextField" destination="bWc-Vh-W5Y" id="xRj-Vd-3MK"/>
+                <outlet property="saveButton" destination="1YL-KQ-qYM" id="y4a-So-wvf"/>
+                <outlet property="tableView" destination="H0H-ND-IY1" id="Bu9-7e-V5M"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Gww-78-krV"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wAc-Xh-0dX">
+                    <rect key="frame" x="0.0" y="20" width="375" height="250"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q9h-TA-256" customClass="INVSFloatingTextField" customModule="InvestScopio" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="41.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NyD-yS-Qor" customClass="INVSFloatingTextField" customModule="InvestScopio" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="41.5" width="375" height="42"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BcE-cK-55e" customClass="INVSFloatingTextField" customModule="InvestScopio" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="83.5" width="375" height="41.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWc-Vh-W5Y" customClass="INVSFloatingTextField" customModule="InvestScopio" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="125" width="375" height="41.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1KE-v8-O7N" customClass="INVSFloatingTextField" customModule="InvestScopio" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="166.5" width="375" height="42"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xJ-yc-7VY" customClass="INVSFloatingTextField" customModule="InvestScopio" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="208.5" width="375" height="41.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="250" id="XbH-nW-8SI"/>
+                    </constraints>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="COQ-C4-k2b">
+                    <rect key="frame" x="0.0" y="270" width="375" height="20.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igy-9B-hDn">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aportes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feQ-d4-i8g">
+                            <rect key="frame" x="40" y="0.0" width="75" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rentabilidade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpH-k8-PT2">
+                            <rect key="frame" x="115" y="0.0" width="128.5" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Retirada" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKX-DS-TwZ">
+                            <rect key="frame" x="243.5" y="0.0" width="78" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Soma" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEq-we-E9v">
+                            <rect key="frame" x="321.5" y="0.0" width="53.5" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H0H-ND-IY1">
+                    <rect key="frame" x="0.0" y="290.5" width="375" height="296.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                </tableView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="LCz-Zz-Hjj">
+                    <rect key="frame" x="0.0" y="587" width="375" height="80"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YL-KQ-qYM">
+                            <rect key="frame" x="0.0" y="0.0" width="179.5" height="80"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Save">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="saveAction:" destination="-1" eventType="touchUpInside" id="x3X-li-uQq"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwz-7i-qNv">
+                            <rect key="frame" x="180.5" y="0.0" width="194.5" height="80"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Clear">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="fdr-IE-zw3"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="COQ-C4-k2b" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="4HW-Bq-RD2"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="H0H-ND-IY1" secondAttribute="trailing" id="63k-YG-mGj"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="LCz-Zz-Hjj" secondAttribute="trailing" id="FZ3-0L-O1T"/>
+                <constraint firstItem="LCz-Zz-Hjj" firstAttribute="top" secondItem="H0H-ND-IY1" secondAttribute="bottom" id="Kw0-m2-2G6"/>
+                <constraint firstItem="wAc-Xh-0dX" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Ojk-E8-kY1"/>
+                <constraint firstItem="COQ-C4-k2b" firstAttribute="top" secondItem="wAc-Xh-0dX" secondAttribute="bottom" id="b5P-tA-GJ0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="COQ-C4-k2b" secondAttribute="trailing" id="clj-tv-2rr"/>
+                <constraint firstAttribute="bottom" secondItem="LCz-Zz-Hjj" secondAttribute="bottom" id="eSU-Hf-edH"/>
+                <constraint firstItem="LCz-Zz-Hjj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fHU-dc-KRt"/>
+                <constraint firstItem="H0H-ND-IY1" firstAttribute="top" secondItem="COQ-C4-k2b" secondAttribute="bottom" id="gOF-9c-3J0"/>
+                <constraint firstItem="wAc-Xh-0dX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="r54-oy-9b3"/>
+                <constraint firstItem="wAc-Xh-0dX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="sSr-cd-uec"/>
+                <constraint firstItem="H0H-ND-IY1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="scP-fc-BUY"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-153" y="89"/>
+        </view>
+    </objects>
+</document>

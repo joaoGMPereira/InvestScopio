@@ -8,8 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		273BB62CABFB5444BBFB754A /* Pods_InvestScopio_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CC40F89EA7210FD649F7D3 /* Pods_InvestScopio_Example.framework */; };
+		4AFD516F228A210000AF9513 /* INVSFloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD515B228A210000AF9513 /* INVSFloatingTextField.swift */; };
+		4AFD5170228A210000AF9513 /* INVSFloatingTextFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD515C228A210000AF9513 /* INVSFloatingTextFieldType.swift */; };
+		4AFD5171228A210000AF9513 /* INVSKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD515D228A210000AF9513 /* INVSKeyboardToolbar.swift */; };
+		4AFD5172228A210000AF9513 /* UIColor+INVSPaletteColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD515F228A210000AF9513 /* UIColor+INVSPaletteColors.swift */; };
+		4AFD5173228A210000AF9513 /* NumberFormatter+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD5161228A210000AF9513 /* NumberFormatter+INVSExtension.swift */; };
+		4AFD5174228A210000AF9513 /* String+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD5162228A210000AF9513 /* String+INVSExtension.swift */; };
+		4AFD5175228A210000AF9513 /* INVSPopupMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD5164228A210000AF9513 /* INVSPopupMessage.swift */; };
+		4AFD5176228A210000AF9513 /* INVSCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD5166228A210000AF9513 /* INVSCodeView.swift */; };
+		4AFD5177228A210000AF9513 /* INVSSimulatorTableviewDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD5169228A210000AF9513 /* INVSSimulatorTableviewDataSourceDelegate.swift */; };
+		4AFD5178228A210000AF9513 /* INVSSimutatorViewControler.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AFD516A228A210000AF9513 /* INVSSimutatorViewControler.xib */; };
+		4AFD5179228A210000AF9513 /* INVSSimutatorViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD516B228A210000AF9513 /* INVSSimutatorViewControler.swift */; };
+		4AFD517A228A210000AF9513 /* INVSSimulatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD516C228A210000AF9513 /* INVSSimulatorPresenter.swift */; };
+		4AFD517B228A210000AF9513 /* INVSSimulatorWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD516D228A210000AF9513 /* INVSSimulatorWorker.swift */; };
+		4AFD517C228A210000AF9513 /* INVSSimulatorInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD516E228A210000AF9513 /* INVSSimulatorInteractor.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
@@ -32,10 +45,23 @@
 		27CC40F89EA7210FD649F7D3 /* Pods_InvestScopio_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InvestScopio_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		380D4297B461E501F972038A /* Pods_InvestScopio_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InvestScopio_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		398B97FCD68062F25C40693A /* Pods-InvestScopio_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvestScopio_Tests.debug.xcconfig"; path = "Target Support Files/Pods-InvestScopio_Tests/Pods-InvestScopio_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		4AFD515B228A210000AF9513 /* INVSFloatingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSFloatingTextField.swift; sourceTree = "<group>"; };
+		4AFD515C228A210000AF9513 /* INVSFloatingTextFieldType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSFloatingTextFieldType.swift; sourceTree = "<group>"; };
+		4AFD515D228A210000AF9513 /* INVSKeyboardToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSKeyboardToolbar.swift; sourceTree = "<group>"; };
+		4AFD515F228A210000AF9513 /* UIColor+INVSPaletteColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+INVSPaletteColors.swift"; sourceTree = "<group>"; };
+		4AFD5161228A210000AF9513 /* NumberFormatter+INVSExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+INVSExtension.swift"; sourceTree = "<group>"; };
+		4AFD5162228A210000AF9513 /* String+INVSExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+INVSExtension.swift"; sourceTree = "<group>"; };
+		4AFD5164228A210000AF9513 /* INVSPopupMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSPopupMessage.swift; sourceTree = "<group>"; };
+		4AFD5166228A210000AF9513 /* INVSCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSCodeView.swift; sourceTree = "<group>"; };
+		4AFD5169228A210000AF9513 /* INVSSimulatorTableviewDataSourceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorTableviewDataSourceDelegate.swift; sourceTree = "<group>"; };
+		4AFD516A228A210000AF9513 /* INVSSimutatorViewControler.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = INVSSimutatorViewControler.xib; sourceTree = "<group>"; };
+		4AFD516B228A210000AF9513 /* INVSSimutatorViewControler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimutatorViewControler.swift; sourceTree = "<group>"; };
+		4AFD516C228A210000AF9513 /* INVSSimulatorPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorPresenter.swift; sourceTree = "<group>"; };
+		4AFD516D228A210000AF9513 /* INVSSimulatorWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorWorker.swift; sourceTree = "<group>"; };
+		4AFD516E228A210000AF9513 /* INVSSimulatorInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorInteractor.swift; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* InvestScopio_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InvestScopio_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* InvestScopio_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InvestScopio_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +93,82 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4AFD5159228A210000AF9513 /* SharedFeatures */ = {
+			isa = PBXGroup;
+			children = (
+				4AFD515A228A210000AF9513 /* FloatingTextField */,
+				4AFD515E228A210000AF9513 /* ISPaletteColors */,
+				4AFD5160228A210000AF9513 /* Format */,
+				4AFD5163228A210000AF9513 /* PopupMessage */,
+				4AFD5165228A210000AF9513 /* CodeView */,
+			);
+			path = SharedFeatures;
+			sourceTree = "<group>";
+		};
+		4AFD515A228A210000AF9513 /* FloatingTextField */ = {
+			isa = PBXGroup;
+			children = (
+				4AFD515B228A210000AF9513 /* INVSFloatingTextField.swift */,
+				4AFD515C228A210000AF9513 /* INVSFloatingTextFieldType.swift */,
+				4AFD515D228A210000AF9513 /* INVSKeyboardToolbar.swift */,
+			);
+			path = FloatingTextField;
+			sourceTree = "<group>";
+		};
+		4AFD515E228A210000AF9513 /* ISPaletteColors */ = {
+			isa = PBXGroup;
+			children = (
+				4AFD515F228A210000AF9513 /* UIColor+INVSPaletteColors.swift */,
+			);
+			path = ISPaletteColors;
+			sourceTree = "<group>";
+		};
+		4AFD5160228A210000AF9513 /* Format */ = {
+			isa = PBXGroup;
+			children = (
+				4AFD5161228A210000AF9513 /* NumberFormatter+INVSExtension.swift */,
+				4AFD5162228A210000AF9513 /* String+INVSExtension.swift */,
+			);
+			path = Format;
+			sourceTree = "<group>";
+		};
+		4AFD5163228A210000AF9513 /* PopupMessage */ = {
+			isa = PBXGroup;
+			children = (
+				4AFD5164228A210000AF9513 /* INVSPopupMessage.swift */,
+			);
+			path = PopupMessage;
+			sourceTree = "<group>";
+		};
+		4AFD5165228A210000AF9513 /* CodeView */ = {
+			isa = PBXGroup;
+			children = (
+				4AFD5166228A210000AF9513 /* INVSCodeView.swift */,
+			);
+			path = CodeView;
+			sourceTree = "<group>";
+		};
+		4AFD5167228A210000AF9513 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				4AFD5168228A210000AF9513 /* DataSource */,
+				4AFD516A228A210000AF9513 /* INVSSimutatorViewControler.xib */,
+				4AFD516B228A210000AF9513 /* INVSSimutatorViewControler.swift */,
+				4AFD516C228A210000AF9513 /* INVSSimulatorPresenter.swift */,
+				4AFD516D228A210000AF9513 /* INVSSimulatorWorker.swift */,
+				4AFD516E228A210000AF9513 /* INVSSimulatorInteractor.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		4AFD5168228A210000AF9513 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				4AFD5169228A210000AF9513 /* INVSSimulatorTableviewDataSourceDelegate.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
 		5A22014D02827D8125551B5A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,8 +204,9 @@
 		607FACD21AFB9204008FA782 /* Example for InvestScopio */ = {
 			isa = PBXGroup;
 			children = (
+				4AFD5159228A210000AF9513 /* SharedFeatures */,
+				4AFD5167228A210000AF9513 /* Scenes */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
@@ -167,7 +270,6 @@
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				1435A99B305CEAEC431A7214 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -209,10 +311,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = G77MYT7HW8;
 						LastSwiftMigration = 1010;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = G77MYT7HW8;
 						LastSwiftMigration = 1010;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -244,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				4AFD5178228A210000AF9513 /* INVSSimutatorViewControler.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,28 +363,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1435A99B305CEAEC431A7214 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-InvestScopio_Example/Pods-InvestScopio_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/InvestScopio/InvestScopio.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/InvestScopio.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-InvestScopio_Example/Pods-InvestScopio_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9CB47928BC0E1DBB626F9014 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -331,8 +414,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				4AFD5177228A210000AF9513 /* INVSSimulatorTableviewDataSourceDelegate.swift in Sources */,
+				4AFD5171228A210000AF9513 /* INVSKeyboardToolbar.swift in Sources */,
+				4AFD5176228A210000AF9513 /* INVSCodeView.swift in Sources */,
+				4AFD5174228A210000AF9513 /* String+INVSExtension.swift in Sources */,
+				4AFD517B228A210000AF9513 /* INVSSimulatorWorker.swift in Sources */,
+				4AFD5175228A210000AF9513 /* INVSPopupMessage.swift in Sources */,
+				4AFD5173228A210000AF9513 /* NumberFormatter+INVSExtension.swift in Sources */,
+				4AFD5172228A210000AF9513 /* UIColor+INVSPaletteColors.swift in Sources */,
+				4AFD517A228A210000AF9513 /* INVSSimulatorPresenter.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				4AFD5170228A210000AF9513 /* INVSFloatingTextFieldType.swift in Sources */,
+				4AFD516F228A210000AF9513 /* INVSFloatingTextField.swift in Sources */,
+				4AFD5179228A210000AF9513 /* INVSSimutatorViewControler.swift in Sources */,
+				4AFD517C228A210000AF9513 /* INVSSimulatorInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,10 +573,11 @@
 			baseConfigurationReference = FCE0A97580C1C2637E19B897 /* Pods-InvestScopio_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = G77MYT7HW8;
 				INFOPLIST_FILE = InvestScopio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.br.joao.gabriel.medeiros.pereira.InvestScopio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -492,10 +588,11 @@
 			baseConfigurationReference = F40DD450F329B34EE4D4D9DF /* Pods-InvestScopio_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = G77MYT7HW8;
 				INFOPLIST_FILE = InvestScopio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.br.joao.gabriel.medeiros.pereira.InvestScopio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -505,6 +602,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 398B97FCD68062F25C40693A /* Pods-InvestScopio_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = G77MYT7HW8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -526,6 +624,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E6C5F0217D59710D76858577 /* Pods-InvestScopio_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = G77MYT7HW8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

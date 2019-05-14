@@ -1,6 +1,0 @@
-framework module InvestScopio {
-  umbrella header "InvestScopio-umbrella.h"
-
-  export *
-  module * { export * }
-}
