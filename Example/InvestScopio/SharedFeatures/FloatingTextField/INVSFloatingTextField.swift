@@ -53,7 +53,7 @@ class INVSFloatingTextField: UIView {
     func updateTextFieldUI() {
         currentlySelectedColor = selectedColor
         if hasError {
-            currentlySelectedColor = .red
+            currentlySelectedColor = .INVSRed()
         }
         placeholderLabel.textColor = currentlySelectedColor
         bottomLineView.backgroundColor = currentlySelectedColor

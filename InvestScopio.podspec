@@ -30,8 +30,8 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '11.0'
 
-  s.source_files = 'InvestScopio/Classes/**/*.swift'
-  s.resources = 'InvestScopio/Assets/**/*', 'InvestScopio/Classes/**/*.xib'
+  #s.source_files = 'InvestScopio/Classes/**/*.swift'
+  #s.resources = 'InvestScopio/Assets/**/*', 'InvestScopio/Classes/**/*.xib'
   # s.resource_bundles = {
   #   'InvestScopio' => ['InvestScopio/Assets/*.png']
   # }

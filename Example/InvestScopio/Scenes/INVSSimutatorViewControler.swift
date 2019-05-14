@@ -48,12 +48,7 @@ public class INVSSimutatorViewControler: UIViewController {
         goalIncreaseRescueTextField.setup(placeholder: "Valor para aumentar o Resgate", typeTextField: .currency, color: UIColor.INVSDefault())
         
         allTextFields.append(contentsOf: [initialValueTextField, monthValueTextField, interestRateTextField, monthlyRescueTextField, increaseRescueTextField, goalIncreaseRescueTextField])
-        print("3.33%".convertFormattedToDecimal())
-        print("R$9.000.33".convertFormattedToDecimal())
-        print("99.40%".convertFormattedToDecimal())
-        print("R$129.000.50".convertFormattedToDecimal())
-        print("100.00%".convertFormattedToDecimal())
-        print("R$549.433.000.99".convertFormattedToDecimal())
+        
         saveButton.backgroundColor = UIColor.INVSDefault()
         clearButton.backgroundColor = UIColor.INVSDefault()
         

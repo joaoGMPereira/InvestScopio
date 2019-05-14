@@ -16,4 +16,8 @@ extension UIColor {
     static func INVSDefault() -> UIColor {
         return UIColor.INVSPallete(red: 83, green: 77, blue: 185)
     }
+    
+    static func INVSRed() -> UIColor {
+        return UIColor.INVSPallete(red: 249, green: 66, blue: 47)
+    }
 }

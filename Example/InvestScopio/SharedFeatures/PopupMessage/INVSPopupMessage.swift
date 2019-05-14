@@ -38,7 +38,7 @@ class INVSPopupMessage: UIView {
         if shadowLayer == nil {
             shadowLayer = CAShapeLayer()
             shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 12).cgPath
-            shadowLayer.fillColor = UIColor.white.cgColor
+            shadowLayer.fillColor = UIColor.INVSRed().cgColor
             
             shadowLayer.shadowColor = UIColor.darkGray.cgColor
             shadowLayer.shadowPath = shadowLayer.path
@@ -105,9 +105,10 @@ extension INVSPopupMessage: INVSCodeView {
     }
     
     func setupAdditionalConfiguration() {
-        let closeTitle = NSAttributedString.init(string: "X", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.init(rawValue: 30))])
+        let closeTitle = NSAttributedString.init(string: "X", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.init(rawValue: 30)),NSAttributedString.Key.foregroundColor:UIColor.white])
         closeButton.setAttributedTitle(closeTitle, for: .normal)
         closeButton.addTarget(self, action: #selector(INVSPopupMessage.closeAction), for: .touchUpInside)
+        textMessageLabel.textColor = .white
     }
     
     @objc func closeAction() {

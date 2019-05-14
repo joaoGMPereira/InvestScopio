@@ -22,6 +22,7 @@
 		4AFD517A228A210000AF9513 /* INVSSimulatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD516C228A210000AF9513 /* INVSSimulatorPresenter.swift */; };
 		4AFD517B228A210000AF9513 /* INVSSimulatorWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD516D228A210000AF9513 /* INVSSimulatorWorker.swift */; };
 		4AFD517C228A210000AF9513 /* INVSSimulatorInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD516E228A210000AF9513 /* INVSSimulatorInteractor.swift */; };
+		4AFD517E228A4E7500AF9513 /* INVSSimulatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD517D228A4E7500AF9513 /* INVSSimulatorModel.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
@@ -59,6 +60,7 @@
 		4AFD516C228A210000AF9513 /* INVSSimulatorPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorPresenter.swift; sourceTree = "<group>"; };
 		4AFD516D228A210000AF9513 /* INVSSimulatorWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorWorker.swift; sourceTree = "<group>"; };
 		4AFD516E228A210000AF9513 /* INVSSimulatorInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorInteractor.swift; sourceTree = "<group>"; };
+		4AFD517D228A4E7500AF9513 /* INVSSimulatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatorModel.swift; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* InvestScopio_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InvestScopio_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				4AFD516C228A210000AF9513 /* INVSSimulatorPresenter.swift */,
 				4AFD516D228A210000AF9513 /* INVSSimulatorWorker.swift */,
 				4AFD516E228A210000AF9513 /* INVSSimulatorInteractor.swift */,
+				4AFD517D228A4E7500AF9513 /* INVSSimulatorModel.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				4AFD5170228A210000AF9513 /* INVSFloatingTextFieldType.swift in Sources */,
 				4AFD516F228A210000AF9513 /* INVSFloatingTextField.swift in Sources */,
 				4AFD5179228A210000AF9513 /* INVSSimutatorViewControler.swift in Sources */,
+				4AFD517E228A4E7500AF9513 /* INVSSimulatorModel.swift in Sources */,
 				4AFD517C228A210000AF9513 /* INVSSimulatorInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

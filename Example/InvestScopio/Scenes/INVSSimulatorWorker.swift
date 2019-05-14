@@ -26,9 +26,22 @@ class INVSSimulatorWorker: NSObject,INVSSimulatorWorkerProtocol {
                 areFieldsRequiredFilled = false
             }
         }
-        allTextFieldsRequired.filter({$0.hasError}).first?.floatingTextField.becomeFirstResponder()
+        if let firstTextFieldWithError = allTextFieldsRequired.filter({$0.hasError}).first {
+            firstTextFieldWithError.floatingTextField.becomeFirstResponder()
+        }
+       // let simulatorModel = INVSSimulatorModel(initialValue: <#T##Double#>, monthValue: <#T##Double#>, interestRate: <#T##Double#>, monthlyRescue: <#T##Double?#>, increaseRescue: <#T##Double?#>, goalIncreaseRescue: <#T##Double?#>)
+        populateSimulatorModel(with: textFields)
         areFieldsRequiredFilled == true ? successCompletionHandler(true) : errorCompletionHandler("Preencha todos os campos obrigatórios!")
         
+    }
+    
+    private func populateSimulatorModel(with textFields:[INVSFloatingTextField]) {
+        
+        let bookMirror = Mirror(reflecting: textFields)
+        for (name, value) in bookMirror.children {
+            guard let name = name else { continue }
+            print("\(name): \(type(of: value)) = '\(value)'")
+        }
     }
     
 }
