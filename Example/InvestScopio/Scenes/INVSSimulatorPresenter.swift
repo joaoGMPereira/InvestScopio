@@ -8,7 +8,7 @@
 import Foundation
 
 protocol INVSSimulatorPresenterProtocol {
-    func presentSimulationProjection()
+    func presentSimulationProjection(simulatorModel: INVSSimulatorModel)
     func presentErrorSimulationProjection(with messageError:String)
 }
 
@@ -16,7 +16,7 @@ class INVSSimulatorPresenter: NSObject,INVSSimulatorPresenterProtocol {
    
     weak var controller: INVSSimutatorViewControlerProtocol?
     
-    func presentSimulationProjection() {
+    func presentSimulationProjection(simulatorModel: INVSSimulatorModel) {
         
     }
     

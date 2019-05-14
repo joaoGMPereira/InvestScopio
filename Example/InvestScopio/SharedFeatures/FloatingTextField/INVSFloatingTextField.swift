@@ -13,6 +13,7 @@ class INVSFloatingTextField: UIView {
     let floatingTextField = UITextField(frame: .zero)
     let placeholderLabel = UILabel(frame: .zero)
     let bottomLineView = UIView(frame: .zero)
+    var typeTextField: INVSFloatingTextFieldType?
     var required: Bool = false
     var hasError: Bool = false {
         didSet {
@@ -20,7 +21,7 @@ class INVSFloatingTextField: UIView {
         }
     }
     
-    private var typeTextField: INVSFloatingTextFieldType = .currency
+    private var valueTypeTextField: INVSFloatingTextFieldValueType = .currency
     private var selectedColor = UIColor.lightGray
     private var currentlySelectedColor = UIColor.lightGray
     private var smallFont = UIFont.systemFont(ofSize: 11)
@@ -38,12 +39,15 @@ class INVSFloatingTextField: UIView {
         setupView()
     }
     
-    func setup(placeholder: String, typeTextField: INVSFloatingTextFieldType? = nil,keyboardType: UIKeyboardType = .numberPad , required: Bool = false, color: UIColor, smallFont: UIFont = UIFont.systemFont(ofSize: 11), bigFont: UIFont = UIFont.systemFont(ofSize: 16)) {
+    func setup(placeholder: String,typeTextField: INVSFloatingTextFieldType?, valueTypeTextField: INVSFloatingTextFieldValueType? = nil,keyboardType: UIKeyboardType = .numberPad , required: Bool = false, color: UIColor, smallFont: UIFont = UIFont.systemFont(ofSize: 11), bigFont: UIFont = UIFont.systemFont(ofSize: 16)) {
         placeholderLabel.text = placeholder
-        
         floatingTextField.keyboardType = keyboardType
-        self.typeTextField = typeTextField ?? .none
+        self.typeTextField = typeTextField
+        self.valueTypeTextField = valueTypeTextField ?? .none
         self.required = required
+        if self.required {
+            placeholderLabel.text = "\(placeholderLabel.text ?? "")*"
+        }
         selectedColor = color
         currentlySelectedColor = selectedColor
         self.smallFont = smallFont
@@ -119,7 +123,7 @@ extension INVSFloatingTextField: UITextFieldDelegate, INVSKeyboardToolbarDelegat
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let isBackSpace = string == ""
         let fullText = String.init(format: "%@%@", textField.text ?? "", string)
-        textField.text = typeTextField.formatText(textFieldText: fullText, isBackSpace: isBackSpace)
+        textField.text = valueTypeTextField.formatText(textFieldText: fullText, isBackSpace: isBackSpace)
         
         if isBackSpace {
             return true
@@ -146,6 +150,11 @@ extension INVSFloatingTextField: UITextFieldDelegate, INVSKeyboardToolbarDelegat
             self?.bottomLineView.backgroundColor = self?.currentlySelectedColor
             self?.layoutIfNeeded()
         }
+    }
+    
+    func clear() {
+        self.floatingTextField.text = ""
+        closeKeyboard()
     }
     
     func closeKeyboard() {

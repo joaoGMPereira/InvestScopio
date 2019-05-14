@@ -21,6 +21,7 @@
                 <outlet property="monthlyRescueTextField" destination="bWc-Vh-W5Y" id="xRj-Vd-3MK"/>
                 <outlet property="saveButton" destination="1YL-KQ-qYM" id="y4a-So-wvf"/>
                 <outlet property="tableView" destination="H0H-ND-IY1" id="Bu9-7e-V5M"/>
+                <outlet property="totalMonthsTextField" destination="YH0-a3-Hzj" id="LO0-RX-TAK"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Gww-78-krV"/>
             </connections>
         </placeholder>
@@ -30,39 +31,43 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wAc-Xh-0dX">
-                    <rect key="frame" x="0.0" y="20" width="375" height="250"/>
+                    <rect key="frame" x="0.0" y="20" width="375" height="350"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q9h-TA-256" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="41.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NyD-yS-Qor" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="41.5" width="375" height="42"/>
+                            <rect key="frame" x="0.0" y="50" width="375" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BcE-cK-55e" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="83.5" width="375" height="41.5"/>
+                            <rect key="frame" x="0.0" y="100" width="375" height="50"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YH0-a3-Hzj" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="150" width="375" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWc-Vh-W5Y" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="125" width="375" height="41.5"/>
+                            <rect key="frame" x="0.0" y="200" width="375" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1KE-v8-O7N" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="166.5" width="375" height="42"/>
+                            <rect key="frame" x="0.0" y="250" width="375" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xJ-yc-7VY" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="208.5" width="375" height="41.5"/>
+                            <rect key="frame" x="0.0" y="300" width="375" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="250" id="XbH-nW-8SI"/>
+                        <constraint firstAttribute="height" constant="350" id="XbH-nW-8SI"/>
                     </constraints>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="COQ-C4-k2b">
-                    <rect key="frame" x="0.0" y="270" width="375" height="20.5"/>
+                    <rect key="frame" x="0.0" y="370" width="375" height="20.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igy-9B-hDn">
                             <rect key="frame" x="0.0" y="0.0" width="40" height="20.5"/>
@@ -97,7 +102,7 @@
                     </subviews>
                 </stackView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H0H-ND-IY1">
-                    <rect key="frame" x="0.0" y="290.5" width="375" height="296.5"/>
+                    <rect key="frame" x="0.0" y="390.5" width="375" height="196.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                 </tableView>
@@ -120,6 +125,9 @@
                             <state key="normal" title="Clear">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="clearAction:" destination="-1" eventType="touchUpInside" id="p0P-a2-PWD"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>

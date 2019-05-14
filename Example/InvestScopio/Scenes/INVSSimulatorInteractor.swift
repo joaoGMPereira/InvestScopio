@@ -8,18 +8,26 @@
 import Foundation
 
 protocol INVSSimulatorInteractorProtocol {
-    func simulationProjection(with textfields:[INVSFloatingTextField])
+    func simulationProjection()
+    func clearTextFields()
 }
 
 class INVSSimulatorInteractor: NSObject,INVSSimulatorInteractorProtocol {
     var presenter: INVSSimulatorPresenterProtocol?
     var worker: INVSSimulatorWorkerProtocol = INVSSimulatorWorker()
+    var allTextFields = [INVSFloatingTextField]()
     
-    func simulationProjection(with textfields: [INVSFloatingTextField]) {
-        worker.simulationProjection(with: textfields, successCompletionHandler: { (finished) in
-            self.presenter?.presentSimulationProjection()
+    func simulationProjection() {
+        worker.simulationProjection(with: allTextFields, successCompletionHandler: { (simulatorModel) in
+            self.presenter?.presentSimulationProjection(simulatorModel: simulatorModel)
         }) { (messageError) in
             self.presenter?.presentErrorSimulationProjection(with: messageError)
+        }
+    }
+    
+    func clearTextFields() {
+        for textField in allTextFields {
+            textField.clear()
         }
     }
     

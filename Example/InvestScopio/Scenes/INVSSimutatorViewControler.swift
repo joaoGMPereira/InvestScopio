@@ -17,6 +17,7 @@ public class INVSSimutatorViewControler: UIViewController {
     @IBOutlet weak var initialValueTextField: INVSFloatingTextField!
     @IBOutlet weak var monthValueTextField: INVSFloatingTextField!
     @IBOutlet weak var interestRateTextField: INVSFloatingTextField!
+    @IBOutlet weak var totalMonthsTextField: INVSFloatingTextField!
     @IBOutlet weak var monthlyRescueTextField: INVSFloatingTextField!
     @IBOutlet weak var increaseRescueTextField: INVSFloatingTextField!
     @IBOutlet weak var goalIncreaseRescueTextField: INVSFloatingTextField!
@@ -24,13 +25,13 @@ public class INVSSimutatorViewControler: UIViewController {
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     var popupMessage: INVSPopupMessage?
-    var allTextFields = [INVSFloatingTextField]()
     
     var interactor: INVSSimulatorInteractorProtocol?
     
     override public func viewDidLoad() {
         super.viewDidLoad()
         let interactor = INVSSimulatorInteractor()
+        interactor.allTextFields = [initialValueTextField, monthValueTextField, interestRateTextField, totalMonthsTextField, monthlyRescueTextField, increaseRescueTextField, goalIncreaseRescueTextField]
         self.interactor = interactor
         let presenter = INVSSimulatorPresenter()
         presenter.controller = self
@@ -40,14 +41,13 @@ public class INVSSimutatorViewControler: UIViewController {
     }
     
     func setupUI() {
-        initialValueTextField.setup(placeholder: "Valor Inicial*", typeTextField: .currency, required: true, color: UIColor.INVSDefault())
-        monthValueTextField.setup(placeholder: "Valor do Aporte*", typeTextField: .currency, required: true, color: UIColor.INVSDefault())
-        interestRateTextField.setup(placeholder: "Taxa de Juros*", typeTextField: .percent, required: true, color: UIColor.INVSDefault())
-        monthlyRescueTextField.setup(placeholder: "Resgate Mensal Inicial", typeTextField: .currency, color: UIColor.INVSDefault())
-        increaseRescueTextField.setup(placeholder: "Aumento no Resgate", typeTextField: .currency, color: UIColor.INVSDefault())
-        goalIncreaseRescueTextField.setup(placeholder: "Valor para aumentar o Resgate", typeTextField: .currency, color: UIColor.INVSDefault())
-        
-        allTextFields.append(contentsOf: [initialValueTextField, monthValueTextField, interestRateTextField, monthlyRescueTextField, increaseRescueTextField, goalIncreaseRescueTextField])
+        initialValueTextField.setup(placeholder: "Valor Inicial", typeTextField: .initialValue, valueTypeTextField: .currency, required: true, color: UIColor.INVSDefault())
+        monthValueTextField.setup(placeholder: "Valor do Aporte", typeTextField: .monthValue, valueTypeTextField: .currency, required: true, color: UIColor.INVSDefault())
+        interestRateTextField.setup(placeholder: "Taxa de Juros", typeTextField: .interestRate, valueTypeTextField: .percent, required: true, color: UIColor.INVSDefault())
+        totalMonthsTextField.setup(placeholder: "Total de Meses", typeTextField: .totalMonths, valueTypeTextField: .months, required: true, color: UIColor.INVSDefault())
+        monthlyRescueTextField.setup(placeholder: "Resgate Mensal Inicial", typeTextField: .monthlyRescue, valueTypeTextField: .currency, color: UIColor.INVSDefault())
+        increaseRescueTextField.setup(placeholder: "Aumento no Resgate", typeTextField: .increaseRescue, valueTypeTextField: .currency, color: UIColor.INVSDefault())
+        goalIncreaseRescueTextField.setup(placeholder: "Valor para aumentar o Resgate", typeTextField: .goalIncreaseRescue, valueTypeTextField: .currency, color: UIColor.INVSDefault())
         
         saveButton.backgroundColor = UIColor.INVSDefault()
         clearButton.backgroundColor = UIColor.INVSDefault()
@@ -60,7 +60,10 @@ public class INVSSimutatorViewControler: UIViewController {
     }
     
     @IBAction func saveAction(_ sender: Any) {
-        interactor?.simulationProjection(with: allTextFields)
+        interactor?.simulationProjection()
+    }
+    @IBAction func clearAction(_ sender: Any) {
+        interactor?.clearTextFields()
     }
 }
 

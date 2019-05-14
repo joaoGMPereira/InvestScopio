@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias SuccessSimulationHandler = (Bool) -> Void
+typealias SuccessSimulationHandler = (INVSSimulatorModel) -> Void
 typealias ErrorSimulationHandler = (_ messageError:String) ->()
 
 protocol INVSSimulatorWorkerProtocol {
@@ -29,19 +29,34 @@ class INVSSimulatorWorker: NSObject,INVSSimulatorWorkerProtocol {
         if let firstTextFieldWithError = allTextFieldsRequired.filter({$0.hasError}).first {
             firstTextFieldWithError.floatingTextField.becomeFirstResponder()
         }
-       // let simulatorModel = INVSSimulatorModel(initialValue: <#T##Double#>, monthValue: <#T##Double#>, interestRate: <#T##Double#>, monthlyRescue: <#T##Double?#>, increaseRescue: <#T##Double?#>, goalIncreaseRescue: <#T##Double?#>)
-        populateSimulatorModel(with: textFields)
-        areFieldsRequiredFilled == true ? successCompletionHandler(true) : errorCompletionHandler("Preencha todos os campos obrigatórios!")
+
+        areFieldsRequiredFilled == true ? successCompletionHandler(populateSimulatorModel(with: textFields)) : errorCompletionHandler("Preencha todos os campos obrigatórios!")
         
     }
     
-    private func populateSimulatorModel(with textFields:[INVSFloatingTextField]) {
-        
-        let bookMirror = Mirror(reflecting: textFields)
-        for (name, value) in bookMirror.children {
-            guard let name = name else { continue }
-            print("\(name): \(type(of: value)) = '\(value)'")
+    private func populateSimulatorModel(with textFields:[INVSFloatingTextField]) -> INVSSimulatorModel {
+        var simulatorModel = INVSSimulatorModel()
+        for textField in textFields {
+            if let typeTextField = textField.typeTextField {
+                switch typeTextField {
+                case .initialValue:
+                    simulatorModel.initialValue = textField.floatingTextField.text?.convertFormattedToDouble()
+                case .monthValue:
+                    simulatorModel.monthValue = textField.floatingTextField.text?.convertFormattedToDouble()
+                case .interestRate:
+                    simulatorModel.interestRate = textField.floatingTextField.text?.convertFormattedToDouble()
+                case .totalMonths:
+                    simulatorModel.totalMonths = Int(textField.floatingTextField.text ?? "0")
+                case .monthlyRescue:
+                    simulatorModel.monthlyRescue = textField.floatingTextField.text?.convertFormattedToDouble()
+                case .increaseRescue:
+                    simulatorModel.increaseRescue = textField.floatingTextField.text?.convertFormattedToDouble()
+                case .goalIncreaseRescue:
+                    simulatorModel.goalIncreaseRescue = textField.floatingTextField.text?.convertFormattedToDouble()
+                }
+            }
         }
+        return simulatorModel
     }
     
 }

@@ -9,9 +9,10 @@
 import Foundation
 
 struct INVSSimulatorModel {
-    var initialValue: Double
-    var monthValue: Double
-    var interestRate: Double
+    var initialValue: Double?
+    var monthValue: Double?
+    var interestRate: Double?
+    var totalMonths: Int?
     var monthlyRescue: Double?
     var increaseRescue: Double?
     var goalIncreaseRescue: Double?

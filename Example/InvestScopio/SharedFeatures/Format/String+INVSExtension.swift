@@ -61,7 +61,23 @@ extension String {
         return formatter.string(from: number)!
     }
     
-    public func convertFormattedToDecimal() -> Double {
+    public func monthFormat() -> String {
+        
+        var amountWithoutPrefix = self
+        
+        // remove from String: "$", ".", ","
+        amountWithoutPrefix = stringOfNumbersRegex(with: 3)
+        
+        return amountWithoutPrefix
+    }
+    
+    public func convertFormattedToInt() -> Int {
+        let intValue = (self.stringOfNumbersRegex() as NSString).intValue
+        let number = NSNumber(value: (intValue))
+        return number.intValue
+    }
+    
+    public func convertFormattedToDouble() -> Double {
         let double = (self.stringOfNumbersRegex() as NSString).doubleValue
         let number = NSNumber(value: (double / 100))
         return number.doubleValue
