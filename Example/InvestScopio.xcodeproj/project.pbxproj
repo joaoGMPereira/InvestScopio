@@ -10,6 +10,8 @@
 		273BB62CABFB5444BBFB754A /* Pods_InvestScopio_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CC40F89EA7210FD649F7D3 /* Pods_InvestScopio_Example.framework */; };
 		4AEA3317228ADA950027AEF5 /* INVSKeyChainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA3316228ADA950027AEF5 /* INVSKeyChainWrapper.swift */; };
 		4AEA331A228AF26E0027AEF5 /* INVSConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA3319228AF26E0027AEF5 /* INVSConstants.swift */; };
+		4AEA331C228B79AB0027AEF5 /* Double+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA331B228B79AB0027AEF5 /* Double+INVSExtension.swift */; };
+		4AEA331E228B98350027AEF5 /* UIFont+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA331D228B98350027AEF5 /* UIFont+INVSExtension.swift */; };
 		4AFD516F228A210000AF9513 /* INVSFloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD515B228A210000AF9513 /* INVSFloatingTextField.swift */; };
 		4AFD5171228A210000AF9513 /* INVSKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD515D228A210000AF9513 /* INVSKeyboardToolbar.swift */; };
 		4AFD5172228A210000AF9513 /* UIColor+INVSPaletteColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD515F228A210000AF9513 /* UIColor+INVSPaletteColors.swift */; };
@@ -52,6 +54,8 @@
 		398B97FCD68062F25C40693A /* Pods-InvestScopio_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvestScopio_Tests.debug.xcconfig"; path = "Target Support Files/Pods-InvestScopio_Tests/Pods-InvestScopio_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		4AEA3316228ADA950027AEF5 /* INVSKeyChainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSKeyChainWrapper.swift; sourceTree = "<group>"; };
 		4AEA3319228AF26E0027AEF5 /* INVSConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSConstants.swift; sourceTree = "<group>"; };
+		4AEA331B228B79AB0027AEF5 /* Double+INVSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+INVSExtension.swift"; sourceTree = "<group>"; };
+		4AEA331D228B98350027AEF5 /* UIFont+INVSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIFont+INVSExtension.swift"; path = "/Users/joaomedeirospereira/Desktop/InvestScopio/Example/InvestScopio/SharedFeatures/Extensions/UIFont+INVSExtension.swift"; sourceTree = "<absolute>"; };
 		4AFD515B228A210000AF9513 /* INVSFloatingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSFloatingTextField.swift; sourceTree = "<group>"; };
 		4AFD515D228A210000AF9513 /* INVSKeyboardToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSKeyboardToolbar.swift; sourceTree = "<group>"; };
 		4AFD515F228A210000AF9513 /* UIColor+INVSPaletteColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+INVSPaletteColors.swift"; sourceTree = "<group>"; };
@@ -117,8 +121,7 @@
 				4AEA3318228AF25F0027AEF5 /* Constants */,
 				4AFD519A228ADA3200AF9513 /* KeychainWrapper */,
 				4AFD515A228A210000AF9513 /* FloatingTextField */,
-				4AFD515E228A210000AF9513 /* ISPaletteColors */,
-				4AFD5160228A210000AF9513 /* Format */,
+				4AFD5160228A210000AF9513 /* Extensions */,
 				4AFD5163228A210000AF9513 /* PopupMessage */,
 				4AFD5165228A210000AF9513 /* CodeView */,
 			);
@@ -136,21 +139,16 @@
 			path = FloatingTextField;
 			sourceTree = "<group>";
 		};
-		4AFD515E228A210000AF9513 /* ISPaletteColors */ = {
+		4AFD5160228A210000AF9513 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				4AEA331D228B98350027AEF5 /* UIFont+INVSExtension.swift */,
 				4AFD515F228A210000AF9513 /* UIColor+INVSPaletteColors.swift */,
-			);
-			path = ISPaletteColors;
-			sourceTree = "<group>";
-		};
-		4AFD5160228A210000AF9513 /* Format */ = {
-			isa = PBXGroup;
-			children = (
 				4AFD5161228A210000AF9513 /* NumberFormatter+INVSExtension.swift */,
 				4AFD5162228A210000AF9513 /* String+INVSExtension.swift */,
+				4AEA331B228B79AB0027AEF5 /* Double+INVSExtension.swift */,
 			);
-			path = Format;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		4AFD5163228A210000AF9513 /* PopupMessage */ = {
@@ -485,11 +483,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AEA331C228B79AB0027AEF5 /* Double+INVSExtension.swift in Sources */,
 				4AFD5171228A210000AF9513 /* INVSKeyboardToolbar.swift in Sources */,
 				4AFD5196228AD7A800AF9513 /* INVSSimulatedValueModel.swift in Sources */,
 				4AFD5176228A210000AF9513 /* INVSCodeView.swift in Sources */,
 				4AFD5193228AD78600AF9513 /* INVSSimulatorInteractor.swift in Sources */,
 				4AFD5180228A54D600AF9513 /* INVSFloatingTextFieldValueType.swift in Sources */,
+				4AEA331E228B98350027AEF5 /* UIFont+INVSExtension.swift in Sources */,
 				4AEA331A228AF26E0027AEF5 /* INVSConstants.swift in Sources */,
 				4AFD5188228AD76F00AF9513 /* INVSSimulatorModel.swift in Sources */,
 				4AFD5174228A210000AF9513 /* String+INVSExtension.swift in Sources */,

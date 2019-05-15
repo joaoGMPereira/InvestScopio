@@ -10,8 +10,24 @@ import Foundation
 
 struct INVSSimulatedValueModel {
     var month: Int?
-    var monthValue: Double?
-    var profitability: Double?
-    var rescue: Double?
-    var total: Double?
+    var monthValue: Double? {
+        didSet {
+            monthValue = monthValue?.INVSrounded()
+        }
+    }
+    var profitability: Double? {
+        didSet {
+            profitability = profitability?.INVSrounded()
+        }
+    }
+    var rescue: Double? {
+        didSet {
+            rescue = rescue?.INVSrounded()
+        }
+    }
+    var total: Double? {
+        didSet {
+            total = total?.INVSrounded()
+        }
+    }
 }

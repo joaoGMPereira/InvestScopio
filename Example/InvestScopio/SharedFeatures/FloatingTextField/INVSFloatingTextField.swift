@@ -9,12 +9,24 @@
 import Foundation
 import UIKit
 
+protocol INVSFloatingTextFieldDelegate: class {
+    func infoButtonAction(_ textField: INVSFloatingTextField)
+}
+
 class INVSFloatingTextField: UIView {
     let floatingTextField = UITextField(frame: .zero)
     let placeholderLabel = UILabel(frame: .zero)
     let bottomLineView = UIView(frame: .zero)
+    let infoButton = UIButton.init(type: .infoLight)
+    weak var delegate: INVSFloatingTextFieldDelegate?
+    
     var typeTextField: INVSFloatingTextFieldType?
     var required: Bool = false
+    var hasInfoButton: Bool = false {
+        didSet {
+            updateInfoButton()
+        }
+    }
     var hasError: Bool = false {
         didSet {
             updateTextFieldUI()
@@ -39,12 +51,13 @@ class INVSFloatingTextField: UIView {
         setupView()
     }
     
-    func setup(placeholder: String,typeTextField: INVSFloatingTextFieldType?, valueTypeTextField: INVSFloatingTextFieldValueType? = nil,keyboardType: UIKeyboardType = .numberPad , required: Bool = false, color: UIColor, smallFont: UIFont = UIFont.systemFont(ofSize: 11), bigFont: UIFont = UIFont.systemFont(ofSize: 16)) {
+    func setup(placeholder: String,typeTextField: INVSFloatingTextFieldType?, valueTypeTextField: INVSFloatingTextFieldValueType? = nil,keyboardType: UIKeyboardType = .numberPad , required: Bool = false, hasInfoButton: Bool = false, color: UIColor, smallFont: UIFont = UIFont.systemFont(ofSize: 11), bigFont: UIFont = UIFont.systemFont(ofSize: 16)) {
         placeholderLabel.text = placeholder
         floatingTextField.keyboardType = keyboardType
         self.typeTextField = typeTextField
         self.valueTypeTextField = valueTypeTextField ?? .none
         self.required = required
+        self.hasInfoButton = hasInfoButton
         if self.required {
             placeholderLabel.text = "\(placeholderLabel.text ?? "")*"
         }
@@ -62,6 +75,23 @@ class INVSFloatingTextField: UIView {
         placeholderLabel.textColor = currentlySelectedColor
         bottomLineView.backgroundColor = currentlySelectedColor
         
+    }
+    
+    func updateInfoButton() {
+        if hasInfoButton {
+            addSubview(infoButton)
+            infoButton.translatesAutoresizingMaskIntoConstraints = false
+            infoButton.tintColor = .INVSDefault()
+            infoButton.addTarget(self, action: #selector(infoButtonTapped(_:)), for: .touchUpInside)
+            let size = frame.height * 0.8
+            NSLayoutConstraint.activate([
+                infoButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -8),
+                infoButton.heightAnchor.constraint(equalToConstant: size),
+                infoButton.widthAnchor.constraint(equalToConstant: size),
+                infoButton.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor, constant: 0)
+                ])
+            
+        }
     }
     
 }
@@ -116,6 +146,11 @@ extension INVSFloatingTextField: INVSCodeView {
 }
 
 extension INVSFloatingTextField: UITextFieldDelegate, INVSKeyboardToolbarDelegate {
+    
+    @objc func infoButtonTapped(_ sender: UIButton) {
+        self.delegate?.infoButtonAction(self)
+    }
+    
     func keyboardToolbar(button: UIBarButtonItem, type: INVSKeyboardToolbarButton, tappedIn toolbar: INVSKeyboardToolbar) {
         closeKeyboard()
     }

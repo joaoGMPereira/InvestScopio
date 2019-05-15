@@ -8,6 +8,29 @@
 import Foundation
 import UIKit
 
+enum INVSPopupMessageType: Int {
+    case error = 0
+    case alert
+    
+    func messageColor() -> UIColor {
+        switch self {
+        case .error:
+            return .white
+        case .alert:
+            return .INVSDefault()
+        }
+    }
+    
+    func backgroundColor() -> UIColor {
+        switch self {
+        case .error:
+            return .INVSRed()
+        case .alert:
+            return .white
+        }
+    }
+}
+
 class INVSPopupMessage: UIView {
     
     private var size = CGSize()
@@ -15,9 +38,14 @@ class INVSPopupMessage: UIView {
     private var topBarHeight = CGFloat(0.0)
     private var topConstraint = NSLayoutConstraint()
     private var popupHeight = CGFloat(60.0)
+    private var popupWidth = CGFloat(200)
     private var shadowLayer: CAShapeLayer!
     private var timerToHide = Timer()
+    private var messageColor :UIColor = INVSPopupMessageType.error.messageColor()
+    private var popupBackgroundColor :UIColor = INVSPopupMessageType.error.backgroundColor()
+    
     private var parentViewController = UIViewController()
+    private var shouldHideAutomatically = true
     var textMessageLabel = UILabel()
     var closeButton = UIButton()
     
@@ -25,8 +53,9 @@ class INVSPopupMessage: UIView {
     init(parentViewController:UIViewController) {
         self.parentViewController = parentViewController
         let topPadding = CGFloat(10)
+        popupWidth = parentViewController.view.frame.width * 0.9
         topBarHeight = UIApplication.shared.statusBarFrame.size.height + topPadding
-        super.init(frame: CGRect.init(x: (parentViewController.view.frame.width - (parentViewController.view.frame.width * 0.9))/2, y: -(topBarHeight+popupHeight), width: (parentViewController.view.frame.width * 0.9), height: popupHeight))
+        super.init(frame: CGRect.init(x: (parentViewController.view.frame.width - (parentViewController.view.frame.width * 0.9))/2, y: -(topBarHeight+popupHeight), width: popupWidth, height: popupHeight))
         
     }
     
@@ -38,8 +67,7 @@ class INVSPopupMessage: UIView {
         if shadowLayer == nil {
             shadowLayer = CAShapeLayer()
             shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 12).cgPath
-            shadowLayer.fillColor = UIColor.INVSRed().cgColor
-            
+            shadowLayer.fillColor = popupBackgroundColor.cgColor
             shadowLayer.shadowColor = UIColor.darkGray.cgColor
             shadowLayer.shadowPath = shadowLayer.path
             shadowLayer.shadowOffset = CGSize(width: 2.0, height: 2.0)
@@ -55,18 +83,53 @@ class INVSPopupMessage: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func show(withTextMessage message:String) {
-        textMessageLabel.text = message
+    func show(withTextMessage message:String, popupType: INVSPopupMessageType = .error, shouldHideAutomatically: Bool = true, sender: UIView? = nil) {
+        self.shouldHideAutomatically = shouldHideAutomatically
+        messageColor = popupType.messageColor()
+        popupBackgroundColor = popupType.backgroundColor()
+        setupUI(withMessage: message)
+        calculateHeightOfPopup(with: message)
         if hasAddedSubview == false {
             UIApplication.shared.keyWindow?.addSubview(self)
             hasAddedSubview = true
             setupView()
         }
+        showPopup(sender: sender)
+    }
+    
+    private func setupUI(withMessage message:String) {
+        textMessageLabel.text = message
+        textMessageLabel.textColor = messageColor
+        closeButton.setTitleColor(messageColor, for: .normal)
+        let closeTitle = NSAttributedString.init(string: "X", attributes: [NSAttributedString.Key.font : UIFont.INVSFontDefault(),NSAttributedString.Key.foregroundColor:messageColor])
+        closeButton.setAttributedTitle(closeTitle, for: .normal)
+        if shadowLayer != nil {
+            shadowLayer.fillColor = popupBackgroundColor.cgColor
+        }
+    }
+    
+    private func calculateHeightOfPopup(with message: String) {
+        let paddings: CGFloat = 24
+        let buttonWidth: CGFloat = 30
+        let textMessageWidth = popupWidth - paddings - buttonWidth
+        let estimatedPopupHeight = message.height(withConstrainedWidth: textMessageWidth, font: .INVSFontBig())
+        if estimatedPopupHeight > 60 {
+            popupHeight = estimatedPopupHeight
+        }
+    }
+    
+    private func showPopup(sender: UIView?) {
         UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.6, options: .curveEaseOut, animations: {
+            self.frame.size.height = self.popupHeight
             self.frame.origin.y = self.topBarHeight
+            if let sender = sender {
+                self.frame.origin.y = sender.frame.origin.y
+            }
             self.layoutIfNeeded()
         }) { (finished) in
-            self.timerToHide = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(INVSPopupMessage.hide), userInfo: nil, repeats: false)
+            if self.shouldHideAutomatically {
+                self.timerToHide = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(INVSPopupMessage.hide), userInfo: nil, repeats: false)
+            }
         }
     }
     
@@ -92,7 +155,7 @@ extension INVSPopupMessage: INVSCodeView {
     func setupConstraints() {
         NSLayoutConstraint.activate([
             textMessageLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 8),
-            textMessageLabel.heightAnchor.constraint(equalToConstant: 50),
+            textMessageLabel.heightAnchor.constraint(equalToConstant: popupHeight * 0.95),
             textMessageLabel.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor, constant: 0)
             ])
         NSLayoutConstraint.activate([
@@ -100,19 +163,16 @@ extension INVSPopupMessage: INVSCodeView {
             closeButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -8),
             closeButton.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor, constant: 0),
             closeButton.heightAnchor.constraint(equalToConstant: 30),
-            closeButton.heightAnchor.constraint(equalToConstant: 30)
+            closeButton.widthAnchor.constraint(equalToConstant: 30)
             ])
     }
     
     func setupAdditionalConfiguration() {
-        let closeTitle = NSAttributedString.init(string: "X", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.init(rawValue: 30)),NSAttributedString.Key.foregroundColor:UIColor.white])
-        closeButton.setAttributedTitle(closeTitle, for: .normal)
-        closeButton.addTarget(self, action: #selector(INVSPopupMessage.closeAction), for: .touchUpInside)
-        textMessageLabel.textColor = .white
-    }
-    
-    @objc func closeAction() {
-        hide()
+        closeButton.addTarget(self, action: #selector(INVSPopupMessage.hide), for: .touchUpInside)
+        textMessageLabel.textColor = messageColor
+        textMessageLabel.font = .INVSFontDefault()
+        textMessageLabel.numberOfLines = 0
+        textMessageLabel.textAlignment = .center
     }
     
 }

@@ -9,7 +9,7 @@ import Foundation
 
 protocol INVSSimulatorInteractorProtocol {
     func simulationProjection()
-    func clearTextFields()
+    func clear()
 }
 
 class INVSSimulatorInteractor: NSObject,INVSSimulatorInteractorProtocol {
@@ -25,10 +25,12 @@ class INVSSimulatorInteractor: NSObject,INVSSimulatorInteractorProtocol {
         }
     }
     
-    func clearTextFields() {
+    func clear() {
+        INVSKeyChainWrapper.clear()
         for textField in allTextFields {
             textField.clear()
         }
+        presenter?.presentClear()
     }
     
 }
