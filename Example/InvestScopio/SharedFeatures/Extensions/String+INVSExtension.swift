@@ -49,7 +49,7 @@ extension String {
         var amountWithoutPrefix = self
         
         // remove from String: "$", ".", ","
-        amountWithoutPrefix = stringOfNumbersRegex(with: 15)
+        amountWithoutPrefix = stringOfNumbersRegex(with: 12)
         
         let double = (amountWithoutPrefix as NSString).doubleValue
         number = NSNumber(value: (double / 100))
@@ -84,7 +84,7 @@ extension String {
         return number.doubleValue
     }
     
-    private func stringOfNumbersRegex(with size:Int? = nil) -> String {
+    func stringOfNumbersRegex(with size:Int? = nil) -> String {
         var amountWithPrefix = self
         let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
         amountWithPrefix = String(regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.count), withTemplate: "").prefix(size ?? self.count))

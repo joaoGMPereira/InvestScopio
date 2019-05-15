@@ -11,6 +11,7 @@ import UIKit
 
 protocol INVSFloatingTextFieldDelegate: class {
     func infoButtonAction(_ textField: INVSFloatingTextField)
+    func toolbarAction(_ textField: INVSFloatingTextField, typeOfAction type: INVSKeyboardToolbarButton)
 }
 
 class INVSFloatingTextField: UIView {
@@ -18,7 +19,7 @@ class INVSFloatingTextField: UIView {
     let placeholderLabel = UILabel(frame: .zero)
     let bottomLineView = UIView(frame: .zero)
     let infoButton = UIButton.init(type: .infoLight)
-    weak var delegate: INVSFloatingTextFieldDelegate?
+    var delegate: INVSFloatingTextFieldDelegate?
     
     var typeTextField: INVSFloatingTextFieldType?
     var required: Bool = false
@@ -113,13 +114,13 @@ extension INVSFloatingTextField: INVSCodeView {
         trailingLabelConstraint = placeholderLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
 
         NSLayoutConstraint.activate([
-            placeholderLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            placeholderLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 8),
             trailingLabelConstraint,
             placeholderLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             heightLabelConstraint
             ])
         NSLayoutConstraint.activate([
-            floatingTextField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            floatingTextField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 8),
             floatingTextField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             floatingTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             floatingTextField.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
@@ -140,7 +141,7 @@ extension INVSFloatingTextField: INVSCodeView {
         bottomLineView.backgroundColor = .lightGray
         let toolbar = INVSKeyboardToolbar()
         toolbar.toolBarDelegate = self
-        toolbar.setup(rightButtons: [INVSKeyboardToolbarButton.ok])
+        toolbar.setup(leftButtons: [INVSKeyboardToolbarButton.cancel], rightButtons: [INVSKeyboardToolbarButton.ok])
         floatingTextField.inputAccessoryView = toolbar
     }
 }
@@ -152,7 +153,7 @@ extension INVSFloatingTextField: UITextFieldDelegate, INVSKeyboardToolbarDelegat
     }
     
     func keyboardToolbar(button: UIBarButtonItem, type: INVSKeyboardToolbarButton, tappedIn toolbar: INVSKeyboardToolbar) {
-        closeKeyboard()
+        self.delegate?.toolbarAction(self, typeOfAction: type)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

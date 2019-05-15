@@ -13,27 +13,15 @@ enum INVSKeyboardToolbarButton: Int {
     
     case ok = 0
     case cancel
-    case back, backDisabled
-    case forward, forwardDisabled
     
     func createButton(target: Any?, action: Selector?) -> UIBarButtonItem {
         var button: UIBarButtonItem!
         
         switch self {
-        case .back:
-            button = UIBarButtonItem(title: "back", style: .plain, target: target, action: action)
-        case .backDisabled:
-            button = UIBarButtonItem(title: "back", style: .plain, target: target, action: action)
-            button.isEnabled = false
-        case .forward:
-            button = UIBarButtonItem(title: "forward", style: .plain, target: target, action: action)
-        case .forwardDisabled:
-            button = UIBarButtonItem(title: "forward", style: .plain, target: target, action: action)
-            button.isEnabled = false
         case .ok:
             button = UIBarButtonItem(title: "Ok", style: .plain, target: target, action: action)
         case .cancel:
-            button = UIBarButtonItem(title: "cancel", style: .plain, target: target, action: action)
+            button = UIBarButtonItem(title: "Cancel", style: .plain, target: target, action: action)
         }
         button.tag = rawValue
         return button

@@ -14,4 +14,25 @@ extension Double {
         let divisor = pow(10.0, Double(places))
         return (self * divisor).rounded() / divisor
     }
+    
+    public func currencyFormat() -> String {
+        
+        var number: NSNumber!
+        let formatter = NumberFormatter.currencyDefault()
+        
+        var amountWithoutPrefix = String(format: "%.2f", self)
+        
+        // remove from String: "$", ".", ","
+        amountWithoutPrefix = amountWithoutPrefix.stringOfNumbersRegex(with: 12)
+        
+        let double = (amountWithoutPrefix as NSString).doubleValue
+        number = NSNumber(value: (double / 100))
+        
+        // if first number is 0 or all numbers were deleted
+        guard number != 0 as NSNumber else {
+            return ""
+        }
+        
+        return formatter.string(from: number)!
+    }
 }

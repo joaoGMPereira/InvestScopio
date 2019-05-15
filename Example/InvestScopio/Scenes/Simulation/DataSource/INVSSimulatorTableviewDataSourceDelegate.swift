@@ -19,12 +19,14 @@ class INVSSimulatorTableviewDataSourceDelegate: NSObject,UITableViewDataSource,U
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell:UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        var cell:INVSSimulatorCell? = tableView.dequeueReusableCell(withIdentifier: INVSConstants.SimulatorCellConstants.cellIdentifier.rawValue) as? INVSSimulatorCell
         if (cell == nil) {
-            cell = UITableViewCell(style:.default, reuseIdentifier:"Cell")
+            cell = INVSSimulatorCell(style:.default, reuseIdentifier:INVSConstants.SimulatorCellConstants.cellIdentifier.rawValue)
         }
-        cell?.textLabel?.numberOfLines = 0
-        cell?.textLabel?.text = "MES: \(simulatedValues[indexPath.row].month ?? 0), \nAPORTE DO MES: \(simulatedValues[indexPath.row].monthValue ?? 0), \nLUCRO DO MES: \(simulatedValues[indexPath.row].profitability ?? 0), \nRETIRADA: \(simulatedValues[indexPath.row].rescue ?? 0)\n, \nTOTAL: \(simulatedValues[indexPath.row].total ?? 0)\n"
+        cell?.separatorView.backgroundColor = .INVSDefault()
+        cell?.setup(withSimulatedValue: simulatedValues[indexPath.row])
+
+        print("MES: \(simulatedValues[indexPath.row].month ?? 0), \nAPORTE DO MES: \(simulatedValues[indexPath.row].monthValue ?? 0), \nLUCRO DO MES: \(simulatedValues[indexPath.row].profitability ?? 0), \nRETIRADA: \(simulatedValues[indexPath.row].rescue ?? 0)\n, \nTOTAL: \(simulatedValues[indexPath.row].total ?? 0)\n")
         return cell ?? UITableViewCell()
     }
     

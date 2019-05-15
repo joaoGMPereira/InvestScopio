@@ -6,15 +6,18 @@
 //
 
 import Foundation
+import UIKit
 
 protocol INVSSimulatorPresenterProtocol {
     func presentSimulationProjection(simulatorModel: INVSSimulatorModel)
     func presentErrorSimulationProjection(with messageError:String)
+    func presentInfo(sender: UIView)
+    func presentToolbarAction(withPreviousTextField textField:INVSFloatingTextField, allTextFields textFields:[INVSFloatingTextField], typeOfAction type: INVSKeyboardToolbarButton)
     func presentClear()
 }
 
 class INVSSimulatorPresenter: NSObject,INVSSimulatorPresenterProtocol {
-   
+    
     weak var controller: INVSSimutatorViewControlerProtocol?
     
     func presentSimulationProjection(simulatorModel: INVSSimulatorModel) {
@@ -35,7 +38,20 @@ class INVSSimulatorPresenter: NSObject,INVSSimulatorPresenterProtocol {
     
     func presentErrorSimulationProjection(with messageError: String) {
         controller?.displayErrorSimulationProjection(with: messageError)
+    }
+    func presentToolbarAction(withPreviousTextField textField: INVSFloatingTextField, allTextFields textFields: [INVSFloatingTextField], typeOfAction type: INVSKeyboardToolbarButton) {
+        switch type {
+        case .cancel:
+            controller?.displayCancelAction()
+        case .ok:
+            let nextTextField = textField.typeTextField?.getNext(allTextFields: textFields)
+            controller?.displayOkAction(withTextField: nextTextField ?? textField, andShouldResign: nextTextField == nil)
+        }
         
+    }
+    
+    func presentInfo(sender: UIView) {
+        controller?.displayInfo(withMessage: "Seu valor de retirada irá aumentar até que a proxima meta seja igual ou maior que seu valor total.", shouldHideAutomatically: false, sender: sender)
     }
     
     func presentClear() {
@@ -51,9 +67,9 @@ extension INVSSimulatorPresenter {
     }
     
     private func updateTotalValue(withRescue rescue: Double, simulatorModel: INVSSimulatorModel) -> Double {
-        var lastTotalValueRetrieved = INVSKeyChainWrapper.retrieveDouble(withKey: INVSConstants.SimulatorConstants.lastTotalValue.rawValue) ?? simulatorModel.initialValue ?? 0.0
+        var lastTotalValueRetrieved = INVSKeyChainWrapper.retrieveDouble(withKey: INVSConstants.SimulatorKeyChainConstants.lastTotalValue.rawValue) ?? simulatorModel.initialValue ?? 0.0
         lastTotalValueRetrieved = lastTotalValueRetrieved - rescue
-        let _ = INVSKeyChainWrapper.updateDouble(withValue: lastTotalValueRetrieved, andKey: INVSConstants.SimulatorConstants.lastTotalValue.rawValue)
+        let _ = INVSKeyChainWrapper.updateDouble(withValue: lastTotalValueRetrieved, andKey: INVSConstants.SimulatorKeyChainConstants.lastTotalValue.rawValue)
         return lastTotalValueRetrieved
     }
     
@@ -63,26 +79,26 @@ extension INVSSimulatorPresenter {
         lastTotalValue = checkTotalValue(with: lastTotalValue)
         profitability = lastTotalValue * ((simulatorModel.interestRate ?? 0.0)/100)
         lastTotalValue = lastTotalValue + profitability
-        let _ = INVSKeyChainWrapper.updateDouble(withValue: lastTotalValue, andKey: INVSConstants.SimulatorConstants.lastTotalValue.rawValue)
+        let _ = INVSKeyChainWrapper.updateDouble(withValue: lastTotalValue, andKey: INVSConstants.SimulatorKeyChainConstants.lastTotalValue.rawValue)
         
         return profitability
     }
     
     private func checkTotalValue(with totalValue: Double) -> Double {
         var lastTotalValue = totalValue
-        if let lastTotalValueRetrieved = INVSKeyChainWrapper.retrieveDouble(withKey: INVSConstants.SimulatorConstants.lastTotalValue.rawValue) {
+        if let lastTotalValueRetrieved = INVSKeyChainWrapper.retrieveDouble(withKey: INVSConstants.SimulatorKeyChainConstants.lastTotalValue.rawValue) {
             lastTotalValue = lastTotalValueRetrieved
         } else {
-            let _ = INVSKeyChainWrapper.saveDouble(withValue: lastTotalValue, andKey: INVSConstants.SimulatorConstants.lastTotalValue.rawValue)
+            let _ = INVSKeyChainWrapper.saveDouble(withValue: lastTotalValue, andKey: INVSConstants.SimulatorKeyChainConstants.lastTotalValue.rawValue)
         }
         return lastTotalValue
     }
     
     private func checkRescue(with simulatorModel: INVSSimulatorModel, month: Int) -> Double {
-        var lastRescue = INVSKeyChainWrapper.retrieveDouble(withKey: INVSConstants.SimulatorConstants.lastRescue.rawValue) ?? simulatorModel.initialMonthlyRescue ?? 0.0
+        var lastRescue = INVSKeyChainWrapper.retrieveDouble(withKey: INVSConstants.SimulatorKeyChainConstants.lastRescue.rawValue) ?? simulatorModel.initialMonthlyRescue ?? 0.0
         let increaseRescue = simulatorModel.increaseRescue ?? 0.0
-        let nextGoalRescue = INVSKeyChainWrapper.retrieveDouble(withKey: INVSConstants.SimulatorConstants.lastGoalIncreaseRescue.rawValue) ?? simulatorModel.initialValue ?? 0.0
-        let lastTotalValueRetrieved = INVSKeyChainWrapper.retrieveDouble(withKey: INVSConstants.SimulatorConstants.lastTotalValue.rawValue) ?? simulatorModel.initialValue ?? 0.0
+        let nextGoalRescue = INVSKeyChainWrapper.retrieveDouble(withKey: INVSConstants.SimulatorKeyChainConstants.lastGoalIncreaseRescue.rawValue) ?? simulatorModel.initialValue ?? 0.0
+        let lastTotalValueRetrieved = INVSKeyChainWrapper.retrieveDouble(withKey: INVSConstants.SimulatorKeyChainConstants.lastTotalValue.rawValue) ?? simulatorModel.initialValue ?? 0.0
         
         lastRescue = checkGoalIncreaseRescue(with: simulatorModel, lastTotalValueRetrieved: lastTotalValueRetrieved, nextGoalRescue: nextGoalRescue, lastRescue: lastRescue, increaseRescue: increaseRescue)
         return lastRescue
@@ -92,14 +108,14 @@ extension INVSSimulatorPresenter {
         var updatedLastRescue = lastRescue
         var updatedNextGoalRescue = nextGoalRescue
         if let goalIncreaseRescue = simulatorModel.goalIncreaseRescue {
-            let _ = INVSKeyChainWrapper.saveDouble(withValue: nextGoalRescue, andKey: INVSConstants.SimulatorConstants.lastGoalIncreaseRescue.rawValue)
+            let _ = INVSKeyChainWrapper.saveDouble(withValue: nextGoalRescue, andKey: INVSConstants.SimulatorKeyChainConstants.lastGoalIncreaseRescue.rawValue)
             
             if lastTotalValueRetrieved >= nextGoalRescue {
                 updatedNextGoalRescue = lastTotalValueRetrieved + (goalIncreaseRescue/(simulatorModel.interestRate/100))
-                let _ = INVSKeyChainWrapper.updateDouble(withValue: updatedNextGoalRescue, andKey: INVSConstants.SimulatorConstants.lastGoalIncreaseRescue.rawValue)
+                let _ = INVSKeyChainWrapper.updateDouble(withValue: updatedNextGoalRescue, andKey: INVSConstants.SimulatorKeyChainConstants.lastGoalIncreaseRescue.rawValue)
                 
                 updatedLastRescue = updatedLastRescue + increaseRescue
-                let _ = INVSKeyChainWrapper.saveDouble(withValue: updatedLastRescue , andKey: INVSConstants.SimulatorConstants.lastRescue.rawValue)
+                let _ = INVSKeyChainWrapper.saveDouble(withValue: updatedLastRescue , andKey: INVSConstants.SimulatorKeyChainConstants.lastRescue.rawValue)
             }
         }
         return updatedLastRescue

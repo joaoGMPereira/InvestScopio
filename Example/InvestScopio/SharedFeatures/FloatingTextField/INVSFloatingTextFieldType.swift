@@ -18,4 +18,11 @@ enum INVSFloatingTextFieldType: Int {
     case increaseRescue
     case goalIncreaseRescue
     
+    func getNext(allTextFields: [INVSFloatingTextField]) -> INVSFloatingTextField? {
+        return allTextFields.filter({$0.typeTextField == self.next()}).first
+    }
+    
+    private func next() -> INVSFloatingTextFieldType? {
+        return INVSFloatingTextFieldType(rawValue: rawValue + 1)
+    }
 }

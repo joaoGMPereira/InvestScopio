@@ -9,10 +9,14 @@
 import Foundation
 
 enum INVSConstants {
-    enum SimulatorConstants: String {
+    enum SimulatorKeyChainConstants: String {
         case lastTotalValue = "INVSLastTotalValue";
         case lastGoalIncreaseRescue = "INVSLastGoalIncreaseRescue"
         case lastRescue = "INVSLastRescue"
+    }
+    
+    enum SimulatorCellConstants: String {
+        case cellIdentifier = "INVSSimulatorCell"
     }
 
 }
