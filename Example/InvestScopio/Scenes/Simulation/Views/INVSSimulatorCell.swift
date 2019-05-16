@@ -14,7 +14,10 @@ class INVSSimulatorCell: UITableViewCell {
     @IBOutlet weak var profitabilityLabel: UILabel!
     @IBOutlet weak var rescueLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
-    @IBOutlet weak var separatorView: UIView!
+    @IBOutlet var separatorsView: [UIView]!
+    @IBOutlet weak var infoView: UIView!
+    
+    private var shadowLayer: CAShapeLayer!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,18 +28,25 @@ class INVSSimulatorCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         monthLabel.text = ""
-        monthValueLabel.text = ""
+        //monthValueLabel.text = ""
         profitabilityLabel.text = ""
         rescueLabel.text = ""
         totalLabel.text = ""
         
         monthLabel.font = .INVSFontDefault()
-        monthValueLabel.font = .INVSFontDefault()
         profitabilityLabel.font = .INVSFontDefault()
         rescueLabel.font = .INVSFontDefault()
         totalLabel.font = .INVSFontDefault()
         
         
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.layoutSubviews()
+        if shadowLayer == nil {
+            shadowLayer = CAShapeLayer.addShadow(withRoundedCorner: 12, andColor: .white, inView: infoView)
+        }
     }
     
     func setup(withSimulatedValue simulatedValue:INVSSimulatedValueModel) {
@@ -45,9 +55,9 @@ class INVSSimulatorCell: UITableViewCell {
         } else {
             monthLabel.text = "Aplicação Inicial"
         }
-        if let monthValue = simulatedValue.monthValue, monthValue != 0 {
-            monthValueLabel.text =  "Aporte:\n\(monthValue.currencyFormat())"
-        }
+//        if let monthValue = simulatedValue.monthValue, monthValue != 0 {
+//            monthValueLabel.text =  "Aporte:\n\(monthValue.currencyFormat())"
+//        }
         if let profitability = simulatedValue.profitability, profitability != 0 {
             profitabilityLabel.text = "Rentabilidade:\n \(profitability.currencyFormat())"
         }

@@ -17,6 +17,7 @@ enum INVSConstants {
     
     enum SimulatorCellConstants: String {
         case cellIdentifier = "INVSSimulatorCell"
+        case tableViewHeaderName = "INVSSimulatorHeaderView"
     }
 
 }

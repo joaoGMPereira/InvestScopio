@@ -66,6 +66,9 @@ class INVSFloatingTextField: UIView {
         currentlySelectedColor = selectedColor
         self.smallFont = smallFont
         self.bigFont = bigFont
+        if floatingTextField.text != nil && floatingTextField.text != "" {
+            openKeyboard()
+        }
     }
     
     func updateTextFieldUI() {

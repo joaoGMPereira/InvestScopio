@@ -63,7 +63,7 @@ class INVSSimulatorPresenter: NSObject,INVSSimulatorPresenterProtocol {
 extension INVSSimulatorPresenter {
     
     private func setInitialValueObject(with simulatorModel: INVSSimulatorModel) -> INVSSimulatedValueModel {
-        return INVSSimulatedValueModel(month: nil, monthValue: simulatorModel.initialValue, profitability: nil, rescue: nil, total: nil)
+        return INVSSimulatedValueModel(month: nil, monthValue: simulatorModel.monthValue, profitability: nil, rescue: nil, total: simulatorModel.initialValue)
     }
     
     private func updateTotalValue(withRescue rescue: Double, simulatorModel: INVSSimulatorModel) -> Double {

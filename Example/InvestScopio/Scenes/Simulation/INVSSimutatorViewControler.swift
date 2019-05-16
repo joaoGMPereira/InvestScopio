@@ -42,7 +42,19 @@ public class INVSSimutatorViewControler: UIViewController {
         let presenter = INVSSimulatorPresenter()
         presenter.controller = self
         interactor.presenter = presenter
+        mockInfo()
         setupUI()
+        
+    }
+    
+    public func mockInfo() {
+        initialValueTextField.floatingTextField.text = "R$50.000,00"
+        monthValueTextField.floatingTextField.text = "R$300,00"
+        interestRateTextField.floatingTextField.text = "3,00%"
+        totalMonthsTextField.floatingTextField.text = "20"
+        monthlyRescueTextField.floatingTextField.text = "R$300,00"
+        increaseRescueTextField.floatingTextField.text = "R$200,00"
+        goalIncreaseRescueTextField.floatingTextField.text = "R$500,00"
         
     }
     
@@ -52,7 +64,21 @@ public class INVSSimutatorViewControler: UIViewController {
     }
     
     func setupUI() {
+        setupTextFields()
         horizontalStackView.addBackground(color: .lightGray)
+        saveButton.backgroundColor = UIColor.INVSDefault()
+        clearButton.backgroundColor = UIColor.INVSDefault()
+        view.backgroundColor = .INVSGray()
+        tableView.backgroundColor = .INVSGray()
+        let bundle = Bundle(for: type(of: self))
+        let simulatorCellNib = UINib(nibName: INVSConstants.SimulatorCellConstants.cellIdentifier.rawValue, bundle: bundle)
+        let simulatorHeaderlNib = UINib(nibName: INVSConstants.SimulatorCellConstants.tableViewHeaderName.rawValue, bundle: bundle)
+        tableView.register(simulatorCellNib, forCellReuseIdentifier: INVSConstants.SimulatorCellConstants.cellIdentifier.rawValue)
+        tableView.register(simulatorHeaderlNib, forHeaderFooterViewReuseIdentifier: INVSConstants.SimulatorCellConstants.tableViewHeaderName.rawValue)
+        
+    }
+    
+    private func setupTextFields() {
         initialValueTextField.setup(placeholder: "Valor Inicial", typeTextField: .initialValue, valueTypeTextField: .currency, required: true, color: UIColor.INVSDefault())
         initialValueTextField.delegate = self
         
@@ -73,14 +99,6 @@ public class INVSSimutatorViewControler: UIViewController {
         
         goalIncreaseRescueTextField.setup(placeholder: "Valor para aumentar o Resgate", typeTextField: .goalIncreaseRescue, valueTypeTextField: .currency, color: UIColor.INVSDefault())
         goalIncreaseRescueTextField.delegate = self
-        
-        saveButton.backgroundColor = UIColor.INVSDefault()
-        clearButton.backgroundColor = UIColor.INVSDefault()
-        
-        let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: INVSConstants.SimulatorCellConstants.cellIdentifier.rawValue, bundle: bundle)
-        tableView.register(nib, forCellReuseIdentifier: INVSConstants.SimulatorCellConstants.cellIdentifier.rawValue)
-        
     }
     
     private func reloadTableView() {
@@ -121,7 +139,7 @@ extension INVSSimutatorViewControler: INVSSimutatorViewControlerProtocol {
     }
     
     func displaySimulationProjection(with simulatedValues: [INVSSimulatedValueModel]) {
-        dataSource.simulatedValues = simulatedValues
+        dataSource.setup(withSimulatedValues: simulatedValues)
         reloadTableView()
     }
     
@@ -134,7 +152,7 @@ extension INVSSimutatorViewControler: INVSSimutatorViewControlerProtocol {
     }
     
     func displayClear() {
-        dataSource.simulatedValues = [INVSSimulatedValueModel]()
+        dataSource.setup(withSimulatedValues: [INVSSimulatedValueModel]())
         reloadTableView()
     }
     

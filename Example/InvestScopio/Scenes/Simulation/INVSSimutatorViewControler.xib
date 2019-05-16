@@ -107,8 +107,8 @@
                     <viewLayoutGuide key="safeArea" id="kFy-5E-16m"/>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H0H-ND-IY1">
-                    <rect key="frame" x="0.0" y="308" width="375" height="279"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <rect key="frame" x="0.0" y="300" width="375" height="287"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                 </tableView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="LCz-Zz-Hjj">
@@ -117,7 +117,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YL-KQ-qYM">
                             <rect key="frame" x="0.0" y="0.0" width="187" height="80"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" title="Simutate">
+                            <state key="normal" title="Simulate">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
@@ -151,7 +151,7 @@
                 <constraint firstItem="LCz-Zz-Hjj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fHU-dc-KRt"/>
                 <constraint firstItem="6ic-qm-HFP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="p8u-10-0gH"/>
                 <constraint firstItem="H0H-ND-IY1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="scP-fc-BUY"/>
-                <constraint firstItem="H0H-ND-IY1" firstAttribute="top" secondItem="6ic-qm-HFP" secondAttribute="bottom" constant="8" id="zfi-26-W1G"/>
+                <constraint firstItem="H0H-ND-IY1" firstAttribute="top" secondItem="6ic-qm-HFP" secondAttribute="bottom" id="zfi-26-W1G"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="-154.40000000000001" y="88.605697151424295"/>
