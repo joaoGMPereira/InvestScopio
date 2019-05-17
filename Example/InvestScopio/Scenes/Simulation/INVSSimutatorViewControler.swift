@@ -7,14 +7,13 @@
 //
 
 import UIKit
-
+import Hero
 protocol INVSSimutatorViewControlerProtocol: class {
     func displaySimulationProjection(with simulatedValues: [INVSSimulatedValueModel])
     func displayErrorSimulationProjection(with messageError: String)
     func displayInfo(withMessage message: String, shouldHideAutomatically: Bool, sender: UIView)
     func displayOkAction(withTextField textField:INVSFloatingTextField, andShouldResign shouldResign: Bool)
     func displayCancelAction()
-    func displayClear()
 }
 
 public class INVSSimutatorViewControler: UIViewController {
@@ -27,11 +26,9 @@ public class INVSSimutatorViewControler: UIViewController {
     @IBOutlet weak var goalIncreaseRescueTextField: INVSFloatingTextField!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var clearButton: UIButton!
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var horizontalStackView: UIStackView!
     
     var popupMessage: INVSPopupMessage?
-    var dataSource = INVSSimulatorTableviewDataSourceDelegate()
     var interactor: INVSSimulatorInteractorProtocol?
     
     override public func viewDidLoad() {
@@ -69,13 +66,6 @@ public class INVSSimutatorViewControler: UIViewController {
         saveButton.backgroundColor = UIColor.INVSDefault()
         clearButton.backgroundColor = UIColor.INVSDefault()
         view.backgroundColor = .INVSGray()
-        tableView.backgroundColor = .INVSGray()
-        let bundle = Bundle(for: type(of: self))
-        let simulatorCellNib = UINib(nibName: INVSConstants.SimulatorCellConstants.cellIdentifier.rawValue, bundle: bundle)
-        let simulatorHeaderlNib = UINib(nibName: INVSConstants.SimulatorCellConstants.tableViewHeaderName.rawValue, bundle: bundle)
-        tableView.register(simulatorCellNib, forCellReuseIdentifier: INVSConstants.SimulatorCellConstants.cellIdentifier.rawValue)
-        tableView.register(simulatorHeaderlNib, forHeaderFooterViewReuseIdentifier: INVSConstants.SimulatorCellConstants.tableViewHeaderName.rawValue)
-        
     }
     
     private func setupTextFields() {
@@ -99,12 +89,6 @@ public class INVSSimutatorViewControler: UIViewController {
         
         goalIncreaseRescueTextField.setup(placeholder: "Valor para aumentar o Resgate", typeTextField: .goalIncreaseRescue, valueTypeTextField: .currency, color: UIColor.INVSDefault())
         goalIncreaseRescueTextField.delegate = self
-    }
-    
-    private func reloadTableView() {
-        tableView.dataSource = dataSource
-        tableView.delegate = dataSource
-        tableView.reloadData()
     }
     
     @IBAction func saveAction(_ sender: Any) {
@@ -139,8 +123,15 @@ extension INVSSimutatorViewControler: INVSSimutatorViewControlerProtocol {
     }
     
     func displaySimulationProjection(with simulatedValues: [INVSSimulatedValueModel]) {
-        dataSource.setup(withSimulatedValues: simulatedValues)
-        reloadTableView()
+        saveButton.hero.id = "teste"
+        
+        let homeViewController = INVSSimulatedViewController()
+        homeViewController.hero.isEnabled = true
+        
+        homeViewController.tableView.hero.id = "teste"
+        homeViewController.setup(withSimulatedValues: simulatedValues)
+        
+        present(homeViewController, animated: true, completion: nil)
     }
     
     func displayErrorSimulationProjection(with messageError: String) {
@@ -151,10 +142,7 @@ extension INVSSimutatorViewControler: INVSSimutatorViewControlerProtocol {
         popupMessage?.show(withTextMessage: message,popupType: .alert, shouldHideAutomatically: shouldHideAutomatically, sender: sender)
     }
     
-    func displayClear() {
-        dataSource.setup(withSimulatedValues: [INVSSimulatedValueModel]())
-        reloadTableView()
-    }
+    
     
 }
 

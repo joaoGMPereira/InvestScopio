@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol INVSCodeView {
+protocol INVSCodeView: class {
     func buildViewHierarchy()
     func setupConstraints()
     func setupAdditionalConfiguration()

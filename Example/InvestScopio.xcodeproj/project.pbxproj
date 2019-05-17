@@ -12,12 +12,16 @@
 		4AEA331A228AF26E0027AEF5 /* INVSConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA3319228AF26E0027AEF5 /* INVSConstants.swift */; };
 		4AEA331C228B79AB0027AEF5 /* Double+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA331B228B79AB0027AEF5 /* Double+INVSExtension.swift */; };
 		4AEA331E228B98350027AEF5 /* UIFont+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA331D228B98350027AEF5 /* UIFont+INVSExtension.swift */; };
-		4AEA3322228C98860027AEF5 /* INVSSimulatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA3320228C98860027AEF5 /* INVSSimulatorCell.swift */; };
-		4AEA3323228C98860027AEF5 /* INVSSimulatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AEA3321228C98860027AEF5 /* INVSSimulatorCell.xib */; };
 		4AEA3325228D7F7B0027AEF5 /* CAShapeLayer+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA3324228D7F7B0027AEF5 /* CAShapeLayer+INVSExtension.swift */; };
-		4AEA3329228D8FAF0027AEF5 /* INVSSimulatorHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA3328228D8FAF0027AEF5 /* INVSSimulatorHeaderView.swift */; };
-		4AEA332F228DAF7E0027AEF5 /* INVSSimulatedValueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA332D228DAF7E0027AEF5 /* INVSSimulatedValueModel.swift */; };
 		4AEA3330228DAF7E0027AEF5 /* INVSSimulatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA332E228DAF7E0027AEF5 /* INVSSimulatorModel.swift */; };
+		4AEA3341228DC8F70027AEF5 /* INVSSimulatorHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA3338228DC8F60027AEF5 /* INVSSimulatorHeaderView.swift */; };
+		4AEA3342228DC8F70027AEF5 /* INVSSimulatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AEA3339228DC8F60027AEF5 /* INVSSimulatorCell.xib */; };
+		4AEA3343228DC8F70027AEF5 /* INVSSimulatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA333A228DC8F60027AEF5 /* INVSSimulatorCell.swift */; };
+		4AEA3345228DC8F70027AEF5 /* INVSSimulatorTableviewDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA333D228DC8F70027AEF5 /* INVSSimulatorTableviewDataSourceDelegate.swift */; };
+		4AEA3346228DC8F70027AEF5 /* INVSSimulatedValueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA333F228DC8F70027AEF5 /* INVSSimulatedValueModel.swift */; };
+		4AEA3347228DC8F70027AEF5 /* INVSSimulatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA3340228DC8F70027AEF5 /* INVSSimulatedViewController.swift */; };
+		4AEA3349228DE9A30027AEF5 /* INVSRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA3348228DE9A30027AEF5 /* INVSRouter.swift */; };
+		4AEA334C228E334C0027AEF5 /* INVSPresentBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA334B228E334C0027AEF5 /* INVSPresentBaseViewController.swift */; };
 		4AFD516F228A210000AF9513 /* INVSFloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD515B228A210000AF9513 /* INVSFloatingTextField.swift */; };
 		4AFD5171228A210000AF9513 /* INVSKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD515D228A210000AF9513 /* INVSKeyboardToolbar.swift */; };
 		4AFD5172228A210000AF9513 /* UIColor+INVSPaletteColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD515F228A210000AF9513 /* UIColor+INVSPaletteColors.swift */; };
@@ -27,14 +31,11 @@
 		4AFD5176228A210000AF9513 /* INVSCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD5166228A210000AF9513 /* INVSCodeView.swift */; };
 		4AFD5180228A54D600AF9513 /* INVSFloatingTextFieldValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD517F228A54D600AF9513 /* INVSFloatingTextFieldValueType.swift */; };
 		4AFD5182228A551300AF9513 /* INVSFloatingTextFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD5181228A551300AF9513 /* INVSFloatingTextFieldType.swift */; };
-		4AFD5188228AD76F00AF9513 /* INVSSimulatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD5187228AD76F00AF9513 /* INVSSimulatorModel.swift */; };
 		4AFD5190228AD78600AF9513 /* INVSSimulatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD518B228AD78600AF9513 /* INVSSimulatorPresenter.swift */; };
 		4AFD5191228AD78600AF9513 /* INVSSimulatorWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD518C228AD78600AF9513 /* INVSSimulatorWorker.swift */; };
 		4AFD5192228AD78600AF9513 /* INVSSimutatorViewControler.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AFD518D228AD78600AF9513 /* INVSSimutatorViewControler.xib */; };
 		4AFD5193228AD78600AF9513 /* INVSSimulatorInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD518E228AD78600AF9513 /* INVSSimulatorInteractor.swift */; };
 		4AFD5194228AD78600AF9513 /* INVSSimutatorViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD518F228AD78600AF9513 /* INVSSimutatorViewControler.swift */; };
-		4AFD5196228AD7A800AF9513 /* INVSSimulatedValueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD5195228AD7A800AF9513 /* INVSSimulatedValueModel.swift */; };
-		4AFD5199228AD9CD00AF9513 /* INVSSimulatorTableviewDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD5198228AD9CD00AF9513 /* INVSSimulatorTableviewDataSourceDelegate.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
@@ -62,12 +63,16 @@
 		4AEA3319228AF26E0027AEF5 /* INVSConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSConstants.swift; sourceTree = "<group>"; };
 		4AEA331B228B79AB0027AEF5 /* Double+INVSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+INVSExtension.swift"; sourceTree = "<group>"; };
 		4AEA331D228B98350027AEF5 /* UIFont+INVSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIFont+INVSExtension.swift"; path = "/Users/joaomedeirospereira/Desktop/InvestScopio/Example/InvestScopio/SharedFeatures/Extensions/UIFont+INVSExtension.swift"; sourceTree = "<absolute>"; };
-		4AEA3320228C98860027AEF5 /* INVSSimulatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatorCell.swift; sourceTree = "<group>"; };
-		4AEA3321228C98860027AEF5 /* INVSSimulatorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = INVSSimulatorCell.xib; sourceTree = "<group>"; };
 		4AEA3324228D7F7B0027AEF5 /* CAShapeLayer+INVSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAShapeLayer+INVSExtension.swift"; sourceTree = "<group>"; };
-		4AEA3328228D8FAF0027AEF5 /* INVSSimulatorHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatorHeaderView.swift; sourceTree = "<group>"; };
-		4AEA332D228DAF7E0027AEF5 /* INVSSimulatedValueModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatedValueModel.swift; sourceTree = "<group>"; };
 		4AEA332E228DAF7E0027AEF5 /* INVSSimulatorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorModel.swift; sourceTree = "<group>"; };
+		4AEA3338228DC8F60027AEF5 /* INVSSimulatorHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorHeaderView.swift; sourceTree = "<group>"; };
+		4AEA3339228DC8F60027AEF5 /* INVSSimulatorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = INVSSimulatorCell.xib; sourceTree = "<group>"; };
+		4AEA333A228DC8F60027AEF5 /* INVSSimulatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorCell.swift; sourceTree = "<group>"; };
+		4AEA333D228DC8F70027AEF5 /* INVSSimulatorTableviewDataSourceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorTableviewDataSourceDelegate.swift; sourceTree = "<group>"; };
+		4AEA333F228DC8F70027AEF5 /* INVSSimulatedValueModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatedValueModel.swift; sourceTree = "<group>"; };
+		4AEA3340228DC8F70027AEF5 /* INVSSimulatedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatedViewController.swift; sourceTree = "<group>"; };
+		4AEA3348228DE9A30027AEF5 /* INVSRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSRouter.swift; sourceTree = "<group>"; };
+		4AEA334B228E334C0027AEF5 /* INVSPresentBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSPresentBaseViewController.swift; sourceTree = "<group>"; };
 		4AFD515B228A210000AF9513 /* INVSFloatingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSFloatingTextField.swift; sourceTree = "<group>"; };
 		4AFD515D228A210000AF9513 /* INVSKeyboardToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSKeyboardToolbar.swift; sourceTree = "<group>"; };
 		4AFD515F228A210000AF9513 /* UIColor+INVSPaletteColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+INVSPaletteColors.swift"; sourceTree = "<group>"; };
@@ -77,14 +82,11 @@
 		4AFD5166228A210000AF9513 /* INVSCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSCodeView.swift; sourceTree = "<group>"; };
 		4AFD517F228A54D600AF9513 /* INVSFloatingTextFieldValueType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSFloatingTextFieldValueType.swift; sourceTree = "<group>"; };
 		4AFD5181228A551300AF9513 /* INVSFloatingTextFieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSFloatingTextFieldType.swift; sourceTree = "<group>"; };
-		4AFD5187228AD76F00AF9513 /* INVSSimulatorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = INVSSimulatorModel.swift; path = InvestScopio/Scenes/Simulation/Models/INVSSimulatorModel.swift; sourceTree = SOURCE_ROOT; };
 		4AFD518B228AD78600AF9513 /* INVSSimulatorPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorPresenter.swift; sourceTree = "<group>"; };
 		4AFD518C228AD78600AF9513 /* INVSSimulatorWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorWorker.swift; sourceTree = "<group>"; };
 		4AFD518D228AD78600AF9513 /* INVSSimutatorViewControler.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = INVSSimutatorViewControler.xib; sourceTree = "<group>"; };
 		4AFD518E228AD78600AF9513 /* INVSSimulatorInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorInteractor.swift; sourceTree = "<group>"; };
 		4AFD518F228AD78600AF9513 /* INVSSimutatorViewControler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimutatorViewControler.swift; sourceTree = "<group>"; };
-		4AFD5195228AD7A800AF9513 /* INVSSimulatedValueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = INVSSimulatedValueModel.swift; path = InvestScopio/Scenes/Simulation/Models/INVSSimulatedValueModel.swift; sourceTree = SOURCE_ROOT; };
-		4AFD5198228AD9CD00AF9513 /* INVSSimulatorTableviewDataSourceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorTableviewDataSourceDelegate.swift; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* InvestScopio_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InvestScopio_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,35 +129,63 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
-		4AEA331F228C97640027AEF5 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				4AEA3320228C98860027AEF5 /* INVSSimulatorCell.swift */,
-				4AEA3321228C98860027AEF5 /* INVSSimulatorCell.xib */,
-				4AEA3328228D8FAF0027AEF5 /* INVSSimulatorHeaderView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		4AEA332C228DAF7E0027AEF5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4AEA332D228DAF7E0027AEF5 /* INVSSimulatedValueModel.swift */,
 				4AEA332E228DAF7E0027AEF5 /* INVSSimulatorModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		4AEA3331228DAFC50027AEF5 /* New Group */ = {
+		4AEA3331228DAFC50027AEF5 /* Simulated */ = {
 			isa = PBXGroup;
 			children = (
+				4AEA333C228DC8F70027AEF5 /* DataSource */,
+				4AEA3340228DC8F70027AEF5 /* INVSSimulatedViewController.swift */,
+				4AEA333E228DC8F70027AEF5 /* Models */,
+				4AEA3337228DC8F60027AEF5 /* Views */,
 			);
-			path = "New Group";
+			path = Simulated;
+			sourceTree = "<group>";
+		};
+		4AEA3337228DC8F60027AEF5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4AEA3338228DC8F60027AEF5 /* INVSSimulatorHeaderView.swift */,
+				4AEA3339228DC8F60027AEF5 /* INVSSimulatorCell.xib */,
+				4AEA333A228DC8F60027AEF5 /* INVSSimulatorCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4AEA333C228DC8F70027AEF5 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				4AEA333D228DC8F70027AEF5 /* INVSSimulatorTableviewDataSourceDelegate.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		4AEA333E228DC8F70027AEF5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4AEA333F228DC8F70027AEF5 /* INVSSimulatedValueModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4AEA334A228E330E0027AEF5 /* PresentBaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4AEA334B228E334C0027AEF5 /* INVSPresentBaseViewController.swift */,
+			);
+			path = PresentBaseViewController;
 			sourceTree = "<group>";
 		};
 		4AFD5159228A210000AF9513 /* SharedFeatures */ = {
 			isa = PBXGroup;
 			children = (
+				4AEA334A228E330E0027AEF5 /* PresentBaseViewController */,
 				4AEA3318228AF25F0027AEF5 /* Constants */,
 				4AFD519A228ADA3200AF9513 /* KeychainWrapper */,
 				4AFD515A228A210000AF9513 /* FloatingTextField */,
@@ -209,44 +239,24 @@
 		4AFD5167228A210000AF9513 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				4AEA3331228DAFC50027AEF5 /* New Group */,
+				4AEA3331228DAFC50027AEF5 /* Simulated */,
 				4AFD5186228AD6C400AF9513 /* Simulation */,
+				4AEA3348228DE9A30027AEF5 /* INVSRouter.swift */,
 			);
 			path = Scenes;
-			sourceTree = "<group>";
-		};
-		4AFD5184228AD6A200AF9513 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				4AFD5187228AD76F00AF9513 /* INVSSimulatorModel.swift */,
-				4AFD5195228AD7A800AF9513 /* INVSSimulatedValueModel.swift */,
-			);
-			name = Models;
-			path = ../Models;
 			sourceTree = "<group>";
 		};
 		4AFD5186228AD6C400AF9513 /* Simulation */ = {
 			isa = PBXGroup;
 			children = (
 				4AEA332C228DAF7E0027AEF5 /* Models */,
-				4AEA331F228C97640027AEF5 /* Views */,
-				4AFD5197228AD9CD00AF9513 /* DataSource */,
 				4AFD518E228AD78600AF9513 /* INVSSimulatorInteractor.swift */,
 				4AFD518B228AD78600AF9513 /* INVSSimulatorPresenter.swift */,
 				4AFD518C228AD78600AF9513 /* INVSSimulatorWorker.swift */,
 				4AFD518F228AD78600AF9513 /* INVSSimutatorViewControler.swift */,
 				4AFD518D228AD78600AF9513 /* INVSSimutatorViewControler.xib */,
-				4AFD5184228AD6A200AF9513 /* Models */,
 			);
 			path = Simulation;
-			sourceTree = "<group>";
-		};
-		4AFD5197228AD9CD00AF9513 /* DataSource */ = {
-			isa = PBXGroup;
-			children = (
-				4AFD5198228AD9CD00AF9513 /* INVSSimulatorTableviewDataSourceDelegate.swift */,
-			);
-			path = DataSource;
 			sourceTree = "<group>";
 		};
 		4AFD519A228ADA3200AF9513 /* KeychainWrapper */ = {
@@ -436,9 +446,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AEA3342228DC8F70027AEF5 /* INVSSimulatorCell.xib in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				4AFD5192228AD78600AF9513 /* INVSSimutatorViewControler.xib in Resources */,
-				4AEA3323228C98860027AEF5 /* INVSSimulatorCell.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -506,12 +516,14 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-InvestScopio_Example/Pods-InvestScopio_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -528,29 +540,30 @@
 			files = (
 				4AEA331C228B79AB0027AEF5 /* Double+INVSExtension.swift in Sources */,
 				4AFD5171228A210000AF9513 /* INVSKeyboardToolbar.swift in Sources */,
-				4AFD5196228AD7A800AF9513 /* INVSSimulatedValueModel.swift in Sources */,
 				4AFD5176228A210000AF9513 /* INVSCodeView.swift in Sources */,
 				4AFD5193228AD78600AF9513 /* INVSSimulatorInteractor.swift in Sources */,
 				4AFD5180228A54D600AF9513 /* INVSFloatingTextFieldValueType.swift in Sources */,
 				4AEA3330228DAF7E0027AEF5 /* INVSSimulatorModel.swift in Sources */,
 				4AEA331E228B98350027AEF5 /* UIFont+INVSExtension.swift in Sources */,
+				4AEA3341228DC8F70027AEF5 /* INVSSimulatorHeaderView.swift in Sources */,
 				4AEA331A228AF26E0027AEF5 /* INVSConstants.swift in Sources */,
-				4AEA332F228DAF7E0027AEF5 /* INVSSimulatedValueModel.swift in Sources */,
-				4AFD5188228AD76F00AF9513 /* INVSSimulatorModel.swift in Sources */,
+				4AEA3347228DC8F70027AEF5 /* INVSSimulatedViewController.swift in Sources */,
+				4AEA3349228DE9A30027AEF5 /* INVSRouter.swift in Sources */,
 				4AFD5174228A210000AF9513 /* String+INVSExtension.swift in Sources */,
 				4AFD5175228A210000AF9513 /* INVSPopupMessage.swift in Sources */,
 				4AFD5173228A210000AF9513 /* NumberFormatter+INVSExtension.swift in Sources */,
 				4AEA3317228ADA950027AEF5 /* INVSKeyChainWrapper.swift in Sources */,
 				4AFD5191228AD78600AF9513 /* INVSSimulatorWorker.swift in Sources */,
-				4AEA3322228C98860027AEF5 /* INVSSimulatorCell.swift in Sources */,
+				4AEA3346228DC8F70027AEF5 /* INVSSimulatedValueModel.swift in Sources */,
 				4AFD5172228A210000AF9513 /* UIColor+INVSPaletteColors.swift in Sources */,
 				4AFD5182228A551300AF9513 /* INVSFloatingTextFieldType.swift in Sources */,
-				4AFD5199228AD9CD00AF9513 /* INVSSimulatorTableviewDataSourceDelegate.swift in Sources */,
 				4AFD5190228AD78600AF9513 /* INVSSimulatorPresenter.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
-				4AEA3329228D8FAF0027AEF5 /* INVSSimulatorHeaderView.swift in Sources */,
 				4AFD5194228AD78600AF9513 /* INVSSimutatorViewControler.swift in Sources */,
+				4AEA3345228DC8F70027AEF5 /* INVSSimulatorTableviewDataSourceDelegate.swift in Sources */,
 				4AEA3325228D7F7B0027AEF5 /* CAShapeLayer+INVSExtension.swift in Sources */,
+				4AEA3343228DC8F70027AEF5 /* INVSSimulatorCell.swift in Sources */,
+				4AEA334C228E334C0027AEF5 /* INVSPresentBaseViewController.swift in Sources */,
 				4AFD516F228A210000AF9513 /* INVSFloatingTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

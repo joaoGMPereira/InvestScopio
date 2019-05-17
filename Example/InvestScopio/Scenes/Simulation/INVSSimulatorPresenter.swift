@@ -13,7 +13,6 @@ protocol INVSSimulatorPresenterProtocol {
     func presentErrorSimulationProjection(with messageError:String)
     func presentInfo(sender: UIView)
     func presentToolbarAction(withPreviousTextField textField:INVSFloatingTextField, allTextFields textFields:[INVSFloatingTextField], typeOfAction type: INVSKeyboardToolbarButton)
-    func presentClear()
 }
 
 class INVSSimulatorPresenter: NSObject,INVSSimulatorPresenterProtocol {
@@ -52,10 +51,6 @@ class INVSSimulatorPresenter: NSObject,INVSSimulatorPresenterProtocol {
     
     func presentInfo(sender: UIView) {
         controller?.displayInfo(withMessage: "Seu valor de retirada irá aumentar até que a proxima meta seja igual ou maior que seu valor total.", shouldHideAutomatically: false, sender: sender)
-    }
-    
-    func presentClear() {
-         controller?.displayClear()
     }
     
 }

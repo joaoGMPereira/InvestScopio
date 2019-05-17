@@ -42,7 +42,6 @@ class INVSSimulatorInteractor: NSObject,INVSSimulatorInteractorProtocol {
         for textField in allTextFields {
             textField.clear()
         }
-        presenter?.presentClear()
     }
     
 }

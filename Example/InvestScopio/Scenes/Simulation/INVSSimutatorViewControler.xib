@@ -21,7 +21,6 @@
                 <outlet property="monthValueTextField" destination="NyD-yS-Qor" id="Q2q-Dx-bwO"/>
                 <outlet property="monthlyRescueTextField" destination="bWc-Vh-W5Y" id="xRj-Vd-3MK"/>
                 <outlet property="saveButton" destination="1YL-KQ-qYM" id="y4a-So-wvf"/>
-                <outlet property="tableView" destination="H0H-ND-IY1" id="Bu9-7e-V5M"/>
                 <outlet property="totalMonthsTextField" destination="YH0-a3-Hzj" id="LO0-RX-TAK"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Gww-78-krV"/>
             </connections>
@@ -31,91 +30,53 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ic-qm-HFP">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xej-dM-W90">
+                    <rect key="frame" x="0.0" y="20" width="375" height="380"/>
                     <subviews>
-                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eq5-MZ-JHr">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q9h-TA-256" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="46.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NyD-yS-Qor" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="66.5" width="375" height="47"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="eVq-Pt-N1Y">
+                            <rect key="frame" x="0.0" y="133.5" width="375" height="46.5"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xej-dM-W90">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q9h-TA-256" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NyD-yS-Qor" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="50" width="375" height="50"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </view>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="eVq-Pt-N1Y">
-                                            <rect key="frame" x="0.0" y="100" width="375" height="50"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BcE-cK-55e" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="187" height="50"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YH0-a3-Hzj" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
-                                                    <rect key="frame" x="188" y="0.0" width="187" height="50"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </view>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </stackView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWc-Vh-W5Y" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="150" width="375" height="50"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1KE-v8-O7N" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="200" width="375" height="50"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xJ-yc-7VY" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="250" width="375" height="50"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </view>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="eVq-Pt-N1Y" firstAttribute="top" secondItem="xej-dM-W90" secondAttribute="top" constant="100" id="4vP-c2-Igi"/>
-                                        <constraint firstItem="1xJ-yc-7VY" firstAttribute="top" secondItem="xej-dM-W90" secondAttribute="top" constant="250" id="84r-ry-1h9"/>
-                                        <constraint firstItem="NyD-yS-Qor" firstAttribute="top" secondItem="xej-dM-W90" secondAttribute="top" constant="50" id="AA4-hw-TRx"/>
-                                        <constraint firstItem="1KE-v8-O7N" firstAttribute="top" secondItem="xej-dM-W90" secondAttribute="top" constant="200" id="BLH-oL-oCx"/>
-                                        <constraint firstAttribute="height" constant="300" id="Pt2-Yb-lPV"/>
-                                        <constraint firstItem="bWc-Vh-W5Y" firstAttribute="top" secondItem="xej-dM-W90" secondAttribute="top" constant="150" id="te6-t7-1L8"/>
-                                        <constraint firstItem="1KE-v8-O7N" firstAttribute="top" secondItem="bWc-Vh-W5Y" secondAttribute="bottom" id="uQA-JB-HRT"/>
-                                    </constraints>
-                                </stackView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BcE-cK-55e" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="187" height="46.5"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YH0-a3-Hzj" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
+                                    <rect key="frame" x="188" y="0.0" width="187" height="46.5"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
                             </subviews>
-                            <constraints>
-                                <constraint firstItem="xej-dM-W90" firstAttribute="width" secondItem="Eq5-MZ-JHr" secondAttribute="width" id="LAs-d2-XJV"/>
-                                <constraint firstItem="xej-dM-W90" firstAttribute="top" secondItem="Eq5-MZ-JHr" secondAttribute="top" id="VEI-oO-tJG"/>
-                                <constraint firstItem="xej-dM-W90" firstAttribute="leading" secondItem="Eq5-MZ-JHr" secondAttribute="leading" id="jb7-81-zIE"/>
-                                <constraint firstAttribute="trailing" secondItem="xej-dM-W90" secondAttribute="trailing" id="kTH-He-b4z"/>
-                                <constraint firstAttribute="bottom" secondItem="xej-dM-W90" secondAttribute="bottom" id="v0o-yZ-rjx"/>
-                            </constraints>
-                            <viewLayoutGuide key="safeArea" id="ZMz-po-cER"/>
-                        </scrollView>
+                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWc-Vh-W5Y" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="200" width="375" height="46.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1KE-v8-O7N" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="266.5" width="375" height="47"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xJ-yc-7VY" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="333.5" width="375" height="46.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="Eq5-MZ-JHr" firstAttribute="bottom" secondItem="kFy-5E-16m" secondAttribute="bottom" id="6RW-Pc-ZbF"/>
-                        <constraint firstItem="Eq5-MZ-JHr" firstAttribute="top" secondItem="6ic-qm-HFP" secondAttribute="top" id="OA7-DA-Hyx"/>
-                        <constraint firstItem="Eq5-MZ-JHr" firstAttribute="leading" secondItem="kFy-5E-16m" secondAttribute="leading" id="VDA-ff-5Cv"/>
-                        <constraint firstAttribute="height" constant="300" id="m5X-Lk-OSL"/>
-                        <constraint firstItem="Eq5-MZ-JHr" firstAttribute="trailing" secondItem="kFy-5E-16m" secondAttribute="trailing" id="wXD-dg-ko6"/>
+                        <constraint firstAttribute="height" constant="380" id="0ZB-sz-IDz"/>
                     </constraints>
-                    <viewLayoutGuide key="safeArea" id="kFy-5E-16m"/>
-                </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H0H-ND-IY1">
-                    <rect key="frame" x="0.0" y="300" width="375" height="287"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
-                </tableView>
+                </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="LCz-Zz-Hjj">
-                    <rect key="frame" x="0.0" y="587" width="375" height="80"/>
+                    <rect key="frame" x="0.0" y="416" width="375" height="70"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YL-KQ-qYM">
-                            <rect key="frame" x="0.0" y="0.0" width="187" height="80"/>
+                            <rect key="frame" x="0.0" y="0.0" width="187" height="70"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Simulate">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -125,7 +86,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwz-7i-qNv">
-                            <rect key="frame" x="188" y="0.0" width="187" height="80"/>
+                            <rect key="frame" x="188" y="0.0" width="187" height="70"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Clear">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -136,22 +97,18 @@
                         </button>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="80" id="fdr-IE-zw3"/>
+                        <constraint firstAttribute="height" constant="70" id="Dds-uo-Hyu"/>
                     </constraints>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="H0H-ND-IY1" secondAttribute="trailing" id="63k-YG-mGj"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="LCz-Zz-Hjj" secondAttribute="trailing" id="FZ3-0L-O1T"/>
-                <constraint firstItem="LCz-Zz-Hjj" firstAttribute="top" secondItem="H0H-ND-IY1" secondAttribute="bottom" id="Kw0-m2-2G6"/>
-                <constraint firstItem="6ic-qm-HFP" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Un4-RC-MdN"/>
-                <constraint firstItem="6ic-qm-HFP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aW5-dr-M3V"/>
-                <constraint firstAttribute="bottom" secondItem="LCz-Zz-Hjj" secondAttribute="bottom" id="eSU-Hf-edH"/>
-                <constraint firstItem="LCz-Zz-Hjj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fHU-dc-KRt"/>
-                <constraint firstItem="6ic-qm-HFP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="p8u-10-0gH"/>
-                <constraint firstItem="H0H-ND-IY1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="scP-fc-BUY"/>
-                <constraint firstItem="H0H-ND-IY1" firstAttribute="top" secondItem="6ic-qm-HFP" secondAttribute="bottom" id="zfi-26-W1G"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="LCz-Zz-Hjj" secondAttribute="trailing" id="Ht1-bN-7F5"/>
+                <constraint firstItem="xej-dM-W90" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Jax-qW-WgF"/>
+                <constraint firstAttribute="trailing" secondItem="xej-dM-W90" secondAttribute="trailing" id="ZZe-vG-4QZ"/>
+                <constraint firstItem="xej-dM-W90" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="mW6-73-H26"/>
+                <constraint firstItem="LCz-Zz-Hjj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="nPI-of-Cwg"/>
+                <constraint firstItem="LCz-Zz-Hjj" firstAttribute="top" secondItem="xej-dM-W90" secondAttribute="bottom" constant="16" id="zYb-c8-kue"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="-154.40000000000001" y="88.605697151424295"/>

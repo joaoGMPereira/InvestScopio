@@ -113,27 +113,27 @@ extension INVSFloatingTextField: INVSCodeView {
     
     func setupConstraints() {
         
-        heightLabelConstraint = placeholderLabel.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor)
-        trailingLabelConstraint = placeholderLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
+        heightLabelConstraint = placeholderLabel.heightAnchor.constraint(equalTo: self.heightAnchor)
+        trailingLabelConstraint = placeholderLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor)
 
         NSLayoutConstraint.activate([
-            placeholderLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            placeholderLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
             trailingLabelConstraint,
-            placeholderLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            placeholderLabel.topAnchor.constraint(equalTo: self.topAnchor),
             heightLabelConstraint
             ])
         NSLayoutConstraint.activate([
-            floatingTextField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 8),
-            floatingTextField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            floatingTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            floatingTextField.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            floatingTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
+            floatingTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            floatingTextField.topAnchor.constraint(equalTo: self.topAnchor),
+            floatingTextField.bottomAnchor.constraint(equalTo: self.bottomAnchor)
             ])
         
         NSLayoutConstraint.activate([
-            bottomLineView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            bottomLineView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            bottomLineView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            bottomLineView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             bottomLineView.heightAnchor.constraint(equalToConstant: 1),
-            bottomLineView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            bottomLineView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
             ])
     }
     
