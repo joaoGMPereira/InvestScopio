@@ -10,7 +10,7 @@ import UIKit
 
 class INVSPresentBaseViewController: UIViewController {
     var navigationBarView = UIView()
-    var navigationBarTitle = "Simulaçao" {
+    var navigationBarTitle = "Simulação" {
         didSet {
             navigationBarLabel.text = navigationBarTitle
         }
@@ -36,10 +36,10 @@ class INVSPresentBaseViewController: UIViewController {
         super.viewDidLayoutSubviews()
         if shadowLayer == nil {
             navigationBarHeight = view.safeAreaInsets.top + 44
-            shadowLayer = CAShapeLayer.addShadow(withRoundedCorner: 1, andColor: .INVSLightGray(), inView: navigationBarView)
             heightNavigationBarConstraint.constant = navigationBarHeight
             UIView.animate(withDuration: 1.6) {
                 self.view.layoutIfNeeded()
+                self.shadowLayer = CAShapeLayer.addShadow(withRoundedCorner: 1, andColor: .INVSLightGray(), inView: self.navigationBarView)
             }
         }
     }
@@ -97,7 +97,7 @@ extension INVSPresentBaseViewController {
         closeButton.setAttributedTitle(closeTitle, for: .normal)
         closeButton.addTarget(self, action: #selector(INVSSimulatedViewController.dismissViewController), for: .touchUpInside)
         navigationBarLabel.text = navigationBarTitle
-        view.backgroundColor = .white
+        view.backgroundColor = .INVSGray()
         navigationBarView.backgroundColor = .INVSLightGray()
     }
     

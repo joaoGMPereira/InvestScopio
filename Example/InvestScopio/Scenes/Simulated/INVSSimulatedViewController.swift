@@ -23,8 +23,8 @@ class INVSSimulatedViewController: INVSPresentBaseViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-       
-        heightTableviewConstraint.constant = view.frame.height - navigationBarHeight
+        title = "Simulação"
+        heightTableviewConstraint.constant = view.frame.height - navigationBarHeight - 8
         UIView.animate(withDuration: 2) {
             self.view.layoutIfNeeded()
         }

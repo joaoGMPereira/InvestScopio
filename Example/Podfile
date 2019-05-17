@@ -3,6 +3,7 @@ platform :ios, '11.0'
 target 'InvestScopio_Example' do
   pod 'SwiftKeychainWrapper'
   pod 'Hero', :git => 'https://github.com/barrault01/Hero.git', :commit => '6220387'
+  pod 'lottie-ios'
   target 'InvestScopio_Tests' do
     inherit! :search_paths
   end

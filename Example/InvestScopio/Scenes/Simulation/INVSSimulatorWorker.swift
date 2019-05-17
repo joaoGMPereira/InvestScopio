@@ -16,22 +16,23 @@ protocol INVSSimulatorWorkerProtocol {
 
 class INVSSimulatorWorker: NSObject,INVSSimulatorWorkerProtocol {
     func simulationProjection(with textFields: [INVSFloatingTextField], successCompletionHandler: @escaping (SuccessSimulationHandler), errorCompletionHandler: @escaping (ErrorSimulationHandler)) {
-        let allTextFieldsRequired = textFields.filter({$0.required == true})
-        var areFieldsRequiredFilled = true
-        for textField in allTextFieldsRequired {
-            let valueText = textField.floatingTextField.text
-            textField.hasError = false
-            if valueText == "" || valueText == nil {
-                textField.hasError = true
-                areFieldsRequiredFilled = false
+        DispatchQueue.main.async {
+            let allTextFieldsRequired = textFields.filter({$0.required == true})
+            var areFieldsRequiredFilled = true
+            for textField in allTextFieldsRequired {
+                let valueText = textField.floatingTextField.text
+                textField.hasError = false
+                if valueText == "" || valueText == nil {
+                    textField.hasError = true
+                    areFieldsRequiredFilled = false
+                }
             }
+            if let firstTextFieldWithError = allTextFieldsRequired.filter({$0.hasError}).first {
+                firstTextFieldWithError.floatingTextField.becomeFirstResponder()
+            }
+            
+            areFieldsRequiredFilled == true ? successCompletionHandler(self.populateSimulatorModel(with: textFields)) : errorCompletionHandler("Preencha todos os campos obrigatórios!")
         }
-        if let firstTextFieldWithError = allTextFieldsRequired.filter({$0.hasError}).first {
-            firstTextFieldWithError.floatingTextField.becomeFirstResponder()
-        }
-
-        areFieldsRequiredFilled == true ? successCompletionHandler(populateSimulatorModel(with: textFields)) : errorCompletionHandler("Preencha todos os campos obrigatórios!")
-        
     }
     
     private func populateSimulatorModel(with textFields:[INVSFloatingTextField]) -> INVSSimulatorModel {

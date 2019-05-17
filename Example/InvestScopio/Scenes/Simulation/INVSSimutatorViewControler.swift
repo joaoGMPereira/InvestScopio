@@ -27,6 +27,7 @@ public class INVSSimutatorViewControler: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var horizontalStackView: UIStackView!
+    var loadingView = UIActivityIndicatorView(style: .whiteLarge)
     
     var popupMessage: INVSPopupMessage?
     var interactor: INVSSimulatorInteractorProtocol?
@@ -92,6 +93,14 @@ public class INVSSimutatorViewControler: UIViewController {
     }
     
     @IBAction func saveAction(_ sender: Any) {
+        saveButton.setTitle("", for: .normal)
+        saveButton.addSubview(loadingView)
+        NSLayoutConstraint.activate([
+            loadingView.centerYAnchor.constraint(equalTo: saveButton.safeAreaLayoutGuide.centerYAnchor, constant: 0),
+            loadingView.centerXAnchor.constraint(equalTo: saveButton.safeAreaLayoutGuide.centerXAnchor, constant: 0),
+            
+            ])
+        loadingView.startAnimating()
         interactor?.simulationProjection()
     }
     @IBAction func clearAction(_ sender: Any) {
@@ -123,6 +132,7 @@ extension INVSSimutatorViewControler: INVSSimutatorViewControlerProtocol {
     }
     
     func displaySimulationProjection(with simulatedValues: [INVSSimulatedValueModel]) {
+        self.loadingView.removeFromSuperview()
         saveButton.hero.id = "teste"
         
         let homeViewController = INVSSimulatedViewController()
@@ -131,7 +141,9 @@ extension INVSSimutatorViewControler: INVSSimutatorViewControlerProtocol {
         homeViewController.tableView.hero.id = "teste"
         homeViewController.setup(withSimulatedValues: simulatedValues)
         
-        present(homeViewController, animated: true, completion: nil)
+        present(homeViewController, animated: true) {
+            self.saveButton.setTitle("Simulate", for: .normal)
+        }
     }
     
     func displayErrorSimulationProjection(with messageError: String) {
