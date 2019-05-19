@@ -17,7 +17,7 @@ enum INVSPopupMessageType: Int {
         case .error:
             return .white
         case .alert:
-            return .INVSDefault()
+            return .white
         }
     }
     
@@ -26,7 +26,7 @@ enum INVSPopupMessageType: Int {
         case .error:
             return .INVSRed()
         case .alert:
-            return .white
+            return .INVSDefault()
         }
     }
 }

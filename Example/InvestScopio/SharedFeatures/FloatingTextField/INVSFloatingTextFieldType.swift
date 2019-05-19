@@ -18,6 +18,26 @@ enum INVSFloatingTextFieldType: Int {
     case increaseRescue
     case goalIncreaseRescue
     
+    
+    func getMessageInfo() -> String {
+        switch self {
+        case .initialValue:
+        return ""
+        case .monthValue:
+        return ""
+        case .interestRate:
+        return ""
+        case .totalMonths:
+        return ""
+        case .initialMonthlyRescue:
+        return "É o valor inicial para começar o resgate do seu rendimento.\n Ex: Seu rendimento está em 10R$ e decide retirar 1R$, portanto nesse mês você terá como resultado:\nRendimento: 9R$\nResgate: 1R$"
+        case .increaseRescue:
+        return ""
+        case .goalIncreaseRescue:
+        return ""
+        }
+    }
+    
     func getNext(allTextFields: [INVSFloatingTextField]) -> INVSFloatingTextField? {
         return allTextFields.filter({$0.typeTextField == self.next()}).first
     }

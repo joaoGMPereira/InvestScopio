@@ -101,10 +101,10 @@ public class INVSSimutatorViewControler: UIViewController {
         initialMonthlyRescueTextField.setup(placeholder: "Valor Inicial do Resgate", typeTextField: .initialMonthlyRescue, valueTypeTextField: .currency, hasInfoButton: true, color: UIColor.INVSDefault())
         initialMonthlyRescueTextField.delegate = self
         
-        increaseRescueTextField.setup(placeholder: "Acréscimo no resgate", typeTextField: .increaseRescue, valueTypeTextField: .currency, color: UIColor.INVSDefault())
+        increaseRescueTextField.setup(placeholder: "Acréscimo no resgate", typeTextField: .increaseRescue, valueTypeTextField: .currency, hasInfoButton: true, color: UIColor.INVSDefault())
         increaseRescueTextField.delegate = self
         
-        goalIncreaseRescueTextField.setup(placeholder: "Objetivo para aumento de resgate", typeTextField: .goalIncreaseRescue, valueTypeTextField: .currency, color: UIColor.INVSDefault())
+        goalIncreaseRescueTextField.setup(placeholder: "Objetivo para aumento de resgate", typeTextField: .goalIncreaseRescue, valueTypeTextField: .currency, hasInfoButton: true, color: UIColor.INVSDefault())
         goalIncreaseRescueTextField.delegate = self
     }
     
