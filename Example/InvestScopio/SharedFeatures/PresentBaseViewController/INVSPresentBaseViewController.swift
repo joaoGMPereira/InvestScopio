@@ -26,6 +26,7 @@ class INVSPresentBaseViewController: UIViewController {
     private var contentView = UIView()
     private var shadowLayer: CAShapeLayer!
     private var heightNavigationBarConstraint = NSLayoutConstraint()
+    private var topNavigationBarConstraint = NSLayoutConstraint()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class INVSPresentBaseViewController: UIViewController {
         if shadowLayer == nil {
             navigationBarHeight = view.safeAreaInsets.top + 44
             heightNavigationBarConstraint.constant = navigationBarHeight
+            topNavigationBarConstraint.constant = view.safeAreaInsets.top
             UIView.animate(withDuration: 1.6) {
                 self.view.layoutIfNeeded()
                 self.shadowLayer = CAShapeLayer.addShadow(withRoundedCorner: 1, andColor: .INVSLightGray(), inView: self.navigationBarView)
@@ -65,6 +67,7 @@ extension INVSPresentBaseViewController {
     
     private func setupConstraints() {
         heightNavigationBarConstraint = navigationBarView.heightAnchor.constraint(equalToConstant: 0)
+        topNavigationBarConstraint = contentView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.safeAreaInsets.top)
         NSLayoutConstraint.activate([
             navigationBarView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
             navigationBarView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
@@ -74,7 +77,7 @@ extension INVSPresentBaseViewController {
         NSLayoutConstraint.activate([
             contentView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
             contentView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
-            contentView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            topNavigationBarConstraint,
             contentView.heightAnchor.constraint(equalToConstant: 44),
             ])
         NSLayoutConstraint.activate([

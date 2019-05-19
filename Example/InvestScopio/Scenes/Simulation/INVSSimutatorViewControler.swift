@@ -10,7 +10,9 @@ import UIKit
 import Hero
 protocol INVSSimutatorViewControlerProtocol: class {
     func displaySimulationProjection(with simulatedValues: [INVSSimulatedValueModel])
-    func displayErrorSimulationProjection(with messageError: String)
+    func displayLoading()
+    func dismissLoading()
+    func displayErrorSimulationProjection(with messageError:String, shouldHideAutomatically:Bool, popupType: INVSPopupMessageType, sender: UIView?)
     func displayInfo(withMessage message: String, shouldHideAutomatically: Bool, sender: UIView)
     func displayOkAction(withTextField textField:INVSFloatingTextField, andShouldResign shouldResign: Bool)
     func displayCancelAction()
@@ -21,38 +23,39 @@ public class INVSSimutatorViewControler: UIViewController {
     @IBOutlet weak var monthValueTextField: INVSFloatingTextField!
     @IBOutlet weak var interestRateTextField: INVSFloatingTextField!
     @IBOutlet weak var totalMonthsTextField: INVSFloatingTextField!
-    @IBOutlet weak var monthlyRescueTextField: INVSFloatingTextField!
+    @IBOutlet weak var initialMonthlyRescueTextField: INVSFloatingTextField!
     @IBOutlet weak var increaseRescueTextField: INVSFloatingTextField!
     @IBOutlet weak var goalIncreaseRescueTextField: INVSFloatingTextField!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var horizontalStackView: UIStackView!
-    var loadingView = UIActivityIndicatorView(style: .whiteLarge)
+    var loadingView = UIActivityIndicatorView(style: .white)
     
     var popupMessage: INVSPopupMessage?
     var interactor: INVSSimulatorInteractorProtocol?
+    let router = INVSRouter()
     
     override public func viewDidLoad() {
         super.viewDidLoad()
+        title = "Simulação"
         let interactor = INVSSimulatorInteractor()
-        interactor.allTextFields = [initialValueTextField, monthValueTextField, interestRateTextField, totalMonthsTextField, monthlyRescueTextField, increaseRescueTextField, goalIncreaseRescueTextField]
+        interactor.allTextFields = [initialValueTextField, monthValueTextField, interestRateTextField, totalMonthsTextField, initialMonthlyRescueTextField, increaseRescueTextField, goalIncreaseRescueTextField]
         self.interactor = interactor
         let presenter = INVSSimulatorPresenter()
         presenter.controller = self
         interactor.presenter = presenter
         mockInfo()
         setupUI()
-        
     }
     
     public func mockInfo() {
         initialValueTextField.floatingTextField.text = "R$50.000,00"
-        monthValueTextField.floatingTextField.text = "R$300,00"
+        monthValueTextField.floatingTextField.text = "R$500,00"
         interestRateTextField.floatingTextField.text = "3,00%"
         totalMonthsTextField.floatingTextField.text = "20"
-        monthlyRescueTextField.floatingTextField.text = "R$300,00"
-        increaseRescueTextField.floatingTextField.text = "R$200,00"
-        goalIncreaseRescueTextField.floatingTextField.text = "R$500,00"
+        initialMonthlyRescueTextField.floatingTextField.text = "R$100,00"
+        increaseRescueTextField.floatingTextField.text = "R$100,00"
+        goalIncreaseRescueTextField.floatingTextField.text = "R$1.000,00"
         
     }
     
@@ -63,10 +66,23 @@ public class INVSSimutatorViewControler: UIViewController {
     
     func setupUI() {
         setupTextFields()
+        setupLoading()
         horizontalStackView.addBackground(color: .lightGray)
         saveButton.backgroundColor = UIColor.INVSDefault()
         clearButton.backgroundColor = UIColor.INVSDefault()
         view.backgroundColor = .INVSGray()
+    }
+    
+    func setupLoading() {
+        saveButton.addSubview(loadingView)
+        loadingView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            loadingView.centerYAnchor.constraint(equalTo: saveButton.safeAreaLayoutGuide.centerYAnchor),
+            loadingView.centerXAnchor.constraint(equalTo: saveButton.safeAreaLayoutGuide.centerXAnchor),
+            
+            ])
+        loadingView.hidesWhenStopped = true
+        loadingView.stopAnimating()
     }
     
     private func setupTextFields() {
@@ -82,8 +98,8 @@ public class INVSSimutatorViewControler: UIViewController {
         totalMonthsTextField.setup(placeholder: "Total de Meses", typeTextField: .totalMonths, valueTypeTextField: .months, required: true, color: UIColor.INVSDefault())
         totalMonthsTextField.delegate = self
         
-        monthlyRescueTextField.setup(placeholder: "Resgate Mensal Inicial", typeTextField: .initialMonthlyRescue, valueTypeTextField: .currency, hasInfoButton: true, color: UIColor.INVSDefault())
-        monthlyRescueTextField.delegate = self
+        initialMonthlyRescueTextField.setup(placeholder: "Resgate Mensal Inicial", typeTextField: .initialMonthlyRescue, valueTypeTextField: .currency, hasInfoButton: true, color: UIColor.INVSDefault())
+        initialMonthlyRescueTextField.delegate = self
         
         increaseRescueTextField.setup(placeholder: "Aumento no Resgate", typeTextField: .increaseRescue, valueTypeTextField: .currency, color: UIColor.INVSDefault())
         increaseRescueTextField.delegate = self
@@ -93,14 +109,6 @@ public class INVSSimutatorViewControler: UIViewController {
     }
     
     @IBAction func saveAction(_ sender: Any) {
-        saveButton.setTitle("", for: .normal)
-        saveButton.addSubview(loadingView)
-        NSLayoutConstraint.activate([
-            loadingView.centerYAnchor.constraint(equalTo: saveButton.safeAreaLayoutGuide.centerYAnchor, constant: 0),
-            loadingView.centerXAnchor.constraint(equalTo: saveButton.safeAreaLayoutGuide.centerXAnchor, constant: 0),
-            
-            ])
-        loadingView.startAnimating()
         interactor?.simulationProjection()
     }
     @IBAction func clearAction(_ sender: Any) {
@@ -124,30 +132,29 @@ extension INVSSimutatorViewControler: INVSSimutatorViewControlerProtocol {
     func displayOkAction(withTextField textField: INVSFloatingTextField, andShouldResign shouldResign: Bool) {
         textField.floatingTextField.becomeFirstResponder()
         if shouldResign {
+            interactor?.simulationProjection()
             view.endEditing(shouldResign)
         }
+    }
+    
+    func displayLoading() {
+        self.saveButton.setTitle("", for: .normal)
+        self.loadingView.startAnimating()
+    }
+    func dismissLoading() {
+        loadingView.stopAnimating()
+        saveButton.setTitle("Simular", for: .normal)
     }
     func displayCancelAction() {
         view.endEditing(true)
     }
     
     func displaySimulationProjection(with simulatedValues: [INVSSimulatedValueModel]) {
-        self.loadingView.removeFromSuperview()
-        saveButton.hero.id = "teste"
-        
-        let homeViewController = INVSSimulatedViewController()
-        homeViewController.hero.isEnabled = true
-        
-        homeViewController.tableView.hero.id = "teste"
-        homeViewController.setup(withSimulatedValues: simulatedValues)
-        
-        present(homeViewController, animated: true) {
-            self.saveButton.setTitle("Simulate", for: .normal)
-        }
+        router.routeToSimulated(withSimulatorViewController: self, andSimulatedValues: simulatedValues)
     }
     
-    func displayErrorSimulationProjection(with messageError: String) {
-        popupMessage?.show(withTextMessage: messageError)
+    func displayErrorSimulationProjection(with messageError:String, shouldHideAutomatically:Bool, popupType: INVSPopupMessageType, sender: UIView?) {
+        popupMessage?.show(withTextMessage: messageError, popupType: popupType, shouldHideAutomatically: shouldHideAutomatically, sender: sender)
     }
     
     func displayInfo(withMessage message: String, shouldHideAutomatically: Bool, sender: UIView) {

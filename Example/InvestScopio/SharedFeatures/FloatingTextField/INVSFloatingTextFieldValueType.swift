@@ -21,7 +21,7 @@ enum INVSFloatingTextFieldValueType: Int {
         case .none:
             return textFieldText
         case .currency:
-            return textFieldText.currencyFormat()
+            return textFieldText.currencyFormat(backSpace: isBackSpace)
         case .months:
             return textFieldText.monthFormat()
         case .percent:

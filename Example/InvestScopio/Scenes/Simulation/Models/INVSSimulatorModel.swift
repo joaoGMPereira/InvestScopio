@@ -9,35 +9,35 @@
 import Foundation
 
 struct INVSSimulatorModel {
-    var initialValue: Double! {
+    var initialValue: Double = 0.0 {
         didSet {
             initialValue = initialValue.INVSrounded()
         }
     }
-    var monthValue: Double? {
+    var monthValue: Double = 0.0 {
         didSet {
-            monthValue = monthValue?.INVSrounded()
+            monthValue = monthValue.INVSrounded()
         }
     }
-    var interestRate: Double! {
+    var interestRate: Double = 0.0 {
         didSet {
             interestRate = interestRate.INVSrounded()
         }
     }
-    var totalMonths: Int! 
-    var initialMonthlyRescue: Double? {
+    var totalMonths: Int = 0
+    var initialMonthlyRescue: Double = 0.0 {
         didSet {
-            initialMonthlyRescue = initialMonthlyRescue?.INVSrounded()
+            initialMonthlyRescue = initialMonthlyRescue.INVSrounded()
         }
     }
-    var increaseRescue: Double? {
+    var increaseRescue: Double = 0.0 {
         didSet {
-            increaseRescue = increaseRescue?.INVSrounded()
+            increaseRescue = increaseRescue.INVSrounded()
         }
     }
-    var goalIncreaseRescue: Double? {
+    var goalIncreaseRescue: Double = 0.0 {
         didSet {
-            goalIncreaseRescue = goalIncreaseRescue?.INVSrounded()
+            goalIncreaseRescue = goalIncreaseRescue.INVSrounded()
         }
     }
 }

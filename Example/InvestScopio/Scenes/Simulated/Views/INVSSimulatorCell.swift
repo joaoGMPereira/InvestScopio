@@ -28,16 +28,9 @@ class INVSSimulatorCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         monthLabel.text = ""
-        //monthValueLabel.text = ""
         profitabilityLabel.text = ""
         rescueLabel.text = ""
         totalLabel.text = ""
-        
-        monthLabel.font = .INVSFontDefault()
-        profitabilityLabel.font = .INVSFontDefault()
-        rescueLabel.font = .INVSFontDefault()
-        totalLabel.font = .INVSFontDefault()
-        
         
     }
     
@@ -50,21 +43,22 @@ class INVSSimulatorCell: UITableViewCell {
     }
     
     func setup(withSimulatedValue simulatedValue:INVSSimulatedValueModel) {
-        if let month = simulatedValue.month, month != 0  {
+        monthLabel.font = .INVSFontDefault()
+        profitabilityLabel.font = .INVSFontDefault()
+        rescueLabel.font = .INVSFontDefault()
+        totalLabel.font = .INVSFontDefault()
+        if let month = simulatedValue.month {
             monthLabel.text = "Mês: \(month)"
         } else {
             monthLabel.text = "Aplicação Inicial"
         }
-//        if let monthValue = simulatedValue.monthValue, monthValue != 0 {
-//            monthValueLabel.text =  "Aporte:\n\(monthValue.currencyFormat())"
-//        }
-        if let profitability = simulatedValue.profitability, profitability != 0 {
+        if let profitability = simulatedValue.profitability {
             profitabilityLabel.text = "Rentabilidade:\n \(profitability.currencyFormat())"
         }
-        if let rescue = simulatedValue.rescue, rescue != 0 {
+        if let rescue = simulatedValue.rescue {
             rescueLabel.text = "Resgate:\n\(rescue.currencyFormat())"
         }
-        if let total = simulatedValue.total, total != 0 {
+        if let total = simulatedValue.total {
             totalLabel.text = "Total:\n\(total.currencyFormat())"
         }
     }

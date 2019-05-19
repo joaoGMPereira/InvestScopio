@@ -10,7 +10,9 @@ import UIKit
 
 protocol INVSSimulatorPresenterProtocol {
     func presentSimulationProjection(simulatorModel: INVSSimulatorModel)
-    func presentErrorSimulationProjection(with messageError:String)
+    func presentLoading()
+    func hideLoading()
+    func presentErrorSimulationProjection(with messageError:String, shouldHideAutomatically:Bool, popupType: INVSPopupMessageType, sender: UIView?)
     func presentInfo(sender: UIView)
     func presentToolbarAction(withPreviousTextField textField:INVSFloatingTextField, allTextFields textFields:[INVSFloatingTextField], typeOfAction type: INVSKeyboardToolbarButton)
 }
@@ -20,23 +22,42 @@ class INVSSimulatorPresenter: NSObject,INVSSimulatorPresenterProtocol {
     weak var controller: INVSSimutatorViewControlerProtocol?
     
     func presentSimulationProjection(simulatorModel: INVSSimulatorModel) {
-        var simulatedValues = [INVSSimulatedValueModel]()
-        if let totalMonths = simulatorModel.totalMonths {
-            simulatedValues.append(setInitialValueObject(with: simulatorModel))
+        let queue = DispatchQueue(label: "simulation")
+        
+        queue.async {
+            var simulatedValues = [INVSSimulatedValueModel]()
+            let totalMonths = simulatorModel.totalMonths
+            self.saveInitialProfitabilityUntilNextIncreaseRescue(simulatorModel: simulatorModel)
+            simulatedValues.append(self.setInitialValueObject(with: simulatorModel))
             for month in 1...totalMonths {
+                if month == 52 {
+                    print(month)
+                }
                 let monthValue = simulatorModel.monthValue
-                let profitability = checkProfitability(with: simulatorModel, month: month)
-                let rescue = checkRescue(with: simulatorModel, month: month)
-                let updatedTotal = updateTotalValue(withRescue: rescue, simulatorModel: simulatorModel)
-                let simulatedValue = INVSSimulatedValueModel(month: month, monthValue: monthValue, profitability: profitability, rescue: rescue, total: updatedTotal)
+                let profitability = self.checkProfitability(with: simulatorModel)
+                self.checkTotalValue(with: simulatorModel, profitability: profitability)
+                let rescue = self.checkRescue(with: simulatorModel, profitability:profitability, month: month)
+                let updatedTotalTotalWithRescue = self.updateTotalValue(withRescue: rescue, simulatorModel: simulatorModel)
+                let simulatedValue = INVSSimulatedValueModel(month: month, monthValue: monthValue, profitability: profitability, rescue: rescue, total: updatedTotalTotalWithRescue)
                 simulatedValues.append(simulatedValue)
             }
+            DispatchQueue.main.async(execute: {
+                self.controller?.displaySimulationProjection(with: simulatedValues)
+            })
         }
-        controller?.displaySimulationProjection(with: simulatedValues)
+        
     }
     
-    func presentErrorSimulationProjection(with messageError: String) {
-        controller?.displayErrorSimulationProjection(with: messageError)
+    func presentLoading() {
+        controller?.displayLoading()
+    }
+    
+    func hideLoading() {
+        controller?.dismissLoading()
+    }
+    
+    func presentErrorSimulationProjection(with messageError:String, shouldHideAutomatically:Bool, popupType: INVSPopupMessageType, sender: UIView?) {
+        controller?.displayErrorSimulationProjection(with: messageError, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType, sender: sender)
     }
     func presentToolbarAction(withPreviousTextField textField: INVSFloatingTextField, allTextFields textFields: [INVSFloatingTextField], typeOfAction type: INVSKeyboardToolbarButton) {
         switch type {
@@ -57,30 +78,37 @@ class INVSSimulatorPresenter: NSObject,INVSSimulatorPresenterProtocol {
 
 extension INVSSimulatorPresenter {
     
+    //Salvar primeira rentabilidade
+    func saveInitialProfitabilityUntilNextIncreaseRescue(simulatorModel: INVSSimulatorModel) {
+        let firstProfitability = (simulatorModel.initialValue * (simulatorModel.interestRate))/100
+        let _ = INVSKeyChainWrapper.saveDouble(withValue: firstProfitability, andKey: INVSConstants.SimulatorKeyChainConstants.lastProfitabilityUntilNextIncreaseRescue.rawValue)
+    }
+    
+    //MARK: Mes da Aplicacao Inicial
     private func setInitialValueObject(with simulatorModel: INVSSimulatorModel) -> INVSSimulatedValueModel {
         return INVSSimulatedValueModel(month: nil, monthValue: simulatorModel.monthValue, profitability: nil, rescue: nil, total: simulatorModel.initialValue)
     }
     
-    private func updateTotalValue(withRescue rescue: Double, simulatorModel: INVSSimulatorModel) -> Double {
-        var lastTotalValueRetrieved = INVSKeyChainWrapper.retrieveDouble(withKey: INVSConstants.SimulatorKeyChainConstants.lastTotalValue.rawValue) ?? simulatorModel.initialValue ?? 0.0
-        lastTotalValueRetrieved = lastTotalValueRetrieved - rescue
-        let _ = INVSKeyChainWrapper.updateDouble(withValue: lastTotalValueRetrieved, andKey: INVSConstants.SimulatorKeyChainConstants.lastTotalValue.rawValue)
-        return lastTotalValueRetrieved
-    }
-    
-    private func checkProfitability(with simulatorModel: INVSSimulatorModel, month: Int) -> Double {
-        var lastTotalValue = simulatorModel.initialValue ?? 0
+    //MARK: Calcular Rendimento
+    private func checkProfitability(with simulatorModel: INVSSimulatorModel) -> Double {
         var profitability = 0.0
-        lastTotalValue = checkTotalValue(with: lastTotalValue)
-        profitability = lastTotalValue * ((simulatorModel.interestRate ?? 0.0)/100)
+        var lastTotalValue = getLastTotalValue(with: simulatorModel)
+        profitability = (lastTotalValue * (simulatorModel.interestRate))/100
         lastTotalValue = lastTotalValue + profitability
-        let _ = INVSKeyChainWrapper.updateDouble(withValue: lastTotalValue, andKey: INVSConstants.SimulatorKeyChainConstants.lastTotalValue.rawValue)
-        
+
         return profitability
     }
     
-    private func checkTotalValue(with totalValue: Double) -> Double {
-        var lastTotalValue = totalValue
+    //MARK: Calcular Valor Total Com Rendimento
+    private func checkTotalValue(with simulatorModel: INVSSimulatorModel, profitability: Double) {
+        let lastTotalValue = getLastTotalValue(with: simulatorModel)
+        let totalValueUpdated = lastTotalValue + profitability + (simulatorModel.monthValue)
+        let _ = INVSKeyChainWrapper.updateDouble(withValue: totalValueUpdated, andKey: INVSConstants.SimulatorKeyChainConstants.lastTotalValue.rawValue)
+    }
+    
+    //MARK: Salvar o valor Inicial e pegar o valor atualizado
+    private func getLastTotalValue(with simulatorModel: INVSSimulatorModel) -> Double {
+        var lastTotalValue = simulatorModel.initialValue
         if let lastTotalValueRetrieved = INVSKeyChainWrapper.retrieveDouble(withKey: INVSConstants.SimulatorKeyChainConstants.lastTotalValue.rawValue) {
             lastTotalValue = lastTotalValueRetrieved
         } else {
@@ -89,30 +117,60 @@ extension INVSSimulatorPresenter {
         return lastTotalValue
     }
     
-    private func checkRescue(with simulatorModel: INVSSimulatorModel, month: Int) -> Double {
-        var lastRescue = INVSKeyChainWrapper.retrieveDouble(withKey: INVSConstants.SimulatorKeyChainConstants.lastRescue.rawValue) ?? simulatorModel.initialMonthlyRescue ?? 0.0
-        let increaseRescue = simulatorModel.increaseRescue ?? 0.0
-        let nextGoalRescue = INVSKeyChainWrapper.retrieveDouble(withKey: INVSConstants.SimulatorKeyChainConstants.lastGoalIncreaseRescue.rawValue) ?? simulatorModel.initialValue ?? 0.0
-        let lastTotalValueRetrieved = INVSKeyChainWrapper.retrieveDouble(withKey: INVSConstants.SimulatorKeyChainConstants.lastTotalValue.rawValue) ?? simulatorModel.initialValue ?? 0.0
+    //MARK: Verificar proximo resgate
+    private func checkRescue(with simulatorModel: INVSSimulatorModel, profitability: Double, month: Int) -> Double {
+        var lastRescue = INVSKeyChainWrapper.retrieveDouble(withKey: INVSConstants.SimulatorKeyChainConstants.lastRescue.rawValue) ?? simulatorModel.initialMonthlyRescue
         
-        lastRescue = checkGoalIncreaseRescue(with: simulatorModel, lastTotalValueRetrieved: lastTotalValueRetrieved, nextGoalRescue: nextGoalRescue, lastRescue: lastRescue, increaseRescue: increaseRescue)
+        let lastProfitabilityUntilNextIncreaseRescue = INVSKeyChainWrapper.retrieveDouble(withKey: INVSConstants.SimulatorKeyChainConstants.lastProfitabilityUntilNextIncreaseRescue.rawValue) ?? 0
+        let lastTotalValueRetrieved = INVSKeyChainWrapper.retrieveDouble(withKey: INVSConstants.SimulatorKeyChainConstants.lastTotalValue.rawValue) ?? simulatorModel.initialValue
+        
+        lastRescue = checkGoalIncreaseRescue(with: simulatorModel, profitability: profitability, lastTotalValueRetrieved: lastTotalValueRetrieved, lastProfitabilityUntilNextIncreaseRescue: lastProfitabilityUntilNextIncreaseRescue, lastRescue: lastRescue, month: month)
         return lastRescue
     }
     
-    private func checkGoalIncreaseRescue(with simulatorModel: INVSSimulatorModel, lastTotalValueRetrieved: Double, nextGoalRescue: Double, lastRescue: Double, increaseRescue: Double) -> Double {
+    //MARK: Verificar objetivo de regaste
+    private func checkGoalIncreaseRescue(with simulatorModel: INVSSimulatorModel, profitability: Double, lastTotalValueRetrieved: Double, lastProfitabilityUntilNextIncreaseRescue: Double, lastRescue: Double, month: Int) -> Double {
+        let increaseRescue = simulatorModel.increaseRescue
         var updatedLastRescue = lastRescue
-        var updatedNextGoalRescue = nextGoalRescue
-        if let goalIncreaseRescue = simulatorModel.goalIncreaseRescue {
-            let _ = INVSKeyChainWrapper.saveDouble(withValue: nextGoalRescue, andKey: INVSConstants.SimulatorKeyChainConstants.lastGoalIncreaseRescue.rawValue)
-            
-            if lastTotalValueRetrieved >= nextGoalRescue {
-                updatedNextGoalRescue = lastTotalValueRetrieved + (goalIncreaseRescue/(simulatorModel.interestRate/100))
-                let _ = INVSKeyChainWrapper.updateDouble(withValue: updatedNextGoalRescue, andKey: INVSConstants.SimulatorKeyChainConstants.lastGoalIncreaseRescue.rawValue)
-                
-                updatedLastRescue = updatedLastRescue + increaseRescue
-                let _ = INVSKeyChainWrapper.saveDouble(withValue: updatedLastRescue , andKey: INVSConstants.SimulatorKeyChainConstants.lastRescue.rawValue)
+        let lastProfitabilityUntilNextIncreaseRescue = lastProfitabilityUntilNextIncreaseRescue
+        let goalIncreaseRescue = simulatorModel.goalIncreaseRescue
+        
+        if let nextRescueWithoutGoal = checkNextGoalRescueWithoutGoalIncreaseRescue(rescue: updatedLastRescue, increaseRescue: increaseRescue, goalIncreaseRescue: goalIncreaseRescue, month: month) {
+            updatedLastRescue = nextRescueWithoutGoal
+            return updatedLastRescue
+        }
+        
+        let nextGoalRescue = lastProfitabilityUntilNextIncreaseRescue + goalIncreaseRescue
+        if profitability >= nextGoalRescue {
+            let updatedLastRescueWithIncreaseRescue = updatedLastRescue + increaseRescue
+            if updatedLastRescueWithIncreaseRescue < profitability {
+                let _ = INVSKeyChainWrapper.updateDouble(withValue: nextGoalRescue, andKey: INVSConstants.SimulatorKeyChainConstants.lastProfitabilityUntilNextIncreaseRescue.rawValue)
+                updatedLastRescue = updatedLastRescueWithIncreaseRescue
+                let _ = INVSKeyChainWrapper.updateDouble(withValue: updatedLastRescue , andKey: INVSConstants.SimulatorKeyChainConstants.lastRescue.rawValue)
             }
         }
+        
         return updatedLastRescue
+    }
+    
+    //MARK: Verificar proximo resgate sem proximo objetivo
+    private func checkNextGoalRescueWithoutGoalIncreaseRescue(rescue: Double, increaseRescue: Double, goalIncreaseRescue: Double, month: Int) -> Double? {
+        if goalIncreaseRescue == 0 {
+            var nextGoalRescue = rescue
+            if month != 1 {
+               nextGoalRescue += increaseRescue
+            }
+            let _ = INVSKeyChainWrapper.saveDouble(withValue: nextGoalRescue, andKey: INVSConstants.SimulatorKeyChainConstants.lastRescue.rawValue)
+            return nextGoalRescue
+        }
+        return nil
+    }
+    
+    //MARK: atualizar valor total com o resgate
+    private func updateTotalValue(withRescue rescue: Double, simulatorModel: INVSSimulatorModel) -> Double {
+        var lastTotalValueRetrieved = INVSKeyChainWrapper.retrieveDouble(withKey: INVSConstants.SimulatorKeyChainConstants.lastTotalValue.rawValue) ?? simulatorModel.initialValue
+        lastTotalValueRetrieved = lastTotalValueRetrieved - rescue
+        let _ = INVSKeyChainWrapper.updateDouble(withValue: lastTotalValueRetrieved, andKey: INVSConstants.SimulatorKeyChainConstants.lastTotalValue.rawValue)
+        return lastTotalValueRetrieved
     }
 }

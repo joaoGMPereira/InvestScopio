@@ -16,10 +16,10 @@
                 <outlet property="goalIncreaseRescueTextField" destination="1xJ-yc-7VY" id="o7z-kd-OWn"/>
                 <outlet property="horizontalStackView" destination="eVq-Pt-N1Y" id="q0x-J5-mH6"/>
                 <outlet property="increaseRescueTextField" destination="1KE-v8-O7N" id="iZp-qS-nmV"/>
+                <outlet property="initialMonthlyRescueTextField" destination="bWc-Vh-W5Y" id="cJa-3c-VWe"/>
                 <outlet property="initialValueTextField" destination="Q9h-TA-256" id="Jq2-sB-3sf"/>
                 <outlet property="interestRateTextField" destination="BcE-cK-55e" id="3Fz-Al-IgI"/>
                 <outlet property="monthValueTextField" destination="NyD-yS-Qor" id="Q2q-Dx-bwO"/>
-                <outlet property="monthlyRescueTextField" destination="bWc-Vh-W5Y" id="xRj-Vd-3MK"/>
                 <outlet property="saveButton" destination="1YL-KQ-qYM" id="y4a-So-wvf"/>
                 <outlet property="totalMonthsTextField" destination="YH0-a3-Hzj" id="LO0-RX-TAK"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Gww-78-krV"/>
@@ -78,7 +78,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YL-KQ-qYM">
                             <rect key="frame" x="0.0" y="0.0" width="187" height="70"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" title="Simulate">
+                            <state key="normal" title="Simular">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>

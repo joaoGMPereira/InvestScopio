@@ -12,16 +12,19 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var tabBarController = UITabBarController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let homeViewController = INVSSimutatorViewControler.init(nibName: "INVSSimutatorViewControler", bundle: Bundle(for: INVSSimutatorViewControler.self))
-        let rootNavigationController = UINavigationController.init(rootViewController: homeViewController)
-        window!.rootViewController = rootNavigationController
+        let startViewController = INVSStartViewController.init(nibName: INVSStartViewController.toString(), bundle: Bundle(for: INVSStartViewController.self))
+        window!.rootViewController = startViewController
         window!.makeKeyAndVisible()
         // Override point for customization after application launch.
         return true
+    }
+    
+    static func appDelegate() -> AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

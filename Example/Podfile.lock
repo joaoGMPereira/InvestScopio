@@ -1,13 +1,16 @@
 PODS:
   - Hero (1.4.0)
+  - lottie-ios (3.0.4)
   - SwiftKeychainWrapper (3.3.0)
 
 DEPENDENCIES:
   - Hero (from `https://github.com/barrault01/Hero.git`, commit `6220387`)
+  - lottie-ios
   - SwiftKeychainWrapper
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - lottie-ios
     - SwiftKeychainWrapper
 
 EXTERNAL SOURCES:
@@ -22,8 +25,9 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
+  lottie-ios: 55a2de40418f8de2b155efaba4d4d1a025a5c570
   SwiftKeychainWrapper: ef5ad793bc0e08e24a5913f28345b8f7bc8e4123
 
-PODFILE CHECKSUM: 1f3a7f1c64613e6aef95993456fb078cf066eefe
+PODFILE CHECKSUM: 2bdf3a6ab9e7ba97b0e4092ee57e86a663e9db34
 
 COCOAPODS: 1.6.1

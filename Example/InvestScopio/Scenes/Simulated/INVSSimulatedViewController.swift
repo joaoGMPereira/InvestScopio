@@ -12,27 +12,30 @@ class INVSSimulatedViewController: INVSPresentBaseViewController {
 
     var tableView = UITableView()
     var heightTableviewConstraint = NSLayoutConstraint()
-    
+    var hasLoaded:Bool = false
     
     var dataSource = INVSSimulatorTableviewDataSourceDelegate()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        reloadTableView()
 
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        title = "Simulação"
-        heightTableviewConstraint.constant = view.frame.height - navigationBarHeight - 8
-        UIView.animate(withDuration: 2) {
-            self.view.layoutIfNeeded()
+         if hasLoaded == false {
+            hasLoaded = true
+            title = "Simulação"
+            heightTableviewConstraint.constant = navigationBarHeight + 8
+            UIView.animate(withDuration: 5) {
+                self.view.layoutIfNeeded()
+            }
         }
     }
     
     func setup(withSimulatedValues simulatedValues:[INVSSimulatedValueModel]) {
         dataSource.setup(withSimulatedValues: simulatedValues)
-        reloadTableView()
     }
     
     private func reloadTableView() {
@@ -49,7 +52,7 @@ extension INVSSimulatedViewController: INVSCodeView {
     }
     
     func setupConstraints() {
-        heightTableviewConstraint = tableView.heightAnchor.constraint(equalToConstant: 0)
+        heightTableviewConstraint = tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height)
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),

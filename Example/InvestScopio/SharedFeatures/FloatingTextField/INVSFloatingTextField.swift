@@ -73,8 +73,10 @@ class INVSFloatingTextField: UIView {
     
     func updateTextFieldUI() {
         currentlySelectedColor = selectedColor
+        placeholderLabel.text = placeholderLabel.text?.replacingOccurrences(of: "*", with: "")
         if hasError {
             currentlySelectedColor = .INVSRed()
+            placeholderLabel.text = "\(placeholderLabel.text ?? "")*"
         }
         placeholderLabel.textColor = currentlySelectedColor
         bottomLineView.backgroundColor = currentlySelectedColor

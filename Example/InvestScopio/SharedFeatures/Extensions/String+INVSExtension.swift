@@ -41,7 +41,7 @@ extension String {
         return stringWithSymbol
     }
     
-    public func currencyFormat() -> String {
+    public func currencyFormat(backSpace: Bool = false) -> String {
         
         var number: NSNumber!
         let formatter = NumberFormatter.currencyDefault()
@@ -56,7 +56,10 @@ extension String {
         
         // if first number is 0 or all numbers were deleted
         guard number != 0 as NSNumber else {
-            return ""
+            if backSpace {
+                return ""
+            }
+            return "0"
         }
         
         return formatter.string(from: number)!

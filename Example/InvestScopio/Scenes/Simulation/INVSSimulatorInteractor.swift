@@ -21,11 +21,14 @@ class INVSSimulatorInteractor: NSObject,INVSSimulatorInteractorProtocol {
     var allTextFields = [INVSFloatingTextField]()
     
     func simulationProjection() {
+        
+        self.presenter?.presentLoading()
         INVSKeyChainWrapper.clear()
         worker.simulationProjection(with: allTextFields, successCompletionHandler: { (simulatorModel) in
             self.presenter?.presentSimulationProjection(simulatorModel: simulatorModel)
-        }) { (messageError) in
-            self.presenter?.presentErrorSimulationProjection(with: messageError)
+        }) { (messageError, shouldHideAutomatically, popupType, sender)  in
+            self.presenter?.hideLoading()
+            self.presenter?.presentErrorSimulationProjection(with: messageError, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType, sender: sender)
         }
     }
     
