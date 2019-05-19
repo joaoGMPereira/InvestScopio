@@ -25,6 +25,7 @@ class INVSSimulatorWorker: NSObject,INVSSimulatorWorkerProtocol {
                     errorCompletionHandler("Estipulando um valor no campo:\(increaseRescueTextField.placeholderLabel.text ?? "") Valor para aumentar o Resgate, é necessário o preenchimento do campo: \(goalIncreaseRescueTextField.placeholderLabel.text ?? "")", false, .error, increaseRescueTextField)
                     return
                 }
+                
                 for textField in allTextFieldsRequired {
                     let valueText = textField.floatingTextField.text
                     textField.hasError = false
@@ -44,8 +45,8 @@ class INVSSimulatorWorker: NSObject,INVSSimulatorWorkerProtocol {
     
     func checkIfIncreaseRescueTextFieldIsRequired(withAllTextFields textFields: [INVSFloatingTextField], handler: CheckIfIncreaseRescueTextFieldIsRequiredHandler) {
         if let goalIncreaseRescueTextField = textFields.filter({$0.typeTextField == INVSFloatingTextFieldType.goalIncreaseRescue}).first {
-            if goalIncreaseRescueTextField.floatingTextField.text != "" {
-                if let increaseRescueTextField = textFields.filter({$0.typeTextField == INVSFloatingTextFieldType.increaseRescue}).first {
+            if let increaseRescueTextField = textFields.filter({$0.typeTextField == INVSFloatingTextFieldType.increaseRescue}).first {
+                if goalIncreaseRescueTextField.floatingTextField.text != "" {
                     if increaseRescueTextField.floatingTextField.text?.convertFormattedToDouble() != 0 {
                         increaseRescueTextField.hasError = false
                         increaseRescueTextField.floatingTextField.resignFirstResponder()
@@ -56,6 +57,7 @@ class INVSSimulatorWorker: NSObject,INVSSimulatorWorkerProtocol {
                     increaseRescueTextField.floatingTextField.becomeFirstResponder()
                     handler(increaseRescueTextField,goalIncreaseRescueTextField,true)
                 }
+                handler(increaseRescueTextField,goalIncreaseRescueTextField,false)
             }
         }
     }

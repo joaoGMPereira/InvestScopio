@@ -19,7 +19,7 @@ extension CAShapeLayer {
         shapeLayer.shadowOffset = CGSize(width: 1.0, height: 1.0)
         shapeLayer.shadowOpacity = 0.8
         shapeLayer.shadowRadius = 1
-        
+
         view.layer.insertSublayer(shapeLayer, at: 0)
         //layer.insertSublayer(shadowLayer, below: nil) // also works
         return shapeLayer

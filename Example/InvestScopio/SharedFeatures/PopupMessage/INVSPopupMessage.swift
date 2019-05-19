@@ -39,7 +39,7 @@ class INVSPopupMessage: UIView {
     private var topConstraint = NSLayoutConstraint()
     private var popupHeight = CGFloat(60.0)
     private var popupWidth = CGFloat(200)
-    private var shadowLayer: CAShapeLayer!
+    private var shadowLayer: CAShapeLayer?
     private var timerToHide = Timer()
     private var messageColor :UIColor = INVSPopupMessageType.error.messageColor()
     private var popupBackgroundColor :UIColor = INVSPopupMessageType.error.backgroundColor()
@@ -74,6 +74,10 @@ class INVSPopupMessage: UIView {
     }
     
     func show(withTextMessage message:String, popupType: INVSPopupMessageType = .error, shouldHideAutomatically: Bool = true, sender: UIView? = nil) {
+        if let shadowLayer = self.shadowLayer {
+            shadowLayer.removeFromSuperlayer()
+        }
+        self.shadowLayer = nil
         self.shouldHideAutomatically = shouldHideAutomatically
         messageColor = popupType.messageColor()
         popupBackgroundColor = popupType.backgroundColor()
@@ -94,7 +98,7 @@ class INVSPopupMessage: UIView {
         let closeTitle = NSAttributedString.init(string: "X", attributes: [NSAttributedString.Key.font : UIFont.INVSFontDefault(),NSAttributedString.Key.foregroundColor:messageColor])
         closeButton.setAttributedTitle(closeTitle, for: .normal)
         if shadowLayer != nil {
-            shadowLayer.fillColor = popupBackgroundColor.cgColor
+            shadowLayer?.fillColor = popupBackgroundColor.cgColor
         }
     }
     
@@ -105,6 +109,8 @@ class INVSPopupMessage: UIView {
         let estimatedPopupHeight = message.height(withConstrainedWidth: textMessageWidth, font: .INVSFontBig())
         if estimatedPopupHeight > 60 {
             popupHeight = estimatedPopupHeight
+        } else {
+            popupHeight = 60
         }
     }
     
