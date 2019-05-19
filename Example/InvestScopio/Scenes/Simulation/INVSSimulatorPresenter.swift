@@ -30,7 +30,7 @@ class INVSSimulatorPresenter: NSObject,INVSSimulatorPresenterProtocol {
             self.saveInitialProfitabilityUntilNextIncreaseRescue(simulatorModel: simulatorModel)
             simulatedValues.append(self.setInitialValueObject(with: simulatorModel))
             for month in 1...totalMonths {
-                if month == 52 {
+                if month == 90 {
                     print(month)
                 }
                 let monthValue = simulatorModel.monthValue
@@ -130,7 +130,7 @@ extension INVSSimulatorPresenter {
     
     //MARK: Verificar objetivo de regaste
     private func checkGoalIncreaseRescue(with simulatorModel: INVSSimulatorModel, profitability: Double, lastTotalValueRetrieved: Double, lastProfitabilityUntilNextIncreaseRescue: Double, lastRescue: Double, month: Int) -> Double {
-        let increaseRescue = simulatorModel.increaseRescue
+        var increaseRescue = simulatorModel.increaseRescue
         var updatedLastRescue = lastRescue
         let lastProfitabilityUntilNextIncreaseRescue = lastProfitabilityUntilNextIncreaseRescue
         let goalIncreaseRescue = simulatorModel.goalIncreaseRescue
@@ -139,12 +139,16 @@ extension INVSSimulatorPresenter {
             updatedLastRescue = nextRescueWithoutGoal
             return updatedLastRescue
         }
+        var multiplierGoalIncreaseRescue = Int((profitability - lastProfitabilityUntilNextIncreaseRescue)/goalIncreaseRescue)
+        if multiplierGoalIncreaseRescue < 1 {
+            multiplierGoalIncreaseRescue = 1
+        }
         
-        let nextGoalRescue = lastProfitabilityUntilNextIncreaseRescue + goalIncreaseRescue
+        let nextGoalRescue = lastProfitabilityUntilNextIncreaseRescue + (goalIncreaseRescue * Double(multiplierGoalIncreaseRescue))
+        increaseRescue = increaseRescue * Double(multiplierGoalIncreaseRescue)
         if profitability >= nextGoalRescue {
             updatedLastRescue = checkIfNextRescueWillBeBiggerThanProfitability(withUpdatedLastRescue: updatedLastRescue, increaseRescue: increaseRescue, profitability: profitability, nextGoalRescue: nextGoalRescue)
         }
-        
         return updatedLastRescue
     }
     
