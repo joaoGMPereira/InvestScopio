@@ -142,14 +142,21 @@ extension INVSSimulatorPresenter {
         
         let nextGoalRescue = lastProfitabilityUntilNextIncreaseRescue + goalIncreaseRescue
         if profitability >= nextGoalRescue {
-            let updatedLastRescueWithIncreaseRescue = updatedLastRescue + increaseRescue
-            if updatedLastRescueWithIncreaseRescue < profitability {
-                let _ = INVSKeyChainWrapper.updateDouble(withValue: nextGoalRescue, andKey: INVSConstants.SimulatorKeyChainConstants.lastProfitabilityUntilNextIncreaseRescue.rawValue)
-                updatedLastRescue = updatedLastRescueWithIncreaseRescue
-                let _ = INVSKeyChainWrapper.updateDouble(withValue: updatedLastRescue , andKey: INVSConstants.SimulatorKeyChainConstants.lastRescue.rawValue)
-            }
+            updatedLastRescue = checkIfNextRescueWillBeBiggerThanProfitability(withUpdatedLastRescue: updatedLastRescue, increaseRescue: increaseRescue, profitability: profitability, nextGoalRescue: nextGoalRescue)
         }
         
+        return updatedLastRescue
+    }
+    
+    //MARK: Verificar se o proximo resgate vai ser maior que a rentabilidade
+    func checkIfNextRescueWillBeBiggerThanProfitability(withUpdatedLastRescue updatedLastRescue: Double, increaseRescue: Double, profitability: Double, nextGoalRescue: Double) -> Double {
+        var updatedLastRescue = updatedLastRescue
+        let updatedLastRescueWithIncreaseRescue = updatedLastRescue + increaseRescue
+        if updatedLastRescueWithIncreaseRescue < profitability {
+            let _ = INVSKeyChainWrapper.updateDouble(withValue: nextGoalRescue, andKey: INVSConstants.SimulatorKeyChainConstants.lastProfitabilityUntilNextIncreaseRescue.rawValue)
+            updatedLastRescue = updatedLastRescueWithIncreaseRescue
+            let _ = INVSKeyChainWrapper.updateDouble(withValue: updatedLastRescue , andKey: INVSConstants.SimulatorKeyChainConstants.lastRescue.rawValue)
+        }
         return updatedLastRescue
     }
     
