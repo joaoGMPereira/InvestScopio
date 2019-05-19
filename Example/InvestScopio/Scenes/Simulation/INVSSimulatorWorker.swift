@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 typealias SuccessSimulationHandler = (INVSSimulatorModel) -> Void
 typealias ErrorSimulationHandler = (_ messageError:String, _ shouldHideAutomatically:Bool, _ popupType:INVSPopupMessageType, _ sender: UIView?) ->()
+typealias CheckIfIncreaseRescueTextFieldIsRequiredHandler = (_ increaseRescueTextField:INVSFloatingTextField, _ goalIncreaseRescueTextField:INVSFloatingTextField, _ increaseRescueTextFieldIsRequired: Bool) ->()
 
 protocol INVSSimulatorWorkerProtocol {
     func simulationProjection(with textFields: [INVSFloatingTextField], successCompletionHandler: @escaping(SuccessSimulationHandler), errorCompletionHandler:@escaping(ErrorSimulationHandler))
@@ -19,43 +20,44 @@ class INVSSimulatorWorker: NSObject,INVSSimulatorWorkerProtocol {
         DispatchQueue.main.async {
             let allTextFieldsRequired = textFields.filter({$0.required == true})
             var areFieldsRequiredFilled = true
-            if let increaseRescueTextField = self.checkIfIncreaseRescueTextFieldIsRequired(withAllTextFields: textFields) {
-                errorCompletionHandler("Estipulando um valor no campo: Valor para aumentar o Resgate, é necessário o preenchimento do campo: Aumento no Resgate", false, .error, increaseRescueTextField)
-                return
-            }
-            
-            for textField in allTextFieldsRequired {
-                let valueText = textField.floatingTextField.text
-                textField.hasError = false
-                if valueText == "" || valueText == nil {
-                    textField.hasError = true
-                    areFieldsRequiredFilled = false
+            self.checkIfIncreaseRescueTextFieldIsRequired(withAllTextFields: textFields, handler: { (increaseRescueTextField, goalIncreaseRescueTextField, increaseRescueTextFieldIsRequired) in
+                if increaseRescueTextFieldIsRequired == true {
+                    errorCompletionHandler("Estipulando um valor no campo:\(increaseRescueTextField.placeholderLabel.text ?? "") Valor para aumentar o Resgate, é necessário o preenchimento do campo: \(goalIncreaseRescueTextField.placeholderLabel.text ?? "")", false, .error, increaseRescueTextField)
+                    return
                 }
-            }
-            if let firstTextFieldWithError = allTextFieldsRequired.filter({$0.hasError}).first {
-                firstTextFieldWithError.floatingTextField.becomeFirstResponder()
-            }
-            
-            areFieldsRequiredFilled == true ? successCompletionHandler(self.populateSimulatorModel(with: textFields)) : errorCompletionHandler("Preencha todos os campos obrigatórios!", true, .error, nil)
+                for textField in allTextFieldsRequired {
+                    let valueText = textField.floatingTextField.text
+                    textField.hasError = false
+                    if valueText == "" || valueText == nil {
+                        textField.hasError = true
+                        areFieldsRequiredFilled = false
+                    }
+                }
+                if let firstTextFieldWithError = allTextFieldsRequired.filter({$0.hasError}).first {
+                    firstTextFieldWithError.floatingTextField.becomeFirstResponder()
+                }
+                
+                areFieldsRequiredFilled == true ? successCompletionHandler(self.populateSimulatorModel(with: textFields)) : errorCompletionHandler("Preencha todos os campos obrigatórios!", true, .error, nil)
+            })
         }
     }
     
-    func checkIfIncreaseRescueTextFieldIsRequired(withAllTextFields textFields: [INVSFloatingTextField]) -> INVSFloatingTextField? {
+    func checkIfIncreaseRescueTextFieldIsRequired(withAllTextFields textFields: [INVSFloatingTextField], handler: CheckIfIncreaseRescueTextFieldIsRequiredHandler) {
         if let goalIncreaseRescueTextField = textFields.filter({$0.typeTextField == INVSFloatingTextFieldType.goalIncreaseRescue}).first {
             if goalIncreaseRescueTextField.floatingTextField.text != "" {
                 if let increaseRescueTextField = textFields.filter({$0.typeTextField == INVSFloatingTextFieldType.increaseRescue}).first {
                     if increaseRescueTextField.floatingTextField.text?.convertFormattedToDouble() != 0 {
                         increaseRescueTextField.hasError = false
                         increaseRescueTextField.floatingTextField.resignFirstResponder()
-                        return nil
+                        handler(increaseRescueTextField,goalIncreaseRescueTextField,false)
+                        return
                     }
                     increaseRescueTextField.hasError = true
                     increaseRescueTextField.floatingTextField.becomeFirstResponder()
-                    return increaseRescueTextField
+                    handler(increaseRescueTextField,goalIncreaseRescueTextField,true)
                 }
             }
         }
-        return nil
     }
     
     private func populateSimulatorModel(with textFields:[INVSFloatingTextField]) -> INVSSimulatorModel {

@@ -68,7 +68,7 @@ class INVSSimulatorPresenter: NSObject,INVSSimulatorPresenterProtocol {
     }
     
     func presentInfo(sender: UIView) {
-        controller?.displayInfo(withMessage: "Seu valor de retirada irá aumentar até que a proxima meta seja igual ou maior que seu valor total.", shouldHideAutomatically: false, sender: sender)
+        controller?.displayInfo(withMessage: "É o valor inicial para começar o resgate do seu rendimento.\n Ex: Seu rendimento está em 10R$ e decide retirar 1R$, portanto nesse mês você terá como resultado:\nRendimento: 10R$\nResgate: 1R$", shouldHideAutomatically: false, sender: sender)
     }
     
 }

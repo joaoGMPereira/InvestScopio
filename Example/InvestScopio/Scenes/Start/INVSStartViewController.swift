@@ -28,7 +28,7 @@ class INVSStartViewController: UIViewController {
             animatedLogoView.centerXAnchor.constraint(equalTo: view.centerXAnchor,constant: 0),
             animatedLogoView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
             ])
-        let starAnimation = Animation.named("animatedLogo")
+        let starAnimation = Animation.named("animatedLoading")
         animatedLogoView.animation = starAnimation
         animatedLogoView.contentMode = .scaleAspectFit
         animatedLogoView.animationSpeed = 1.0

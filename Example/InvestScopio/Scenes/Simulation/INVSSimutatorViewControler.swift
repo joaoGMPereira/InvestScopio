@@ -89,7 +89,7 @@ public class INVSSimutatorViewControler: UIViewController {
         initialValueTextField.setup(placeholder: "Valor Inicial", typeTextField: .initialValue, valueTypeTextField: .currency, required: true, color: UIColor.INVSDefault())
         initialValueTextField.delegate = self
         
-        monthValueTextField.setup(placeholder: "Valor do Aporte", typeTextField: .monthValue, valueTypeTextField: .currency, required: false, color: UIColor.INVSDefault())
+        monthValueTextField.setup(placeholder: "Investimento Mensal", typeTextField: .monthValue, valueTypeTextField: .currency, required: false, color: UIColor.INVSDefault())
         monthValueTextField.delegate = self
         
         interestRateTextField.setup(placeholder: "Taxa de Juros", typeTextField: .interestRate, valueTypeTextField: .percent, required: true, color: UIColor.INVSDefault())
@@ -98,13 +98,13 @@ public class INVSSimutatorViewControler: UIViewController {
         totalMonthsTextField.setup(placeholder: "Total de Meses", typeTextField: .totalMonths, valueTypeTextField: .months, required: true, color: UIColor.INVSDefault())
         totalMonthsTextField.delegate = self
         
-        initialMonthlyRescueTextField.setup(placeholder: "Resgate Mensal Inicial", typeTextField: .initialMonthlyRescue, valueTypeTextField: .currency, hasInfoButton: true, color: UIColor.INVSDefault())
+        initialMonthlyRescueTextField.setup(placeholder: "Valor Inicial do Resgate", typeTextField: .initialMonthlyRescue, valueTypeTextField: .currency, hasInfoButton: true, color: UIColor.INVSDefault())
         initialMonthlyRescueTextField.delegate = self
         
-        increaseRescueTextField.setup(placeholder: "Aumento no Resgate", typeTextField: .increaseRescue, valueTypeTextField: .currency, color: UIColor.INVSDefault())
+        increaseRescueTextField.setup(placeholder: "Acréscimo no resgate", typeTextField: .increaseRescue, valueTypeTextField: .currency, color: UIColor.INVSDefault())
         increaseRescueTextField.delegate = self
         
-        goalIncreaseRescueTextField.setup(placeholder: "Valor para aumentar o Resgate", typeTextField: .goalIncreaseRescue, valueTypeTextField: .currency, color: UIColor.INVSDefault())
+        goalIncreaseRescueTextField.setup(placeholder: "Objetivo para aumento de resgate", typeTextField: .goalIncreaseRescue, valueTypeTextField: .currency, color: UIColor.INVSDefault())
         goalIncreaseRescueTextField.delegate = self
     }
     
@@ -114,6 +114,17 @@ public class INVSSimutatorViewControler: UIViewController {
     @IBAction func clearAction(_ sender: Any) {
         interactor?.clear()
     }
+    
+    private func disableButtonsAction() {
+        self.saveButton.isEnabled = false
+        self.clearButton.isEnabled = false
+    }
+    
+    private func enableButtonsAction() {
+        self.saveButton.isEnabled = true
+        self.clearButton.isEnabled = true
+    }
+    
 }
 
 extension INVSSimutatorViewControler: INVSFloatingTextFieldDelegate {
@@ -139,10 +150,12 @@ extension INVSSimutatorViewControler: INVSSimutatorViewControlerProtocol {
     
     func displayLoading() {
         self.saveButton.setTitle("", for: .normal)
+        disableButtonsAction()
         self.loadingView.startAnimating()
     }
     func dismissLoading() {
         loadingView.stopAnimating()
+        enableButtonsAction()
         saveButton.setTitle("Simular", for: .normal)
     }
     func displayCancelAction() {
@@ -150,6 +163,8 @@ extension INVSSimutatorViewControler: INVSSimutatorViewControlerProtocol {
     }
     
     func displaySimulationProjection(with simulatedValues: [INVSSimulatedValueModel]) {
+        popupMessage?.hide()
+        enableButtonsAction()
         router.routeToSimulated(withSimulatorViewController: self, andSimulatedValues: simulatedValues)
     }
     
@@ -163,13 +178,4 @@ extension INVSSimutatorViewControler: INVSSimutatorViewControlerProtocol {
     
     
     
-}
-
-extension UIStackView {
-    func addBackground(color: UIColor) {
-        let subView = UIView(frame: bounds)
-        subView.backgroundColor = color
-        subView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        insertSubview(subView, at: 0)
-    }
 }
