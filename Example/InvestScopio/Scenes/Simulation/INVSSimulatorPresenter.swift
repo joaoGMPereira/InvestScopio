@@ -30,9 +30,6 @@ class INVSSimulatorPresenter: NSObject,INVSSimulatorPresenterProtocol {
             self.saveInitialProfitabilityUntilNextIncreaseRescue(simulatorModel: simulatorModel)
             simulatedValues.append(self.setInitialValueObject(with: simulatorModel))
             for month in 1...totalMonths {
-                if month == 90 {
-                    print(month)
-                }
                 let monthValue = simulatorModel.monthValue
                 let profitability = self.checkProfitability(with: simulatorModel)
                 self.checkTotalValue(with: simulatorModel, profitability: profitability)
@@ -143,12 +140,12 @@ extension INVSSimulatorPresenter {
         if multiplierGoalIncreaseRescue < 1 {
             multiplierGoalIncreaseRescue = 1
         }
-        
         let nextGoalRescue = lastProfitabilityUntilNextIncreaseRescue + (goalIncreaseRescue * Double(multiplierGoalIncreaseRescue))
         increaseRescue = increaseRescue * Double(multiplierGoalIncreaseRescue)
         if profitability >= nextGoalRescue {
             updatedLastRescue = checkIfNextRescueWillBeBiggerThanProfitability(withUpdatedLastRescue: updatedLastRescue, increaseRescue: increaseRescue, profitability: profitability, nextGoalRescue: nextGoalRescue)
         }
+        
         return updatedLastRescue
     }
     
