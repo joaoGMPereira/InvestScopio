@@ -62,14 +62,14 @@ public class INVSSimutatorViewControler: UIViewController {
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         popupMessage = INVSPopupMessage(parentViewController: self)
+        CAShapeLayer.addGradientLayer(inView: saveButton, withColorsArr: UIColor.INVSGradientColors())
+        CAShapeLayer.addGradientLayer(inView: clearButton, withColorsArr: UIColor.INVSGradientColors())
     }
     
     func setupUI() {
         setupTextFields()
         setupLoading()
         horizontalStackView.addBackground(color: .lightGray)
-        saveButton.backgroundColor = UIColor.INVSDefault()
-        clearButton.backgroundColor = UIColor.INVSDefault()
         view.backgroundColor = .INVSGray()
     }
     

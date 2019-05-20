@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="INVSSimutatorViewControler" customModule="InvestScopio_Example" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="INVSSimutatorViewControler" customModule="InvestScopio" customModuleProvider="target">
             <connections>
                 <outlet property="clearButton" destination="fwz-7i-qNv" id="xuy-Ic-GGE"/>
                 <outlet property="goalIncreaseRescueTextField" destination="1xJ-yc-7VY" id="o7z-kd-OWn"/>
@@ -33,37 +33,37 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xej-dM-W90">
                     <rect key="frame" x="0.0" y="28" width="375" height="350"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q9h-TA-256" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q9h-TA-256" customClass="INVSFloatingTextField" customModule="InvestScopio" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="51.5"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NyD-yS-Qor" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NyD-yS-Qor" customClass="INVSFloatingTextField" customModule="InvestScopio" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="59.5" width="375" height="52"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="eVq-Pt-N1Y">
                             <rect key="frame" x="0.0" y="119.5" width="375" height="51.5"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BcE-cK-55e" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BcE-cK-55e" customClass="INVSFloatingTextField" customModule="InvestScopio" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="187" height="51.5"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YH0-a3-Hzj" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YH0-a3-Hzj" customClass="INVSFloatingTextField" customModule="InvestScopio" customModuleProvider="target">
                                     <rect key="frame" x="188" y="0.0" width="187" height="51.5"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                             </subviews>
                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </stackView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWc-Vh-W5Y" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWc-Vh-W5Y" customClass="INVSFloatingTextField" customModule="InvestScopio" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="179" width="375" height="51.5"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1KE-v8-O7N" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1KE-v8-O7N" customClass="INVSFloatingTextField" customModule="InvestScopio" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="238.5" width="375" height="52"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xJ-yc-7VY" customClass="INVSFloatingTextField" customModule="InvestScopio_Example" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xJ-yc-7VY" customClass="INVSFloatingTextField" customModule="InvestScopio" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="298.5" width="375" height="51.5"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>

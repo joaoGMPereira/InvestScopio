@@ -17,6 +17,14 @@ extension UIColor {
         return UIColor.INVSPallete(red: 83, green: 77, blue: 185)
     }
     
+    static func INVSLightDefault() -> UIColor {
+        return UIColor.INVSPallete(red: 172, green: 126, blue: 189)
+    }
+    
+    static func INVSGradientColors() -> [CGColor] {
+        return [UIColor.INVSDefault().cgColor, UIColor.INVSLightDefault().cgColor]
+    }
+    
     static func INVSRed() -> UIColor {
         return UIColor.INVSPallete(red: 249, green: 66, blue: 47)
     }

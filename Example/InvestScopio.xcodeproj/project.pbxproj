@@ -10,6 +10,9 @@
 		273BB62CABFB5444BBFB754A /* Pods_InvestScopio_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CC40F89EA7210FD649F7D3 /* Pods_InvestScopio_Example.framework */; };
 		4A4C683422916EED00EDC8C6 /* UIStackview+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C683322916EED00EDC8C6 /* UIStackview+INVSExtension.swift */; };
 		4A4C6836229177D600EDC8C6 /* UIButton+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6835229177D600EDC8C6 /* UIButton+INVSExtension.swift */; };
+		4A4C68392292BFB700EDC8C6 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68382292BFB700EDC8C6 /* GradientView.swift */; };
+		4A4C683B2292C71900EDC8C6 /* UIImage+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C683A2292C71900EDC8C6 /* UIImage+INVSExtension.swift */; };
+		4A4C683D2293354B00EDC8C6 /* animatedLogoWhite.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C683C2293354B00EDC8C6 /* animatedLogoWhite.json */; };
 		4AEA3317228ADA950027AEF5 /* INVSKeyChainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA3316228ADA950027AEF5 /* INVSKeyChainWrapper.swift */; };
 		4AEA331A228AF26E0027AEF5 /* INVSConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA3319228AF26E0027AEF5 /* INVSConstants.swift */; };
 		4AEA331C228B79AB0027AEF5 /* Double+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA331B228B79AB0027AEF5 /* Double+INVSExtension.swift */; };
@@ -69,6 +72,9 @@
 		398B97FCD68062F25C40693A /* Pods-InvestScopio_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvestScopio_Tests.debug.xcconfig"; path = "Target Support Files/Pods-InvestScopio_Tests/Pods-InvestScopio_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		4A4C683322916EED00EDC8C6 /* UIStackview+INVSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackview+INVSExtension.swift"; sourceTree = "<group>"; };
 		4A4C6835229177D600EDC8C6 /* UIButton+INVSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+INVSExtension.swift"; sourceTree = "<group>"; };
+		4A4C68382292BFB700EDC8C6 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		4A4C683A2292C71900EDC8C6 /* UIImage+INVSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+INVSExtension.swift"; sourceTree = "<group>"; };
+		4A4C683C2293354B00EDC8C6 /* animatedLogoWhite.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animatedLogoWhite.json; sourceTree = "<group>"; };
 		4AEA3316228ADA950027AEF5 /* INVSKeyChainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSKeyChainWrapper.swift; sourceTree = "<group>"; };
 		4AEA3319228AF26E0027AEF5 /* INVSConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSConstants.swift; sourceTree = "<group>"; };
 		4AEA331B228B79AB0027AEF5 /* Double+INVSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+INVSExtension.swift"; sourceTree = "<group>"; };
@@ -137,6 +143,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A4C68372292BFA000EDC8C6 /* GradientView */ = {
+			isa = PBXGroup;
+			children = (
+				4A4C68382292BFB700EDC8C6 /* GradientView.swift */,
+			);
+			path = GradientView;
+			sourceTree = "<group>";
+		};
 		4AEA3318228AF25F0027AEF5 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +232,7 @@
 		4AFD5159228A210000AF9513 /* SharedFeatures */ = {
 			isa = PBXGroup;
 			children = (
+				4A4C68372292BFA000EDC8C6 /* GradientView */,
 				4AEA334A228E330E0027AEF5 /* PresentBaseViewController */,
 				4AEA3318228AF25F0027AEF5 /* Constants */,
 				4AFD519A228ADA3200AF9513 /* KeychainWrapper */,
@@ -253,6 +268,7 @@
 				4AEA336B228F2B5A0027AEF5 /* UIViewController+INVSExtension.swift */,
 				4A4C683322916EED00EDC8C6 /* UIStackview+INVSExtension.swift */,
 				4A4C6835229177D600EDC8C6 /* UIButton+INVSExtension.swift */,
+				4A4C683A2292C71900EDC8C6 /* UIImage+INVSExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -340,6 +356,7 @@
 		607FACD21AFB9204008FA782 /* Example for InvestScopio */ = {
 			isa = PBXGroup;
 			children = (
+				4A4C683C2293354B00EDC8C6 /* animatedLogoWhite.json */,
 				4AEA3365228F03180027AEF5 /* animatedLogo.json */,
 				4AEA335C228F003E0027AEF5 /* animatedLoading.json */,
 				4AFD5159228A210000AF9513 /* SharedFeatures */,
@@ -490,6 +507,7 @@
 				4AEA3351228EF8BD0027AEF5 /* INVSStartViewController.xib in Resources */,
 				4AEA3368228F08E40027AEF5 /* Images.xcassets in Resources */,
 				4AEA335E228F003E0027AEF5 /* animatedLoading.json in Resources */,
+				4A4C683D2293354B00EDC8C6 /* animatedLogoWhite.json in Resources */,
 				4AEA3342228DC8F70027AEF5 /* INVSSimulatorCell.xib in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				4AFD5192228AD78600AF9513 /* INVSSimutatorViewControler.xib in Resources */,
@@ -586,6 +604,7 @@
 			files = (
 				4AEA331C228B79AB0027AEF5 /* Double+INVSExtension.swift in Sources */,
 				4AFD5171228A210000AF9513 /* INVSKeyboardToolbar.swift in Sources */,
+				4A4C68392292BFB700EDC8C6 /* GradientView.swift in Sources */,
 				4AEA336C228F2B5A0027AEF5 /* UIViewController+INVSExtension.swift in Sources */,
 				4AEA336A228F28A70027AEF5 /* UIWindow+INVSExtension.swift in Sources */,
 				4AFD5176228A210000AF9513 /* INVSCodeView.swift in Sources */,
@@ -598,6 +617,7 @@
 				4AEA3347228DC8F70027AEF5 /* INVSSimulatedViewController.swift in Sources */,
 				4AEA3349228DE9A30027AEF5 /* INVSRouter.swift in Sources */,
 				4AFD5174228A210000AF9513 /* String+INVSExtension.swift in Sources */,
+				4A4C683B2292C71900EDC8C6 /* UIImage+INVSExtension.swift in Sources */,
 				4AFD5175228A210000AF9513 /* INVSPopupMessage.swift in Sources */,
 				4AFD5173228A210000AF9513 /* NumberFormatter+INVSExtension.swift in Sources */,
 				4A4C683422916EED00EDC8C6 /* UIStackview+INVSExtension.swift in Sources */,
