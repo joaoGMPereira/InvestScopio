@@ -23,9 +23,10 @@ class INVSRouter: NSObject, INVSRoutingLogic {
         let simulatorViewController = INVSSimutatorViewControler.init(nibName: INVSSimutatorViewControler.toString(), bundle: Bundle(for: INVSSimutatorViewControler.self))
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             appDelegate.tabBarController.tabBar.tintColor = .INVSDefault()
-            let tapImage = UIImage(named: "chartIcon")
+            let tapImage = UIImage(named: "chartIconGradient")
             let simulatorTabBarItem = UITabBarItem(title: "Simulador", image: tapImage, tag: 0)
             simulatorViewController.tabBarItem = simulatorTabBarItem
+            
             appDelegate.tabBarController.setViewControllers([UINavigationController(rootViewController: simulatorViewController)], animated: true)
             var options = UIWindow.TransitionOptions()
             options.direction = .toTop

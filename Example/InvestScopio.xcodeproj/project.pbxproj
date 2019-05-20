@@ -457,6 +457,7 @@
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = G77MYT7HW8;
 						LastSwiftMigration = 1010;
+						ProvisioningStyle = Automatic;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
@@ -789,6 +790,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 398B97FCD68062F25C40693A /* Pods-InvestScopio_Tests.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G77MYT7HW8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -802,8 +805,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InvestScopio_Example.app/InvestScopio_Example";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InvestScopio.app/InvestScopio";
 			};
 			name = Debug;
 		};
@@ -811,6 +815,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E6C5F0217D59710D76858577 /* Pods-InvestScopio_Tests.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G77MYT7HW8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -820,8 +826,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InvestScopio_Example.app/InvestScopio_Example";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InvestScopio.app/InvestScopio";
 			};
 			name = Release;
 		};
