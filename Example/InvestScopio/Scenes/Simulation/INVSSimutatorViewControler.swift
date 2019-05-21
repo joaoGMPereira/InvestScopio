@@ -128,6 +128,9 @@ public class INVSSimutatorViewControler: UIViewController {
 }
 
 extension INVSSimutatorViewControler: INVSFloatingTextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: INVSFloatingTextField) {
+        self.popupMessage?.hide()
+    }
     func toolbarAction(_ textField: INVSFloatingTextField, typeOfAction type: INVSKeyboardToolbarButton) {
         interactor?.checkToolbarAction(withTextField: textField, typeOfAction: type)
     }

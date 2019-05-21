@@ -43,6 +43,10 @@ class INVSSimulatorCell: UITableViewCell {
     }
     
     func setup(withSimulatedValue simulatedValue:INVSSimulatedValueModel) {
+        if let shadowLayer = self.shadowLayer {
+            shadowLayer.removeFromSuperlayer()
+        }
+        self.shadowLayer = nil
         monthLabel.font = .INVSFontDefault()
         profitabilityLabel.font = .INVSFontDefault()
         rescueLabel.font = .INVSFontDefault()

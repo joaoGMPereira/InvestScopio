@@ -23,6 +23,7 @@ enum INVSKeyboardToolbarButton: Int {
         case .cancel:
             button = UIBarButtonItem(title: "Cancel", style: .plain, target: target, action: action)
         }
+        button.tintColor = .INVSDefault()
         button.tag = rawValue
         return button
     }

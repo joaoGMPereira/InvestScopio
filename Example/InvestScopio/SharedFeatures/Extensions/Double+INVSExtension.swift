@@ -15,7 +15,7 @@ extension Double {
         return (self * divisor).rounded() / divisor
     }
     
-    public func currencyFormat() -> String {
+    public func currencyFormat(withSize size: Int? = nil) -> String {
         
         var number: NSNumber!
         let formatter = NumberFormatter.currencyDefault()
@@ -23,7 +23,7 @@ extension Double {
         var amountWithoutPrefix = String(format: "%.2f", self)
         
         // remove from String: "$", ".", ","
-        amountWithoutPrefix = amountWithoutPrefix.stringOfNumbersRegex(with: 12)
+        amountWithoutPrefix = amountWithoutPrefix.stringOfNumbersRegex(with: size)
         
         let double = (amountWithoutPrefix as NSString).doubleValue
         number = NSNumber(value: (double / 100))

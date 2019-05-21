@@ -12,6 +12,7 @@ import UIKit
 protocol INVSFloatingTextFieldDelegate: class {
     func infoButtonAction(_ textField: INVSFloatingTextField)
     func toolbarAction(_ textField: INVSFloatingTextField, typeOfAction type: INVSKeyboardToolbarButton)
+    func textFieldDidBeginEditing(_ textField: INVSFloatingTextField)
 }
 
 class INVSFloatingTextField: UIView {
@@ -174,6 +175,7 @@ extension INVSFloatingTextField: UITextFieldDelegate, INVSKeyboardToolbarDelegat
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        delegate?.textFieldDidBeginEditing(self)
         openKeyboard()
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
