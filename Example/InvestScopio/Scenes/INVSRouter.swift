@@ -38,7 +38,8 @@ class INVSRouter: NSObject, INVSRoutingLogic {
     }
     
     func routeToSimulated(withSimulatorViewController viewController: INVSSimutatorViewControler, andSimulatedValues simulatedValues: [INVSSimulatedValueModel]) {
-        viewController.loadingView.stopAnimating()
+        viewController.loadingView.isHidden = true
+        viewController.loadingView.stop()
         viewController.saveButton.hero.id = INVSConstants.INVSTransactionsViewControllersID.startSimulatedViewController.rawValue
         
         let homeViewController = INVSSimulatedViewController()

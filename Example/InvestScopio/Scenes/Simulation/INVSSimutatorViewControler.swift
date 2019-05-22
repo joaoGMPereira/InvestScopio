@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 import Hero
 protocol INVSSimutatorViewControlerProtocol: class {
     func displaySimulationProjection(with simulatedValues: [INVSSimulatedValueModel])
@@ -31,7 +32,7 @@ public class INVSSimutatorViewControler: UIViewController {
     @IBOutlet weak var clearButton: UIButton!
     private var clearButtonLayer: CAGradientLayer!
     @IBOutlet weak var horizontalStackView: UIStackView!
-    var loadingView = UIActivityIndicatorView(style: .white)
+    var loadingView = AnimationView()
     @IBOutlet weak var heightScrollView: NSLayoutConstraint!
     
     
@@ -88,11 +89,18 @@ public class INVSSimutatorViewControler: UIViewController {
         loadingView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             loadingView.centerYAnchor.constraint(equalTo: saveButton.safeAreaLayoutGuide.centerYAnchor),
+            loadingView.widthAnchor.constraint(equalToConstant: 50),
+            loadingView.heightAnchor.constraint(equalToConstant: 50),
             loadingView.centerXAnchor.constraint(equalTo: saveButton.safeAreaLayoutGuide.centerXAnchor),
             
             ])
-        loadingView.hidesWhenStopped = true
-        loadingView.stopAnimating()
+        let starAnimation = Animation.named("animatedLoadingWhite")
+        loadingView.animation = starAnimation
+        loadingView.contentMode = .scaleAspectFit
+        loadingView.animationSpeed = 1.0
+        loadingView.loopMode = .loop
+        loadingView.isHidden = true
+
     }
     
     private func setupTextFields() {
@@ -199,12 +207,14 @@ extension INVSSimutatorViewControler: INVSSimutatorViewControlerProtocol {
     }
     
     func displayLoading() {
-        self.saveButton.setTitle("", for: .normal)
+        saveButton.setTitle("", for: .normal)
         disableButtonsAction()
-        self.loadingView.startAnimating()
+        loadingView.isHidden = false
+        loadingView.play()
     }
     func dismissLoading() {
-        loadingView.stopAnimating()
+        loadingView.isHidden = true
+        loadingView.stop()
         enableButtonsAction()
         saveButton.setTitle("Simular", for: .normal)
     }
