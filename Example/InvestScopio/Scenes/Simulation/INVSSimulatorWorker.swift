@@ -22,7 +22,7 @@ class INVSSimulatorWorker: NSObject,INVSSimulatorWorkerProtocol {
             var areFieldsRequiredFilled = true
             self.checkIfIncreaseRescueTextFieldIsRequired(withAllTextFields: textFields, handler: { (increaseRescueTextField, goalIncreaseRescueTextField, increaseRescueTextFieldIsRequired) in
                 if increaseRescueTextFieldIsRequired == true {
-                    errorCompletionHandler("Estipulando um valor no campo:\(increaseRescueTextField.placeholderLabel.text ?? "") Valor para aumentar o Resgate, é necessário o preenchimento do campo: \(goalIncreaseRescueTextField.placeholderLabel.text ?? "")", false, .error, increaseRescueTextField)
+                    errorCompletionHandler("Estipulando um valor no campo:\(increaseRescueTextField.placeholderLabel.text ?? ""), é necessário o preenchimento do campo: \(goalIncreaseRescueTextField.placeholderLabel.text ?? "")", false, .error, increaseRescueTextField)
                     return
                 }
                 

@@ -30,11 +30,30 @@ enum INVSFloatingTextFieldType: Int {
         case .totalMonths:
         return ""
         case .initialMonthlyRescue:
-        return "É o valor inicial para começar o resgate do seu rendimento.\n Ex: Seu rendimento está em 10R$ e decide retirar 1R$, portanto nesse mês você terá como resultado:\nRendimento: 9R$\nResgate: 1R$"
+        return "É o valor inicial para começar o resgate do seu rendimento.\n\nExemplo: Seu rendimento está em 10R$ e decide retirar 1R$, portanto nesse mês você terá como resultado:\nRendimento: 9R$ Resgate: 1R$"
         case .increaseRescue:
-        return ""
+            return "Exemplos:\n\n 1º Caso: 0 valor que será aumentado no resgate todo mês, caso não tenha colocado um objetivo de rendimento para aumento no resgate.\n\nExemplo:\nSeu acréscimo de resgate é de 10R$ neste mês no próximo será 20R$ e assim sucessivamente.\n\n 2º Caso: Toda vez que você atingir o objetivo de rendimento o valor será aumentado.\n\nExemplo:\nSeu acréscimo de resgate é de 10R$ quando seu rendimento que começou rendendo 100R$ atingir o objetivo de rendimento de mais 100R$, então quando seu rendimento começar a render 200R$, seu resgate será de mais 10R$."
         case .goalIncreaseRescue:
-        return ""
+            return "É o próximo valor que você espera que seu rendimento chegue para que possa aumentar o valor de resgate do mesmo.\n\nExemplo: Seu rendimento está em 100R$ e seu resgate é de 10R$, seu objetivo de rendimento para aumento de resgate é de 100R$ e seu acréscimo no resgate é de 10R$, quando seu rendimento chegar em 200R$, seu resgate será de 20R$.\n\nOBS: Caso seu rendimento esteja alto o suficiente para que de um mês para o outro aumente 200R$, 300R$ e assim por diante, seu aumento no resgate será proporcional a ele 20R$, 30R$ e assim por diante."
+        }
+    }
+    
+    func getTitleMessageInfo() -> String {
+        switch self {
+        case .initialValue:
+            return ""
+        case .monthValue:
+            return ""
+        case .interestRate:
+            return ""
+        case .totalMonths:
+            return ""
+        case .initialMonthlyRescue:
+            return "Valor Inicial do Resgate\n\n"
+        case .increaseRescue:
+            return "Acréscimo no Resgate\n\n"
+        case .goalIncreaseRescue:
+            return "Objetivo de Rendimento para aumento de resgate\n\n"
         }
     }
     

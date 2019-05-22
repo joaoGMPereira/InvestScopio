@@ -13,6 +13,9 @@
 		4A4C68392292BFB700EDC8C6 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68382292BFB700EDC8C6 /* GradientView.swift */; };
 		4A4C683B2292C71900EDC8C6 /* UIImage+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C683A2292C71900EDC8C6 /* UIImage+INVSExtension.swift */; };
 		4A4C683D2293354B00EDC8C6 /* animatedLogoWhite.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C683C2293354B00EDC8C6 /* animatedLogoWhite.json */; };
+		4A4C683F2294177F00EDC8C6 /* animatedLoadingWhite.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C683E2294177F00EDC8C6 /* animatedLoadingWhite.json */; };
+		4A4C6841229419CE00EDC8C6 /* animatedLoadingPurple.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C6840229419CD00EDC8C6 /* animatedLoadingPurple.json */; };
+		4A4C68432294BE5D00EDC8C6 /* INVSPopupMessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68422294BE5D00EDC8C6 /* INVSPopupMessageType.swift */; };
 		4AEA3317228ADA950027AEF5 /* INVSKeyChainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA3316228ADA950027AEF5 /* INVSKeyChainWrapper.swift */; };
 		4AEA331A228AF26E0027AEF5 /* INVSConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA3319228AF26E0027AEF5 /* INVSConstants.swift */; };
 		4AEA331C228B79AB0027AEF5 /* Double+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA331B228B79AB0027AEF5 /* Double+INVSExtension.swift */; };
@@ -29,7 +32,6 @@
 		4AEA334C228E334C0027AEF5 /* INVSPresentBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA334B228E334C0027AEF5 /* INVSPresentBaseViewController.swift */; };
 		4AEA3350228EF8BD0027AEF5 /* INVSStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA334E228EF8BD0027AEF5 /* INVSStartViewController.swift */; };
 		4AEA3351228EF8BD0027AEF5 /* INVSStartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AEA334F228EF8BD0027AEF5 /* INVSStartViewController.xib */; };
-		4AEA335E228F003E0027AEF5 /* animatedLoading.json in Resources */ = {isa = PBXBuildFile; fileRef = 4AEA335C228F003E0027AEF5 /* animatedLoading.json */; };
 		4AEA3366228F03180027AEF5 /* animatedLogo.json in Resources */ = {isa = PBXBuildFile; fileRef = 4AEA3365228F03180027AEF5 /* animatedLogo.json */; };
 		4AEA3368228F08E40027AEF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AEA3367228F08E40027AEF5 /* Images.xcassets */; };
 		4AEA336A228F28A70027AEF5 /* UIWindow+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA3369228F28A70027AEF5 /* UIWindow+INVSExtension.swift */; };
@@ -75,6 +77,9 @@
 		4A4C68382292BFB700EDC8C6 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		4A4C683A2292C71900EDC8C6 /* UIImage+INVSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+INVSExtension.swift"; sourceTree = "<group>"; };
 		4A4C683C2293354B00EDC8C6 /* animatedLogoWhite.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animatedLogoWhite.json; sourceTree = "<group>"; };
+		4A4C683E2294177F00EDC8C6 /* animatedLoadingWhite.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animatedLoadingWhite.json; sourceTree = "<group>"; };
+		4A4C6840229419CD00EDC8C6 /* animatedLoadingPurple.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animatedLoadingPurple.json; sourceTree = "<group>"; };
+		4A4C68422294BE5D00EDC8C6 /* INVSPopupMessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSPopupMessageType.swift; sourceTree = "<group>"; };
 		4AEA3316228ADA950027AEF5 /* INVSKeyChainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSKeyChainWrapper.swift; sourceTree = "<group>"; };
 		4AEA3319228AF26E0027AEF5 /* INVSConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSConstants.swift; sourceTree = "<group>"; };
 		4AEA331B228B79AB0027AEF5 /* Double+INVSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+INVSExtension.swift"; sourceTree = "<group>"; };
@@ -91,7 +96,6 @@
 		4AEA334B228E334C0027AEF5 /* INVSPresentBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSPresentBaseViewController.swift; sourceTree = "<group>"; };
 		4AEA334E228EF8BD0027AEF5 /* INVSStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSStartViewController.swift; sourceTree = "<group>"; };
 		4AEA334F228EF8BD0027AEF5 /* INVSStartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = INVSStartViewController.xib; sourceTree = "<group>"; };
-		4AEA335C228F003E0027AEF5 /* animatedLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animatedLoading.json; sourceTree = SOURCE_ROOT; };
 		4AEA3365228F03180027AEF5 /* animatedLogo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animatedLogo.json; sourceTree = "<group>"; };
 		4AEA3367228F08E40027AEF5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4AEA3369228F28A70027AEF5 /* UIWindow+INVSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+INVSExtension.swift"; sourceTree = "<group>"; };
@@ -277,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				4AFD5164228A210000AF9513 /* INVSPopupMessage.swift */,
+				4A4C68422294BE5D00EDC8C6 /* INVSPopupMessageType.swift */,
 			);
 			path = PopupMessage;
 			sourceTree = "<group>";
@@ -358,7 +363,8 @@
 			children = (
 				4A4C683C2293354B00EDC8C6 /* animatedLogoWhite.json */,
 				4AEA3365228F03180027AEF5 /* animatedLogo.json */,
-				4AEA335C228F003E0027AEF5 /* animatedLoading.json */,
+				4A4C683E2294177F00EDC8C6 /* animatedLoadingWhite.json */,
+				4A4C6840229419CD00EDC8C6 /* animatedLoadingPurple.json */,
 				4AFD5159228A210000AF9513 /* SharedFeatures */,
 				4AFD5167228A210000AF9513 /* Scenes */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
@@ -506,10 +512,11 @@
 			files = (
 				4AEA3351228EF8BD0027AEF5 /* INVSStartViewController.xib in Resources */,
 				4AEA3368228F08E40027AEF5 /* Images.xcassets in Resources */,
-				4AEA335E228F003E0027AEF5 /* animatedLoading.json in Resources */,
 				4A4C683D2293354B00EDC8C6 /* animatedLogoWhite.json in Resources */,
 				4AEA3342228DC8F70027AEF5 /* INVSSimulatorCell.xib in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				4A4C683F2294177F00EDC8C6 /* animatedLoadingWhite.json in Resources */,
+				4A4C6841229419CE00EDC8C6 /* animatedLoadingPurple.json in Resources */,
 				4AFD5192228AD78600AF9513 /* INVSSimutatorViewControler.xib in Resources */,
 				4AEA3366228F03180027AEF5 /* animatedLogo.json in Resources */,
 			);
@@ -622,6 +629,7 @@
 				4AFD5173228A210000AF9513 /* NumberFormatter+INVSExtension.swift in Sources */,
 				4A4C683422916EED00EDC8C6 /* UIStackview+INVSExtension.swift in Sources */,
 				4AEA3317228ADA950027AEF5 /* INVSKeyChainWrapper.swift in Sources */,
+				4A4C68432294BE5D00EDC8C6 /* INVSPopupMessageType.swift in Sources */,
 				4AFD5191228AD78600AF9513 /* INVSSimulatorWorker.swift in Sources */,
 				4AEA3346228DC8F70027AEF5 /* INVSSimulatedValueModel.swift in Sources */,
 				4AEA3350228EF8BD0027AEF5 /* INVSStartViewController.swift in Sources */,

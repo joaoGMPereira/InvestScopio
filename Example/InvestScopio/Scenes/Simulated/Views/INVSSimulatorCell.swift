@@ -37,16 +37,11 @@ class INVSSimulatorCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.layoutSubviews()
-        if shadowLayer == nil {
-            shadowLayer = CAShapeLayer.addShadow(withRoundedCorner: 12, andColor: .white, inView: infoView)
-        }
+        self.shadowLayer = CAShapeLayer.addCornerAndShadow(withShapeLayer: self.shadowLayer, withCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], withRoundedCorner: 12, andColor: .white, inView: infoView)
     }
     
     func setup(withSimulatedValue simulatedValue:INVSSimulatedValueModel) {
-        if let shadowLayer = self.shadowLayer {
-            shadowLayer.removeFromSuperlayer()
-        }
-        self.shadowLayer = nil
+        
         monthLabel.font = .INVSFontDefault()
         profitabilityLabel.font = .INVSFontDefault()
         rescueLabel.font = .INVSFontDefault()
@@ -66,6 +61,5 @@ class INVSSimulatorCell: UITableViewCell {
             totalLabel.text = "Total:\n\(total.currencyFormat())"
         }
     }
-    
     
 }

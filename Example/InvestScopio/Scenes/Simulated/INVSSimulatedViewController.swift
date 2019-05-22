@@ -11,7 +11,7 @@ import Hero
 class INVSSimulatedViewController: INVSPresentBaseViewController {
 
     var tableView = UITableView()
-    var heightTableviewConstraint = NSLayoutConstraint()
+    var topTableviewConstraint = NSLayoutConstraint()
     var hasLoaded:Bool = false
     
     var dataSource = INVSSimulatorTableviewDataSourceDelegate()
@@ -24,14 +24,10 @@ class INVSSimulatedViewController: INVSPresentBaseViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-         if hasLoaded == false {
-            hasLoaded = true
-            title = "Simulação"
-            heightTableviewConstraint.constant = navigationBarHeight + 8
+            topTableviewConstraint.constant = navigationBarHeight + 8
             UIView.animate(withDuration: 5) {
                 self.view.layoutIfNeeded()
             }
-        }
     }
     
     func setup(withSimulatedValues simulatedValues:[INVSSimulatedValueModel]) {
@@ -52,12 +48,12 @@ extension INVSSimulatedViewController: INVSCodeView {
     }
     
     func setupConstraints() {
-        heightTableviewConstraint = tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height)
+        topTableviewConstraint = tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height)
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            heightTableviewConstraint
+            topTableviewConstraint
             ])
     }
     

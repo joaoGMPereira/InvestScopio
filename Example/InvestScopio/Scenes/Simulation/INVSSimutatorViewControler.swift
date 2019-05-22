@@ -13,7 +13,7 @@ protocol INVSSimutatorViewControlerProtocol: class {
     func displayLoading()
     func dismissLoading()
     func displayErrorSimulationProjection(with messageError:String, shouldHideAutomatically:Bool, popupType: INVSPopupMessageType, sender: UIView?)
-    func displayInfo(withMessage message: String, shouldHideAutomatically: Bool, sender: UIView)
+    func displayInfo(withMessage message: String, title: String, shouldHideAutomatically: Bool, sender: UIView)
     func displayOkAction(withTextField textField:INVSFloatingTextField, andShouldResign shouldResign: Bool)
     func displayCancelAction()
 }
@@ -27,9 +27,13 @@ public class INVSSimutatorViewControler: UIViewController {
     @IBOutlet weak var increaseRescueTextField: INVSFloatingTextField!
     @IBOutlet weak var goalIncreaseRescueTextField: INVSFloatingTextField!
     @IBOutlet weak var saveButton: UIButton!
+    private var saveButtonLayer: CAGradientLayer!
     @IBOutlet weak var clearButton: UIButton!
+    private var clearButtonLayer: CAGradientLayer!
     @IBOutlet weak var horizontalStackView: UIStackView!
     var loadingView = UIActivityIndicatorView(style: .white)
+    @IBOutlet weak var heightScrollView: NSLayoutConstraint!
+    
     
     var popupMessage: INVSPopupMessage?
     var interactor: INVSSimulatorInteractorProtocol?
@@ -37,6 +41,12 @@ public class INVSSimutatorViewControler: UIViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
         title = "Simulação"
         let interactor = INVSSimulatorInteractor()
         interactor.allTextFields = [initialValueTextField, monthValueTextField, interestRateTextField, totalMonthsTextField, initialMonthlyRescueTextField, increaseRescueTextField, goalIncreaseRescueTextField]
@@ -62,8 +72,8 @@ public class INVSSimutatorViewControler: UIViewController {
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         popupMessage = INVSPopupMessage(parentViewController: self)
-        CAShapeLayer.addGradientLayer(inView: saveButton, withColorsArr: UIColor.INVSGradientColors())
-        CAShapeLayer.addGradientLayer(inView: clearButton, withColorsArr: UIColor.INVSGradientColors())
+        updateUI()
+
     }
     
     func setupUI() {
@@ -104,7 +114,7 @@ public class INVSSimutatorViewControler: UIViewController {
         increaseRescueTextField.setup(placeholder: "Acréscimo no resgate", typeTextField: .increaseRescue, valueTypeTextField: .currency, hasInfoButton: true, color: UIColor.INVSDefault())
         increaseRescueTextField.delegate = self
         
-        goalIncreaseRescueTextField.setup(placeholder: "Objetivo para aumento de resgate", typeTextField: .goalIncreaseRescue, valueTypeTextField: .currency, hasInfoButton: true, color: UIColor.INVSDefault())
+        goalIncreaseRescueTextField.setup(placeholder: "Objetivo de rendimento para aumento de resgate", typeTextField: .goalIncreaseRescue, valueTypeTextField: .currency, hasInfoButton: true, color: UIColor.INVSDefault())
         goalIncreaseRescueTextField.delegate = self
     }
     
@@ -125,6 +135,40 @@ public class INVSSimutatorViewControler: UIViewController {
         self.clearButton.isEnabled = true
     }
     
+    private func updateUI() {
+        let orientation = UIApplication.shared.statusBarOrientation
+        if orientation == .landscapeLeft || orientation == .landscapeRight {
+            heightScrollView.constant = view.frame.height * 0.4
+        } else {
+            heightScrollView.constant = view.frame.height * 0.5
+        }
+        UIView.animate(withDuration: 0.4) {
+            self.saveButtonLayer = CAShapeLayer.addGradientLayer(withGradientLayer: self.saveButtonLayer, inView: self.saveButton, withColorsArr: UIColor.INVSGradientColors())
+            self.clearButtonLayer = CAShapeLayer.addGradientLayer(withGradientLayer: self.clearButtonLayer, inView: self.clearButton, withColorsArr: UIColor.INVSGradientColors())
+            self.view.layoutSubviews()
+        }
+    }
+    
+    
+    public override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        popupMessage?.layoutSubviews()
+        
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            print(keyboardHeight)
+        }
+    }
+    
+    public override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        popupMessage?.hide()
+        updateUI()
+    }
+    
 }
 
 extension INVSSimutatorViewControler: INVSFloatingTextFieldDelegate {
@@ -136,6 +180,7 @@ extension INVSSimutatorViewControler: INVSFloatingTextFieldDelegate {
     }
     
     func infoButtonAction(_ textField: INVSFloatingTextField) {
+        view.endEditing(true)
         interactor?.showInfo(nearOfSender: textField)
     }
     
@@ -146,7 +191,9 @@ extension INVSSimutatorViewControler: INVSSimutatorViewControlerProtocol {
     func displayOkAction(withTextField textField: INVSFloatingTextField, andShouldResign shouldResign: Bool) {
         textField.floatingTextField.becomeFirstResponder()
         if shouldResign {
-            interactor?.simulationProjection()
+            if saveButton.isEnabled {
+                interactor?.simulationProjection()
+            }
             view.endEditing(shouldResign)
         }
     }
@@ -175,8 +222,8 @@ extension INVSSimutatorViewControler: INVSSimutatorViewControlerProtocol {
         popupMessage?.show(withTextMessage: messageError, popupType: popupType, shouldHideAutomatically: shouldHideAutomatically, sender: sender)
     }
     
-    func displayInfo(withMessage message: String, shouldHideAutomatically: Bool, sender: UIView) {
-        popupMessage?.show(withTextMessage: message,popupType: .alert, shouldHideAutomatically: shouldHideAutomatically, sender: sender)
+    func displayInfo(withMessage message: String,title: String, shouldHideAutomatically: Bool, sender: UIView) {
+        popupMessage?.show(withTextMessage: message, title: title,popupType: .alert, shouldHideAutomatically: shouldHideAutomatically)
     }
     
     

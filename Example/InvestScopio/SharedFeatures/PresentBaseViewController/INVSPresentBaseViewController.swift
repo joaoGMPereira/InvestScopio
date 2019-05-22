@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 
 class INVSPresentBaseViewController: UIViewController {
     var navigationBarView = UIView()
@@ -27,6 +28,7 @@ class INVSPresentBaseViewController: UIViewController {
     private var shadowLayer: CAShapeLayer!
     private var heightNavigationBarConstraint = NSLayoutConstraint()
     private var topNavigationBarConstraint = NSLayoutConstraint()
+    var animatedLogoView = AnimationView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,15 +37,13 @@ class INVSPresentBaseViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        if shadowLayer == nil {
             navigationBarHeight = view.safeAreaInsets.top + 44
             heightNavigationBarConstraint.constant = navigationBarHeight
             topNavigationBarConstraint.constant = view.safeAreaInsets.top
             UIView.animate(withDuration: 1.6) {
                 self.view.layoutIfNeeded()
-                self.shadowLayer = CAShapeLayer.addShadow(withRoundedCorner: 1, andColor: .INVSLightGray(), inView: self.navigationBarView)
+                self.shadowLayer = CAShapeLayer.addCornerAndShadow(withShapeLayer: self.shadowLayer, withCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], withRoundedCorner: 1, andColor: .INVSLightGray(), inView: self.navigationBarView)
             }
-        }
     }
     
     @objc private func dismissViewController() {
@@ -58,11 +58,13 @@ extension INVSPresentBaseViewController {
         navigationBarView.addSubview(contentView)
         contentView.addSubview(closeButton)
         contentView.addSubview(navigationBarLabel)
+        contentView.addSubview(animatedLogoView)
         
         navigationBarView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
         navigationBarLabel.translatesAutoresizingMaskIntoConstraints = false
         closeButton.translatesAutoresizingMaskIntoConstraints = false
+        animatedLogoView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func setupConstraints() {
@@ -91,17 +93,35 @@ extension INVSPresentBaseViewController {
             navigationBarLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -46),
             navigationBarLabel.centerYAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.centerYAnchor, constant: 0),
             navigationBarLabel.centerXAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.centerXAnchor, constant: 0),
-
+            ])
+        
+        NSLayoutConstraint.activate([
+            animatedLogoView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor,constant: -50),
+            animatedLogoView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            animatedLogoView.heightAnchor.constraint(equalToConstant: 20),
+            animatedLogoView.widthAnchor.constraint(equalToConstant: 20)
             ])
     }
     
     private func setupAdditionalConfiguration() {
-        let closeTitle = NSAttributedString.init(string: "X", attributes: [NSAttributedString.Key.font : UIFont.INVSFontDefault(),NSAttributedString.Key.foregroundColor:UIColor.black])
-        closeButton.setAttributedTitle(closeTitle, for: .normal)
+        if let closeImage = UIImage.init(named: "closeIconWhite") {
+            closeButton.tintColor = .INVSBlack()
+            closeButton.setImage(closeImage, for: .normal)
+        } else {
+            let closeTitle = NSAttributedString.init(string: "X", attributes: [NSAttributedString.Key.font : UIFont.INVSFontDefault(),NSAttributedString.Key.foregroundColor:UIColor.INVSBlack()])
+            closeButton.setAttributedTitle(closeTitle, for: .normal)
+        }
         closeButton.addTarget(self, action: #selector(INVSSimulatedViewController.dismissViewController), for: .touchUpInside)
         navigationBarLabel.text = navigationBarTitle
+        navigationBarLabel.textColor = .INVSBlack()
         view.backgroundColor = .INVSGray()
         navigationBarView.backgroundColor = .INVSLightGray()
+        let starAnimation = Animation.named("animatedLoading")
+        animatedLogoView.animation = starAnimation
+        animatedLogoView.contentMode = .scaleAspectFit
+        animatedLogoView.animationSpeed = 1.0
+        animatedLogoView.loopMode = .loop
+        animatedLogoView.play()
     }
     
     private func setupView() {

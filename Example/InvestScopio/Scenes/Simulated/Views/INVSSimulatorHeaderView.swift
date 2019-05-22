@@ -26,9 +26,7 @@ class INVSSimulatorHeaderView: UIView,INVSCodeView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if shadowLayer == nil {
-            shadowLayer = CAShapeLayer.addCorner(inCorners: [.bottomLeft, .bottomRight], withRoundedCorner: 12, andColor: .white, inView: self)
-        }
+        shadowLayer = CAShapeLayer.addCornerAndShadow(withShapeLayer: self.shadowLayer, withCorners: [.bottomLeft, .bottomRight], withRoundedCorner: 12, andColor: .white, inView: self)
     }
     
     func setup(withSimulatedValue simulatedValue: INVSSimulatedValueModel) {

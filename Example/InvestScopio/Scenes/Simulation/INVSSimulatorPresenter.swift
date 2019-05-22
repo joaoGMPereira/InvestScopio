@@ -69,10 +69,9 @@ class INVSSimulatorPresenter: NSObject,INVSSimulatorPresenterProtocol {
     
     func presentInfo(sender: UIView) {
         if let textField = sender as? INVSFloatingTextField {
-            controller?.displayInfo(withMessage: textField.typeTextField?.getMessageInfo() ?? "", shouldHideAutomatically: false, sender: sender)
+            controller?.displayInfo(withMessage: textField.typeTextField?.getMessageInfo() ?? "", title: textField.typeTextField?.getTitleMessageInfo() ?? "", shouldHideAutomatically: false, sender: sender)
         }
     }
-    
 }
 
 extension INVSSimulatorPresenter {

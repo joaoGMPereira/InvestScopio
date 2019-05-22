@@ -115,19 +115,18 @@ extension INVSFloatingTextField: INVSCodeView {
     }
     
     func setupConstraints() {
-        
+        let trailingFromInfoButton = -((frame.height * 0.8) + 16)
         heightLabelConstraint = placeholderLabel.heightAnchor.constraint(equalTo: self.heightAnchor)
-        trailingLabelConstraint = placeholderLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor)
 
         NSLayoutConstraint.activate([
             placeholderLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
-            trailingLabelConstraint,
+            placeholderLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: trailingFromInfoButton),
             placeholderLabel.topAnchor.constraint(equalTo: self.topAnchor),
             heightLabelConstraint
             ])
         NSLayoutConstraint.activate([
             floatingTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
-            floatingTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            floatingTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: trailingFromInfoButton),
             floatingTextField.topAnchor.constraint(equalTo: self.topAnchor),
             floatingTextField.bottomAnchor.constraint(equalTo: self.bottomAnchor)
             ])
@@ -142,6 +141,8 @@ extension INVSFloatingTextField: INVSCodeView {
     
     func setupAdditionalConfiguration() {
         floatingTextField.delegate = self
+        placeholderLabel.adjustsFontSizeToFitWidth = true
+        placeholderLabel.minimumScaleFactor = 0.5
         placeholderLabel.font = bigFont
         placeholderLabel.textColor = .lightGray
         bottomLineView.backgroundColor = .lightGray
@@ -186,7 +187,6 @@ extension INVSFloatingTextField: UITextFieldDelegate, INVSKeyboardToolbarDelegat
     
     func openKeyboard() {
         UIView.animate(withDuration: 0.5) { [weak self] in
-            self?.trailingLabelConstraint.constant = 30
             self?.heightLabelConstraint.constant = -30
             self?.placeholderLabel.font = self?.smallFont
             self?.placeholderLabel.textColor = self?.currentlySelectedColor

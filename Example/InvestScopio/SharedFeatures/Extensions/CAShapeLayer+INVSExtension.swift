@@ -9,24 +9,29 @@
 import Foundation
 import UIKit
 extension CAShapeLayer {
-    static func addShadow(withRoundedCorner cornerRadius: CGFloat, andColor fillColor: UIColor, inView view:UIView) -> CAShapeLayer {
-        return roundedShapeLayer(inCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], withRoundedCorner: cornerRadius, andColor: fillColor, inView: view)
+    
+    static func addCornerAndShadow(withShapeLayer shapeLayer:CAShapeLayer?, withCorners corners: UIRectCorner, withRoundedCorner cornerRadius: CGFloat, andColor fillColor: UIColor, inView view:UIView) -> CAShapeLayer? {
+        var layer = shapeLayer
+        if let shapeLayer = layer {
+            shapeLayer.removeFromSuperlayer()
+        }
+        layer = roundedShapeLayer(inCorners: corners, withRoundedCorner: cornerRadius, andColor: fillColor, inView: view)
+        return layer
     }
     
-    static func addCorner(inCorners corners: UIRectCorner, withRoundedCorner cornerRadius: CGFloat, andColor fillColor: UIColor, inView view:UIView) -> CAShapeLayer {
-        return roundedShapeLayer(inCorners: corners, withRoundedCorner: cornerRadius, andColor: fillColor, inView: view)
-    }
-    
-    static func addGradientLayer(inView view: UIView, withColorsArr colors: [CGColor]) {
+    static func addGradientLayer(withGradientLayer gradientLayer:CAGradientLayer?, inView view: UIView, withColorsArr colors: [CGColor]) -> CAGradientLayer? {
+        if let shapeLayer = gradientLayer {
+            shapeLayer.removeFromSuperlayer()
+        }
         let gradient: CAGradientLayer = CAGradientLayer()
-        
         gradient.colors = colors
         gradient.locations = [0.0 , 1.0]
         gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
         gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
         gradient.frame = CGRect(x: 0.0, y: 0.0, width: view.frame.size.width, height: view.frame.size.height)
-        
+    
         view.layer.insertSublayer(gradient, at: 0)
+        return gradient
     }
     
     static private func roundedShapeLayer(inCorners corners: UIRectCorner, withRoundedCorner cornerRadius: CGFloat, andColor fillColor: UIColor, inView view:UIView) -> CAShapeLayer {

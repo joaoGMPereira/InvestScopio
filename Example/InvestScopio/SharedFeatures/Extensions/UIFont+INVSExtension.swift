@@ -10,10 +10,14 @@ import UIKit
 extension UIFont {
     
     static func INVSFontDefault() -> UIFont {
-        return UIFont.systemFont(ofSize: 13)
+        return UIFont.systemFont(ofSize: 14)
     }
     
     static func INVSFontBig() -> UIFont {
-        return UIFont.systemFont(ofSize: 14)
+        return UIFont.systemFont(ofSize: 15)
+    }
+    
+    static func INVSFontBigBold() -> UIFont {
+        return UIFont.boldSystemFont(ofSize: 16)
     }
 }

@@ -13,8 +13,8 @@ extension UIColor {
         return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: alpha)
     }
     
-    static func INVSDefault() -> UIColor {
-        return UIColor.INVSPallete(red: 83, green: 77, blue: 185)
+    static func INVSDefault(withAlpha alpha: CGFloat = 1.0) -> UIColor {
+        return UIColor.INVSPallete(red: 83, green: 77, blue: 185, alpha: alpha)
     }
     
     static func INVSLightDefault() -> UIColor {
