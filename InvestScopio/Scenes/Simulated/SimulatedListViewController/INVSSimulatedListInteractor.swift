@@ -7,17 +7,16 @@
 
 import Foundation
 import UIKit
-protocol INVSSimulatedInteractorProtocol {
+protocol INVSSimulatedListInteractorProtocol {
     func simulationProjection()
 }
 
-class INVSSimulatedInteractor: NSObject,INVSSimulatedInteractorProtocol {
+class INVSSimulatedListInteractor: NSObject,INVSSimulatedListInteractorProtocol {
     
-    var presenter: INVSSimulatedPresenterProtocol?
+    var presenter: INVSSimulatedListPresenterProtocol?
     var simulatorModel = INVSSimulatorModel()
     
     func simulationProjection() {
-        self.presenter?.presentLoading()
         INVSKeyChainWrapper.clear()
         self.presenter?.presentSimulationProjection(simulatorModel: simulatorModel)
     }

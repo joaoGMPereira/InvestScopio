@@ -1,5 +1,5 @@
 //
-//  INVSSimulatedViewController.swift
+//  INVSSimulatedListViewController.swift
 //  InvestScopio_Example
 //
 //  Created by Joao Medeiros Pereira on 16/05/19.
@@ -10,19 +10,22 @@ import UIKit
 import Hero
 import SkeletonView
 
-protocol INVSSimutatedViewControlerProtocol: class {
-    func displaySimulationProjection(with simulatedValues: [INVSSimulatedValueModel])
-    func displayLoading()
-    func dismissLoading()
+protocol INVSSimulatedListViewControlerDelegate {
+    func didFinishSimulating(withSimulatedValues simulatedValues: [INVSSimulatedValueModel])
 }
 
-class INVSSimulatedViewController: INVSPresentBaseViewController {
+protocol INVSSimulatedListViewControlerProtocol: class {
+    func displaySimulationProjection(with simulatedValues: [INVSSimulatedValueModel])
+}
+
+class INVSSimulatedListViewController: UIViewController {
 
     var tableView = UITableView()
     
+    var delegate: INVSSimulatedListViewControlerDelegate?
     var topTableviewConstraint = NSLayoutConstraint()
     var hasLoaded:Bool = false
-    var interactor: INVSSimulatedInteractorProtocol?
+    var interactor: INVSSimulatedListInteractorProtocol?
     let router = INVSRouter()
     var dataSource = INVSSimulatorTableviewDataSourceDelegate()
     
@@ -34,16 +37,18 @@ class INVSSimulatedViewController: INVSPresentBaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        interactor?.simulationProjection()
-        setupSkeletonView()
+        if topTableviewConstraint.constant != 0 {
+            topTableviewConstraint.constant = 0
+            UIView.animate(withDuration: 2) {
+                self.view.layoutIfNeeded()
+            }
+            interactor?.simulationProjection()
+            setupSkeletonView()
+        }
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-            topTableviewConstraint.constant = navigationBarHeight + 8
-            UIView.animate(withDuration: 3) {
-                self.view.layoutIfNeeded()
-            }
     }
     
     private func setupTableView() {
@@ -60,10 +65,10 @@ class INVSSimulatedViewController: INVSPresentBaseViewController {
     }
     
     func setup(withSimulatorModel simulatorModel:INVSSimulatorModel) {
-        let interactor = INVSSimulatedInteractor()
+        let interactor = INVSSimulatedListInteractor()
         interactor.simulatorModel = simulatorModel
         self.interactor = interactor
-        let presenter = INVSSimulatedPresenter()
+        let presenter = INVSSimulatedListPresenter()
         presenter.controller = self
         interactor.presenter = presenter
     }
@@ -73,7 +78,7 @@ class INVSSimulatedViewController: INVSPresentBaseViewController {
     }
 }
 
-extension INVSSimulatedViewController: INVSCodeView {
+extension INVSSimulatedListViewController: INVSCodeView {
     func buildViewHierarchy() {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -87,6 +92,7 @@ extension INVSSimulatedViewController: INVSCodeView {
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             topTableviewConstraint
             ])
+        
     }
     
     func setupAdditionalConfiguration() {
@@ -101,18 +107,11 @@ extension INVSSimulatedViewController: INVSCodeView {
     }
 }
 
-extension INVSSimulatedViewController: INVSSimutatedViewControlerProtocol{
+extension INVSSimulatedListViewController: INVSSimulatedListViewControlerProtocol{
     func displaySimulationProjection(with simulatedValues: [INVSSimulatedValueModel]) {
         dataSource.setup(withSimulatedValues: simulatedValues)
         tableView.reloadData()
-    }
-    
-    func displayLoading() {
-        showLoading()
-    }
-    
-    func dismissLoading() {
-        hideLoading()
+        delegate?.didFinishSimulating(withSimulatedValues: simulatedValues)
+        
     }
 }
-

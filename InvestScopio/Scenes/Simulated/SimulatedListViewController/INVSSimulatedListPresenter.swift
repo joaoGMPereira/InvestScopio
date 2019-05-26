@@ -8,14 +8,13 @@
 import Foundation
 import UIKit
 
-protocol INVSSimulatedPresenterProtocol {
+protocol INVSSimulatedListPresenterProtocol {
     func presentSimulationProjection(simulatorModel: INVSSimulatorModel)
-    func presentLoading()
 }
 
-class INVSSimulatedPresenter: NSObject,INVSSimulatedPresenterProtocol {
+class INVSSimulatedListPresenter: NSObject,INVSSimulatedListPresenterProtocol {
     
-    weak var controller: INVSSimutatedViewControlerProtocol?
+    weak var controller: INVSSimulatedListViewControlerProtocol?
     
     func presentSimulationProjection(simulatorModel: INVSSimulatorModel) {
         let queue = DispatchQueue(label: "simulation")
@@ -36,18 +35,13 @@ class INVSSimulatedPresenter: NSObject,INVSSimulatedPresenterProtocol {
             }
             DispatchQueue.main.async(execute: {
                 self.controller?.displaySimulationProjection(with: simulatedValues)
-                self.controller?.dismissLoading()
             })
         }
         
     }
-    
-    func presentLoading() {
-       controller?.displayLoading()
-    }
 }
 
-extension INVSSimulatedPresenter {
+extension INVSSimulatedListPresenter {
     
     //Salvar primeira rentabilidade
     func saveInitialProfitabilityUntilNextIncreaseRescue(simulatorModel: INVSSimulatorModel) {
@@ -106,6 +100,11 @@ extension INVSSimulatedPresenter {
         let lastProfitabilityUntilNextIncreaseRescue = lastProfitabilityUntilNextIncreaseRescue
         let goalIncreaseRescue = simulatorModel.goalIncreaseRescue
         
+        if let nextRescueIsHigherThanProfitability = checkIfRescueIsHigherThanProfitability(rescue: lastRescue, profitability: profitability) {
+            updatedLastRescue = nextRescueIsHigherThanProfitability
+            return updatedLastRescue
+        }
+        
         if let nextRescueWithoutGoal = checkNextGoalRescueWithoutGoalIncreaseRescue(rescue: updatedLastRescue, increaseRescue: increaseRescue, goalIncreaseRescue: goalIncreaseRescue, month: month) {
             updatedLastRescue = nextRescueWithoutGoal
             return updatedLastRescue
@@ -133,6 +132,15 @@ extension INVSSimulatedPresenter {
             let _ = INVSKeyChainWrapper.updateDouble(withValue: updatedLastRescue , andKey: INVSConstants.SimulatorKeyChainConstants.lastRescue.rawValue)
         }
         return updatedLastRescue
+    }
+    
+    //MARK: Verificar proximo resgate sem proximo objetivo
+    private func checkIfRescueIsHigherThanProfitability(rescue: Double, profitability: Double) -> Double? {
+        if rescue > profitability {
+            let _ = INVSKeyChainWrapper.saveDouble(withValue: rescue, andKey: INVSConstants.SimulatorKeyChainConstants.lastRescue.rawValue)
+            return 0.0
+        }
+        return nil
     }
     
     //MARK: Verificar proximo resgate sem proximo objetivo

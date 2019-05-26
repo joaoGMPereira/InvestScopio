@@ -126,7 +126,7 @@ extension INVSPresentBaseViewController {
             let closeTitle = NSAttributedString.init(string: "X", attributes: [NSAttributedString.Key.font : UIFont.INVSFontDefault(),NSAttributedString.Key.foregroundColor:UIColor.INVSBlack()])
             closeButton.setAttributedTitle(closeTitle, for: .normal)
         }
-        closeButton.addTarget(self, action: #selector(INVSSimulatedViewController.dismissViewController), for: .touchUpInside)
+        closeButton.addTarget(self, action: #selector(INVSPresentBaseViewController.dismissViewController), for: .touchUpInside)
         navigationBarLabel.text = navigationBarTitle
         navigationBarLabel.textColor = .INVSBlack()
         view.backgroundColor = .INVSGray()

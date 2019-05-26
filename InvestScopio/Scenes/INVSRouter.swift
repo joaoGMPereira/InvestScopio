@@ -40,16 +40,29 @@ class INVSRouter: NSObject, INVSRoutingLogic {
     func routeToSimulated(withSimulatorViewController viewController: INVSSimutatorViewControler, andSimulatorModel simulatorModel: INVSSimulatorModel) {
         viewController.saveButton.hero.id = INVSConstants.INVSTransactionsViewControllersID.startSimulatedViewController.rawValue
         
-        let simulatedViewController = INVSSimulatedViewController()
-        simulatedViewController.hero.isEnabled = true
-        
-        simulatedViewController.tableView.hero.id = INVSConstants.INVSTransactionsViewControllersID.startSimulatedViewController.rawValue
-        simulatedViewController.setup(withSimulatorModel: simulatorModel)
+        let simulatedContainerViewController = INVSSimulatedContainerViewController()
+        simulatedContainerViewController.hero.isEnabled = true
+
+        simulatedContainerViewController.containerView.hero.id = INVSConstants.INVSTransactionsViewControllersID.startSimulatedViewController.rawValue
+        simulatedContainerViewController.simulatedListViewController.setup(withSimulatorModel: simulatorModel)
         viewController.saveButton.setTitle("", for: .normal)
-        viewController.present(simulatedViewController, animated: true) {
+        viewController.present(simulatedContainerViewController, animated: true) {
             viewController.saveButton.setTitle("Simulação", for: .normal)
         }
     }
     
-    
+    func showNextViewController(withNewController newController: UIViewController, withOldController oldController: UIViewController, andParentViewController parentViewController: UIViewController, withAnimation animation: UIView.AnimationOptions, completion:@escaping (Bool) -> Void) {
+        
+        oldController.willMove(toParent: nil)
+        parentViewController.addChild(newController)
+        newController.view.frame = oldController.view.frame
+        
+        parentViewController.transition(from: oldController, to: newController, duration: 0.5, options: animation, animations: {
+            // nothing needed here
+        }, completion: { _ -> Void in
+            oldController.removeFromParent()
+            newController.didMove(toParent: parentViewController)
+            completion(true)
+        })
+    }
 }

@@ -48,16 +48,7 @@ public class INVSSimutatorViewControler: UIViewController {
         interactor.presenter = presenter
         mockInfo()
         setupUI()
-//        
-//        let teste = UIView(frame: CGRect.init(x: 0, y: view.frame.height, width: 100, height: 100))
-//        teste.backgroundColor = .yellow
-//        view.addSubview(teste)
-//        let teste2 = UIView.init(frame: CGRect.init(x: 0, y: teste.frame.height-1, width: teste.frame.width/2, height: 3))
-//        teste2.backgroundColor = .black
-//        teste.addSubview(teste2)
-//        let boolteste = false
-// 
-//        self.teste(view: teste, view2: teste2)
+
     }
     
     func teste(view: UIView, view2:UIView) {
