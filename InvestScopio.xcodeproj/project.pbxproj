@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A121692229AE96100759948 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A121691229AE96100759948 /* BalloonMarker.swift */; };
+		4A121694229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A121693229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift */; };
+		4A121696229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A121695229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift */; };
 		4A22FF3322976CAF001662FC /* INVSSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22FF3222976CAF001662FC /* INVSSwitchView.swift */; };
 		4A22FF382297837B001662FC /* INVSSimulatedContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22FF362297837B001662FC /* INVSSimulatedContainerViewController.swift */; };
 		4A22FF3C22980B89001662FC /* INVSSimulatedChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22FF3B22980B89001662FC /* INVSSimulatedChartsViewController.swift */; };
@@ -60,6 +63,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A121691229AE96100759948 /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
+		4A121693229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedChartsInteractor.swift; sourceTree = "<group>"; };
+		4A121695229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedChartsPresenter.swift; sourceTree = "<group>"; };
 		4A22FF3222976CAF001662FC /* INVSSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSwitchView.swift; sourceTree = "<group>"; };
 		4A22FF362297837B001662FC /* INVSSimulatedContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedContainerViewController.swift; sourceTree = "<group>"; };
 		4A22FF3B22980B89001662FC /* INVSSimulatedChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedChartsViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +142,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4A121690229AE96100759948 /* BallonMarker */ = {
+			isa = PBXGroup;
+			children = (
+				4A121691229AE96100759948 /* BalloonMarker.swift */,
+			);
+			path = BallonMarker;
+			sourceTree = "<group>";
+		};
 		4A22FF342297833B001662FC /* SimulatedListViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +175,8 @@
 			isa = PBXGroup;
 			children = (
 				4A22FF3B22980B89001662FC /* INVSSimulatedChartsViewController.swift */,
+				4A121693229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift */,
+				4A121695229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift */,
 			);
 			path = SimulatedChartsViewController;
 			sourceTree = "<group>";
@@ -289,6 +305,7 @@
 		4A4C68892295796100EDC8C6 /* SharedFeatures */ = {
 			isa = PBXGroup;
 			children = (
+				4A121690229AE96100759948 /* BallonMarker */,
 				4A4C688A2295796100EDC8C6 /* PresentBaseViewController */,
 				4A4C688C2295796100EDC8C6 /* Constants */,
 				4A4C688E2295796100EDC8C6 /* FloatingTextField */,
@@ -534,6 +551,7 @@
 				4A4C68C92295796200EDC8C6 /* UIColor+INVSPaletteColors.swift in Sources */,
 				4A4C68CF2295796200EDC8C6 /* NumberFormatter+INVSExtension.swift in Sources */,
 				4A4C68D72295796200EDC8C6 /* INVSKeyChainWrapper.swift in Sources */,
+				4A121696229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift in Sources */,
 				4A4C68CE2295796200EDC8C6 /* UIStackview+INVSExtension.swift in Sources */,
 				4A4C68B22295796200EDC8C6 /* INVSSimulatedListViewController.swift in Sources */,
 				4A4C68D22295796200EDC8C6 /* String+INVSExtension.swift in Sources */,
@@ -558,7 +576,9 @@
 				4A4C68B52295796200EDC8C6 /* INVSSimulatorHeaderView.swift in Sources */,
 				4A4C68BB2295796200EDC8C6 /* INVSSimulatorModel.swift in Sources */,
 				4A4C68B82295796200EDC8C6 /* INVSStartViewController.swift in Sources */,
+				4A121692229AE96100759948 /* BalloonMarker.swift in Sources */,
 				4A4C68BC2295796200EDC8C6 /* INVSSimutatorViewControler.swift in Sources */,
+				4A121694229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift in Sources */,
 				4A4C68D62295796200EDC8C6 /* GradientView.swift in Sources */,
 				4A4C68BF2295796200EDC8C6 /* INVSSimulatorInteractor.swift in Sources */,
 				4A4C68C02295796200EDC8C6 /* INVSRouter.swift in Sources */,
