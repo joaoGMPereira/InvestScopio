@@ -1,4 +1,5 @@
 PODS:
+  - BetterSegmentedControl (1.1)
   - Charts (3.3.0):
     - Charts/Core (= 3.3.0)
   - Charts/Core (3.3.0)
@@ -8,6 +9,7 @@ PODS:
   - SwiftKeychainWrapper (3.3.0)
 
 DEPENDENCIES:
+  - BetterSegmentedControl (~> 1.1)
   - Charts
   - Hero (from `https://github.com/barrault01/Hero.git`, commit `6220387`)
   - lottie-ios
@@ -16,6 +18,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - BetterSegmentedControl
     - Charts
     - lottie-ios
     - SkeletonView
@@ -32,12 +35,13 @@ CHECKOUT OPTIONS:
     :git: https://github.com/barrault01/Hero.git
 
 SPEC CHECKSUMS:
+  BetterSegmentedControl: ea08bea31345cf096977ef5aa588b635fb21fa18
   Charts: ec1f57f9340054155691e84d4544a1d239d382c5
   Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
   lottie-ios: d030b6cda141cfd8bbaa3db89264785e6fdf675a
   SkeletonView: 6cbb80f82f8bdee3f9093e2fa03b84819b4bd826
   SwiftKeychainWrapper: ef5ad793bc0e08e24a5913f28345b8f7bc8e4123
 
-PODFILE CHECKSUM: bc4f6cf4384585593ad2473a214dacec377b0cbf
+PODFILE CHECKSUM: f75e64c43d8899ad689bef5f2236c214c3c8c4ed
 
 COCOAPODS: 1.6.1

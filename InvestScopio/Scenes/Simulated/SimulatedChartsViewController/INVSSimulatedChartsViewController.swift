@@ -8,14 +8,19 @@
 
 import UIKit
 import Charts
+import BetterSegmentedControl
 
 protocol INVSSimulatedChartsViewControllerProtocol: class {
     func displayCalculatedChartValues(withChartDataEntries chartDataEntries: [ChartDataEntry])
+    func displaySegmentedControl(withMonths months: [String])
+    func displayLeftAxys(withFirstTotal firstTotal: Double, withLastTotal lastTotal: Double)
+    func displayXAxys(withMonths months: Int)
 }
 
 class INVSSimulatedChartsViewController: UIViewController {
     var containerView = UIView(frame: .zero)
     var chartView = LineChartView()
+    var monthsSegmentedControl: BetterSegmentedControl!
     var interactor: INVSSimulatedChartsInteractorProtocol?
     let router = INVSRouter()
     
@@ -26,10 +31,9 @@ class INVSSimulatedChartsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        chartView.animate(xAxisDuration: 2, yAxisDuration: 2)
     }
     
-    func setupChart(withMonths months: Int, simulatedValues:[INVSSimulatedValueModel]) {
+    func setupChart(withSimulatedValues simulatedValues:[INVSSimulatedValueModel]) {
         
         let interactor = INVSSimulatedChartsInteractor()
         interactor.simulatedValues = simulatedValues
@@ -37,16 +41,13 @@ class INVSSimulatedChartsViewController: UIViewController {
         let presenter = INVSSimulatedChartsPresenter()
         presenter.controller = self
         interactor.presenter = presenter
-        
         chartView.delegate = self
         setInterativeCharts()
         hideChartsInfo()
-        let lastValueWithoutRescue = (simulatedValues.last?.total ?? 0) + (simulatedValues.last?.rescue ?? 0)
-        setLeftAxys(withFirstTotal: simulatedValues.first?.total ?? 0, withLastTotal: lastValueWithoutRescue)
-        setXAxys(withMonths: months)
+
         setBallonMarker()
-        interactor.calculateChartValues()
-        
+        interactor.setSegmentControl()
+        interactor.calculateChartValues(withMonths: 3)
     }
     
     func setInterativeCharts() {
@@ -69,19 +70,27 @@ class INVSSimulatedChartsViewController: UIViewController {
         xAxis.labelPosition = .bottom
         xAxis.labelCount = months
         xAxis.labelFont = .systemFont(ofSize: 10)
+        let numberFormatter = NumberFormatter()
+        numberFormatter.generatesDecimalNumbers = false
+        xAxis.valueFormatter = DefaultAxisValueFormatter.init(formatter: numberFormatter)
+        xAxis.granularity = 1
+        if months > 12 {
+            xAxis.granularity = 4
+            if months > 50 {
+                xAxis.granularity = Double(months) * 0.1
+            }
+        }
         chartView.xAxis.drawAxisLineEnabled = true
     }
     
     func setLeftAxys(withFirstTotal firstTotal: Double, withLastTotal lastTotal: Double) {
-        let leftAxisFormatter = NumberFormatter()
-        leftAxisFormatter.minimumFractionDigits = 0
-        leftAxisFormatter.maximumFractionDigits = 1
+        let leftAxisFormatter = NumberFormatter.currencyDefault()
         leftAxisFormatter.negativePrefix = "R$ "
         leftAxisFormatter.positivePrefix = "R$ "
         
         let leftAxis = chartView.leftAxis
         leftAxis.axisMaximum = lastTotal + (lastTotal * 0.1)
-        leftAxis.axisMinimum = firstTotal - (firstTotal * 0.1)
+        leftAxis.axisMinimum = 0
         leftAxis.labelPosition = .outsideChart
         leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
         leftAxis.labelCount = 40
@@ -108,6 +117,17 @@ class INVSSimulatedChartsViewController: UIViewController {
         dataSet.fill = Fill(linearGradient: gradient, angle: 90)
         dataSet.drawFilledEnabled = true
     }
+    
+    @IBAction func segmentedControl1ValueChanged(_ sender: BetterSegmentedControl) {
+        for (index, segment) in sender.segments.enumerated() {
+            if let labelSegment = segment as? LabelSegment {
+                if index == sender.index {
+                    let months = Int(labelSegment.text?.stringOfNumbersRegex() ?? "")
+                    interactor?.calculateChartValues(withMonths: months)
+                }
+            }
+        }
+    }
 
 }
 
@@ -118,7 +138,8 @@ struct INVSChartModel {
 }
 
 extension INVSSimulatedChartsViewController: INVSSimulatedChartsViewControllerProtocol {
-        func displayCalculatedChartValues(withChartDataEntries chartDataEntries: [ChartDataEntry]) {
+    
+    func displayCalculatedChartValues(withChartDataEntries chartDataEntries: [ChartDataEntry]) {
         let set = LineChartDataSet(entries: chartDataEntries, label: "DataSet da Simulação")
         set.lineWidth = 0
         set.setColor(.INVSDefault())
@@ -134,6 +155,32 @@ extension INVSSimulatedChartsViewController: INVSSimulatedChartsViewControllerPr
         data.setDrawValues(false)
         data.setValueFont(.systemFont(ofSize: 7, weight: .light))
         chartView.data = data
+        chartView.animate(xAxisDuration: 2, yAxisDuration: 2)
+    }
+    
+    func displayLeftAxys(withFirstTotal firstTotal: Double, withLastTotal lastTotal: Double) {
+        setLeftAxys(withFirstTotal: firstTotal, withLastTotal: lastTotal)
+        
+    }
+    
+    func displaySegmentedControl(withMonths months: [String]) {
+        monthsSegmentedControl = BetterSegmentedControl.init(
+            frame: .zero,
+            segments: LabelSegment.segments(withTitles: months,
+                                            normalFont: UIFont(name: "Avenir", size: 13.0)!,
+                                            normalTextColor: .INVSDefault(),
+                                            selectedFont: UIFont(name: "Avenir", size: 13.0)!,
+                                            selectedTextColor: .white),
+            options:[.backgroundColor(.white),
+                     .indicatorViewBackgroundColor(.INVSDefault()),
+                     .cornerRadius(15.0),
+                     .bouncesOnChange(true)
+            ])
+        monthsSegmentedControl.addTarget(self, action: #selector(INVSSimulatedChartsViewController.segmentedControl1ValueChanged(_:)), for: .valueChanged)
+    }
+    
+    func displayXAxys(withMonths months: Int) {
+        setXAxys(withMonths: months)
     }
 }
 
@@ -148,6 +195,8 @@ extension INVSSimulatedChartsViewController: INVSCodeView {
         containerView.addSubview(chartView)
         containerView.translatesAutoresizingMaskIntoConstraints = false
         chartView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(monthsSegmentedControl)
+        monthsSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func setupConstraints() {
@@ -160,9 +209,16 @@ extension INVSSimulatedChartsViewController: INVSCodeView {
             ])
         
         NSLayoutConstraint.activate([
+            monthsSegmentedControl.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor),
+            monthsSegmentedControl.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor),
+            monthsSegmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            monthsSegmentedControl.heightAnchor.constraint(equalToConstant: 30)
+            ])
+        
+        NSLayoutConstraint.activate([
             chartView.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor),
             chartView.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor),
-            chartView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            chartView.topAnchor.constraint(equalTo: monthsSegmentedControl.safeAreaLayoutGuide.bottomAnchor),
             chartView.bottomAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.bottomAnchor)
             ])
         
@@ -170,7 +226,6 @@ extension INVSSimulatedChartsViewController: INVSCodeView {
     }
     
     func setupAdditionalConfiguration() {
+
     }
-    
-    
 }

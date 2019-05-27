@@ -6,4 +6,5 @@ target 'InvestScopio' do
   pod 'lottie-ios'
   pod 'Charts'
   pod 'SkeletonView'
+  pod 'BetterSegmentedControl', '~> 1.1'
 end

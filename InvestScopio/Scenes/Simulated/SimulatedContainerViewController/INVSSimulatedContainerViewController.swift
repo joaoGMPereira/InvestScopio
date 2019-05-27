@@ -89,7 +89,7 @@ extension INVSSimulatedContainerViewController: INVSCodeView {
 
 extension INVSSimulatedContainerViewController: INVSSwitchViewDelegate, INVSSimulatedListViewControlerDelegate {
     func didFinishSimulating(withSimulatedValues simulatedValues: [INVSSimulatedValueModel]) {
-        simulatedChartsViewController.setupChart(withMonths: simulatedValues.count, simulatedValues: simulatedValues)
+        simulatedChartsViewController.setupChart(withSimulatedValues: simulatedValues)
         hideLoading()
         showSwitchView()
     }

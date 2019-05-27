@@ -10,7 +10,10 @@ import Foundation
 import Charts
 
 protocol INVSSimulatedChartsPresenterProtocol {
-     func presentCalculatedChartValues(withChartValues chartValues: [INVSChartModel], andMonths months: Int)
+    func presentCalculatedChartValues(withChartValues chartValues: [INVSChartModel], andMonths months: Int)
+    func presentSegmentedControl(withMonths months: Int)
+    func presentLeftAxys(withFirstTotal firstTotal: Double, withLastTotal lastTotal: Double)
+    func presentXAxys(withMonths months: Int)
 }
 
 class INVSSimulatedChartsPresenter: NSObject,INVSSimulatedChartsPresenterProtocol {
@@ -31,6 +34,22 @@ class INVSSimulatedChartsPresenter: NSObject,INVSSimulatedChartsPresenterProtoco
             }
         }
         controller?.displayCalculatedChartValues(withChartDataEntries: chartDataEntries)
+    }
+    
+    func presentSegmentedControl(withMonths months: Int) {
+        let totalMonths = "\(months) meses"
+        let segmentValues = ["3 meses", "6 meses", "12 meses", totalMonths]
+        controller?.displaySegmentedControl(withMonths: segmentValues)
+    }
+    
+    
+    func presentLeftAxys(withFirstTotal firstTotal: Double, withLastTotal lastTotal: Double) {
+        controller?.displayLeftAxys(withFirstTotal: firstTotal, withLastTotal: lastTotal)
+        
+    }
+    
+    func presentXAxys(withMonths months: Int) {
+        controller?.displayXAxys(withMonths: months)
     }
     
 }
