@@ -11,19 +11,26 @@ import Charts
 import BetterSegmentedControl
 
 protocol INVSSimulatedChartsViewControllerProtocol: class {
-    func displayCalculatedChartValues(withChartDataEntries chartDataEntries: [ChartDataEntry])
-    func displaySegmentedControl(withMonths months: [String])
-    func displayLeftAxys(withFirstTotal firstTotal: Double, withLastTotal lastTotal: Double)
-    func displayXAxys(withMonths months: Int)
+    func displayTotalCalculatedChartValues(withTotalChartDataEntries totalChartDataEntries: [ChartDataEntry])
+    func displayTotalSegmentedControl(withMonths months: [String])
+    func displayTotalLeftAxys(withLastTotal lastTotal: Double)
+    func displayTotalXAxys(withMonths months: Int, andGranularity granularity:Double)
+    
+    func displayRescueCalculatedChartValues(withRescueChartDataEntries rescueChartDataEntries: [ChartDataEntry])
+    func displayRescueLeftAxys(withLastRescue lastRescue: Double)
+    func displayRescueXAxys(withMonths months: Int, andGranularity granularity:Double)
 }
 
 class INVSSimulatedChartsViewController: UIViewController {
     var containerView = UIView(frame: .zero)
-    var chartView = LineChartView()
+    var totalChartView = INVSSimulatedTotalChartView()
+    var rescueChartView = INVSSimulatedRescueChartView()
     var monthsSegmentedControl: BetterSegmentedControl!
+    var chartTypeSegmentedControl: BetterSegmentedControl!
     var interactor: INVSSimulatedChartsInteractorProtocol?
     let router = INVSRouter()
-    
+    private var showRescueChart = false
+    private var isTotalChart: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -33,92 +40,52 @@ class INVSSimulatedChartsViewController: UIViewController {
         super.viewDidAppear(animated)
     }
     
-    func setupChart(withSimulatedValues simulatedValues:[INVSSimulatedValueModel]) {
-        
+    func setupChart(withSimulatedValues simulatedValues:[INVSSimulatedValueModel], andShouldShowRescueChart showRescueChart: Bool) {
+        self.showRescueChart = showRescueChart
         let interactor = INVSSimulatedChartsInteractor()
         interactor.simulatedValues = simulatedValues
         self.interactor = interactor
         let presenter = INVSSimulatedChartsPresenter()
         presenter.controller = self
         interactor.presenter = presenter
-        chartView.delegate = self
-        setInterativeCharts()
-        hideChartsInfo()
-
-        setBallonMarker()
+        totalChartView.setupChart()
+        rescueChartView.isHidden = true
+        rescueChartView.setupChart()
+        setupChartTypeSegmentedControl()
         interactor.setSegmentControl()
         interactor.calculateChartValues(withMonths: 3)
     }
     
-    func setInterativeCharts() {
-        chartView.dragEnabled = true
-        chartView.setScaleEnabled(true)
-        chartView.pinchZoomEnabled = true
+    private func setupChartTypeSegmentedControl() {
+        chartTypeSegmentedControl = BetterSegmentedControl.init(
+            frame: .zero,
+            segments: LabelSegment.segments(withTitles: ["Total", "Resgate"],
+                                            normalFont: UIFont(name: "Avenir", size: 13.0)!,
+                                            normalTextColor: .INVSDefault(),
+                                            selectedFont: UIFont(name: "Avenir", size: 13.0)!,
+                                            selectedTextColor: .white),
+            options:[.backgroundColor(.white),
+                     .indicatorViewBackgroundColor(.INVSDefault()),
+                     .cornerRadius(15.0),
+                     .bouncesOnChange(true)
+            ])
+        chartTypeSegmentedControl.addTarget(self, action: #selector(INVSSimulatedChartsViewController.segmentedControlChartTypeChanged(_:)), for: .valueChanged)
     }
     
-    func hideChartsInfo() {
-        chartView.chartDescription?.enabled = false
-        chartView.rightAxis.enabled = false
-        chartView.rightAxis.drawAxisLineEnabled = false
-        chartView.leftAxis.drawGridLinesEnabled = false
-        chartView.xAxis.drawGridLinesEnabled = false
-        chartView.drawGridBackgroundEnabled = false
-    }
-    
-    func setXAxys(withMonths months: Int) {
-        let xAxis = chartView.xAxis
-        xAxis.labelPosition = .bottom
-        xAxis.labelCount = months
-        xAxis.labelFont = .systemFont(ofSize: 10)
-        let numberFormatter = NumberFormatter()
-        numberFormatter.generatesDecimalNumbers = false
-        xAxis.valueFormatter = DefaultAxisValueFormatter.init(formatter: numberFormatter)
-        xAxis.granularity = 1
-        if months > 12 {
-            xAxis.granularity = 4
-            if months > 50 {
-                xAxis.granularity = Double(months) * 0.1
-            }
-        }
-        chartView.xAxis.drawAxisLineEnabled = true
-    }
-    
-    func setLeftAxys(withFirstTotal firstTotal: Double, withLastTotal lastTotal: Double) {
-        let leftAxisFormatter = NumberFormatter.currencyDefault()
-        leftAxisFormatter.negativePrefix = "R$ "
-        leftAxisFormatter.positivePrefix = "R$ "
+    @IBAction func segmentedControlChartTypeChanged(_ sender: BetterSegmentedControl) {
+        isTotalChart = !isTotalChart
         
-        let leftAxis = chartView.leftAxis
-        leftAxis.axisMaximum = lastTotal + (lastTotal * 0.1)
-        leftAxis.axisMinimum = 0
-        leftAxis.labelPosition = .outsideChart
-        leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
-        leftAxis.labelCount = 40
-        leftAxis.spaceTop = 0.15
-        leftAxis.drawLimitLinesBehindDataEnabled = true
-    }
-    
-    func setBallonMarker() {
-        let marker = BalloonMarker(color: UIColor(white: 180/255, alpha: 1),
-                                   font: .systemFont(ofSize: 12),
-                                   textColor: .white,
-                                   insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8))
-        marker.chartView = chartView
-        marker.minimumSize = CGSize(width: 80, height: 40)
-        chartView.marker = marker
-    }
-    
-    func setGradientFilled(withDataSet dataSet: LineChartDataSet) {
+        let profitabilityView = isTotalChart ? totalChartView : rescueChartView
+        let rescueView = isTotalChart ? rescueChartView : totalChartView
         
-        let gradientColors = UIColor.INVSGradientColors()
-        let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)!
-        
-        dataSet.fillAlpha = 1
-        dataSet.fill = Fill(linearGradient: gradient, angle: 90)
-        dataSet.drawFilledEnabled = true
+        UIView.transition(from: profitabilityView,
+                          to: rescueView,
+                          duration: 0.5,
+                          options: [.transitionFlipFromTop, .showHideTransitionViews],
+                          completion: nil)
     }
     
-    @IBAction func segmentedControl1ValueChanged(_ sender: BetterSegmentedControl) {
+    @IBAction func segmentedControlMonthChanged(_ sender: BetterSegmentedControl) {
         for (index, segment) in sender.segments.enumerated() {
             if let labelSegment = segment as? LabelSegment {
                 if index == sender.index {
@@ -131,39 +98,22 @@ class INVSSimulatedChartsViewController: UIViewController {
 
 }
 
-struct INVSChartModel {
-    var valueWithRescue: Double
-    var valueWithoutRescue: Double
-    var month: Int
-}
-
 extension INVSSimulatedChartsViewController: INVSSimulatedChartsViewControllerProtocol {
     
-    func displayCalculatedChartValues(withChartDataEntries chartDataEntries: [ChartDataEntry]) {
-        let set = LineChartDataSet(entries: chartDataEntries, label: "DataSet da Simulação")
-        set.lineWidth = 0
-        set.setColor(.INVSDefault())
-        set.colors = [.INVSDefault()]
-        set.setCircleColor(.black)
-        set.lineWidth = 1
-        set.circleRadius = 2
-        set.circleHoleRadius = 1
-        set.drawCircleHoleEnabled = true
-        set.circleColors = [.INVSDefault()]
-        setGradientFilled(withDataSet: set)
-        let data = LineChartData(dataSets: [set])
-        data.setDrawValues(false)
-        data.setValueFont(.systemFont(ofSize: 7, weight: .light))
-        chartView.data = data
-        chartView.animate(xAxisDuration: 2, yAxisDuration: 2)
+    func displayTotalCalculatedChartValues(withTotalChartDataEntries totalChartDataEntries: [ChartDataEntry]) {
+        totalChartView.displayCalculatedChartValues(withChartDataEntries: totalChartDataEntries)
     }
     
-    func displayLeftAxys(withFirstTotal firstTotal: Double, withLastTotal lastTotal: Double) {
-        setLeftAxys(withFirstTotal: firstTotal, withLastTotal: lastTotal)
-        
+    
+    func displayTotalLeftAxys(withLastTotal lastTotal: Double) {
+        totalChartView.displayLeftAxys(withLastTotal: lastTotal)
     }
     
-    func displaySegmentedControl(withMonths months: [String]) {
+    func displayTotalXAxys(withMonths months: Int, andGranularity granularity:Double) {
+        totalChartView.displayXAxys(withMonths: months, andGranularity: granularity)
+    }
+    
+    func displayTotalSegmentedControl(withMonths months: [String]) {
         monthsSegmentedControl = BetterSegmentedControl.init(
             frame: .zero,
             segments: LabelSegment.segments(withTitles: months,
@@ -176,27 +126,34 @@ extension INVSSimulatedChartsViewController: INVSSimulatedChartsViewControllerPr
                      .cornerRadius(15.0),
                      .bouncesOnChange(true)
             ])
-        monthsSegmentedControl.addTarget(self, action: #selector(INVSSimulatedChartsViewController.segmentedControl1ValueChanged(_:)), for: .valueChanged)
+        monthsSegmentedControl.addTarget(self, action: #selector(INVSSimulatedChartsViewController.segmentedControlMonthChanged(_:)), for: .valueChanged)
     }
     
-    func displayXAxys(withMonths months: Int) {
-        setXAxys(withMonths: months)
+    func displayRescueCalculatedChartValues(withRescueChartDataEntries rescueChartDataEntries: [ChartDataEntry]) {
+        rescueChartView.displayCalculatedChartValues(withChartDataEntries: rescueChartDataEntries)
     }
-}
-
-extension INVSSimulatedChartsViewController: ChartViewDelegate {
-   
-   
+    
+    func displayRescueLeftAxys(withLastRescue lastRescue: Double) {
+        rescueChartView.displayLeftAxys(withLastRescue: lastRescue)
+    }
+    
+    func displayRescueXAxys(withMonths months: Int, andGranularity granularity: Double) {
+        rescueChartView.displayXAxys(withMonths: months, andGranularity: granularity)
+    }
 }
 
 extension INVSSimulatedChartsViewController: INVSCodeView {
     func buildViewHierarchy() {
         view.addSubview(containerView)
-        containerView.addSubview(chartView)
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        chartView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(rescueChartView)
+        containerView.addSubview(totalChartView)
         containerView.addSubview(monthsSegmentedControl)
+        containerView.addSubview(chartTypeSegmentedControl)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        rescueChartView.translatesAutoresizingMaskIntoConstraints = false
+        totalChartView.translatesAutoresizingMaskIntoConstraints = false
         monthsSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        chartTypeSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func setupConstraints() {
@@ -209,17 +166,31 @@ extension INVSSimulatedChartsViewController: INVSCodeView {
             ])
         
         NSLayoutConstraint.activate([
-            monthsSegmentedControl.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor),
-            monthsSegmentedControl.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor),
+            monthsSegmentedControl.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            monthsSegmentedControl.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor, constant: -8),
             monthsSegmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             monthsSegmentedControl.heightAnchor.constraint(equalToConstant: 30)
             ])
         
         NSLayoutConstraint.activate([
-            chartView.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor),
-            chartView.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor),
-            chartView.topAnchor.constraint(equalTo: monthsSegmentedControl.safeAreaLayoutGuide.bottomAnchor),
-            chartView.bottomAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.bottomAnchor)
+            chartTypeSegmentedControl.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            chartTypeSegmentedControl.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+            chartTypeSegmentedControl.topAnchor.constraint(equalTo: monthsSegmentedControl.safeAreaLayoutGuide.bottomAnchor, constant: 8),
+            chartTypeSegmentedControl.heightAnchor.constraint(equalToConstant: self.showRescueChart ? 30 : 0)
+            ])
+        
+        NSLayoutConstraint.activate([
+            rescueChartView.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor),
+            rescueChartView.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor),
+            rescueChartView.topAnchor.constraint(equalTo: chartTypeSegmentedControl.safeAreaLayoutGuide.bottomAnchor),
+            rescueChartView.bottomAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.bottomAnchor)
+            ])
+        
+        NSLayoutConstraint.activate([
+            totalChartView.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor),
+            totalChartView.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor),
+            totalChartView.topAnchor.constraint(equalTo: chartTypeSegmentedControl.safeAreaLayoutGuide.bottomAnchor),
+            totalChartView.bottomAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.bottomAnchor)
             ])
         
         

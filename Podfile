@@ -7,4 +7,5 @@ target 'InvestScopio' do
   pod 'Charts'
   pod 'SkeletonView'
   pod 'BetterSegmentedControl', '~> 1.1'
+  pod 'SwiftSoup'
 end

@@ -11,11 +11,11 @@ import Hero
 import SkeletonView
 
 protocol INVSSimulatedListViewControlerDelegate {
-    func didFinishSimulating(withSimulatedValues simulatedValues: [INVSSimulatedValueModel])
+    func didFinishSimulating(withSimulatedValues simulatedValues: [INVSSimulatedValueModel], andShouldShowRescueChart showRescueChart: Bool)
 }
 
 protocol INVSSimulatedListViewControlerProtocol: class {
-    func displaySimulationProjection(with simulatedValues: [INVSSimulatedValueModel])
+    func displaySimulationProjection(with simulatedValues: [INVSSimulatedValueModel], andShouldShowRescueChart showRescueChart: Bool)
 }
 
 class INVSSimulatedListViewController: UIViewController {
@@ -108,10 +108,10 @@ extension INVSSimulatedListViewController: INVSCodeView {
 }
 
 extension INVSSimulatedListViewController: INVSSimulatedListViewControlerProtocol{
-    func displaySimulationProjection(with simulatedValues: [INVSSimulatedValueModel]) {
+    func displaySimulationProjection(with simulatedValues: [INVSSimulatedValueModel], andShouldShowRescueChart showRescueChart: Bool) {
         dataSource.setup(withSimulatedValues: simulatedValues)
         tableView.reloadData()
-        delegate?.didFinishSimulating(withSimulatedValues: simulatedValues)
+        delegate?.didFinishSimulating(withSimulatedValues: simulatedValues, andShouldShowRescueChart: showRescueChart)
         
     }
 }

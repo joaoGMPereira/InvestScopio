@@ -7,6 +7,7 @@ PODS:
   - lottie-ios (3.0.6)
   - SkeletonView (1.5)
   - SwiftKeychainWrapper (3.3.0)
+  - SwiftSoup (2.0.0)
 
 DEPENDENCIES:
   - BetterSegmentedControl (~> 1.1)
@@ -15,6 +16,7 @@ DEPENDENCIES:
   - lottie-ios
   - SkeletonView
   - SwiftKeychainWrapper
+  - SwiftSoup
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -23,6 +25,7 @@ SPEC REPOS:
     - lottie-ios
     - SkeletonView
     - SwiftKeychainWrapper
+    - SwiftSoup
 
 EXTERNAL SOURCES:
   Hero:
@@ -41,7 +44,8 @@ SPEC CHECKSUMS:
   lottie-ios: d030b6cda141cfd8bbaa3db89264785e6fdf675a
   SkeletonView: 6cbb80f82f8bdee3f9093e2fa03b84819b4bd826
   SwiftKeychainWrapper: ef5ad793bc0e08e24a5913f28345b8f7bc8e4123
+  SwiftSoup: 4fe21f65cdbfa3a40559047016b7962b88d29279
 
-PODFILE CHECKSUM: f75e64c43d8899ad689bef5f2236c214c3c8c4ed
+PODFILE CHECKSUM: cc34d5c696106d44d5370ba79ce983b7d77d1416
 
 COCOAPODS: 1.6.1

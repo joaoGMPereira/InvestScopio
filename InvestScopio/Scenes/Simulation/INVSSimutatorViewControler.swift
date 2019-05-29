@@ -9,6 +9,7 @@
 import UIKit
 import Lottie
 import Hero
+import WebKit
 protocol INVSSimutatorViewControlerProtocol: class {
     func displaySimulationProjection(with simulatorModel: INVSSimulatorModel)
     func displayErrorSimulationProjection(with messageError:String, shouldHideAutomatically:Bool, popupType: INVSPopupMessageType, sender: UIView?)
@@ -31,7 +32,7 @@ public class INVSSimutatorViewControler: UIViewController {
     private var clearButtonLayer: CAGradientLayer!
     @IBOutlet weak var horizontalStackView: UIStackView!
     @IBOutlet weak var heightScrollView: NSLayoutConstraint!
-    
+    let webView = WKWebView(frame: .zero)
     
     var popupMessage: INVSPopupMessage?
     var interactor: INVSSimulatorInteractorProtocol?
@@ -47,8 +48,23 @@ public class INVSSimutatorViewControler: UIViewController {
         presenter.controller = self
         interactor.presenter = presenter
         mockInfo()
+        setupHomePage()
         setupUI()
 
+    }
+    
+    func setupHomePage() {
+        webView.navigationDelegate = self
+        let url = URL(string: "https://cei.b3.com.br/CEI_Responsivo/")!
+        let request = URLRequest(url: url)
+        webView.load(request)
+    }
+    
+    func getDailyTokenHTML() {
+        webView.evaluateJavaScript("document.getElementById('ctl00_ContentPlaceHolder1_txtLogin').value='43054225810'", completionHandler: nil)
+        webView.evaluateJavaScript("document.getElementById('ctl00_ContentPlaceHolder1_txtSenha').value='Jg@22151515'", completionHandler: nil)
+        webView.evaluateJavaScript("document.getElementById('ctl00_ContentPlaceHolder1_btnLogar').click()", completionHandler: nil)
+        
     }
     
     func teste(view: UIView, view2:UIView) {
@@ -147,6 +163,22 @@ public class INVSSimutatorViewControler: UIViewController {
         updateUI()
     }
     
+}
+
+extension INVSSimutatorViewControler: WKNavigationDelegate {
+    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        
+        if let webViewURL = webView.url?.absoluteString {
+            if webViewURL == "https://cei.b3.com.br/CEI_Responsivo/home.aspx" {
+                webView.evaluateJavaScript("document.documentElement.outerHTML.toString()",
+                                           completionHandler: { (html: Any?, error: Error?) in
+                                            print(html)
+                })
+            } else {
+                self.getDailyTokenHTML()
+            }
+        }
+    }
 }
 
 extension INVSSimutatorViewControler: INVSFloatingTextFieldDelegate {

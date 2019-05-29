@@ -34,7 +34,8 @@ class INVSSimulatedListPresenter: NSObject,INVSSimulatedListPresenterProtocol {
                 simulatedValues.append(simulatedValue)
             }
             DispatchQueue.main.async(execute: {
-                self.controller?.displaySimulationProjection(with: simulatedValues)
+                let shouldShowRescueChart = simulatorModel.initialMonthlyRescue != 0 || simulatorModel.increaseRescue != 0
+                self.controller?.displaySimulationProjection(with: simulatedValues, andShouldShowRescueChart: shouldShowRescueChart)
             })
         }
         

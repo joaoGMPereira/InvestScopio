@@ -13,6 +13,9 @@
 		4A22FF3322976CAF001662FC /* INVSSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22FF3222976CAF001662FC /* INVSSwitchView.swift */; };
 		4A22FF382297837B001662FC /* INVSSimulatedContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22FF362297837B001662FC /* INVSSimulatedContainerViewController.swift */; };
 		4A22FF3C22980B89001662FC /* INVSSimulatedChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22FF3B22980B89001662FC /* INVSSimulatedChartsViewController.swift */; };
+		4A2B05A6229C19220024F83A /* INVSCEIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B05A5229C19220024F83A /* INVSCEIWorker.swift */; };
+		4A2B05A9229DF30E0024F83A /* INVSSimulatedTotalChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B05A8229DF30E0024F83A /* INVSSimulatedTotalChartView.swift */; };
+		4A2B05AB229E02E60024F83A /* INVSSimulatedRescueChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B05AA229E02E60024F83A /* INVSSimulatedRescueChartView.swift */; };
 		4A4C68AF2295796200EDC8C6 /* INVSSimulatorTableviewDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C686F2295796100EDC8C6 /* INVSSimulatorTableviewDataSourceDelegate.swift */; };
 		4A4C68B02295796200EDC8C6 /* INVSSimulatedListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68702295796100EDC8C6 /* INVSSimulatedListInteractor.swift */; };
 		4A4C68B12295796200EDC8C6 /* INVSSimulatedValueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68722295796100EDC8C6 /* INVSSimulatedValueModel.swift */; };
@@ -69,6 +72,9 @@
 		4A22FF3222976CAF001662FC /* INVSSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSwitchView.swift; sourceTree = "<group>"; };
 		4A22FF362297837B001662FC /* INVSSimulatedContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedContainerViewController.swift; sourceTree = "<group>"; };
 		4A22FF3B22980B89001662FC /* INVSSimulatedChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedChartsViewController.swift; sourceTree = "<group>"; };
+		4A2B05A5229C19220024F83A /* INVSCEIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = INVSCEIWorker.swift; path = CEI/INVSCEIWorker.swift; sourceTree = "<group>"; };
+		4A2B05A8229DF30E0024F83A /* INVSSimulatedTotalChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedTotalChartView.swift; sourceTree = "<group>"; };
+		4A2B05AA229E02E60024F83A /* INVSSimulatedRescueChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedRescueChartView.swift; sourceTree = "<group>"; };
 		4A4C68562295784900EDC8C6 /* InvestScopio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InvestScopio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A4C686F2295796100EDC8C6 /* INVSSimulatorTableviewDataSourceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorTableviewDataSourceDelegate.swift; sourceTree = "<group>"; };
 		4A4C68702295796100EDC8C6 /* INVSSimulatedListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatedListInteractor.swift; sourceTree = "<group>"; };
@@ -174,11 +180,21 @@
 		4A22FF3A22980B50001662FC /* SimulatedChartsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4A2B05A7229DF2A90024F83A /* SimulatedChartViews */,
 				4A22FF3B22980B89001662FC /* INVSSimulatedChartsViewController.swift */,
 				4A121693229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift */,
 				4A121695229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift */,
 			);
 			path = SimulatedChartsViewController;
+			sourceTree = "<group>";
+		};
+		4A2B05A7229DF2A90024F83A /* SimulatedChartViews */ = {
+			isa = PBXGroup;
+			children = (
+				4A2B05A8229DF30E0024F83A /* INVSSimulatedTotalChartView.swift */,
+				4A2B05AA229E02E60024F83A /* INVSSimulatedRescueChartView.swift */,
+			);
+			path = SimulatedChartViews;
 			sourceTree = "<group>";
 		};
 		4A4C684D2295784900EDC8C6 = {
@@ -223,6 +239,7 @@
 				4A4C687A2295796100EDC8C6 /* Start */,
 				4A4C687D2295796100EDC8C6 /* Simulation */,
 				4A4C68852295796100EDC8C6 /* INVSRouter.swift */,
+				4A2B05A5229C19220024F83A /* INVSCEIWorker.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -494,6 +511,7 @@
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
 				"${BUILT_PRODUCTS_DIR}/SkeletonView/SkeletonView.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -505,6 +523,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkeletonView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -548,7 +567,9 @@
 				4A4C68C42295796200EDC8C6 /* INVSConstants.swift in Sources */,
 				4A4C68CD2295796200EDC8C6 /* UIFont+INVSExtension.swift in Sources */,
 				4A4C68C32295796200EDC8C6 /* INVSPresentBaseViewController.swift in Sources */,
+				4A2B05A9229DF30E0024F83A /* INVSSimulatedTotalChartView.swift in Sources */,
 				4A4C68B42295796200EDC8C6 /* INVSSimulatedListPresenter.swift in Sources */,
+				4A2B05AB229E02E60024F83A /* INVSSimulatedRescueChartView.swift in Sources */,
 				4A4C68B72295796200EDC8C6 /* INVSSimulatorCell.swift in Sources */,
 				4A4C68C92295796200EDC8C6 /* UIColor+INVSPaletteColors.swift in Sources */,
 				4A4C68CF2295796200EDC8C6 /* NumberFormatter+INVSExtension.swift in Sources */,
@@ -570,6 +591,7 @@
 				4A4C68CB2295796200EDC8C6 /* UIImage+INVSExtension.swift in Sources */,
 				4A4C68D02295796200EDC8C6 /* CAShapeLayer+INVSExtension.swift in Sources */,
 				4A4C68D32295796200EDC8C6 /* UIWindow+INVSExtension.swift in Sources */,
+				4A2B05A6229C19220024F83A /* INVSCEIWorker.swift in Sources */,
 				4A4C68D12295796200EDC8C6 /* Double+INVSExtension.swift in Sources */,
 				4A4C68C52295796200EDC8C6 /* INVSFloatingTextField.swift in Sources */,
 				4A22FF3C22980B89001662FC /* INVSSimulatedChartsViewController.swift in Sources */,
