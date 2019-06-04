@@ -27,7 +27,7 @@ class INVSRouter: NSObject, INVSRoutingLogic {
             let simulatorTabBarItem = UITabBarItem(title: "Simulador", image: tapImage, tag: 0)
             simulatorViewController.tabBarItem = simulatorTabBarItem
             
-            appDelegate.tabBarController.setViewControllers([UINavigationController(rootViewController: simulatorViewController)], animated: true)
+            appDelegate.tabBarController.setViewControllers([UINavigationController.init(rootViewController: simulatorViewController)], animated: true)
             var options = UIWindow.TransitionOptions()
             options.direction = .toTop
             options.duration = 0.4

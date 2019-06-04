@@ -49,7 +49,7 @@ class INVSSimulatedChartsViewController: UIViewController {
         presenter.controller = self
         interactor.presenter = presenter
         totalChartView.setupChart()
-        rescueChartView.isHidden = true
+        rescueChartView.alpha = 0
         rescueChartView.setupChart()
         setupChartTypeSegmentedControl()
         interactor.setSegmentControl()
@@ -61,11 +61,11 @@ class INVSSimulatedChartsViewController: UIViewController {
             frame: .zero,
             segments: LabelSegment.segments(withTitles: ["Total", "Resgate"],
                                             normalFont: UIFont(name: "Avenir", size: 13.0)!,
-                                            normalTextColor: .INVSDefault(),
+                                            normalTextColor: .white,
                                             selectedFont: UIFont(name: "Avenir", size: 13.0)!,
-                                            selectedTextColor: .white),
-            options:[.backgroundColor(.white),
-                     .indicatorViewBackgroundColor(.INVSDefault()),
+                                            selectedTextColor: .INVSDefault()),
+            options:[.backgroundColor(.INVSDefault()),
+                     .indicatorViewBackgroundColor(.white),
                      .cornerRadius(15.0),
                      .bouncesOnChange(true)
             ])
@@ -75,14 +75,17 @@ class INVSSimulatedChartsViewController: UIViewController {
     @IBAction func segmentedControlChartTypeChanged(_ sender: BetterSegmentedControl) {
         isTotalChart = !isTotalChart
         
-        let profitabilityView = isTotalChart ? totalChartView : rescueChartView
-        let rescueView = isTotalChart ? rescueChartView : totalChartView
-        
-        UIView.transition(from: profitabilityView,
-                          to: rescueView,
-                          duration: 0.5,
-                          options: [.transitionFlipFromTop, .showHideTransitionViews],
-                          completion: nil)
+        if isTotalChart {
+            UIView.animate(withDuration: 0.5) {
+                self.totalChartView.alpha = 0.0
+                self.rescueChartView.alpha = 1.0
+            }
+        } else {
+            UIView.animate(withDuration: 0.5) {
+                self.totalChartView.alpha = 1.0
+                self.rescueChartView.alpha = 0.0
+            }
+        }
     }
     
     @IBAction func segmentedControlMonthChanged(_ sender: BetterSegmentedControl) {
@@ -173,8 +176,8 @@ extension INVSSimulatedChartsViewController: INVSCodeView {
             ])
         
         NSLayoutConstraint.activate([
-            chartTypeSegmentedControl.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            chartTypeSegmentedControl.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+            chartTypeSegmentedControl.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            chartTypeSegmentedControl.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor, constant: -8),
             chartTypeSegmentedControl.topAnchor.constraint(equalTo: monthsSegmentedControl.safeAreaLayoutGuide.bottomAnchor, constant: 8),
             chartTypeSegmentedControl.heightAnchor.constraint(equalToConstant: self.showRescueChart ? 30 : 0)
             ])

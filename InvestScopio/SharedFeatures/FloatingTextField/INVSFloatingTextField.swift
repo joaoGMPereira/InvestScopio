@@ -42,6 +42,7 @@ class INVSFloatingTextField: UIView {
     private var bigFont = UIFont.systemFont(ofSize: 16)
     private var heightLabelConstraint = NSLayoutConstraint()
     private var trailingLabelConstraint = NSLayoutConstraint()
+    private var trailingTextFieldConstraint = NSLayoutConstraint()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -53,7 +54,7 @@ class INVSFloatingTextField: UIView {
         setupView()
     }
     
-    func setup(placeholder: String,typeTextField: INVSFloatingTextFieldType?, valueTypeTextField: INVSFloatingTextFieldValueType? = nil,keyboardType: UIKeyboardType = .numberPad , required: Bool = false, hasInfoButton: Bool = false, color: UIColor, smallFont: UIFont = UIFont.systemFont(ofSize: 11), bigFont: UIFont = UIFont.systemFont(ofSize: 16)) {
+    func setup(placeholder: String,typeTextField: INVSFloatingTextFieldType?, valueTypeTextField: INVSFloatingTextFieldValueType? = nil,keyboardType: UIKeyboardType = .numberPad , required: Bool = false, hasInfoButton: Bool = false, color: UIColor, smallFont: UIFont = UIFont.systemFont(ofSize: 11), bigFont: UIFont = UIFont.systemFont(ofSize: 16), leftButtons: [INVSKeyboardToolbarButton] = [INVSKeyboardToolbarButton.cancel], rightButtons: [INVSKeyboardToolbarButton] = [INVSKeyboardToolbarButton.ok]) {
         placeholderLabel.text = placeholder
         floatingTextField.keyboardType = keyboardType
         self.typeTextField = typeTextField
@@ -70,6 +71,14 @@ class INVSFloatingTextField: UIView {
         if floatingTextField.text != nil && floatingTextField.text != "" {
             openKeyboard()
         }
+        setToolbar(leftButtons: leftButtons, rightButtons: rightButtons)
+    }
+    
+    func setToolbar(leftButtons: [INVSKeyboardToolbarButton], rightButtons: [INVSKeyboardToolbarButton]) {
+        let toolbar = INVSKeyboardToolbar()
+        toolbar.toolBarDelegate = self
+        toolbar.setup(leftButtons: leftButtons, rightButtons: rightButtons)
+        floatingTextField.inputAccessoryView = toolbar
     }
     
     func updateTextFieldUI() {
@@ -97,6 +106,10 @@ class INVSFloatingTextField: UIView {
                 infoButton.widthAnchor.constraint(equalToConstant: size),
                 infoButton.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor, constant: 0)
                 ])
+            let trailingFromInfoButton = -((frame.height * 0.8) + 16)
+            trailingLabelConstraint.constant = trailingFromInfoButton
+            trailingTextFieldConstraint.constant = trailingFromInfoButton
+            layoutIfNeeded()
             
         }
     }
@@ -116,17 +129,19 @@ extension INVSFloatingTextField: INVSCodeView {
     
     func setupConstraints() {
         let trailingFromInfoButton = -((frame.height * 0.8) + 16)
+        trailingLabelConstraint = placeholderLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: trailingFromInfoButton)
+        trailingTextFieldConstraint = floatingTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: trailingFromInfoButton)
         heightLabelConstraint = placeholderLabel.heightAnchor.constraint(equalTo: self.heightAnchor)
 
         NSLayoutConstraint.activate([
             placeholderLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
-            placeholderLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: trailingFromInfoButton),
+            trailingLabelConstraint,
             placeholderLabel.topAnchor.constraint(equalTo: self.topAnchor),
             heightLabelConstraint
             ])
         NSLayoutConstraint.activate([
             floatingTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
-            floatingTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: trailingFromInfoButton),
+            trailingTextFieldConstraint,
             floatingTextField.topAnchor.constraint(equalTo: self.topAnchor),
             floatingTextField.bottomAnchor.constraint(equalTo: self.bottomAnchor)
             ])
@@ -146,10 +161,6 @@ extension INVSFloatingTextField: INVSCodeView {
         placeholderLabel.font = bigFont
         placeholderLabel.textColor = .lightGray
         bottomLineView.backgroundColor = .lightGray
-        let toolbar = INVSKeyboardToolbar()
-        toolbar.toolBarDelegate = self
-        toolbar.setup(leftButtons: [INVSKeyboardToolbarButton.cancel], rightButtons: [INVSKeyboardToolbarButton.ok])
-        floatingTextField.inputAccessoryView = toolbar
     }
 }
 

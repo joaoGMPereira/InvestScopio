@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="INVSStartViewController" customModule="InvestScopio" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="INVSSMarketViewController" customModule="InvestScopio" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="2fk-a8-0g4" id="xti-VC-0aO"/>
                 <outlet property="titleLabel" destination="84F-9t-n2i" id="iby-qr-3sc"/>

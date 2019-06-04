@@ -9,16 +9,21 @@
 import UIKit
 import Lottie
 import Hero
-import WebKit
+import StepView
+
 protocol INVSSimutatorViewControlerProtocol: class {
+    func displayNextTextField(withLastTextField textField: INVSFloatingTextField)
+    func displayReview(withTextFields textFields: [INVSFloatingTextField])
     func displaySimulationProjection(with simulatorModel: INVSSimulatorModel)
     func displayErrorSimulationProjection(with messageError:String, shouldHideAutomatically:Bool, popupType: INVSPopupMessageType, sender: UIView?)
-    func displayInfo(withMessage message: String, title: String, shouldHideAutomatically: Bool, sender: UIView)
+    func displayInfo(withMessage message: String, title: String, shouldHideAutomatically: Bool)
     func displayOkAction(withTextField textField:INVSFloatingTextField, andShouldResign shouldResign: Bool)
     func displayCancelAction()
 }
 
 public class INVSSimutatorViewControler: UIViewController {
+    @IBOutlet weak var helpView: INVSSimulatorHelpView!
+    @IBOutlet weak var helpViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var initialValueTextField: INVSFloatingTextField!
     @IBOutlet weak var monthValueTextField: INVSFloatingTextField!
     @IBOutlet weak var interestRateTextField: INVSFloatingTextField!
@@ -32,7 +37,7 @@ public class INVSSimutatorViewControler: UIViewController {
     private var clearButtonLayer: CAGradientLayer!
     @IBOutlet weak var horizontalStackView: UIStackView!
     @IBOutlet weak var heightScrollView: NSLayoutConstraint!
-    let webView = WKWebView(frame: .zero)
+    let animatedLogoView = AnimationView(frame: .zero)
     
     var popupMessage: INVSPopupMessage?
     var interactor: INVSSimulatorInteractorProtocol?
@@ -47,42 +52,63 @@ public class INVSSimutatorViewControler: UIViewController {
         let presenter = INVSSimulatorPresenter()
         presenter.controller = self
         interactor.presenter = presenter
-        mockInfo()
-        setupHomePage()
+        helpView.interactor = self.interactor
+        //mockInfo()
         setupUI()
-
-    }
-    
-    func setupHomePage() {
-        webView.navigationDelegate = self
-        let url = URL(string: "https://cei.b3.com.br/CEI_Responsivo/")!
-        let request = URLRequest(url: url)
-        webView.load(request)
-    }
-    
-    func getDailyTokenHTML() {
-        webView.evaluateJavaScript("document.getElementById('ctl00_ContentPlaceHolder1_txtLogin').value='43054225810'", completionHandler: nil)
-        webView.evaluateJavaScript("document.getElementById('ctl00_ContentPlaceHolder1_txtSenha').value='Jg@22151515'", completionHandler: nil)
-        webView.evaluateJavaScript("document.getElementById('ctl00_ContentPlaceHolder1_btnLogar').click()", completionHandler: nil)
+        showHelpView()
+        setLeftBarButton()
         
     }
     
-    func teste(view: UIView, view2:UIView) {
-        UIView.animate(withDuration: 5, animations: {
-            view2.frame.origin.x = view.frame.width/2
+    @objc func showHelpView() {
+        helpViewTopConstraint.constant = 0
+        helpView.investorTypeSegmentedControl.isHidden = true
+        helpView.stepView.isHidden = true
+        helpView.messageLabel.attributedString = NSAttributedString.init(string: "")
+        UIView.animate(withDuration: 1, animations: {
+            self.view.layoutIfNeeded()
         }) { (finished) in
-            self.teste2(view: view, view2: view2)
+            self.helpView.setInitialStep()
         }
     }
     
-    func teste2(view: UIView, view2:UIView) {
-        UIView.animate(withDuration: 5, animations: {
-            view2.frame.origin.x = 0
-        }) { (finished) in
-            self.teste(view: view, view2: view2)
+    func setLeftBarButton() {
+        let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.shouldOpen))
+        animatedLogoView.addGestureRecognizer(gesture)
+        
+        let starAnimation = Animation.named("closePlusAnimation")
+        animatedLogoView.animation = starAnimation
+        animatedLogoView.contentMode = .scaleAspectFit
+        animatedLogoView.animationSpeed = 1.0
+        animatedLogoView.loopMode = .loop
+        animatedLogoView.alpha = 1.0
+        openAnimation()
+        let menuBarItem = UIBarButtonItem(customView: animatedLogoView)
+        let currWidth = menuBarItem.customView?.widthAnchor.constraint(equalToConstant: 24)
+        currWidth?.isActive = true
+        let currHeight = menuBarItem.customView?.heightAnchor.constraint(equalToConstant: 24)
+        currHeight?.isActive = true
+        self.navigationItem.leftBarButtonItem = menuBarItem
+    }
+    
+    @objc func shouldOpen(sender : UITapGestureRecognizer) {
+        helpView.isOpened ? closeAnimation() : openAnimation()
+    }
+    
+    func openAnimation() {
+        animatedLogoView.play(fromFrame: AnimationProgressTime(integerLiteral: 20), toFrame: AnimationProgressTime(integerLiteral: 70), loopMode: .playOnce) { (finished) in
+            self.helpView.isOpened = true
+            self.showHelpView()
         }
     }
     
+    func closeAnimation() {
+        animatedLogoView.play(fromFrame: AnimationProgressTime(integerLiteral: 110), toFrame: AnimationProgressTime(integerLiteral: 160), loopMode: .playOnce) { (finished) in
+            self.helpView.isOpened = false
+            self.closeHelpView()
+        }
+    }
+
     public func mockInfo() {
         initialValueTextField.floatingTextField.text = "R$50.000,00"
         monthValueTextField.floatingTextField.text = "R$500,00"
@@ -91,12 +117,12 @@ public class INVSSimutatorViewControler: UIViewController {
         initialMonthlyRescueTextField.floatingTextField.text = "R$100,00"
         increaseRescueTextField.floatingTextField.text = "R$100,00"
         goalIncreaseRescueTextField.floatingTextField.text = "R$1.000,00"
-        
     }
     
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         popupMessage = INVSPopupMessage(parentViewController: self)
+        initialValueTextField.delegate = self
         updateUI()
 
     }
@@ -108,26 +134,13 @@ public class INVSSimutatorViewControler: UIViewController {
     }
     
     private func setupTextFields() {
-        initialValueTextField.setup(placeholder: "Valor Inicial", typeTextField: .initialValue, valueTypeTextField: .currency, required: true, color: UIColor.INVSDefault())
-        initialValueTextField.delegate = self
-        
-        monthValueTextField.setup(placeholder: "Investimento Mensal", typeTextField: .monthValue, valueTypeTextField: .currency, required: false, color: UIColor.INVSDefault())
-        monthValueTextField.delegate = self
-        
-        interestRateTextField.setup(placeholder: "Taxa de Juros", typeTextField: .interestRate, valueTypeTextField: .percent, required: true, color: UIColor.INVSDefault())
-        interestRateTextField.delegate = self
-        
-        totalMonthsTextField.setup(placeholder: "Total de Meses", typeTextField: .totalMonths, valueTypeTextField: .months, required: true, color: UIColor.INVSDefault())
-        totalMonthsTextField.delegate = self
-        
-        initialMonthlyRescueTextField.setup(placeholder: "Valor Inicial para Resgatar do seu rendimento", typeTextField: .initialMonthlyRescue, valueTypeTextField: .currency, hasInfoButton: true, color: UIColor.INVSDefault())
-        initialMonthlyRescueTextField.delegate = self
-        
-        increaseRescueTextField.setup(placeholder: "Acréscimo no resgate", typeTextField: .increaseRescue, valueTypeTextField: .currency, hasInfoButton: true, color: UIColor.INVSDefault())
-        increaseRescueTextField.delegate = self
-        
-        goalIncreaseRescueTextField.setup(placeholder: "Objetivo de rendimento para aumento de resgate", typeTextField: .goalIncreaseRescue, valueTypeTextField: .currency, hasInfoButton: true, color: UIColor.INVSDefault())
-        goalIncreaseRescueTextField.delegate = self
+        INVSFloatingTextFieldType.initialValue.setupTextField(withTextField: initialValueTextField, andDelegate: self, valueTypeTextField: .currency, isRequired: true)
+        INVSFloatingTextFieldType.monthValue.setupTextField(withTextField: monthValueTextField, andDelegate: self, valueTypeTextField: .currency)
+        INVSFloatingTextFieldType.interestRate.setupTextField(withTextField: interestRateTextField, andDelegate: self, valueTypeTextField: .percent, isRequired: true)
+        INVSFloatingTextFieldType.totalMonths.setupTextField(withTextField: totalMonthsTextField, andDelegate: self, valueTypeTextField: .months, isRequired: true)
+        INVSFloatingTextFieldType.initialMonthlyRescue.setupTextField(withTextField: initialMonthlyRescueTextField, andDelegate: self, valueTypeTextField: .currency, hasInfoButton: true)
+        INVSFloatingTextFieldType.increaseRescue.setupTextField(withTextField: increaseRescueTextField, andDelegate: self, valueTypeTextField: .currency, hasInfoButton: true)
+        INVSFloatingTextFieldType.goalIncreaseRescue.setupTextField(withTextField: goalIncreaseRescueTextField, andDelegate: self, valueTypeTextField: .currency, hasInfoButton: true)
     }
     
     @IBAction func saveAction(_ sender: Any) {
@@ -151,7 +164,6 @@ public class INVSSimutatorViewControler: UIViewController {
         }
     }
     
-    
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         popupMessage?.layoutSubviews()
@@ -163,22 +175,14 @@ public class INVSSimutatorViewControler: UIViewController {
         updateUI()
     }
     
-}
-
-extension INVSSimutatorViewControler: WKNavigationDelegate {
-    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        
-        if let webViewURL = webView.url?.absoluteString {
-            if webViewURL == "https://cei.b3.com.br/CEI_Responsivo/home.aspx" {
-                webView.evaluateJavaScript("document.documentElement.outerHTML.toString()",
-                                           completionHandler: { (html: Any?, error: Error?) in
-                                            print(html)
-                })
-            } else {
-                self.getDailyTokenHTML()
-            }
+    func closeHelpView() {
+        helpView.isOpened = false
+        helpViewTopConstraint.constant = helpViewTopConstraint.constant  - helpView.frame.height
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
         }
     }
+    
 }
 
 extension INVSSimutatorViewControler: INVSFloatingTextFieldDelegate {
@@ -191,12 +195,25 @@ extension INVSSimutatorViewControler: INVSFloatingTextFieldDelegate {
     
     func infoButtonAction(_ textField: INVSFloatingTextField) {
         view.endEditing(true)
-        interactor?.showInfo(nearOfSender: textField)
+        interactor?.showInfo(withSender: textField)
     }
     
 }
 
 extension INVSSimutatorViewControler: INVSSimutatorViewControlerProtocol {
+    func displayNextTextField(withLastTextField textField: INVSFloatingTextField) {
+        helpView.showNextStep(withLastTextField: textField)
+    }
+    
+    func displayReview(withTextFields textFields: [INVSFloatingTextField]) {
+        interactor?.clear()
+        for (index, textField) in textFields.enumerated() {
+            interactor?.allTextFields[index].floatingTextField.text = textField.floatingTextField.text
+        }
+        setupUI()
+        updateUI()
+        closeHelpView()
+    }
     
     func displayOkAction(withTextField textField: INVSFloatingTextField, andShouldResign shouldResign: Bool) {
         textField.floatingTextField.becomeFirstResponder()
@@ -220,7 +237,7 @@ extension INVSSimutatorViewControler: INVSSimutatorViewControlerProtocol {
         popupMessage?.show(withTextMessage: messageError, popupType: popupType, shouldHideAutomatically: shouldHideAutomatically)
     }
     
-    func displayInfo(withMessage message: String,title: String, shouldHideAutomatically: Bool, sender: UIView) {
+    func displayInfo(withMessage message: String,title: String, shouldHideAutomatically: Bool) {
         popupMessage?.show(withTextMessage: message, title: title,popupType: .alert, shouldHideAutomatically: shouldHideAutomatically)
     }
 

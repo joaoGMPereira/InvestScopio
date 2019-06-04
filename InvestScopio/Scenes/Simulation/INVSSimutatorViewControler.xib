@@ -15,6 +15,8 @@
                 <outlet property="clearButton" destination="fwz-7i-qNv" id="xuy-Ic-GGE"/>
                 <outlet property="goalIncreaseRescueTextField" destination="1xJ-yc-7VY" id="o7z-kd-OWn"/>
                 <outlet property="heightScrollView" destination="Jzn-cG-0bV" id="7SO-T9-jmU"/>
+                <outlet property="helpView" destination="s65-qX-vLp" id="Bxe-V6-aS8"/>
+                <outlet property="helpViewTopConstraint" destination="cjM-Z6-nHt" id="hy6-Qj-XBx"/>
                 <outlet property="horizontalStackView" destination="eVq-Pt-N1Y" id="q0x-J5-mH6"/>
                 <outlet property="increaseRescueTextField" destination="1KE-v8-O7N" id="iZp-qS-nmV"/>
                 <outlet property="initialMonthlyRescueTextField" destination="bWc-Vh-W5Y" id="cJa-3c-VWe"/>
@@ -32,7 +34,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nfp-Rr-73A">
-                    <rect key="frame" x="0.0" y="28" width="375" height="0.0"/>
+                    <rect key="frame" x="0.0" y="20" width="375" height="0.0"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xej-dM-W90">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
@@ -83,15 +85,15 @@
                         <constraint firstItem="xej-dM-W90" firstAttribute="top" secondItem="Nfp-Rr-73A" secondAttribute="top" id="GW8-W5-is8"/>
                         <constraint firstAttribute="height" id="Jzn-cG-0bV"/>
                         <constraint firstAttribute="trailing" secondItem="xej-dM-W90" secondAttribute="trailing" id="XnX-UT-z6d"/>
-                        <constraint firstAttribute="bottom" secondItem="xej-dM-W90" secondAttribute="bottom" id="ZuT-R2-kzc"/>
+                        <constraint firstAttribute="bottom" secondItem="xej-dM-W90" secondAttribute="bottom" constant="-350" id="ZuT-R2-kzc"/>
                         <constraint firstItem="xej-dM-W90" firstAttribute="leading" secondItem="Nfp-Rr-73A" secondAttribute="leading" id="ukR-DL-0hH"/>
                     </constraints>
                 </scrollView>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="LCz-Zz-Hjj">
-                    <rect key="frame" x="0.0" y="44" width="375" height="70"/>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="LCz-Zz-Hjj">
+                    <rect key="frame" x="8" y="36" width="359" height="70"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YL-KQ-qYM">
-                            <rect key="frame" x="0.0" y="0.0" width="187" height="70"/>
+                            <rect key="frame" x="0.0" y="0.0" width="178" height="70"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Simular">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -101,7 +103,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwz-7i-qNv">
-                            <rect key="frame" x="188" y="0.0" width="187" height="70"/>
+                            <rect key="frame" x="181" y="0.0" width="178" height="70"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Nova Simulação">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -115,15 +117,23 @@
                         <constraint firstAttribute="height" constant="70" id="Dds-uo-Hyu"/>
                     </constraints>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s65-qX-vLp" customClass="INVSSimulatorHelpView" customModule="InvestScopio" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="-667" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
+                <constraint firstItem="s65-qX-vLp" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="DZF-V2-3Df"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Nfp-Rr-73A" secondAttribute="trailing" id="F9t-Dt-58b"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="LCz-Zz-Hjj" secondAttribute="trailing" id="Ht1-bN-7F5"/>
-                <constraint firstItem="Nfp-Rr-73A" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="Lrh-Gf-iKa"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="LCz-Zz-Hjj" secondAttribute="trailing" constant="8" id="Ht1-bN-7F5"/>
                 <constraint firstItem="LCz-Zz-Hjj" firstAttribute="top" secondItem="Nfp-Rr-73A" secondAttribute="bottom" constant="16" id="N1A-kh-U1X"/>
+                <constraint firstItem="s65-qX-vLp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-667" id="cjM-Z6-nHt"/>
                 <constraint firstItem="Nfp-Rr-73A" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="iKD-wS-515"/>
-                <constraint firstItem="LCz-Zz-Hjj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="nPI-of-Cwg"/>
+                <constraint firstItem="s65-qX-vLp" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="isH-MS-ap6"/>
+                <constraint firstItem="Nfp-Rr-73A" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="lTy-Qt-7tD"/>
+                <constraint firstItem="LCz-Zz-Hjj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="nPI-of-Cwg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="s65-qX-vLp" secondAttribute="trailing" id="zLa-BM-iLR"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="-154.40000000000001" y="88.605697151424295"/>

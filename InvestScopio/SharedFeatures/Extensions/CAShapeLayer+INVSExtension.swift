@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 extension CAShapeLayer {
     
-    static func addCornerAndShadow(withShapeLayer shapeLayer:CAShapeLayer?, withCorners corners: UIRectCorner, withRoundedCorner cornerRadius: CGFloat, andColor fillColor: UIColor, inView view:UIView) -> CAShapeLayer? {
+    static func addCornerAndShadow(withShapeLayer shapeLayer:CAShapeLayer?, withCorners corners: UIRectCorner, withRoundedCorner cornerRadius: CGFloat, andColor fillColor: UIColor, inView view:UIView, atPosition position: UInt32 = 0) -> CAShapeLayer? {
         var layer = shapeLayer
         if let shapeLayer = layer {
             shapeLayer.removeFromSuperlayer()
         }
-        layer = roundedShapeLayer(inCorners: corners, withRoundedCorner: cornerRadius, andColor: fillColor, inView: view)
+        layer = roundedShapeLayer(inCorners: corners, withRoundedCorner: cornerRadius, andColor: fillColor, inView: view, atPosition: position)
         return layer
     }
     
@@ -27,6 +27,7 @@ extension CAShapeLayer {
         gradient.colors = colors
         gradient.locations = [0.0 , 1.0]
         gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.cornerRadius = 8
         gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
         gradient.frame = CGRect(x: 0.0, y: 0.0, width: view.frame.size.width, height: view.frame.size.height)
     
@@ -34,7 +35,7 @@ extension CAShapeLayer {
         return gradient
     }
     
-    static private func roundedShapeLayer(inCorners corners: UIRectCorner, withRoundedCorner cornerRadius: CGFloat, andColor fillColor: UIColor, inView view:UIView) -> CAShapeLayer {
+    static private func roundedShapeLayer(inCorners corners: UIRectCorner, withRoundedCorner cornerRadius: CGFloat, andColor fillColor: UIColor, inView view:UIView, atPosition position: UInt32 = 0) -> CAShapeLayer {
         let shapeLayer = CAShapeLayer()
         shapeLayer.bounds = view.frame
         shapeLayer.position = view.center
@@ -45,7 +46,7 @@ extension CAShapeLayer {
         shapeLayer.shadowOffset = CGSize(width: 1.0, height: 1.0)
         shapeLayer.shadowOpacity = 0.8
         shapeLayer.shadowRadius = 1
-        view.layer.insertSublayer(shapeLayer, at: 0)
+        view.layer.insertSublayer(shapeLayer, at: position)
         return shapeLayer
     }
 }

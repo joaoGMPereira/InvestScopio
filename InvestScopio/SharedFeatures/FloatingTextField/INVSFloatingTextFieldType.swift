@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum INVSFloatingTextFieldType: Int {
     
@@ -18,6 +19,29 @@ enum INVSFloatingTextFieldType: Int {
     case increaseRescue
     case goalIncreaseRescue
     
+    func setupTextField(withTextField textfield: INVSFloatingTextField, andDelegate delegate: INVSFloatingTextFieldDelegate, valueTypeTextField: INVSFloatingTextFieldValueType, isRequired: Bool = false, hasInfoButton: Bool = false) {
+        textfield.setup(placeholder: self.getTextFieldTitle(), typeTextField: self, valueTypeTextField: valueTypeTextField, required: isRequired, hasInfoButton: hasInfoButton, color: UIColor.INVSDefault(), leftButtons: [.cancel,.back])
+        textfield.delegate = delegate
+    }
+    
+    func getTextFieldTitle() -> String {
+        switch self {
+        case .initialValue:
+            return "Valor Inicial"
+        case .monthValue:
+            return "Investimento Mensal"
+        case .interestRate:
+            return "Taxa de Juros"
+        case .totalMonths:
+            return "Total de Meses"
+        case .initialMonthlyRescue:
+            return "Valor Inicial para Resgatar do seu rendimento"
+        case .increaseRescue:
+            return "Acréscimo no resgate"
+        case .goalIncreaseRescue:
+            return "Objetivo de rendimento para aumento de resgate"
+        }
+    }
     
     func getMessageInfo() -> String {
         switch self {
@@ -61,7 +85,7 @@ enum INVSFloatingTextFieldType: Int {
         return allTextFields.filter({$0.typeTextField == self.next()}).first
     }
     
-    private func next() -> INVSFloatingTextFieldType? {
+    func next() -> INVSFloatingTextFieldType? {
         return INVSFloatingTextFieldType(rawValue: rawValue + 1)
     }
 }

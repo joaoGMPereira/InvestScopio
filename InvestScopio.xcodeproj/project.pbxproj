@@ -7,15 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A107A9A22A1791000A7D8D1 /* ParticipantesSTRport.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4A107A9922A1790F00A7D8D1 /* ParticipantesSTRport.csv */; };
+		4A107A9C22A31E8300A7D8D1 /* UILabel+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A107A9B22A31E8300A7D8D1 /* UILabel+INVSExtension.swift */; };
+		4A107AA222A3279600A7D8D1 /* INVSSimulatorHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A107AA122A3279600A7D8D1 /* INVSSimulatorHelpView.swift */; };
+		4A111F8B229ECE5F00D9EAF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A111F8A229ECE5F00D9EAF1 /* GoogleService-Info.plist */; };
 		4A121692229AE96100759948 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A121691229AE96100759948 /* BalloonMarker.swift */; };
 		4A121694229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A121693229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift */; };
 		4A121696229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A121695229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift */; };
 		4A22FF3322976CAF001662FC /* INVSSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22FF3222976CAF001662FC /* INVSSwitchView.swift */; };
 		4A22FF382297837B001662FC /* INVSSimulatedContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22FF362297837B001662FC /* INVSSimulatedContainerViewController.swift */; };
 		4A22FF3C22980B89001662FC /* INVSSimulatedChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22FF3B22980B89001662FC /* INVSSimulatedChartsViewController.swift */; };
-		4A2B05A6229C19220024F83A /* INVSCEIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B05A5229C19220024F83A /* INVSCEIWorker.swift */; };
+		4A27AA96229F3F9F00C45CC5 /* INVSSMarketInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AA95229F3F9F00C45CC5 /* INVSSMarketInteractor.swift */; };
+		4A27AA99229F6E4D00C45CC5 /* INVSSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AA98229F6E4D00C45CC5 /* INVSSession.swift */; };
+		4A27AA9B229F745C00C45CC5 /* INVSSMarketPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AA9A229F745C00C45CC5 /* INVSSMarketPresenter.swift */; };
+		4A2B05A6229C19220024F83A /* INVSMarketWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B05A5229C19220024F83A /* INVSMarketWorker.swift */; };
 		4A2B05A9229DF30E0024F83A /* INVSSimulatedTotalChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B05A8229DF30E0024F83A /* INVSSimulatedTotalChartView.swift */; };
 		4A2B05AB229E02E60024F83A /* INVSSimulatedRescueChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B05AA229E02E60024F83A /* INVSSimulatedRescueChartView.swift */; };
+		4A45D0D222A44576001383B4 /* NSAttributedString+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A45D0D122A44576001383B4 /* NSAttributedString+INVSExtension.swift */; };
+		4A45D0D422A4463D001383B4 /* INVSSimulatedHelpViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A45D0D322A4463D001383B4 /* INVSSimulatedHelpViewType.swift */; };
+		4A45D10222A70051001383B4 /* closePlusAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A45D10122A70051001383B4 /* closePlusAnimation.json */; };
 		4A4C68AF2295796200EDC8C6 /* INVSSimulatorTableviewDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C686F2295796100EDC8C6 /* INVSSimulatorTableviewDataSourceDelegate.swift */; };
 		4A4C68B02295796200EDC8C6 /* INVSSimulatedListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68702295796100EDC8C6 /* INVSSimulatedListInteractor.swift */; };
 		4A4C68B12295796200EDC8C6 /* INVSSimulatedValueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68722295796100EDC8C6 /* INVSSimulatedValueModel.swift */; };
@@ -24,8 +34,8 @@
 		4A4C68B52295796200EDC8C6 /* INVSSimulatorHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68772295796100EDC8C6 /* INVSSimulatorHeaderView.swift */; };
 		4A4C68B62295796200EDC8C6 /* INVSSimulatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C68782295796100EDC8C6 /* INVSSimulatorCell.xib */; };
 		4A4C68B72295796200EDC8C6 /* INVSSimulatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68792295796100EDC8C6 /* INVSSimulatorCell.swift */; };
-		4A4C68B82295796200EDC8C6 /* INVSStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C687B2295796100EDC8C6 /* INVSStartViewController.swift */; };
-		4A4C68B92295796200EDC8C6 /* INVSStartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C687C2295796100EDC8C6 /* INVSStartViewController.xib */; };
+		4A4C68B82295796200EDC8C6 /* INVSSMarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C687B2295796100EDC8C6 /* INVSSMarketViewController.swift */; };
+		4A4C68B92295796200EDC8C6 /* INVSSMarketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C687C2295796100EDC8C6 /* INVSSMarketViewController.xib */; };
 		4A4C68BA2295796200EDC8C6 /* INVSSimutatorViewControler.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C687E2295796100EDC8C6 /* INVSSimutatorViewControler.xib */; };
 		4A4C68BB2295796200EDC8C6 /* INVSSimulatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68802295796100EDC8C6 /* INVSSimulatorModel.swift */; };
 		4A4C68BC2295796200EDC8C6 /* INVSSimutatorViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68812295796100EDC8C6 /* INVSSimutatorViewControler.swift */; };
@@ -66,15 +76,25 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A107A9922A1790F00A7D8D1 /* ParticipantesSTRport.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ParticipantesSTRport.csv; sourceTree = "<group>"; };
+		4A107A9B22A31E8300A7D8D1 /* UILabel+INVSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+INVSExtension.swift"; sourceTree = "<group>"; };
+		4A107AA122A3279600A7D8D1 /* INVSSimulatorHelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = INVSSimulatorHelpView.swift; path = ../INVSSimulatorHelpView.swift; sourceTree = "<group>"; };
+		4A111F8A229ECE5F00D9EAF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4A121691229AE96100759948 /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		4A121693229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedChartsInteractor.swift; sourceTree = "<group>"; };
 		4A121695229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedChartsPresenter.swift; sourceTree = "<group>"; };
 		4A22FF3222976CAF001662FC /* INVSSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSwitchView.swift; sourceTree = "<group>"; };
 		4A22FF362297837B001662FC /* INVSSimulatedContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedContainerViewController.swift; sourceTree = "<group>"; };
 		4A22FF3B22980B89001662FC /* INVSSimulatedChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedChartsViewController.swift; sourceTree = "<group>"; };
-		4A2B05A5229C19220024F83A /* INVSCEIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = INVSCEIWorker.swift; path = CEI/INVSCEIWorker.swift; sourceTree = "<group>"; };
+		4A27AA95229F3F9F00C45CC5 /* INVSSMarketInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSMarketInteractor.swift; sourceTree = "<group>"; };
+		4A27AA98229F6E4D00C45CC5 /* INVSSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSession.swift; sourceTree = "<group>"; };
+		4A27AA9A229F745C00C45CC5 /* INVSSMarketPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSMarketPresenter.swift; sourceTree = "<group>"; };
+		4A2B05A5229C19220024F83A /* INVSMarketWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSMarketWorker.swift; sourceTree = "<group>"; };
 		4A2B05A8229DF30E0024F83A /* INVSSimulatedTotalChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedTotalChartView.swift; sourceTree = "<group>"; };
 		4A2B05AA229E02E60024F83A /* INVSSimulatedRescueChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedRescueChartView.swift; sourceTree = "<group>"; };
+		4A45D0D122A44576001383B4 /* NSAttributedString+INVSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+INVSExtension.swift"; sourceTree = "<group>"; };
+		4A45D0D322A4463D001383B4 /* INVSSimulatedHelpViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedHelpViewType.swift; sourceTree = "<group>"; };
+		4A45D10122A70051001383B4 /* closePlusAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = closePlusAnimation.json; sourceTree = "<group>"; };
 		4A4C68562295784900EDC8C6 /* InvestScopio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InvestScopio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A4C686F2295796100EDC8C6 /* INVSSimulatorTableviewDataSourceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorTableviewDataSourceDelegate.swift; sourceTree = "<group>"; };
 		4A4C68702295796100EDC8C6 /* INVSSimulatedListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatedListInteractor.swift; sourceTree = "<group>"; };
@@ -84,8 +104,8 @@
 		4A4C68772295796100EDC8C6 /* INVSSimulatorHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorHeaderView.swift; sourceTree = "<group>"; };
 		4A4C68782295796100EDC8C6 /* INVSSimulatorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = INVSSimulatorCell.xib; sourceTree = "<group>"; };
 		4A4C68792295796100EDC8C6 /* INVSSimulatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorCell.swift; sourceTree = "<group>"; };
-		4A4C687B2295796100EDC8C6 /* INVSStartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSStartViewController.swift; sourceTree = "<group>"; };
-		4A4C687C2295796100EDC8C6 /* INVSStartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = INVSStartViewController.xib; sourceTree = "<group>"; };
+		4A4C687B2295796100EDC8C6 /* INVSSMarketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSMarketViewController.swift; sourceTree = "<group>"; };
+		4A4C687C2295796100EDC8C6 /* INVSSMarketViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = INVSSMarketViewController.xib; sourceTree = "<group>"; };
 		4A4C687E2295796100EDC8C6 /* INVSSimutatorViewControler.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = INVSSimutatorViewControler.xib; sourceTree = "<group>"; };
 		4A4C68802295796100EDC8C6 /* INVSSimulatorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorModel.swift; sourceTree = "<group>"; };
 		4A4C68812295796100EDC8C6 /* INVSSimutatorViewControler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimutatorViewControler.swift; sourceTree = "<group>"; };
@@ -94,7 +114,7 @@
 		4A4C68842295796100EDC8C6 /* INVSSimulatorInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorInteractor.swift; sourceTree = "<group>"; };
 		4A4C68852295796100EDC8C6 /* INVSRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSRouter.swift; sourceTree = "<group>"; };
 		4A4C68872295796100EDC8C6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		4A4C68882295796100EDC8C6 /* animatedLoadingPurple.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animatedLoadingPurple.json; sourceTree = "<group>"; };
+		4A4C68882295796100EDC8C6 /* animatedLoadingPurple.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = animatedLoadingPurple.json; path = ../animatedLoadingPurple.json; sourceTree = "<group>"; };
 		4A4C688B2295796100EDC8C6 /* INVSPresentBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSPresentBaseViewController.swift; sourceTree = "<group>"; };
 		4A4C688D2295796100EDC8C6 /* INVSConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSConstants.swift; sourceTree = "<group>"; };
 		4A4C688F2295796100EDC8C6 /* INVSFloatingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSFloatingTextField.swift; sourceTree = "<group>"; };
@@ -117,12 +137,12 @@
 		4A4C68A32295796100EDC8C6 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		4A4C68A52295796100EDC8C6 /* INVSKeyChainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSKeyChainWrapper.swift; sourceTree = "<group>"; };
 		4A4C68A72295796100EDC8C6 /* INVSCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSCodeView.swift; sourceTree = "<group>"; };
-		4A4C68A82295796100EDC8C6 /* animatedLogo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animatedLogo.json; sourceTree = "<group>"; };
+		4A4C68A82295796100EDC8C6 /* animatedLogo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = animatedLogo.json; path = ../animatedLogo.json; sourceTree = "<group>"; };
 		4A4C68AA2295796100EDC8C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		4A4C68AB2295796100EDC8C6 /* animatedLogoWhite.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animatedLogoWhite.json; sourceTree = "<group>"; };
+		4A4C68AB2295796100EDC8C6 /* animatedLogoWhite.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = animatedLogoWhite.json; path = ../animatedLogoWhite.json; sourceTree = "<group>"; };
 		4A4C68AC2295796100EDC8C6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A4C68AD2295796100EDC8C6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4A4C68AE2295796100EDC8C6 /* animatedLoadingWhite.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animatedLoadingWhite.json; sourceTree = "<group>"; };
+		4A4C68AE2295796100EDC8C6 /* animatedLoadingWhite.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = animatedLoadingWhite.json; path = ../animatedLoadingWhite.json; sourceTree = "<group>"; };
 		96C9F1EA5800CB68A709EF1A /* Pods-InvestScopio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvestScopio.debug.xcconfig"; path = "Target Support Files/Pods-InvestScopio/Pods-InvestScopio.debug.xcconfig"; sourceTree = "<group>"; };
 		9F1B6B0D7ADAA56EF7CEAAF4 /* Pods_InvestScopio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InvestScopio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E51923B72D563C11FC98562D /* Pods-InvestScopio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvestScopio.release.xcconfig"; path = "Target Support Files/Pods-InvestScopio/Pods-InvestScopio.release.xcconfig"; sourceTree = "<group>"; };
@@ -146,6 +166,15 @@
 				9F1B6B0D7ADAA56EF7CEAAF4 /* Pods_InvestScopio.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4A107AA322A3279C00A7D8D1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4A107AA122A3279600A7D8D1 /* INVSSimulatorHelpView.swift */,
+				4A45D0D322A4463D001383B4 /* INVSSimulatedHelpViewType.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		4A121690229AE96100759948 /* BallonMarker */ = {
@@ -188,6 +217,14 @@
 			path = SimulatedChartsViewController;
 			sourceTree = "<group>";
 		};
+		4A27AA97229F6E1F00C45CC5 /* InvestScopioSession */ = {
+			isa = PBXGroup;
+			children = (
+				4A27AA98229F6E4D00C45CC5 /* INVSSession.swift */,
+			);
+			path = InvestScopioSession;
+			sourceTree = "<group>";
+		};
 		4A2B05A7229DF2A90024F83A /* SimulatedChartViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,16 +255,15 @@
 		4A4C686B2295796100EDC8C6 /* InvestScopio */ = {
 			isa = PBXGroup;
 			children = (
+				4A27AA97229F6E1F00C45CC5 /* InvestScopioSession */,
 				4A4C68892295796100EDC8C6 /* SharedFeatures */,
 				4A4C686C2295796100EDC8C6 /* Scenes */,
 				4A4C68862295796100EDC8C6 /* Images */,
-				4A4C68882295796100EDC8C6 /* animatedLoadingPurple.json */,
-				4A4C68A82295796100EDC8C6 /* animatedLogo.json */,
 				4A4C68A92295796100EDC8C6 /* LaunchScreen.xib */,
-				4A4C68AB2295796100EDC8C6 /* animatedLogoWhite.json */,
+				4A107A9922A1790F00A7D8D1 /* ParticipantesSTRport.csv */,
+				4A111F8A229ECE5F00D9EAF1 /* GoogleService-Info.plist */,
 				4A4C68AC2295796100EDC8C6 /* AppDelegate.swift */,
 				4A4C68AD2295796100EDC8C6 /* Info.plist */,
-				4A4C68AE2295796100EDC8C6 /* animatedLoadingWhite.json */,
 			);
 			path = InvestScopio;
 			sourceTree = "<group>";
@@ -236,10 +272,9 @@
 			isa = PBXGroup;
 			children = (
 				4A4C686D2295796100EDC8C6 /* Simulated */,
-				4A4C687A2295796100EDC8C6 /* Start */,
+				4A4C687A2295796100EDC8C6 /* Market */,
 				4A4C687D2295796100EDC8C6 /* Simulation */,
 				4A4C68852295796100EDC8C6 /* INVSRouter.swift */,
-				4A2B05A5229C19220024F83A /* INVSCEIWorker.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -281,20 +316,24 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		4A4C687A2295796100EDC8C6 /* Start */ = {
+		4A4C687A2295796100EDC8C6 /* Market */ = {
 			isa = PBXGroup;
 			children = (
-				4A4C687B2295796100EDC8C6 /* INVSStartViewController.swift */,
-				4A4C687C2295796100EDC8C6 /* INVSStartViewController.xib */,
+				4A27AA9A229F745C00C45CC5 /* INVSSMarketPresenter.swift */,
+				4A27AA95229F3F9F00C45CC5 /* INVSSMarketInteractor.swift */,
+				4A2B05A5229C19220024F83A /* INVSMarketWorker.swift */,
+				4A4C687B2295796100EDC8C6 /* INVSSMarketViewController.swift */,
+				4A4C687C2295796100EDC8C6 /* INVSSMarketViewController.xib */,
 			);
-			path = Start;
+			path = Market;
 			sourceTree = "<group>";
 		};
 		4A4C687D2295796100EDC8C6 /* Simulation */ = {
 			isa = PBXGroup;
 			children = (
-				4A4C687E2295796100EDC8C6 /* INVSSimutatorViewControler.xib */,
+				4A107AA322A3279C00A7D8D1 /* Views */,
 				4A4C687F2295796100EDC8C6 /* Models */,
+				4A4C687E2295796100EDC8C6 /* INVSSimutatorViewControler.xib */,
 				4A4C68812295796100EDC8C6 /* INVSSimutatorViewControler.swift */,
 				4A4C68822295796100EDC8C6 /* INVSSimulatorPresenter.swift */,
 				4A4C68832295796100EDC8C6 /* INVSSimulatorWorker.swift */,
@@ -314,6 +353,11 @@
 		4A4C68862295796100EDC8C6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4A45D10122A70051001383B4 /* closePlusAnimation.json */,
+				4A4C68AE2295796100EDC8C6 /* animatedLoadingWhite.json */,
+				4A4C68AB2295796100EDC8C6 /* animatedLogoWhite.json */,
+				4A4C68882295796100EDC8C6 /* animatedLoadingPurple.json */,
+				4A4C68A82295796100EDC8C6 /* animatedLogo.json */,
 				4A4C68872295796100EDC8C6 /* Images.xcassets */,
 			);
 			path = Images;
@@ -376,6 +420,8 @@
 				4A4C689C2295796100EDC8C6 /* Double+INVSExtension.swift */,
 				4A4C689D2295796100EDC8C6 /* String+INVSExtension.swift */,
 				4A4C689E2295796100EDC8C6 /* UIWindow+INVSExtension.swift */,
+				4A107A9B22A31E8300A7D8D1 /* UILabel+INVSExtension.swift */,
+				4A45D0D122A44576001383B4 /* NSAttributedString+INVSExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -487,9 +533,12 @@
 				4A4C68C12295796200EDC8C6 /* Images.xcassets in Resources */,
 				4A4C68C22295796200EDC8C6 /* animatedLoadingPurple.json in Resources */,
 				4A4C68DB2295796200EDC8C6 /* animatedLogoWhite.json in Resources */,
+				4A45D10222A70051001383B4 /* closePlusAnimation.json in Resources */,
+				4A107A9A22A1791000A7D8D1 /* ParticipantesSTRport.csv in Resources */,
 				4A4C68DA2295796200EDC8C6 /* LaunchScreen.xib in Resources */,
 				4A4C68BA2295796200EDC8C6 /* INVSSimutatorViewControler.xib in Resources */,
-				4A4C68B92295796200EDC8C6 /* INVSStartViewController.xib in Resources */,
+				4A111F8B229ECE5F00D9EAF1 /* GoogleService-Info.plist in Resources */,
+				4A4C68B92295796200EDC8C6 /* INVSSMarketViewController.xib in Resources */,
 				4A4C68D92295796200EDC8C6 /* animatedLogo.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -506,24 +555,38 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-InvestScopio/Pods-InvestScopio-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BetterSegmentedControl/BetterSegmentedControl.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
+				"${BUILT_PRODUCTS_DIR}/RQShineLabel/RQShineLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/SkeletonView/SkeletonView.framework",
+				"${BUILT_PRODUCTS_DIR}/StepView/StepView.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
+				"${BUILT_PRODUCTS_DIR}/ZCAnimatedLabel/ZCAnimatedLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BetterSegmentedControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RQShineLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkeletonView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StepView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZCAnimatedLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -562,8 +625,10 @@
 			files = (
 				4A22FF3322976CAF001662FC /* INVSSwitchView.swift in Sources */,
 				4A4C68D52295796200EDC8C6 /* INVSPopupMessage.swift in Sources */,
+				4A45D0D222A44576001383B4 /* NSAttributedString+INVSExtension.swift in Sources */,
 				4A4C68B12295796200EDC8C6 /* INVSSimulatedValueModel.swift in Sources */,
 				4A4C68DC2295796200EDC8C6 /* AppDelegate.swift in Sources */,
+				4A45D0D422A4463D001383B4 /* INVSSimulatedHelpViewType.swift in Sources */,
 				4A4C68C42295796200EDC8C6 /* INVSConstants.swift in Sources */,
 				4A4C68CD2295796200EDC8C6 /* UIFont+INVSExtension.swift in Sources */,
 				4A4C68C32295796200EDC8C6 /* INVSPresentBaseViewController.swift in Sources */,
@@ -574,9 +639,11 @@
 				4A4C68C92295796200EDC8C6 /* UIColor+INVSPaletteColors.swift in Sources */,
 				4A4C68CF2295796200EDC8C6 /* NumberFormatter+INVSExtension.swift in Sources */,
 				4A4C68D72295796200EDC8C6 /* INVSKeyChainWrapper.swift in Sources */,
+				4A27AA99229F6E4D00C45CC5 /* INVSSession.swift in Sources */,
 				4A121696229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift in Sources */,
 				4A4C68CE2295796200EDC8C6 /* UIStackview+INVSExtension.swift in Sources */,
 				4A4C68B22295796200EDC8C6 /* INVSSimulatedListViewController.swift in Sources */,
+				4A27AA96229F3F9F00C45CC5 /* INVSSMarketInteractor.swift in Sources */,
 				4A4C68D22295796200EDC8C6 /* String+INVSExtension.swift in Sources */,
 				4A22FF382297837B001662FC /* INVSSimulatedContainerViewController.swift in Sources */,
 				4A4C68BE2295796200EDC8C6 /* INVSSimulatorWorker.swift in Sources */,
@@ -587,11 +654,14 @@
 				4A4C68B02295796200EDC8C6 /* INVSSimulatedListInteractor.swift in Sources */,
 				4A4C68D42295796200EDC8C6 /* INVSPopupMessageType.swift in Sources */,
 				4A4C68BD2295796200EDC8C6 /* INVSSimulatorPresenter.swift in Sources */,
+				4A27AA9B229F745C00C45CC5 /* INVSSMarketPresenter.swift in Sources */,
+				4A107A9C22A31E8300A7D8D1 /* UILabel+INVSExtension.swift in Sources */,
 				4A4C68C62295796200EDC8C6 /* INVSFloatingTextFieldValueType.swift in Sources */,
 				4A4C68CB2295796200EDC8C6 /* UIImage+INVSExtension.swift in Sources */,
+				4A107AA222A3279600A7D8D1 /* INVSSimulatorHelpView.swift in Sources */,
 				4A4C68D02295796200EDC8C6 /* CAShapeLayer+INVSExtension.swift in Sources */,
 				4A4C68D32295796200EDC8C6 /* UIWindow+INVSExtension.swift in Sources */,
-				4A2B05A6229C19220024F83A /* INVSCEIWorker.swift in Sources */,
+				4A2B05A6229C19220024F83A /* INVSMarketWorker.swift in Sources */,
 				4A4C68D12295796200EDC8C6 /* Double+INVSExtension.swift in Sources */,
 				4A4C68C52295796200EDC8C6 /* INVSFloatingTextField.swift in Sources */,
 				4A22FF3C22980B89001662FC /* INVSSimulatedChartsViewController.swift in Sources */,
@@ -599,7 +669,7 @@
 				4A4C68CC2295796200EDC8C6 /* UIViewController+INVSExtension.swift in Sources */,
 				4A4C68B52295796200EDC8C6 /* INVSSimulatorHeaderView.swift in Sources */,
 				4A4C68BB2295796200EDC8C6 /* INVSSimulatorModel.swift in Sources */,
-				4A4C68B82295796200EDC8C6 /* INVSStartViewController.swift in Sources */,
+				4A4C68B82295796200EDC8C6 /* INVSSMarketViewController.swift in Sources */,
 				4A121692229AE96100759948 /* BalloonMarker.swift in Sources */,
 				4A4C68BC2295796200EDC8C6 /* INVSSimutatorViewControler.swift in Sources */,
 				4A121694229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift in Sources */,
@@ -751,8 +821,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.br.joao.gabriel.medeiros.pereira.InvestScopio.InvestScopio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.br.joao.gabriel.medeiros.pereira.InvestScopio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -770,8 +841,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.br.joao.gabriel.medeiros.pereira.InvestScopio.InvestScopio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.br.joao.gabriel.medeiros.pereira.InvestScopio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

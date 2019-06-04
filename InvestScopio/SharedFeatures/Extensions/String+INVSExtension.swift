@@ -11,7 +11,7 @@ import UIKit
 
 extension String {
     // formatting text for currency textField
-    public func percentFormat(backSpace: Bool = false) -> String {
+    func percentFormat(backSpace: Bool = false) -> String {
         var number: NSNumber!
         let formatter = NumberFormatter.currencyDefault()
         formatter.numberStyle = .currencyAccounting
@@ -41,7 +41,7 @@ extension String {
         return stringWithSymbol
     }
     
-    public func currencyFormat(backSpace: Bool = false) -> String {
+    func currencyFormat(backSpace: Bool = false) -> String {
         
         var number: NSNumber!
         let formatter = NumberFormatter.currencyDefault()
@@ -49,7 +49,7 @@ extension String {
         var amountWithoutPrefix = self
         
         // remove from String: "$", ".", ","
-        amountWithoutPrefix = stringOfNumbersRegex(with: 12)
+        amountWithoutPrefix = stringOfNumbersRegex(with: 10)
         
         let double = (amountWithoutPrefix as NSString).doubleValue
         number = NSNumber(value: (double / 100))
@@ -65,7 +65,7 @@ extension String {
         return formatter.string(from: number)!
     }
     
-    public func monthFormat() -> String {
+    func monthFormat() -> String {
         
         var amountWithoutPrefix = self
         
@@ -75,13 +75,13 @@ extension String {
         return amountWithoutPrefix
     }
     
-    public func convertFormattedToInt() -> Int {
+    func convertFormattedToInt() -> Int {
         let intValue = (self.stringOfNumbersRegex() as NSString).intValue
         let number = NSNumber(value: (intValue))
         return number.intValue
     }
     
-    public func convertFormattedToDouble() -> Double {
+    func convertFormattedToDouble() -> Double {
         let double = (self.stringOfNumbersRegex() as NSString).doubleValue
         let number = NSNumber(value: (double / 100))
         return number.doubleValue
@@ -99,6 +99,16 @@ extension String {
         let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
         
         return ceil(boundingBox.height)
+    }
+    
+    func checkSignal() -> String {
+        if self != "" {
+            if self.first == "-" {
+                return "-"
+            }
+            return "+"
+        }
+        return "+"
     }
 }
 

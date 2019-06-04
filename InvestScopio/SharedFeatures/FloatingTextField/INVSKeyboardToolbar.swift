@@ -13,6 +13,7 @@ enum INVSKeyboardToolbarButton: Int {
     
     case ok = 0
     case cancel
+    case back
     
     func createButton(target: Any?, action: Selector?) -> UIBarButtonItem {
         var button: UIBarButtonItem!
@@ -22,6 +23,8 @@ enum INVSKeyboardToolbarButton: Int {
             button = UIBarButtonItem(title: "Ok", style: .plain, target: target, action: action)
         case .cancel:
             button = UIBarButtonItem(title: "Cancelar", style: .plain, target: target, action: action)
+        case .back:
+            button = UIBarButtonItem(title: "Voltar", style: .plain, target: target, action: action)
         }
         button.tintColor = .INVSDefault()
         button.tag = rawValue
