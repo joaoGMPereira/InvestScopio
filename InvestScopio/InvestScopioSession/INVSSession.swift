@@ -14,6 +14,7 @@ final class INVSSession {
     private init() { }
 
     static let session = INVSSession()
+    var serverVersion: String?
     var market: MarketModel?
 
 

@@ -128,7 +128,7 @@ enum INVSSimulatedHelpViewType: Int {
         let messageMutableAttributedString = NSMutableAttributedString()
         messageMutableAttributedString.append(NSAttributedString.title(withText: "Por quanto "))
         messageMutableAttributedString.append(NSAttributedString.titleBold(withText: "Tempo "))
-        messageMutableAttributedString.append(NSAttributedString.title(withText: "Você quer \n ficar com esse investimento?"))
+        messageMutableAttributedString.append(NSAttributedString.title(withText: "Você quer \nFicar com esse investimento?"))
         setNewAttributedText(withHelpView: helpView, messageMutableAttributedString: messageMutableAttributedString)
     }
 
@@ -152,7 +152,7 @@ enum INVSSimulatedHelpViewType: Int {
     private func setSixthStepMessage(withHelpView helpView: INVSSimulatorHelpView) {
         let messageMutableAttributedString = NSMutableAttributedString()
         messageMutableAttributedString.append(NSAttributedString.title(withText: "Quanto você gostaria de\n"))
-        messageMutableAttributedString.append(NSAttributedString.subtitleBold(withText: "aumentar da sua retirada\ndo seu rendimento?"))
+        messageMutableAttributedString.append(NSAttributedString.subtitleBold(withText: "Aumentar da sua retirada\ndo seu rendimento?"))
         setNewAttributedText(withHelpView: helpView, messageMutableAttributedString: messageMutableAttributedString)
     }
     

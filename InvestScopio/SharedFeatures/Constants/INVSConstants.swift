@@ -24,5 +24,10 @@ enum INVSConstants {
     enum INVSTransactionsViewControllersID: String {
         case startSimulatedViewController = "INVSStartSimulatedViewController"
     }
+    
+    enum INVSServicesConstants: String {
+        case apiV1 = "https://invest-scopio.herokuapp.com/api/v1/"
+        case version = "version"
+    }
 
 }

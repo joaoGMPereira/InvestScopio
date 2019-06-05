@@ -14,6 +14,11 @@
 		4A121692229AE96100759948 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A121691229AE96100759948 /* BalloonMarker.swift */; };
 		4A121694229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A121693229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift */; };
 		4A121696229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A121695229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift */; };
+		4A12631222A7DA7A006133E5 /* MarketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A12631122A7DA7A006133E5 /* MarketModel.swift */; };
+		4A12631422A7DA99006133E5 /* BankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A12631322A7DA99006133E5 /* BankModel.swift */; };
+		4A12631722A7DC7A006133E5 /* INVSConector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A12631622A7DC7A006133E5 /* INVSConector.swift */; };
+		4A12631A22A7E820006133E5 /* INVSConnectorRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A12631922A7E820006133E5 /* INVSConnectorRouter.swift */; };
+		4A12631D22A7F1BB006133E5 /* INVSVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A12631C22A7F1BB006133E5 /* INVSVersionModel.swift */; };
 		4A22FF3322976CAF001662FC /* INVSSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22FF3222976CAF001662FC /* INVSSwitchView.swift */; };
 		4A22FF382297837B001662FC /* INVSSimulatedContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22FF362297837B001662FC /* INVSSimulatedContainerViewController.swift */; };
 		4A22FF3C22980B89001662FC /* INVSSimulatedChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22FF3B22980B89001662FC /* INVSSimulatedChartsViewController.swift */; };
@@ -83,6 +88,11 @@
 		4A121691229AE96100759948 /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		4A121693229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedChartsInteractor.swift; sourceTree = "<group>"; };
 		4A121695229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedChartsPresenter.swift; sourceTree = "<group>"; };
+		4A12631122A7DA7A006133E5 /* MarketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketModel.swift; sourceTree = "<group>"; };
+		4A12631322A7DA99006133E5 /* BankModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankModel.swift; sourceTree = "<group>"; };
+		4A12631622A7DC7A006133E5 /* INVSConector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSConector.swift; sourceTree = "<group>"; };
+		4A12631922A7E820006133E5 /* INVSConnectorRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSConnectorRouter.swift; sourceTree = "<group>"; };
+		4A12631C22A7F1BB006133E5 /* INVSVersionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSVersionModel.swift; sourceTree = "<group>"; };
 		4A22FF3222976CAF001662FC /* INVSSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSwitchView.swift; sourceTree = "<group>"; };
 		4A22FF362297837B001662FC /* INVSSimulatedContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedContainerViewController.swift; sourceTree = "<group>"; };
 		4A22FF3B22980B89001662FC /* INVSSimulatedChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedChartsViewController.swift; sourceTree = "<group>"; };
@@ -185,6 +195,46 @@
 			path = BallonMarker;
 			sourceTree = "<group>";
 		};
+		4A12630E22A7DA2F006133E5 /* BankModel */ = {
+			isa = PBXGroup;
+			children = (
+				4A12631322A7DA99006133E5 /* BankModel.swift */,
+			);
+			path = BankModel;
+			sourceTree = "<group>";
+		};
+		4A12631022A7DA46006133E5 /* MarketModel */ = {
+			isa = PBXGroup;
+			children = (
+				4A12631122A7DA7A006133E5 /* MarketModel.swift */,
+			);
+			path = MarketModel;
+			sourceTree = "<group>";
+		};
+		4A12631522A7DC6B006133E5 /* Connector */ = {
+			isa = PBXGroup;
+			children = (
+				4A12631622A7DC7A006133E5 /* INVSConector.swift */,
+			);
+			path = Connector;
+			sourceTree = "<group>";
+		};
+		4A12631822A7E810006133E5 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				4A12631922A7E820006133E5 /* INVSConnectorRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		4A12631B22A7F1A3006133E5 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				4A12631C22A7F1BB006133E5 /* INVSVersionModel.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		4A22FF342297833B001662FC /* SimulatedListViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +270,10 @@
 		4A27AA97229F6E1F00C45CC5 /* InvestScopioSession */ = {
 			isa = PBXGroup;
 			children = (
+				4A12631B22A7F1A3006133E5 /* New Group */,
+				4A12631822A7E810006133E5 /* Router */,
+				4A12631022A7DA46006133E5 /* MarketModel */,
+				4A12630E22A7DA2F006133E5 /* BankModel */,
 				4A27AA98229F6E4D00C45CC5 /* INVSSession.swift */,
 			);
 			path = InvestScopioSession;
@@ -366,6 +420,7 @@
 		4A4C68892295796100EDC8C6 /* SharedFeatures */ = {
 			isa = PBXGroup;
 			children = (
+				4A12631522A7DC6B006133E5 /* Connector */,
 				4A121690229AE96100759948 /* BallonMarker */,
 				4A4C688A2295796100EDC8C6 /* PresentBaseViewController */,
 				4A4C688C2295796100EDC8C6 /* Constants */,
@@ -628,12 +683,14 @@
 				4A45D0D222A44576001383B4 /* NSAttributedString+INVSExtension.swift in Sources */,
 				4A4C68B12295796200EDC8C6 /* INVSSimulatedValueModel.swift in Sources */,
 				4A4C68DC2295796200EDC8C6 /* AppDelegate.swift in Sources */,
+				4A12631722A7DC7A006133E5 /* INVSConector.swift in Sources */,
 				4A45D0D422A4463D001383B4 /* INVSSimulatedHelpViewType.swift in Sources */,
 				4A4C68C42295796200EDC8C6 /* INVSConstants.swift in Sources */,
 				4A4C68CD2295796200EDC8C6 /* UIFont+INVSExtension.swift in Sources */,
 				4A4C68C32295796200EDC8C6 /* INVSPresentBaseViewController.swift in Sources */,
 				4A2B05A9229DF30E0024F83A /* INVSSimulatedTotalChartView.swift in Sources */,
 				4A4C68B42295796200EDC8C6 /* INVSSimulatedListPresenter.swift in Sources */,
+				4A12631D22A7F1BB006133E5 /* INVSVersionModel.swift in Sources */,
 				4A2B05AB229E02E60024F83A /* INVSSimulatedRescueChartView.swift in Sources */,
 				4A4C68B72295796200EDC8C6 /* INVSSimulatorCell.swift in Sources */,
 				4A4C68C92295796200EDC8C6 /* UIColor+INVSPaletteColors.swift in Sources */,
@@ -644,9 +701,11 @@
 				4A4C68CE2295796200EDC8C6 /* UIStackview+INVSExtension.swift in Sources */,
 				4A4C68B22295796200EDC8C6 /* INVSSimulatedListViewController.swift in Sources */,
 				4A27AA96229F3F9F00C45CC5 /* INVSSMarketInteractor.swift in Sources */,
+				4A12631422A7DA99006133E5 /* BankModel.swift in Sources */,
 				4A4C68D22295796200EDC8C6 /* String+INVSExtension.swift in Sources */,
 				4A22FF382297837B001662FC /* INVSSimulatedContainerViewController.swift in Sources */,
 				4A4C68BE2295796200EDC8C6 /* INVSSimulatorWorker.swift in Sources */,
+				4A12631A22A7E820006133E5 /* INVSConnectorRouter.swift in Sources */,
 				4A4C68AF2295796200EDC8C6 /* INVSSimulatorTableviewDataSourceDelegate.swift in Sources */,
 				4A4C68C82295796200EDC8C6 /* INVSKeyboardToolbar.swift in Sources */,
 				4A4C68C72295796200EDC8C6 /* INVSFloatingTextFieldType.swift in Sources */,
@@ -658,6 +717,7 @@
 				4A107A9C22A31E8300A7D8D1 /* UILabel+INVSExtension.swift in Sources */,
 				4A4C68C62295796200EDC8C6 /* INVSFloatingTextFieldValueType.swift in Sources */,
 				4A4C68CB2295796200EDC8C6 /* UIImage+INVSExtension.swift in Sources */,
+				4A12631222A7DA7A006133E5 /* MarketModel.swift in Sources */,
 				4A107AA222A3279600A7D8D1 /* INVSSimulatorHelpView.swift in Sources */,
 				4A4C68D02295796200EDC8C6 /* CAShapeLayer+INVSExtension.swift in Sources */,
 				4A4C68D32295796200EDC8C6 /* UIWindow+INVSExtension.swift in Sources */,

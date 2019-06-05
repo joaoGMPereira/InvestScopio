@@ -30,7 +30,7 @@ class INVSSMarketViewController: UIViewController {
         let presenter = INVSSMarketPresenter()
         presenter.controller = self
         interactor.presenter = presenter
-        //interactor.downloadMarketInfo()
+        interactor.downloadMarketInfo()
         animateLaunchGif()
     }
     

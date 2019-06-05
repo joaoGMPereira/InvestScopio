@@ -55,7 +55,6 @@ public class INVSSimutatorViewControler: UIViewController {
         helpView.interactor = self.interactor
         //mockInfo()
         setupUI()
-        showHelpView()
         setLeftBarButton()
         
     }
@@ -96,16 +95,16 @@ public class INVSSimutatorViewControler: UIViewController {
     }
     
     func openAnimation() {
+        self.showHelpView()
         animatedLogoView.play(fromFrame: AnimationProgressTime(integerLiteral: 20), toFrame: AnimationProgressTime(integerLiteral: 70), loopMode: .playOnce) { (finished) in
             self.helpView.isOpened = true
-            self.showHelpView()
         }
     }
     
     func closeAnimation() {
+        self.closeHelpView()
         animatedLogoView.play(fromFrame: AnimationProgressTime(integerLiteral: 110), toFrame: AnimationProgressTime(integerLiteral: 160), loopMode: .playOnce) { (finished) in
             self.helpView.isOpened = false
-            self.closeHelpView()
         }
     }
 
@@ -206,6 +205,7 @@ extension INVSSimutatorViewControler: INVSSimutatorViewControlerProtocol {
     }
     
     func displayReview(withTextFields textFields: [INVSFloatingTextField]) {
+        openAnimation()
         interactor?.clear()
         for (index, textField) in textFields.enumerated() {
             interactor?.allTextFields[index].floatingTextField.text = textField.floatingTextField.text
