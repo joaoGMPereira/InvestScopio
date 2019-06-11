@@ -26,8 +26,14 @@ enum INVSConstants {
     }
     
     enum INVSServicesConstants: String {
-        case apiV1 = "https://invest-scopio.herokuapp.com/api/v1/"
+        case apiV1 = "https://invest-scopio-backend.herokuapp.com/api/"
+        case localAPI = "http://localhost:8080/api/"
         case version = "version"
+    }
+    
+    enum SimulationErrors: String {
+        case defaultTitleError = "Ocorreu um problema, Tente novamente.\n\n"
+        case defaultMessageError = "Não foi possível fazer o cálculo da simulação."
     }
 
 }

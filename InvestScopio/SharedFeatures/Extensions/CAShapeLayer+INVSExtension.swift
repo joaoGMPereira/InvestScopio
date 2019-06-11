@@ -19,7 +19,7 @@ extension CAShapeLayer {
         return layer
     }
     
-    static func addGradientLayer(withGradientLayer gradientLayer:CAGradientLayer?, inView view: UIView, withColorsArr colors: [CGColor]) -> CAGradientLayer? {
+    static func addGradientLayer(withGradientLayer gradientLayer:CAGradientLayer?, inView view: UIView, withColorsArr colors: [CGColor], withRoundedCorner cornerRadius: CGFloat = 8) -> CAGradientLayer? {
         if let shapeLayer = gradientLayer {
             shapeLayer.removeFromSuperlayer()
         }
@@ -27,7 +27,7 @@ extension CAShapeLayer {
         gradient.colors = colors
         gradient.locations = [0.0 , 1.0]
         gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
-        gradient.cornerRadius = 8
+        gradient.cornerRadius = cornerRadius
         gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
         gradient.frame = CGRect(x: 0.0, y: 0.0, width: view.frame.size.width, height: view.frame.size.height)
     

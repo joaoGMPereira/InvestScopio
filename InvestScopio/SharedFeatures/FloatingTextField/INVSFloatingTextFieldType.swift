@@ -19,8 +19,8 @@ enum INVSFloatingTextFieldType: Int {
     case increaseRescue
     case goalIncreaseRescue
     
-    func setupTextField(withTextField textfield: INVSFloatingTextField, andDelegate delegate: INVSFloatingTextFieldDelegate, valueTypeTextField: INVSFloatingTextFieldValueType, isRequired: Bool = false, hasInfoButton: Bool = false) {
-        textfield.setup(placeholder: self.getTextFieldTitle(), typeTextField: self, valueTypeTextField: valueTypeTextField, required: isRequired, hasInfoButton: hasInfoButton, color: UIColor.INVSDefault(), leftButtons: [.cancel,.back])
+    func setupTextField(withTextField textfield: INVSFloatingTextField, andDelegate delegate: INVSFloatingTextFieldDelegate, valueTypeTextField: INVSFloatingTextFieldValueType, isRequired: Bool = false, hasInfoButton: Bool = false, leftButtons: [INVSKeyboardToolbarButton] = [.cancel]) {
+        textfield.setup(placeholder: self.getTextFieldTitle(), typeTextField: self, valueTypeTextField: valueTypeTextField, required: isRequired, hasInfoButton: hasInfoButton, color: UIColor.INVSDefault(), leftButtons: leftButtons)
         textfield.delegate = delegate
     }
     

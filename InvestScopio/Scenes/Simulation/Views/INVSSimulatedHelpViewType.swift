@@ -116,6 +116,7 @@ enum INVSSimulatedHelpViewType: Int {
     private func setThirdStepMessage(withHelpView helpView: INVSSimulatorHelpView) {
         let messageMutableAttributedString = NSMutableAttributedString()
         messageMutableAttributedString.append(NSAttributedString.subtitleBold(withText: "Qual a taxa de rendimento\ndo seu investimento?"))
+        messageMutableAttributedString.append(NSAttributedString.subtitleBold(withText: "Qual a taxa de rendimento\ndo seu investimento?"))
         setNewAttributedText(withHelpView: helpView, messageMutableAttributedString: messageMutableAttributedString)
     }
     
@@ -127,8 +128,8 @@ enum INVSSimulatedHelpViewType: Int {
     private func setFourthStepMessage(withHelpView helpView: INVSSimulatorHelpView) {
         let messageMutableAttributedString = NSMutableAttributedString()
         messageMutableAttributedString.append(NSAttributedString.title(withText: "Por quanto "))
-        messageMutableAttributedString.append(NSAttributedString.titleBold(withText: "Tempo "))
-        messageMutableAttributedString.append(NSAttributedString.title(withText: "Você quer \nFicar com esse investimento?"))
+        messageMutableAttributedString.append(NSAttributedString.titleBold(withText: "cempo "))
+        messageMutableAttributedString.append(NSAttributedString.title(withText: "cocê quer \nFicar com esse investimento?"))
         setNewAttributedText(withHelpView: helpView, messageMutableAttributedString: messageMutableAttributedString)
     }
 
@@ -182,7 +183,7 @@ enum INVSSimulatedHelpViewType: Int {
             textField.bottomAnchor.constraint(equalTo: helpView.bottomView.bottomAnchor)
             ])
         helpView.layoutIfNeeded()
-        textFieldType.setupTextField(withTextField: textField, andDelegate: helpView, valueTypeTextField: valueType, isRequired: isRequired, hasInfoButton: hasInfoButton)
+        textFieldType.setupTextField(withTextField: textField, andDelegate: helpView, valueTypeTextField: valueType, isRequired: isRequired, hasInfoButton: hasInfoButton, leftButtons: [.cancel,.back])
         textField.floatingTextField.becomeFirstResponder()
     }
     
@@ -194,11 +195,10 @@ enum INVSSimulatedHelpViewType: Int {
     
     private func setLastStepMessage(withHelpView helpView: INVSSimulatorHelpView) {
         let messageMutableAttributedString = NSMutableAttributedString()
-        messageMutableAttributedString.append(NSAttributedString.titleBold(withText: "Testando!\n"))
-        messageMutableAttributedString.append(NSAttributedString.subtitle(withText: "Você deseja fazer uma simulação"))
-        messageMutableAttributedString.append(NSAttributedString.subtitleBold(withText: "\nSimplificada "))
+        messageMutableAttributedString.append(NSAttributedString.titleBold(withText: "Dados coletados!\n"))
+        messageMutableAttributedString.append(NSAttributedString.subtitleBold(withText: " você deseja simular "))
         messageMutableAttributedString.append(NSAttributedString.subtitle(withText: "ou "))
-        messageMutableAttributedString.append(NSAttributedString.subtitleBold(withText: "Completa?"))
+        messageMutableAttributedString.append(NSAttributedString.subtitleBold(withText: "deseja conferir seus dados?"))
         setNewAttributedText(withHelpView: helpView, messageMutableAttributedString: messageMutableAttributedString)
     }
     
@@ -210,7 +210,7 @@ enum INVSSimulatedHelpViewType: Int {
         simulateButton.setTitle("Simular", for: .normal)
         simulateButton.addTarget(helpView, action: #selector(INVSSimulatorHelpView.simulateButtonAction(withButton:)), for: .touchUpInside)
         let reviewButton = UIButton()
-        reviewButton.setTitle("Rever", for: .normal)
+        reviewButton.setTitle("Conferir", for: .normal)
         reviewButton.addTarget(helpView, action: #selector(INVSSimulatorHelpView.reviewButtonAction(withButton:)), for: .touchUpInside)
         addButtonsInStackView(firstButton: simulateButton, secondButton: reviewButton, andHelpView: helpView)
     }
@@ -241,13 +241,13 @@ enum INVSSimulatedHelpViewType: Int {
         helpView.layoutIfNeeded()
         var simplyButtonLayer: CAGradientLayer!
         var completeButtonLayer: CAGradientLayer!
-        simplyButtonLayer = CAShapeLayer.addGradientLayer(withGradientLayer: simplyButtonLayer, inView: firstButton, withColorsArr: UIColor.INVSGradientColors())
-        completeButtonLayer = CAShapeLayer.addGradientLayer(withGradientLayer: completeButtonLayer, inView: secondButton, withColorsArr: UIColor.INVSGradientColors())
+        simplyButtonLayer = CAShapeLayer.addGradientLayer(withGradientLayer: simplyButtonLayer, inView: firstButton, withColorsArr: UIColor.INVSGradientColors(), withRoundedCorner: 25)
+        completeButtonLayer = CAShapeLayer.addGradientLayer(withGradientLayer: completeButtonLayer, inView: secondButton, withColorsArr: UIColor.INVSGradientColors(), withRoundedCorner: 25)
         
         var simplyShapeButtonLayer: CAShapeLayer!
         var completeShapeButtonLayer: CAShapeLayer!
-        simplyShapeButtonLayer = CAShapeLayer.addCornerAndShadow(withShapeLayer: simplyShapeButtonLayer, withCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], withRoundedCorner: 12, andColor: .clear, inView: firstButton)
-        completeShapeButtonLayer = CAShapeLayer.addCornerAndShadow(withShapeLayer: completeShapeButtonLayer, withCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], withRoundedCorner: 12, andColor: .clear, inView: secondButton)
+        simplyShapeButtonLayer = CAShapeLayer.addCornerAndShadow(withShapeLayer: simplyShapeButtonLayer, withCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], withRoundedCorner: 25, andColor: .clear, inView: firstButton)
+        completeShapeButtonLayer = CAShapeLayer.addCornerAndShadow(withShapeLayer: completeShapeButtonLayer, withCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], withRoundedCorner: 25, andColor: .clear, inView: secondButton)
         
     }
     

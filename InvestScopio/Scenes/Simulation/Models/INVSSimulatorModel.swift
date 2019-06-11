@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct INVSSimulatorModel {
+struct INVSSimulatorModel: JSONAble {
     var initialValue: Double = 0.0 {
         didSet {
             initialValue = initialValue.INVSrounded()
@@ -39,5 +39,20 @@ struct INVSSimulatorModel {
         didSet {
             goalIncreaseRescue = goalIncreaseRescue.INVSrounded()
         }
+    }
+}
+
+protocol JSONAble {}
+
+extension JSONAble {
+    func toDict() -> [String:Any] {
+        var dict = [String:Any]()
+        let otherSelf = Mirror(reflecting: self)
+        for child in otherSelf.children {
+            if let key = child.label {
+                dict[key] = child.value
+            }
+        }
+        return dict
     }
 }

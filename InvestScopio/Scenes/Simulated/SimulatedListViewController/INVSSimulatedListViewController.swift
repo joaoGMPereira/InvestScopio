@@ -16,6 +16,7 @@ protocol INVSSimulatedListViewControlerDelegate {
 
 protocol INVSSimulatedListViewControlerProtocol: class {
     func displaySimulationProjection(with simulatedValues: [INVSSimulatedValueModel], andShouldShowRescueChart showRescueChart: Bool)
+    func displayErrorSimulationProjection(messageError:String, shouldHideAutomatically:Bool, popupType:INVSPopupMessageType)
 }
 
 class INVSSimulatedListViewController: UIViewController {
@@ -28,11 +29,13 @@ class INVSSimulatedListViewController: UIViewController {
     var interactor: INVSSimulatedListInteractorProtocol?
     let router = INVSRouter()
     var dataSource = INVSSimulatorTableviewDataSourceDelegate()
-    
+    var popupMessage: INVSPopupMessage?
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setupTableView()
+        popupMessage = INVSPopupMessage(parentViewController: self)
+        popupMessage?.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -78,6 +81,13 @@ class INVSSimulatedListViewController: UIViewController {
     }
 }
 
+extension INVSSimulatedListViewController: INVSPopupMessageDelegate {
+    func didFinishDismissPopupMessage(withPopupMessage popupMessage: INVSPopupMessage) {
+        self.dismiss(animated: true, completion: nil)
+    }
+}
+
+
 extension INVSSimulatedListViewController: INVSCodeView {
     func buildViewHierarchy() {
         view.addSubview(tableView)
@@ -108,10 +118,16 @@ extension INVSSimulatedListViewController: INVSCodeView {
 }
 
 extension INVSSimulatedListViewController: INVSSimulatedListViewControlerProtocol{
+    
+    
+    
     func displaySimulationProjection(with simulatedValues: [INVSSimulatedValueModel], andShouldShowRescueChart showRescueChart: Bool) {
         dataSource.setup(withSimulatedValues: simulatedValues)
         tableView.reloadData()
         delegate?.didFinishSimulating(withSimulatedValues: simulatedValues, andShouldShowRescueChart: showRescueChart)
-        
+    }
+    
+    func displayErrorSimulationProjection(messageError: String, shouldHideAutomatically: Bool, popupType: INVSPopupMessageType) {
+        popupMessage?.show(withTextMessage: messageError, title: INVSConstants.SimulationErrors.defaultTitleError.rawValue, popupType: popupType, shouldHideAutomatically: shouldHideAutomatically, sender: nil)
     }
 }

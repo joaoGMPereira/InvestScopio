@@ -36,7 +36,7 @@ class INVSMarketWorker: NSObject,INVSMarketWorkerProtocol {
     
     func downloadMarketInfo(successCompletionHandler: @escaping (SuccessDownloadMarketInfoHandler), errorCompletionHandler: @escaping (ErrorSDownloadMarketInfoHandler)) {
         service.apiKey = FirebaseApp.app()?.options.apiKey
-        apiVersion()
+        //apiVersion()
         //selicIPCATax()
         //IBOVTax()
         //parseBanksCSV()
@@ -51,18 +51,18 @@ class INVSMarketWorker: NSObject,INVSMarketWorkerProtocol {
     }
     
     func apiVersion() {
-        dispatchGroup.enter()
-        INVSConector.connector.request(withURL: INVSConector.getVersion()) { (response) in
-            print(response)
-            do {
-                let decoder = JSONDecoder()
-                let version = try decoder.decode(INVSVersionModel.self, from: response.data!)
-                print(version)
-            } catch {
-                
-            }
-            self.dispatchGroup.leave()
-        }
+        //dispatchGroup.enter()
+//        INVSConector.connector.request(withURL: INVSConector.getVersion()) { (response) in
+//            print(response)
+//            do {
+//                let decoder = JSONDecoder()
+//                let version = try decoder.decode(INVSVersionModel.self, from: response.data!)
+//                print(version)
+//            } catch {
+//
+//            }
+//            self.dispatchGroup.leave()
+//        }
     }
     
 //    func selicIPCATax() {

@@ -10,6 +10,8 @@ import UIKit
 
 protocol INVSSimulatedListPresenterProtocol {
     func presentSimulationProjection(simulatorModel: INVSSimulatorModel)
+    func presentResultSimulationProjection(withSimulatorModel simulatorModel: INVSSimulatorModel, simulatedValues: [INVSSimulatedValueModel])
+    func presentErrorSimulationProjection(messageError:String, shouldHideAutomatically:Bool, popupType:INVSPopupMessageType)
 }
 
 class INVSSimulatedListPresenter: NSObject,INVSSimulatedListPresenterProtocol {
@@ -38,7 +40,14 @@ class INVSSimulatedListPresenter: NSObject,INVSSimulatedListPresenterProtocol {
                 self.controller?.displaySimulationProjection(with: simulatedValues, andShouldShowRescueChart: shouldShowRescueChart)
             })
         }
-        
+    }
+    func presentResultSimulationProjection(withSimulatorModel simulatorModel: INVSSimulatorModel, simulatedValues: [INVSSimulatedValueModel]) {
+        let shouldShowRescueChart = simulatorModel.initialMonthlyRescue != 0 || simulatorModel.increaseRescue != 0
+        self.controller?.displaySimulationProjection(with: simulatedValues, andShouldShowRescueChart: shouldShowRescueChart)
+    }
+    
+    func presentErrorSimulationProjection(messageError: String, shouldHideAutomatically: Bool, popupType: INVSPopupMessageType) {
+        controller?.displayErrorSimulationProjection(messageError: messageError, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType)
     }
 }
 

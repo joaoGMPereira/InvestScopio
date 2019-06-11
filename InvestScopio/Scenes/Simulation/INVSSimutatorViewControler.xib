@@ -24,6 +24,7 @@
                 <outlet property="interestRateTextField" destination="BcE-cK-55e" id="3Fz-Al-IgI"/>
                 <outlet property="monthValueTextField" destination="NyD-yS-Qor" id="Q2q-Dx-bwO"/>
                 <outlet property="saveButton" destination="1YL-KQ-qYM" id="y4a-So-wvf"/>
+                <outlet property="serviceSwitch" destination="hlX-CU-7CB" id="KRe-24-4oW"/>
                 <outlet property="totalMonthsTextField" destination="YH0-a3-Hzj" id="LO0-RX-TAK"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Gww-78-krV"/>
             </connections>
@@ -89,11 +90,19 @@
                         <constraint firstItem="xej-dM-W90" firstAttribute="leading" secondItem="Nfp-Rr-73A" secondAttribute="leading" id="ukR-DL-0hH"/>
                     </constraints>
                 </scrollView>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hlX-CU-7CB">
+                    <rect key="frame" x="310" y="28" width="51" height="31"/>
+                    <color key="onTintColor" red="0.32549019610000002" green="0.30196078430000001" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <action selector="serviceSwitchAction:" destination="-1" eventType="valueChanged" id="odu-KZ-4G2"/>
+                    </connections>
+                </switch>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="LCz-Zz-Hjj">
-                    <rect key="frame" x="8" y="36" width="359" height="70"/>
+                    <rect key="frame" x="8" y="67" width="359" height="50"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YL-KQ-qYM">
-                            <rect key="frame" x="0.0" y="0.0" width="178" height="70"/>
+                            <rect key="frame" x="0.0" y="0.0" width="178" height="50"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Simular">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -103,7 +112,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwz-7i-qNv">
-                            <rect key="frame" x="181" y="0.0" width="178" height="70"/>
+                            <rect key="frame" x="181" y="0.0" width="178" height="50"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Nova Simulação">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -114,7 +123,7 @@
                         </button>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="70" id="Dds-uo-Hyu"/>
+                        <constraint firstAttribute="height" constant="50" id="Dds-uo-Hyu"/>
                     </constraints>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s65-qX-vLp" customClass="INVSSimulatorHelpView" customModule="InvestScopio" customModuleProvider="target">
@@ -127,13 +136,15 @@
                 <constraint firstItem="s65-qX-vLp" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="DZF-V2-3Df"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Nfp-Rr-73A" secondAttribute="trailing" id="F9t-Dt-58b"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="LCz-Zz-Hjj" secondAttribute="trailing" constant="8" id="Ht1-bN-7F5"/>
-                <constraint firstItem="LCz-Zz-Hjj" firstAttribute="top" secondItem="Nfp-Rr-73A" secondAttribute="bottom" constant="16" id="N1A-kh-U1X"/>
+                <constraint firstItem="LCz-Zz-Hjj" firstAttribute="top" secondItem="hlX-CU-7CB" secondAttribute="bottom" constant="8" id="bYH-Nu-X68"/>
                 <constraint firstItem="s65-qX-vLp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-667" id="cjM-Z6-nHt"/>
                 <constraint firstItem="Nfp-Rr-73A" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="iKD-wS-515"/>
                 <constraint firstItem="s65-qX-vLp" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="isH-MS-ap6"/>
                 <constraint firstItem="Nfp-Rr-73A" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="lTy-Qt-7tD"/>
                 <constraint firstItem="LCz-Zz-Hjj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="nPI-of-Cwg"/>
+                <constraint firstItem="hlX-CU-7CB" firstAttribute="top" secondItem="Nfp-Rr-73A" secondAttribute="bottom" constant="8" id="rmV-So-SeE"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="s65-qX-vLp" secondAttribute="trailing" id="zLa-BM-iLR"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hlX-CU-7CB" secondAttribute="trailing" constant="16" id="zRk-4Z-4EF"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="-154.40000000000001" y="88.605697151424295"/>

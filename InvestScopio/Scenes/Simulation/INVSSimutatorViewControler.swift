@@ -37,6 +37,7 @@ public class INVSSimutatorViewControler: UIViewController {
     private var clearButtonLayer: CAGradientLayer!
     @IBOutlet weak var horizontalStackView: UIStackView!
     @IBOutlet weak var heightScrollView: NSLayoutConstraint!
+    @IBOutlet weak var serviceSwitch: UISwitch!
     let animatedLogoView = AnimationView(frame: .zero)
     
     var popupMessage: INVSPopupMessage?
@@ -56,19 +57,10 @@ public class INVSSimutatorViewControler: UIViewController {
         //mockInfo()
         setupUI()
         setLeftBarButton()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
-    
-    @objc func showHelpView() {
-        helpViewTopConstraint.constant = 0
-        helpView.investorTypeSegmentedControl.isHidden = true
-        helpView.stepView.isHidden = true
-        helpView.messageLabel.attributedString = NSAttributedString.init(string: "")
-        UIView.animate(withDuration: 1, animations: {
-            self.view.layoutIfNeeded()
-        }) { (finished) in
-            self.helpView.setInitialStep()
-        }
+    @objc func willEnterForeground() {
+        helpView.messageLabelType.setNextStep(helpView: helpView)
     }
     
     func setLeftBarButton() {
@@ -101,10 +93,34 @@ public class INVSSimutatorViewControler: UIViewController {
         }
     }
     
+    @objc func showHelpView() {
+        view.endEditing(true)
+        helpView.allTextfields = [INVSFloatingTextField]()
+        helpView.stepView.moveTo(step: 1)
+        helpViewTopConstraint.constant = 0
+        helpView.investorTypeSegmentedControl.isHidden = true
+        helpView.stepView.isHidden = true
+        helpView.messageLabel.attributedString = NSAttributedString.init(string: "")
+        UIView.animate(withDuration: 1, animations: {
+            self.view.layoutIfNeeded()
+        }) { (finished) in
+            self.helpView.setInitialStep()
+        }
+    }
+    
     func closeAnimation() {
         self.closeHelpView()
         animatedLogoView.play(fromFrame: AnimationProgressTime(integerLiteral: 110), toFrame: AnimationProgressTime(integerLiteral: 160), loopMode: .playOnce) { (finished) in
             self.helpView.isOpened = false
+        }
+    }
+    
+    func closeHelpView() {
+        view.endEditing(true)
+        helpView.isOpened = false
+        helpViewTopConstraint.constant = helpViewTopConstraint.constant  - helpView.frame.height
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
         }
     }
 
@@ -148,6 +164,9 @@ public class INVSSimutatorViewControler: UIViewController {
     @IBAction func clearAction(_ sender: Any) {
         interactor?.clear()
     }
+    @IBAction func serviceSwitchAction(_ sender: Any) {
+        INVSSession.session.callService = serviceSwitch.isOn
+    }
     
     private func updateUI() {
         let orientation = UIApplication.shared.statusBarOrientation
@@ -157,8 +176,8 @@ public class INVSSimutatorViewControler: UIViewController {
             heightScrollView.constant = view.frame.height * 0.5
         }
         UIView.animate(withDuration: 0.4) {
-            self.saveButtonLayer = CAShapeLayer.addGradientLayer(withGradientLayer: self.saveButtonLayer, inView: self.saveButton, withColorsArr: UIColor.INVSGradientColors())
-            self.clearButtonLayer = CAShapeLayer.addGradientLayer(withGradientLayer: self.clearButtonLayer, inView: self.clearButton, withColorsArr: UIColor.INVSGradientColors())
+            self.saveButtonLayer = CAShapeLayer.addGradientLayer(withGradientLayer: self.saveButtonLayer, inView: self.saveButton, withColorsArr: UIColor.INVSGradientColors(),withRoundedCorner: 25)
+            self.clearButtonLayer = CAShapeLayer.addGradientLayer(withGradientLayer: self.clearButtonLayer, inView: self.clearButton, withColorsArr: UIColor.INVSGradientColors(), withRoundedCorner: 25)
             self.view.layoutSubviews()
         }
     }
@@ -172,14 +191,6 @@ public class INVSSimutatorViewControler: UIViewController {
     public override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         popupMessage?.hide()
         updateUI()
-    }
-    
-    func closeHelpView() {
-        helpView.isOpened = false
-        helpViewTopConstraint.constant = helpViewTopConstraint.constant  - helpView.frame.height
-        UIView.animate(withDuration: 0.5) {
-            self.view.layoutIfNeeded()
-        }
     }
     
 }
@@ -205,14 +216,13 @@ extension INVSSimutatorViewControler: INVSSimutatorViewControlerProtocol {
     }
     
     func displayReview(withTextFields textFields: [INVSFloatingTextField]) {
-        openAnimation()
+        closeAnimation()
         interactor?.clear()
         for (index, textField) in textFields.enumerated() {
             interactor?.allTextFields[index].floatingTextField.text = textField.floatingTextField.text
         }
         setupUI()
         updateUI()
-        closeHelpView()
     }
     
     func displayOkAction(withTextField textField: INVSFloatingTextField, andShouldResign shouldResign: Bool) {

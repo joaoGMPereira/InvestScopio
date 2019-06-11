@@ -16,6 +16,7 @@ final class INVSSession {
     static let session = INVSSession()
     var serverVersion: String?
     var market: MarketModel?
+    var callService: Bool = false
 
 
     

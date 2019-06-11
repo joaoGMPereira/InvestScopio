@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct INVSSimulatedValueModel {
+struct INVSSimulatedValueModel: Decodable {
     var month: Int?
     var monthValue: Double? {
         didSet {

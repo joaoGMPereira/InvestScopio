@@ -16,19 +16,20 @@ final class INVSConector {
     
     static let connector = INVSConector()
     
-    static func getURL(withRoute route: String) -> URL? {
-        return URL(string: "\(INVSConstants.INVSServicesConstants.apiV1.rawValue)\(route)")
+    static func getURL(withRoute route: String, local: Bool = false) -> URL? {
+        
+        return local ? URL(string: "\(INVSConstants.INVSServicesConstants.localAPI.rawValue)\(route)") : URL(string: "\(INVSConstants.INVSServicesConstants.apiV1.rawValue)\(route)")
     }
     
     static func getVersion() -> URL? {
         return getURL(withRoute: INVSConstants.INVSServicesConstants.version.rawValue)
     }
     
-    func request(withURL url: URL?, completion: @escaping(connectorResponse)) {
+    func request(withURL url: URL?, method: HTTPMethod = .get, parameters: JSONAble? = nil, headers: HTTPHeaders? = nil, completion: @escaping(connectorResponse)) {
         guard let url = url else {
             return
         }
-        Alamofire.request(url, method: .get).validate().responseJSON { (response) in
+        Alamofire.request(url, method: method, parameters: parameters?.toDict(), encoding: JSONEncoding.default, headers: headers).validate().responseJSON { (response) in
             completion(response)
         }
     }

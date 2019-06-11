@@ -15,10 +15,19 @@ class INVSSimulatedListInteractor: NSObject,INVSSimulatedListInteractorProtocol 
     
     var presenter: INVSSimulatedListPresenterProtocol?
     var simulatorModel = INVSSimulatorModel()
-    
+    var worker: INVSSimulatedListWorkerProtocol = INVSSimulatedListWorker()
+    var callService: Bool = INVSSession.session.callService
     func simulationProjection() {
         INVSKeyChainWrapper.clear()
-        self.presenter?.presentSimulationProjection(simulatorModel: simulatorModel)
+        if callService {
+            worker.simulationProjection(with: simulatorModel, successCompletionHandler: { (simulatedValues) in
+                self.presenter?.presentResultSimulationProjection(withSimulatorModel: self.simulatorModel, simulatedValues: simulatedValues)
+            }) { (message, shouldHideAutomatically, popupType) in
+                self.presenter?.presentErrorSimulationProjection(messageError: message, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType)
+            }
+        } else {
+            self.presenter?.presentSimulationProjection(simulatorModel: simulatorModel)
+        }
     }
     
 }

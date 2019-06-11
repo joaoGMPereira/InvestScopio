@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+protocol INVSPopupMessageDelegate {
+    func didFinishDismissPopupMessage(withPopupMessage popupMessage:INVSPopupMessage)
+}
+
 class INVSPopupMessage: UIView {
     
     private let defaultHeight = CGFloat(60)
@@ -28,6 +32,7 @@ class INVSPopupMessage: UIView {
     private var messageAttributed = NSMutableAttributedString()
     var textMessageLabel = UILabel()
     var closeButton = UIButton()
+    var delegate: INVSPopupMessageDelegate?
     
     
     init(parentViewController:UIViewController) {
@@ -128,9 +133,13 @@ class INVSPopupMessage: UIView {
     
      @objc func hide() {
         self.timerToHide.invalidate()
-        UIView.animate(withDuration: 0.4) {
-            let topBarHeight = UIApplication.shared.statusBarFrame.size.height + (self.parentViewController.navigationController?.navigationBar.frame.height ?? 0.0)
-            self.frame.origin.y = -(topBarHeight + self.popupHeight)
+        UIView.animate(withDuration: 0.4, animations: {
+            UIView.animate(withDuration: 0.4) {
+                let topBarHeight = UIApplication.shared.statusBarFrame.size.height + (self.parentViewController.navigationController?.navigationBar.frame.height ?? 0.0)
+                self.frame.origin.y = -(topBarHeight + self.popupHeight)
+            }
+        }) { (finished) in
+            self.delegate?.didFinishDismissPopupMessage(withPopupMessage: self)
         }
     }
 }
