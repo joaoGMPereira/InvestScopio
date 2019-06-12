@@ -11,7 +11,6 @@ import UIKit
 import WebKit
 import SwiftSoup
 import Firebase
-import GoogleAPIClientForREST
 import Alamofire
 
 typealias Item = (text: String, html: String)
@@ -20,14 +19,14 @@ typealias SuccessDownloadMarketInfoHandler = (MarketModel) -> ()
 typealias ErrorSDownloadMarketInfoHandler = (_ messageError:String) -> ()
 
 
-protocol INVSMarketWorkerProtocol {
+protocol INVSStartWorkerProtocol {
     func downloadMarketInfo(successCompletionHandler: @escaping(SuccessDownloadMarketInfoHandler), errorCompletionHandler:@escaping(ErrorSDownloadMarketInfoHandler))
 }
 
-class INVSMarketWorker: NSObject,INVSMarketWorkerProtocol {
+class INVSStartWorker: NSObject,INVSStartWorkerProtocol {
     private let spreadsheetId = "1gX0sZOeHAy3CMWyHNqf8BAVKk-gy04KSz-h4FI6Uirs"
-    private let scopes = [kGTLRAuthScopeSheetsSpreadsheetsReadonly]
-    private let service = GTLRSheetsService()
+//    private let scopes = [kGTLRAuthScopeSheetsSpreadsheetsReadonly]
+//    private let service = GTLRSheetsService()
     let dispatchGroup: DispatchGroup = DispatchGroup()
     var market = MarketModel()
     var document: Document = Document.init("")
@@ -35,7 +34,7 @@ class INVSMarketWorker: NSObject,INVSMarketWorkerProtocol {
     let webView = WKWebView(frame: .zero)
     
     func downloadMarketInfo(successCompletionHandler: @escaping (SuccessDownloadMarketInfoHandler), errorCompletionHandler: @escaping (ErrorSDownloadMarketInfoHandler)) {
-        service.apiKey = FirebaseApp.app()?.options.apiKey
+        //service.apiKey = FirebaseApp.app()?.options.apiKey
         //apiVersion()
         //selicIPCATax()
         //IBOVTax()

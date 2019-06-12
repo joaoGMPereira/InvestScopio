@@ -10,6 +10,7 @@ import UIKit
 import Lottie
 import Hero
 import StepView
+import Firebase
 
 protocol INVSSimutatorViewControlerProtocol: class {
     func displayNextTextField(withLastTextField textField: INVSFloatingTextField)
@@ -43,9 +44,33 @@ public class INVSSimutatorViewControler: UIViewController {
     var popupMessage: INVSPopupMessage?
     var interactor: INVSSimulatorInteractorProtocol?
     let router = INVSRouter()
+    var handle: AuthStateDidChangeListenerHandle?
+    
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if let handle = handle {
+            Auth.auth().removeStateDidChangeListener(handle)
+        }
+    }
+    
+    func fireBaseStateDidChangeListener() {
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            print(auth)
+            print(user)
+        }
+        
+        Auth.auth().signIn(withEmail: "gah.mp1@gmail.com", password: "Jg22151515") { (result, error) in
+            print(result)
+            print(error)
+        }
+        
+    }
     
     override public func viewDidLoad() {
         super.viewDidLoad()
+        fireBaseStateDidChangeListener()
         title = "Simulação"
         let interactor = INVSSimulatorInteractor()
         interactor.allTextFields = [initialValueTextField, monthValueTextField, interestRateTextField, totalMonthsTextField, initialMonthlyRescueTextField, increaseRescueTextField, goalIncreaseRescueTextField]
@@ -54,13 +79,72 @@ public class INVSSimutatorViewControler: UIViewController {
         presenter.controller = self
         interactor.presenter = presenter
         helpView.interactor = self.interactor
-        //mockInfo()
+        mockInfo()
         setupUI()
         setLeftBarButton()
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
-    @objc func willEnterForeground() {
-        helpView.messageLabelType.setNextStep(helpView: helpView)
+    
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        popupMessage = INVSPopupMessage(parentViewController: self)
+        initialValueTextField.delegate = self
+        updateUI()
+        let alertController = UIAlertController(title: "Escolha o ambiente", message: "Por default o ambiente do Heroku caso cancele.", preferredStyle: .actionSheet)
+        
+        let action1 = UIAlertAction(title: "Local", style: .default) { (action:UIAlertAction) in
+            INVSSession.session.isDev = true
+            INVSSession.session.callService = true
+        }
+        
+        let action2 = UIAlertAction(title: "Heroku", style: .default) { (action:UIAlertAction) in
+            INVSSession.session.isDev = false
+            INVSSession.session.callService = true
+        }
+        
+        let action3 = UIAlertAction(title: "Offline", style: .default) { (action:UIAlertAction) in
+            INVSSession.session.isDev = true
+            INVSSession.session.callService = false
+        }
+        
+        let action4 = UIAlertAction(title: "Cancelar", style: .cancel) { (action:UIAlertAction) in
+            INVSSession.session.isDev = false
+            INVSSession.session.callService = false
+            alertController.dismiss(animated: true, completion: nil)
+        }
+        
+        alertController.addAction(action1)
+        alertController.addAction(action2)
+        alertController.addAction(action3)
+        alertController.addAction(action4)
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    public func mockInfo() {
+        initialValueTextField.floatingTextField.text = "R$50.000,00"
+        monthValueTextField.floatingTextField.text = "R$500,00"
+        interestRateTextField.floatingTextField.text = "3,00%"
+        totalMonthsTextField.floatingTextField.text = "60"
+        initialMonthlyRescueTextField.floatingTextField.text = "R$300,00"
+        increaseRescueTextField.floatingTextField.text = "R$200,00"
+        goalIncreaseRescueTextField.floatingTextField.text = "R$500,00"
+    }
+    
+    func setupUI() {
+        setupTextFields()
+        horizontalStackView.addBackground(color: .lightGray)
+        view.backgroundColor = .INVSGray()
+    }
+    
+    private func setupTextFields() {
+        INVSFloatingTextFieldType.initialValue.setupTextField(withTextField: initialValueTextField, andDelegate: self, valueTypeTextField: .currency, isRequired: true)
+        INVSFloatingTextFieldType.monthValue.setupTextField(withTextField: monthValueTextField, andDelegate: self, valueTypeTextField: .currency)
+        INVSFloatingTextFieldType.interestRate.setupTextField(withTextField: interestRateTextField, andDelegate: self, valueTypeTextField: .percent, isRequired: true)
+        INVSFloatingTextFieldType.totalMonths.setupTextField(withTextField: totalMonthsTextField, andDelegate: self, valueTypeTextField: .months, isRequired: true)
+        INVSFloatingTextFieldType.initialMonthlyRescue.setupTextField(withTextField: initialMonthlyRescueTextField, andDelegate: self, valueTypeTextField: .currency, hasInfoButton: true)
+        INVSFloatingTextFieldType.increaseRescue.setupTextField(withTextField: increaseRescueTextField, andDelegate: self, valueTypeTextField: .currency, hasInfoButton: true)
+        INVSFloatingTextFieldType.goalIncreaseRescue.setupTextField(withTextField: goalIncreaseRescueTextField, andDelegate: self, valueTypeTextField: .currency, hasInfoButton: true)
     }
     
     func setLeftBarButton() {
@@ -80,6 +164,10 @@ public class INVSSimutatorViewControler: UIViewController {
         let currHeight = menuBarItem.customView?.heightAnchor.constraint(equalToConstant: 24)
         currHeight?.isActive = true
         self.navigationItem.leftBarButtonItem = menuBarItem
+    }
+    
+    @objc func willEnterForeground() {
+        helpView.messageLabelType.setNextStep(helpView: helpView)
     }
     
     @objc func shouldOpen(sender : UITapGestureRecognizer) {
@@ -122,40 +210,6 @@ public class INVSSimutatorViewControler: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.view.layoutIfNeeded()
         }
-    }
-
-    public func mockInfo() {
-        initialValueTextField.floatingTextField.text = "R$50.000,00"
-        monthValueTextField.floatingTextField.text = "R$500,00"
-        interestRateTextField.floatingTextField.text = "3,00%"
-        totalMonthsTextField.floatingTextField.text = "20"
-        initialMonthlyRescueTextField.floatingTextField.text = "R$100,00"
-        increaseRescueTextField.floatingTextField.text = "R$100,00"
-        goalIncreaseRescueTextField.floatingTextField.text = "R$1.000,00"
-    }
-    
-    public override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        popupMessage = INVSPopupMessage(parentViewController: self)
-        initialValueTextField.delegate = self
-        updateUI()
-
-    }
-    
-    func setupUI() {
-        setupTextFields()
-        horizontalStackView.addBackground(color: .lightGray)
-        view.backgroundColor = .INVSGray()
-    }
-    
-    private func setupTextFields() {
-        INVSFloatingTextFieldType.initialValue.setupTextField(withTextField: initialValueTextField, andDelegate: self, valueTypeTextField: .currency, isRequired: true)
-        INVSFloatingTextFieldType.monthValue.setupTextField(withTextField: monthValueTextField, andDelegate: self, valueTypeTextField: .currency)
-        INVSFloatingTextFieldType.interestRate.setupTextField(withTextField: interestRateTextField, andDelegate: self, valueTypeTextField: .percent, isRequired: true)
-        INVSFloatingTextFieldType.totalMonths.setupTextField(withTextField: totalMonthsTextField, andDelegate: self, valueTypeTextField: .months, isRequired: true)
-        INVSFloatingTextFieldType.initialMonthlyRescue.setupTextField(withTextField: initialMonthlyRescueTextField, andDelegate: self, valueTypeTextField: .currency, hasInfoButton: true)
-        INVSFloatingTextFieldType.increaseRescue.setupTextField(withTextField: increaseRescueTextField, andDelegate: self, valueTypeTextField: .currency, hasInfoButton: true)
-        INVSFloatingTextFieldType.goalIncreaseRescue.setupTextField(withTextField: goalIncreaseRescueTextField, andDelegate: self, valueTypeTextField: .currency, hasInfoButton: true)
     }
     
     @IBAction func saveAction(_ sender: Any) {

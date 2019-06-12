@@ -46,7 +46,6 @@ class INVSSimulatorPresenter: NSObject,INVSSimulatorPresenterProtocol {
             let nextTextField = textField.typeTextField?.getNext(allTextFields: textFields)
             controller?.displayOkAction(withTextField: nextTextField ?? textField, andShouldResign: nextTextField == nil)
         }
-        
     }
     
     func presentInfo(sender: UIView) {

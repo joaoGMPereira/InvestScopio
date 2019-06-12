@@ -8,15 +8,15 @@
 
 import Foundation
 
-protocol INVSSMarketPresenterProtocol {
+protocol INVSStartPresenterProtocol {
     func presentMarketInfo(withMarket market: MarketModel)
     func presentMarketError(withMarketError error: String)
     
 }
 
-class INVSSMarketPresenter: NSObject,INVSSMarketPresenterProtocol {
+class INVSStartPresenter: NSObject,INVSStartPresenterProtocol {
     
-    weak var controller: INVSSMarketViewController?
+    weak var controller: INVSStartViewController?
     
     func presentMarketInfo(withMarket market: MarketModel) {
         INVSSession.session.market = market

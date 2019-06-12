@@ -12,6 +12,8 @@ import UIKit
 protocol INVSRoutingLogic {
     func routeToSimulator()
     func routeToSimulated(withSimulatorViewController viewController: INVSSimutatorViewControler, andSimulatorModel simulatorModel: INVSSimulatorModel)
+    func showNextViewController(withNewController newController: UIViewController, withOldController oldController: UIViewController, andParentViewController parentViewController: UIViewController, withAnimation animation: UIView.AnimationOptions, completion:@escaping (Bool) -> Void)
+    func routeToLogin()
 }
 
 
@@ -26,15 +28,27 @@ class INVSRouter: NSObject, INVSRoutingLogic {
             let tapImage = UIImage(named: "chartIcon")
             let simulatorTabBarItem = UITabBarItem(title: "Simulador", image: tapImage, tag: 0)
             simulatorViewController.tabBarItem = simulatorTabBarItem
-            
-            appDelegate.tabBarController.setViewControllers([UINavigationController.init(rootViewController: simulatorViewController)], animated: true)
+        appDelegate.tabBarController.setViewControllers([UINavigationController.init(rootViewController: simulatorViewController)], animated: true)
             var options = UIWindow.TransitionOptions()
-            options.direction = .toTop
-            options.duration = 0.4
+            options.direction = .toBottom
+            options.duration = 3
             options.style = .easeOut
             options.background = UIWindow.TransitionOptions.Background.solidColor(.INVSLightGray())
             window.setRootViewController(appDelegate.tabBarController, options: options)
         }
+    }
+    
+    func routeToLogin() {
+        guard let window = UIApplication.shared.keyWindow else {
+            return
+        }
+        let loginViewController = INVSLoginViewController()
+        var options = UIWindow.TransitionOptions()
+        options.direction = .toTop
+        options.duration = 0.4
+        options.style = .easeOut
+        options.background = UIWindow.TransitionOptions.Background.solidColor(.INVSLightGray())
+        window.setRootViewController(loginViewController, options: options)
     }
     
     func routeToSimulated(withSimulatorViewController viewController: INVSSimutatorViewControler, andSimulatorModel simulatorModel: INVSSimulatorModel) {

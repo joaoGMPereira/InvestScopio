@@ -16,9 +16,9 @@ final class INVSConector {
     
     static let connector = INVSConector()
     
-    static func getURL(withRoute route: String, local: Bool = false) -> URL? {
+    static func getURL(withRoute route: String) -> URL? {
         
-        return local ? URL(string: "\(INVSConstants.INVSServicesConstants.localAPI.rawValue)\(route)") : URL(string: "\(INVSConstants.INVSServicesConstants.apiV1.rawValue)\(route)")
+        return INVSSession.session.isDev ? URL(string: "\(INVSConstants.INVSServicesConstants.localAPI.rawValue)\(route)") : URL(string: "\(INVSConstants.INVSServicesConstants.apiV1.rawValue)\(route)")
     }
     
     static func getVersion() -> URL? {

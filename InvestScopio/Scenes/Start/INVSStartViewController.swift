@@ -11,26 +11,25 @@ import Lottie
 import Hero
 
 
-protocol INVSSMarketViewControllerProtocol: class {
+protocol INVSStartViewControllerProtocol: class {
     func displayMarketInfo(withMarketInfo market: MarketModel)
     func displayMarketInfoError(witMarketError error: String)
 }
 
-class INVSSMarketViewController: UIViewController {
+class INVSStartViewController: UIViewController {
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     var animatedLogoView = AnimationView()
     let router = INVSRouter()
-    var interactor: INVSSMarketInteractorProtocol?
+    var interactor: INVSStartInteractorProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
-        let interactor = INVSSMarketInteractor()
+        let interactor = INVSStartInteractor()
         self.interactor = interactor
-        let presenter = INVSSMarketPresenter()
+        let presenter = INVSStartPresenter()
         presenter.controller = self
         interactor.presenter = presenter
-        interactor.downloadMarketInfo()
         animateLaunchGif()
     }
     
@@ -47,12 +46,12 @@ class INVSSMarketViewController: UIViewController {
         animatedLogoView.animationSpeed = 1.0
         animatedLogoView.loopMode = .playOnce
         animatedLogoView.play { (finished) in
-            self.router.routeToSimulator()
+            self.router.routeToLogin()
         }
     }
 }
 
-extension INVSSMarketViewController: INVSSMarketViewControllerProtocol {
+extension INVSStartViewController: INVSStartViewControllerProtocol {
     func displayMarketInfo(withMarketInfo market: MarketModel) {
         
     }

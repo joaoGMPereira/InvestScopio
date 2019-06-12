@@ -15,12 +15,15 @@ class INVSSimulatedContainerViewController: INVSPresentBaseViewController {
     let simulatedChartsViewController = INVSSimulatedChartsViewController()
     
     var heightSwitchViewConstraint = NSLayoutConstraint()
-    let router = INVSRouter()
+    let router: INVSRoutingLogic? = INVSRouter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         addSimulatedViewControllerToContainer()
+        closeClosure = { () -> () in
+            self.dismiss(animated: true, completion: nil)
+        }
         
     }
     
@@ -97,12 +100,12 @@ extension INVSSimulatedContainerViewController: INVSSwitchViewDelegate, INVSSimu
     func didSelectButton(_ sender: UIButton) {
         switchView.isUserInteractionEnabled = false
         if sender.titleLabel?.text == "Grafico" {
-            router.showNextViewController(withNewController: simulatedChartsViewController, withOldController: simulatedListViewController, andParentViewController: self, withAnimation: .transitionFlipFromLeft, completion: {finished in
+            router?.showNextViewController(withNewController: simulatedChartsViewController, withOldController: simulatedListViewController, andParentViewController: self, withAnimation: .transitionFlipFromLeft, completion: {finished in
                 self.switchView.isUserInteractionEnabled = finished
             })
         }
         if sender.titleLabel?.text == "Lista" {
-            router.showNextViewController(withNewController: simulatedListViewController, withOldController: simulatedChartsViewController, andParentViewController: self, withAnimation: .transitionFlipFromRight, completion: {finished in
+            router?.showNextViewController(withNewController: simulatedListViewController, withOldController: simulatedChartsViewController, andParentViewController: self, withAnimation: .transitionFlipFromRight, completion: {finished in
                 self.switchView.isUserInteractionEnabled = finished
             })
         }

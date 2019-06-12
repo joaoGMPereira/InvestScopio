@@ -28,7 +28,6 @@ class INVSSimulatedChartsViewController: UIViewController {
     var monthsSegmentedControl: BetterSegmentedControl!
     var chartTypeSegmentedControl: BetterSegmentedControl!
     var interactor: INVSSimulatedChartsInteractorProtocol?
-    let router = INVSRouter()
     private var showRescueChart = false
     private var isTotalChart: Bool = false
     override func viewDidLoad() {

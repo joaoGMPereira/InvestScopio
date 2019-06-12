@@ -18,6 +18,6 @@ target 'InvestScopio' do
   #Resquests
   pod 'SwiftSoup'
   pod 'Alamofire'
-  pod 'GoogleAPIClientForREST/Sheets', '~> 1.2.1'
+  pod 'Firebase/Core'
   pod 'Firebase/Auth'
 end

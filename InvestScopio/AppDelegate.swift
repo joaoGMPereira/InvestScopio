@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         FirebaseApp.configure()
         
-        let marketViewController = INVSSMarketViewController.init(nibName: INVSSMarketViewController.toString(), bundle: Bundle(for: INVSSMarketViewController.self))
-        window!.rootViewController = marketViewController
+        let startViewController = INVSStartViewController.init(nibName: INVSStartViewController.toString(), bundle: Bundle(for: INVSStartViewController.self))
+        window!.rootViewController = startViewController
         window!.makeKeyAndVisible()
         // Override point for customization after application launch.
         return true

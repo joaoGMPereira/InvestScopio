@@ -8,14 +8,14 @@
 
 import Foundation
 import UIKit
-protocol INVSSMarketInteractorProtocol {
+protocol INVSStartInteractorProtocol {
     func downloadMarketInfo()
 }
 
-class INVSSMarketInteractor: NSObject, INVSSMarketInteractorProtocol {
+class INVSStartInteractor: NSObject, INVSStartInteractorProtocol {
     
-    var presenter: INVSSMarketPresenterProtocol?
-    var worker: INVSMarketWorkerProtocol = INVSMarketWorker()
+    var presenter: INVSStartPresenterProtocol?
+    var worker: INVSStartWorkerProtocol = INVSStartWorker()
     
     func downloadMarketInfo() {
         worker.downloadMarketInfo(successCompletionHandler: { (market) in

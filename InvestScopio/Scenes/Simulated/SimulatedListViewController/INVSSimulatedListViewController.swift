@@ -27,7 +27,6 @@ class INVSSimulatedListViewController: UIViewController {
     var topTableviewConstraint = NSLayoutConstraint()
     var hasLoaded:Bool = false
     var interactor: INVSSimulatedListInteractorProtocol?
-    let router = INVSRouter()
     var dataSource = INVSSimulatorTableviewDataSourceDelegate()
     var popupMessage: INVSPopupMessage?
     override func viewDidLoad() {

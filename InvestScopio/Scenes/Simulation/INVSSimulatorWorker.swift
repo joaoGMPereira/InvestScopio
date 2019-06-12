@@ -113,6 +113,10 @@ class INVSSimulatorWorker: NSObject,INVSSimulatorWorkerProtocol {
                     simulatorModel.increaseRescue = textField.floatingTextField.text?.convertFormattedToDouble() ?? 0.0
                 case .goalIncreaseRescue:
                     simulatorModel.goalIncreaseRescue = textField.floatingTextField.text?.convertFormattedToDouble() ?? 0.0
+                case .email:
+                    break
+                case .password:
+                    break
                 }
             }
         }

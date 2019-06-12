@@ -18,7 +18,7 @@ extension UIFont {
     }
     
     static func INVSFontBig() -> UIFont {
-        return UIFont.systemFont(ofSize: 15)
+        return UIFont.systemFont(ofSize: 16)
     }
     
     static func INVSFontBigBold() -> UIFont {

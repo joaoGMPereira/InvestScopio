@@ -29,7 +29,7 @@ class INVSPresentBaseViewController: UIViewController {
     private var heightNavigationBarConstraint = NSLayoutConstraint()
     private var topNavigationBarConstraint = NSLayoutConstraint()
     private var animatedLogoView = AnimationView()
-    
+    var closeClosure: (() -> ())?
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -47,7 +47,9 @@ class INVSPresentBaseViewController: UIViewController {
     }
     
     @objc private func dismissViewController() {
-        dismiss(animated: true, completion: nil)
+        if let closeClosure = closeClosure {
+            closeClosure()
+        }
     }
     
     func showLoading() {
