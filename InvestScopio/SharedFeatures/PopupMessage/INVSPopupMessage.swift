@@ -108,6 +108,7 @@ class INVSPopupMessage: UIView {
     private func calculateHeightOfPopup() {
         let paddings: CGFloat = 24
         let buttonWidth: CGFloat = 30
+        popupWidth = parentViewController.view.frame.width * 0.9
         let textMessageWidth = popupWidth - paddings - buttonWidth
         let estimatedPopupHeight = messageAttributed.string.height(withConstrainedWidth: textMessageWidth, font: .INVSFontBigBold())
         popupHeight = defaultHeight
@@ -117,6 +118,7 @@ class INVSPopupMessage: UIView {
     }
     
     private func showPopup(sender: UIView?) {
+        self.alpha = 1
         heightLabelConstraint.constant = self.popupHeight * 0.95
         UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.6, options: .curveEaseOut, animations: {
             self.frame.size.height = self.popupHeight
@@ -139,6 +141,7 @@ class INVSPopupMessage: UIView {
             UIView.animate(withDuration: 0.4) {
                 let topBarHeight = UIApplication.shared.statusBarFrame.size.height + (self.parentViewController.navigationController?.navigationBar.frame.height ?? 0.0)
                 self.frame.origin.y = -(topBarHeight + self.popupHeight)
+                self.alpha = 0
             }
         }) { (finished) in
             self.delegate?.didFinishDismissPopupMessage(withPopupMessage: self)

@@ -29,6 +29,12 @@ class INVSLoginWorker: NSObject,INVSLoginWorkerProtocol {
         if let email = textFields.filter({$0.typeTextField == .email}).first?.floatingTextField.text?.lowercased(), let password = textFields.filter({$0.typeTextField == .password}).first?.floatingTextField.text {
             Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
                 guard let user = result?.user else {
+                    if let error = error {
+                        if let firebaseErrorHandler = FireBaseErrorHandler.init(rawValue: error._code)?.getFirebaseError() {
+                            errorCompletionHandler(firebaseErrorHandler.titleError, firebaseErrorHandler.messageError, firebaseErrorHandler.shouldHideAutomatically, firebaseErrorHandler.popupType)
+                            return
+                        }
+                    }
                     errorCompletionHandler(INVSFloatingTextFieldType.defaultTitle(), INVSFloatingTextFieldType.defaultMessage(), true, .error)
                     return
                 }

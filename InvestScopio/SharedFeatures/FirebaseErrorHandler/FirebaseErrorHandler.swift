@@ -23,7 +23,7 @@ enum FireBaseErrorHandler: Int {
         case .codeUserDisabled:
             return FirebaseError(titleError: INVSFloatingTextFieldType.defaultTitle(), messageError: "Email desativado!", shouldHideAutomatically: true, popupType:.error)
         case .codeEmailAlreadyInUse:
-            return FirebaseError(titleError: INVSFloatingTextFieldType.defaultTitle(), messageError: "Este email já está sendo usado por outro usuário", shouldHideAutomatically: true, popupType:.error)
+            return FirebaseError(titleError: INVSFloatingTextFieldType.defaultTitle(), messageError: "Este email já está sendo usado por outro usuário!", shouldHideAutomatically: true, popupType:.error)
         case .codeInvalidEmail:
             return FirebaseError(titleError: INVSFloatingTextFieldType.defaultTitle(), messageError: "Email inválido!", shouldHideAutomatically: true, popupType:.error)
         case .codeWrongPassword:

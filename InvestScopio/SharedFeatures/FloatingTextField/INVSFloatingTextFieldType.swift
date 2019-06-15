@@ -69,9 +69,9 @@ enum INVSFloatingTextFieldType: Int {
         case .goalIncreaseRescue:
             return "É o próximo valor que você espera que seu rendimento chegue para que possa aumentar o valor de resgate do mesmo.\n\nExemplo: Seu rendimento está em R$100,00 e seu resgate é de R$10,00, seu objetivo é de R$100,00 e seu acréscimo no resgate é de R$10,00, quando seu rendimento chegar em R$200,00, seu resgate será de R$20,00.\n\nOBS: Caso seu seu valor investido esteja alto o suficiente para que de um mês para o outro aumente R$200,00, R$300,00 e assim por diante, seu aumento no resgate será proporcional a ele R$20,00, R$30,00 e assim por diante."
         case .email:
-            return "Digite um email válido"
+            return "Digite um email válido!"
         case .password:
-            return "Senha inválida"
+            return "Senha inválida!"
         case .confirmPassword:
             return "Sua senha e confirmação não são as mesmas."
         }

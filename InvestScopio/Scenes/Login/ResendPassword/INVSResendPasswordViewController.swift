@@ -21,7 +21,7 @@ class INVSResendPasswordViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var emailTextField: INVSFloatingTextField!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var resendPasswordButton: UIButton!
+    @IBOutlet weak var resendPasswordButton: INVSLoadingButton!
     @IBOutlet weak var contentViewCenterYConstraint: NSLayoutConstraint!
     var popupMessage: INVSPopupMessage?
     var interactor: INVSResendPasswordInteractorProtocol?
@@ -69,10 +69,11 @@ class INVSResendPasswordViewController: UIViewController {
         titleLabel.font = .INVSFontBigBold()
         INVSFloatingTextFieldType.email.setupTextField(withTextField: emailTextField,keyboardType: .emailAddress, andDelegate: self, valueTypeTextField: .none, isRequired: true)
         
-        resendPasswordButton.setTitleColor(.INVSDefault(), for: .normal)
-        resendPasswordButton.layer.borderColor = UIColor.INVSDefault().cgColor
-        resendPasswordButton.layer.borderWidth = 2
-        resendPasswordButton.layer.cornerRadius = 25
+        resendPasswordButton.setupBorded(title: "Recuperar")
+        resendPasswordButton.buttonAction = { (button) -> () in
+            self.resendPasswordButton.showLoading()
+            self.interactor?.resendPassword()
+        }
         cancelButton.setTitleColor(.INVSRed(), for: .normal)
         cancelButton.layer.borderColor = UIColor.INVSRed().cgColor
         cancelButton.layer.borderWidth = 2
@@ -80,10 +81,7 @@ class INVSResendPasswordViewController: UIViewController {
         popupMessage = INVSPopupMessage(parentViewController: self)
         popupMessage?.delegate = self
     }
-
-    @IBAction func resendPasswordAction(_ sender: Any) {
-        interactor?.resendPassword()
-    }
+    
     @IBAction func cancelAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -113,10 +111,12 @@ extension INVSResendPasswordViewController: INVSFloatingTextFieldDelegate {
 
 extension INVSResendPasswordViewController: INVSResendPasswordViewControllerProtocol {
     func displayResendPasswordSuccess(withEmail email:String, title:String, message:String, shouldHideAutomatically:Bool, popupType:INVSPopupMessageType) {
+        resendPasswordButton.hideLoading()
         popupMessage?.show(withTextMessage: message, title: title, popupType: popupType, shouldHideAutomatically: shouldHideAutomatically)
     }
     
     func displayResendPasswordError(titleError:String, messageError:String, shouldHideAutomatically:Bool, popupType:INVSPopupMessageType) {
+        resendPasswordButton.hideLoading()
         popupMessage?.show(withTextMessage: messageError, title: titleError, popupType: popupType, shouldHideAutomatically: shouldHideAutomatically)
     }
     

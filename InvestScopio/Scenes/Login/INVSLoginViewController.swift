@@ -33,6 +33,7 @@ class INVSLoginViewController: INVSPresentBaseViewController {
     var resendPasswordButton = UIButton(frame: .zero)
     var animationView = AnimationView()
     var titleTopConstraint = NSLayoutConstraint()
+    var popupMessage: INVSPopupMessage?
 
     var interactor: INVSLoginInteractorProtocol?
     var router: INVSRoutingLogic?
@@ -86,6 +87,8 @@ class INVSLoginViewController: INVSPresentBaseViewController {
     
     //MARK: SetupUI
     func setupUI() {
+        popupMessage = INVSPopupMessage(parentViewController: self)
+        popupMessage?.delegate = self
         textFieldStackView.addArrangedSubview(emailTextField)
         textFieldStackView.addArrangedSubview(passwordTextField)
         textFieldStackView.axis = .vertical
@@ -146,6 +149,11 @@ class INVSLoginViewController: INVSPresentBaseViewController {
     }
 }
 
+extension INVSLoginViewController: INVSPopupMessageDelegate {
+    func didFinishDismissPopupMessage(withPopupMessage popupMessage: INVSPopupMessage) {
+    }
+}
+
 extension INVSLoginViewController: INVSSignUpViewControllerDelegate {
     func didSignUp(withEmail email: String) {
         emailTextField.textFieldTitle = email
@@ -177,6 +185,7 @@ extension INVSLoginViewController: INVSLoginViewControllerProtocol {
     func displaySignInError(titleError: String, messageError: String, shouldHideAutomatically: Bool, popupType: INVSPopupMessageType) {
         self.hideLoading()
         self.loginButton.isEnabled = true
+        popupMessage?.show(withTextMessage: messageError, title: titleError, popupType: popupType, shouldHideAutomatically: shouldHideAutomatically)
     }
     
     func displayOkAction(withTextField textField: INVSFloatingTextField, andShouldResign shouldResign: Bool) {
