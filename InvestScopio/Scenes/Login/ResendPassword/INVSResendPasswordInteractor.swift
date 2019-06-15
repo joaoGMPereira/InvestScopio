@@ -12,27 +12,27 @@
 
 import UIKit
 
-protocol INVSLoginInteractorProtocol {
+protocol INVSResendPasswordInteractorProtocol {
     func checkToolbarAction(withTextField textField: INVSFloatingTextField, typeOfAction type: INVSKeyboardToolbarButton)
-    func logIn()
+    func resendPassword()
     var allTextFields: [INVSFloatingTextField] { get }
 }
 
-class INVSLoginInteractor: INVSLoginInteractorProtocol {
-    
-    var presenter: INVSLoginPresenterProtocol?
-    var worker: INVSLoginWorkerProtocol = INVSLoginWorker()
+class INVSResendPasswordInteractor: INVSResendPasswordInteractorProtocol {
+    var presenter: INVSResendPasswordPresenterProtocol?
+    var worker: INVSResendPasswordWorkerProtocol = INVSResendPasswordWorker()
     var allTextFields = [INVSFloatingTextField]()
   // MARK: Do something
   
     func checkToolbarAction(withTextField textField: INVSFloatingTextField, typeOfAction type: INVSKeyboardToolbarButton) {
         presenter?.presentToolbarAction(withPreviousTextField: textField, allTextFields: allTextFields, typeOfAction: type)
     }
-    func logIn() {
-        worker.login(withTextFields: allTextFields, successCompletionHandler: { (user) in
-            self.presenter?.presentSuccessSignIn(user: user)
+    
+    func resendPassword() {
+        worker.resendPassword(withTextFields: allTextFields, successCompletionHandler: { (email, title, message, shouldHideAutomatically, popupType) in
+            self.presenter?.presentSuccessResendPassword(withEmail: email, title: title, message: message, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType)
         }, errorCompletionHandler: { (title, message, shouldHideAutomatically, popupType) in
-            self.presenter?.presentErrorSignIn(titleError: title, messageError: message, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType)
+            self.presenter?.presentErrorResendPassword(titleError: title, messageError: message, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType)
         })
     }
 }

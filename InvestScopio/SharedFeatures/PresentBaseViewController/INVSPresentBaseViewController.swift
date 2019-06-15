@@ -42,7 +42,7 @@ class INVSPresentBaseViewController: UIViewController {
             topNavigationBarConstraint.constant = view.safeAreaInsets.top
             UIView.animate(withDuration: 1.6) {
                 self.view.layoutIfNeeded()
-                self.shadowLayer = CAShapeLayer.addCornerAndShadow(withShapeLayer: self.shadowLayer, withCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], withRoundedCorner: 1, andColor: .INVSLightGray(), inView: self.navigationBarView)
+                self.shadowLayer = CAShapeLayer.addCorner(withShapeLayer: self.shadowLayer, withCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], withRoundedCorner: 1, andColor: .INVSLightGray(), inView: self.navigationBarView)
             }
     }
     

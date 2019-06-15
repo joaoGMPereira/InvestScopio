@@ -58,7 +58,7 @@ class INVSSimulatorHelpView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        shadowLayer = CAShapeLayer.addCornerAndShadow(withShapeLayer: self.shadowLayer, withCorners: [.bottomLeft, .bottomRight], withRoundedCorner: 12, andColor: .white, inView: self)
+        shadowLayer = CAShapeLayer.addCorner(withShapeLayer: self.shadowLayer, withCorners: [.bottomLeft, .bottomRight], withRoundedCorner: 12, andColor: .white, inView: self)
     }
 }
 

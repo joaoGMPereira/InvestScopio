@@ -33,6 +33,7 @@ class INVSPopupMessage: UIView {
     var textMessageLabel = UILabel()
     var closeButton = UIButton()
     var delegate: INVSPopupMessageDelegate?
+    var popupType: INVSPopupMessageType = .alert
     
     
     init(parentViewController:UIViewController) {
@@ -51,7 +52,7 @@ class INVSPopupMessage: UIView {
         self.frame.origin.x = (parentViewController.view.frame.width - (parentViewController.view.frame.width * 0.9))/2
         
         UIView.animate(withDuration: 1) {
-            self.shadowLayer = CAShapeLayer.addCornerAndShadow(withShapeLayer: self.shadowLayer, withCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], withRoundedCorner: 12, andColor: self.popupBackgroundColor, inView: self)
+            self.shadowLayer = CAShapeLayer.addCorner(withShapeLayer: self.shadowLayer, withCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], withRoundedCorner: 12, andColor: self.popupBackgroundColor, inView: self)
         }
     }
     
@@ -65,8 +66,9 @@ class INVSPopupMessage: UIView {
         }
         self.shadowLayer = nil
         self.shouldHideAutomatically = shouldHideAutomatically
-        messageColor = popupType.messageColor()
-        popupBackgroundColor = popupType.backgroundColor()
+        self.popupType = popupType
+        messageColor = self.popupType.messageColor()
+        popupBackgroundColor = self.popupType.backgroundColor()
         setupMessageAttributed(withTextMessage: message, title: title)
         setupUI()
         calculateHeightOfPopup()

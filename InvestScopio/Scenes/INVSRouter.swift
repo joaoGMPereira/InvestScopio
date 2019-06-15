@@ -31,7 +31,7 @@ class INVSRouter: NSObject, INVSRoutingLogic {
         appDelegate.tabBarController.setViewControllers([UINavigationController.init(rootViewController: simulatorViewController)], animated: true)
             var options = UIWindow.TransitionOptions()
             options.direction = .toBottom
-            options.duration = 3
+            options.duration = 0.4
             options.style = .easeOut
             options.background = UIWindow.TransitionOptions.Background.solidColor(.INVSLightGray())
             window.setRootViewController(appDelegate.tabBarController, options: options)

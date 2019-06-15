@@ -20,9 +20,10 @@ enum INVSFloatingTextFieldType: Int {
     case goalIncreaseRescue
     case email
     case password
+    case confirmPassword
     
     func setupTextField(withTextField textfield: INVSFloatingTextField,keyboardType: UIKeyboardType = .numberPad, andDelegate delegate: INVSFloatingTextFieldDelegate, valueTypeTextField: INVSFloatingTextFieldValueType, isRequired: Bool = false, hasInfoButton: Bool = false, leftButtons: [INVSKeyboardToolbarButton] = [.cancel]) {
-        textfield.setup(placeholder: self.getTextFieldTitle(), typeTextField: self, valueTypeTextField: valueTypeTextField, required: isRequired, hasInfoButton: hasInfoButton, color: UIColor.INVSDefault(), leftButtons: leftButtons)
+        textfield.setup(placeholder: self.getTextFieldTitle(), typeTextField: self, valueTypeTextField: valueTypeTextField, keyboardType: keyboardType, required: isRequired, hasInfoButton: hasInfoButton, color: UIColor.INVSDefault(), leftButtons: leftButtons)
         textfield.delegate = delegate
     }
     
@@ -46,6 +47,8 @@ enum INVSFloatingTextFieldType: Int {
             return "Email"
         case .password:
             return "Senha"
+        case .confirmPassword:
+            return "Confirmar Senha"
         }
     }
     
@@ -66,9 +69,11 @@ enum INVSFloatingTextFieldType: Int {
         case .goalIncreaseRescue:
             return "É o próximo valor que você espera que seu rendimento chegue para que possa aumentar o valor de resgate do mesmo.\n\nExemplo: Seu rendimento está em R$100,00 e seu resgate é de R$10,00, seu objetivo é de R$100,00 e seu acréscimo no resgate é de R$10,00, quando seu rendimento chegar em R$200,00, seu resgate será de R$20,00.\n\nOBS: Caso seu seu valor investido esteja alto o suficiente para que de um mês para o outro aumente R$200,00, R$300,00 e assim por diante, seu aumento no resgate será proporcional a ele R$20,00, R$30,00 e assim por diante."
         case .email:
-            return ""
+            return "Digite um email válido"
         case .password:
-            return ""
+            return "Senha inválida"
+        case .confirmPassword:
+            return "Sua senha e confirmação não são as mesmas."
         }
         
     }
@@ -90,9 +95,11 @@ enum INVSFloatingTextFieldType: Int {
         case .goalIncreaseRescue:
             return "Objetivo de Rendimento para aumento de resgate\n\n"
         case .email:
-            return ""
+            return "Atenção\n"
         case .password:
-            return ""
+            return "Atenção\n"
+        case .confirmPassword:
+            return "Atenção\n"
         }
     }
     
@@ -102,5 +109,13 @@ enum INVSFloatingTextFieldType: Int {
     
     func next() -> INVSFloatingTextFieldType? {
         return INVSFloatingTextFieldType(rawValue: rawValue + 1)
+    }
+    
+    static func defaultTitle() -> String {
+        return "Ops..\n"
+    }
+    
+    static func defaultMessage() -> String {
+        return "Ocorreu algum problema,\nIremos resolver em breve."
     }
 }

@@ -13,6 +13,19 @@
 		4A0FFE8622B1161D00D6A33A /* INVSLoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8522B1161D00D6A33A /* INVSLoginPresenter.swift */; };
 		4A0FFE8822B1163200D6A33A /* INVSLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8722B1163200D6A33A /* INVSLoginModel.swift */; };
 		4A0FFE8A22B1166200D6A33A /* INVSLoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8922B1166200D6A33A /* INVSLoginWorker.swift */; };
+		4A0FFE8C22B2D84F00D6A33A /* UIView+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8B22B2D84F00D6A33A /* UIView+INVSExtension.swift */; };
+		4A0FFE9022B2FF0300D6A33A /* INVSSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8E22B2FF0300D6A33A /* INVSSignUpViewController.swift */; };
+		4A0FFE9122B2FF0300D6A33A /* INVSSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8F22B2FF0300D6A33A /* INVSSignUpViewController.xib */; };
+		4A0FFE9522B3051F00D6A33A /* INVSSignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9222B3051E00D6A33A /* INVSSignUpPresenter.swift */; };
+		4A0FFE9622B3051F00D6A33A /* INVSSignUpWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9322B3051E00D6A33A /* INVSSignUpWorker.swift */; };
+		4A0FFE9722B3051F00D6A33A /* INVSSignUpInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9422B3051E00D6A33A /* INVSSignUpInteractor.swift */; };
+		4A0FFE9E22B41C1B00D6A33A /* INVSResendPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9922B41C1A00D6A33A /* INVSResendPasswordViewController.xib */; };
+		4A0FFE9F22B41C1B00D6A33A /* INVSResendPasswordWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9A22B41C1A00D6A33A /* INVSResendPasswordWorker.swift */; };
+		4A0FFEA022B41C1B00D6A33A /* INVSResendPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9B22B41C1A00D6A33A /* INVSResendPasswordPresenter.swift */; };
+		4A0FFEA122B41C1B00D6A33A /* INVSResendPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9C22B41C1A00D6A33A /* INVSResendPasswordViewController.swift */; };
+		4A0FFEA222B41C1B00D6A33A /* INVSResendPasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9D22B41C1A00D6A33A /* INVSResendPasswordInteractor.swift */; };
+		4A0FFEA522B438B000D6A33A /* FirebaseErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFEA422B438B000D6A33A /* FirebaseErrorHandler.swift */; };
+		4A0FFEA722B4729100D6A33A /* INVSLoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFEA622B4729100D6A33A /* INVSLoadingButton.swift */; };
 		4A107A9A22A1791000A7D8D1 /* ParticipantesSTRport.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4A107A9922A1790F00A7D8D1 /* ParticipantesSTRport.csv */; };
 		4A107A9C22A31E8300A7D8D1 /* UILabel+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A107A9B22A31E8300A7D8D1 /* UILabel+INVSExtension.swift */; };
 		4A107AA222A3279600A7D8D1 /* INVSSimulatorHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A107AA122A3279600A7D8D1 /* INVSSimulatorHelpView.swift */; };
@@ -93,6 +106,19 @@
 		4A0FFE8522B1161D00D6A33A /* INVSLoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSLoginPresenter.swift; sourceTree = "<group>"; };
 		4A0FFE8722B1163200D6A33A /* INVSLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSLoginModel.swift; sourceTree = "<group>"; };
 		4A0FFE8922B1166200D6A33A /* INVSLoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSLoginWorker.swift; sourceTree = "<group>"; };
+		4A0FFE8B22B2D84F00D6A33A /* UIView+INVSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+INVSExtension.swift"; sourceTree = "<group>"; };
+		4A0FFE8E22B2FF0300D6A33A /* INVSSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSignUpViewController.swift; sourceTree = "<group>"; };
+		4A0FFE8F22B2FF0300D6A33A /* INVSSignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = INVSSignUpViewController.xib; sourceTree = "<group>"; };
+		4A0FFE9222B3051E00D6A33A /* INVSSignUpPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSignUpPresenter.swift; sourceTree = "<group>"; };
+		4A0FFE9322B3051E00D6A33A /* INVSSignUpWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSignUpWorker.swift; sourceTree = "<group>"; };
+		4A0FFE9422B3051E00D6A33A /* INVSSignUpInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSignUpInteractor.swift; sourceTree = "<group>"; };
+		4A0FFE9922B41C1A00D6A33A /* INVSResendPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = INVSResendPasswordViewController.xib; sourceTree = "<group>"; };
+		4A0FFE9A22B41C1A00D6A33A /* INVSResendPasswordWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSResendPasswordWorker.swift; sourceTree = "<group>"; };
+		4A0FFE9B22B41C1A00D6A33A /* INVSResendPasswordPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSResendPasswordPresenter.swift; sourceTree = "<group>"; };
+		4A0FFE9C22B41C1A00D6A33A /* INVSResendPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSResendPasswordViewController.swift; sourceTree = "<group>"; };
+		4A0FFE9D22B41C1A00D6A33A /* INVSResendPasswordInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSResendPasswordInteractor.swift; sourceTree = "<group>"; };
+		4A0FFEA422B438B000D6A33A /* FirebaseErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseErrorHandler.swift; sourceTree = "<group>"; };
+		4A0FFEA622B4729100D6A33A /* INVSLoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSLoadingButton.swift; sourceTree = "<group>"; };
 		4A107A9922A1790F00A7D8D1 /* ParticipantesSTRport.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ParticipantesSTRport.csv; sourceTree = "<group>"; };
 		4A107A9B22A31E8300A7D8D1 /* UILabel+INVSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+INVSExtension.swift"; sourceTree = "<group>"; };
 		4A107AA122A3279600A7D8D1 /* INVSSimulatorHelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = INVSSimulatorHelpView.swift; path = ../INVSSimulatorHelpView.swift; sourceTree = "<group>"; };
@@ -193,13 +219,54 @@
 		4A0FFE8022B08BF500D6A33A /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				4A0FFE9822B41C1A00D6A33A /* ResendPassword */,
+				4A0FFE8D22B2FECC00D6A33A /* SignUp */,
 				4A0FFE8122B115E400D6A33A /* INVSLoginViewController.swift */,
 				4A0FFE8322B1160400D6A33A /* INVSLoginInteractor.swift */,
 				4A0FFE8522B1161D00D6A33A /* INVSLoginPresenter.swift */,
-				4A0FFE8722B1163200D6A33A /* INVSLoginModel.swift */,
 				4A0FFE8922B1166200D6A33A /* INVSLoginWorker.swift */,
+				4A0FFE8722B1163200D6A33A /* INVSLoginModel.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		4A0FFE8D22B2FECC00D6A33A /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				4A0FFE9422B3051E00D6A33A /* INVSSignUpInteractor.swift */,
+				4A0FFE9222B3051E00D6A33A /* INVSSignUpPresenter.swift */,
+				4A0FFE9322B3051E00D6A33A /* INVSSignUpWorker.swift */,
+				4A0FFE8E22B2FF0300D6A33A /* INVSSignUpViewController.swift */,
+				4A0FFE8F22B2FF0300D6A33A /* INVSSignUpViewController.xib */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		4A0FFE9822B41C1A00D6A33A /* ResendPassword */ = {
+			isa = PBXGroup;
+			children = (
+				4A0FFE9922B41C1A00D6A33A /* INVSResendPasswordViewController.xib */,
+				4A0FFE9A22B41C1A00D6A33A /* INVSResendPasswordWorker.swift */,
+				4A0FFE9B22B41C1A00D6A33A /* INVSResendPasswordPresenter.swift */,
+				4A0FFE9C22B41C1A00D6A33A /* INVSResendPasswordViewController.swift */,
+				4A0FFE9D22B41C1A00D6A33A /* INVSResendPasswordInteractor.swift */,
+			);
+			path = ResendPassword;
+			sourceTree = "<group>";
+		};
+		4A0FFEA322B4387400D6A33A /* FirebaseErrorHandler */ = {
+			isa = PBXGroup;
+			children = (
+				4A0FFEA422B438B000D6A33A /* FirebaseErrorHandler.swift */,
+			);
+			path = FirebaseErrorHandler;
+			sourceTree = "<group>";
+		};
+		4A0FFEA822B472DC00D6A33A /* LoadingButton */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LoadingButton;
 			sourceTree = "<group>";
 		};
 		4A107AA322A3279C00A7D8D1 /* Views */ = {
@@ -446,6 +513,8 @@
 		4A4C68892295796100EDC8C6 /* SharedFeatures */ = {
 			isa = PBXGroup;
 			children = (
+				4A0FFEA822B472DC00D6A33A /* LoadingButton */,
+				4A0FFEA322B4387400D6A33A /* FirebaseErrorHandler */,
 				4A12631522A7DC6B006133E5 /* Connector */,
 				4A121690229AE96100759948 /* BallonMarker */,
 				4A4C688A2295796100EDC8C6 /* PresentBaseViewController */,
@@ -456,6 +525,7 @@
 				4A4C68A22295796100EDC8C6 /* GradientView */,
 				4A4C68A42295796100EDC8C6 /* KeychainWrapper */,
 				4A4C68A62295796100EDC8C6 /* CodeView */,
+				4A0FFEA622B4729100D6A33A /* INVSLoadingButton.swift */,
 			);
 			path = SharedFeatures;
 			sourceTree = "<group>";
@@ -503,6 +573,7 @@
 				4A4C689E2295796100EDC8C6 /* UIWindow+INVSExtension.swift */,
 				4A107A9B22A31E8300A7D8D1 /* UILabel+INVSExtension.swift */,
 				4A45D0D122A44576001383B4 /* NSAttributedString+INVSExtension.swift */,
+				4A0FFE8B22B2D84F00D6A33A /* UIView+INVSExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -609,7 +680,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A0FFE9122B2FF0300D6A33A /* INVSSignUpViewController.xib in Resources */,
 				4A4C68B62295796200EDC8C6 /* INVSSimulatorCell.xib in Resources */,
+				4A0FFE9E22B41C1B00D6A33A /* INVSResendPasswordViewController.xib in Resources */,
 				4A4C68DE2295796200EDC8C6 /* animatedLoadingWhite.json in Resources */,
 				4A4C68C12295796200EDC8C6 /* Images.xcassets in Resources */,
 				4A4C68C22295796200EDC8C6 /* animatedLoadingPurple.json in Resources */,
@@ -708,11 +781,15 @@
 				4A4C68D52295796200EDC8C6 /* INVSPopupMessage.swift in Sources */,
 				4A0FFE7F22AF298000D6A33A /* INVSSimulatedListWorker.swift in Sources */,
 				4A45D0D222A44576001383B4 /* NSAttributedString+INVSExtension.swift in Sources */,
+				4A0FFE9722B3051F00D6A33A /* INVSSignUpInteractor.swift in Sources */,
 				4A4C68B12295796200EDC8C6 /* INVSSimulatedValueModel.swift in Sources */,
 				4A4C68DC2295796200EDC8C6 /* AppDelegate.swift in Sources */,
 				4A12631722A7DC7A006133E5 /* INVSConector.swift in Sources */,
 				4A45D0D422A4463D001383B4 /* INVSSimulatedHelpViewType.swift in Sources */,
+				4A0FFE8C22B2D84F00D6A33A /* UIView+INVSExtension.swift in Sources */,
 				4A4C68C42295796200EDC8C6 /* INVSConstants.swift in Sources */,
+				4A0FFE9F22B41C1B00D6A33A /* INVSResendPasswordWorker.swift in Sources */,
+				4A0FFEA122B41C1B00D6A33A /* INVSResendPasswordViewController.swift in Sources */,
 				4A4C68CD2295796200EDC8C6 /* UIFont+INVSExtension.swift in Sources */,
 				4A4C68C32295796200EDC8C6 /* INVSPresentBaseViewController.swift in Sources */,
 				4A2B05A9229DF30E0024F83A /* INVSSimulatedTotalChartView.swift in Sources */,
@@ -734,6 +811,7 @@
 				4A4C68D22295796200EDC8C6 /* String+INVSExtension.swift in Sources */,
 				4A22FF382297837B001662FC /* INVSSimulatedContainerViewController.swift in Sources */,
 				4A4C68BE2295796200EDC8C6 /* INVSSimulatorWorker.swift in Sources */,
+				4A0FFEA722B4729100D6A33A /* INVSLoadingButton.swift in Sources */,
 				4A12631A22A7E820006133E5 /* INVSConnectorRouter.swift in Sources */,
 				4A0FFE8A22B1166200D6A33A /* INVSLoginWorker.swift in Sources */,
 				4A4C68AF2295796200EDC8C6 /* INVSSimulatorTableviewDataSourceDelegate.swift in Sources */,
@@ -741,9 +819,11 @@
 				4A0FFE8822B1163200D6A33A /* INVSLoginModel.swift in Sources */,
 				4A4C68C72295796200EDC8C6 /* INVSFloatingTextFieldType.swift in Sources */,
 				4A4C68D82295796200EDC8C6 /* INVSCodeView.swift in Sources */,
+				4A0FFE9022B2FF0300D6A33A /* INVSSignUpViewController.swift in Sources */,
 				4A4C68B02295796200EDC8C6 /* INVSSimulatedListInteractor.swift in Sources */,
 				4A4C68D42295796200EDC8C6 /* INVSPopupMessageType.swift in Sources */,
 				4A4C68BD2295796200EDC8C6 /* INVSSimulatorPresenter.swift in Sources */,
+				4A0FFE9622B3051F00D6A33A /* INVSSignUpWorker.swift in Sources */,
 				4A27AA9B229F745C00C45CC5 /* INVSStartPresenter.swift in Sources */,
 				4A107A9C22A31E8300A7D8D1 /* UILabel+INVSExtension.swift in Sources */,
 				4A4C68C62295796200EDC8C6 /* INVSFloatingTextFieldValueType.swift in Sources */,
@@ -751,9 +831,12 @@
 				4A12631222A7DA7A006133E5 /* MarketModel.swift in Sources */,
 				4A107AA222A3279600A7D8D1 /* INVSSimulatorHelpView.swift in Sources */,
 				4A4C68D02295796200EDC8C6 /* CAShapeLayer+INVSExtension.swift in Sources */,
+				4A0FFEA222B41C1B00D6A33A /* INVSResendPasswordInteractor.swift in Sources */,
 				4A4C68D32295796200EDC8C6 /* UIWindow+INVSExtension.swift in Sources */,
 				4A2B05A6229C19220024F83A /* INVSStartWorker.swift in Sources */,
 				4A4C68D12295796200EDC8C6 /* Double+INVSExtension.swift in Sources */,
+				4A0FFE9522B3051F00D6A33A /* INVSSignUpPresenter.swift in Sources */,
+				4A0FFEA522B438B000D6A33A /* FirebaseErrorHandler.swift in Sources */,
 				4A4C68C52295796200EDC8C6 /* INVSFloatingTextField.swift in Sources */,
 				4A22FF3C22980B89001662FC /* INVSSimulatedChartsViewController.swift in Sources */,
 				4A0FFE8222B115E400D6A33A /* INVSLoginViewController.swift in Sources */,
@@ -763,6 +846,7 @@
 				4A4C68BB2295796200EDC8C6 /* INVSSimulatorModel.swift in Sources */,
 				4A4C68B82295796200EDC8C6 /* INVSStartViewController.swift in Sources */,
 				4A121692229AE96100759948 /* BalloonMarker.swift in Sources */,
+				4A0FFEA022B41C1B00D6A33A /* INVSResendPasswordPresenter.swift in Sources */,
 				4A4C68BC2295796200EDC8C6 /* INVSSimutatorViewControler.swift in Sources */,
 				4A121694229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift in Sources */,
 				4A4C68D62295796200EDC8C6 /* GradientView.swift in Sources */,

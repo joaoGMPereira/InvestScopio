@@ -37,7 +37,7 @@ class INVSSimulatorCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.shadowLayer = CAShapeLayer.addCornerAndShadow(withShapeLayer: self.shadowLayer, withCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], withRoundedCorner: 12, andColor: .white, inView: infoView)
+        self.shadowLayer = CAShapeLayer.addCorner(withShapeLayer: self.shadowLayer, withCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], withRoundedCorner: 12, andColor: .white, inView: infoView)
         
         
     }

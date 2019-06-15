@@ -10,7 +10,6 @@ import UIKit
 import Lottie
 import Hero
 import StepView
-import Firebase
 
 protocol INVSSimutatorViewControlerProtocol: class {
     func displayNextTextField(withLastTextField textField: INVSFloatingTextField)
@@ -38,39 +37,14 @@ public class INVSSimutatorViewControler: UIViewController {
     private var clearButtonLayer: CAGradientLayer!
     @IBOutlet weak var horizontalStackView: UIStackView!
     @IBOutlet weak var heightScrollView: NSLayoutConstraint!
-    @IBOutlet weak var serviceSwitch: UISwitch!
     let animatedLogoView = AnimationView(frame: .zero)
     
     var popupMessage: INVSPopupMessage?
     var interactor: INVSSimulatorInteractorProtocol?
     let router = INVSRouter()
-    var handle: AuthStateDidChangeListenerHandle?
-    
-    
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        if let handle = handle {
-            Auth.auth().removeStateDidChangeListener(handle)
-        }
-    }
-    
-    func fireBaseStateDidChangeListener() {
-        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            print(auth)
-            print(user)
-        }
-        
-        Auth.auth().signIn(withEmail: "gah.mp1@gmail.com", password: "Jg22151515") { (result, error) in
-            print(result)
-            print(error)
-        }
-        
-    }
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        fireBaseStateDidChangeListener()
         title = "Simulação"
         let interactor = INVSSimulatorInteractor()
         interactor.allTextFields = [initialValueTextField, monthValueTextField, interestRateTextField, totalMonthsTextField, initialMonthlyRescueTextField, increaseRescueTextField, goalIncreaseRescueTextField]
@@ -215,11 +189,9 @@ public class INVSSimutatorViewControler: UIViewController {
     @IBAction func saveAction(_ sender: Any) {
         interactor?.simulationProjection()
     }
+    
     @IBAction func clearAction(_ sender: Any) {
         interactor?.clear()
-    }
-    @IBAction func serviceSwitchAction(_ sender: Any) {
-        INVSSession.session.callService = serviceSwitch.isOn
     }
     
     private func updateUI() {

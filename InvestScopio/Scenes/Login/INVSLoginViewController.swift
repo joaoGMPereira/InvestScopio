@@ -12,34 +12,43 @@
 
 import UIKit
 import Lottie
+import Firebase
+
 protocol INVSLoginViewControllerProtocol: class {
     func displayOkAction(withTextField textField: INVSFloatingTextField, andShouldResign shouldResign: Bool)
     func displayCancelAction()
+    func displaySignInSuccess(withUser user:User)
+    func displaySignInError(titleError:String, messageError:String, shouldHideAutomatically:Bool, popupType:INVSPopupMessageType)
 }
 
 class INVSLoginViewController: INVSPresentBaseViewController {
-    var interactor: INVSLoginInteractorProtocol?
-    var router: INVSRoutingLogic?
-    var stackView = UIStackView(frame: .zero)
+    var textFieldStackView = UIStackView(frame: .zero)
     var emailTextField = INVSFloatingTextField(frame: .zero)
     var passwordTextField = INVSFloatingTextField(frame: .zero)
     var titleLabel = UILabel(frame: .zero)
+    var buttonStackView = UIStackView(frame: .zero)
+    var loginButton = UIButton(frame: .zero)
+    private var loginButtonLayer: CAGradientLayer!
+    var createButton = UIButton(frame: .zero)
+    var resendPasswordButton = UIButton(frame: .zero)
     var animationView = AnimationView()
     var titleTopConstraint = NSLayoutConstraint()
 
+    var interactor: INVSLoginInteractorProtocol?
+    var router: INVSRoutingLogic?
+    var handle: AuthStateDidChangeListenerHandle?
 
     // MARK: Setup
-    private func setup()
-    {
-    let viewController = self
-    let interactor = INVSLoginInteractor()
-    let presenter = INVSLoginPresenter()
-    let router = INVSRouter()
-    interactor.allTextFields = [emailTextField, passwordTextField]
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    presenter.viewController = viewController
+    private func setup() {
+        let viewController = self
+        let interactor = INVSLoginInteractor()
+        let presenter = INVSLoginPresenter()
+        let router = INVSRouter()
+        interactor.allTextFields = [emailTextField, passwordTextField]
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
     }
 
     // MARK: View lifecycle
@@ -52,20 +61,40 @@ class INVSLoginViewController: INVSPresentBaseViewController {
         closeClosure = { () -> () in
             self.router?.routeToSimulator()
         }
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            
+        }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidLayoutSubviews() {
         titleTopConstraint.constant = animationView.center.y
-        view.layoutIfNeeded()
+        self.loginButtonLayer = CAShapeLayer.addGradientLayer(withGradientLayer: self.loginButtonLayer, inView: self.loginButton, withColorsArr: UIColor.INVSGradientColors(),withRoundedCorner: 25)
+        self.createButton.layer.cornerRadius = 25
+        self.createButton.layer.borderColor = UIColor.INVSDefault().cgColor
+        self.createButton.layer.borderWidth = 2
+        self.view.layoutIfNeeded()
+        super.viewDidLayoutSubviews()
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if let handle = handle {
+            Auth.auth().removeStateDidChangeListener(handle)
+        }
     }
     
     //MARK: SetupUI
     func setupUI() {
-        stackView.addArrangedSubview(emailTextField)
-        stackView.addArrangedSubview(passwordTextField)
-        stackView.axis = .vertical
-        stackView.distribution = .fillEqually
+        textFieldStackView.addArrangedSubview(emailTextField)
+        textFieldStackView.addArrangedSubview(passwordTextField)
+        textFieldStackView.axis = .vertical
+        textFieldStackView.distribution = .fillEqually
+        buttonStackView.addArrangedSubview(loginButton)
+        buttonStackView.addArrangedSubview(createButton)
+        buttonStackView.axis = .horizontal
+        buttonStackView.spacing = 8
+        buttonStackView.distribution = .fillEqually
         INVSFloatingTextFieldType.email.setupTextField(withTextField: emailTextField,keyboardType: .emailAddress, andDelegate: self, valueTypeTextField: .none, isRequired: true)
         INVSFloatingTextFieldType.password.setupTextField(withTextField: passwordTextField,keyboardType: .default, andDelegate: self, valueTypeTextField: .none, isRequired: true)
         passwordTextField.floatingTextField.isSecureTextEntry = true
@@ -79,6 +108,47 @@ class INVSLoginViewController: INVSPresentBaseViewController {
         titleLabel.font = .INVSFontBigBold()
         titleLabel.text = "InvestScopio"
         titleLabel.textAlignment = .center
+        loginButton.setTitle("Login", for: .normal)
+        loginButton.setTitleColor(.white, for: .normal)
+        loginButton.addTarget(self, action: #selector(INVSLoginViewController.loginAction(_:)), for: .touchUpInside)
+        createButton.setTitle("Cadastrar", for: .normal)
+        createButton.setTitleColor(.INVSDefault(), for: .normal)
+        createButton.addTarget(self, action: #selector(INVSLoginViewController.createAction(_:)), for: .touchUpInside)
+        let underlineAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.INVSFontDefaultBold(),
+            .foregroundColor: UIColor.INVSDefault(),
+            .underlineStyle: NSUnderlineStyle.single.rawValue]
+        resendPasswordButton.setAttributedTitle(NSAttributedString.init(string: "Esqueceu sua Senha?", attributes: underlineAttributes), for: .normal)
+        resendPasswordButton.addTarget(self, action: #selector(INVSLoginViewController.resendPasswordAction(_:)), for: .touchUpInside)
+    }
+    
+    @objc func loginAction(_ sender: UIButton) {
+        showLoading()
+        loginButton.isEnabled = false
+        interactor?.logIn()
+    }
+    
+    @objc func createAction(_ sender: UIButton) {
+       let signUpViewController = INVSSignUpViewController.init(nibName: INVSSignUpViewController.toString(), bundle: Bundle(for: INVSSignUpViewController.self))
+        signUpViewController.delegate = self
+        signUpViewController.view.frame = view.bounds
+        signUpViewController.modalPresentationStyle = .overCurrentContext
+        signUpViewController.view.backgroundColor = .clear
+        present(signUpViewController, animated: true)
+    }
+    
+    @objc func resendPasswordAction(_ sender: UIButton) {
+        let resendPasswordViewController = INVSResendPasswordViewController.init(nibName: INVSResendPasswordViewController.toString(), bundle: Bundle(for: INVSResendPasswordViewController.self))
+        resendPasswordViewController.view.frame = view.bounds
+        resendPasswordViewController.modalPresentationStyle = .overCurrentContext
+        resendPasswordViewController.view.backgroundColor = .clear
+        present(resendPasswordViewController, animated: true)
+    }
+}
+
+extension INVSLoginViewController: INVSSignUpViewControllerDelegate {
+    func didSignUp(withEmail email: String) {
+        emailTextField.textFieldTitle = email
     }
 }
 
@@ -98,6 +168,17 @@ extension INVSLoginViewController: INVSFloatingTextFieldDelegate {
 }
 
 extension INVSLoginViewController: INVSLoginViewControllerProtocol {
+    func displaySignInSuccess(withUser user: User) {
+        self.hideLoading()
+        self.loginButton.isEnabled = true
+        self.router?.routeToSimulator()
+    }
+    
+    func displaySignInError(titleError: String, messageError: String, shouldHideAutomatically: Bool, popupType: INVSPopupMessageType) {
+        self.hideLoading()
+        self.loginButton.isEnabled = true
+    }
+    
     func displayOkAction(withTextField textField: INVSFloatingTextField, andShouldResign shouldResign: Bool) {
         textField.floatingTextField.becomeFirstResponder()
         if shouldResign {
@@ -116,11 +197,15 @@ extension INVSLoginViewController: INVSCodeView {
         view.addSubview(animationView)
         view.sendSubviewToBack(animationView)
         view.addSubview(titleLabel)
-        view.addSubview(stackView)
+        view.addSubview(textFieldStackView)
+        view.addSubview(resendPasswordButton)
+        view.addSubview(buttonStackView)
         view.translatesAutoresizingMaskIntoConstraints = false
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        textFieldStackView.translatesAutoresizingMaskIntoConstraints = false
         animationView.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        resendPasswordButton.translatesAutoresizingMaskIntoConstraints = false
+        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func setupConstraints() {
@@ -128,27 +213,40 @@ extension INVSLoginViewController: INVSCodeView {
         var centerYAnimationView = -(view.frame.height * 0.5)
         centerYAnimationView = centerYAnimationView < -280 ? -280 : centerYAnimationView
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
-            stackView.heightAnchor.constraint(equalToConstant: 100)
-            ])
-        
-        NSLayoutConstraint.activate([
             animationView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor,constant: 0),
             animationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: centerYAnimationView)
             ])
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant: 16),
             titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,constant: -16),
-            titleLabel.bottomAnchor.constraint(equalTo: stackView.topAnchor,constant: 8),
+            titleLabel.bottomAnchor.constraint(equalTo: textFieldStackView.topAnchor,constant: 8),
             titleTopConstraint,
             titleLabel.heightAnchor.constraint(equalToConstant: 40)
             ])
-        animationView.layoutIfNeeded()
+        NSLayoutConstraint.activate([
+            textFieldStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            textFieldStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+            textFieldStackView.heightAnchor.constraint(equalToConstant: 100)
+            ])
+        
+        NSLayoutConstraint.activate([
+            resendPasswordButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant: 16),
+            resendPasswordButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,constant: -16),
+            resendPasswordButton.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor,constant: 16),
+            resendPasswordButton.heightAnchor.constraint(equalToConstant: 50)
+            ])
+        
+        NSLayoutConstraint.activate([
+            buttonStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant: 16),
+            buttonStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,constant: -16),
+            buttonStackView.topAnchor.constraint(equalTo: resendPasswordButton.bottomAnchor,constant: 16),
+            buttonStackView.heightAnchor.constraint(equalToConstant: 50)
+            ])
+        self.view.layoutIfNeeded()
     }
     
     func setupAdditionalConfiguration() {
-        view.backgroundColor = .white
+        view.backgroundColor = .INVSLightGray()
     }
     
     

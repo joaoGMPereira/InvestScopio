@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 extension CAShapeLayer {
     
-    static func addCornerAndShadow(withShapeLayer shapeLayer:CAShapeLayer?, withCorners corners: UIRectCorner, withRoundedCorner cornerRadius: CGFloat, andColor fillColor: UIColor, inView view:UIView, atPosition position: UInt32 = 0) -> CAShapeLayer? {
+    static func addCorner(withShapeLayer shapeLayer:CAShapeLayer?, withCorners corners: UIRectCorner, withRoundedCorner cornerRadius: CGFloat, andColor fillColor: UIColor, inView view:UIView, atPosition position: UInt32 = 0, andShadow shadow: Bool = true) -> CAShapeLayer? {
         var layer = shapeLayer
         if let shapeLayer = layer {
             shapeLayer.removeFromSuperlayer()
         }
-        layer = roundedShapeLayer(inCorners: corners, withRoundedCorner: cornerRadius, andColor: fillColor, inView: view, atPosition: position)
+        layer = roundedShapeLayer(inCorners: corners, withRoundedCorner: cornerRadius, andColor: fillColor, inView: view, atPosition: position, andShadow: shadow)
         return layer
     }
     
@@ -35,17 +35,19 @@ extension CAShapeLayer {
         return gradient
     }
     
-    static private func roundedShapeLayer(inCorners corners: UIRectCorner, withRoundedCorner cornerRadius: CGFloat, andColor fillColor: UIColor, inView view:UIView, atPosition position: UInt32 = 0) -> CAShapeLayer {
+    static private func roundedShapeLayer(inCorners corners: UIRectCorner, withRoundedCorner cornerRadius: CGFloat, andColor fillColor: UIColor, inView view:UIView, atPosition position: UInt32 = 0, andShadow shadow: Bool = true) -> CAShapeLayer {
         let shapeLayer = CAShapeLayer()
         shapeLayer.bounds = view.frame
         shapeLayer.position = view.center
         shapeLayer.path = UIBezierPath(roundedRect: view.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: cornerRadius, height: cornerRadius)).cgPath
         shapeLayer.fillColor = fillColor.cgColor
-        shapeLayer.shadowColor = UIColor.darkGray.cgColor
-        shapeLayer.shadowPath = shapeLayer.path
-        shapeLayer.shadowOffset = CGSize(width: 1.0, height: 1.0)
-        shapeLayer.shadowOpacity = 0.8
-        shapeLayer.shadowRadius = 1
+        if shadow {
+            shapeLayer.shadowColor = UIColor.darkGray.cgColor
+            shapeLayer.shadowPath = shapeLayer.path
+            shapeLayer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+            shapeLayer.shadowOpacity = 0.8
+            shapeLayer.shadowRadius = 1
+        }
         view.layer.insertSublayer(shapeLayer, at: position)
         return shapeLayer
     }

@@ -12,27 +12,32 @@
 
 import UIKit
 
-protocol INVSLoginInteractorProtocol {
+protocol INVSSignUpInteractorProtocol {
     func checkToolbarAction(withTextField textField: INVSFloatingTextField, typeOfAction type: INVSKeyboardToolbarButton)
-    func logIn()
+    func signUp()
     var allTextFields: [INVSFloatingTextField] { get }
+    var email: String {get}
 }
 
-class INVSLoginInteractor: INVSLoginInteractorProtocol {
+class INVSSignUpInteractor: INVSSignUpInteractorProtocol {
     
-    var presenter: INVSLoginPresenterProtocol?
-    var worker: INVSLoginWorkerProtocol = INVSLoginWorker()
+    var presenter: INVSSignUpPresenterProtocol?
+    var worker: INVSSignUpWorkerProtocol = INVSSignUpWorker()
     var allTextFields = [INVSFloatingTextField]()
+    var email: String = ""
+    
   // MARK: Do something
   
     func checkToolbarAction(withTextField textField: INVSFloatingTextField, typeOfAction type: INVSKeyboardToolbarButton) {
         presenter?.presentToolbarAction(withPreviousTextField: textField, allTextFields: allTextFields, typeOfAction: type)
     }
-    func logIn() {
-        worker.login(withTextFields: allTextFields, successCompletionHandler: { (user) in
-            self.presenter?.presentSuccessSignIn(user: user)
+    
+    func signUp() {
+        worker.signUp(withTextFields: allTextFields, successCompletionHandler: { (email, title, message, shouldHideAutomatically, popupType) in
+            self.email = email
+            self.presenter?.presentSuccessSignUp(withEmail: email, title: title, message: message, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType)
         }, errorCompletionHandler: { (title, message, shouldHideAutomatically, popupType) in
-            self.presenter?.presentErrorSignIn(titleError: title, messageError: message, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType)
+            self.presenter?.presentErrorSignUp(titleError: title, messageError: message, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType)
         })
     }
 }

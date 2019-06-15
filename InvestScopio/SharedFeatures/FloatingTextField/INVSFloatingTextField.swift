@@ -35,14 +35,24 @@ class INVSFloatingTextField: UIView {
         }
     }
     
+    var textFieldTitle: String = "" {
+        didSet {
+            if textFieldTitle != "" {
+                floatingTextField.text = textFieldTitle
+                openKeyboard()
+            }
+        }
+    }
+    
     private var valueTypeTextField: INVSFloatingTextFieldValueType = .currency
     private var selectedColor = UIColor.lightGray
     private var currentlySelectedColor = UIColor.lightGray
     private var smallFont = UIFont.systemFont(ofSize: 11)
     private var bigFont = UIFont.systemFont(ofSize: 16)
-    private var heightLabelConstraint = NSLayoutConstraint()
+    private var bottomLabelConstraint = NSLayoutConstraint()
     private var trailingLabelConstraint = NSLayoutConstraint()
     private var trailingTextFieldConstraint = NSLayoutConstraint()
+    private var topTextFieldConstraint = NSLayoutConstraint()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -130,20 +140,21 @@ extension INVSFloatingTextField: INVSCodeView {
     func setupConstraints() {
         let trailingFromInfoButton = -((frame.height * 0.8) + 16)
         trailingLabelConstraint = placeholderLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: trailingFromInfoButton)
+        bottomLabelConstraint = placeholderLabel.bottomAnchor.constraint(equalTo: self.bottomLineView.topAnchor)
         trailingTextFieldConstraint = floatingTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: trailingFromInfoButton)
-        heightLabelConstraint = placeholderLabel.heightAnchor.constraint(equalTo: self.heightAnchor)
+        topTextFieldConstraint = floatingTextField.topAnchor.constraint(equalTo: self.topAnchor)
 
         NSLayoutConstraint.activate([
             placeholderLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
             trailingLabelConstraint,
             placeholderLabel.topAnchor.constraint(equalTo: self.topAnchor),
-            heightLabelConstraint
+            bottomLabelConstraint
             ])
         NSLayoutConstraint.activate([
             floatingTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
             trailingTextFieldConstraint,
-            floatingTextField.topAnchor.constraint(equalTo: self.topAnchor),
-            floatingTextField.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            topTextFieldConstraint,
+            floatingTextField.bottomAnchor.constraint(equalTo: self.bottomLineView.topAnchor, constant: 1)
             ])
         
         NSLayoutConstraint.activate([
@@ -198,7 +209,8 @@ extension INVSFloatingTextField: UITextFieldDelegate, INVSKeyboardToolbarDelegat
     
     func openKeyboard() {
         UIView.animate(withDuration: 0.5) { [weak self] in
-            self?.heightLabelConstraint.constant = -30
+            self?.bottomLabelConstraint.constant = -(self?.frame.height ?? 50)/2
+            self?.topTextFieldConstraint.constant = (self?.frame.height ?? 50)/2
             self?.placeholderLabel.font = self?.smallFont
             self?.placeholderLabel.textColor = self?.currentlySelectedColor
             self?.bottomLineView.backgroundColor = self?.currentlySelectedColor
@@ -215,7 +227,8 @@ extension INVSFloatingTextField: UITextFieldDelegate, INVSKeyboardToolbarDelegat
         UIView.animate(withDuration: 0.25) { [weak self] in
             if self?.floatingTextField.text == "" || self?.floatingTextField.text == nil {
                 self?.trailingLabelConstraint.constant = 0
-                self?.heightLabelConstraint.constant = 0
+                self?.bottomLabelConstraint.constant = 0
+                self?.topTextFieldConstraint.constant = 0
                 self?.placeholderLabel.font = UIFont.systemFont(ofSize: 16)
                 self?.placeholderLabel.textColor = .lightGray
                 self?.bottomLineView.backgroundColor = UIColor.lightGray

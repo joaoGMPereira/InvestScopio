@@ -246,8 +246,8 @@ enum INVSSimulatedHelpViewType: Int {
         
         var simplyShapeButtonLayer: CAShapeLayer!
         var completeShapeButtonLayer: CAShapeLayer!
-        simplyShapeButtonLayer = CAShapeLayer.addCornerAndShadow(withShapeLayer: simplyShapeButtonLayer, withCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], withRoundedCorner: 25, andColor: .clear, inView: firstButton)
-        completeShapeButtonLayer = CAShapeLayer.addCornerAndShadow(withShapeLayer: completeShapeButtonLayer, withCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], withRoundedCorner: 25, andColor: .clear, inView: secondButton)
+        simplyShapeButtonLayer = CAShapeLayer.addCorner(withShapeLayer: simplyShapeButtonLayer, withCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], withRoundedCorner: 25, andColor: .clear, inView: firstButton)
+        completeShapeButtonLayer = CAShapeLayer.addCorner(withShapeLayer: completeShapeButtonLayer, withCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], withRoundedCorner: 25, andColor: .clear, inView: secondButton)
         
     }
     

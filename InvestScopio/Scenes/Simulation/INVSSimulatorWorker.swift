@@ -117,6 +117,9 @@ class INVSSimulatorWorker: NSObject,INVSSimulatorWorkerProtocol {
                     break
                 case .password:
                     break
+                case .confirmPassword:
+                    break
+                    
                 }
             }
         }
