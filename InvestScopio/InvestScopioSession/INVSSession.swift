@@ -8,16 +8,29 @@
 
 import Foundation
 
+enum ServiceType: Int {
+    case localHost = 0
+    case heroku
+    case offline
+}
+
 final class INVSSession {
     
     // Can't init is singleton
     private init() { }
 
     static let session = INVSSession()
-    var serverVersion: String?
+    var user: INVSUserModel?
     var market: MarketModel?
-    var callService: Bool = true
-    var isDev: Bool = false
+    var callService: ServiceType = .heroku
+    
+    func isDev() -> Bool {
+        #if DEV
+        return true
+        #else
+        return false
+        #endif
+    }
 
 
     

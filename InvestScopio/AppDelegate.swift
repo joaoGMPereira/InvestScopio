@@ -16,13 +16,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        FirebaseApp.configure()
-        
+        setupFirebase()
         let startViewController = INVSStartViewController.init(nibName: INVSStartViewController.toString(), bundle: Bundle(for: INVSStartViewController.self))
         window!.rootViewController = startViewController
         window!.makeKeyAndVisible()
         // Override point for customization after application launch.
         return true
+    }
+    
+    func setupFirebase() {
+        if INVSSession.session.isDev() {
+            let filePath = Bundle.main.path(forResource: "GoogleServiceInfoDev", ofType: "plist")
+            guard let fileopts = FirebaseOptions(contentsOfFile: filePath!)
+                else { assert(false, "Couldn't load config file") }
+            FirebaseApp.configure(options: fileopts)
+        } else {
+            let filePath = Bundle.main.path(forResource: "GoogleServiceInfoProd", ofType: "plist")
+            guard let fileopts = FirebaseOptions(contentsOfFile: filePath!)
+                else { assert(false, "Couldn't load config file") }
+            FirebaseApp.configure(options: fileopts)
+        }
     }
     
     static func appDelegate() -> AppDelegate {

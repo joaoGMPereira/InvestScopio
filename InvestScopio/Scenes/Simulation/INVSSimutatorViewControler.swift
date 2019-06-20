@@ -64,35 +64,6 @@ public class INVSSimutatorViewControler: UIViewController {
         popupMessage = INVSPopupMessage(parentViewController: self)
         initialValueTextField.delegate = self
         updateUI()
-        let alertController = UIAlertController(title: "Escolha o ambiente", message: "Por default o ambiente do Heroku caso cancele.", preferredStyle: .actionSheet)
-        
-        let action1 = UIAlertAction(title: "Local", style: .default) { (action:UIAlertAction) in
-            INVSSession.session.isDev = true
-            INVSSession.session.callService = true
-        }
-        
-        let action2 = UIAlertAction(title: "Heroku", style: .default) { (action:UIAlertAction) in
-            INVSSession.session.isDev = false
-            INVSSession.session.callService = true
-        }
-        
-        let action3 = UIAlertAction(title: "Offline", style: .default) { (action:UIAlertAction) in
-            INVSSession.session.isDev = true
-            INVSSession.session.callService = false
-        }
-        
-        let action4 = UIAlertAction(title: "Cancelar", style: .cancel) { (action:UIAlertAction) in
-            INVSSession.session.isDev = false
-            INVSSession.session.callService = false
-            alertController.dismiss(animated: true, completion: nil)
-        }
-        
-        alertController.addAction(action1)
-        alertController.addAction(action2)
-        alertController.addAction(action3)
-        alertController.addAction(action4)
-        self.present(alertController, animated: true, completion: nil)
-        
     }
     
     public func mockInfo() {

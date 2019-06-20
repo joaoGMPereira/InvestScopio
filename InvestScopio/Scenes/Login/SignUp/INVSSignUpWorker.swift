@@ -12,10 +12,12 @@
 
 import UIKit
 import Firebase
+import CryptoSwift
 
 typealias PopMessageInfo = (title: String, message: String)
-typealias SuccessSignUpHandler = (_ email:String, _ title:String,_ message:String, _ shouldHideAutomatically:Bool, _ popupType:INVSPopupMessageType) -> ()
-typealias ErrorSignUpHandler = (_ titleError:String,_ messageError:String, _ shouldHideAutomatically:Bool, _ popupType:INVSPopupMessageType) ->()
+typealias SuccessSignUpHandler = (_ user: INVSUserModel, _ title: String,_ message: String, _ shouldHideAutomatically: Bool, _ popupType: INVSPopupMessageType) -> ()
+typealias ErrorSignUpHandler = (_ titleError: String,_ messageError: String, _ shouldHideAutomatically: Bool, _ popupType: INVSPopupMessageType) ->()
+typealias SignUpInvestScopioHandler = (_ syncronized: Bool, _ title: String,_ message:String, _ shouldHideAutomatically: Bool, _ popupType: INVSPopupMessageType) -> ()
 
 protocol INVSSignUpWorkerProtocol {
     func signUp(withTextFields textFields: [INVSFloatingTextField], successCompletionHandler: @escaping(SuccessSignUpHandler), errorCompletionHandler:@escaping(ErrorSignUpHandler))
@@ -28,6 +30,7 @@ class INVSSignUpWorker: NSObject,INVSSignUpWorkerProtocol {
             return
         }
         if let email = textFields.filter({$0.typeTextField == .email}).first?.floatingTextField.text?.lowercased(), let password = textFields.filter({$0.typeTextField == .confirmPassword}).first?.floatingTextField.text {
+            
             Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
                 guard result != nil else {
                     if let error = error {
@@ -37,14 +40,38 @@ class INVSSignUpWorker: NSObject,INVSSignUpWorkerProtocol {
                         }
                     }
                     errorCompletionHandler(INVSFloatingTextFieldType.defaultTitle(), INVSFloatingTextFieldType.defaultMessage(), true, .error)
-                        
                     return
                 }
-                successCompletionHandler(email, "Finalizado.\n", "Seu cadastro foi realizado com sucesso!\nVerifique seu email para ativa-lo.", true, .alert)
-                return
+                
+                //Signup API
+                guard let uid = result?.user.uid else {
+                    errorCompletionHandler(INVSFloatingTextFieldType.defaultTitle(), INVSFloatingTextFieldType.defaultMessage(), true, .error)
+                    return
+                }
+                var userCreated = INVSUserModel(email: email, uid: uid)
+                self.signUpInvestScopio(user: userCreated, signUpInvestScopioHandler: { (syncronized, title, message, shouldHideAutomatically, popupType) in
+                    userCreated.syncronized = syncronized
+                    successCompletionHandler(userCreated, "Finalizado.\n", "Seu cadastro foi realizado com sucesso!", true, .alert)
+                    return
+                })
             }
         }
     }
+    
+    func signUpInvestScopio(user: INVSUserModel, signUpInvestScopioHandler: @escaping(SignUpInvestScopioHandler)) {
+        let headers = ["Content-Type": "application/json"]
+        
+        let userRequest = INVSUserRequest(email: user.email, password: user.uid)
+        
+        INVSConector.connector.request(withURL: INVSConector.getURL(withRoute: "/account/sign-up"), method: .post, parameters: userRequest, class: INVSSignUpModel.self, headers: headers, successCompletion: { (decodable) in
+            let signUpModel = decodable as? INVSSignUpModel
+            signUpInvestScopioHandler(signUpModel?.syncronized ?? false, "Finalizado.\n", "Seu cadastro foi realizado com sucesso!", true, .alert)
+        }) { (error) in
+            signUpInvestScopioHandler(false, "Finalizado.\n", "Seu cadastro foi realizado com sucesso!", true, .alert)
+        }
+        
+    }
+    
     private func check(withTextFields textFields:[INVSFloatingTextField]) -> PopMessageInfo? {
         if let emailTextField = textFields.filter({$0.typeTextField == .email}).first {
             if emailTextField.floatingTextField.text?.isValidEmail() == false {
@@ -68,4 +95,6 @@ class INVSSignUpWorker: NSObject,INVSSignUpWorkerProtocol {
         }
         return nil
     }
+    
+    
 }

@@ -77,7 +77,7 @@ class INVSResendPasswordViewController: UIViewController {
         cancelButton.setTitleColor(.INVSRed(), for: .normal)
         cancelButton.layer.borderColor = UIColor.INVSRed().cgColor
         cancelButton.layer.borderWidth = 2
-        cancelButton.layer.cornerRadius = 25
+        cancelButton.layer.cornerRadius = 20
         popupMessage = INVSPopupMessage(parentViewController: self)
         popupMessage?.delegate = self
     }

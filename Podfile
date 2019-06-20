@@ -1,9 +1,11 @@
 use_frameworks!
 platform :ios, '11.0'
-target 'InvestScopio' do
-  
+
+
+def all_pods
   #Security
   pod 'SwiftKeychainWrapper'
+  pod 'CryptoSwift', :git => 'https://github.com/krzyzanowskim/CryptoSwift', :branch => 'master'
   
   #UIPods
   pod 'Hero', :git => 'https://github.com/barrault01/Hero.git', :commit => '6220387'
@@ -13,7 +15,7 @@ target 'InvestScopio' do
   pod 'BetterSegmentedControl', '~> 1.1'
   pod 'StepView'
   pod 'ZCAnimatedLabel', :git => 'https://github.com/joaoGMPereira/ZCAnimatedLabel.git'
-  pod 'RQShineLabel'
+  
   
   #Resquests
   pod 'SwiftSoup'
@@ -21,3 +23,12 @@ target 'InvestScopio' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
 end
+
+target 'InvestScopio' do
+  all_pods
+end
+
+target 'InvestScopioDev' do
+  all_pods
+end
+

@@ -26,17 +26,18 @@
 		4A0FFEA222B41C1B00D6A33A /* INVSResendPasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9D22B41C1A00D6A33A /* INVSResendPasswordInteractor.swift */; };
 		4A0FFEA522B438B000D6A33A /* FirebaseErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFEA422B438B000D6A33A /* FirebaseErrorHandler.swift */; };
 		4A0FFEA722B4729100D6A33A /* INVSLoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFEA622B4729100D6A33A /* INVSLoadingButton.swift */; };
+		4A0FFEAE22B57A7200D6A33A /* INVSBlurViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFEAC22B57A7200D6A33A /* INVSBlurViewController.swift */; };
+		4A0FFEAF22B57A7200D6A33A /* INVSBlurViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0FFEAD22B57A7200D6A33A /* INVSBlurViewController.xib */; };
+		4A0FFEB222B5890900D6A33A /* INVSOfflineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFEB122B5890900D6A33A /* INVSOfflineViewController.swift */; };
 		4A107A9A22A1791000A7D8D1 /* ParticipantesSTRport.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4A107A9922A1790F00A7D8D1 /* ParticipantesSTRport.csv */; };
 		4A107A9C22A31E8300A7D8D1 /* UILabel+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A107A9B22A31E8300A7D8D1 /* UILabel+INVSExtension.swift */; };
 		4A107AA222A3279600A7D8D1 /* INVSSimulatorHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A107AA122A3279600A7D8D1 /* INVSSimulatorHelpView.swift */; };
-		4A111F8B229ECE5F00D9EAF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A111F8A229ECE5F00D9EAF1 /* GoogleService-Info.plist */; };
 		4A121692229AE96100759948 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A121691229AE96100759948 /* BalloonMarker.swift */; };
 		4A121694229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A121693229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift */; };
 		4A121696229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A121695229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift */; };
 		4A12631222A7DA7A006133E5 /* MarketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A12631122A7DA7A006133E5 /* MarketModel.swift */; };
 		4A12631422A7DA99006133E5 /* BankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A12631322A7DA99006133E5 /* BankModel.swift */; };
 		4A12631722A7DC7A006133E5 /* INVSConector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A12631622A7DC7A006133E5 /* INVSConector.swift */; };
-		4A12631A22A7E820006133E5 /* INVSConnectorRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A12631922A7E820006133E5 /* INVSConnectorRouter.swift */; };
 		4A12631D22A7F1BB006133E5 /* INVSVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A12631C22A7F1BB006133E5 /* INVSVersionModel.swift */; };
 		4A22FF3322976CAF001662FC /* INVSSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22FF3222976CAF001662FC /* INVSSwitchView.swift */; };
 		4A22FF382297837B001662FC /* INVSSimulatedContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22FF362297837B001662FC /* INVSSimulatedContainerViewController.swift */; };
@@ -96,12 +97,122 @@
 		4A4C68DB2295796200EDC8C6 /* animatedLogoWhite.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C68AB2295796100EDC8C6 /* animatedLogoWhite.json */; };
 		4A4C68DC2295796200EDC8C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68AC2295796100EDC8C6 /* AppDelegate.swift */; };
 		4A4C68DE2295796200EDC8C6 /* animatedLoadingWhite.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C68AE2295796100EDC8C6 /* animatedLoadingWhite.json */; };
+		4AFF3E5D22B9B2170056A167 /* INVSUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E5C22B9B2170056A167 /* INVSUserModel.swift */; };
+		4AFF3E6022B9B32E0056A167 /* INVSCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E5F22B9B32E0056A167 /* INVSCrypto.swift */; };
+		4AFF3E6322B9BC360056A167 /* INVSSignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E6222B9BC360056A167 /* INVSSignUpModel.swift */; };
+		4AFF3E6522B9CA520056A167 /* INVSUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E6422B9CA520056A167 /* INVSUserRequest.swift */; };
+		4AFF3E6822BA79E90056A167 /* INVSAccessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E6722BA79E90056A167 /* INVSAccessModel.swift */; };
+		4AFF3E6B22BA8EB10056A167 /* Jsonable+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E6A22BA8EB10056A167 /* Jsonable+INVSExtension.swift */; };
+		4AFF3E7422BB23F10056A167 /* INVSSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22FF3222976CAF001662FC /* INVSSwitchView.swift */; };
+		4AFF3E7522BB23F10056A167 /* INVSPopupMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68A12295796100EDC8C6 /* INVSPopupMessage.swift */; };
+		4AFF3E7622BB23F10056A167 /* INVSSimulatedListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE7E22AF298000D6A33A /* INVSSimulatedListWorker.swift */; };
+		4AFF3E7722BB23F10056A167 /* NSAttributedString+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A45D0D122A44576001383B4 /* NSAttributedString+INVSExtension.swift */; };
+		4AFF3E7822BB23F10056A167 /* INVSUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E5C22B9B2170056A167 /* INVSUserModel.swift */; };
+		4AFF3E7922BB23F10056A167 /* INVSSignUpInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9422B3051E00D6A33A /* INVSSignUpInteractor.swift */; };
+		4AFF3E7A22BB23F10056A167 /* INVSSimulatedValueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68722295796100EDC8C6 /* INVSSimulatedValueModel.swift */; };
+		4AFF3E7B22BB23F10056A167 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68AC2295796100EDC8C6 /* AppDelegate.swift */; };
+		4AFF3E7C22BB23F10056A167 /* INVSUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E6422B9CA520056A167 /* INVSUserRequest.swift */; };
+		4AFF3E7D22BB23F10056A167 /* INVSConector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A12631622A7DC7A006133E5 /* INVSConector.swift */; };
+		4AFF3E7E22BB23F10056A167 /* INVSOfflineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFEB122B5890900D6A33A /* INVSOfflineViewController.swift */; };
+		4AFF3E7F22BB23F10056A167 /* INVSSimulatedHelpViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A45D0D322A4463D001383B4 /* INVSSimulatedHelpViewType.swift */; };
+		4AFF3E8022BB23F10056A167 /* UIView+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8B22B2D84F00D6A33A /* UIView+INVSExtension.swift */; };
+		4AFF3E8122BB23F10056A167 /* INVSConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C688D2295796100EDC8C6 /* INVSConstants.swift */; };
+		4AFF3E8222BB23F10056A167 /* INVSResendPasswordWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9A22B41C1A00D6A33A /* INVSResendPasswordWorker.swift */; };
+		4AFF3E8322BB23F10056A167 /* INVSResendPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9C22B41C1A00D6A33A /* INVSResendPasswordViewController.swift */; };
+		4AFF3E8422BB23F10056A167 /* UIFont+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68982295796100EDC8C6 /* UIFont+INVSExtension.swift */; };
+		4AFF3E8522BB23F10056A167 /* INVSPresentBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C688B2295796100EDC8C6 /* INVSPresentBaseViewController.swift */; };
+		4AFF3E8622BB23F10056A167 /* INVSSimulatedTotalChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B05A8229DF30E0024F83A /* INVSSimulatedTotalChartView.swift */; };
+		4AFF3E8722BB23F10056A167 /* INVSSimulatedListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68752295796100EDC8C6 /* INVSSimulatedListPresenter.swift */; };
+		4AFF3E8822BB23F10056A167 /* INVSVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A12631C22A7F1BB006133E5 /* INVSVersionModel.swift */; };
+		4AFF3E8922BB23F10056A167 /* INVSSimulatedRescueChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B05AA229E02E60024F83A /* INVSSimulatedRescueChartView.swift */; };
+		4AFF3E8A22BB23F10056A167 /* INVSBlurViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFEAC22B57A7200D6A33A /* INVSBlurViewController.swift */; };
+		4AFF3E8B22BB23F10056A167 /* INVSSimulatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68792295796100EDC8C6 /* INVSSimulatorCell.swift */; };
+		4AFF3E8C22BB23F10056A167 /* UIColor+INVSPaletteColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68942295796100EDC8C6 /* UIColor+INVSPaletteColors.swift */; };
+		4AFF3E8D22BB23F10056A167 /* INVSLoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8322B1160400D6A33A /* INVSLoginInteractor.swift */; };
+		4AFF3E8E22BB23F10056A167 /* INVSLoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8522B1161D00D6A33A /* INVSLoginPresenter.swift */; };
+		4AFF3E8F22BB23F10056A167 /* NumberFormatter+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C689A2295796100EDC8C6 /* NumberFormatter+INVSExtension.swift */; };
+		4AFF3E9022BB23F10056A167 /* INVSKeyChainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68A52295796100EDC8C6 /* INVSKeyChainWrapper.swift */; };
+		4AFF3E9122BB23F10056A167 /* INVSSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AA98229F6E4D00C45CC5 /* INVSSession.swift */; };
+		4AFF3E9222BB23F10056A167 /* INVSSimulatedChartsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A121695229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift */; };
+		4AFF3E9322BB23F10056A167 /* UIStackview+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68992295796100EDC8C6 /* UIStackview+INVSExtension.swift */; };
+		4AFF3E9422BB23F10056A167 /* INVSSimulatedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68732295796100EDC8C6 /* INVSSimulatedListViewController.swift */; };
+		4AFF3E9522BB23F10056A167 /* INVSStartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AA95229F3F9F00C45CC5 /* INVSStartInteractor.swift */; };
+		4AFF3E9622BB23F10056A167 /* BankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A12631322A7DA99006133E5 /* BankModel.swift */; };
+		4AFF3E9722BB23F10056A167 /* String+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C689D2295796100EDC8C6 /* String+INVSExtension.swift */; };
+		4AFF3E9822BB23F10056A167 /* INVSSimulatedContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22FF362297837B001662FC /* INVSSimulatedContainerViewController.swift */; };
+		4AFF3E9922BB23F10056A167 /* INVSSimulatorWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68832295796100EDC8C6 /* INVSSimulatorWorker.swift */; };
+		4AFF3E9A22BB23F10056A167 /* INVSLoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFEA622B4729100D6A33A /* INVSLoadingButton.swift */; };
+		4AFF3E9B22BB23F10056A167 /* INVSLoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8922B1166200D6A33A /* INVSLoginWorker.swift */; };
+		4AFF3E9C22BB23F10056A167 /* INVSSimulatorTableviewDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C686F2295796100EDC8C6 /* INVSSimulatorTableviewDataSourceDelegate.swift */; };
+		4AFF3E9D22BB23F10056A167 /* INVSCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E5F22B9B32E0056A167 /* INVSCrypto.swift */; };
+		4AFF3E9E22BB23F10056A167 /* INVSKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68922295796100EDC8C6 /* INVSKeyboardToolbar.swift */; };
+		4AFF3E9F22BB23F10056A167 /* INVSLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8722B1163200D6A33A /* INVSLoginModel.swift */; };
+		4AFF3EA022BB23F10056A167 /* INVSFloatingTextFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68912295796100EDC8C6 /* INVSFloatingTextFieldType.swift */; };
+		4AFF3EA122BB23F10056A167 /* INVSCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68A72295796100EDC8C6 /* INVSCodeView.swift */; };
+		4AFF3EA222BB23F10056A167 /* INVSAccessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E6722BA79E90056A167 /* INVSAccessModel.swift */; };
+		4AFF3EA322BB23F10056A167 /* INVSSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8E22B2FF0300D6A33A /* INVSSignUpViewController.swift */; };
+		4AFF3EA422BB23F10056A167 /* INVSSimulatedListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68702295796100EDC8C6 /* INVSSimulatedListInteractor.swift */; };
+		4AFF3EA522BB23F10056A167 /* INVSPopupMessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68A02295796100EDC8C6 /* INVSPopupMessageType.swift */; };
+		4AFF3EA622BB23F10056A167 /* INVSSimulatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68822295796100EDC8C6 /* INVSSimulatorPresenter.swift */; };
+		4AFF3EA722BB23F10056A167 /* INVSSignUpWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9322B3051E00D6A33A /* INVSSignUpWorker.swift */; };
+		4AFF3EA822BB23F10056A167 /* INVSStartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AA9A229F745C00C45CC5 /* INVSStartPresenter.swift */; };
+		4AFF3EA922BB23F10056A167 /* UILabel+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A107A9B22A31E8300A7D8D1 /* UILabel+INVSExtension.swift */; };
+		4AFF3EAA22BB23F10056A167 /* INVSFloatingTextFieldValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68902295796100EDC8C6 /* INVSFloatingTextFieldValueType.swift */; };
+		4AFF3EAB22BB23F10056A167 /* UIImage+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68962295796100EDC8C6 /* UIImage+INVSExtension.swift */; };
+		4AFF3EAC22BB23F10056A167 /* MarketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A12631122A7DA7A006133E5 /* MarketModel.swift */; };
+		4AFF3EAD22BB23F10056A167 /* INVSSimulatorHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A107AA122A3279600A7D8D1 /* INVSSimulatorHelpView.swift */; };
+		4AFF3EAE22BB23F10056A167 /* CAShapeLayer+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C689B2295796100EDC8C6 /* CAShapeLayer+INVSExtension.swift */; };
+		4AFF3EAF22BB23F10056A167 /* INVSResendPasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9D22B41C1A00D6A33A /* INVSResendPasswordInteractor.swift */; };
+		4AFF3EB022BB23F10056A167 /* UIWindow+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C689E2295796100EDC8C6 /* UIWindow+INVSExtension.swift */; };
+		4AFF3EB122BB23F10056A167 /* INVSStartWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B05A5229C19220024F83A /* INVSStartWorker.swift */; };
+		4AFF3EB222BB23F10056A167 /* Double+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C689C2295796100EDC8C6 /* Double+INVSExtension.swift */; };
+		4AFF3EB322BB23F10056A167 /* INVSSignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9222B3051E00D6A33A /* INVSSignUpPresenter.swift */; };
+		4AFF3EB422BB23F10056A167 /* FirebaseErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFEA422B438B000D6A33A /* FirebaseErrorHandler.swift */; };
+		4AFF3EB522BB23F10056A167 /* INVSFloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C688F2295796100EDC8C6 /* INVSFloatingTextField.swift */; };
+		4AFF3EB622BB23F10056A167 /* INVSSimulatedChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22FF3B22980B89001662FC /* INVSSimulatedChartsViewController.swift */; };
+		4AFF3EB722BB23F10056A167 /* INVSLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8122B115E400D6A33A /* INVSLoginViewController.swift */; };
+		4AFF3EB822BB23F10056A167 /* UIButton+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68952295796100EDC8C6 /* UIButton+INVSExtension.swift */; };
+		4AFF3EB922BB23F10056A167 /* UIViewController+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68972295796100EDC8C6 /* UIViewController+INVSExtension.swift */; };
+		4AFF3EBA22BB23F10056A167 /* INVSSimulatorHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68772295796100EDC8C6 /* INVSSimulatorHeaderView.swift */; };
+		4AFF3EBB22BB23F10056A167 /* INVSSimulatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68802295796100EDC8C6 /* INVSSimulatorModel.swift */; };
+		4AFF3EBC22BB23F10056A167 /* INVSStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C687B2295796100EDC8C6 /* INVSStartViewController.swift */; };
+		4AFF3EBD22BB23F10056A167 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A121691229AE96100759948 /* BalloonMarker.swift */; };
+		4AFF3EBE22BB23F10056A167 /* INVSResendPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9B22B41C1A00D6A33A /* INVSResendPasswordPresenter.swift */; };
+		4AFF3EBF22BB23F10056A167 /* INVSSimutatorViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68812295796100EDC8C6 /* INVSSimutatorViewControler.swift */; };
+		4AFF3EC022BB23F10056A167 /* INVSSimulatedChartsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A121693229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift */; };
+		4AFF3EC122BB23F10056A167 /* INVSSignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E6222B9BC360056A167 /* INVSSignUpModel.swift */; };
+		4AFF3EC222BB23F10056A167 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68A32295796100EDC8C6 /* GradientView.swift */; };
+		4AFF3EC322BB23F10056A167 /* Jsonable+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E6A22BA8EB10056A167 /* Jsonable+INVSExtension.swift */; };
+		4AFF3EC422BB23F10056A167 /* INVSSimulatorInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68842295796100EDC8C6 /* INVSSimulatorInteractor.swift */; };
+		4AFF3EC522BB23F10056A167 /* INVSRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68852295796100EDC8C6 /* INVSRouter.swift */; };
+		4AFF3EC722BB23F10056A167 /* Pods_InvestScopio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F1B6B0D7ADAA56EF7CEAAF4 /* Pods_InvestScopio.framework */; };
+		4AFF3EC922BB23F10056A167 /* INVSSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8F22B2FF0300D6A33A /* INVSSignUpViewController.xib */; };
+		4AFF3ECA22BB23F10056A167 /* INVSSimulatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C68782295796100EDC8C6 /* INVSSimulatorCell.xib */; };
+		4AFF3ECB22BB23F10056A167 /* INVSResendPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9922B41C1A00D6A33A /* INVSResendPasswordViewController.xib */; };
+		4AFF3ECC22BB23F10056A167 /* animatedLoadingWhite.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C68AE2295796100EDC8C6 /* animatedLoadingWhite.json */; };
+		4AFF3ECD22BB23F10056A167 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C68872295796100EDC8C6 /* Images.xcassets */; };
+		4AFF3ECE22BB23F10056A167 /* animatedLoadingPurple.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C68882295796100EDC8C6 /* animatedLoadingPurple.json */; };
+		4AFF3ECF22BB23F10056A167 /* animatedLogoWhite.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C68AB2295796100EDC8C6 /* animatedLogoWhite.json */; };
+		4AFF3ED022BB23F10056A167 /* closePlusAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A45D10122A70051001383B4 /* closePlusAnimation.json */; };
+		4AFF3ED122BB23F10056A167 /* INVSBlurViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0FFEAD22B57A7200D6A33A /* INVSBlurViewController.xib */; };
+		4AFF3ED222BB23F10056A167 /* ParticipantesSTRport.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4A107A9922A1790F00A7D8D1 /* ParticipantesSTRport.csv */; };
+		4AFF3ED322BB23F10056A167 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C68A92295796100EDC8C6 /* LaunchScreen.xib */; };
+		4AFF3ED422BB23F10056A167 /* INVSSimutatorViewControler.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C687E2295796100EDC8C6 /* INVSSimutatorViewControler.xib */; };
+		4AFF3ED622BB23F10056A167 /* INVSStartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C687C2295796100EDC8C6 /* INVSStartViewController.xib */; };
+		4AFF3ED822BB23F10056A167 /* animatedLogo.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C68A82295796100EDC8C6 /* animatedLogo.json */; };
+		4AFF3EE422BB28580056A167 /* InvestScopioDev-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AFF3EE322BB28580056A167 /* InvestScopioDev-Info.plist */; };
+		4AFF3EE522BB2AD90056A167 /* InvestScopioProd-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C68AD2295796100EDC8C6 /* InvestScopioProd-Info.plist */; };
+		4AFF3EEA22BC00820056A167 /* GoogleServiceInfoProd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AFF3E6D22BB207E0056A167 /* GoogleServiceInfoProd.plist */; };
+		4AFF3EEB22BC00860056A167 /* GoogleServiceInfoDev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AFF3EE822BBFF470056A167 /* GoogleServiceInfoDev.plist */; };
+		7B3FD35CB4A8123DF3A4C9AC /* Pods_InvestScopioDev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCDDCC66DBBAD541616D7347 /* Pods_InvestScopioDev.framework */; };
 		B8729DDDA4477CDE936382D1 /* Pods_InvestScopio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F1B6B0D7ADAA56EF7CEAAF4 /* Pods_InvestScopio.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F3204CC7D9739973E0B480A /* Pods-InvestScopioDev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvestScopioDev.debug.xcconfig"; path = "Target Support Files/Pods-InvestScopioDev/Pods-InvestScopioDev.debug.xcconfig"; sourceTree = "<group>"; };
+		337722A1A99D475EDC282B99 /* Pods-InvestScopioDev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvestScopioDev.release.xcconfig"; path = "Target Support Files/Pods-InvestScopioDev/Pods-InvestScopioDev.release.xcconfig"; sourceTree = "<group>"; };
 		4A0FFE7E22AF298000D6A33A /* INVSSimulatedListWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedListWorker.swift; sourceTree = "<group>"; };
-		4A0FFE8122B115E400D6A33A /* INVSLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = INVSLoginViewController.swift; path = InvestScopio/Scenes/Login/INVSLoginViewController.swift; sourceTree = SOURCE_ROOT; };
+		4A0FFE8122B115E400D6A33A /* INVSLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = INVSLoginViewController.swift; path = InvestScopio/Scenes/Login/Login/INVSLoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		4A0FFE8322B1160400D6A33A /* INVSLoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSLoginInteractor.swift; sourceTree = "<group>"; };
 		4A0FFE8522B1161D00D6A33A /* INVSLoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSLoginPresenter.swift; sourceTree = "<group>"; };
 		4A0FFE8722B1163200D6A33A /* INVSLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSLoginModel.swift; sourceTree = "<group>"; };
@@ -119,17 +230,18 @@
 		4A0FFE9D22B41C1A00D6A33A /* INVSResendPasswordInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSResendPasswordInteractor.swift; sourceTree = "<group>"; };
 		4A0FFEA422B438B000D6A33A /* FirebaseErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseErrorHandler.swift; sourceTree = "<group>"; };
 		4A0FFEA622B4729100D6A33A /* INVSLoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSLoadingButton.swift; sourceTree = "<group>"; };
+		4A0FFEAC22B57A7200D6A33A /* INVSBlurViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSBlurViewController.swift; sourceTree = "<group>"; };
+		4A0FFEAD22B57A7200D6A33A /* INVSBlurViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = INVSBlurViewController.xib; sourceTree = "<group>"; };
+		4A0FFEB122B5890900D6A33A /* INVSOfflineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSOfflineViewController.swift; sourceTree = "<group>"; };
 		4A107A9922A1790F00A7D8D1 /* ParticipantesSTRport.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ParticipantesSTRport.csv; sourceTree = "<group>"; };
 		4A107A9B22A31E8300A7D8D1 /* UILabel+INVSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+INVSExtension.swift"; sourceTree = "<group>"; };
 		4A107AA122A3279600A7D8D1 /* INVSSimulatorHelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = INVSSimulatorHelpView.swift; path = ../INVSSimulatorHelpView.swift; sourceTree = "<group>"; };
-		4A111F8A229ECE5F00D9EAF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4A121691229AE96100759948 /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		4A121693229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedChartsInteractor.swift; sourceTree = "<group>"; };
 		4A121695229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedChartsPresenter.swift; sourceTree = "<group>"; };
 		4A12631122A7DA7A006133E5 /* MarketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketModel.swift; sourceTree = "<group>"; };
 		4A12631322A7DA99006133E5 /* BankModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankModel.swift; sourceTree = "<group>"; };
 		4A12631622A7DC7A006133E5 /* INVSConector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSConector.swift; sourceTree = "<group>"; };
-		4A12631922A7E820006133E5 /* INVSConnectorRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSConnectorRouter.swift; sourceTree = "<group>"; };
 		4A12631C22A7F1BB006133E5 /* INVSVersionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSVersionModel.swift; sourceTree = "<group>"; };
 		4A22FF3222976CAF001662FC /* INVSSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSwitchView.swift; sourceTree = "<group>"; };
 		4A22FF362297837B001662FC /* INVSSimulatedContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedContainerViewController.swift; sourceTree = "<group>"; };
@@ -189,10 +301,21 @@
 		4A4C68AA2295796100EDC8C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4A4C68AB2295796100EDC8C6 /* animatedLogoWhite.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = animatedLogoWhite.json; path = ../animatedLogoWhite.json; sourceTree = "<group>"; };
 		4A4C68AC2295796100EDC8C6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4A4C68AD2295796100EDC8C6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A4C68AD2295796100EDC8C6 /* InvestScopioProd-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "InvestScopioProd-Info.plist"; sourceTree = "<group>"; };
 		4A4C68AE2295796100EDC8C6 /* animatedLoadingWhite.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = animatedLoadingWhite.json; path = ../animatedLoadingWhite.json; sourceTree = "<group>"; };
+		4AFF3E5C22B9B2170056A167 /* INVSUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSUserModel.swift; sourceTree = "<group>"; };
+		4AFF3E5F22B9B32E0056A167 /* INVSCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSCrypto.swift; sourceTree = "<group>"; };
+		4AFF3E6222B9BC360056A167 /* INVSSignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSignUpModel.swift; sourceTree = "<group>"; };
+		4AFF3E6422B9CA520056A167 /* INVSUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSUserRequest.swift; sourceTree = "<group>"; };
+		4AFF3E6722BA79E90056A167 /* INVSAccessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSAccessModel.swift; sourceTree = "<group>"; };
+		4AFF3E6A22BA8EB10056A167 /* Jsonable+INVSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Jsonable+INVSExtension.swift"; sourceTree = "<group>"; };
+		4AFF3E6D22BB207E0056A167 /* GoogleServiceInfoProd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GoogleServiceInfoProd.plist; sourceTree = "<group>"; };
+		4AFF3EDE22BB23F10056A167 /* InvestScopioDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InvestScopioDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AFF3EE322BB28580056A167 /* InvestScopioDev-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "InvestScopioDev-Info.plist"; sourceTree = "<group>"; };
+		4AFF3EE822BBFF470056A167 /* GoogleServiceInfoDev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GoogleServiceInfoDev.plist; sourceTree = "<group>"; };
 		96C9F1EA5800CB68A709EF1A /* Pods-InvestScopio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvestScopio.debug.xcconfig"; path = "Target Support Files/Pods-InvestScopio/Pods-InvestScopio.debug.xcconfig"; sourceTree = "<group>"; };
 		9F1B6B0D7ADAA56EF7CEAAF4 /* Pods_InvestScopio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InvestScopio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCDDCC66DBBAD541616D7347 /* Pods_InvestScopioDev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InvestScopioDev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E51923B72D563C11FC98562D /* Pods-InvestScopio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvestScopio.release.xcconfig"; path = "Target Support Files/Pods-InvestScopio/Pods-InvestScopio.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -205,6 +328,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4AFF3EC622BB23F10056A167 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AFF3EC722BB23F10056A167 /* Pods_InvestScopio.framework in Frameworks */,
+				7B3FD35CB4A8123DF3A4C9AC /* Pods_InvestScopioDev.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -212,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				9F1B6B0D7ADAA56EF7CEAAF4 /* Pods_InvestScopio.framework */,
+				DCDDCC66DBBAD541616D7347 /* Pods_InvestScopioDev.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -219,13 +352,10 @@
 		4A0FFE8022B08BF500D6A33A /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				4AFF3E6922BA7DAD0056A167 /* Login */,
+				4A0FFEA922B577F700D6A33A /* Offline */,
 				4A0FFE9822B41C1A00D6A33A /* ResendPassword */,
 				4A0FFE8D22B2FECC00D6A33A /* SignUp */,
-				4A0FFE8122B115E400D6A33A /* INVSLoginViewController.swift */,
-				4A0FFE8322B1160400D6A33A /* INVSLoginInteractor.swift */,
-				4A0FFE8522B1161D00D6A33A /* INVSLoginPresenter.swift */,
-				4A0FFE8922B1166200D6A33A /* INVSLoginWorker.swift */,
-				4A0FFE8722B1163200D6A33A /* INVSLoginModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -233,6 +363,7 @@
 		4A0FFE8D22B2FECC00D6A33A /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				4AFF3E6122B9BC0C0056A167 /* Model */,
 				4A0FFE9422B3051E00D6A33A /* INVSSignUpInteractor.swift */,
 				4A0FFE9222B3051E00D6A33A /* INVSSignUpPresenter.swift */,
 				4A0FFE9322B3051E00D6A33A /* INVSSignUpWorker.swift */,
@@ -267,6 +398,23 @@
 			children = (
 			);
 			path = LoadingButton;
+			sourceTree = "<group>";
+		};
+		4A0FFEA922B577F700D6A33A /* Offline */ = {
+			isa = PBXGroup;
+			children = (
+				4A0FFEB122B5890900D6A33A /* INVSOfflineViewController.swift */,
+			);
+			path = Offline;
+			sourceTree = "<group>";
+		};
+		4A0FFEB022B5881900D6A33A /* BlurViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4A0FFEAC22B57A7200D6A33A /* INVSBlurViewController.swift */,
+				4A0FFEAD22B57A7200D6A33A /* INVSBlurViewController.xib */,
+			);
+			path = BlurViewController;
 			sourceTree = "<group>";
 		};
 		4A107AA322A3279C00A7D8D1 /* Views */ = {
@@ -308,14 +456,6 @@
 				4A12631622A7DC7A006133E5 /* INVSConector.swift */,
 			);
 			path = Connector;
-			sourceTree = "<group>";
-		};
-		4A12631822A7E810006133E5 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				4A12631922A7E820006133E5 /* INVSConnectorRouter.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		4A12631B22A7F1A3006133E5 /* Version */ = {
@@ -362,8 +502,9 @@
 		4A27AA97229F6E1F00C45CC5 /* InvestScopioSession */ = {
 			isa = PBXGroup;
 			children = (
+				4AFF3E6622BA79D30056A167 /* Access */,
+				4AFF3E5B22B9B1F30056A167 /* User */,
 				4A12631B22A7F1A3006133E5 /* Version */,
-				4A12631822A7E810006133E5 /* Router */,
 				4A12631022A7DA46006133E5 /* MarketModel */,
 				4A12630E22A7DA2F006133E5 /* BankModel */,
 				4A27AA98229F6E4D00C45CC5 /* INVSSession.swift */,
@@ -394,6 +535,7 @@
 			isa = PBXGroup;
 			children = (
 				4A4C68562295784900EDC8C6 /* InvestScopio.app */,
+				4AFF3EDE22BB23F10056A167 /* InvestScopioDev.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -401,15 +543,16 @@
 		4A4C686B2295796100EDC8C6 /* InvestScopio */ = {
 			isa = PBXGroup;
 			children = (
+				4AFF3E6C22BB20660056A167 /* FirebaseConfig */,
 				4A27AA97229F6E1F00C45CC5 /* InvestScopioSession */,
 				4A4C68892295796100EDC8C6 /* SharedFeatures */,
 				4A4C686C2295796100EDC8C6 /* Scenes */,
 				4A4C68862295796100EDC8C6 /* Images */,
 				4A4C68A92295796100EDC8C6 /* LaunchScreen.xib */,
 				4A107A9922A1790F00A7D8D1 /* ParticipantesSTRport.csv */,
-				4A111F8A229ECE5F00D9EAF1 /* GoogleService-Info.plist */,
+				4AFF3EE322BB28580056A167 /* InvestScopioDev-Info.plist */,
+				4A4C68AD2295796100EDC8C6 /* InvestScopioProd-Info.plist */,
 				4A4C68AC2295796100EDC8C6 /* AppDelegate.swift */,
-				4A4C68AD2295796100EDC8C6 /* Info.plist */,
 			);
 			path = InvestScopio;
 			sourceTree = "<group>";
@@ -513,6 +656,8 @@
 		4A4C68892295796100EDC8C6 /* SharedFeatures */ = {
 			isa = PBXGroup;
 			children = (
+				4AFF3E5E22B9B3150056A167 /* Cripto */,
+				4A0FFEB022B5881900D6A33A /* BlurViewController */,
 				4A0FFEA822B472DC00D6A33A /* LoadingButton */,
 				4A0FFEA322B4387400D6A33A /* FirebaseErrorHandler */,
 				4A12631522A7DC6B006133E5 /* Connector */,
@@ -574,6 +719,7 @@
 				4A107A9B22A31E8300A7D8D1 /* UILabel+INVSExtension.swift */,
 				4A45D0D122A44576001383B4 /* NSAttributedString+INVSExtension.swift */,
 				4A0FFE8B22B2D84F00D6A33A /* UIView+INVSExtension.swift */,
+				4AFF3E6A22BA8EB10056A167 /* Jsonable+INVSExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -611,11 +757,67 @@
 			path = CodeView;
 			sourceTree = "<group>";
 		};
+		4AFF3E5B22B9B1F30056A167 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				4AFF3E5C22B9B2170056A167 /* INVSUserModel.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		4AFF3E5E22B9B3150056A167 /* Cripto */ = {
+			isa = PBXGroup;
+			children = (
+				4AFF3E5F22B9B32E0056A167 /* INVSCrypto.swift */,
+			);
+			path = Cripto;
+			sourceTree = "<group>";
+		};
+		4AFF3E6122B9BC0C0056A167 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4AFF3E6222B9BC360056A167 /* INVSSignUpModel.swift */,
+				4AFF3E6422B9CA520056A167 /* INVSUserRequest.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4AFF3E6622BA79D30056A167 /* Access */ = {
+			isa = PBXGroup;
+			children = (
+				4AFF3E6722BA79E90056A167 /* INVSAccessModel.swift */,
+			);
+			path = Access;
+			sourceTree = "<group>";
+		};
+		4AFF3E6922BA7DAD0056A167 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4A0FFE8122B115E400D6A33A /* INVSLoginViewController.swift */,
+				4A0FFE8322B1160400D6A33A /* INVSLoginInteractor.swift */,
+				4A0FFE8522B1161D00D6A33A /* INVSLoginPresenter.swift */,
+				4A0FFE8922B1166200D6A33A /* INVSLoginWorker.swift */,
+				4A0FFE8722B1163200D6A33A /* INVSLoginModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		4AFF3E6C22BB20660056A167 /* FirebaseConfig */ = {
+			isa = PBXGroup;
+			children = (
+				4AFF3EE822BBFF470056A167 /* GoogleServiceInfoDev.plist */,
+				4AFF3E6D22BB207E0056A167 /* GoogleServiceInfoProd.plist */,
+			);
+			path = FirebaseConfig;
+			sourceTree = "<group>";
+		};
 		F4BF4408D4B1FD25E8984CE5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				96C9F1EA5800CB68A709EF1A /* Pods-InvestScopio.debug.xcconfig */,
 				E51923B72D563C11FC98562D /* Pods-InvestScopio.release.xcconfig */,
+				2F3204CC7D9739973E0B480A /* Pods-InvestScopioDev.debug.xcconfig */,
+				337722A1A99D475EDC282B99 /* Pods-InvestScopioDev.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -640,6 +842,25 @@
 			name = InvestScopio;
 			productName = InvestScopio;
 			productReference = 4A4C68562295784900EDC8C6 /* InvestScopio.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4AFF3E7122BB23F10056A167 /* InvestScopioDev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4AFF3EDB22BB23F10056A167 /* Build configuration list for PBXNativeTarget "InvestScopioDev" */;
+			buildPhases = (
+				4AFF3E7222BB23F10056A167 /* [CP] Check Pods Manifest.lock */,
+				4AFF3E7322BB23F10056A167 /* Sources */,
+				4AFF3EC622BB23F10056A167 /* Frameworks */,
+				4AFF3EC822BB23F10056A167 /* Resources */,
+				4AFF3EDA22BB23F10056A167 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = InvestScopioDev;
+			productName = InvestScopio;
+			productReference = 4AFF3EDE22BB23F10056A167 /* InvestScopioDev.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -671,6 +892,7 @@
 			projectRoot = "";
 			targets = (
 				4A4C68552295784900EDC8C6 /* InvestScopio */,
+				4AFF3E7122BB23F10056A167 /* InvestScopioDev */,
 			);
 		};
 /* End PBXProject section */
@@ -684,23 +906,48 @@
 				4A4C68B62295796200EDC8C6 /* INVSSimulatorCell.xib in Resources */,
 				4A0FFE9E22B41C1B00D6A33A /* INVSResendPasswordViewController.xib in Resources */,
 				4A4C68DE2295796200EDC8C6 /* animatedLoadingWhite.json in Resources */,
+				4AFF3EEA22BC00820056A167 /* GoogleServiceInfoProd.plist in Resources */,
 				4A4C68C12295796200EDC8C6 /* Images.xcassets in Resources */,
 				4A4C68C22295796200EDC8C6 /* animatedLoadingPurple.json in Resources */,
+				4AFF3EE522BB2AD90056A167 /* InvestScopioProd-Info.plist in Resources */,
 				4A4C68DB2295796200EDC8C6 /* animatedLogoWhite.json in Resources */,
 				4A45D10222A70051001383B4 /* closePlusAnimation.json in Resources */,
+				4A0FFEAF22B57A7200D6A33A /* INVSBlurViewController.xib in Resources */,
 				4A107A9A22A1791000A7D8D1 /* ParticipantesSTRport.csv in Resources */,
 				4A4C68DA2295796200EDC8C6 /* LaunchScreen.xib in Resources */,
 				4A4C68BA2295796200EDC8C6 /* INVSSimutatorViewControler.xib in Resources */,
-				4A111F8B229ECE5F00D9EAF1 /* GoogleService-Info.plist in Resources */,
 				4A4C68B92295796200EDC8C6 /* INVSStartViewController.xib in Resources */,
 				4A4C68D92295796200EDC8C6 /* animatedLogo.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4AFF3EC822BB23F10056A167 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AFF3EC922BB23F10056A167 /* INVSSignUpViewController.xib in Resources */,
+				4AFF3ECA22BB23F10056A167 /* INVSSimulatorCell.xib in Resources */,
+				4AFF3ECB22BB23F10056A167 /* INVSResendPasswordViewController.xib in Resources */,
+				4AFF3ECC22BB23F10056A167 /* animatedLoadingWhite.json in Resources */,
+				4AFF3EE422BB28580056A167 /* InvestScopioDev-Info.plist in Resources */,
+				4AFF3ECD22BB23F10056A167 /* Images.xcassets in Resources */,
+				4AFF3ECE22BB23F10056A167 /* animatedLoadingPurple.json in Resources */,
+				4AFF3ECF22BB23F10056A167 /* animatedLogoWhite.json in Resources */,
+				4AFF3ED022BB23F10056A167 /* closePlusAnimation.json in Resources */,
+				4AFF3ED122BB23F10056A167 /* INVSBlurViewController.xib in Resources */,
+				4AFF3ED222BB23F10056A167 /* ParticipantesSTRport.csv in Resources */,
+				4AFF3ED322BB23F10056A167 /* LaunchScreen.xib in Resources */,
+				4AFF3ED422BB23F10056A167 /* INVSSimutatorViewControler.xib in Resources */,
+				4AFF3EEB22BC00860056A167 /* GoogleServiceInfoDev.plist in Resources */,
+				4AFF3ED622BB23F10056A167 /* INVSStartViewController.xib in Resources */,
+				4AFF3ED822BB23F10056A167 /* animatedLogo.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		95E0EC8CA88C3DCC647692E1 /* [CP] Embed Pods Frameworks */ = {
+		4AFF3E7222BB23F10056A167 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -708,14 +955,36 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-InvestScopio/Pods-InvestScopio-frameworks.sh",
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-InvestScopioDev-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4AFF3EDA22BB23F10056A167 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-InvestScopioDev/Pods-InvestScopioDev-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BetterSegmentedControl/BetterSegmentedControl.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
-				"${BUILT_PRODUCTS_DIR}/RQShineLabel/RQShineLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/SkeletonView/SkeletonView.framework",
 				"${BUILT_PRODUCTS_DIR}/StepView/StepView.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
@@ -731,10 +1000,58 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BetterSegmentedControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RQShineLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkeletonView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StepView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZCAnimatedLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-InvestScopioDev/Pods-InvestScopioDev-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		95E0EC8CA88C3DCC647692E1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-InvestScopio/Pods-InvestScopio-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BetterSegmentedControl/BetterSegmentedControl.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
+				"${BUILT_PRODUCTS_DIR}/SkeletonView/SkeletonView.framework",
+				"${BUILT_PRODUCTS_DIR}/StepView/StepView.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
+				"${BUILT_PRODUCTS_DIR}/ZCAnimatedLabel/ZCAnimatedLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BetterSegmentedControl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkeletonView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StepView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
@@ -781,10 +1098,13 @@
 				4A4C68D52295796200EDC8C6 /* INVSPopupMessage.swift in Sources */,
 				4A0FFE7F22AF298000D6A33A /* INVSSimulatedListWorker.swift in Sources */,
 				4A45D0D222A44576001383B4 /* NSAttributedString+INVSExtension.swift in Sources */,
+				4AFF3E5D22B9B2170056A167 /* INVSUserModel.swift in Sources */,
 				4A0FFE9722B3051F00D6A33A /* INVSSignUpInteractor.swift in Sources */,
 				4A4C68B12295796200EDC8C6 /* INVSSimulatedValueModel.swift in Sources */,
 				4A4C68DC2295796200EDC8C6 /* AppDelegate.swift in Sources */,
+				4AFF3E6522B9CA520056A167 /* INVSUserRequest.swift in Sources */,
 				4A12631722A7DC7A006133E5 /* INVSConector.swift in Sources */,
+				4A0FFEB222B5890900D6A33A /* INVSOfflineViewController.swift in Sources */,
 				4A45D0D422A4463D001383B4 /* INVSSimulatedHelpViewType.swift in Sources */,
 				4A0FFE8C22B2D84F00D6A33A /* UIView+INVSExtension.swift in Sources */,
 				4A4C68C42295796200EDC8C6 /* INVSConstants.swift in Sources */,
@@ -796,6 +1116,7 @@
 				4A4C68B42295796200EDC8C6 /* INVSSimulatedListPresenter.swift in Sources */,
 				4A12631D22A7F1BB006133E5 /* INVSVersionModel.swift in Sources */,
 				4A2B05AB229E02E60024F83A /* INVSSimulatedRescueChartView.swift in Sources */,
+				4A0FFEAE22B57A7200D6A33A /* INVSBlurViewController.swift in Sources */,
 				4A4C68B72295796200EDC8C6 /* INVSSimulatorCell.swift in Sources */,
 				4A4C68C92295796200EDC8C6 /* UIColor+INVSPaletteColors.swift in Sources */,
 				4A0FFE8422B1160400D6A33A /* INVSLoginInteractor.swift in Sources */,
@@ -812,13 +1133,14 @@
 				4A22FF382297837B001662FC /* INVSSimulatedContainerViewController.swift in Sources */,
 				4A4C68BE2295796200EDC8C6 /* INVSSimulatorWorker.swift in Sources */,
 				4A0FFEA722B4729100D6A33A /* INVSLoadingButton.swift in Sources */,
-				4A12631A22A7E820006133E5 /* INVSConnectorRouter.swift in Sources */,
 				4A0FFE8A22B1166200D6A33A /* INVSLoginWorker.swift in Sources */,
 				4A4C68AF2295796200EDC8C6 /* INVSSimulatorTableviewDataSourceDelegate.swift in Sources */,
+				4AFF3E6022B9B32E0056A167 /* INVSCrypto.swift in Sources */,
 				4A4C68C82295796200EDC8C6 /* INVSKeyboardToolbar.swift in Sources */,
 				4A0FFE8822B1163200D6A33A /* INVSLoginModel.swift in Sources */,
 				4A4C68C72295796200EDC8C6 /* INVSFloatingTextFieldType.swift in Sources */,
 				4A4C68D82295796200EDC8C6 /* INVSCodeView.swift in Sources */,
+				4AFF3E6822BA79E90056A167 /* INVSAccessModel.swift in Sources */,
 				4A0FFE9022B2FF0300D6A33A /* INVSSignUpViewController.swift in Sources */,
 				4A4C68B02295796200EDC8C6 /* INVSSimulatedListInteractor.swift in Sources */,
 				4A4C68D42295796200EDC8C6 /* INVSPopupMessageType.swift in Sources */,
@@ -849,9 +1171,100 @@
 				4A0FFEA022B41C1B00D6A33A /* INVSResendPasswordPresenter.swift in Sources */,
 				4A4C68BC2295796200EDC8C6 /* INVSSimutatorViewControler.swift in Sources */,
 				4A121694229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift in Sources */,
+				4AFF3E6322B9BC360056A167 /* INVSSignUpModel.swift in Sources */,
 				4A4C68D62295796200EDC8C6 /* GradientView.swift in Sources */,
+				4AFF3E6B22BA8EB10056A167 /* Jsonable+INVSExtension.swift in Sources */,
 				4A4C68BF2295796200EDC8C6 /* INVSSimulatorInteractor.swift in Sources */,
 				4A4C68C02295796200EDC8C6 /* INVSRouter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4AFF3E7322BB23F10056A167 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AFF3E7422BB23F10056A167 /* INVSSwitchView.swift in Sources */,
+				4AFF3E7522BB23F10056A167 /* INVSPopupMessage.swift in Sources */,
+				4AFF3E7622BB23F10056A167 /* INVSSimulatedListWorker.swift in Sources */,
+				4AFF3E7722BB23F10056A167 /* NSAttributedString+INVSExtension.swift in Sources */,
+				4AFF3E7822BB23F10056A167 /* INVSUserModel.swift in Sources */,
+				4AFF3E7922BB23F10056A167 /* INVSSignUpInteractor.swift in Sources */,
+				4AFF3E7A22BB23F10056A167 /* INVSSimulatedValueModel.swift in Sources */,
+				4AFF3E7B22BB23F10056A167 /* AppDelegate.swift in Sources */,
+				4AFF3E7C22BB23F10056A167 /* INVSUserRequest.swift in Sources */,
+				4AFF3E7D22BB23F10056A167 /* INVSConector.swift in Sources */,
+				4AFF3E7E22BB23F10056A167 /* INVSOfflineViewController.swift in Sources */,
+				4AFF3E7F22BB23F10056A167 /* INVSSimulatedHelpViewType.swift in Sources */,
+				4AFF3E8022BB23F10056A167 /* UIView+INVSExtension.swift in Sources */,
+				4AFF3E8122BB23F10056A167 /* INVSConstants.swift in Sources */,
+				4AFF3E8222BB23F10056A167 /* INVSResendPasswordWorker.swift in Sources */,
+				4AFF3E8322BB23F10056A167 /* INVSResendPasswordViewController.swift in Sources */,
+				4AFF3E8422BB23F10056A167 /* UIFont+INVSExtension.swift in Sources */,
+				4AFF3E8522BB23F10056A167 /* INVSPresentBaseViewController.swift in Sources */,
+				4AFF3E8622BB23F10056A167 /* INVSSimulatedTotalChartView.swift in Sources */,
+				4AFF3E8722BB23F10056A167 /* INVSSimulatedListPresenter.swift in Sources */,
+				4AFF3E8822BB23F10056A167 /* INVSVersionModel.swift in Sources */,
+				4AFF3E8922BB23F10056A167 /* INVSSimulatedRescueChartView.swift in Sources */,
+				4AFF3E8A22BB23F10056A167 /* INVSBlurViewController.swift in Sources */,
+				4AFF3E8B22BB23F10056A167 /* INVSSimulatorCell.swift in Sources */,
+				4AFF3E8C22BB23F10056A167 /* UIColor+INVSPaletteColors.swift in Sources */,
+				4AFF3E8D22BB23F10056A167 /* INVSLoginInteractor.swift in Sources */,
+				4AFF3E8E22BB23F10056A167 /* INVSLoginPresenter.swift in Sources */,
+				4AFF3E8F22BB23F10056A167 /* NumberFormatter+INVSExtension.swift in Sources */,
+				4AFF3E9022BB23F10056A167 /* INVSKeyChainWrapper.swift in Sources */,
+				4AFF3E9122BB23F10056A167 /* INVSSession.swift in Sources */,
+				4AFF3E9222BB23F10056A167 /* INVSSimulatedChartsPresenter.swift in Sources */,
+				4AFF3E9322BB23F10056A167 /* UIStackview+INVSExtension.swift in Sources */,
+				4AFF3E9422BB23F10056A167 /* INVSSimulatedListViewController.swift in Sources */,
+				4AFF3E9522BB23F10056A167 /* INVSStartInteractor.swift in Sources */,
+				4AFF3E9622BB23F10056A167 /* BankModel.swift in Sources */,
+				4AFF3E9722BB23F10056A167 /* String+INVSExtension.swift in Sources */,
+				4AFF3E9822BB23F10056A167 /* INVSSimulatedContainerViewController.swift in Sources */,
+				4AFF3E9922BB23F10056A167 /* INVSSimulatorWorker.swift in Sources */,
+				4AFF3E9A22BB23F10056A167 /* INVSLoadingButton.swift in Sources */,
+				4AFF3E9B22BB23F10056A167 /* INVSLoginWorker.swift in Sources */,
+				4AFF3E9C22BB23F10056A167 /* INVSSimulatorTableviewDataSourceDelegate.swift in Sources */,
+				4AFF3E9D22BB23F10056A167 /* INVSCrypto.swift in Sources */,
+				4AFF3E9E22BB23F10056A167 /* INVSKeyboardToolbar.swift in Sources */,
+				4AFF3E9F22BB23F10056A167 /* INVSLoginModel.swift in Sources */,
+				4AFF3EA022BB23F10056A167 /* INVSFloatingTextFieldType.swift in Sources */,
+				4AFF3EA122BB23F10056A167 /* INVSCodeView.swift in Sources */,
+				4AFF3EA222BB23F10056A167 /* INVSAccessModel.swift in Sources */,
+				4AFF3EA322BB23F10056A167 /* INVSSignUpViewController.swift in Sources */,
+				4AFF3EA422BB23F10056A167 /* INVSSimulatedListInteractor.swift in Sources */,
+				4AFF3EA522BB23F10056A167 /* INVSPopupMessageType.swift in Sources */,
+				4AFF3EA622BB23F10056A167 /* INVSSimulatorPresenter.swift in Sources */,
+				4AFF3EA722BB23F10056A167 /* INVSSignUpWorker.swift in Sources */,
+				4AFF3EA822BB23F10056A167 /* INVSStartPresenter.swift in Sources */,
+				4AFF3EA922BB23F10056A167 /* UILabel+INVSExtension.swift in Sources */,
+				4AFF3EAA22BB23F10056A167 /* INVSFloatingTextFieldValueType.swift in Sources */,
+				4AFF3EAB22BB23F10056A167 /* UIImage+INVSExtension.swift in Sources */,
+				4AFF3EAC22BB23F10056A167 /* MarketModel.swift in Sources */,
+				4AFF3EAD22BB23F10056A167 /* INVSSimulatorHelpView.swift in Sources */,
+				4AFF3EAE22BB23F10056A167 /* CAShapeLayer+INVSExtension.swift in Sources */,
+				4AFF3EAF22BB23F10056A167 /* INVSResendPasswordInteractor.swift in Sources */,
+				4AFF3EB022BB23F10056A167 /* UIWindow+INVSExtension.swift in Sources */,
+				4AFF3EB122BB23F10056A167 /* INVSStartWorker.swift in Sources */,
+				4AFF3EB222BB23F10056A167 /* Double+INVSExtension.swift in Sources */,
+				4AFF3EB322BB23F10056A167 /* INVSSignUpPresenter.swift in Sources */,
+				4AFF3EB422BB23F10056A167 /* FirebaseErrorHandler.swift in Sources */,
+				4AFF3EB522BB23F10056A167 /* INVSFloatingTextField.swift in Sources */,
+				4AFF3EB622BB23F10056A167 /* INVSSimulatedChartsViewController.swift in Sources */,
+				4AFF3EB722BB23F10056A167 /* INVSLoginViewController.swift in Sources */,
+				4AFF3EB822BB23F10056A167 /* UIButton+INVSExtension.swift in Sources */,
+				4AFF3EB922BB23F10056A167 /* UIViewController+INVSExtension.swift in Sources */,
+				4AFF3EBA22BB23F10056A167 /* INVSSimulatorHeaderView.swift in Sources */,
+				4AFF3EBB22BB23F10056A167 /* INVSSimulatorModel.swift in Sources */,
+				4AFF3EBC22BB23F10056A167 /* INVSStartViewController.swift in Sources */,
+				4AFF3EBD22BB23F10056A167 /* BalloonMarker.swift in Sources */,
+				4AFF3EBE22BB23F10056A167 /* INVSResendPasswordPresenter.swift in Sources */,
+				4AFF3EBF22BB23F10056A167 /* INVSSimutatorViewControler.swift in Sources */,
+				4AFF3EC022BB23F10056A167 /* INVSSimulatedChartsInteractor.swift in Sources */,
+				4AFF3EC122BB23F10056A167 /* INVSSignUpModel.swift in Sources */,
+				4AFF3EC222BB23F10056A167 /* GradientView.swift in Sources */,
+				4AFF3EC322BB23F10056A167 /* Jsonable+INVSExtension.swift in Sources */,
+				4AFF3EC422BB23F10056A167 /* INVSSimulatorInteractor.swift in Sources */,
+				4AFF3EC522BB23F10056A167 /* INVSRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -992,7 +1405,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G77MYT7HW8;
-				INFOPLIST_FILE = InvestScopio/Info.plist;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"$(inherited)",
+					"PB_FIELD_32BIT=1",
+					"PB_NO_PACKED_STRUCTS=1",
+					"PB_ENABLE_MALLOC=1",
+					"DEV=0",
+				);
+				INFOPLIST_FILE = "InvestScopio/InvestScopioProd-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1012,12 +1434,81 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G77MYT7HW8;
-				INFOPLIST_FILE = InvestScopio/Info.plist;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"$(inherited)",
+					"PB_FIELD_32BIT=1",
+					"PB_NO_PACKED_STRUCTS=1",
+					"PB_ENABLE_MALLOC=1",
+					"DEV=0",
+				);
+				INFOPLIST_FILE = "InvestScopio/InvestScopioProd-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.br.joao.gabriel.medeiros.pereira.InvestScopio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		4AFF3EDC22BB23F10056A167 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F3204CC7D9739973E0B480A /* Pods-InvestScopioDev.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G77MYT7HW8;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"$(inherited)",
+					"PB_FIELD_32BIT=1",
+					"PB_NO_PACKED_STRUCTS=1",
+					"PB_ENABLE_MALLOC=1",
+					"DEV=1",
+				);
+				INFOPLIST_FILE = "InvestScopio/InvestScopioDev-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DEV";
+				PRODUCT_BUNDLE_IDENTIFIER = com.br.joao.gabriel.medeiros.pereira.InvestScopio.dev;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		4AFF3EDD22BB23F10056A167 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 337722A1A99D475EDC282B99 /* Pods-InvestScopioDev.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G77MYT7HW8;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"$(inherited)",
+					"PB_FIELD_32BIT=1",
+					"PB_NO_PACKED_STRUCTS=1",
+					"PB_ENABLE_MALLOC=1",
+					"DEV=1",
+				);
+				INFOPLIST_FILE = "InvestScopio/InvestScopioDev-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DEV";
+				PRODUCT_BUNDLE_IDENTIFIER = com.br.joao.gabriel.medeiros.pereira.InvestScopio.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
@@ -1042,6 +1533,15 @@
 			buildConfigurations = (
 				4A4C68692295784D00EDC8C6 /* Debug */,
 				4A4C686A2295784D00EDC8C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4AFF3EDB22BB23F10056A167 /* Build configuration list for PBXNativeTarget "InvestScopioDev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4AFF3EDC22BB23F10056A167 /* Debug */,
+				4AFF3EDD22BB23F10056A167 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -17,7 +17,7 @@ import Firebase
 protocol INVSLoginViewControllerProtocol: class {
     func displayOkAction(withTextField textField: INVSFloatingTextField, andShouldResign shouldResign: Bool)
     func displayCancelAction()
-    func displaySignInSuccess(withUser user:User)
+    func displaySignInSuccess()
     func displaySignInError(titleError:String, messageError:String, shouldHideAutomatically:Bool, popupType:INVSPopupMessageType)
 }
 
@@ -31,6 +31,10 @@ class INVSLoginViewController: INVSPresentBaseViewController {
     private var loginButtonLayer: CAGradientLayer!
     var createButton = UIButton(frame: .zero)
     var resendPasswordButton = UIButton(frame: .zero)
+    var offlineButton = UIButton(frame: .zero)
+    var rememberStackView = UIStackView(frame: .zero)
+    var rememberLabel = UILabel(frame: .zero)
+    var rememberSwitch = UISwitch(frame: .zero)
     var animationView = AnimationView()
     var titleTopConstraint = NSLayoutConstraint()
     var popupMessage: INVSPopupMessage?
@@ -56,6 +60,7 @@ class INVSLoginViewController: INVSPresentBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBarTitle = "Login"
+        closeButton.isHidden = true
         setup()
         setupView()
         setupUI()
@@ -67,6 +72,33 @@ class INVSLoginViewController: INVSPresentBaseViewController {
         }
     }
     
+    func selectServer() {
+        let alertController = UIAlertController(title: "Escolha o ambiente", message: "Por default o ambiente do Heroku caso cancele.", preferredStyle: .actionSheet)
+        
+        let action1 = UIAlertAction(title: "Local", style: .default) { (action:UIAlertAction) in
+            INVSSession.session.callService = .localHost
+        }
+        
+        let action2 = UIAlertAction(title: "Heroku", style: .default) { (action:UIAlertAction) in
+            INVSSession.session.callService = .heroku
+        }
+        
+        let action3 = UIAlertAction(title: "Offline", style: .default) { (action:UIAlertAction) in
+            INVSSession.session.callService = .offline
+        }
+        
+        let action4 = UIAlertAction(title: "Cancelar", style: .cancel) { (action:UIAlertAction) in
+            INVSSession.session.callService = .heroku
+            alertController.dismiss(animated: true, completion: nil)
+        }
+        
+        alertController.addAction(action1)
+        alertController.addAction(action2)
+        alertController.addAction(action3)
+        alertController.addAction(action4)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     override func viewDidLayoutSubviews() {
         titleTopConstraint.constant = animationView.center.y
         self.loginButtonLayer = CAShapeLayer.addGradientLayer(withGradientLayer: self.loginButtonLayer, inView: self.loginButton, withColorsArr: UIColor.INVSGradientColors(),withRoundedCorner: 25)
@@ -75,6 +107,13 @@ class INVSLoginViewController: INVSPresentBaseViewController {
         self.createButton.layer.borderWidth = 2
         self.view.layoutIfNeeded()
         super.viewDidLayoutSubviews()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if INVSSession.session.isDev() {
+            selectServer()
+        }
     }
     
     public override func viewWillDisappear(_ animated: Bool) {
@@ -93,11 +132,6 @@ class INVSLoginViewController: INVSPresentBaseViewController {
         textFieldStackView.addArrangedSubview(passwordTextField)
         textFieldStackView.axis = .vertical
         textFieldStackView.distribution = .fillEqually
-        buttonStackView.addArrangedSubview(loginButton)
-        buttonStackView.addArrangedSubview(createButton)
-        buttonStackView.axis = .horizontal
-        buttonStackView.spacing = 8
-        buttonStackView.distribution = .fillEqually
         INVSFloatingTextFieldType.email.setupTextField(withTextField: emailTextField,keyboardType: .emailAddress, andDelegate: self, valueTypeTextField: .none, isRequired: true)
         INVSFloatingTextFieldType.password.setupTextField(withTextField: passwordTextField,keyboardType: .default, andDelegate: self, valueTypeTextField: .none, isRequired: true)
         passwordTextField.floatingTextField.isSecureTextEntry = true
@@ -111,6 +145,30 @@ class INVSLoginViewController: INVSPresentBaseViewController {
         titleLabel.font = .INVSFontBigBold()
         titleLabel.text = "InvestScopio"
         titleLabel.textAlignment = .center
+        setupRemember()
+        setupButtons()
+    }
+    
+    func setupRemember() {
+        rememberLabel.text = "Salvar dados?"
+        rememberLabel.textColor = .INVSBlack()
+        rememberLabel.font = .INVSFontDefaultBold()
+        rememberSwitch.tintColor = .INVSDefault()
+        rememberSwitch.onTintColor = .INVSDefault()
+        rememberSwitch.addTarget(self, action: #selector(rememberAction), for: .valueChanged)
+        rememberStackView.addArrangedSubview(rememberLabel)
+        rememberStackView.addArrangedSubview(rememberSwitch)
+        rememberStackView.axis = .horizontal
+        rememberStackView.spacing = 8
+        rememberStackView.distribution = .fillProportionally
+    }
+    
+    func setupButtons() {
+        buttonStackView.addArrangedSubview(loginButton)
+        buttonStackView.addArrangedSubview(createButton)
+        buttonStackView.axis = .horizontal
+        buttonStackView.spacing = 8
+        buttonStackView.distribution = .fillEqually
         loginButton.setTitle("Login", for: .normal)
         loginButton.setTitleColor(.white, for: .normal)
         loginButton.addTarget(self, action: #selector(INVSLoginViewController.loginAction(_:)), for: .touchUpInside)
@@ -123,6 +181,9 @@ class INVSLoginViewController: INVSPresentBaseViewController {
             .underlineStyle: NSUnderlineStyle.single.rawValue]
         resendPasswordButton.setAttributedTitle(NSAttributedString.init(string: "Esqueceu sua Senha?", attributes: underlineAttributes), for: .normal)
         resendPasswordButton.addTarget(self, action: #selector(INVSLoginViewController.resendPasswordAction(_:)), for: .touchUpInside)
+        
+        offlineButton.setAttributedTitle(NSAttributedString.init(string: "Acesso sem Login", attributes: underlineAttributes), for: .normal)
+        offlineButton.addTarget(self, action: #selector(INVSLoginViewController.offlineAction(_:)), for: .touchUpInside)
     }
     
     @objc func loginAction(_ sender: UIButton) {
@@ -138,6 +199,23 @@ class INVSLoginViewController: INVSPresentBaseViewController {
         signUpViewController.modalPresentationStyle = .overCurrentContext
         signUpViewController.view.backgroundColor = .clear
         present(signUpViewController, animated: true)
+    }
+    
+    @objc func rememberAction(_ sender: UISwitch) {
+        
+    }
+    
+    @objc func offlineAction(_ sender: UIButton) {
+        let offlineViewController = INVSOfflineViewController()
+        offlineViewController.setup(withHeight: 140, andWidth: 300, andCornerRadius: 8, andContentViewColor: .white)
+        offlineViewController.view.frame = view.bounds
+        offlineViewController.modalPresentationStyle = .overCurrentContext
+        offlineViewController.view.backgroundColor = .clear
+        present(offlineViewController, animated: true, completion: nil)
+        offlineViewController.confirmCallback = { (button) -> () in
+            self.router?.routeToSimulator()
+        }
+        
     }
     
     @objc func resendPasswordAction(_ sender: UIButton) {
@@ -176,7 +254,7 @@ extension INVSLoginViewController: INVSFloatingTextFieldDelegate {
 }
 
 extension INVSLoginViewController: INVSLoginViewControllerProtocol {
-    func displaySignInSuccess(withUser user: User) {
+    func displaySignInSuccess() {
         self.hideLoading()
         self.loginButton.isEnabled = true
         self.router?.routeToSimulator()
@@ -191,7 +269,9 @@ extension INVSLoginViewController: INVSLoginViewControllerProtocol {
     func displayOkAction(withTextField textField: INVSFloatingTextField, andShouldResign shouldResign: Bool) {
         textField.floatingTextField.becomeFirstResponder()
         if shouldResign {
-            //interactor?.simulationProjection()
+            showLoading()
+            loginButton.isEnabled = false
+            interactor?.logIn()
             view.endEditing(shouldResign)
         }
     }
@@ -207,13 +287,17 @@ extension INVSLoginViewController: INVSCodeView {
         view.sendSubviewToBack(animationView)
         view.addSubview(titleLabel)
         view.addSubview(textFieldStackView)
+        view.addSubview(rememberStackView)
         view.addSubview(resendPasswordButton)
+        view.addSubview(offlineButton)
         view.addSubview(buttonStackView)
         view.translatesAutoresizingMaskIntoConstraints = false
         textFieldStackView.translatesAutoresizingMaskIntoConstraints = false
         animationView.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        rememberStackView.translatesAutoresizingMaskIntoConstraints = false
         resendPasswordButton.translatesAutoresizingMaskIntoConstraints = false
+        offlineButton.translatesAutoresizingMaskIntoConstraints = false
         buttonStackView.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -239,16 +323,29 @@ extension INVSLoginViewController: INVSCodeView {
             ])
         
         NSLayoutConstraint.activate([
+            rememberStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,constant: -30),
+            rememberStackView.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor,constant: 8),
+            rememberStackView.heightAnchor.constraint(equalToConstant: 30)
+            ])
+        
+        NSLayoutConstraint.activate([
             resendPasswordButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant: 16),
             resendPasswordButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,constant: -16),
-            resendPasswordButton.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor,constant: 16),
-            resendPasswordButton.heightAnchor.constraint(equalToConstant: 50)
+            resendPasswordButton.topAnchor.constraint(equalTo: rememberStackView.bottomAnchor,constant: 8),
+            resendPasswordButton.heightAnchor.constraint(equalToConstant: 30)
+            ])
+        
+        NSLayoutConstraint.activate([
+            offlineButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant: 16),
+            offlineButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,constant: -16),
+            offlineButton.topAnchor.constraint(equalTo: resendPasswordButton.bottomAnchor,constant: 8),
+            offlineButton.heightAnchor.constraint(equalToConstant: 30)
             ])
         
         NSLayoutConstraint.activate([
             buttonStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant: 16),
             buttonStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,constant: -16),
-            buttonStackView.topAnchor.constraint(equalTo: resendPasswordButton.bottomAnchor,constant: 16),
+            buttonStackView.topAnchor.constraint(equalTo: offlineButton.bottomAnchor,constant: 16),
             buttonStackView.heightAnchor.constraint(equalToConstant: 50)
             ])
         self.view.layoutIfNeeded()

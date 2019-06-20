@@ -33,9 +33,9 @@ class INVSSignUpInteractor: INVSSignUpInteractorProtocol {
     }
     
     func signUp() {
-        worker.signUp(withTextFields: allTextFields, successCompletionHandler: { (email, title, message, shouldHideAutomatically, popupType) in
-            self.email = email
-            self.presenter?.presentSuccessSignUp(withEmail: email, title: title, message: message, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType)
+        worker.signUp(withTextFields: allTextFields, successCompletionHandler: { (user, title, message, shouldHideAutomatically, popupType) in
+            self.email = user.email
+            self.presenter?.presentSuccessSignUp(withEmail: user.email, title: title, message: message, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType)
         }, errorCompletionHandler: { (title, message, shouldHideAutomatically, popupType) in
             self.presenter?.presentErrorSignUp(titleError: title, messageError: message, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType)
         })

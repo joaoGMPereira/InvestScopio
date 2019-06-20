@@ -16,10 +16,10 @@ class INVSSimulatedListInteractor: NSObject,INVSSimulatedListInteractorProtocol 
     var presenter: INVSSimulatedListPresenterProtocol?
     var simulatorModel = INVSSimulatorModel()
     var worker: INVSSimulatedListWorkerProtocol = INVSSimulatedListWorker()
-    var callService: Bool = INVSSession.session.callService
+    var callService: ServiceType = INVSSession.session.callService
     func simulationProjection() {
         INVSKeyChainWrapper.clear()
-        if callService {
+        if callService == .heroku {
             worker.simulationProjection(with: simulatorModel, successCompletionHandler: { (simulatedValues) in
                 self.presenter?.presentResultSimulationProjection(withSimulatorModel: self.simulatorModel, simulatedValues: simulatedValues)
             }) { (message, shouldHideAutomatically, popupType) in

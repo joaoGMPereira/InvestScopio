@@ -17,23 +17,18 @@ protocol INVSSimulatedListWorkerProtocol {
 
 class INVSSimulatedListWorker: NSObject,INVSSimulatedListWorkerProtocol {
     func simulationProjection(with simulatorModel: INVSSimulatorModel, successCompletionHandler: @escaping (SuccessSimulatedHandler), errorCompletionHandler: @escaping (ErrorSimulatedHandler)) {
-        let headers = ["Content-Type": "application/json"]
-        INVSConector.connector.request(withURL: INVSConector.getURL(withRoute: "simulation/values"), method: .post, parameters: simulatorModel, headers: headers) { (response) in
-            guard let responseData = response.data else {
+        guard let headers = ["Content-Type": "application/json", "Authorization": INVSSession.session.user?.access?.accessToken] as? HTTPHeaders else {
+            errorCompletionHandler(INVSConstants.SimulationErrors.defaultMessageError.rawValue, true,.error)
+            return
+        }
+        INVSConector.connector.request(withURL: INVSConector.getURL(withRoute: "/simulation/values"), method: .post, parameters: simulatorModel, class: [INVSSimulatedValueModel].self, headers: headers, successCompletion: { (decodable) in
+            guard let simulatedValues = decodable as? [INVSSimulatedValueModel] else {
                 errorCompletionHandler(INVSConstants.SimulationErrors.defaultMessageError.rawValue, true,.error)
                 return
             }
-            do {
-                let decoder = JSONDecoder()
-                let simulatedValues = try decoder.decode([INVSSimulatedValueModel].self, from: responseData)
-                print(simulatedValues)
-                successCompletionHandler(simulatedValues)
-            } catch let error {
-                print(error.localizedDescription)
-                errorCompletionHandler(INVSConstants.SimulationErrors.defaultMessageError.rawValue, true,.error)
-            }
+            successCompletionHandler(simulatedValues)
+        }) { (error) in
+            errorCompletionHandler(INVSConstants.SimulationErrors.defaultMessageError.rawValue, true,.error)
         }
-    }
-    
-
+}
 }

@@ -29,8 +29,9 @@ class INVSLoginInteractor: INVSLoginInteractorProtocol {
         presenter?.presentToolbarAction(withPreviousTextField: textField, allTextFields: allTextFields, typeOfAction: type)
     }
     func logIn() {
-        worker.login(withTextFields: allTextFields, successCompletionHandler: { (user) in
-            self.presenter?.presentSuccessSignIn(user: user)
+        worker.login(withTextFields: allTextFields, successCompletionHandler: { (userResponse) in
+            INVSSession.session.user = userResponse
+            self.presenter?.presentSuccessSignIn()
         }, errorCompletionHandler: { (title, message, shouldHideAutomatically, popupType) in
             self.presenter?.presentErrorSignIn(titleError: title, messageError: message, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType)
         })

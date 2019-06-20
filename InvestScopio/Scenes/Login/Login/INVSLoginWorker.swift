@@ -12,8 +12,9 @@
 
 import UIKit
 import Firebase
+
 typealias PopMessageLoginInfo = (title: String, message: String)
-typealias SuccessLoginHandler = (User) -> ()
+typealias SuccessLoginHandler = (INVSUserModel) -> ()
 typealias ErrorLoginHandler = (_ titleError:String,_ messageError:String, _ shouldHideAutomatically:Bool, _ popupType:INVSPopupMessageType) ->()
 
 protocol INVSLoginWorkerProtocol {
@@ -27,6 +28,7 @@ class INVSLoginWorker: NSObject,INVSLoginWorkerProtocol {
             return
         }
         if let email = textFields.filter({$0.typeTextField == .email}).first?.floatingTextField.text?.lowercased(), let password = textFields.filter({$0.typeTextField == .password}).first?.floatingTextField.text {
+            
             Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
                 guard let user = result?.user else {
                     if let error = error {
@@ -38,11 +40,32 @@ class INVSLoginWorker: NSObject,INVSLoginWorkerProtocol {
                     errorCompletionHandler(INVSFloatingTextFieldType.defaultTitle(), INVSFloatingTextFieldType.defaultMessage(), true, .error)
                     return
                 }
-                successCompletionHandler(user)
+                let userFirebaseModel = INVSUserModel.init(email: user.email ?? "", uid: user.uid)
+                self.signInInvestScopio(user: userFirebaseModel, successLoginHandler: { (userAPI) in
+                    successCompletionHandler(userAPI)
+                }, errorCompletionHandler: { (title, message, shouldHideAutomatically, popupType) in
+                    errorCompletionHandler(title, message, shouldHideAutomatically, popupType)
+                })
                 return
             }
         }
     }
+    
+    func signInInvestScopio(user: INVSUserModel, successLoginHandler: @escaping(SuccessLoginHandler), errorCompletionHandler:@escaping(ErrorLoginHandler)) {
+        let headers = ["Content-Type": "application/json"]
+        
+        let userRequest = INVSUserRequest(email: user.email, password: user.uid)
+        INVSConector.connector.request(withURL: INVSConector.getURL(withRoute: "/account/sign-in"), method: .post, parameters: userRequest, class: INVSAccessModel.self, headers: headers, successCompletion: { (decodable) in
+            var userResponse = user
+            let access = decodable as? INVSAccessModel
+            userResponse.access = access
+            successLoginHandler(userResponse)
+        }) { (error) in
+            errorCompletionHandler(INVSFloatingTextFieldType.defaultTitle(), INVSFloatingTextFieldType.defaultMessage(), true, .error)
+        }
+        
+    }
+    
     private func check(withTextFields textFields:[INVSFloatingTextField]) -> PopMessageLoginInfo? {
         if let emailTextField = textFields.filter({$0.typeTextField == .email}).first {
             if emailTextField.floatingTextField.text?.isValidEmail() == false {
