@@ -19,6 +19,7 @@ typealias ErrorLoginHandler = (_ titleError:String,_ messageError:String, _ shou
 
 protocol INVSLoginWorkerProtocol {
     func login(withTextFields textFields: [INVSFloatingTextField], successCompletionHandler: @escaping(SuccessLoginHandler), errorCompletionHandler:@escaping(ErrorLoginHandler))
+    func loggedUser(withEmail email: String, security: String, successCompletionHandler: @escaping(SuccessLoginHandler), errorCompletionHandler:@escaping(ErrorLoginHandler))
 }
 
 class INVSLoginWorker: NSObject,INVSLoginWorkerProtocol {
@@ -37,7 +38,7 @@ class INVSLoginWorker: NSObject,INVSLoginWorkerProtocol {
                             return
                         }
                     }
-                    errorCompletionHandler(INVSFloatingTextFieldType.defaultTitle(), INVSFloatingTextFieldType.defaultMessage(), true, .error)
+                    errorCompletionHandler(INVSFloatingTextFieldType.defaultErrorTitle(), INVSFloatingTextFieldType.defaultErrorMessage(), true, .error)
                     return
                 }
                 let userFirebaseModel = INVSUserModel.init(email: user.email ?? "", uid: user.uid)
@@ -51,17 +52,29 @@ class INVSLoginWorker: NSObject,INVSLoginWorkerProtocol {
         }
     }
     
+    func loggedUser(withEmail email: String, security: String, successCompletionHandler: @escaping (SuccessLoginHandler), errorCompletionHandler: @escaping (ErrorLoginHandler)) {
+        let userRememberLoggedModel = INVSUserModel(email: email, uid: security)
+        signInInvestScopio(user: userRememberLoggedModel, successLoginHandler: { (userAPI) in
+            successCompletionHandler(userAPI)
+        }, errorCompletionHandler: { (title, message, shouldHideAutomatically, popupType) in
+            errorCompletionHandler(title, message, shouldHideAutomatically, popupType)
+        })
+    }
+    
     func signInInvestScopio(user: INVSUserModel, successLoginHandler: @escaping(SuccessLoginHandler), errorCompletionHandler:@escaping(ErrorLoginHandler)) {
         let headers = ["Content-Type": "application/json"]
         
         let userRequest = INVSUserRequest(email: user.email, password: user.uid)
-        INVSConector.connector.request(withURL: INVSConector.getURL(withRoute: "/account/sign-in"), method: .post, parameters: userRequest, class: INVSAccessModel.self, headers: headers, successCompletion: { (decodable) in
+        
+        INVSConector.connector.request(withURL: INVSConector.getURL(withRoute: "/account/sign-in"), method: .post, parameters: userRequest, responseClass: INVSAccessModel.self, headers: headers, shouldRetry: true, successCompletion: { (decodable) in
+            
             var userResponse = user
-            let access = decodable as? INVSAccessModel
-            userResponse.access = access
+            if let access = decodable as? INVSAccessModel {
+                userResponse.access = access
+            }
             successLoginHandler(userResponse)
         }) { (error) in
-            errorCompletionHandler(INVSFloatingTextFieldType.defaultTitle(), INVSFloatingTextFieldType.defaultMessage(), true, .error)
+            errorCompletionHandler(INVSFloatingTextFieldType.defaultErrorTitle(), error.reason, true, .error)
         }
         
     }

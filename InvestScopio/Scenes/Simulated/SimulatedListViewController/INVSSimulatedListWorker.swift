@@ -21,7 +21,7 @@ class INVSSimulatedListWorker: NSObject,INVSSimulatedListWorkerProtocol {
             errorCompletionHandler(INVSConstants.SimulationErrors.defaultMessageError.rawValue, true,.error)
             return
         }
-        INVSConector.connector.request(withURL: INVSConector.getURL(withRoute: "/simulation/values"), method: .post, parameters: simulatorModel, class: [INVSSimulatedValueModel].self, headers: headers, successCompletion: { (decodable) in
+        INVSConector.connector.request(withURL: INVSConector.getURL(withRoute: "/simulation/values"), method: .post, parameters: simulatorModel, responseClass: [INVSSimulatedValueModel].self, headers: headers, successCompletion: { (decodable) in
             guard let simulatedValues = decodable as? [INVSSimulatedValueModel] else {
                 errorCompletionHandler(INVSConstants.SimulationErrors.defaultMessageError.rawValue, true,.error)
                 return

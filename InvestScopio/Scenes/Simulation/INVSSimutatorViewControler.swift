@@ -56,6 +56,7 @@ public class INVSSimutatorViewControler: UIViewController {
         mockInfo()
         setupUI()
         setLeftBarButton()
+        setRightBarButton()
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
@@ -109,6 +110,28 @@ public class INVSSimutatorViewControler: UIViewController {
         let currHeight = menuBarItem.customView?.heightAnchor.constraint(equalToConstant: 24)
         currHeight?.isActive = true
         self.navigationItem.leftBarButtonItem = menuBarItem
+    }
+    
+    func setRightBarButton() {
+        
+        let exitButton = UIButton(frame: .zero)
+        exitButton.setImage(UIImage(named: "exitAppIconWhite"), for: .normal)
+        exitButton.imageView?.contentMode = .scaleAspectFit
+        exitButton.tintColor = .INVSDefault()
+        exitButton.addTarget(self, action: #selector(logOut(_:)), for: .touchUpInside)
+        
+        
+        let rightItem = UIBarButtonItem(customView: exitButton)
+        let currWidth = rightItem.customView?.widthAnchor.constraint(equalToConstant: 24)
+        currWidth?.isActive = true
+        let currHeight = rightItem.customView?.heightAnchor.constraint(equalToConstant: 24)
+        currHeight?.isActive = true
+        self.navigationItem.rightBarButtonItem = rightItem
+    }
+    
+    @objc func logOut(_ sender: Any) {
+        INVSKeyChainWrapper.clear()
+        router.routeToLogin()
     }
     
     @objc func willEnterForeground() {

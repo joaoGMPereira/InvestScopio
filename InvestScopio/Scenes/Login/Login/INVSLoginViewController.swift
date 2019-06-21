@@ -27,8 +27,7 @@ class INVSLoginViewController: INVSPresentBaseViewController {
     var passwordTextField = INVSFloatingTextField(frame: .zero)
     var titleLabel = UILabel(frame: .zero)
     var buttonStackView = UIStackView(frame: .zero)
-    var loginButton = UIButton(frame: .zero)
-    private var loginButtonLayer: CAGradientLayer!
+    var loginButton = INVSLoadingButton(frame: .zero)
     var createButton = UIButton(frame: .zero)
     var resendPasswordButton = UIButton(frame: .zero)
     var offlineButton = UIButton(frame: .zero)
@@ -101,11 +100,11 @@ class INVSLoginViewController: INVSPresentBaseViewController {
     
     override func viewDidLayoutSubviews() {
         titleTopConstraint.constant = animationView.center.y
-        self.loginButtonLayer = CAShapeLayer.addGradientLayer(withGradientLayer: self.loginButtonLayer, inView: self.loginButton, withColorsArr: UIColor.INVSGradientColors(),withRoundedCorner: 25)
-        self.createButton.layer.cornerRadius = 25
-        self.createButton.layer.borderColor = UIColor.INVSDefault().cgColor
-        self.createButton.layer.borderWidth = 2
-        self.view.layoutIfNeeded()
+        createButton.layer.cornerRadius = 25
+        createButton.layer.borderColor = UIColor.INVSDefault().cgColor
+        createButton.layer.borderWidth = 2
+        loginButton.setupFillGradient(title: "Login")
+        view.layoutIfNeeded()
         super.viewDidLayoutSubviews()
     }
     
@@ -155,7 +154,6 @@ class INVSLoginViewController: INVSPresentBaseViewController {
         rememberLabel.font = .INVSFontDefaultBold()
         rememberSwitch.tintColor = .INVSDefault()
         rememberSwitch.onTintColor = .INVSDefault()
-        rememberSwitch.addTarget(self, action: #selector(rememberAction), for: .valueChanged)
         rememberStackView.addArrangedSubview(rememberLabel)
         rememberStackView.addArrangedSubview(rememberSwitch)
         rememberStackView.axis = .horizontal
@@ -164,14 +162,16 @@ class INVSLoginViewController: INVSPresentBaseViewController {
     }
     
     func setupButtons() {
-        buttonStackView.addArrangedSubview(loginButton)
         buttonStackView.addArrangedSubview(createButton)
+        buttonStackView.addArrangedSubview(loginButton)
         buttonStackView.axis = .horizontal
         buttonStackView.spacing = 8
         buttonStackView.distribution = .fillEqually
-        loginButton.setTitle("Login", for: .normal)
-        loginButton.setTitleColor(.white, for: .normal)
-        loginButton.addTarget(self, action: #selector(INVSLoginViewController.loginAction(_:)), for: .touchUpInside)
+        view.layoutIfNeeded()
+        loginButton.buttonAction = {(button) -> () in
+            self.loginButton.showLoading()
+            self.interactor?.logIn(rememberMe: self.rememberSwitch.isOn)
+        }
         createButton.setTitle("Cadastrar", for: .normal)
         createButton.setTitleColor(.INVSDefault(), for: .normal)
         createButton.addTarget(self, action: #selector(INVSLoginViewController.createAction(_:)), for: .touchUpInside)
@@ -186,12 +186,6 @@ class INVSLoginViewController: INVSPresentBaseViewController {
         offlineButton.addTarget(self, action: #selector(INVSLoginViewController.offlineAction(_:)), for: .touchUpInside)
     }
     
-    @objc func loginAction(_ sender: UIButton) {
-        showLoading()
-        loginButton.isEnabled = false
-        interactor?.logIn()
-    }
-    
     @objc func createAction(_ sender: UIButton) {
        let signUpViewController = INVSSignUpViewController.init(nibName: INVSSignUpViewController.toString(), bundle: Bundle(for: INVSSignUpViewController.self))
         signUpViewController.delegate = self
@@ -199,10 +193,6 @@ class INVSLoginViewController: INVSPresentBaseViewController {
         signUpViewController.modalPresentationStyle = .overCurrentContext
         signUpViewController.view.backgroundColor = .clear
         present(signUpViewController, animated: true)
-    }
-    
-    @objc func rememberAction(_ sender: UISwitch) {
-        
     }
     
     @objc func offlineAction(_ sender: UIButton) {
@@ -255,23 +245,21 @@ extension INVSLoginViewController: INVSFloatingTextFieldDelegate {
 
 extension INVSLoginViewController: INVSLoginViewControllerProtocol {
     func displaySignInSuccess() {
-        self.hideLoading()
-        self.loginButton.isEnabled = true
+        self.loginButton.hideLoading()
+    
         self.router?.routeToSimulator()
     }
     
     func displaySignInError(titleError: String, messageError: String, shouldHideAutomatically: Bool, popupType: INVSPopupMessageType) {
-        self.hideLoading()
-        self.loginButton.isEnabled = true
+        self.loginButton.hideLoading()
         popupMessage?.show(withTextMessage: messageError, title: titleError, popupType: popupType, shouldHideAutomatically: shouldHideAutomatically)
     }
     
     func displayOkAction(withTextField textField: INVSFloatingTextField, andShouldResign shouldResign: Bool) {
         textField.floatingTextField.becomeFirstResponder()
         if shouldResign {
-            showLoading()
-            loginButton.isEnabled = false
-            interactor?.logIn()
+            loginButton.showLoading()
+            interactor?.logIn(rememberMe: rememberSwitch.isOn)
             view.endEditing(shouldResign)
         }
     }

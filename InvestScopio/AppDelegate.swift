@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import CryptoSwift
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -20,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let startViewController = INVSStartViewController.init(nibName: INVSStartViewController.toString(), bundle: Bundle(for: INVSStartViewController.self))
         window!.rootViewController = startViewController
         window!.makeKeyAndVisible()
+        
         // Override point for customization after application launch.
         return true
     }

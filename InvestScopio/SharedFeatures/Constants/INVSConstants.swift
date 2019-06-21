@@ -37,6 +37,11 @@ enum INVSConstants {
         case defaultMessageError = "Não foi possível fazer o cálculo da simulação."
     }
     
+    enum LoginKeyChainConstants: String {
+        case lastLoginEmail = "INVSRememberMeEmail"
+        case lastLoginSecurity = "INVSRememberMeSecurity"
+    }
+    
     enum OfflineViewControler: String {
         case title = "Atenção"
         case message = "Sem efetuar o login você não terá\nacesso ao seu histórico de simulações."

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 protocol INVSStartInteractorProtocol {
+    func checkLoggedUser()
     func downloadMarketInfo()
 }
 
@@ -16,6 +17,27 @@ class INVSStartInteractor: NSObject, INVSStartInteractorProtocol {
     
     var presenter: INVSStartPresenterProtocol?
     var worker: INVSStartWorkerProtocol = INVSStartWorker()
+    var workerLogin: INVSLoginWorkerProtocol = INVSLoginWorker()
+    
+    func checkLoggedUser() {
+        let email = INVSKeyChainWrapper.retrieve(withKey: INVSConstants.LoginKeyChainConstants.lastLoginEmail.rawValue)
+        let security = INVSKeyChainWrapper.retrieve(withKey: INVSConstants.LoginKeyChainConstants.lastLoginSecurity.rawValue)
+        if let emailRetrived = email, let securityRetrived = security {
+            if let emailAES = INVSCrypto.decryptAES(withText: emailRetrived), let securityAES = INVSCrypto.decryptAES(withText: securityRetrived) {
+                workerLogin.loggedUser(withEmail: emailAES, security: securityAES, successCompletionHandler: { (userResponse) in
+                    INVSSession.session.user = userResponse
+                    self.presenter?.presentSuccessRememberedUserLogged()
+                }) { (title, message, shouldHideAutomatically, popupType) in
+                    INVSKeyChainWrapper.clear()
+                    self.presenter?.presentErrorRememberedUserLogged()
+                }
+            } else {
+                self.presenter?.presentErrorRememberedUserLogged()
+            }
+        } else {
+            self.presenter?.presentErrorRememberedUserLogged()
+        }
+    }
     
     func downloadMarketInfo() {
         worker.downloadMarketInfo(successCompletionHandler: { (market) in

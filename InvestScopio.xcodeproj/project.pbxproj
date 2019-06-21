@@ -204,6 +204,8 @@
 		4AFF3EE522BB2AD90056A167 /* InvestScopioProd-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C68AD2295796100EDC8C6 /* InvestScopioProd-Info.plist */; };
 		4AFF3EEA22BC00820056A167 /* GoogleServiceInfoProd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AFF3E6D22BB207E0056A167 /* GoogleServiceInfoProd.plist */; };
 		4AFF3EEB22BC00860056A167 /* GoogleServiceInfoDev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AFF3EE822BBFF470056A167 /* GoogleServiceInfoDev.plist */; };
+		4AFF3EED22BD185D0056A167 /* INVSRequestRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3EEC22BD185D0056A167 /* INVSRequestRetrier.swift */; };
+		4AFF3EEE22BD1A200056A167 /* INVSRequestRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3EEC22BD185D0056A167 /* INVSRequestRetrier.swift */; };
 		7B3FD35CB4A8123DF3A4C9AC /* Pods_InvestScopioDev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCDDCC66DBBAD541616D7347 /* Pods_InvestScopioDev.framework */; };
 		B8729DDDA4477CDE936382D1 /* Pods_InvestScopio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F1B6B0D7ADAA56EF7CEAAF4 /* Pods_InvestScopio.framework */; };
 /* End PBXBuildFile section */
@@ -313,6 +315,7 @@
 		4AFF3EDE22BB23F10056A167 /* InvestScopioDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InvestScopioDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AFF3EE322BB28580056A167 /* InvestScopioDev-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "InvestScopioDev-Info.plist"; sourceTree = "<group>"; };
 		4AFF3EE822BBFF470056A167 /* GoogleServiceInfoDev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GoogleServiceInfoDev.plist; sourceTree = "<group>"; };
+		4AFF3EEC22BD185D0056A167 /* INVSRequestRetrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSRequestRetrier.swift; sourceTree = "<group>"; };
 		96C9F1EA5800CB68A709EF1A /* Pods-InvestScopio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvestScopio.debug.xcconfig"; path = "Target Support Files/Pods-InvestScopio/Pods-InvestScopio.debug.xcconfig"; sourceTree = "<group>"; };
 		9F1B6B0D7ADAA56EF7CEAAF4 /* Pods_InvestScopio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InvestScopio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCDDCC66DBBAD541616D7347 /* Pods_InvestScopioDev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InvestScopioDev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -396,6 +399,7 @@
 		4A0FFEA822B472DC00D6A33A /* LoadingButton */ = {
 			isa = PBXGroup;
 			children = (
+				4A0FFEA622B4729100D6A33A /* INVSLoadingButton.swift */,
 			);
 			path = LoadingButton;
 			sourceTree = "<group>";
@@ -454,6 +458,7 @@
 			isa = PBXGroup;
 			children = (
 				4A12631622A7DC7A006133E5 /* INVSConector.swift */,
+				4AFF3EEC22BD185D0056A167 /* INVSRequestRetrier.swift */,
 			);
 			path = Connector;
 			sourceTree = "<group>";
@@ -670,7 +675,6 @@
 				4A4C68A22295796100EDC8C6 /* GradientView */,
 				4A4C68A42295796100EDC8C6 /* KeychainWrapper */,
 				4A4C68A62295796100EDC8C6 /* CodeView */,
-				4A0FFEA622B4729100D6A33A /* INVSLoadingButton.swift */,
 			);
 			path = SharedFeatures;
 			sourceTree = "<group>";
@@ -1147,6 +1151,7 @@
 				4A4C68BD2295796200EDC8C6 /* INVSSimulatorPresenter.swift in Sources */,
 				4A0FFE9622B3051F00D6A33A /* INVSSignUpWorker.swift in Sources */,
 				4A27AA9B229F745C00C45CC5 /* INVSStartPresenter.swift in Sources */,
+				4AFF3EED22BD185D0056A167 /* INVSRequestRetrier.swift in Sources */,
 				4A107A9C22A31E8300A7D8D1 /* UILabel+INVSExtension.swift in Sources */,
 				4A4C68C62295796200EDC8C6 /* INVSFloatingTextFieldValueType.swift in Sources */,
 				4A4C68CB2295796200EDC8C6 /* UIImage+INVSExtension.swift in Sources */,
@@ -1236,6 +1241,7 @@
 				4AFF3EA622BB23F10056A167 /* INVSSimulatorPresenter.swift in Sources */,
 				4AFF3EA722BB23F10056A167 /* INVSSignUpWorker.swift in Sources */,
 				4AFF3EA822BB23F10056A167 /* INVSStartPresenter.swift in Sources */,
+				4AFF3EEE22BD1A200056A167 /* INVSRequestRetrier.swift in Sources */,
 				4AFF3EA922BB23F10056A167 /* UILabel+INVSExtension.swift in Sources */,
 				4AFF3EAA22BB23F10056A167 /* INVSFloatingTextFieldValueType.swift in Sources */,
 				4AFF3EAB22BB23F10056A167 /* UIImage+INVSExtension.swift in Sources */,

@@ -11,11 +11,14 @@ import Foundation
 protocol INVSStartPresenterProtocol {
     func presentMarketInfo(withMarket market: MarketModel)
     func presentMarketError(withMarketError error: String)
+    func presentSuccessRememberedUserLogged()
+    func presentErrorRememberedUserLogged()
+
     
 }
 
 class INVSStartPresenter: NSObject,INVSStartPresenterProtocol {
-    
+   
     weak var controller: INVSStartViewController?
     
     func presentMarketInfo(withMarket market: MarketModel) {
@@ -26,6 +29,16 @@ class INVSStartPresenter: NSObject,INVSStartPresenterProtocol {
     func presentMarketError(withMarketError error: String) {
         self.controller?.displayMarketInfoError(witMarketError: error)
     }
+    
+    func presentSuccessRememberedUserLogged() {
+        self.controller?.displaySuccessRememberedUserLogged()
+    }
+    
+    func presentErrorRememberedUserLogged() {
+        self.controller?.displayErrorRememberedUserLogged()
+    }
+    
+    
     
     
 }

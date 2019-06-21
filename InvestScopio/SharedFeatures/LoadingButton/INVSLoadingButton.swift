@@ -15,7 +15,9 @@ class INVSLoadingButton: UIView {
     let loadingView = AnimationView()
     var buttonAction: ((_ button: UIButton) -> ())?
     var buttonTitle = ""
+    var loadingJson = ""
     func setupFill(withColor color: UIColor = UIColor.INVSDefault(), title: String, andRounded isRounded: Bool = true) {
+        loadingJson = "animatedLoadingWhite"
         setupView()
         buttonTitle = title
         button.setTitle(buttonTitle, for: .normal)
@@ -25,6 +27,7 @@ class INVSLoadingButton: UIView {
     }
     
     func setupFillGradient(withColor colors: [CGColor] = UIColor.INVSGradientColors(), title: String, andRounded isRounded: Bool = true) {
+        loadingJson = "animatedLoadingWhite"
         setupView()
         buttonTitle = title
         button.setTitle(buttonTitle, for: .normal)
@@ -33,6 +36,7 @@ class INVSLoadingButton: UIView {
     }
     
     func setupBorded(withColor color: UIColor = UIColor.INVSDefault(), title: String, andRounded isRounded: Bool = true) {
+        loadingJson = "animatedLoadingPurple"
         setupView()
         buttonTitle = title
         button.setTitle(buttonTitle, for: .normal)
@@ -91,7 +95,7 @@ extension INVSLoadingButton: INVSCodeView {
     
     func setupAdditionalConfiguration() {
         self.layoutIfNeeded()
-        let loadAnimation = Animation.named("animatedLoadingPurple")
+        let loadAnimation = Animation.named(loadingJson)
         loadingView.animation = loadAnimation
         loadingView.contentMode = .scaleAspectFit
         loadingView.animationSpeed = 1.0

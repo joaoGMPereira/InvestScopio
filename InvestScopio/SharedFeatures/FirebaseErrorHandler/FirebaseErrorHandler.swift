@@ -21,19 +21,19 @@ enum FireBaseErrorHandler: Int {
     func getFirebaseError() -> FirebaseError {
         switch self {
         case .codeUserDisabled:
-            return FirebaseError(titleError: INVSFloatingTextFieldType.defaultTitle(), messageError: "Email desativado!", shouldHideAutomatically: true, popupType:.error)
+            return FirebaseError(titleError: INVSFloatingTextFieldType.defaultErrorTitle(), messageError: "Email desativado!", shouldHideAutomatically: true, popupType:.error)
         case .codeEmailAlreadyInUse:
-            return FirebaseError(titleError: INVSFloatingTextFieldType.defaultTitle(), messageError: "Este email já está sendo usado por outro usuário!", shouldHideAutomatically: true, popupType:.error)
+            return FirebaseError(titleError: INVSFloatingTextFieldType.defaultErrorTitle(), messageError: "Este email já está sendo usado por outro usuário!", shouldHideAutomatically: true, popupType:.error)
         case .codeInvalidEmail:
-            return FirebaseError(titleError: INVSFloatingTextFieldType.defaultTitle(), messageError: "Email inválido!", shouldHideAutomatically: true, popupType:.error)
+            return FirebaseError(titleError: INVSFloatingTextFieldType.defaultErrorTitle(), messageError: "Email inválido!", shouldHideAutomatically: true, popupType:.error)
         case .codeWrongPassword:
-            return FirebaseError(titleError: INVSFloatingTextFieldType.defaultTitle(), messageError: "Senha incorreta!", shouldHideAutomatically: true, popupType:.error)
+            return FirebaseError(titleError: INVSFloatingTextFieldType.defaultErrorTitle(), messageError: "Senha incorreta!", shouldHideAutomatically: true, popupType:.error)
         case .codeUserNotFound:
-            return FirebaseError(titleError: INVSFloatingTextFieldType.defaultTitle(), messageError: "Email não cadastrado!", shouldHideAutomatically: true, popupType:.error)
+            return FirebaseError(titleError: INVSFloatingTextFieldType.defaultErrorTitle(), messageError: "Email não cadastrado!", shouldHideAutomatically: true, popupType:.error)
         case .codeInvalidUserToken:
-            return FirebaseError(titleError: INVSFloatingTextFieldType.defaultTitle(), messageError: "Tente logar novamente em breve!", shouldHideAutomatically: true, popupType:.error)
+            return FirebaseError(titleError: INVSFloatingTextFieldType.defaultErrorTitle(), messageError: "Tente logar novamente em breve!", shouldHideAutomatically: true, popupType:.error)
         case .codeWeakPassword:
-            return FirebaseError(titleError: INVSFloatingTextFieldType.defaultTitle(), messageError: "Sua senha deve ter pelo menos 6 caracteres!", shouldHideAutomatically: true, popupType:.error)
+            return FirebaseError(titleError: INVSFloatingTextFieldType.defaultErrorTitle(), messageError: "Sua senha deve ter pelo menos 6 caracteres!", shouldHideAutomatically: true, popupType:.error)
         }
         
     }

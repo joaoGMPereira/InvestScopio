@@ -111,11 +111,11 @@ enum INVSFloatingTextFieldType: Int {
         return INVSFloatingTextFieldType(rawValue: rawValue + 1)
     }
     
-    static func defaultTitle() -> String {
+    static func defaultErrorTitle() -> String {
         return "Ops..\n"
     }
     
-    static func defaultMessage() -> String {
+    static func defaultErrorMessage() -> String {
         return "Ocorreu algum problema,\nIremos resolver em breve."
     }
 }

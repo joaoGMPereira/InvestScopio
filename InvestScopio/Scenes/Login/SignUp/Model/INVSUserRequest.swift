@@ -14,12 +14,8 @@ struct INVSUserRequest: JSONAble {
     
     init(email: String, password: String) {
         self.email = email
-        do {
-            let aes = try AES(key: "investscopiosect", iv: "sectscopioinvest") // aes128
-            let cryptoUid = try aes.encrypt(Array(password.utf8))
-            self.password = cryptoUid.toHexString()
-        } catch {
-            print("Decrypt Error")
+        if let passwordAES = INVSCrypto.encryptAES(withText: password) {
+            self.password = passwordAES
         }
     }
 }

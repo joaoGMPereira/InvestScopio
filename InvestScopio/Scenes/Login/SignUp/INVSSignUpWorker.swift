@@ -39,13 +39,13 @@ class INVSSignUpWorker: NSObject,INVSSignUpWorkerProtocol {
                          return
                         }
                     }
-                    errorCompletionHandler(INVSFloatingTextFieldType.defaultTitle(), INVSFloatingTextFieldType.defaultMessage(), true, .error)
+                    errorCompletionHandler(INVSFloatingTextFieldType.defaultErrorTitle(), INVSFloatingTextFieldType.defaultErrorMessage(), true, .error)
                     return
                 }
                 
                 //Signup API
                 guard let uid = result?.user.uid else {
-                    errorCompletionHandler(INVSFloatingTextFieldType.defaultTitle(), INVSFloatingTextFieldType.defaultMessage(), true, .error)
+                    errorCompletionHandler(INVSFloatingTextFieldType.defaultErrorTitle(), INVSFloatingTextFieldType.defaultErrorMessage(), true, .error)
                     return
                 }
                 var userCreated = INVSUserModel(email: email, uid: uid)
@@ -63,11 +63,11 @@ class INVSSignUpWorker: NSObject,INVSSignUpWorkerProtocol {
         
         let userRequest = INVSUserRequest(email: user.email, password: user.uid)
         
-        INVSConector.connector.request(withURL: INVSConector.getURL(withRoute: "/account/sign-up"), method: .post, parameters: userRequest, class: INVSSignUpModel.self, headers: headers, successCompletion: { (decodable) in
+        INVSConector.connector.request(withURL: INVSConector.getURL(withRoute: "/account/sign-up"), method: .post, parameters: userRequest, responseClass: INVSSignUpModel.self, headers: headers, shouldRetry: true, successCompletion: { (decodable) in
             let signUpModel = decodable as? INVSSignUpModel
             signUpInvestScopioHandler(signUpModel?.syncronized ?? false, "Finalizado.\n", "Seu cadastro foi realizado com sucesso!", true, .alert)
         }) { (error) in
-            signUpInvestScopioHandler(false, "Finalizado.\n", "Seu cadastro foi realizado com sucesso!", true, .alert)
+            signUpInvestScopioHandler(false, "Finalizado.\n", error.reason, true, .alert)
         }
         
     }

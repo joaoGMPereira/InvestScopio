@@ -14,6 +14,8 @@ import Hero
 protocol INVSStartViewControllerProtocol: class {
     func displayMarketInfo(withMarketInfo market: MarketModel)
     func displayMarketInfoError(witMarketError error: String)
+    func displaySuccessRememberedUserLogged()
+    func displayErrorRememberedUserLogged()
 }
 
 class INVSStartViewController: UIViewController {
@@ -31,6 +33,7 @@ class INVSStartViewController: UIViewController {
         presenter.controller = self
         interactor.presenter = presenter
         animateLaunchGif()
+        interactor.checkLoggedUser()
     }
     
     func animateLaunchGif() {
@@ -44,14 +47,13 @@ class INVSStartViewController: UIViewController {
         animatedLogoView.animation = starAnimation
         animatedLogoView.contentMode = .scaleAspectFit
         animatedLogoView.animationSpeed = 1.0
-        animatedLogoView.loopMode = .playOnce
-        animatedLogoView.play { (finished) in
-            self.router.routeToLogin()
-        }
+        animatedLogoView.loopMode = .loop
+        animatedLogoView.play()
     }
 }
 
 extension INVSStartViewController: INVSStartViewControllerProtocol {
+    
     func displayMarketInfo(withMarketInfo market: MarketModel) {
         
     }
@@ -60,5 +62,17 @@ extension INVSStartViewController: INVSStartViewControllerProtocol {
         self.router.routeToSimulator()
     }
     
+    func displaySuccessRememberedUserLogged() {
+        animatedLogoView.stop()
+        self.router.routeToSimulator()
+    }
+    
+    func displayErrorRememberedUserLogged() {
+        
+        animatedLogoView.loopMode = .playOnce
+        animatedLogoView.play{ (finished) in
+            self.router.routeToLogin()
+        }
+    }
     
 }

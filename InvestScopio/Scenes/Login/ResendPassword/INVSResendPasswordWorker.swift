@@ -30,7 +30,7 @@ class INVSResendPasswordWorker: NSObject,INVSResendPasswordWorkerProtocol {
         if let email = textFields.filter({$0.typeTextField == .email}).first?.floatingTextField.text?.lowercased() {
             Auth.auth().sendPasswordReset(withEmail: email) { (error) in
                 if error != nil {
-                    errorCompletionHandler(INVSFloatingTextFieldType.defaultTitle(), INVSFloatingTextFieldType.defaultMessage(), true, .error)
+                    errorCompletionHandler(INVSFloatingTextFieldType.defaultErrorTitle(), INVSFloatingTextFieldType.defaultErrorMessage(), true, .error)
                     return
                 }
                 successCompletionHandler(email, "Atenção.\n", "Foi enviado um email para seu email cadastrado para que você crie uma nova senha.", true, .alert)
