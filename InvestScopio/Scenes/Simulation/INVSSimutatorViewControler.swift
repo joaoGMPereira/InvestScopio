@@ -133,8 +133,8 @@ public class INVSSimutatorViewControler: UIViewController {
     @objc func logOut(_ sender: Any) {
         let logoutViewController = INVSAlertViewController()
         logoutViewController.setup(withHeight: 140, andWidth: 300, andCornerRadius: 8, andContentViewColor: .white)
-        logoutViewController.titleAlert = INVSConstants.OfflineViewController.title.rawValue
-        logoutViewController.messageAlert = INVSConstants.OfflineViewController.message.rawValue
+        logoutViewController.titleAlert = INVSConstants.LogoutAlertViewController.title.rawValue
+        logoutViewController.messageAlert = INVSConstants.LogoutAlertViewController.message.rawValue
         logoutViewController.view.frame = view.bounds
         logoutViewController.modalPresentationStyle = .overCurrentContext
         logoutViewController.view.backgroundColor = .clear

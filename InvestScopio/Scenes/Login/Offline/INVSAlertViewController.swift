@@ -88,10 +88,10 @@ extension INVSAlertViewController: INVSCodeView {
         messageLabel.numberOfLines = 0
         messageLabel.font = .INVSFontDefault()
         messageLabel.text = messageAlert
-        buttonStackView.addArrangedSubview(confirmButton)
         if hasCancelButton {
             buttonStackView.addArrangedSubview(cancelButton)
         }
+        buttonStackView.addArrangedSubview(confirmButton)
         buttonStackView.axis = .horizontal
         buttonStackView.spacing = 8
         buttonStackView.distribution = .fillEqually

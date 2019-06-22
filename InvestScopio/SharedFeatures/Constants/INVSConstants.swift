@@ -54,6 +54,11 @@ enum INVSConstants {
         case titleSettings = "Vá para Ajustes"
     }
     
+    enum LogoutAlertViewController: String {
+        case title = "Atenção"
+        case message = "Deseja sair da sua conta?"
+    }
+    
     enum EnableBiometricViewController: String {
         case title = "Atenção"
         static func biometricMessageType() -> String {
@@ -61,13 +66,13 @@ enum INVSConstants {
             let _ = authContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
             switch(authContext.biometryType) {
             case .none:
-                return"Para sua segurança, é preciso que voce autentique seu Touch ID/Face ID para que o app faça seu acesso automáticamente, com isso habilite ele vá em: Ajustes -> (Touch ID/Face ID) & Código e cadastre sua(s) (biometrias/face)."
+                return "Para sua segurança, é preciso que voce autentique seu Touch ID/Face ID para que o app faça seu acesso automáticamente, com isso habilite ele vá em: Ajustes -> (Touch ID/Face ID) & Código e cadastre sua(s) (biometrias/face)."
             case .touchID:
                 return "Para sua segurança, é preciso que voce autentique seu Touch ID, quando entrar no app novamente, para que o app faço seu acesso automáticamente."
             case .faceID:
                 return "Para sua segurança, é preciso que voce autentique seu Face ID, quando entrar no app novamente, para que o app faço seu acesso automáticamente."
             @unknown default:
-                return ""
+                return "Para sua segurança, é preciso que voce autentique seu Touch ID/Face ID para que o app faça seu acesso automáticamente, com isso habilite ele vá em: Ajustes -> (Touch ID/Face ID) & Código e cadastre sua(s) (biometrias/face)."
             }
         }
     }
