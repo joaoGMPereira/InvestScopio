@@ -15,7 +15,7 @@ protocol INVSSimulatorInteractorProtocol {
     func showInfo(withSender sender:UIView)
     func checkToolbarAction(withTextField textField:INVSFloatingTextField, typeOfAction type: INVSKeyboardToolbarButton)
     func clear()
-    
+    func logout()
     var allTextFields: [INVSFloatingTextField] { get }
 }
 
@@ -23,6 +23,7 @@ class INVSSimulatorInteractor: NSObject,INVSSimulatorInteractorProtocol {
     
     var presenter: INVSSimulatorPresenterProtocol?
     var worker: INVSSimulatorWorkerProtocol = INVSSimulatorWorker()
+    let loginWorker: INVSLoginWorkerProtocol = INVSLoginWorker()
     var allTextFields = [INVSFloatingTextField]()
     
     func check(withTextFields textFields: [INVSFloatingTextField]) {
@@ -64,6 +65,12 @@ class INVSSimulatorInteractor: NSObject,INVSSimulatorInteractorProtocol {
         INVSKeyChainWrapper.clear()
         for textField in allTextFields {
             textField.clear()
+        }
+    }
+    
+    func logout() {
+        loginWorker.logout {
+            self.presenter?.presentLogout()
         }
     }
     

@@ -19,7 +19,7 @@ class INVSSimulatedListInteractor: NSObject,INVSSimulatedListInteractorProtocol 
     var callService: ServiceType = INVSSession.session.callService
     func simulationProjection() {
         INVSKeyChainWrapper.clear()
-        if callService == .heroku {
+        if callService == .heroku || callService == .localHost {
             worker.simulationProjection(with: simulatorModel, successCompletionHandler: { (simulatedValues) in
                 self.presenter?.presentResultSimulationProjection(withSimulatorModel: self.simulatorModel, simulatedValues: simulatedValues)
             }) { (message, shouldHideAutomatically, popupType) in

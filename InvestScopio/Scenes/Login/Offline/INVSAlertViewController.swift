@@ -8,14 +8,18 @@
 
 import UIKit
 
-class INVSOfflineViewController: INVSBlurViewController {
+class INVSAlertViewController: INVSBlurViewController {
     var titleLabel = UILabel(frame: .zero)
     var messageLabel = UILabel(frame: .zero)
     var buttonStackView = UIStackView(frame: .zero)
-    var confirmButton = UIButton(frame: .zero)
+    var confirmButton = INVSLoadingButton(frame: .zero)
     var cancelButton = UIButton(frame: .zero)
     var confirmCallback: ((_ button: UIButton) -> ())?
+    var cancelCallback: ((_ button: UIButton) -> ())?
     
+    var titleAlert: String = ""
+    var messageAlert: String = ""
+    var hasCancelButton: Bool = true
     init() {
         super.init(nibName: INVSBlurViewController.toString(), bundle: Bundle(for: INVSBlurViewController.self))
     }
@@ -29,21 +33,20 @@ class INVSOfflineViewController: INVSBlurViewController {
         setupView()
     }
 
-    @objc func confirmAction(_ sender: UIButton) {
-        dismiss(animated: true) {
-            if let confirmCallback = self.confirmCallback {
-                confirmCallback(sender)
-            }
+    @objc func cancelAction(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+        if let cancelCallback = self.cancelCallback {
+            cancelCallback(sender)
         }
     }
     
-    @objc func cancelAction(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+    override func viewDidLayoutSubviews() {
+        confirmButton.setupBorded(title: "Confirmar")
     }
 
 }
 
-extension INVSOfflineViewController: INVSCodeView {
+extension INVSAlertViewController: INVSCodeView {
     func buildViewHierarchy() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(messageLabel)
@@ -79,29 +82,30 @@ extension INVSOfflineViewController: INVSCodeView {
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 1
         titleLabel.font = .INVSFontBigBold()
-        titleLabel.text = INVSConstants.OfflineViewControler.title.rawValue
+        titleLabel.text = titleAlert
         messageLabel.textColor = .INVSBlack()
         messageLabel.textAlignment = .center
         messageLabel.numberOfLines = 0
         messageLabel.font = .INVSFontDefault()
-        messageLabel.text = INVSConstants.OfflineViewControler.message.rawValue
+        messageLabel.text = messageAlert
         buttonStackView.addArrangedSubview(confirmButton)
-        buttonStackView.addArrangedSubview(cancelButton)
+        if hasCancelButton {
+            buttonStackView.addArrangedSubview(cancelButton)
+        }
         buttonStackView.axis = .horizontal
         buttonStackView.spacing = 8
         buttonStackView.distribution = .fillEqually
-        confirmButton.layer.cornerRadius = 20
-        confirmButton.layer.borderColor = UIColor.INVSDefault().cgColor
-        confirmButton.layer.borderWidth = 2
-        confirmButton.setTitle("Confirmar", for: .normal)
-        confirmButton.setTitleColor(.INVSDefault(), for: .normal)
-        confirmButton.addTarget(self, action: #selector(INVSOfflineViewController.confirmAction(_:)), for: .touchUpInside)
+        confirmButton.buttonAction = {(button) -> () in
+            if let confirmCallback = self.confirmCallback {
+                confirmCallback(button)
+            }
+        }
         cancelButton.layer.cornerRadius = 20
         cancelButton.layer.borderColor = UIColor.INVSRed().cgColor
         cancelButton.layer.borderWidth = 2
         cancelButton.setTitle("Cancelar", for: .normal)
         cancelButton.setTitleColor(.INVSRed(), for: .normal)
-        cancelButton.addTarget(self, action: #selector(INVSOfflineViewController.cancelAction(_:)), for: .touchUpInside)
+        cancelButton.addTarget(self, action: #selector(INVSAlertViewController.cancelAction(_:)), for: .touchUpInside)
     }
     
     

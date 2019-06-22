@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import LocalAuthentication
 
 enum INVSConstants {
     enum SimulatorKeyChainConstants: String {
@@ -38,13 +39,37 @@ enum INVSConstants {
     }
     
     enum LoginKeyChainConstants: String {
+        case hasEnableBiometricAuthentication = "INVSHasEnableBiometricAuthentication"
         case lastLoginEmail = "INVSRememberMeEmail"
         case lastLoginSecurity = "INVSRememberMeSecurity"
     }
     
-    enum OfflineViewControler: String {
+    enum OfflineViewController: String {
         case title = "Atenção"
         case message = "Sem efetuar o login você não terá\nacesso ao seu histórico de simulações."
+    }
+    
+    enum StartAlertViewController: String {
+        case title = "Atenção"
+        case titleSettings = "Vá para Ajustes"
+    }
+    
+    enum EnableBiometricViewController: String {
+        case title = "Atenção"
+        static func biometricMessageType() -> String {
+            let authContext = LAContext()
+            let _ = authContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
+            switch(authContext.biometryType) {
+            case .none:
+                return"Para sua segurança, é preciso que voce autentique seu Touch ID/Face ID para que o app faça seu acesso automáticamente, com isso habilite ele vá em: Ajustes -> (Touch ID/Face ID) & Código e cadastre sua(s) (biometrias/face)."
+            case .touchID:
+                return "Para sua segurança, é preciso que voce autentique seu Touch ID, quando entrar no app novamente, para que o app faço seu acesso automáticamente."
+            case .faceID:
+                return "Para sua segurança, é preciso que voce autentique seu Face ID, quando entrar no app novamente, para que o app faço seu acesso automáticamente."
+            @unknown default:
+                return ""
+            }
+        }
     }
 
 }

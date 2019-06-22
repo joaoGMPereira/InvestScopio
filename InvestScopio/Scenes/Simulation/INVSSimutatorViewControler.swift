@@ -19,6 +19,7 @@ protocol INVSSimutatorViewControlerProtocol: class {
     func displayInfo(withMessage message: String, title: String, shouldHideAutomatically: Bool)
     func displayOkAction(withTextField textField:INVSFloatingTextField, andShouldResign shouldResign: Bool)
     func displayCancelAction()
+    func displayLogout()
 }
 
 public class INVSSimutatorViewControler: UIViewController {
@@ -130,8 +131,18 @@ public class INVSSimutatorViewControler: UIViewController {
     }
     
     @objc func logOut(_ sender: Any) {
-        INVSKeyChainWrapper.clear()
-        router.routeToLogin()
+        let logoutViewController = INVSAlertViewController()
+        logoutViewController.setup(withHeight: 140, andWidth: 300, andCornerRadius: 8, andContentViewColor: .white)
+        logoutViewController.titleAlert = INVSConstants.OfflineViewController.title.rawValue
+        logoutViewController.messageAlert = INVSConstants.OfflineViewController.message.rawValue
+        logoutViewController.view.frame = view.bounds
+        logoutViewController.modalPresentationStyle = .overCurrentContext
+        logoutViewController.view.backgroundColor = .clear
+        present(logoutViewController, animated: true, completion: nil)
+        logoutViewController.confirmCallback = { (button) -> () in
+            logoutViewController.confirmButton.showLoading()
+            self.interactor?.logout()
+        }
     }
     
     @objc func willEnterForeground() {
@@ -269,6 +280,11 @@ extension INVSSimutatorViewControler: INVSSimutatorViewControlerProtocol {
     
     func displayInfo(withMessage message: String,title: String, shouldHideAutomatically: Bool) {
         popupMessage?.show(withTextMessage: message, title: title,popupType: .alert, shouldHideAutomatically: shouldHideAutomatically)
+    }
+    
+    func displayLogout() {
+        INVSKeyChainWrapper.clear()
+        self.router.routeToLogin()
     }
 
 }

@@ -31,19 +31,9 @@ class INVSLoginInteractor: INVSLoginInteractorProtocol {
     func logIn(rememberMe: Bool) {
         worker.login(withTextFields: allTextFields, successCompletionHandler: { (userResponse) in
             INVSSession.session.user = userResponse
-            self.presenter?.presentSuccessSignIn()
-            self.rememberUser(withRememberMe:rememberMe, email: userResponse.email, security: userResponse.uid)
+            self.presenter?.presentSuccessSignIn(withEmail: userResponse.email, security: userResponse.uid)
         }, errorCompletionHandler: { (title, message, shouldHideAutomatically, popupType) in
             self.presenter?.presentErrorSignIn(titleError: title, messageError: message, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType)
         })
-    }
-    
-    private func rememberUser(withRememberMe rememberMe: Bool, email: String, security: String) {
-        if rememberMe {
-            if let emailAES = INVSCrypto.encryptAES(withText: email), let securityAES = INVSCrypto.encryptAES(withText: security) {
-                INVSKeyChainWrapper.save(withValue: emailAES, andKey: INVSConstants.LoginKeyChainConstants.lastLoginEmail.rawValue)
-                INVSKeyChainWrapper.save(withValue: securityAES, andKey: INVSConstants.LoginKeyChainConstants.lastLoginSecurity.rawValue)
-            }
-        }
     }
 }

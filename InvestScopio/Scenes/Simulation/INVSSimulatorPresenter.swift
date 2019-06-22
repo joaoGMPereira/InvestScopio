@@ -15,6 +15,7 @@ protocol INVSSimulatorPresenterProtocol {
     func presentError(with messageError:String, shouldHideAutomatically:Bool, popupType: INVSPopupMessageType, sender: UIView?)
     func presentInfo(sender: UIView)
     func presentToolbarAction(withPreviousTextField textField:INVSFloatingTextField, allTextFields textFields:[INVSFloatingTextField], typeOfAction type: INVSKeyboardToolbarButton)
+    func presentLogout()
 }
 
 class INVSSimulatorPresenter: NSObject,INVSSimulatorPresenterProtocol {
@@ -52,5 +53,9 @@ class INVSSimulatorPresenter: NSObject,INVSSimulatorPresenterProtocol {
         if let textField = sender as? INVSFloatingTextField {
             controller?.displayInfo(withMessage: textField.typeTextField?.getMessageInfo() ?? "", title: textField.typeTextField?.getTitleMessageInfo() ?? "", shouldHideAutomatically: false)
         }
+    }
+    
+    func presentLogout() {
+        controller?.displayLogout()
     }
 }

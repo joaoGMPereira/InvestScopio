@@ -13,6 +13,8 @@ protocol INVSStartPresenterProtocol {
     func presentMarketError(withMarketError error: String)
     func presentSuccessRememberedUserLogged()
     func presentErrorRememberedUserLogged()
+    func presentErrorRememberedUserLogged(withError error: AuthenticationError)
+    func presentErrorGoToSettingsRememberedUserLogged(withMessage message: String)
 
     
 }
@@ -38,7 +40,12 @@ class INVSStartPresenter: NSObject,INVSStartPresenterProtocol {
         self.controller?.displayErrorRememberedUserLogged()
     }
     
+    func presentErrorRememberedUserLogged(withError error: AuthenticationError) {
+        self.controller?.displayErrorRememberedUserLogged(withError: error)
+    }
     
-    
-    
+    func presentErrorGoToSettingsRememberedUserLogged(withMessage message: String) {
+        self.controller?.displayErrorGoToSettingsRememberedUserLogged(withMessage: message)
+    }
+
 }

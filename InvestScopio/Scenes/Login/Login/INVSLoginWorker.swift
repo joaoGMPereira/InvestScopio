@@ -12,14 +12,19 @@
 
 import UIKit
 import Firebase
+import Alamofire
 
 typealias PopMessageLoginInfo = (title: String, message: String)
 typealias SuccessLoginHandler = (INVSUserModel) -> ()
 typealias ErrorLoginHandler = (_ titleError:String,_ messageError:String, _ shouldHideAutomatically:Bool, _ popupType:INVSPopupMessageType) ->()
 
+typealias LogoutHandler = () ->()
+
+
 protocol INVSLoginWorkerProtocol {
     func login(withTextFields textFields: [INVSFloatingTextField], successCompletionHandler: @escaping(SuccessLoginHandler), errorCompletionHandler:@escaping(ErrorLoginHandler))
     func loggedUser(withEmail email: String, security: String, successCompletionHandler: @escaping(SuccessLoginHandler), errorCompletionHandler:@escaping(ErrorLoginHandler))
+    func logout(logoutHandler: @escaping(LogoutHandler))
 }
 
 class INVSLoginWorker: NSObject,INVSLoginWorkerProtocol {
@@ -42,7 +47,7 @@ class INVSLoginWorker: NSObject,INVSLoginWorkerProtocol {
                     return
                 }
                 let userFirebaseModel = INVSUserModel.init(email: user.email ?? "", uid: user.uid)
-                self.signInInvestScopio(user: userFirebaseModel, successLoginHandler: { (userAPI) in
+                self.signInInvestScopioAPI(user: userFirebaseModel, successLoginHandler: { (userAPI) in
                     successCompletionHandler(userAPI)
                 }, errorCompletionHandler: { (title, message, shouldHideAutomatically, popupType) in
                     errorCompletionHandler(title, message, shouldHideAutomatically, popupType)
@@ -54,14 +59,14 @@ class INVSLoginWorker: NSObject,INVSLoginWorkerProtocol {
     
     func loggedUser(withEmail email: String, security: String, successCompletionHandler: @escaping (SuccessLoginHandler), errorCompletionHandler: @escaping (ErrorLoginHandler)) {
         let userRememberLoggedModel = INVSUserModel(email: email, uid: security)
-        signInInvestScopio(user: userRememberLoggedModel, successLoginHandler: { (userAPI) in
+        signInInvestScopioAPI(user: userRememberLoggedModel, successLoginHandler: { (userAPI) in
             successCompletionHandler(userAPI)
         }, errorCompletionHandler: { (title, message, shouldHideAutomatically, popupType) in
             errorCompletionHandler(title, message, shouldHideAutomatically, popupType)
         })
     }
     
-    func signInInvestScopio(user: INVSUserModel, successLoginHandler: @escaping(SuccessLoginHandler), errorCompletionHandler:@escaping(ErrorLoginHandler)) {
+    func signInInvestScopioAPI(user: INVSUserModel, successLoginHandler: @escaping(SuccessLoginHandler), errorCompletionHandler:@escaping(ErrorLoginHandler)) {
         let headers = ["Content-Type": "application/json"]
         
         let userRequest = INVSUserRequest(email: user.email, password: user.uid)
@@ -91,5 +96,21 @@ class INVSLoginWorker: NSObject,INVSLoginWorkerProtocol {
             emailTextField.hasError = false
         }
         return nil
+    }
+    
+    
+    func logout(logoutHandler: @escaping(LogoutHandler)) {
+        guard let headers = ["Content-Type": "application/json", "Authorization": INVSSession.session.user?.access?.accessToken] as? HTTPHeaders else {
+            logoutHandler()
+            return
+        }
+        INVSConector.connector.request(withURL: INVSConector.getURL(withRoute: "/account/logout"), method: .post, responseClass: INVSLogoutResponse.self, headers: headers, successCompletion: { (decodable) in
+            if let logout = decodable as? INVSLogoutResponse {
+                print(logout)
+            }
+            logoutHandler()
+        }) { (error) in
+            logoutHandler()
+        }
     }
 }

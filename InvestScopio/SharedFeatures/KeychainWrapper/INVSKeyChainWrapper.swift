@@ -43,8 +43,24 @@ class INVSKeyChainWrapper: NSObject {
     }
     
     @discardableResult static func retrieveDouble(withKey key: String) -> Double? {
-        let retrievedInt: Double? = INVSKeyChainWrapper.instance.double(forKey: key)
-        return retrievedInt
+        let retrievedDouble: Double? = INVSKeyChainWrapper.instance.double(forKey: key)
+        return retrievedDouble
+    }
+    
+    @discardableResult static func saveBool(withValue value:Bool, andKey key: String) -> Bool {
+        let saveSuccessful: Bool = INVSKeyChainWrapper.instance.set(value, forKey: key)
+        return saveSuccessful
+    }
+    
+    @discardableResult static func updateBool(withValue value:Bool, andKey key: String) -> Bool {
+        let _: Bool = INVSKeyChainWrapper.instance.removeObject(forKey: key)
+        let updateSuccessful: Bool = INVSKeyChainWrapper.instance.set(value, forKey: key)
+        return updateSuccessful
+    }
+    
+    @discardableResult static func retrieveBool(withKey key: String) -> Bool? {
+        let retrievedBool: Bool? = INVSKeyChainWrapper.instance.bool(forKey: key)
+        return retrievedBool
     }
     
     //MARK: Remove any kind of object

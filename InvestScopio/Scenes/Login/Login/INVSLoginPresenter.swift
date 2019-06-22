@@ -15,7 +15,7 @@ import Firebase
 protocol INVSLoginPresenterProtocol
 {
   func presentToolbarAction(withPreviousTextField textField: INVSFloatingTextField, allTextFields textFields: [INVSFloatingTextField], typeOfAction type: INVSKeyboardToolbarButton)
-    func presentSuccessSignIn()
+    func presentSuccessSignIn(withEmail email: String, security: String)
     func presentErrorSignIn(titleError:String, messageError:String, shouldHideAutomatically:Bool, popupType:INVSPopupMessageType)
 }
 
@@ -35,9 +35,10 @@ class INVSLoginPresenter: INVSLoginPresenterProtocol
         }
     }
     
-    func presentSuccessSignIn() {
-        viewController?.displaySignInSuccess()
+    func presentSuccessSignIn(withEmail email: String, security: String) {
+        viewController?.displaySignInSuccess(withEmail: email, security: security)
     }
+    
     func presentErrorSignIn(titleError:String, messageError:String, shouldHideAutomatically:Bool, popupType:INVSPopupMessageType) {
         viewController?.displaySignInError(titleError: titleError, messageError: messageError, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType)
         

@@ -16,6 +16,8 @@ protocol INVSStartViewControllerProtocol: class {
     func displayMarketInfoError(witMarketError error: String)
     func displaySuccessRememberedUserLogged()
     func displayErrorRememberedUserLogged()
+    func displayErrorRememberedUserLogged(withError error: AuthenticationError)
+    func displayErrorGoToSettingsRememberedUserLogged(withMessage message: String)
 }
 
 class INVSStartViewController: UIViewController {
@@ -68,11 +70,58 @@ extension INVSStartViewController: INVSStartViewControllerProtocol {
     }
     
     func displayErrorRememberedUserLogged() {
-        
         animatedLogoView.loopMode = .playOnce
         animatedLogoView.play{ (finished) in
             self.router.routeToLogin()
         }
     }
     
+    func displayErrorRememberedUserLogged(withError error: AuthenticationError) {
+        let errorViewController = INVSAlertViewController()
+        errorViewController.setup(withHeight: 250, andWidth: 300, andCornerRadius: 8, andContentViewColor: .white)
+        errorViewController.titleAlert = INVSConstants.StartAlertViewController.title.rawValue
+        errorViewController.messageAlert = error.message()
+        errorViewController.hasCancelButton = false
+        errorViewController.view.frame = view.bounds
+        errorViewController.modalPresentationStyle = .overCurrentContext
+        errorViewController.view.backgroundColor = .clear
+        present(errorViewController, animated: true, completion: nil)
+        errorViewController.confirmCallback = { (button) -> () in
+            self.dismiss(animated: true) {
+                error.shouldRetry() == true ? self.interactor?.checkLoggedUser() : self.goToLogin()
+            }
+        }
+    }
+    
+    func displayErrorGoToSettingsRememberedUserLogged(withMessage message: String) {
+        let errorViewController = INVSAlertViewController()
+        errorViewController.setup(withHeight: 250, andWidth: 300, andCornerRadius: 8, andContentViewColor: .white)
+        errorViewController.titleAlert = INVSConstants.StartAlertViewController.titleSettings.rawValue
+        errorViewController.messageAlert = message
+        errorViewController.hasCancelButton = false
+        errorViewController.view.frame = view.bounds
+        errorViewController.modalPresentationStyle = .overCurrentContext
+        errorViewController.view.backgroundColor = .clear
+        present(errorViewController, animated: true, completion: nil)
+        errorViewController.confirmCallback = { (button) -> () in
+            self.dismiss(animated: true) {
+                let url = URL(string: "App-Prefs:root=TOUCHID_PASSCODE")
+                if UIApplication.shared.canOpenURL(url!) {
+                    UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+                }
+                self.goToLogin()
+            }
+        }
+        
+        errorViewController.cancelCallback = { (button) -> () in
+            self.goToLogin()
+        }
+    }
+    
+    func goToLogin() {
+        self.animatedLogoView.loopMode = .playOnce
+        self.animatedLogoView.play{ (finished) in
+            self.router.routeToLogin()
+        }
+    }
 }

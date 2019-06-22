@@ -40,6 +40,4 @@ struct INVSSimulatorModel: JSONAble {
             goalIncreaseRescue = goalIncreaseRescue.INVSrounded()
         }
     }
-    
-    var userID: Int? = INVSSession.session.user?.access?.userID
 }

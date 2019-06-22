@@ -17,7 +17,7 @@ import Firebase
 protocol INVSLoginViewControllerProtocol: class {
     func displayOkAction(withTextField textField: INVSFloatingTextField, andShouldResign shouldResign: Bool)
     func displayCancelAction()
-    func displaySignInSuccess()
+    func displaySignInSuccess(withEmail email: String, security: String)
     func displaySignInError(titleError:String, messageError:String, shouldHideAutomatically:Bool, popupType:INVSPopupMessageType)
 }
 
@@ -104,6 +104,7 @@ class INVSLoginViewController: INVSPresentBaseViewController {
         createButton.layer.borderColor = UIColor.INVSDefault().cgColor
         createButton.layer.borderWidth = 2
         loginButton.setupFillGradient(title: "Login")
+        checkUserSavedEmail()
         view.layoutIfNeeded()
         super.viewDidLayoutSubviews()
     }
@@ -122,6 +123,13 @@ class INVSLoginViewController: INVSPresentBaseViewController {
             Auth.auth().removeStateDidChangeListener(handle)
         }
     }
+    
+    func checkUserSavedEmail() {
+        if let email = INVSKeyChainWrapper.retrieve(withKey: INVSConstants.LoginKeyChainConstants.lastLoginEmail.rawValue), let emailDecrypted = INVSCrypto.decryptAES(withText: email) {
+            emailTextField.textFieldTitle = emailDecrypted
+        }
+    }
+    
     
     //MARK: SetupUI
     func setupUI() {
@@ -168,10 +176,6 @@ class INVSLoginViewController: INVSPresentBaseViewController {
         buttonStackView.spacing = 8
         buttonStackView.distribution = .fillEqually
         view.layoutIfNeeded()
-        loginButton.buttonAction = {(button) -> () in
-            self.loginButton.showLoading()
-            self.interactor?.logIn(rememberMe: self.rememberSwitch.isOn)
-        }
         createButton.setTitle("Cadastrar", for: .normal)
         createButton.setTitleColor(.INVSDefault(), for: .normal)
         createButton.addTarget(self, action: #selector(INVSLoginViewController.createAction(_:)), for: .touchUpInside)
@@ -184,6 +188,14 @@ class INVSLoginViewController: INVSPresentBaseViewController {
         
         offlineButton.setAttributedTitle(NSAttributedString.init(string: "Acesso sem Login", attributes: underlineAttributes), for: .normal)
         offlineButton.addTarget(self, action: #selector(INVSLoginViewController.offlineAction(_:)), for: .touchUpInside)
+        loginAction()
+    }
+    
+    func loginAction() {
+        loginButton.buttonAction = {(button) -> () in
+            self.loginButton.showLoading()
+            self.interactor?.logIn(rememberMe: self.rememberSwitch.isOn)
+        }
     }
     
     @objc func createAction(_ sender: UIButton) {
@@ -196,14 +208,18 @@ class INVSLoginViewController: INVSPresentBaseViewController {
     }
     
     @objc func offlineAction(_ sender: UIButton) {
-        let offlineViewController = INVSOfflineViewController()
+        let offlineViewController = INVSAlertViewController()
         offlineViewController.setup(withHeight: 140, andWidth: 300, andCornerRadius: 8, andContentViewColor: .white)
+        offlineViewController.titleAlert = INVSConstants.OfflineViewController.title.rawValue
+        offlineViewController.messageAlert = INVSConstants.OfflineViewController.message.rawValue
         offlineViewController.view.frame = view.bounds
         offlineViewController.modalPresentationStyle = .overCurrentContext
         offlineViewController.view.backgroundColor = .clear
         present(offlineViewController, animated: true, completion: nil)
         offlineViewController.confirmCallback = { (button) -> () in
-            self.router?.routeToSimulator()
+            self.dismiss(animated: true) {
+                self.router?.routeToSimulator()
+            }
         }
         
     }
@@ -230,7 +246,7 @@ extension INVSLoginViewController: INVSSignUpViewControllerDelegate {
 
 extension INVSLoginViewController: INVSFloatingTextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: INVSFloatingTextField) {
-//        self.popupMessage?.hide()
+        self.popupMessage?.hide()
     }
     func toolbarAction(_ textField: INVSFloatingTextField, typeOfAction type: INVSKeyboardToolbarButton) {
         interactor?.checkToolbarAction(withTextField: textField, typeOfAction: type)
@@ -238,16 +254,51 @@ extension INVSLoginViewController: INVSFloatingTextFieldDelegate {
     
     func infoButtonAction(_ textField: INVSFloatingTextField) {
         view.endEditing(true)
-//        interactor?.showInfo(withSender: textField)
     }
     
 }
 
 extension INVSLoginViewController: INVSLoginViewControllerProtocol {
-    func displaySignInSuccess() {
-        self.loginButton.hideLoading()
+    func displaySignInSuccess(withEmail email: String, security: String) {
+        enableBiometric(withEmail: email, security: security)
+    }
     
-        self.router?.routeToSimulator()
+    func enableBiometric(withEmail email: String, security: String) {
+        if self.rememberSwitch.isOn {
+            let biometricViewController = INVSAlertViewController()
+            biometricViewController.setup(withHeight: 200, andWidth: 300, andCornerRadius: 8, andContentViewColor: .white)
+            biometricViewController.titleAlert = INVSConstants.EnableBiometricViewController.title.rawValue
+            biometricViewController.messageAlert = INVSConstants.EnableBiometricViewController.biometricMessageType()
+            biometricViewController.view.frame = view.bounds
+            biometricViewController.modalPresentationStyle = .overCurrentContext
+            biometricViewController.view.backgroundColor = .clear
+            present(biometricViewController, animated: true, completion: nil)
+            biometricViewController.confirmCallback = { (button) -> () in
+                self.dismiss(animated: true) {
+                    self.rememberUser(withRememberMe: self.rememberSwitch.isOn, email: email, security: security)
+                    self.loginButton.hideLoading()
+                    self.router?.routeToSimulator()
+                }
+            }
+            biometricViewController.cancelCallback = { (button) -> () in
+                self.loginButton.hideLoading()
+                self.rememberSwitch.setOn(false, animated: true)
+            }
+        } else {
+            INVSKeyChainWrapper.clear()
+            self.loginButton.hideLoading()
+            self.router?.routeToSimulator()
+        }
+    }
+    
+    func rememberUser(withRememberMe rememberMe: Bool, email: String, security: String) {
+        if rememberMe {
+            INVSKeyChainWrapper.saveBool(withValue: rememberMe, andKey: INVSConstants.LoginKeyChainConstants.hasEnableBiometricAuthentication.rawValue)
+            if let emailAES = INVSCrypto.encryptAES(withText: email), let securityAES = INVSCrypto.encryptAES(withText: security) {
+                INVSKeyChainWrapper.save(withValue: emailAES, andKey: INVSConstants.LoginKeyChainConstants.lastLoginEmail.rawValue)
+                INVSKeyChainWrapper.save(withValue: securityAES, andKey: INVSConstants.LoginKeyChainConstants.lastLoginSecurity.rawValue)
+            }
+        }
     }
     
     func displaySignInError(titleError: String, messageError: String, shouldHideAutomatically: Bool, popupType: INVSPopupMessageType) {
