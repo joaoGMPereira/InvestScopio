@@ -19,20 +19,29 @@ class INVSStartInteractor: NSObject, INVSStartInteractorProtocol {
     var worker: INVSStartWorkerProtocol = INVSStartWorker()
     var workerLogin: INVSLoginWorkerProtocol = INVSLoginWorker()
     
-    func checkLoggedUser() {
-        let hasBiometricAuthenticationEnabled = INVSKeyChainWrapper.retrieveBool(withKey: INVSConstants.LoginKeyChainConstants.hasEnableBiometricAuthentication.rawValue)
-        if let hasBiometricAuthentication = hasBiometricAuthenticationEnabled, hasBiometricAuthentication == true {
-            showTouchId()
-        } else {
-            self.presenter?.presentErrorRememberedUserLogged()
-        }
-    }
-    
     func downloadMarketInfo() {
         worker.downloadMarketInfo(successCompletionHandler: { (market) in
             self.presenter?.presentMarketInfo(withMarket: market)
         }) { (error) in
             self.presenter?.presentMarketError(withMarketError: error)
+        }
+    }
+    
+    func checkLoggedUser() {
+        INVSBiometricsChallenge.checkLoggedUser(successChallenge: {
+            self.loginUserSaved()
+        }) { (challengeFailureType) in
+            switch challengeFailureType {
+            case .default:
+                self.presenter?.presentErrorRememberedUserLogged()
+                break
+            case .error(let error):
+                self.presenter?.presentErrorRememberedUserLogged(withError: error)
+                break
+            case .goSettings(let error):
+                self.presenter?.presentErrorGoToSettingsRememberedUserLogged(withMessage: error.message())
+                break
+            }
         }
     }
     
@@ -54,48 +63,6 @@ class INVSStartInteractor: NSObject, INVSStartInteractorProtocol {
             }
         } else {
             INVSKeyChainWrapper.clear()
-            self.presenter?.presentErrorRememberedUserLogged()
-        }
-    }
-    
-    func showTouchId() {
-        // start authentication
-        INVSBiometrics.authenticateWithBiometrics(reason: "", success: {
-            // authentication successful
-            self.loginUserSaved()
-        }, failure: { [weak self] (error) in
-            // do nothing on canceled
-            if error == .canceledByUser || error == .canceledBySystem || error == .fallback  {
-                self?.presenter?.presentErrorRememberedUserLogged()
-                return
-            }
-                // device does not support biometric (face id or touch id) authentication
-            else if error == .biometryNotAvailable {
-                self?.presenter?.presentErrorRememberedUserLogged(withError: error)
-            }
-                // No biometry enrolled in this device, ask user to register fingerprint or face
-            else if error == .biometryNotEnrolled {
-                self?.presenter?.presentErrorGoToSettingsRememberedUserLogged(withMessage: error.message())
-            }
-                // Biometry is locked out now, because there were too many failed attempts.
-                // Need to enter device passcode to unlock.
-            else if error == .biometryLockedout {
-                self?.showPasscodeAuthentication(message: error.message())
-            }
-                // show error on authentication failed
-            else {
-                self?.presenter?.presentErrorRememberedUserLogged(withError: AuthenticationError.failed)
-            }
-        })
-    }
-    
-    // show passcode authentication
-    func showPasscodeAuthentication(message: String) {
-        
-        INVSBiometrics.authenticateWithPasscode(reason: message, success: {
-            // passcode authentication success
-            self.loginUserSaved()
-        }) { (error) in
             self.presenter?.presentErrorRememberedUserLogged()
         }
     }

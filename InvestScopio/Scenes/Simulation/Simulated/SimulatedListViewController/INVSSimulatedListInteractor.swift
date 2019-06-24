@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 protocol INVSSimulatedListInteractorProtocol {
-    func simulationProjection()
+    func simulationProjection(withViewController viewController: UIViewController?)
 }
 
 class INVSSimulatedListInteractor: NSObject,INVSSimulatedListInteractorProtocol {
@@ -17,15 +17,15 @@ class INVSSimulatedListInteractor: NSObject,INVSSimulatedListInteractorProtocol 
     var simulatorModel = INVSSimulatorModel()
     var worker: INVSSimulatedListWorkerProtocol = INVSSimulatedListWorker()
     var callService: ServiceType = INVSSession.session.callService
-    func simulationProjection() {
-        INVSKeyChainWrapper.clear()
+    func simulationProjection(withViewController viewController: UIViewController?) {
         if callService == .heroku || callService == .localHost {
-            worker.simulationProjection(with: simulatorModel, successCompletionHandler: { (simulatedValues) in
+            worker.simulationProjection(with: simulatorModel, viewController: viewController, successCompletionHandler: { (simulatedValues) in
                 self.presenter?.presentResultSimulationProjection(withSimulatorModel: self.simulatorModel, simulatedValues: simulatedValues)
             }) { (message, shouldHideAutomatically, popupType) in
                 self.presenter?.presentErrorSimulationProjection(messageError: message, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType)
             }
         } else {
+            INVSKeyChainWrapper.clear()
             self.presenter?.presentSimulationProjection(simulatorModel: simulatorModel)
         }
     }

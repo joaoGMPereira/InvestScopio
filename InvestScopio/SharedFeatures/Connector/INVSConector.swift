@@ -8,30 +8,10 @@
 
 import Foundation
 import Alamofire
-typealias SuccessResponse = (Decodable) -> Void
-typealias ErrorResponse = (DefaultError) -> Void
-
-
-enum ConnectorError: Error {
-    case parseError
-    
-    static func checkErrorCode(_ connectorError: ConnectorError) -> DefaultError {
-        switch connectorError {
-        case .parseError:
-            return DefaultError.default()
-        }
-    }
-}
-
-struct DefaultError: Decodable {
-    var error: Bool = true
-    let reason: String
-    
-    static func `default`() -> DefaultError {
-        return DefaultError(error: true, reason: INVSFloatingTextFieldType.defaultErrorMessage())
-    }
-}
-
+typealias SuccessResponse = (Decodable) -> ()
+typealias SuccessVoidResponse = () -> ()
+typealias SuccessRefreshResponse = (_ shouldUpdateHeaders: Bool) -> ()
+typealias ErrorResponse = (DefaultError) -> ()
 
 final class INVSConector {
     
@@ -39,6 +19,7 @@ final class INVSConector {
     private init() { }
     
     static let connector = INVSConector()
+    let workerLogin: INVSLoginWorkerProtocol = INVSLoginWorker()
     
     static func getURL(withRoute route: String) -> URL? {
         var baseURL = URL(string: "\(INVSConstants.INVSServicesConstants.apiV1.rawValue)\(route)")
@@ -52,19 +33,31 @@ final class INVSConector {
         return getURL(withRoute: INVSConstants.INVSServicesConstants.version.rawValue)
     }
     
-    func request<T: Decodable>(withURL url: URL?, method: HTTPMethod = .get, parameters: JSONAble? = nil, responseClass: T.Type, headers: HTTPHeaders? = nil, shouldRetry: Bool = false, successCompletion: @escaping(SuccessResponse), errorCompletion: @escaping(ErrorResponse)) {
+    func request<T: Decodable>(withRoute route: ConnectorRoutes, method: HTTPMethod = .get, parameters: JSONAble? = nil, responseClass: T.Type, headers: HTTPHeaders? = nil, shouldRetry: Bool = false, lastViewController: UIViewController? = nil, successCompletion: @escaping(SuccessResponse), errorCompletion: @escaping(ErrorResponse)) {
         
-        guard let url = url else {
+        guard let url = route.getRoute() else {
             return
         }
         
-        requestBlock(withURL: url, method: method, parameters: parameters, responseClass: responseClass, headers: headers, successCompletion: { (decodable) in
-            successCompletion(decodable)
-        }) { (error) in
-            if shouldRetry && error.error {
-                self.request(withURL: url, method: method, parameters: parameters, responseClass: responseClass, headers: headers, shouldRetry: false, successCompletion: successCompletion, errorCompletion: errorCompletion)
-                return
+        refreshToken(withRoute: route, lastViewController: lastViewController, successCompletion: { (shouldUpdateHeaders) in
+            var headersUpdated = headers
+            if shouldUpdateHeaders {
+                guard let headersWithAccessToken = ["Content-Type": "application/json", "Authorization": INVSSession.session.user?.access?.accessToken] as? HTTPHeaders else {
+                    errorCompletion(DefaultError.default())
+                    return
+                }
+                headersUpdated = headersWithAccessToken
             }
+            self.requestBlock(withURL: url, method: method, parameters: parameters, responseClass: responseClass, headers: headersUpdated, successCompletion: { (decodable) in
+                successCompletion(decodable)
+            }) { (error) in
+                if shouldRetry && error.error {
+                    self.request(withRoute: route, method: method, parameters: parameters, responseClass: responseClass, headers: headers, shouldRetry: false, successCompletion: successCompletion, errorCompletion: errorCompletion)
+                    return
+                }
+                errorCompletion(error)
+            }
+        }) { (error) in
             errorCompletion(error)
         }
     }
@@ -111,4 +104,85 @@ final class INVSConector {
             }
         }
     }
+    
+    private func refreshToken(withRoute route:ConnectorRoutes, lastViewController: UIViewController? = nil, successCompletion: @escaping(SuccessRefreshResponse), errorCompletion: @escaping(ErrorResponse)) {
+        if route != .signup &&  route != .signin &&  route != .logout {
+            guard let url = ConnectorRoutes.refreshToken.getRoute() else {
+                errorCompletion(DefaultError.init(error: true, reason: "URL Inválida!"))
+                return
+            }
+            guard let refreshToken = INVSSession.session.user?.access?.refreshToken else {
+                errorCompletion(DefaultError.init(error: true, reason: "Refresh Token Inválido!"))
+                return
+            }
+            guard let headers = ["Content-Type": "application/json", "Authorization": INVSSession.session.user?.access?.accessToken] as? HTTPHeaders else {
+                errorCompletion(DefaultError.init(error: true, reason: "Access Token Inválido!"))
+                return
+            }
+            let refreshTokenRequest = INVSRefreshTokenRequest.init(refreshToken: refreshToken)
+            requestBlock(withURL: url, method: .post, parameters: refreshTokenRequest, responseClass: INVSAccessModel.self, headers: headers, successCompletion: { (decodable) in
+                let accessModel = decodable as? INVSAccessModel
+                INVSSession.session.user?.access = accessModel
+                successCompletion(true)
+            }) { (error) in
+                self.checkLoggedUser(lastViewController: lastViewController) {
+                    successCompletion(true)
+                }
+            }
+        } else {
+            successCompletion(false)
+        }
+    }
+    
+    
+    func checkLoggedUser(lastViewController: UIViewController? = nil, successCompletion: @escaping(SuccessVoidResponse)) {
+        let hasBiometricAuthenticationEnabled = INVSKeyChainWrapper.retrieveBool(withKey: INVSConstants.LoginKeyChainConstants.hasEnableBiometricAuthentication.rawValue)
+        guard let hasBiometricAuthentication = hasBiometricAuthenticationEnabled, hasBiometricAuthentication == true else {
+            INVSConnectorHelpers.presentErrorRememberedUserLogged(lastViewController: lastViewController, error: AuthenticationError.sessionExpired) {}
+            return
+        }
+        INVSBiometricsChallenge.checkLoggedUser(reason: "Sessão expirada!\nAutentique novamente para continuar." ,successChallenge: {
+            self.loginUserSaved {
+                successCompletion()
+            }
+        }) { (challengeFailureType) in
+            switch challengeFailureType {
+            case .default:
+                INVSConnectorHelpers.presentErrorRememberedUserLogged(lastViewController: lastViewController)
+                break
+            case .error(let error):
+                INVSConnectorHelpers.presentErrorRememberedUserLogged(lastViewController: lastViewController, error: error, successCompletion: {
+                    successCompletion()
+                })
+                break
+            case .goSettings(let error):
+               INVSConnectorHelpers.presentErrorGoToSettingsRememberedUserLogged(lastViewController: lastViewController, message: error.message())
+                break
+            }
+        }
+    }
+    
+    private func loginUserSaved(successCompletion: @escaping(SuccessVoidResponse)) {
+        let email = INVSKeyChainWrapper.retrieve(withKey: INVSConstants.LoginKeyChainConstants.lastLoginEmail.rawValue)
+        let security = INVSKeyChainWrapper.retrieve(withKey: INVSConstants.LoginKeyChainConstants.lastLoginSecurity.rawValue)
+        if let emailRetrived = email, let securityRetrived = security {
+            if let emailAES = INVSCrypto.decryptAES(withText: emailRetrived), let securityAES = INVSCrypto.decryptAES(withText: securityRetrived) {
+                workerLogin.loggedUser(withEmail: emailAES, security: securityAES, successCompletionHandler: { (userResponse) in
+                    INVSSession.session.user = userResponse
+                    successCompletion()
+                }) { (title, message, shouldHideAutomatically, popupType) in
+                    INVSKeyChainWrapper.clear()
+                    INVSConnectorHelpers.presentErrorRememberedUserLogged()
+                }
+            } else {
+                INVSKeyChainWrapper.clear()
+                INVSConnectorHelpers.presentErrorRememberedUserLogged()
+            }
+        } else {
+            INVSKeyChainWrapper.clear()
+            INVSConnectorHelpers.presentErrorRememberedUserLogged()
+        }
+    }
+    
+    
 }

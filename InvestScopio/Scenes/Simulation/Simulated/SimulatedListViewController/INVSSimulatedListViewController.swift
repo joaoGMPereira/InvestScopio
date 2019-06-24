@@ -44,7 +44,7 @@ class INVSSimulatedListViewController: UIViewController {
             UIView.animate(withDuration: 2) {
                 self.view.layoutIfNeeded()
             }
-            interactor?.simulationProjection()
+            interactor?.simulationProjection(withViewController: self)
             setupSkeletonView()
         }
     }

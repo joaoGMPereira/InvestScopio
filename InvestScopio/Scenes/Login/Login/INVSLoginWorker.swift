@@ -17,13 +17,15 @@ import Alamofire
 typealias PopMessageLoginInfo = (title: String, message: String)
 typealias SuccessLoginHandler = (INVSUserModel) -> ()
 typealias ErrorLoginHandler = (_ titleError:String,_ messageError:String, _ shouldHideAutomatically:Bool, _ popupType:INVSPopupMessageType) ->()
-
-typealias LogoutHandler = () ->()
+typealias SuccessRefreshTokenHandler = (INVSAccessModel) -> ()
+typealias ErrorRefreshTokenHandler = (_ titleError:String,_ messageError:String, _ shouldHideAutomatically:Bool, _ popupType:INVSPopupMessageType) -> ()
+typealias LogoutHandler = () -> ()
 
 
 protocol INVSLoginWorkerProtocol {
     func login(withTextFields textFields: [INVSFloatingTextField], successCompletionHandler: @escaping(SuccessLoginHandler), errorCompletionHandler:@escaping(ErrorLoginHandler))
     func loggedUser(withEmail email: String, security: String, successCompletionHandler: @escaping(SuccessLoginHandler), errorCompletionHandler:@escaping(ErrorLoginHandler))
+    func refreshToken(successRefreshCompletionHandler: @escaping (SuccessRefreshTokenHandler), errorRefreshCompletionHandler: @escaping (ErrorRefreshTokenHandler))
     func logout(logoutHandler: @escaping(LogoutHandler))
 }
 
@@ -71,7 +73,7 @@ class INVSLoginWorker: NSObject,INVSLoginWorkerProtocol {
         
         let userRequest = INVSUserRequest(email: user.email, password: user.uid)
         
-        INVSConector.connector.request(withURL: INVSConector.getURL(withRoute: "/account/sign-in"), method: .post, parameters: userRequest, responseClass: INVSAccessModel.self, headers: headers, shouldRetry: true, successCompletion: { (decodable) in
+        INVSConector.connector.request(withRoute: ConnectorRoutes.signin, method: .post, parameters: userRequest, responseClass: INVSAccessModel.self, headers: headers, shouldRetry: true, successCompletion: { (decodable) in
             
             var userResponse = user
             if let access = decodable as? INVSAccessModel {
@@ -98,13 +100,34 @@ class INVSLoginWorker: NSObject,INVSLoginWorkerProtocol {
         return nil
     }
     
+    func refreshToken(successRefreshCompletionHandler: @escaping (SuccessRefreshTokenHandler), errorRefreshCompletionHandler: @escaping (ErrorRefreshTokenHandler)) {
+        guard let headers = ["Content-Type": "application/json", "Authorization": INVSSession.session.user?.access?.accessToken] as? HTTPHeaders else {
+            errorRefreshCompletionHandler(INVSConstants.RefreshErrors.title.rawValue,INVSConstants.RefreshErrors.message.rawValue, true, .error)
+            return
+        }
+        guard let refreshToken = INVSSession.session.user?.access?.refreshToken else {
+            errorRefreshCompletionHandler(INVSConstants.RefreshErrors.title.rawValue,INVSConstants.RefreshErrors.message.rawValue, true, .error)
+            return
+        }
+        let refreshTokenRequest = INVSRefreshTokenRequest.init(refreshToken: refreshToken)
+        INVSConector.connector.request(withRoute: ConnectorRoutes.refreshToken, method: .post, parameters: refreshTokenRequest, responseClass: INVSAccessModel.self, headers: headers, successCompletion: { (decodable) in
+            if let access = decodable as? INVSAccessModel {
+                successRefreshCompletionHandler(access)
+                return
+            }
+            errorRefreshCompletionHandler(INVSConstants.RefreshErrors.title.rawValue,INVSConstants.RefreshErrors.message.rawValue, true, .error)
+        }) { (error) in
+            errorRefreshCompletionHandler(INVSConstants.RefreshErrors.title.rawValue,INVSConstants.RefreshErrors.message.rawValue, true, .error)
+        }
+    }
+    
     
     func logout(logoutHandler: @escaping(LogoutHandler)) {
         guard let headers = ["Content-Type": "application/json", "Authorization": INVSSession.session.user?.access?.accessToken] as? HTTPHeaders else {
             logoutHandler()
             return
         }
-        INVSConector.connector.request(withURL: INVSConector.getURL(withRoute: "/account/logout"), method: .post, responseClass: INVSLogoutResponse.self, headers: headers, successCompletion: { (decodable) in
+        INVSConector.connector.request(withRoute: ConnectorRoutes.logout, method: .post, responseClass: INVSLogoutResponse.self, headers: headers, successCompletion: { (decodable) in
             if let logout = decodable as? INVSLogoutResponse {
                 print(logout)
             }

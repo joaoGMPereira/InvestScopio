@@ -84,6 +84,7 @@ class INVSSignUpViewController: UIViewController {
         titleLabel.textColor = .INVSBlack()
         titleLabel.font = .INVSFontBigBold()
         INVSFloatingTextFieldType.email.setupTextField(withTextField: emailTextField,keyboardType: .emailAddress, andDelegate: self, valueTypeTextField: .none, isRequired: true)
+        emailTextField.floatingTextField.autocapitalizationType = .none
         INVSFloatingTextFieldType.password.setupTextField(withTextField: passwordTextField,keyboardType: .default, andDelegate: self, valueTypeTextField: .none, isRequired: true)
         INVSFloatingTextFieldType.confirmPassword.setupTextField(withTextField: confirmPasswordTextField,keyboardType: .default, andDelegate: self, valueTypeTextField: .none, isRequired: true)
         passwordTextField.floatingTextField.isSecureTextEntry = true

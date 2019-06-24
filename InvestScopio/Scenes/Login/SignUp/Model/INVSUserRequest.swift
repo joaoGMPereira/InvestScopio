@@ -13,7 +13,9 @@ struct INVSUserRequest: JSONAble {
     var password: String = ""
     
     init(email: String, password: String) {
-        self.email = email
+        if let emailAES = INVSCrypto.encryptAES(withText: email) {
+            self.email = emailAES
+        }
         if let passwordAES = INVSCrypto.encryptAES(withText: password) {
             self.password = passwordAES
         }

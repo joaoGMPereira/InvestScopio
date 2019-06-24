@@ -128,6 +128,10 @@ class INVSLoginViewController: INVSPresentBaseViewController {
         if let email = INVSKeyChainWrapper.retrieve(withKey: INVSConstants.LoginKeyChainConstants.lastLoginEmail.rawValue), let emailDecrypted = INVSCrypto.decryptAES(withText: email) {
             emailTextField.textFieldTitle = emailDecrypted
         }
+        if let enableAuthentication =
+            INVSKeyChainWrapper.retrieveBool(withKey: INVSConstants.LoginKeyChainConstants.hasEnableBiometricAuthentication.rawValue) {
+            rememberSwitch.setOn(enableAuthentication, animated: true)
+        }
     }
     
     
@@ -140,6 +144,7 @@ class INVSLoginViewController: INVSPresentBaseViewController {
         textFieldStackView.axis = .vertical
         textFieldStackView.distribution = .fillEqually
         INVSFloatingTextFieldType.email.setupTextField(withTextField: emailTextField,keyboardType: .emailAddress, andDelegate: self, valueTypeTextField: .none, isRequired: true)
+        emailTextField.floatingTextField.autocapitalizationType = .none
         INVSFloatingTextFieldType.password.setupTextField(withTextField: passwordTextField,keyboardType: .default, andDelegate: self, valueTypeTextField: .none, isRequired: true)
         passwordTextField.floatingTextField.isSecureTextEntry = true
         let logoAnimation = Animation.named("animatedLogo")
@@ -286,18 +291,17 @@ extension INVSLoginViewController: INVSLoginViewControllerProtocol {
             }
         } else {
             INVSKeyChainWrapper.clear()
+            self.rememberUser(withRememberMe: self.rememberSwitch.isOn, email: email, security: security)
             self.loginButton.hideLoading()
             self.router?.routeToSimulator()
         }
     }
     
     func rememberUser(withRememberMe rememberMe: Bool, email: String, security: String) {
-        if rememberMe {
-            INVSKeyChainWrapper.saveBool(withValue: rememberMe, andKey: INVSConstants.LoginKeyChainConstants.hasEnableBiometricAuthentication.rawValue)
-            if let emailAES = INVSCrypto.encryptAES(withText: email), let securityAES = INVSCrypto.encryptAES(withText: security) {
-                INVSKeyChainWrapper.save(withValue: emailAES, andKey: INVSConstants.LoginKeyChainConstants.lastLoginEmail.rawValue)
-                INVSKeyChainWrapper.save(withValue: securityAES, andKey: INVSConstants.LoginKeyChainConstants.lastLoginSecurity.rawValue)
-            }
+        INVSKeyChainWrapper.saveBool(withValue: rememberMe, andKey: INVSConstants.LoginKeyChainConstants.hasEnableBiometricAuthentication.rawValue)
+        if let emailAES = INVSCrypto.encryptAES(withText: email), let securityAES = INVSCrypto.encryptAES(withText: security) {
+            INVSKeyChainWrapper.save(withValue: emailAES, andKey: INVSConstants.LoginKeyChainConstants.lastLoginEmail.rawValue)
+            INVSKeyChainWrapper.save(withValue: securityAES, andKey: INVSConstants.LoginKeyChainConstants.lastLoginSecurity.rawValue)
         }
     }
     

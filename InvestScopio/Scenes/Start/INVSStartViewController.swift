@@ -87,7 +87,8 @@ extension INVSStartViewController: INVSStartViewControllerProtocol {
         errorViewController.view.backgroundColor = .clear
         present(errorViewController, animated: true, completion: nil)
         errorViewController.confirmCallback = { (button) -> () in
-            self.dismiss(animated: true) {
+            errorViewController.dismiss(animated: true) {
+
                 error.shouldRetry() == true ? self.interactor?.checkLoggedUser() : self.goToLogin()
             }
         }
@@ -104,7 +105,7 @@ extension INVSStartViewController: INVSStartViewControllerProtocol {
         errorViewController.view.backgroundColor = .clear
         present(errorViewController, animated: true, completion: nil)
         errorViewController.confirmCallback = { (button) -> () in
-            self.dismiss(animated: true) {
+            errorViewController.dismiss(animated: true) {
                 let url = URL(string: "App-Prefs:root=TOUCHID_PASSCODE")
                 if UIApplication.shared.canOpenURL(url!) {
                     UIApplication.shared.open(url!, options: [:], completionHandler: nil)

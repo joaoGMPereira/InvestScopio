@@ -71,6 +71,5 @@ class INVSKeyChainWrapper: NSObject {
     
     static func clear() {
         INVSKeyChainWrapper.instance.removeAllKeys()
-       
     }
 }

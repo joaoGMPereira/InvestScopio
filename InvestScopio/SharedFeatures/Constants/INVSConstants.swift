@@ -38,6 +38,11 @@ enum INVSConstants {
         case defaultMessageError = "Não foi possível fazer o cálculo da simulação."
     }
     
+    enum RefreshErrors: String {
+        case title = "Ops..."
+        case message = "A autenticação falhou, entre novamente."
+    }
+    
     enum LoginKeyChainConstants: String {
         case hasEnableBiometricAuthentication = "INVSHasEnableBiometricAuthentication"
         case lastLoginEmail = "INVSRememberMeEmail"
