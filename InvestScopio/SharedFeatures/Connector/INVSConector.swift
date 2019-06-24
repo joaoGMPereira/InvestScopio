@@ -9,9 +9,9 @@
 import Foundation
 import Alamofire
 typealias SuccessResponse = (Decodable) -> ()
-typealias SuccessVoidResponse = () -> ()
+typealias FinishResponse = () -> ()
 typealias SuccessRefreshResponse = (_ shouldUpdateHeaders: Bool) -> ()
-typealias ErrorResponse = (DefaultError) -> ()
+typealias ErrorResponse = (ConnectorError) -> ()
 
 final class INVSConector {
     
@@ -33,17 +33,17 @@ final class INVSConector {
         return getURL(withRoute: INVSConstants.INVSServicesConstants.version.rawValue)
     }
     
-    func request<T: Decodable>(withRoute route: ConnectorRoutes, method: HTTPMethod = .get, parameters: JSONAble? = nil, responseClass: T.Type, headers: HTTPHeaders? = nil, shouldRetry: Bool = false, lastViewController: UIViewController? = nil, successCompletion: @escaping(SuccessResponse), errorCompletion: @escaping(ErrorResponse)) {
+    func request<T: Decodable>(withRoute route: ConnectorRoutes, method: HTTPMethod = .get, parameters: JSONAble? = nil, responseClass: T.Type, headers: HTTPHeaders? = nil, shouldRetry: Bool = false, successCompletion: @escaping(SuccessResponse), errorCompletion: @escaping(ErrorResponse)) {
         
         guard let url = route.getRoute() else {
             return
         }
         
-        refreshToken(withRoute: route, lastViewController: lastViewController, successCompletion: { (shouldUpdateHeaders) in
+        refreshToken(withRoute: route, successCompletion: { (shouldUpdateHeaders) in
             var headersUpdated = headers
             if shouldUpdateHeaders {
                 guard let headersWithAccessToken = ["Content-Type": "application/json", "Authorization": INVSSession.session.user?.access?.accessToken] as? HTTPHeaders else {
-                    errorCompletion(DefaultError.default())
+                    errorCompletion(ConnectorError())
                     return
                 }
                 headersUpdated = headersWithAccessToken
@@ -51,7 +51,7 @@ final class INVSConector {
             self.requestBlock(withURL: url, method: method, parameters: parameters, responseClass: responseClass, headers: headersUpdated, successCompletion: { (decodable) in
                 successCompletion(decodable)
             }) { (error) in
-                if shouldRetry && error.error {
+                if shouldRetry && error.error != .none {
                     self.request(withRoute: route, method: method, parameters: parameters, responseClass: responseClass, headers: headers, shouldRetry: false, successCompletion: successCompletion, errorCompletion: errorCompletion)
                     return
                 }
@@ -69,16 +69,16 @@ final class INVSConector {
             if responseResult.error != nil {
                 do {
                     if let data = response.data {
-                        var defaultError = try JSONDecoder().decode(DefaultError.self, from: data)
-                        defaultError.error = false
-                        errorCompletion(defaultError)
+                        var apiError = try JSONDecoder().decode(ApiError.self, from: data)
+                        apiError.error = false
+                        errorCompletion(ConnectorError.init(error: .none, title: INVSFloatingTextFieldType.defaultErrorTitle(), message: apiError.reason))
                     } else {
-                        errorCompletion(ConnectorError.checkErrorCode(.parseError))
+                        errorCompletion(ConnectorError(error: .none))
                     }
                     return
                 }
                 catch {
-                    errorCompletion(ConnectorError.checkErrorCode(.parseError))
+                    errorCompletion(ConnectorError(error: .none))
                     return
                 }
                 
@@ -90,33 +90,33 @@ final class INVSConector {
                         let decodable = try JSONDecoder().decode(T.self, from: data)
                         successCompletion(decodable)
                     } else {
-                        errorCompletion(ConnectorError.checkErrorCode(.parseError))
+                        errorCompletion(ConnectorError(error: .none))
                     }
                     break
                 }
                 catch {
-                    errorCompletion(ConnectorError.checkErrorCode(.parseError))
+                    errorCompletion(ConnectorError(error: .none))
                     break
                 }
             case .failure:
-                errorCompletion(DefaultError.default())
+                errorCompletion((ConnectorError(error: .none)))
                 break
             }
         }
     }
     
-    private func refreshToken(withRoute route:ConnectorRoutes, lastViewController: UIViewController? = nil, successCompletion: @escaping(SuccessRefreshResponse), errorCompletion: @escaping(ErrorResponse)) {
+    private func refreshToken(withRoute route:ConnectorRoutes, successCompletion: @escaping(SuccessRefreshResponse), errorCompletion: @escaping(ErrorResponse)) {
         if route != .signup &&  route != .signin &&  route != .logout {
             guard let url = ConnectorRoutes.refreshToken.getRoute() else {
-                errorCompletion(DefaultError.init(error: true, reason: "URL Inválida!"))
+                errorCompletion(ConnectorError.init(error: .logout, message: "URL Inválida!"))
                 return
             }
             guard let refreshToken = INVSSession.session.user?.access?.refreshToken else {
-                errorCompletion(DefaultError.init(error: true, reason: "Refresh Token Inválido!"))
+                errorCompletion(ConnectorError.init(error: .logout, message: "Refresh Token Inválido!"))
                 return
             }
             guard let headers = ["Content-Type": "application/json", "Authorization": INVSSession.session.user?.access?.accessToken] as? HTTPHeaders else {
-                errorCompletion(DefaultError.init(error: true, reason: "Access Token Inválido!"))
+                errorCompletion(ConnectorError.init(error: .logout, message: "Access Token Inválido!"))
                 return
             }
             let refreshTokenRequest = INVSRefreshTokenRequest.init(refreshToken: refreshToken)
@@ -125,9 +125,11 @@ final class INVSConector {
                 INVSSession.session.user?.access = accessModel
                 successCompletion(true)
             }) { (error) in
-                self.checkLoggedUser(lastViewController: lastViewController) {
+                self.checkLoggedUser(successCompletion: {
                     successCompletion(true)
-                }
+                }, errorCompletion: { (checkLoggedUserError) in
+                    errorCompletion(checkLoggedUserError)
+                })
             }
         } else {
             successCompletion(false)
@@ -135,34 +137,34 @@ final class INVSConector {
     }
     
     
-    func checkLoggedUser(lastViewController: UIViewController? = nil, successCompletion: @escaping(SuccessVoidResponse)) {
+    func checkLoggedUser(successCompletion: @escaping(FinishResponse), errorCompletion: @escaping(ErrorResponse)) {
         let hasBiometricAuthenticationEnabled = INVSKeyChainWrapper.retrieveBool(withKey: INVSConstants.LoginKeyChainConstants.hasEnableBiometricAuthentication.rawValue)
         guard let hasBiometricAuthentication = hasBiometricAuthenticationEnabled, hasBiometricAuthentication == true else {
-            INVSConnectorHelpers.presentErrorRememberedUserLogged(lastViewController: lastViewController, error: AuthenticationError.sessionExpired) {}
+            errorCompletion(ConnectorError.init(error: .sessionExpired, title: AuthenticationError.sessionExpired.title(), message: AuthenticationError.sessionExpired.message()))
             return
         }
         INVSBiometricsChallenge.checkLoggedUser(reason: "Sessão expirada!\nAutentique novamente para continuar." ,successChallenge: {
-            self.loginUserSaved {
+            self.loginUserSaved(successCompletion: {
                 successCompletion()
-            }
+            }, errorCompletion: { (error) in
+                errorCompletion(error)
+            })
         }) { (challengeFailureType) in
             switch challengeFailureType {
             case .default:
-                INVSConnectorHelpers.presentErrorRememberedUserLogged(lastViewController: lastViewController)
+                errorCompletion(ConnectorError.init(error: .logout))
                 break
             case .error(let error):
-                INVSConnectorHelpers.presentErrorRememberedUserLogged(lastViewController: lastViewController, error: error, successCompletion: {
-                    successCompletion()
-                })
+                errorCompletion(ConnectorError.init(error: .authentication, title: error.title(), message: error.message(), shouldRetry: error.shouldRetry()))
                 break
             case .goSettings(let error):
-               INVSConnectorHelpers.presentErrorGoToSettingsRememberedUserLogged(lastViewController: lastViewController, message: error.message())
+                errorCompletion(ConnectorError.init(error: .settings, title: error.title(), message: error.message()))
                 break
             }
         }
     }
     
-    private func loginUserSaved(successCompletion: @escaping(SuccessVoidResponse)) {
+    private func loginUserSaved(successCompletion: @escaping(FinishResponse), errorCompletion: @escaping(ErrorResponse)) {
         let email = INVSKeyChainWrapper.retrieve(withKey: INVSConstants.LoginKeyChainConstants.lastLoginEmail.rawValue)
         let security = INVSKeyChainWrapper.retrieve(withKey: INVSConstants.LoginKeyChainConstants.lastLoginSecurity.rawValue)
         if let emailRetrived = email, let securityRetrived = security {
@@ -172,15 +174,15 @@ final class INVSConector {
                     successCompletion()
                 }) { (title, message, shouldHideAutomatically, popupType) in
                     INVSKeyChainWrapper.clear()
-                    INVSConnectorHelpers.presentErrorRememberedUserLogged()
+                    errorCompletion(ConnectorError.init(error: .logout))
                 }
             } else {
                 INVSKeyChainWrapper.clear()
-                INVSConnectorHelpers.presentErrorRememberedUserLogged()
+                errorCompletion(ConnectorError.init(error: .logout))
             }
         } else {
             INVSKeyChainWrapper.clear()
-            INVSConnectorHelpers.presentErrorRememberedUserLogged()
+            errorCompletion(ConnectorError.init(error: .logout))
         }
     }
     

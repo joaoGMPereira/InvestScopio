@@ -11,7 +11,7 @@ import UIKit
 protocol INVSSimulatedListPresenterProtocol {
     func presentSimulationProjection(simulatorModel: INVSSimulatorModel)
     func presentResultSimulationProjection(withSimulatorModel simulatorModel: INVSSimulatorModel, simulatedValues: [INVSSimulatedValueModel])
-    func presentErrorSimulationProjection(messageError:String, shouldHideAutomatically:Bool, popupType:INVSPopupMessageType)
+    func presentErrorSimulationProjection(error: ConnectorError)
 }
 
 class INVSSimulatedListPresenter: NSObject,INVSSimulatedListPresenterProtocol {
@@ -46,8 +46,20 @@ class INVSSimulatedListPresenter: NSObject,INVSSimulatedListPresenterProtocol {
         self.controller?.displaySimulationProjection(with: simulatedValues, andShouldShowRescueChart: shouldShowRescueChart)
     }
     
-    func presentErrorSimulationProjection(messageError: String, shouldHideAutomatically: Bool, popupType: INVSPopupMessageType) {
-        controller?.displayErrorSimulationProjection(messageError: messageError, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType)
+    func presentErrorSimulationProjection(error: ConnectorError) {
+        
+        switch error.error {
+        
+        case .none:
+            controller?.displayErrorSimulationProjection(titleError: error.title, messageError: error.message, shouldHideAutomatically: true, popupType: .error)
+        case .authentication, .sessionExpired:
+            controller?.displayErrorAuthentication(titleError: error.title, messageError: error.message, shouldRetry: error.shouldRetry)
+        case .settings:
+            controller?.displayErrorSettings(titleError: error.title, messageError: error.message)
+        case .logout:
+            controller?.displayErrorLogout(titleError: error.title, messageError: error.message)
+        
+        }
     }
 }
 

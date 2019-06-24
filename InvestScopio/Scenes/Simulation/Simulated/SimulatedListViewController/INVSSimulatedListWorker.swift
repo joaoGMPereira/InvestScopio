@@ -9,26 +9,26 @@
 import Foundation
 import Alamofire
 typealias SuccessSimulatedHandler = ([INVSSimulatedValueModel]) -> Void
-typealias ErrorSimulatedHandler = (_ messageError:String, _ shouldHideAutomatically:Bool, _ popupType:INVSPopupMessageType) ->()
+typealias ErrorSimulatedHandler = (ConnectorError) ->()
 
 protocol INVSSimulatedListWorkerProtocol {
-    func simulationProjection(with simulatorModel: INVSSimulatorModel, viewController: UIViewController?, successCompletionHandler: @escaping(SuccessSimulatedHandler), errorCompletionHandler:@escaping(ErrorSimulatedHandler))
+    func simulationProjection(with simulatorModel: INVSSimulatorModel, successCompletionHandler: @escaping(SuccessSimulatedHandler), errorCompletionHandler:@escaping(ErrorSimulatedHandler))
 }
 
 class INVSSimulatedListWorker: NSObject,INVSSimulatedListWorkerProtocol {
-    func simulationProjection(with simulatorModel: INVSSimulatorModel,viewController: UIViewController?, successCompletionHandler: @escaping (SuccessSimulatedHandler), errorCompletionHandler: @escaping (ErrorSimulatedHandler)) {
+    func simulationProjection(with simulatorModel: INVSSimulatorModel, successCompletionHandler: @escaping (SuccessSimulatedHandler), errorCompletionHandler: @escaping (ErrorSimulatedHandler)) {
         guard let headers = ["Content-Type": "application/json", "Authorization": INVSSession.session.user?.access?.accessToken] as? HTTPHeaders else {
-            errorCompletionHandler(INVSConstants.SimulationErrors.defaultMessageError.rawValue, true,.error)
+            errorCompletionHandler(ConnectorError())
             return
         }
-        INVSConector.connector.request(withRoute: ConnectorRoutes.simulation, method: .post, parameters: simulatorModel, responseClass: [INVSSimulatedValueModel].self, headers: headers, lastViewController: viewController, successCompletion: { (decodable) in
+        INVSConector.connector.request(withRoute: ConnectorRoutes.simulation, method: .post, parameters: simulatorModel, responseClass: [INVSSimulatedValueModel].self, headers: headers, successCompletion: { (decodable) in
             guard let simulatedValues = decodable as? [INVSSimulatedValueModel] else {
-                errorCompletionHandler(INVSConstants.SimulationErrors.defaultMessageError.rawValue, true,.error)
+                errorCompletionHandler(ConnectorError())
                 return
             }
             successCompletionHandler(simulatedValues)
         }) { (error) in
-            errorCompletionHandler(INVSConstants.SimulationErrors.defaultMessageError.rawValue, true,.error)
+            errorCompletionHandler(error)
         }
 }
 }

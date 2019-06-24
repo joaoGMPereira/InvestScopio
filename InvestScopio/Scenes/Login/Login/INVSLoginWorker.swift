@@ -81,7 +81,7 @@ class INVSLoginWorker: NSObject,INVSLoginWorkerProtocol {
             }
             successLoginHandler(userResponse)
         }) { (error) in
-            errorCompletionHandler(INVSFloatingTextFieldType.defaultErrorTitle(), error.reason, true, .error)
+            errorCompletionHandler(error.title, error.message, true, .error)
         }
         
     }

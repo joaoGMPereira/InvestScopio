@@ -16,7 +16,10 @@ protocol INVSSimulatedListViewControlerDelegate {
 
 protocol INVSSimulatedListViewControlerProtocol: class {
     func displaySimulationProjection(with simulatedValues: [INVSSimulatedValueModel], andShouldShowRescueChart showRescueChart: Bool)
-    func displayErrorSimulationProjection(messageError:String, shouldHideAutomatically:Bool, popupType:INVSPopupMessageType)
+    func displayErrorSimulationProjection(titleError: String, messageError:String, shouldHideAutomatically: Bool, popupType: INVSPopupMessageType)
+    func displayErrorAuthentication(titleError: String, messageError: String, shouldRetry: Bool)
+    func displayErrorSettings(titleError: String, messageError: String)
+    func displayErrorLogout(titleError: String, messageError: String)
 }
 
 class INVSSimulatedListViewController: UIViewController {
@@ -29,6 +32,7 @@ class INVSSimulatedListViewController: UIViewController {
     var interactor: INVSSimulatedListInteractorProtocol?
     var dataSource = INVSSimulatorTableviewDataSourceDelegate()
     var popupMessage: INVSPopupMessage?
+    let router: INVSRoutingLogic = INVSRouter()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -44,7 +48,7 @@ class INVSSimulatedListViewController: UIViewController {
             UIView.animate(withDuration: 2) {
                 self.view.layoutIfNeeded()
             }
-            interactor?.simulationProjection(withViewController: self)
+            interactor?.simulationProjection()
             setupSkeletonView()
         }
     }
@@ -118,15 +122,38 @@ extension INVSSimulatedListViewController: INVSCodeView {
 
 extension INVSSimulatedListViewController: INVSSimulatedListViewControlerProtocol{
     
-    
-    
     func displaySimulationProjection(with simulatedValues: [INVSSimulatedValueModel], andShouldShowRescueChart showRescueChart: Bool) {
         dataSource.setup(withSimulatedValues: simulatedValues)
         tableView.reloadData()
         delegate?.didFinishSimulating(withSimulatedValues: simulatedValues, andShouldShowRescueChart: showRescueChart)
     }
     
-    func displayErrorSimulationProjection(messageError: String, shouldHideAutomatically: Bool, popupType: INVSPopupMessageType) {
-        popupMessage?.show(withTextMessage: messageError, title: INVSConstants.SimulationErrors.defaultTitleError.rawValue, popupType: popupType, shouldHideAutomatically: shouldHideAutomatically, sender: nil)
+    func displayErrorSimulationProjection(titleError: String, messageError: String, shouldHideAutomatically: Bool, popupType: INVSPopupMessageType) {
+        popupMessage?.show(withTextMessage: messageError, title: titleError, popupType: popupType, shouldHideAutomatically: shouldHideAutomatically, sender: nil)
+    }
+    
+    func displayErrorAuthentication(titleError: String, messageError: String, shouldRetry: Bool) {
+        INVSConnectorHelpers.presentErrorRememberedUserLogged(lastViewController: self, message: messageError, title: titleError, shouldRetry: shouldRetry, successCompletion: {
+            self.interactor?.simulationProjection()
+        }) {
+            self.goToLogin()
+        }
+    }
+    
+    func displayErrorSettings(titleError: String, messageError: String) {
+        INVSConnectorHelpers.presentErrorGoToSettingsRememberedUserLogged(lastViewController: self, message: messageError, title: titleError, finishCompletion: {
+            self.goToLogin()
+        })
+    }
+    
+    func displayErrorLogout(titleError: String, messageError: String) {
+        INVSConnectorHelpers.presentErrorRememberedUserLogged(lastViewController: self) {
+            self.goToLogin()
+        }
+    }
+    
+    func goToLogin() {
+        self.dismiss(animated: false, completion: nil)
+        router.routeToLogin()
     }
 }

@@ -67,7 +67,7 @@ class INVSSignUpWorker: NSObject,INVSSignUpWorkerProtocol {
             let signUpModel = decodable as? INVSSignUpModel
             signUpInvestScopioHandler(signUpModel?.syncronized ?? false, "Finalizado.\n", "Seu cadastro foi realizado com sucesso!", true, .alert)
         }) { (error) in
-            signUpInvestScopioHandler(false, "Finalizado.\n", error.reason, true, .alert)
+            signUpInvestScopioHandler(false, error.title, error.message, true, .alert)
         }
         
     }
