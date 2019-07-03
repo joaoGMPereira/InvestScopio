@@ -1607,7 +1607,7 @@
 			baseConfigurationReference = 96C9F1EA5800CB68A709EF1A /* Pods-InvestScopio.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = G77MYT7HW8;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -1625,6 +1625,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.br.joao.gabriel.medeiros.pereira.InvestScopio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Invest Scopio Provisioning AdHoc";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1636,7 +1637,8 @@
 			baseConfigurationReference = E51923B72D563C11FC98562D /* Pods-InvestScopio.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = G77MYT7HW8;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -1654,6 +1656,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.br.joao.gabriel.medeiros.pereira.InvestScopio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Invest Scopio Provisioning Production";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1665,7 +1668,7 @@
 			baseConfigurationReference = 2F3204CC7D9739973E0B480A /* Pods-InvestScopioDev.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = G77MYT7HW8;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -1684,6 +1687,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DEV";
 				PRODUCT_BUNDLE_IDENTIFIER = com.br.joao.gabriel.medeiros.pereira.InvestScopio.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Invest Scopio Provisioning Dev";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1695,7 +1699,7 @@
 			baseConfigurationReference = 337722A1A99D475EDC282B99 /* Pods-InvestScopioDev.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = G77MYT7HW8;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -1714,6 +1718,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DEV";
 				PRODUCT_BUNDLE_IDENTIFIER = com.br.joao.gabriel.medeiros.pereira.InvestScopio.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Invest Scopio Provisioning Dev";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
