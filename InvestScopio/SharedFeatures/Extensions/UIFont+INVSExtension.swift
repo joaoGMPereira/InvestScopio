@@ -9,6 +9,14 @@ import Foundation
 import UIKit
 extension UIFont {
     
+    static func INVSSmallFontDefault() -> UIFont {
+        return UIFont.systemFont(ofSize: 13)
+    }
+    
+    static func INVSSmallFontDefaultBold() -> UIFont {
+        return UIFont.boldSystemFont(ofSize: 13)
+    }
+    
     static func INVSFontDefault() -> UIFont {
         return UIFont.systemFont(ofSize: 14)
     }

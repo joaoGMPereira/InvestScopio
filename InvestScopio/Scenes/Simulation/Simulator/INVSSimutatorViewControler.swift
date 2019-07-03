@@ -54,7 +54,9 @@ public class INVSSimutatorViewControler: UIViewController {
         presenter.controller = self
         interactor.presenter = presenter
         helpView.interactor = self.interactor
-        mockInfo()
+        if INVSSession.session.isDev() {
+            mockInfo()
+        }
         setupUI()
         setLeftBarButton()
         setRightBarButton()
@@ -200,12 +202,6 @@ public class INVSSimutatorViewControler: UIViewController {
     }
     
     private func updateUI() {
-        let orientation = UIApplication.shared.statusBarOrientation
-        if orientation == .landscapeLeft || orientation == .landscapeRight {
-            heightScrollView.constant = view.frame.height * 0.4
-        } else {
-            heightScrollView.constant = view.frame.height * 0.5
-        }
         UIView.animate(withDuration: 0.4) {
             self.saveButtonLayer = CAShapeLayer.addGradientLayer(withGradientLayer: self.saveButtonLayer, inView: self.saveButton, withColorsArr: UIColor.INVSGradientColors(),withRoundedCorner: 25)
             self.clearButtonLayer = CAShapeLayer.addGradientLayer(withGradientLayer: self.clearButtonLayer, inView: self.clearButton, withColorsArr: UIColor.INVSGradientColors(), withRoundedCorner: 25)
@@ -271,7 +267,7 @@ extension INVSSimutatorViewControler: INVSSimutatorViewControlerProtocol {
     func displaySimulationProjection(with simulatorModel: INVSSimulatorModel) {
         popupMessage?.hide()
 
-        router.routeToSimulated(withSimulatorViewController: self, andSimulatorModel: simulatorModel)
+        router.routeToSimulated(withViewController: self, fromButton: self.saveButton, andSimulatorModel: simulatorModel, heroId: INVSConstants.INVSTransactionsViewControllersID.startSimulatedViewController.rawValue)
     }
     
     func displayErrorSimulationProjection(with messageError:String, shouldHideAutomatically:Bool, popupType: INVSPopupMessageType, sender: UIView?) {

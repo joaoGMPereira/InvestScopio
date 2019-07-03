@@ -14,6 +14,10 @@ enum ConnectorRoutes {
     case signin
     case logout
     case simulation
+    case userSimulations
+    case deleteSimulation
+    case deleteAllSimulations
+    case evaluate
     case refreshToken
     
     func getRoute() -> URL? {
@@ -25,7 +29,15 @@ enum ConnectorRoutes {
         case .logout:
             return INVSConector.getURL(withRoute: "/account/logout")
         case .simulation:
-            return INVSConector.getURL(withRoute: "/simulation/values")
+            return INVSConector.getURL(withRoute: "/simulation/simulator")
+        case .userSimulations:
+            return INVSConector.getURL(withRoute: "/simulation/simulations")
+        case .deleteSimulation:
+            return INVSConector.getURL(withRoute: "/simulation/delete")
+        case .deleteAllSimulations:
+            return INVSConector.getURL(withRoute: "/simulation/deleteAll")
+        case .evaluate:
+            return INVSConector.getURL(withRoute: "/evaluation/evaluate")
         case .refreshToken:
             return INVSConector.getURL(withRoute: "/account/refresh-token")
         }

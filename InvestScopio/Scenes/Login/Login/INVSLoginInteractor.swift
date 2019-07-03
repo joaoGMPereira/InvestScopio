@@ -14,7 +14,8 @@ import UIKit
 
 protocol INVSLoginInteractorProtocol {
     func checkToolbarAction(withTextField textField: INVSFloatingTextField, typeOfAction type: INVSKeyboardToolbarButton)
-    func logIn(rememberMe: Bool)
+    func logIn()
+    func logInAsAdmin()
     var allTextFields: [INVSFloatingTextField] { get }
 }
 
@@ -28,10 +29,18 @@ class INVSLoginInteractor: INVSLoginInteractorProtocol {
     func checkToolbarAction(withTextField textField: INVSFloatingTextField, typeOfAction type: INVSKeyboardToolbarButton) {
         presenter?.presentToolbarAction(withPreviousTextField: textField, allTextFields: allTextFields, typeOfAction: type)
     }
-    func logIn(rememberMe: Bool) {
+    func logIn() {
         worker.login(withTextFields: allTextFields, successCompletionHandler: { (userResponse) in
             INVSSession.session.user = userResponse
             self.presenter?.presentSuccessSignIn(withEmail: userResponse.email, security: userResponse.uid)
+        }, errorCompletionHandler: { (title, message, shouldHideAutomatically, popupType) in
+            self.presenter?.presentErrorSignIn(titleError: title, messageError: message, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType)
+        })
+    }
+    func logInAsAdmin() {
+        worker.loginAsAdmin(successCompletionHandler: { (userResponse) in
+            INVSSession.session.user = userResponse
+            self.presenter?.presentSuccessSignInAsAdmin(withEmail: userResponse.email, security: userResponse.uid)
         }, errorCompletionHandler: { (title, message, shouldHideAutomatically, popupType) in
             self.presenter?.presentErrorSignIn(titleError: title, messageError: message, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType)
         })

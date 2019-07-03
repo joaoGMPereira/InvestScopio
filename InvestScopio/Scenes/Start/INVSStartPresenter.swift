@@ -21,7 +21,7 @@ protocol INVSStartPresenterProtocol {
 
 class INVSStartPresenter: NSObject,INVSStartPresenterProtocol {
    
-    weak var controller: INVSStartViewController?
+    weak var controller: INVSStartViewControllerProtocol?
     
     func presentMarketInfo(withMarket market: MarketModel) {
         INVSSession.session.market = market

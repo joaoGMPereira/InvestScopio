@@ -8,8 +8,7 @@
 
 import Foundation
 import UIKit
-import WebKit
-import SwiftSoup
+//import SwiftSoup
 import Firebase
 import Alamofire
 
@@ -29,9 +28,9 @@ class INVSStartWorker: NSObject,INVSStartWorkerProtocol {
 //    private let service = GTLRSheetsService()
     let dispatchGroup: DispatchGroup = DispatchGroup()
     var market = MarketModel()
-    var document: Document = Document.init("")
+//    var document: Document = Document.init("")
     var items: [Item] = []
-    let webView = WKWebView(frame: .zero)
+    //let webView = WKWebView(frame: .zero)
     
     func downloadMarketInfo(successCompletionHandler: @escaping (SuccessDownloadMarketInfoHandler), errorCompletionHandler: @escaping (ErrorSDownloadMarketInfoHandler)) {
         //service.apiKey = FirebaseApp.app()?.options.apiKey

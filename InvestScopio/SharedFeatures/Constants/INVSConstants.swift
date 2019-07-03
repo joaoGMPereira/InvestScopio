@@ -22,6 +22,10 @@ enum INVSConstants {
         case tableViewHeaderName = "INVSSimulatorHeaderView"
     }
     
+    enum SimulationCellConstants: String {
+        case cellIdentifier = "INVSSimulationCell"
+    }
+    
     enum INVSTransactionsViewControllersID: String {
         case startSimulatedViewController = "INVSStartSimulatedViewController"
     }
@@ -39,14 +43,16 @@ enum INVSConstants {
     }
     
     enum RefreshErrors: String {
-        case title = "Ops..."
+        case title = "Atenção"
         case message = "A autenticação falhou, entre novamente."
     }
     
     enum LoginKeyChainConstants: String {
+        case hasUserLogged = "INVSHasUserLogged"
         case hasEnableBiometricAuthentication = "INVSHasEnableBiometricAuthentication"
         case lastLoginEmail = "INVSRememberMeEmail"
         case lastLoginSecurity = "INVSRememberMeSecurity"
+        case hasEvaluateApp = "INVSHasEvaluatedApp"
     }
     
     enum OfflineViewController: String {
@@ -64,6 +70,15 @@ enum INVSConstants {
         case message = "Deseja sair da sua conta?"
     }
     
+    enum TalkWithUsAlertViewController: String {
+        case titleError = "Atenção\n"
+        case messageMailError = "Você não habilitou o serviço de enviar email pelo app."
+        case messageInvalidVoteError = "Selecione uma avaliação antes de votar."
+        case messageVoteError = "Não foi possível gravar seu voto. Tente novamente."
+        case titleSuccess = "Obrigado\n"
+        case messageMailSuccess = "Iremos te responder em breve!"
+    }
+    
     enum EnableBiometricViewController: String {
         case title = "Atenção"
         static func biometricMessageType() -> String {
@@ -71,13 +86,13 @@ enum INVSConstants {
             let _ = authContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
             switch(authContext.biometryType) {
             case .none:
-                return "Para sua segurança, é preciso que voce autentique seu Touch ID/Face ID para que o app faça seu acesso automáticamente, com isso habilite ele vá em: Ajustes -> (Touch ID/Face ID) & Código e cadastre sua(s) (biometrias/face)."
+                return "Para sua segurança, é preciso que você autentique seu Touch ID/Face ID para que o app faça seu acesso automaticamente, com isso habilite ele vá em: Ajustes -> (Touch ID/Face ID) & Código e cadastre sua(s) (biometrias/face)."
             case .touchID:
-                return "Para sua segurança, é preciso que voce autentique seu Touch ID, quando entrar no app novamente, para que o app faço seu acesso automáticamente."
+                return "Para sua segurança, é preciso que você autentique seu Touch ID, quando entrar no app novamente, para que o app faço seu acesso automaticamente."
             case .faceID:
-                return "Para sua segurança, é preciso que voce autentique seu Face ID, quando entrar no app novamente, para que o app faço seu acesso automáticamente."
+                return "Para sua segurança, é preciso que você autentique seu Face ID, quando entrar no app novamente, para que o app faço seu acesso automaticamente."
             @unknown default:
-                return "Para sua segurança, é preciso que voce autentique seu Touch ID/Face ID para que o app faça seu acesso automáticamente, com isso habilite ele vá em: Ajustes -> (Touch ID/Face ID) & Código e cadastre sua(s) (biometrias/face)."
+                return "Para sua segurança, é preciso que você autentique seu Touch ID/Face ID para que o app faça seu acesso automaticamente, com isso habilite ele vá em: Ajustes -> (Touch ID/Face ID) & Código e cadastre sua(s) (biometrias/face)."
             }
         }
     }

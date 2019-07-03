@@ -16,6 +16,7 @@ class INVSLoadingButton: UIView {
     var buttonAction: ((_ button: UIButton) -> ())?
     var buttonTitle = ""
     var loadingJson = ""
+    
     func setupFill(withColor color: UIColor = UIColor.INVSDefault(), title: String, andRounded isRounded: Bool = true) {
         loadingJson = "animatedLoadingWhite"
         setupView()
@@ -46,13 +47,34 @@ class INVSLoadingButton: UIView {
         button.layer.cornerRadius = isRounded ? button.frame.height/2 : 0
     }
     
-    func showLoading() {
-        UIView.animate(withDuration: 0.4) {
-            self.loadingView.play()
-            self.button.isUserInteractionEnabled = false
-            self.button.setTitle("", for: .normal)
-            self.loadingView.alpha = 1.0
+    func setupSkeleton() {
+        button.setTitle("", for: .normal)
+        button.setTitleColor(.clear, for: .normal)
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderWidth = 0
+        setupView()
+        isSkeletonable = true
+        layer.masksToBounds = true
+        layer.cornerRadius = self.frame.height/2
+        showAnimatedGradientSkeleton()
+    }
+    
+    func setHideSkeleton() {
+        hideSkeleton()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if isSkeletonActive {
+            layoutSkeletonIfNeeded()
         }
+    }
+    
+    func showLoading() {
+        self.loadingView.play()
+        self.button.isUserInteractionEnabled = false
+        self.button.setTitle("", for: .normal)
+        self.loadingView.alpha = 1.0
     }
     
     func hideLoading() {

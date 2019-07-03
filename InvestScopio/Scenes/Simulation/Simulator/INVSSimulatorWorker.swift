@@ -78,7 +78,7 @@ class INVSSimulatorWorker: NSObject,INVSSimulatorWorkerProtocol {
                     increaseRescueTextField.hasError = true
                     goalIncreaseRescueTextField.hasError = true
                     goalIncreaseRescueTextField.floatingTextField.becomeFirstResponder()
-                    handler(increaseRescueTextField,goalIncreaseRescueTextField,true, "É necessário que o valor do campo:\(goalIncreaseRescueText) seja maior ou igual ao valor do campo: \(increaseRescueText)")
+                    handler(increaseRescueTextField,goalIncreaseRescueTextField,true, "É necessário que o valor do \(goalIncreaseRescueText) seja maior ou igual ao valor do \(increaseRescueText)")
                     return
                 }
                 increaseRescueTextField.hasError = false

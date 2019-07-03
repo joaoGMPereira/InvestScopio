@@ -31,12 +31,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if INVSSession.session.isDev() {
             let filePath = Bundle.main.path(forResource: "GoogleServiceInfoDev", ofType: "plist")
             guard let fileopts = FirebaseOptions(contentsOfFile: filePath!)
-                else { assert(false, "Couldn't load config file") }
+                else { return }
             FirebaseApp.configure(options: fileopts)
         } else {
             let filePath = Bundle.main.path(forResource: "GoogleServiceInfoProd", ofType: "plist")
             guard let fileopts = FirebaseOptions(contentsOfFile: filePath!)
-                else { assert(false, "Couldn't load config file") }
+                else { return }
             FirebaseApp.configure(options: fileopts)
         }
     }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct INVSSimulatorModel: JSONAble {
+struct INVSSimulatorModel: JSONAble, Decodable {
     var initialValue: Double = 0.0 {
         didSet {
             initialValue = initialValue.INVSrounded()
@@ -40,4 +40,7 @@ struct INVSSimulatorModel: JSONAble {
             goalIncreaseRescue = goalIncreaseRescue.INVSrounded()
         }
     }
+    var isSimply: Bool? = true
+    
+    var id: Int?
 }

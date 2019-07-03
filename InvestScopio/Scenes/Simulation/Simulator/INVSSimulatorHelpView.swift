@@ -123,6 +123,7 @@ extension INVSSimulatorHelpView: INVSCodeView {
 
 extension INVSSimulatorHelpView: INVSFloatingTextFieldDelegate {
     func infoButtonAction(_ textField: INVSFloatingTextField) {
+        endEditing(true)
         interactor?.showInfo(withSender: textField)
     }
     

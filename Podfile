@@ -11,14 +11,13 @@ def all_pods
   pod 'Hero', :git => 'https://github.com/barrault01/Hero.git', :commit => '6220387'
   pod 'lottie-ios'
   pod 'Charts'
-  pod 'SkeletonView'
+  pod 'SkeletonView', :git => 'https://github.com/Juanpe/SkeletonView.git', :branch => 'master'
   pod 'BetterSegmentedControl', '~> 1.1'
   pod 'StepView'
   pod 'ZCAnimatedLabel', :git => 'https://github.com/joaoGMPereira/ZCAnimatedLabel.git'
   
   
   #Resquests
-  pod 'SwiftSoup'
   pod 'Alamofire'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'

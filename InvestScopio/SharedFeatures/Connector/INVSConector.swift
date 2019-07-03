@@ -11,7 +11,7 @@ import Alamofire
 typealias SuccessResponse = (Decodable) -> ()
 typealias FinishResponse = () -> ()
 typealias SuccessRefreshResponse = (_ shouldUpdateHeaders: Bool) -> ()
-typealias ErrorResponse = (ConnectorError) -> ()
+typealias ErrorCompletion = (ConnectorError) -> ()
 
 final class INVSConector {
     
@@ -33,7 +33,7 @@ final class INVSConector {
         return getURL(withRoute: INVSConstants.INVSServicesConstants.version.rawValue)
     }
     
-    func request<T: Decodable>(withRoute route: ConnectorRoutes, method: HTTPMethod = .get, parameters: JSONAble? = nil, responseClass: T.Type, headers: HTTPHeaders? = nil, shouldRetry: Bool = false, successCompletion: @escaping(SuccessResponse), errorCompletion: @escaping(ErrorResponse)) {
+    func request<T: Decodable>(withRoute route: ConnectorRoutes, method: HTTPMethod = .get, parameters: JSONAble? = nil, responseClass: T.Type, headers: HTTPHeaders? = nil, shouldRetry: Bool = false, successCompletion: @escaping(SuccessResponse), errorCompletion: @escaping(ErrorCompletion)) {
         
         guard let url = route.getRoute() else {
             return
@@ -62,7 +62,7 @@ final class INVSConector {
         }
     }
     
-    private func requestBlock<T: Decodable>(withURL url: URL, method: HTTPMethod = .get, parameters: JSONAble? = nil, responseClass: T.Type, headers: HTTPHeaders? = nil, successCompletion: @escaping(SuccessResponse), errorCompletion: @escaping(ErrorResponse)) {
+    private func requestBlock<T: Decodable>(withURL url: URL, method: HTTPMethod = .get, parameters: JSONAble? = nil, responseClass: T.Type, headers: HTTPHeaders? = nil, successCompletion: @escaping(SuccessResponse), errorCompletion: @escaping(ErrorCompletion)) {
         Alamofire.request(url, method: method, parameters: parameters?.toDict(), encoding: JSONEncoding.default, headers: headers).validate().responseJSON { (response) in
             
             let responseResult = response.result
@@ -105,7 +105,7 @@ final class INVSConector {
         }
     }
     
-    private func refreshToken(withRoute route:ConnectorRoutes, successCompletion: @escaping(SuccessRefreshResponse), errorCompletion: @escaping(ErrorResponse)) {
+    private func refreshToken(withRoute route:ConnectorRoutes, successCompletion: @escaping(SuccessRefreshResponse), errorCompletion: @escaping(ErrorCompletion)) {
         if route != .signup &&  route != .signin &&  route != .logout {
             guard let url = ConnectorRoutes.refreshToken.getRoute() else {
                 errorCompletion(ConnectorError.init(error: .logout, message: "URL Inválida!"))
@@ -137,7 +137,7 @@ final class INVSConector {
     }
     
     
-    func checkLoggedUser(successCompletion: @escaping(FinishResponse), errorCompletion: @escaping(ErrorResponse)) {
+    func checkLoggedUser(successCompletion: @escaping(FinishResponse), errorCompletion: @escaping(ErrorCompletion)) {
         let hasBiometricAuthenticationEnabled = INVSKeyChainWrapper.retrieveBool(withKey: INVSConstants.LoginKeyChainConstants.hasEnableBiometricAuthentication.rawValue)
         guard let hasBiometricAuthentication = hasBiometricAuthenticationEnabled, hasBiometricAuthentication == true else {
             errorCompletion(ConnectorError.init(error: .sessionExpired, title: AuthenticationError.sessionExpired.title(), message: AuthenticationError.sessionExpired.message()))
@@ -164,7 +164,7 @@ final class INVSConector {
         }
     }
     
-    private func loginUserSaved(successCompletion: @escaping(FinishResponse), errorCompletion: @escaping(ErrorResponse)) {
+    private func loginUserSaved(successCompletion: @escaping(FinishResponse), errorCompletion: @escaping(ErrorCompletion)) {
         let email = INVSKeyChainWrapper.retrieve(withKey: INVSConstants.LoginKeyChainConstants.lastLoginEmail.rawValue)
         let security = INVSKeyChainWrapper.retrieve(withKey: INVSConstants.LoginKeyChainConstants.lastLoginSecurity.rawValue)
         if let emailRetrived = email, let securityRetrived = security {

@@ -33,6 +33,7 @@ class INVSSimulatedListPresenter: NSObject,INVSSimulatedListPresenterProtocol {
                 let rescue = self.checkRescue(with: simulatorModel, profitability:profitability, month: month)
                 let updatedTotalTotalWithRescue = self.updateTotalValue(withRescue: rescue, simulatorModel: simulatorModel)
                 let simulatedValue = INVSSimulatedValueModel(month: month, monthValue: monthValue, profitability: profitability, rescue: rescue, total: updatedTotalTotalWithRescue)
+                
                 simulatedValues.append(simulatedValue)
             }
             DispatchQueue.main.async(execute: {

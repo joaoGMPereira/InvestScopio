@@ -24,6 +24,7 @@ typealias LogoutHandler = () -> ()
 
 protocol INVSLoginWorkerProtocol {
     func login(withTextFields textFields: [INVSFloatingTextField], successCompletionHandler: @escaping(SuccessLoginHandler), errorCompletionHandler:@escaping(ErrorLoginHandler))
+    func loginAsAdmin(successCompletionHandler: @escaping(SuccessLoginHandler), errorCompletionHandler:@escaping(ErrorLoginHandler))
     func loggedUser(withEmail email: String, security: String, successCompletionHandler: @escaping(SuccessLoginHandler), errorCompletionHandler:@escaping(ErrorLoginHandler))
     func refreshToken(successRefreshCompletionHandler: @escaping (SuccessRefreshTokenHandler), errorRefreshCompletionHandler: @escaping (ErrorRefreshTokenHandler))
     func logout(logoutHandler: @escaping(LogoutHandler))
@@ -56,6 +57,36 @@ class INVSLoginWorker: NSObject,INVSLoginWorkerProtocol {
                 })
                 return
             }
+        }
+    }
+    
+    func loginAsAdmin(successCompletionHandler: @escaping (SuccessLoginHandler), errorCompletionHandler: @escaping (ErrorLoginHandler)) {
+        login(email: "admin@admin.com", password: "admin@22151515", successCompletionHandler: { (user) in
+            successCompletionHandler(user)
+        }) { (title, message, shouldHideAutomatically, popupType) in
+            errorCompletionHandler(title, message, shouldHideAutomatically, popupType)
+        }
+    }
+    
+    private func login(email: String, password: String, successCompletionHandler: @escaping (SuccessLoginHandler), errorCompletionHandler: @escaping (ErrorLoginHandler)) {
+        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+            guard let user = result?.user else {
+                if let error = error {
+                    if let firebaseErrorHandler = FireBaseErrorHandler.init(rawValue: error._code)?.getFirebaseError() {
+                        errorCompletionHandler(firebaseErrorHandler.titleError, firebaseErrorHandler.messageError, firebaseErrorHandler.shouldHideAutomatically, firebaseErrorHandler.popupType)
+                        return
+                    }
+                }
+                errorCompletionHandler(INVSFloatingTextFieldType.defaultErrorTitle(), INVSFloatingTextFieldType.defaultErrorMessage(), true, .error)
+                return
+            }
+            let userFirebaseModel = INVSUserModel.init(email: user.email ?? "", uid: user.uid)
+            self.signInInvestScopioAPI(user: userFirebaseModel, successLoginHandler: { (userAPI) in
+                successCompletionHandler(userAPI)
+            }, errorCompletionHandler: { (title, message, shouldHideAutomatically, popupType) in
+                errorCompletionHandler(title, message, shouldHideAutomatically, popupType)
+            })
+            return
         }
     }
     

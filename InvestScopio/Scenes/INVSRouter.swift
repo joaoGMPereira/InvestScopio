@@ -11,7 +11,7 @@ import UIKit
 
 protocol INVSRoutingLogic {
     func routeToSimulator()
-    func routeToSimulated(withSimulatorViewController viewController: INVSSimutatorViewControler, andSimulatorModel simulatorModel: INVSSimulatorModel)
+    func routeToSimulated(withViewController viewController: UIViewController, fromButton button: UIButton, andSimulatorModel simulatorModel: INVSSimulatorModel, heroId: String)
     func showNextViewController(withNewController newController: UIViewController, withOldController oldController: UIViewController, andParentViewController parentViewController: UIViewController, withAnimation animation: UIView.AnimationOptions, completion:@escaping (Bool) -> Void)
     func routeToLogin()
 }
@@ -22,13 +22,29 @@ class INVSRouter: NSObject, INVSRoutingLogic {
         guard let window = UIApplication.shared.keyWindow else {
             return
         }
-        let simulatorViewController = INVSSimutatorViewControler.init(nibName: INVSSimutatorViewControler.toString(), bundle: Bundle(for: INVSSimutatorViewControler.self))
+
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             appDelegate.tabBarController.tabBar.tintColor = .INVSDefault()
-            let tapImage = UIImage(named: "chartIcon")
-            let simulatorTabBarItem = UITabBarItem(title: "Simulador", image: tapImage, tag: 0)
+            var navigationControllers = [UINavigationController]()
+            if INVSKeyChainWrapper.retrieveBool(withKey: INVSConstants.LoginKeyChainConstants.hasUserLogged.rawValue) == true {
+                let simulationsTapImage = UIImage(named: "listIcon")
+                let simulationsTabBarItem = UITabBarItem(title: "Simulacões", image: simulationsTapImage, tag: 0)
+                let simulationsViewController = INVSSimulationsViewController.init(nibName: INVSSimulationsViewController.toString(), bundle: Bundle(for: INVSSimulationsViewController.self))
+                simulationsViewController.tabBarItem = simulationsTabBarItem
+                navigationControllers.append(UINavigationController.init(rootViewController: simulationsViewController))
+            }
+            let simulatorTapImage = UIImage(named: "chartIcon")
+            let simulatorTabBarItem = UITabBarItem(title: "Simulador", image: simulatorTapImage, tag: navigationControllers.count)
+            let simulatorViewController = INVSSimutatorViewControler.init(nibName: INVSSimutatorViewControler.toString(), bundle: Bundle(for: INVSSimutatorViewControler.self))
             simulatorViewController.tabBarItem = simulatorTabBarItem
-        appDelegate.tabBarController.setViewControllers([UINavigationController.init(rootViewController: simulatorViewController)], animated: true)
+            navigationControllers.append(UINavigationController.init(rootViewController: simulatorViewController))
+            
+            let talkWithUsTapImage = UIImage(named: "talkWithUsIcon")
+            let talkWithUsBarItem = UITabBarItem(title: "Fale Conosco", image: talkWithUsTapImage, tag: navigationControllers.count)
+            let talkWithUsViewController = INVSTalkWithUsViewController.init(nibName: INVSTalkWithUsViewController.toString(), bundle: Bundle(for: INVSTalkWithUsViewController.self))
+            talkWithUsViewController.tabBarItem = talkWithUsBarItem
+            navigationControllers.append(UINavigationController.init(rootViewController: talkWithUsViewController))
+            appDelegate.tabBarController.setViewControllers(navigationControllers, animated: true)
             var options = UIWindow.TransitionOptions()
             options.direction = .toBottom
             options.duration = 0.4
@@ -52,17 +68,18 @@ class INVSRouter: NSObject, INVSRoutingLogic {
         window.setRootViewController(loginViewController, options: options)
     }
     
-    func routeToSimulated(withSimulatorViewController viewController: INVSSimutatorViewControler, andSimulatorModel simulatorModel: INVSSimulatorModel) {
-        viewController.saveButton.hero.id = INVSConstants.INVSTransactionsViewControllersID.startSimulatedViewController.rawValue
+    func routeToSimulated(withViewController viewController: UIViewController, fromButton button: UIButton, andSimulatorModel simulatorModel: INVSSimulatorModel, heroId: String) {
+        button.hero.id = heroId
         
         let simulatedContainerViewController = INVSSimulatedContainerViewController()
         simulatedContainerViewController.hero.isEnabled = true
 
-        simulatedContainerViewController.containerView.hero.id = INVSConstants.INVSTransactionsViewControllersID.startSimulatedViewController.rawValue
+        simulatedContainerViewController.containerView.hero.id = heroId
         simulatedContainerViewController.simulatedListViewController.setup(withSimulatorModel: simulatorModel)
-        viewController.saveButton.setTitle("", for: .normal)
+        let buttonTitle = button.titleLabel?.text ?? ""
+        button.setTitle("", for: .normal)
         viewController.present(simulatedContainerViewController, animated: true) {
-            viewController.saveButton.setTitle("Simulação", for: .normal)
+            button.setTitle(buttonTitle, for: .normal)
         }
     }
     

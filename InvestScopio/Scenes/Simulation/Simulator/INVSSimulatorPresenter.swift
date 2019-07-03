@@ -31,7 +31,11 @@ class INVSSimulatorPresenter: NSObject,INVSSimulatorPresenterProtocol {
     }
     
     func presentSimulationProjection(simulatorModel: INVSSimulatorModel) {
-        controller?.displaySimulationProjection(with: simulatorModel)
+        
+        var simulation = simulatorModel
+        let hasRescue = (simulation.initialMonthlyRescue != 0 || simulation.increaseRescue != 0 || simulation.goalIncreaseRescue != 0)
+        simulation.isSimply = !hasRescue
+        controller?.displaySimulationProjection(with: simulation)
     }
     
     func presentError(with messageError:String, shouldHideAutomatically:Bool, popupType: INVSPopupMessageType, sender: UIView?) {

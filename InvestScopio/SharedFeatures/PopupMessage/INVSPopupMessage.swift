@@ -76,6 +76,27 @@ class INVSPopupMessage: UIView {
             UIApplication.shared.keyWindow?.addSubview(self)
             hasAddedSubview = true
             setupView()
+            
+        }
+        showPopup(sender: sender)
+    }
+    
+    func show(withAttributedMessage message:String, title:String = "", popupType: INVSPopupMessageType = .error, shouldHideAutomatically: Bool = true, sender: UIView? = nil) {
+        if let shadowLayer = self.shadowLayer {
+            shadowLayer.removeFromSuperlayer()
+        }
+        self.shadowLayer = nil
+        self.shouldHideAutomatically = shouldHideAutomatically
+        self.popupType = popupType
+        messageColor = self.popupType.messageColor()
+        popupBackgroundColor = self.popupType.backgroundColor()
+        setupMessageAttributed(withTextMessage: message, title: title)
+        setupUI()
+        calculateHeightOfPopup()
+        if hasAddedSubview == false {
+            UIApplication.shared.keyWindow?.addSubview(self)
+            hasAddedSubview = true
+            setupView()
         }
         showPopup(sender: sender)
     }

@@ -10,7 +10,7 @@ import UIKit
 import SkeletonView
 
 class INVSSimulatorTableviewDataSourceDelegate: NSObject,SkeletonTableViewDataSource,UITableViewDelegate {
-    let countSampleCells = 2
+    let countSampleCells = 4
     private var simulatedValues = [INVSSimulatedValueModel]()
     private var headerSimulatedValue = INVSSimulatedValueModel()
     private var simulatorHeaderView: INVSSimulatorHeaderView!

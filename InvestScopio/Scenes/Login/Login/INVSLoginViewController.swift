@@ -17,6 +17,7 @@ import Firebase
 protocol INVSLoginViewControllerProtocol: class {
     func displayOkAction(withTextField textField: INVSFloatingTextField, andShouldResign shouldResign: Bool)
     func displayCancelAction()
+    func displaySignInAsAdminSuccess(withEmail email: String, security: String)
     func displaySignInSuccess(withEmail email: String, security: String)
     func displaySignInError(titleError:String, messageError:String, shouldHideAutomatically:Bool, popupType:INVSPopupMessageType)
 }
@@ -199,7 +200,7 @@ class INVSLoginViewController: INVSPresentBaseViewController {
     func loginAction() {
         loginButton.buttonAction = {(button) -> () in
             self.loginButton.showLoading()
-            self.interactor?.logIn(rememberMe: self.rememberSwitch.isOn)
+            self.interactor?.logIn()
         }
     }
     
@@ -213,20 +214,17 @@ class INVSLoginViewController: INVSPresentBaseViewController {
     }
     
     @objc func offlineAction(_ sender: UIButton) {
-        let offlineViewController = INVSAlertViewController()
+        let offlineViewController = INVSAlertViewController.init()
         offlineViewController.setup(withHeight: 140, andWidth: 300, andCornerRadius: 8, andContentViewColor: .white)
         offlineViewController.titleAlert = INVSConstants.OfflineViewController.title.rawValue
         offlineViewController.messageAlert = INVSConstants.OfflineViewController.message.rawValue
         offlineViewController.view.frame = view.bounds
         offlineViewController.modalPresentationStyle = .overCurrentContext
         offlineViewController.view.backgroundColor = .clear
-        present(offlineViewController, animated: true, completion: nil)
+        present(offlineViewController, animated: true)
         offlineViewController.confirmCallback = { (button) -> () in
-            self.dismiss(animated: true) {
-                self.router?.routeToSimulator()
-            }
+            self.interactor?.logInAsAdmin()
         }
-        
     }
     
     @objc func resendPasswordAction(_ sender: UIButton) {
@@ -268,6 +266,12 @@ extension INVSLoginViewController: INVSLoginViewControllerProtocol {
         enableBiometric(withEmail: email, security: security)
     }
     
+    func displaySignInAsAdminSuccess(withEmail email: String, security: String) {
+        INVSKeyChainWrapper.clear()
+        INVSKeyChainWrapper.updateBool(withValue: false, andKey: INVSConstants.LoginKeyChainConstants.hasUserLogged.rawValue)
+        self.router?.routeToSimulator()
+    }
+    
     func enableBiometric(withEmail email: String, security: String) {
         if self.rememberSwitch.isOn {
             let biometricViewController = INVSAlertViewController()
@@ -299,6 +303,7 @@ extension INVSLoginViewController: INVSLoginViewControllerProtocol {
     
     func rememberUser(withRememberMe rememberMe: Bool, email: String, security: String) {
         INVSKeyChainWrapper.saveBool(withValue: rememberMe, andKey: INVSConstants.LoginKeyChainConstants.hasEnableBiometricAuthentication.rawValue)
+        INVSKeyChainWrapper.updateBool(withValue: true, andKey: INVSConstants.LoginKeyChainConstants.hasUserLogged.rawValue)
         if let emailAES = INVSCrypto.encryptAES(withText: email), let securityAES = INVSCrypto.encryptAES(withText: security) {
             INVSKeyChainWrapper.save(withValue: emailAES, andKey: INVSConstants.LoginKeyChainConstants.lastLoginEmail.rawValue)
             INVSKeyChainWrapper.save(withValue: securityAES, andKey: INVSConstants.LoginKeyChainConstants.lastLoginSecurity.rawValue)
@@ -314,7 +319,7 @@ extension INVSLoginViewController: INVSLoginViewControllerProtocol {
         textField.floatingTextField.becomeFirstResponder()
         if shouldResign {
             loginButton.showLoading()
-            interactor?.logIn(rememberMe: rememberSwitch.isOn)
+            interactor?.logIn()
             view.endEditing(shouldResign)
         }
     }

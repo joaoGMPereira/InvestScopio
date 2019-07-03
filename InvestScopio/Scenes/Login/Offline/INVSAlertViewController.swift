@@ -31,6 +31,14 @@ class INVSAlertViewController: INVSBlurViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        view.layoutIfNeeded()
+        confirmButton.setupBorded(title: "Confirmar")
+        confirmButton.buttonAction = {(button) -> () in
+            self.confirmButton.showLoading()
+            if let confirmCallback = self.confirmCallback {
+                confirmCallback(self.confirmButton.button)
+            }
+        }
     }
 
     @objc func cancelAction(_ sender: UIButton) {
@@ -38,10 +46,6 @@ class INVSAlertViewController: INVSBlurViewController {
         if let cancelCallback = self.cancelCallback {
             cancelCallback(sender)
         }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        confirmButton.setupBorded(title: "Confirmar")
     }
 
 }
