@@ -140,10 +140,14 @@ public class INVSSimutatorViewControler: UIViewController {
         logoutViewController.view.frame = view.bounds
         logoutViewController.modalPresentationStyle = .overCurrentContext
         logoutViewController.view.backgroundColor = .clear
+        self.tabBarController?.tabBar.isHidden = true
         present(logoutViewController, animated: true, completion: nil)
         logoutViewController.confirmCallback = { (button) -> () in
             logoutViewController.confirmButton.showLoading()
             self.interactor?.logout()
+        }
+        logoutViewController.cancelCallback = { (button) -> () in
+            self.tabBarController?.tabBar.isHidden = false
         }
     }
     

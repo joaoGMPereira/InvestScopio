@@ -40,6 +40,15 @@ class INVSSimulatorWorker: NSObject,INVSSimulatorWorkerProtocol {
                     errorCompletionHandler(messageError, false, .error)
                     return
                 }
+                
+                if let totalMonthsTextField = textFields.filter({$0.typeTextField == INVSFloatingTextFieldType.totalMonths}).first {
+                    if totalMonthsTextField.floatingTextField.text == "0" {
+                        totalMonthsTextField.hasError = true
+                        errorCompletionHandler("O total de meses tem que ser maior que 0!", true, .error)
+                        return
+                    }
+                }
+                
                 successCompletionHandler(true)
                 return
             }

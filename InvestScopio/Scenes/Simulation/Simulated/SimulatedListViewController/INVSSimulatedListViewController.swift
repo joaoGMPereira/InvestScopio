@@ -133,21 +133,29 @@ extension INVSSimulatedListViewController: INVSSimulatedListViewControlerProtoco
     }
     
     func displayErrorAuthentication(titleError: String, messageError: String, shouldRetry: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
         INVSConnectorHelpers.presentErrorRememberedUserLogged(lastViewController: self, message: messageError, title: titleError, shouldRetry: shouldRetry, successCompletion: {
+            self.tabBarController?.tabBar.isHidden = false
             self.interactor?.simulationProjection()
         }) {
+            self.tabBarController?.tabBar.isHidden = false
             self.goToLogin()
         }
     }
     
     func displayErrorSettings(titleError: String, messageError: String) {
+       
+        self.tabBarController?.tabBar.isHidden = true
         INVSConnectorHelpers.presentErrorGoToSettingsRememberedUserLogged(lastViewController: self, message: messageError, title: titleError, finishCompletion: {
+            self.tabBarController?.tabBar.isHidden = false
             self.goToLogin()
         })
     }
     
     func displayErrorLogout(titleError: String, messageError: String) {
+        self.tabBarController?.tabBar.isHidden = true
         INVSConnectorHelpers.presentErrorRememberedUserLogged(lastViewController: self) {
+            self.tabBarController?.tabBar.isHidden = false
             self.goToLogin()
         }
     }

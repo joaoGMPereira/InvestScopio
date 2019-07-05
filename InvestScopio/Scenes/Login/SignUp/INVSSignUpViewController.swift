@@ -37,12 +37,12 @@ class INVSSignUpViewController: UIViewController {
     var firstMinYContentView: CGFloat = 0
     var delegate: INVSSignUpViewControllerDelegate?
     
+    var contentShapeLayer: CAShapeLayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         setupUI()
-        let _ = CAShapeLayer.addCorner(withShapeLayer: nil, withCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], withRoundedCorner: 8, andColor: .white, inView: contentView)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         signUpButton.setupBorded(title: "Cadastrar")
@@ -50,6 +50,11 @@ class INVSSignUpViewController: UIViewController {
             self.signUpButton.showLoading()
             self.interactor?.signUp()
         }
+        
+    }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        contentShapeLayer = CAShapeLayer.addCorner(withShapeLayer: contentShapeLayer, withCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], withRoundedCorner: 8, andColor: .white, inView: contentView)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {

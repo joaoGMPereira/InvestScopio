@@ -52,7 +52,7 @@ class INVSSimulatedChartsViewController: UIViewController {
         rescueChartView.setupChart()
         setupChartTypeSegmentedControl()
         interactor.setSegmentControl()
-        interactor.calculateChartValues(withMonths: 3)
+        interactor.calculateChartValues(withMonths: 1)
     }
     
     private func setupChartTypeSegmentedControl() {
@@ -116,6 +116,9 @@ extension INVSSimulatedChartsViewController: INVSSimulatedChartsViewControllerPr
     }
     
     func displayTotalSegmentedControl(withMonths months: [String]) {
+        if months.count == 1 {
+            
+        }
         monthsSegmentedControl = BetterSegmentedControl.init(
             frame: .zero,
             segments: LabelSegment.segments(withTitles: months,
@@ -171,7 +174,7 @@ extension INVSSimulatedChartsViewController: INVSCodeView {
             monthsSegmentedControl.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             monthsSegmentedControl.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor, constant: -8),
             monthsSegmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            monthsSegmentedControl.heightAnchor.constraint(equalToConstant: 30)
+            monthsSegmentedControl.heightAnchor.constraint(equalToConstant: self.interactor?.simulatedValues.count ?? 0 > 2 ? 30 : 0)
             ])
         
         NSLayoutConstraint.activate([

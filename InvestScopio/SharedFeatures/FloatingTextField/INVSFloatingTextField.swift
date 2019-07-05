@@ -224,12 +224,14 @@ extension INVSFloatingTextField: UITextFieldDelegate, INVSKeyboardToolbarDelegat
     }
     
     func closeKeyboard() {
+        let trailingFromInfoButton = -((frame.height * 0.8) + 16)
         UIView.animate(withDuration: 0.25) { [weak self] in
             if self?.floatingTextField.text == "" || self?.floatingTextField.text == nil {
-                self?.trailingLabelConstraint.constant = 0
+                self?.trailingLabelConstraint.constant = trailingFromInfoButton
                 self?.bottomLabelConstraint.constant = 0
                 self?.topTextFieldConstraint.constant = 0
-                self?.placeholderLabel.font = UIFont.systemFont(ofSize: 16)
+                self?.placeholderLabel.minimumScaleFactor = 0.5
+                self?.placeholderLabel.font = self?.bigFont
                 self?.placeholderLabel.textColor = .lightGray
                 self?.bottomLineView.backgroundColor = UIColor.lightGray
             }

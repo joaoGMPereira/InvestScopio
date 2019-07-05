@@ -23,14 +23,6 @@ protocol INVSStartWorkerProtocol {
 }
 
 class INVSStartWorker: NSObject,INVSStartWorkerProtocol {
-    private let spreadsheetId = "1gX0sZOeHAy3CMWyHNqf8BAVKk-gy04KSz-h4FI6Uirs"
-//    private let scopes = [kGTLRAuthScopeSheetsSpreadsheetsReadonly]
-//    private let service = GTLRSheetsService()
-    let dispatchGroup: DispatchGroup = DispatchGroup()
-    var market = MarketModel()
-//    var document: Document = Document.init("")
-    var items: [Item] = []
-    //let webView = WKWebView(frame: .zero)
     
     func downloadMarketInfo(successCompletionHandler: @escaping (SuccessDownloadMarketInfoHandler), errorCompletionHandler: @escaping (ErrorSDownloadMarketInfoHandler)) {
         //service.apiKey = FirebaseApp.app()?.options.apiKey
@@ -39,13 +31,13 @@ class INVSStartWorker: NSObject,INVSStartWorkerProtocol {
         //IBOVTax()
         //parseBanksCSV()
         
-        dispatchGroup.notify(queue: .main) {
-            if let error = self.market.error {
-                errorCompletionHandler(error)
-                return
-            }
-            successCompletionHandler(self.market)
-        }
+//        dispatchGroup.notify(queue: .main) {
+//            if let error = self.market.error {
+//                errorCompletionHandler(error)
+//                return
+//            }
+//            successCompletionHandler(self.market)
+//        }
     }
     
     func apiVersion() {
