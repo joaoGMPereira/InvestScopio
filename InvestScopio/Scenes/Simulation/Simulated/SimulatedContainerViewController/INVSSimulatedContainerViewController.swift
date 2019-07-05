@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum SelectedViewControllerType {
+    case list
+    case charts
+}
+
 class INVSSimulatedContainerViewController: INVSPresentBaseViewController {
     var containerView = UIView(frame: .zero)
     var switchView = INVSSwitchView(frame: .zero)
@@ -16,6 +21,7 @@ class INVSSimulatedContainerViewController: INVSPresentBaseViewController {
     
     var heightSwitchViewConstraint = NSLayoutConstraint()
     let router: INVSRoutingLogic? = INVSRouter()
+    var selectedViewController: SelectedViewControllerType = .list
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,15 +105,20 @@ extension INVSSimulatedContainerViewController: INVSSwitchViewDelegate, INVSSimu
     
     func didSelectButton(_ sender: UIButton) {
         switchView.isUserInteractionEnabled = false
-        if sender.titleLabel?.text == "Grafico" {
+        if sender.titleLabel?.text == "Grafico" && selectedViewController != .charts {
+            selectedViewController = .charts
             router?.showNextViewController(withNewController: simulatedChartsViewController, withOldController: simulatedListViewController, andParentViewController: self, withAnimation: .transitionFlipFromLeft, completion: {finished in
                 self.switchView.isUserInteractionEnabled = finished
+                return
             })
-        }
-        if sender.titleLabel?.text == "Lista" {
-            router?.showNextViewController(withNewController: simulatedListViewController, withOldController: simulatedChartsViewController, andParentViewController: self, withAnimation: .transitionFlipFromRight, completion: {finished in
-                self.switchView.isUserInteractionEnabled = finished
-            })
+        } else {
+            if sender.titleLabel?.text == "Lista" && selectedViewController != .list {
+                selectedViewController = .list
+                router?.showNextViewController(withNewController: simulatedListViewController, withOldController: simulatedChartsViewController, andParentViewController: self, withAnimation: .transitionFlipFromRight, completion: {finished in
+                    self.switchView.isUserInteractionEnabled = finished
+                    return
+                })
+            }
         }
     }
 }
