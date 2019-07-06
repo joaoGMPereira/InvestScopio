@@ -138,7 +138,7 @@ extension INVSFloatingTextField: INVSCodeView {
     }
     
     func setupConstraints() {
-        let trailingFromInfoButton = -((frame.height * 0.8) + 16)
+        let trailingFromInfoButton = CGFloat(-8)
         trailingLabelConstraint = placeholderLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: trailingFromInfoButton)
         bottomLabelConstraint = placeholderLabel.bottomAnchor.constraint(equalTo: self.bottomLineView.topAnchor)
         trailingTextFieldConstraint = floatingTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: trailingFromInfoButton)
