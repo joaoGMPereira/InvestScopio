@@ -10,7 +10,7 @@ import Foundation
 
 struct INVSEvaluateModel: JSONAble {
     var rate: Int
-    var version: Double
+    var version: String
     var versionSO: String
 }
 

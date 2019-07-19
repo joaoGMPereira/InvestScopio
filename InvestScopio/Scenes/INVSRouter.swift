@@ -66,6 +66,7 @@ class INVSRouter: NSObject, INVSRoutingLogic {
         options.style = .easeOut
         options.background = UIWindow.TransitionOptions.Background.solidColor(.INVSLightGray())
         window.setRootViewController(loginViewController, options: options)
+        AppDelegate.appDelegate().tabBarController.selectedIndex = 0
     }
     
     func routeToSimulated(withViewController viewController: UIViewController, fromButton button: UIButton, andSimulatorModel simulatorModel: INVSSimulatorModel, heroId: String) {
