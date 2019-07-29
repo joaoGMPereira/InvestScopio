@@ -128,7 +128,7 @@ enum INVSSimulatedHelpViewType: Int {
         let messageMutableAttributedString = NSMutableAttributedString()
         messageMutableAttributedString.append(NSAttributedString.title(withText: "Por quanto "))
         messageMutableAttributedString.append(NSAttributedString.titleBold(withText: "tempo "))
-        messageMutableAttributedString.append(NSAttributedString.title(withText: "cocê quer \nFicar com esse investimento?"))
+        messageMutableAttributedString.append(NSAttributedString.title(withText: "você quer \nFicar com esse investimento?"))
         setNewAttributedText(withHelpView: helpView, messageMutableAttributedString: messageMutableAttributedString)
     }
 

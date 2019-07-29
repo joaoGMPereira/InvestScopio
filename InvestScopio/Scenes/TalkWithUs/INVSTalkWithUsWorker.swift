@@ -24,10 +24,7 @@ class INVSTalkWithUsWorker: NSObject,INVSTalkWithUsWorkerProtocol {
     func sendOpinion(evaluate: Int, successCompletion: @escaping(SuccessVoteCompletion), errorCompletion:@escaping(ErrorCompletion)) {
         let defaultError =
             ConnectorError.init(error: .none, title: INVSConstants.TalkWithUsAlertViewController.titleError.rawValue, message: INVSConstants.TalkWithUsAlertViewController.messageVoteError.rawValue, shouldRetry: false)
-        guard let version = Double(INVSTalkWithUsWorker.getAppVersion()) else {
-            errorCompletion(defaultError)
-            return
-        }
+        let version = INVSTalkWithUsWorker.getAppVersion()
         let evaluateRequest = INVSEvaluateModel.init(rate: evaluate, version: version, versionSO: "iOS \(UIDevice.current.systemVersion)")
         INVSConector.connector.request(withRoute: ConnectorRoutes.evaluate, method: .post, parameters: evaluateRequest, responseClass: INVSEvaluateResponse.self, headers: nil, shouldRetry: false, successCompletion: { (decodable) in
             guard let evaluateResponse = decodable as? INVSEvaluateResponse else {

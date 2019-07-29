@@ -11,6 +11,7 @@ import Charts
 protocol INVSSimulatedChartsInteractorProtocol {
     func setSegmentControl()
     func calculateChartValues(withMonths months: Int?)
+    var simulatedValues:[INVSSimulatedValueModel] {get set}
 }
 
 class INVSSimulatedChartsInteractor: NSObject,INVSSimulatedChartsInteractorProtocol {

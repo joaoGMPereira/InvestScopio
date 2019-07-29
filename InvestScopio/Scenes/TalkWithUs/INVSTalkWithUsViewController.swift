@@ -38,6 +38,9 @@ class INVSTalkWithUsViewController: UIViewController {
     @IBOutlet weak var feedbackArrowImageView: UIImageView!
     @IBOutlet weak var versionLabel: UILabel!
     
+    var opinionShapeLayer: CAShapeLayer?
+    var feedbackShapeLayer: CAShapeLayer?
+    
     var interactor: INVSTalkWithUsInteractorProtocol?
     var router: INVSRoutingLogic? = INVSRouter()
     
@@ -71,8 +74,8 @@ class INVSTalkWithUsViewController: UIViewController {
     }
     
     func setBordedViewBackgrounds() {
-        let _ = CAShapeLayer.addCorner(withShapeLayer: nil, withCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], withRoundedCorner: 8, andColor: .white, inView: contentView)
-        let _ = CAShapeLayer.addCorner(withShapeLayer: nil, withCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], withRoundedCorner: 8, andColor: .white, inView: typeFeedbackView)
+        opinionShapeLayer = CAShapeLayer.addCorner(withShapeLayer: opinionShapeLayer, withCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], withRoundedCorner: 8, andColor: .white, inView: contentView)
+        feedbackShapeLayer = CAShapeLayer.addCorner(withShapeLayer: feedbackShapeLayer, withCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], withRoundedCorner: 8, andColor: .white, inView: typeFeedbackView)
     }
     
     func setLabelsInfo() {
@@ -198,23 +201,30 @@ extension INVSTalkWithUsViewController: INVSTalkWithUsViewControllerProtocol {
     
     func displayErrorAuthentication(titleError: String, messageError: String, shouldRetry: Bool) {
         self.sendOpinionButton.hideLoading()
+        self.tabBarController?.tabBar.isHidden = true
         INVSConnectorHelpers.presentErrorRememberedUserLogged(lastViewController: self, message: messageError, title: titleError, shouldRetry: shouldRetry, successCompletion: {
+            self.tabBarController?.tabBar.isHidden = false
             self.interactor?.sendOpinion()
         }) {
+            self.tabBarController?.tabBar.isHidden = false
             self.goToLogin()
         }
     }
     
     func displayErrorSettings(titleError: String, messageError: String) {
         self.sendOpinionButton.hideLoading()
+        self.tabBarController?.tabBar.isHidden = true
         INVSConnectorHelpers.presentErrorGoToSettingsRememberedUserLogged(lastViewController: self, message: messageError, title: titleError, finishCompletion: {
+            self.tabBarController?.tabBar.isHidden = false
             self.goToLogin()
         })
     }
     
     func displayErrorLogout(titleError: String, messageError: String) {
         self.sendOpinionButton.hideLoading()
+        self.tabBarController?.tabBar.isHidden = true
         INVSConnectorHelpers.presentErrorRememberedUserLogged(lastViewController: self) {
+            self.tabBarController?.tabBar.isHidden = false
             self.goToLogin()
         }
     }

@@ -16,8 +16,9 @@ protocol INVSLoginPresenterProtocol
 {
   func presentToolbarAction(withPreviousTextField textField: INVSFloatingTextField, allTextFields textFields: [INVSFloatingTextField], typeOfAction type: INVSKeyboardToolbarButton)
     func presentSuccessSignIn(withEmail email: String, security: String)
-    func presentSuccessSignInAsAdmin(withEmail email: String, security: String)
     func presentErrorSignIn(titleError:String, messageError:String, shouldHideAutomatically:Bool, popupType:INVSPopupMessageType)
+    func presentSuccessSignInAsAdmin(withEmail email: String, security: String)
+    func presentErrorAdminSignIn(titleError:String, messageError:String, shouldHideAutomatically:Bool, popupType:INVSPopupMessageType)
 }
 
 class INVSLoginPresenter: INVSLoginPresenterProtocol
@@ -42,6 +43,10 @@ class INVSLoginPresenter: INVSLoginPresenterProtocol
     
     func presentSuccessSignInAsAdmin(withEmail email: String, security: String) {
         viewController?.displaySignInAsAdminSuccess(withEmail: email, security: security)
+    }
+    
+    func presentErrorAdminSignIn(titleError:String, messageError:String, shouldHideAutomatically:Bool, popupType:INVSPopupMessageType) {
+        viewController?.displaySignAdminInError(titleError: titleError, messageError: messageError, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType)
     }
     
     func presentErrorSignIn(titleError:String, messageError:String, shouldHideAutomatically:Bool, popupType:INVSPopupMessageType) {

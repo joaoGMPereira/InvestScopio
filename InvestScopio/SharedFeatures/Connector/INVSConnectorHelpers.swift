@@ -117,10 +117,6 @@ class INVSConnectorHelpers: NSObject {
         let errorViewController = setupAlertController(lastViewController: lastViewController, message: message, title: title)
         errorViewController.confirmCallback = { (button) -> () in
             errorViewController.dismiss(animated: true) {
-                let url = URL(string: "App-Prefs:root=TOUCHID_PASSCODE")
-                if UIApplication.shared.canOpenURL(url!) {
-                    UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-                }
                 finishCompletion()
             }
         }

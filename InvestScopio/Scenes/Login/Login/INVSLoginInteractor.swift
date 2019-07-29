@@ -42,7 +42,7 @@ class INVSLoginInteractor: INVSLoginInteractorProtocol {
             INVSSession.session.user = userResponse
             self.presenter?.presentSuccessSignInAsAdmin(withEmail: userResponse.email, security: userResponse.uid)
         }, errorCompletionHandler: { (title, message, shouldHideAutomatically, popupType) in
-            self.presenter?.presentErrorSignIn(titleError: title, messageError: message, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType)
+            self.presenter?.presentErrorAdminSignIn(titleError: title, messageError: message, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType)
         })
     }
 }

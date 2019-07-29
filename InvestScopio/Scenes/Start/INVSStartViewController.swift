@@ -106,10 +106,6 @@ extension INVSStartViewController: INVSStartViewControllerProtocol {
         present(errorViewController, animated: true, completion: nil)
         errorViewController.confirmCallback = { (button) -> () in
             errorViewController.dismiss(animated: true) {
-                let url = URL(string: "App-Prefs:root=TOUCHID_PASSCODE")
-                if UIApplication.shared.canOpenURL(url!) {
-                    UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-                }
                 self.goToLogin()
             }
         }

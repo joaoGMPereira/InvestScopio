@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -222,7 +222,6 @@
 		4AFF3EC322BB23F10056A167 /* Jsonable+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E6A22BA8EB10056A167 /* Jsonable+INVSExtension.swift */; };
 		4AFF3EC422BB23F10056A167 /* INVSSimulatorInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68842295796100EDC8C6 /* INVSSimulatorInteractor.swift */; };
 		4AFF3EC522BB23F10056A167 /* INVSRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68852295796100EDC8C6 /* INVSRouter.swift */; };
-		4AFF3EC722BB23F10056A167 /* Pods_InvestScopio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F1B6B0D7ADAA56EF7CEAAF4 /* Pods_InvestScopio.framework */; };
 		4AFF3EC922BB23F10056A167 /* INVSSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8F22B2FF0300D6A33A /* INVSSignUpViewController.xib */; };
 		4AFF3ECA22BB23F10056A167 /* INVSSimulatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C68782295796100EDC8C6 /* INVSSimulatorCell.xib */; };
 		4AFF3ECB22BB23F10056A167 /* INVSResendPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9922B41C1A00D6A33A /* INVSResendPasswordViewController.xib */; };
@@ -249,7 +248,7 @@
 		4AFF3F0422BF12120056A167 /* INVSConnectorHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3F0322BF12120056A167 /* INVSConnectorHelpers.swift */; };
 		4AFF3F0522BF12670056A167 /* INVSConnectorHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3F0322BF12120056A167 /* INVSConnectorHelpers.swift */; };
 		7B3FD35CB4A8123DF3A4C9AC /* Pods_InvestScopioDev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCDDCC66DBBAD541616D7347 /* Pods_InvestScopioDev.framework */; };
-		B8729DDDA4477CDE936382D1 /* Pods_InvestScopio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F1B6B0D7ADAA56EF7CEAAF4 /* Pods_InvestScopio.framework */; };
+		B8729DDDA4477CDE936382D1 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -380,7 +379,6 @@
 		4AFF3F0022BED1B20056A167 /* INVSBiometricsHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSBiometricsHelpers.swift; sourceTree = "<group>"; };
 		4AFF3F0322BF12120056A167 /* INVSConnectorHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSConnectorHelpers.swift; sourceTree = "<group>"; };
 		96C9F1EA5800CB68A709EF1A /* Pods-InvestScopio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvestScopio.debug.xcconfig"; path = "Target Support Files/Pods-InvestScopio/Pods-InvestScopio.debug.xcconfig"; sourceTree = "<group>"; };
-		9F1B6B0D7ADAA56EF7CEAAF4 /* Pods_InvestScopio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InvestScopio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCDDCC66DBBAD541616D7347 /* Pods_InvestScopioDev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InvestScopioDev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E51923B72D563C11FC98562D /* Pods-InvestScopio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvestScopio.release.xcconfig"; path = "Target Support Files/Pods-InvestScopio/Pods-InvestScopio.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -390,7 +388,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8729DDDA4477CDE936382D1 /* Pods_InvestScopio.framework in Frameworks */,
+				B8729DDDA4477CDE936382D1 /* (null) in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,7 +396,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AFF3EC722BB23F10056A167 /* Pods_InvestScopio.framework in Frameworks */,
 				7B3FD35CB4A8123DF3A4C9AC /* Pods_InvestScopioDev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,7 +406,6 @@
 		1CDA62E9D43AF48147370A7C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9F1B6B0D7ADAA56EF7CEAAF4 /* Pods_InvestScopio.framework */,
 				DCDDCC66DBBAD541616D7347 /* Pods_InvestScopioDev.framework */,
 			);
 			name = Frameworks;
@@ -1145,42 +1141,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-InvestScopioDev/Pods-InvestScopioDev-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/BetterSegmentedControl/BetterSegmentedControl.framework",
-				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
-				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
-				"${BUILT_PRODUCTS_DIR}/SkeletonView/SkeletonView.framework",
-				"${BUILT_PRODUCTS_DIR}/StepView/StepView.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
-				"${BUILT_PRODUCTS_DIR}/ZCAnimatedLabel/ZCAnimatedLabel.framework",
-				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-InvestScopioDev/Pods-InvestScopioDev-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BetterSegmentedControl.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkeletonView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StepView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZCAnimatedLabel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-InvestScopioDev/Pods-InvestScopioDev-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1193,42 +1158,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-InvestScopio/Pods-InvestScopio-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/BetterSegmentedControl/BetterSegmentedControl.framework",
-				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
-				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
-				"${BUILT_PRODUCTS_DIR}/SkeletonView/SkeletonView.framework",
-				"${BUILT_PRODUCTS_DIR}/StepView/StepView.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
-				"${BUILT_PRODUCTS_DIR}/ZCAnimatedLabel/ZCAnimatedLabel.framework",
-				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-InvestScopio/Pods-InvestScopio-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BetterSegmentedControl.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkeletonView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StepView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZCAnimatedLabel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-InvestScopio/Pods-InvestScopio-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

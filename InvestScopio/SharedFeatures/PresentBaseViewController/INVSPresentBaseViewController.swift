@@ -25,7 +25,7 @@ class INVSPresentBaseViewController: UIViewController {
     var navigationBarHeight: CGFloat = 44
     private var navigationBarLabel = UILabel()
     private var contentView = UIView()
-    private var shadowLayer: CAShapeLayer!
+    private var shadowLayer: CAShapeLayer?
     private var heightNavigationBarConstraint = NSLayoutConstraint()
     private var topNavigationBarConstraint = NSLayoutConstraint()
     private var animatedLogoView = AnimationView()

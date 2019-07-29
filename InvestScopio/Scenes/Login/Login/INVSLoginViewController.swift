@@ -18,8 +18,10 @@ protocol INVSLoginViewControllerProtocol: class {
     func displayOkAction(withTextField textField: INVSFloatingTextField, andShouldResign shouldResign: Bool)
     func displayCancelAction()
     func displaySignInAsAdminSuccess(withEmail email: String, security: String)
+    func displaySignAdminInError(titleError:String, messageError:String, shouldHideAutomatically:Bool, popupType:INVSPopupMessageType)
     func displaySignInSuccess(withEmail email: String, security: String)
     func displaySignInError(titleError:String, messageError:String, shouldHideAutomatically:Bool, popupType:INVSPopupMessageType)
+    
 }
 
 class INVSLoginViewController: INVSPresentBaseViewController {
@@ -38,6 +40,8 @@ class INVSLoginViewController: INVSPresentBaseViewController {
     var animationView = AnimationView()
     var titleTopConstraint = NSLayoutConstraint()
     var popupMessage: INVSPopupMessage?
+    
+    let offlineViewController = INVSAlertViewController.init()
 
     var interactor: INVSLoginInteractorProtocol?
     var router: INVSRoutingLogic?
@@ -214,7 +218,6 @@ class INVSLoginViewController: INVSPresentBaseViewController {
     }
     
     @objc func offlineAction(_ sender: UIButton) {
-        let offlineViewController = INVSAlertViewController.init()
         offlineViewController.setup(withHeight: 140, andWidth: 300, andCornerRadius: 8, andContentViewColor: .white)
         offlineViewController.titleAlert = INVSConstants.OfflineViewController.title.rawValue
         offlineViewController.messageAlert = INVSConstants.OfflineViewController.message.rawValue
@@ -270,6 +273,11 @@ extension INVSLoginViewController: INVSLoginViewControllerProtocol {
         INVSKeyChainWrapper.clear()
         INVSKeyChainWrapper.updateBool(withValue: false, andKey: INVSConstants.LoginKeyChainConstants.hasUserLogged.rawValue)
         self.router?.routeToSimulator()
+    }
+    
+    func displaySignAdminInError(titleError:String, messageError:String, shouldHideAutomatically:Bool, popupType:INVSPopupMessageType) {
+        offlineViewController.confirmButton.hideLoading()
+        popupMessage?.show(withTextMessage: messageError, title: titleError, popupType: popupType, shouldHideAutomatically: shouldHideAutomatically)
     }
     
     func enableBiometric(withEmail email: String, security: String) {

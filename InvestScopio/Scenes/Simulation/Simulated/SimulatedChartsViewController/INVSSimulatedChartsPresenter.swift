@@ -33,9 +33,43 @@ class INVSSimulatedChartsPresenter: NSObject,INVSSimulatedChartsPresenterProtoco
     }
     
     func presentSegmentedControl(withMonths months: Int) {
-        let totalMonths = "\(months) meses"
-        let segmentValues = ["3 meses", "6 meses", "12 meses", totalMonths]
+        var segmentValues = [String]()
+        segmentValues = setSegmentValues(totalMonthUser: months)
         controller?.displayTotalSegmentedControl(withMonths: segmentValues)
+    }
+    
+    func setSegmentValues(totalMonthUser: Int) -> [String] {
+        let totalMonths = "\(totalMonthUser) meses"
+        var segmentValues = [String]()
+        if totalMonthUser > 12 {
+            segmentValues = ["3 meses", "6 meses", "12 meses", totalMonths]
+        } else {
+            if totalMonthUser == 12 {
+                segmentValues = ["1 mês","3 meses", "6 meses", "12 meses"]
+            } else {
+                var monthsDefault = [1]
+                if totalMonthUser > 2 {
+                    monthsDefault = [1,2]
+                }
+                if totalMonthUser > 3 {
+                    monthsDefault = [1,2,3]
+                }
+                if totalMonthUser > 6 {
+                    monthsDefault = [1,3,6]
+                }
+                monthsDefault.append(totalMonthUser)
+                monthsDefault = Array(Set(monthsDefault))
+                monthsDefault = monthsDefault.sorted()
+                for month in monthsDefault {
+                    if month == 1 {
+                        segmentValues.append("\(month) mês")
+                    } else {
+                        segmentValues.append("\(month) meses")
+                    }
+                }
+            }
+        }
+        return segmentValues
     }
     
     

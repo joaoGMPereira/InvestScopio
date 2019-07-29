@@ -45,6 +45,7 @@ class INVSRouter: NSObject, INVSRoutingLogic {
             talkWithUsViewController.tabBarItem = talkWithUsBarItem
             navigationControllers.append(UINavigationController.init(rootViewController: talkWithUsViewController))
             appDelegate.tabBarController.setViewControllers(navigationControllers, animated: true)
+            appDelegate.tabBarController.tabBar.isHidden = false
             var options = UIWindow.TransitionOptions()
             options.direction = .toBottom
             options.duration = 0.4
@@ -66,6 +67,7 @@ class INVSRouter: NSObject, INVSRoutingLogic {
         options.style = .easeOut
         options.background = UIWindow.TransitionOptions.Background.solidColor(.INVSLightGray())
         window.setRootViewController(loginViewController, options: options)
+        AppDelegate.appDelegate().tabBarController.selectedIndex = 0
     }
     
     func routeToSimulated(withViewController viewController: UIViewController, fromButton button: UIButton, andSimulatorModel simulatorModel: INVSSimulatorModel, heroId: String) {
@@ -78,6 +80,7 @@ class INVSRouter: NSObject, INVSRoutingLogic {
         simulatedContainerViewController.simulatedListViewController.setup(withSimulatorModel: simulatorModel)
         let buttonTitle = button.titleLabel?.text ?? ""
         button.setTitle("", for: .normal)
+        simulatedContainerViewController.modalPresentationStyle = .fullScreen
         viewController.present(simulatedContainerViewController, animated: true) {
             button.setTitle(buttonTitle, for: .normal)
         }
