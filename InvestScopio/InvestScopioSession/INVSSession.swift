@@ -11,7 +11,6 @@ import Foundation
 enum ServiceType: Int {
     case localHost = 0
     case heroku
-    case offline
 }
 
 final class INVSSession {

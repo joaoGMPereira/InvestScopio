@@ -13,7 +13,7 @@ typealias ErrorHandler = (_ messageError:String, _ shouldHideAutomatically:Bool,
 typealias CheckIfIncreaseRescueTextFieldIsRequiredHandler = (_ increaseRescueTextField:INVSFloatingTextField?, _ goalIncreaseRescueTextField:INVSFloatingTextField?, _ increaseRescueTextFieldIsRequired: Bool, _ messageError: String) ->()
 
 protocol INVSSimulatorWorkerProtocol {
-    func simulationProjection(with textFields: [INVSFloatingTextField], successCompletionHandler: @escaping(SuccessSimulationHandler), errorCompletionHandler:@escaping(ErrorHandler))
+    func simulationProjection(with textFields: [INVSFloatingTextField], interestRateType: INVSInterestRateType, successCompletionHandler: @escaping(SuccessSimulationHandler), errorCompletionHandler:@escaping(ErrorHandler))
     
     func checkIfTextFieldIsRequired(with textFields: [INVSFloatingTextField], successCompletionHandler: @escaping(SuccessCheckTextFieldHandler), errorCompletionHandler:@escaping(ErrorHandler))
 }
@@ -41,7 +41,7 @@ class INVSSimulatorWorker: NSObject,INVSSimulatorWorkerProtocol {
                     return
                 }
                 
-                if let totalMonthsTextField = textFields.filter({$0.typeTextField == INVSFloatingTextFieldType.totalMonths}).first {
+                if let totalMonthsTextField = textFields.filter({$0.typeTextField == INVSFloatingTextFieldType.totalTimes}).first {
                     if totalMonthsTextField.floatingTextField.text == "0" {
                         totalMonthsTextField.hasError = true
                         errorCompletionHandler("O total de meses tem que ser maior que 0!", true, .error)
@@ -57,9 +57,9 @@ class INVSSimulatorWorker: NSObject,INVSSimulatorWorkerProtocol {
         })
     }
     
-    func simulationProjection(with textFields: [INVSFloatingTextField], successCompletionHandler: @escaping (SuccessSimulationHandler), errorCompletionHandler: @escaping (ErrorHandler)) {
+    func simulationProjection(with textFields: [INVSFloatingTextField], interestRateType: INVSInterestRateType, successCompletionHandler: @escaping (SuccessSimulationHandler), errorCompletionHandler: @escaping (ErrorHandler)) {
         checkIfTextFieldIsRequired(with: textFields, successCompletionHandler: { (finished) in
-            successCompletionHandler(self.populateSimulatorModel(with: textFields))
+            successCompletionHandler(self.populateSimulatorModel(with: textFields, interestRateType: interestRateType))
         }) { (messageError, shouldHideAutomatically, popupType) in
             errorCompletionHandler(messageError, shouldHideAutomatically, popupType)
         }
@@ -103,7 +103,7 @@ class INVSSimulatorWorker: NSObject,INVSSimulatorWorkerProtocol {
         handler(increaseRescueTextField,goalIncreaseRescueTextField,false, "")
     }
     
-    private func populateSimulatorModel(with textFields:[INVSFloatingTextField]) -> INVSSimulatorModel {
+    private func populateSimulatorModel(with textFields:[INVSFloatingTextField], interestRateType: INVSInterestRateType) -> INVSSimulatorModel {
         var simulatorModel = INVSSimulatorModel()
         for textField in textFields {
             if let typeTextField = textField.typeTextField {
@@ -114,8 +114,9 @@ class INVSSimulatorWorker: NSObject,INVSSimulatorWorkerProtocol {
                     simulatorModel.monthValue = textField.floatingTextField.text?.convertFormattedToDouble() ?? 0.0
                 case .interestRate:
                     simulatorModel.interestRate = textField.floatingTextField.text?.convertFormattedToDouble() ?? 0.0
-                case .totalMonths:
+                case .totalTimes:
                     simulatorModel.totalMonths = Int(textField.floatingTextField.text ?? "0") ?? 0
+                    simulatorModel.interestRateType = interestRateType
                 case .initialMonthlyRescue:
                     simulatorModel.initialMonthlyRescue = textField.floatingTextField.text?.convertFormattedToDouble() ?? 0.0
                 case .increaseRescue:

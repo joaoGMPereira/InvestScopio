@@ -24,17 +24,18 @@ class INVSSimulationCell: UITableViewCell {
     @IBOutlet weak var initialRescueValueLabel: UILabel!
     @IBOutlet weak var increaseRescueValueLabel: UILabel!
     @IBOutlet weak var increaseGoalRescueValueLabel: UILabel!
-    @IBOutlet var separatorsView: [UIView]!
     @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var completeInfoStackView: UIStackView!
-    @IBOutlet weak var simulationButton: INVSLoadingButton!
-    @IBOutlet weak var arrowImageView: UIImageView!
+    @IBOutlet weak var arrowButton: UIButton!
     
     @IBOutlet weak var arrowHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var heightInfoViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var heightStackViewConstraint: NSLayoutConstraint!
     private var shadowLayer: CAShapeLayer!
+    
+    var indexPath: IndexPath? = nil
     var state: CellState = .static
+    var expandCellAction: ((_ button: UIButton, _ indexPath: IndexPath) -> ())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -63,44 +64,77 @@ class INVSSimulationCell: UITableViewCell {
         
     }
     
-    func setup(withSimulation simulation:INVSSimulatorModel) {
-        hideSkeletonView()
-        simulationButton.hideSkeleton()
-        initialValueLabel.font = .INVSFontDefault()
-        interestRateLabel.font = .INVSFontDefault()
-        totalMonthsLabel.font = .INVSFontDefault()
-        monthValueLabel.font = .INVSFontDefault()
-        initialRescueValueLabel.font = .INVSFontDefault()
-        increaseRescueValueLabel.font = .INVSFontDefault()
-        increaseGoalRescueValueLabel.font = .INVSFontDefault()
-        initialValueLabel.text = "Valor Inicial:\(simulation.initialValue.currencyFormat())"
-        interestRateLabel.text = "Taxa de Juros:\n\(simulation.interestRate.currencyFormat().percentFormat())"
-        totalMonthsLabel.text = "Total de Meses:\n\(simulation.totalMonths)"
-        monthValueLabel.text = "Valor Mensal:\n\(simulation.monthValue.currencyFormat())"
-        initialRescueValueLabel.text = "Valor Inicial para Resgatar do seu rendimento:\n\(simulation.initialMonthlyRescue.currencyFormat())"
-        increaseRescueValueLabel.text = "Acréscimo no resgate:\n\(simulation.increaseRescue.currencyFormat())"
-        increaseGoalRescueValueLabel.text = "Objetivo de rendimento para aumento de resgate:\n\(simulation.goalIncreaseRescue.currencyFormat())"
+    func setup(withSimulation simulation:INVSSimulatorModel, indexPath: IndexPath) {
+        self.indexPath = indexPath
+        setupUI()
+        let initialValueAttributed = NSMutableAttributedString()
+        initialValueAttributed.append(NSAttributedString.subtitleBold(withText: "Valor Inicial:\n", textColor: .lightGray))
+        initialValueAttributed.append(NSAttributedString.title(withText: "\(simulation.initialValue.currencyFormat())"))
+        initialValueLabel.attributedText = initialValueAttributed
+        
+        let interestRateAttributed = NSMutableAttributedString()
+        interestRateAttributed.append(NSAttributedString.subtitleBold(withText: "Taxa de Juros:\n", textColor: .lightGray))
+        interestRateAttributed.append(NSAttributedString.title(withText: "\(simulation.interestRate.currencyFormat().percentFormat())"))
+        interestRateLabel.attributedText = interestRateAttributed
+        
+        let totalMonthsAttributed = NSMutableAttributedString()
+        totalMonthsAttributed.append(NSAttributedString.subtitleBold(withText: "Meses:\n", textColor: .lightGray))
+        totalMonthsAttributed.append(NSAttributedString.title(withText: "\(simulation.totalMonths)"))
+        totalMonthsLabel.attributedText = totalMonthsAttributed
+        
+        let monthValueAttributed = NSMutableAttributedString()
+        monthValueAttributed.append(NSAttributedString.subtitleBold(withText: "Valor Mensal:\n", textColor: .lightGray))
+        monthValueAttributed.append(NSAttributedString.title(withText: "\(simulation.monthValue.currencyFormat())"))
+        monthValueLabel.attributedText = monthValueAttributed
+        
+        let initialRescueValueAttributed = NSMutableAttributedString()
+        initialRescueValueAttributed.append(NSAttributedString.subtitleBold(withText: "Valor Inicial Resgate Resgatar do seu rendimento:\n", textColor: .lightGray))
+        initialRescueValueAttributed.append(NSAttributedString.title(withText: "\(simulation.initialMonthlyRescue.currencyFormat())"))
+        initialRescueValueLabel.attributedText = initialRescueValueAttributed
+        
+        let increaseRescueValueAttributed = NSMutableAttributedString()
+        increaseRescueValueAttributed.append(NSAttributedString.subtitleBold(withText: "Acréscimo no resgate:\n", textColor: .lightGray))
+        increaseRescueValueAttributed.append(NSAttributedString.title(withText: "\(simulation.increaseRescue.currencyFormat())"))
+        increaseRescueValueLabel.attributedText = increaseRescueValueAttributed
+        
+        let increaseGoalRescueValueAttributed = NSMutableAttributedString()
+        increaseGoalRescueValueAttributed.append(NSAttributedString.subtitleBold(withText: "Objetivo de rendimento para aumento de resgate:\n", textColor: .lightGray))
+        increaseGoalRescueValueAttributed.append(NSAttributedString.title(withText: "\(simulation.goalIncreaseRescue.currencyFormat())"))
+        increaseGoalRescueValueLabel.attributedText = increaseGoalRescueValueAttributed
         arrowHeightConstraint.constant = 0
-        arrowImageView.isHidden = true
-        if let isSimply = simulation.isSimply {
-            if isSimply == false {
-                arrowHeightConstraint.constant = 25
-                arrowImageView.isHidden = false
-                let image = UIImage(named:"arrow")?.withRenderingMode(.alwaysTemplate)
-                arrowImageView.tintColor = UIColor.darkGray
-                arrowImageView.image = image
+        arrowButton.isHidden = true
+        checkIfIsSimply(isSimply: simulation.isSimply)
+    }
+        
+        func setupUI() {
+            hideSkeletonView()
+            initialValueLabel.font = .INVSFontDefault()
+            interestRateLabel.font = .INVSFontDefault()
+            totalMonthsLabel.font = .INVSFontDefault()
+            monthValueLabel.font = .INVSFontDefault()
+            initialRescueValueLabel.font = .INVSFontDefault()
+            increaseRescueValueLabel.font = .INVSFontDefault()
+            increaseGoalRescueValueLabel.font = .INVSFontDefault()
+        }
+        
+        func checkIfIsSimply(isSimply: Bool?) {
+            if let isSimply = isSimply {
+                if isSimply == false {
+                    arrowHeightConstraint.constant = 48
+                    arrowButton.isHidden = false
+                    let image = UIImage(named:"arrow")?.withRenderingMode(.alwaysTemplate)
+                    arrowButton.tintColor = UIColor.darkGray
+                    arrowButton.setImage(image, for: .normal)
+                }
             }
         }
-    }
-    
+  
     func hideSkeletonView() {
-        separatorsView.forEach({$0.isHidden = false})
-        let skeletonViews = [initialValueLabel,interestRateLabel,totalMonthsLabel, monthValueLabel, initialRescueValueLabel, increaseRescueValueLabel, increaseGoalRescueValueLabel, simulationButton]
+        let skeletonViews = [initialValueLabel,interestRateLabel,totalMonthsLabel, monthValueLabel, initialRescueValueLabel, increaseRescueValueLabel, increaseGoalRescueValueLabel]
         skeletonViews.forEach({ $0?.hideSkeleton()})
     }
     
     func setupSkeletonView() {
-        separatorsView.forEach({$0.isHidden = true})
         let skeletonViews = [initialValueLabel,interestRateLabel,totalMonthsLabel, monthValueLabel, initialRescueValueLabel, increaseRescueValueLabel, increaseGoalRescueValueLabel]
         skeletonViews.forEach({$0?.layer.masksToBounds = true
                                 $0?.isSkeletonable = true
@@ -112,22 +146,28 @@ class INVSSimulationCell: UITableViewCell {
         
     }
     
+    @IBAction func expandCell(_ sender: UIButton) {
+        if let expandCellAction = self.expandCellAction, let indexPath = self.indexPath {
+            expandCellAction(sender, indexPath)
+        }
+    }
+    
     func toggle(withNeedsLayout needsLayout:Bool = true) {
         completeInfoStackView.arrangedSubviews.forEach({ (view) in
             view.isHidden = stateIsCollapsed()
         })
         if stateIsStatic() {
             heightStackViewConstraint.constant = 0
-            heightInfoViewConstraint.constant = 185
+            heightInfoViewConstraint.constant = 130
         } else {
             if stateIsCollapsed() {
                 heightStackViewConstraint.constant = 0
-                heightInfoViewConstraint.constant = 185
+                heightInfoViewConstraint.constant = 130
                 downArrow()
                 
             } else {
-                heightStackViewConstraint.constant = 157
-                heightInfoViewConstraint.constant = 340
+                heightStackViewConstraint.constant = 200
+                heightInfoViewConstraint.constant = 330
                 upArrow()
             }
         }
@@ -151,13 +191,13 @@ class INVSSimulationCell: UITableViewCell {
     
     private func upArrow() {
         UIView.animate(withDuration: 0.4) {
-            self.arrowImageView.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+            self.arrowButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
         }
     }
     
     private func downArrow() {
         UIView.animate(withDuration: 0.4) {
-            self.arrowImageView.transform = CGAffineTransform.identity
+            self.arrowButton.transform = CGAffineTransform.identity
         }
     }
     

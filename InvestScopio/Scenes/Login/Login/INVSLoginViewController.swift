@@ -87,11 +87,7 @@ class INVSLoginViewController: INVSPresentBaseViewController {
             INVSSession.session.callService = .heroku
         }
         
-        let action3 = UIAlertAction(title: "Offline", style: .default) { (action:UIAlertAction) in
-            INVSSession.session.callService = .offline
-        }
-        
-        let action4 = UIAlertAction(title: "Cancelar", style: .cancel) { (action:UIAlertAction) in
+        let action3 = UIAlertAction(title: "Cancelar", style: .cancel) { (action:UIAlertAction) in
             INVSSession.session.callService = .heroku
             alertController.dismiss(animated: true, completion: nil)
         }
@@ -99,7 +95,6 @@ class INVSLoginViewController: INVSPresentBaseViewController {
         alertController.addAction(action1)
         alertController.addAction(action2)
         alertController.addAction(action3)
-        alertController.addAction(action4)
         self.present(alertController, animated: true, completion: nil)
     }
     
@@ -131,7 +126,7 @@ class INVSLoginViewController: INVSPresentBaseViewController {
     
     func checkUserSavedEmail() {
         if let email = INVSKeyChainWrapper.retrieve(withKey: INVSConstants.LoginKeyChainConstants.lastLoginEmail.rawValue), let emailDecrypted = INVSCrypto.decryptAES(withText: email) {
-            emailTextField.textFieldTitle = emailDecrypted
+            emailTextField.textFieldText = emailDecrypted
         }
         if let enableAuthentication =
             INVSKeyChainWrapper.retrieveBool(withKey: INVSConstants.LoginKeyChainConstants.hasEnableBiometricAuthentication.rawValue) {
@@ -246,7 +241,7 @@ extension INVSLoginViewController: INVSPopupMessageDelegate {
 
 extension INVSLoginViewController: INVSSignUpViewControllerDelegate {
     func didSignUp(withEmail email: String) {
-        emailTextField.textFieldTitle = email
+        emailTextField.textFieldText = email
     }
 }
 

@@ -24,10 +24,11 @@ class INVSSimulatedListInteractor: NSObject,INVSSimulatedListInteractorProtocol 
             }) { (connectorError) in
                 self.presenter?.presentErrorSimulationProjection(error: connectorError)
             }
-        } else {
-            INVSKeyChainWrapper.clear()
-            self.presenter?.presentSimulationProjection(simulatorModel: simulatorModel)
         }
+//        else {
+//            INVSKeyChainWrapper.clear()
+//            self.presenter?.presentSimulationProjection(simulatorModel: simulatorModel)
+//        }
     }
     
 }

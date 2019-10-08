@@ -49,7 +49,7 @@ class INVSSwitchView: UIView {
     private func updateUI(selectedButtonIndex: Int) {
         selectedButton = selectedButtonIndex
         selectedViewWidth.constant = stackView.frame.width/CGFloat(switchButtons.count)
-        UIView.animate(withDuration: 0.6) {
+        UIView.animate(withDuration: 0.5) {
             self.layoutIfNeeded()
         }
     }
@@ -59,7 +59,7 @@ class INVSSwitchView: UIView {
         stackView.arrangedSubviews.forEach({$0.isUserInteractionEnabled = true})
         sender.isUserInteractionEnabled = false
         selectedViewLeading.constant = sender.frame.minX
-        UIView.animate(withDuration: 0.6) {
+        UIView.animate(withDuration: 0.5) {
             self.layoutIfNeeded()
         }
         delegate?.didSelectButton(sender)

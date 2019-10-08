@@ -11,6 +11,7 @@ import UIKit
 
 protocol INVSRoutingLogic {
     func routeToSimulator()
+    func routeToSimulated(withViewController viewController: UIViewController, andSimulatorModel simulatorModel: INVSSimulatorModel)
     func routeToSimulated(withViewController viewController: UIViewController, fromButton button: UIButton, andSimulatorModel simulatorModel: INVSSimulatorModel, heroId: String)
     func showNextViewController(withNewController newController: UIViewController, withOldController oldController: UIViewController, andParentViewController parentViewController: UIViewController, withAnimation animation: UIView.AnimationOptions, completion:@escaping (Bool) -> Void)
     func routeToLogin()
@@ -18,6 +19,7 @@ protocol INVSRoutingLogic {
 
 
 class INVSRouter: NSObject, INVSRoutingLogic {
+    
     func routeToSimulator() {
         guard let window = UIApplication.shared.keyWindow else {
             return
@@ -70,6 +72,21 @@ class INVSRouter: NSObject, INVSRoutingLogic {
         AppDelegate.appDelegate().tabBarController.selectedIndex = 0
     }
     
+    func routeToStart() {
+            INVSSession.session.user = nil
+            guard let window = UIApplication.shared.keyWindow else {
+                return
+            }
+            let startViewController = INVSStartViewController.init(nibName: INVSStartViewController.toString(), bundle: Bundle(for: INVSStartViewController.self))
+            var options = UIWindow.TransitionOptions()
+            options.direction = .toTop
+            options.duration = 0.4
+            options.style = .easeOut
+            options.background = UIWindow.TransitionOptions.Background.solidColor(.INVSLightGray())
+            window.rootViewController = startViewController
+            AppDelegate.appDelegate().tabBarController.selectedIndex = 0
+        }
+    
     func routeToSimulated(withViewController viewController: UIViewController, fromButton button: UIButton, andSimulatorModel simulatorModel: INVSSimulatorModel, heroId: String) {
         button.hero.id = heroId
         
@@ -86,6 +103,13 @@ class INVSRouter: NSObject, INVSRoutingLogic {
         }
     }
     
+    func routeToSimulated(withViewController viewController: UIViewController, andSimulatorModel simulatorModel: INVSSimulatorModel) {
+        let simulatedContainerViewController = INVSSimulatedContainerViewController()
+        simulatedContainerViewController.simulatedListViewController.setup(withSimulatorModel: simulatorModel)
+        simulatedContainerViewController.modalPresentationStyle = .fullScreen
+        viewController.present(simulatedContainerViewController, animated: true)
+    }
+    
     func showNextViewController(withNewController newController: UIViewController, withOldController oldController: UIViewController, andParentViewController parentViewController: UIViewController, withAnimation animation: UIView.AnimationOptions, completion:@escaping (Bool) -> Void) {
         
         oldController.willMove(toParent: nil)
@@ -99,5 +123,20 @@ class INVSRouter: NSObject, INVSRoutingLogic {
             newController.didMove(toParent: parentViewController)
             completion(true)
         })
+    }
+    
+    func routeToInterestRate(textFieldType: INVSFloatingTextFieldType, withViewController viewController: UIViewController, value: String) {
+        let interestRateViewController = INVSInterestRateViewController(nibName: INVSInterestRateViewController.toString(), bundle: Bundle(for: INVSInterestRateViewController.self))
+        interestRateViewController.interactor?.interestRateValue = value
+        if textFieldType == .totalTimes {
+            interestRateViewController.interactor?.interestRateType = .monthly
+        } else if(textFieldType == .totalTimes) {
+            interestRateViewController.interactor?.interestRateType = .yearly
+        }
+        if let viewControllerWithDelegate = viewController as? INVSInterestRateViewControllerDelegate {
+            interestRateViewController.delegate = viewControllerWithDelegate
+        }
+        let navigationController = UINavigationController.init(rootViewController: interestRateViewController)
+        viewController.present(navigationController, animated: true, completion: nil)
     }
 }

@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import CryptoSwift
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -43,6 +44,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     static func appDelegate() -> AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        Alamofire.SessionManager.default.session.getAllTasks { (tasks) in
+            tasks.forEach{ $0.cancel() }
+        }
     }
 
 }

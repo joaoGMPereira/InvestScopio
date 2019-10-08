@@ -45,7 +45,7 @@ class INVSSimulatedListViewController: UIViewController {
         super.viewDidAppear(animated)
         if topTableviewConstraint.constant != 0 {
             topTableviewConstraint.constant = 0
-            UIView.animate(withDuration: 2) {
+            UIView.animate(withDuration: 0.5) {
                 self.view.layoutIfNeeded()
             }
             interactor?.simulationProjection()

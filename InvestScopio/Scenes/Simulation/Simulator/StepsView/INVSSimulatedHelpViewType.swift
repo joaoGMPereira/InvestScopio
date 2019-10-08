@@ -121,7 +121,7 @@ enum INVSSimulatedHelpViewType: Int {
     
     private func setFourthStep(withHelpView helpView: INVSSimulatorHelpView) {
         setFourthStepMessage(withHelpView: helpView)
-        setTextFieldBottomView(withHelpView: helpView, textFieldType: INVSFloatingTextFieldType.totalMonths, andValueType: .months, isRequired: true)
+        setTextFieldBottomView(withHelpView: helpView, textFieldType: INVSFloatingTextFieldType.totalTimes, andValueType: .months, isRequired: true)
     }
     
     private func setFourthStepMessage(withHelpView helpView: INVSSimulatorHelpView) {
@@ -268,33 +268,8 @@ enum INVSSimulatedHelpViewType: Int {
             helpView.messageLabelHeightConstraint.constant = helpView.messageLabel.attributedString.height(withConstrainedWidth: helpView.messageLabelWidthConstraint.constant)
                     helpView.layoutIfNeeded()
         }
-        helpView.messageLabel.attributedString.newLabelWith(with: helpView.messageLabelWidthConstraint)
+        helpView.messageLabelWidthConstraint.constant = helpView.messageLabel.attributedString.getNewWidth(with: helpView.messageLabelWidthConstraint)
         helpView.layoutIfNeeded()
         helpView.messageLabel.startAppearAnimation()
-    }
-}
-
-
-extension NSAttributedString {
-    
-    func newLabelWith(with widthConstraint: NSLayoutConstraint)  {
-        
-        let path = UIBezierPath(rect: CGRect(x: 0, y: 0, width: widthConstraint.constant, height: CGFloat(MAXFLOAT)))
-        let frameSetterRef : CTFramesetter = CTFramesetterCreateWithAttributedString(self as CFAttributedString)
-        let frameRef: CTFrame = CTFramesetterCreateFrame(frameSetterRef, CFRangeMake(0, 0), path.cgPath, nil)
-        
-        let linesNS: NSArray  = CTFrameGetLines(frameRef)
-        
-        guard let lines = linesNS as? [CTLine] else {return }
-        var width = 0.0
-        lines.forEach({
-            let nextWidth = Double(CTLineGetBoundsWithOptions($0, CTLineBoundsOptions.useGlyphPathBounds).width)
-            if nextWidth > width {
-                width = nextWidth
-            }
-        })
-        
-        widthConstraint.constant = CGFloat(width + 30)
-        
     }
 }

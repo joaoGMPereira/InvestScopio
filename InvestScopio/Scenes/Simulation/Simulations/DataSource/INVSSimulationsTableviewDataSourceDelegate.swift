@@ -10,7 +10,7 @@ import UIKit
 import SkeletonView
 typealias DidFinishDeleteSimulation = ((_ success: Bool) -> ())
 protocol INVSSimulationsTableviewDataSourceDelegateProtocol {
-    func didSelect(withSimulation simulation: INVSSimulatorModel, fromButton button: UIButton, heroId: String)
+    func didSelect(withSimulation simulation: INVSSimulatorModel)
     func didDelete(withSimulation simulation: INVSSimulatorModel, completion: @escaping(DidFinishDeleteSimulation))
     func removeAllSimulations()
 }
@@ -25,50 +25,7 @@ class INVSSimulationsTableviewDataSourceDelegate: NSObject,SkeletonTableViewData
         self.simulations = simulations
     }
     
-    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
-        return ReusableCellIdentifier(INVSConstants.SimulatorCellConstants.cellIdentifier.rawValue)
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return simulations.count != 0 ? simulations.count : countSampleCells
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        var cell:INVSSimulationCell? = tableView.dequeueReusableCell(withIdentifier: INVSConstants.SimulationCellConstants.cellIdentifier.rawValue) as? INVSSimulationCell
-        if (cell == nil) {
-            cell = INVSSimulationCell(style:.default, reuseIdentifier:INVSConstants.SimulationCellConstants.cellIdentifier.rawValue)
-        }
-        let _ = cell?.separatorsView.compactMap({ (view) -> UIView? in
-            view.backgroundColor = .INVSDefault()
-            return view
-        })
-        cell?.contentView.layoutIfNeeded()
-        cell?.selectionStyle = .none
-        if simulations.count > 0 {
-            let simulation = simulations[indexPath.row]
-            cell?.setup(withSimulation: simulation)
-
-            if let isSimply = simulation.isSimply {
-                if isSimply {
-                    cell?.state = .static
-                } else {
-                    cell?.state = cellIsExpanded(at: indexPath) ? .expanded : .collapsed
-                }
-            }
-            cell?.simulationButton.setupBorded(title: "Simular")
-            cell?.simulationButton.buttonAction = { (button) -> () in
-                self.delegate?.didSelect(withSimulation: simulation, fromButton: button, heroId: "\(INVSConstants.INVSTransactionsViewControllersID.startSimulatedViewController.rawValue)\(indexPath.row)")
-            }
-        } else {
-            cell?.simulationButton.setupSkeleton()
-            cell?.setupSkeletonView()
-        }
-        cell?.toggle()
-        return cell ?? UITableViewCell()
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func expandCell(tableView: UITableView, indexPath: IndexPath) {
         tableView.beginUpdates()
             if let cell = tableView.cellForRow(at: indexPath) as? INVSSimulationCell {
                 if simulations.count > 0 {
@@ -90,6 +47,49 @@ class INVSSimulationsTableviewDataSourceDelegate: NSObject,SkeletonTableViewData
         tableView.endUpdates()
     }
     
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return ReusableCellIdentifier(INVSConstants.SimulatorCellConstants.cellIdentifier.rawValue)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return simulations.count != 0 ? simulations.count : countSampleCells
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        var cell:INVSSimulationCell? = tableView.dequeueReusableCell(withIdentifier: INVSConstants.SimulationCellConstants.cellIdentifier.rawValue) as? INVSSimulationCell
+        if (cell == nil) {
+            cell = INVSSimulationCell(style:.default, reuseIdentifier:INVSConstants.SimulationCellConstants.cellIdentifier.rawValue)
+        }
+        cell?.contentView.layoutIfNeeded()
+        cell?.selectionStyle = .none
+        if simulations.count > 0 {
+            let simulation = simulations[indexPath.row]
+            cell?.setup(withSimulation: simulation, indexPath: indexPath)
+            cell?.expandCellAction = { (button, indexPath) in
+                self.expandCell(tableView: tableView, indexPath: indexPath)
+            }
+            if let isSimply = simulation.isSimply {
+                if isSimply {
+                    cell?.state = .static
+                } else {
+                    cell?.state = cellIsExpanded(at: indexPath) ? .expanded : .collapsed
+                }
+            }
+        } else {
+            cell?.setupSkeletonView()
+        }
+        cell?.toggle()
+        return cell ?? UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if simulations.count > 0 {
+            let simulation = simulations[indexPath.row]
+            self.delegate?.didSelect(withSimulation: simulation)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "Apagar"
     }
@@ -104,7 +104,6 @@ class INVSSimulationsTableviewDataSourceDelegate: NSObject,SkeletonTableViewData
                 
                 tableView.beginUpdates()
                 if let cell = tableView.cellForRow(at: indexPath) as? INVSSimulationCell {
-                    cell.simulationButton.setupSkeleton()
                     cell.setupSkeletonView()
                 }
                 tableView.endUpdates()

@@ -29,6 +29,7 @@ class INVSStartViewController: UIViewController {
     var interactor: INVSStartInteractorProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
         let interactor = INVSStartInteractor()
         self.interactor = interactor
         let presenter = INVSStartPresenter()
@@ -36,6 +37,10 @@ class INVSStartViewController: UIViewController {
         interactor.presenter = presenter
         animateLaunchGif()
         interactor.checkLoggedUser()
+    }
+    
+    @objc func willEnterForeground() {
+        router.routeToStart()
     }
     
     func animateLaunchGif() {

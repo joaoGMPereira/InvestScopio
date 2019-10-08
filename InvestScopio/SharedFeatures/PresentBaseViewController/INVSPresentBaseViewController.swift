@@ -40,10 +40,10 @@ class INVSPresentBaseViewController: UIViewController {
             navigationBarHeight = view.safeAreaInsets.top + 44
             heightNavigationBarConstraint.constant = navigationBarHeight
             topNavigationBarConstraint.constant = view.safeAreaInsets.top
-            UIView.animate(withDuration: 1.6) {
+            //UIView.animate(withDuration: 1.6) {
                 self.view.layoutIfNeeded()
                 self.shadowLayer = CAShapeLayer.addCorner(withShapeLayer: self.shadowLayer, withCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], withRoundedCorner: 1, andColor: .INVSLightGray(), inView: self.navigationBarView)
-            }
+           // }
     }
     
     @objc private func dismissViewController() {
@@ -61,7 +61,7 @@ class INVSPresentBaseViewController: UIViewController {
     }
     
     func hideLoading() {
-        UIView.animate(withDuration: 0.6) {
+        UIView.animate(withDuration: 0.5) {
             self.navigationBarLabel.alpha = 1.0
             self.animatedLogoView.alpha = 0.0
         }

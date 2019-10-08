@@ -51,14 +51,14 @@ class INVSSimulatedContainerViewController: INVSPresentBaseViewController {
         listButton.backgroundColor = .white
         let chartsButton = UIButton()
         chartsButton.setTitleColor(.INVSBlack(), for: .normal)
-        chartsButton.setTitle("Grafico", for: .normal)
+        chartsButton.setTitle("Gráfico", for: .normal)
         chartsButton.backgroundColor = .white
         switchView.setup(withSwitchButtons: [listButton, chartsButton])
         switchView.delegate = self
         heightSwitchViewConstraint.constant = 70
-        UIView.animate(withDuration: 1) {
+       // UIView.animate(withDuration: 1) {
             self.view.layoutIfNeeded()
-        }
+        //}
     }
 }
 
@@ -105,7 +105,7 @@ extension INVSSimulatedContainerViewController: INVSSwitchViewDelegate, INVSSimu
     
     func didSelectButton(_ sender: UIButton) {
         switchView.isUserInteractionEnabled = false
-        if sender.titleLabel?.text == "Grafico" && selectedViewController != .charts {
+        if sender.titleLabel?.text == "Gráfico" && selectedViewController != .charts {
             selectedViewController = .charts
             router?.showNextViewController(withNewController: simulatedChartsViewController, withOldController: simulatedListViewController, andParentViewController: self, withAnimation: .transitionFlipFromLeft, completion: {finished in
                 self.switchView.isUserInteractionEnabled = finished

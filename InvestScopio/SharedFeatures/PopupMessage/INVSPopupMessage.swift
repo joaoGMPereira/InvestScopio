@@ -141,7 +141,7 @@ class INVSPopupMessage: UIView {
     private func showPopup(sender: UIView?) {
         self.alpha = 1
         heightLabelConstraint.constant = self.popupHeight * 0.95
-        UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.6, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.6, options: .curveEaseOut, animations: {
             self.frame.size.height = self.popupHeight
             self.frame.origin.y = self.topBarHeight
             self.sender = sender

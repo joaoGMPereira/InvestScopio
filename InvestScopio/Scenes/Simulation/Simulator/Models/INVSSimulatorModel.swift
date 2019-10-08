@@ -8,6 +8,21 @@
 
 import Foundation
 
+
+enum INVSInterestRateType: Int, Codable {
+    case monthly
+    case yearly
+    
+    func getPlaceHolder() -> String {
+        switch self {
+        case .monthly:
+            return "Taxa de Juros Mensal"
+        case .yearly:
+            return "Taxa de Juros Anual"
+        }
+    }
+}
+
 struct INVSSimulatorModel: JSONAble, Decodable {
     var initialValue: Double = 0.0 {
         didSet {
@@ -25,6 +40,7 @@ struct INVSSimulatorModel: JSONAble, Decodable {
         }
     }
     var totalMonths: Int = 0
+    var interestRateType: INVSInterestRateType? = .monthly
     var initialMonthlyRescue: Double = 0.0 {
         didSet {
             initialMonthlyRescue = initialMonthlyRescue.INVSrounded()

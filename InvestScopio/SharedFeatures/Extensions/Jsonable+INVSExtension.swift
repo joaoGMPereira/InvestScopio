@@ -16,9 +16,18 @@ extension JSONAble {
         let otherSelf = Mirror(reflecting: self)
         for child in otherSelf.children {
             if let key = child.label {
-                dict[key] = child.value
+                let object = checkTypeOfObject(object: child.value)
+                dict[key] = object
             }
         }
         return dict
+    }
+    
+    func checkTypeOfObject(object: Any) -> Any {
+        if let interestRateType = object as? INVSInterestRateType {
+            return interestRateType.rawValue
+        } else {
+            return object
+        }
     }
 }

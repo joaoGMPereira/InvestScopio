@@ -17,6 +17,7 @@ protocol INVSSimulatorInteractorProtocol {
     func clear()
     func logout()
     var allTextFields: [INVSFloatingTextField] { get }
+    var interestRateType: INVSInterestRateType { get set }
 }
 
 class INVSSimulatorInteractor: NSObject,INVSSimulatorInteractorProtocol {
@@ -25,6 +26,7 @@ class INVSSimulatorInteractor: NSObject,INVSSimulatorInteractorProtocol {
     var worker: INVSSimulatorWorkerProtocol = INVSSimulatorWorker()
     let loginWorker: INVSLoginWorkerProtocol = INVSLoginWorker()
     var allTextFields = [INVSFloatingTextField]()
+    var interestRateType: INVSInterestRateType = .monthly
     
     func check(withTextFields textFields: [INVSFloatingTextField]) {
         worker.checkIfTextFieldIsRequired(with: textFields, successCompletionHandler: { (finished) in
@@ -46,7 +48,7 @@ class INVSSimulatorInteractor: NSObject,INVSSimulatorInteractorProtocol {
     }
     
     func simulationProjection() {
-        worker.simulationProjection(with: allTextFields, successCompletionHandler: { (simulatorModel) in
+        worker.simulationProjection(with: allTextFields, interestRateType: interestRateType, successCompletionHandler: { (simulatorModel) in
             self.presenter?.presentSimulationProjection(simulatorModel: simulatorModel)
         }) { (messageError, shouldHideAutomatically, popupType)  in
             self.presenter?.presentError(with: messageError, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType, sender: nil)

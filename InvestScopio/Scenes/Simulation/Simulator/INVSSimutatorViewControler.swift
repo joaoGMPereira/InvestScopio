@@ -39,7 +39,7 @@ public class INVSSimutatorViewControler: UIViewController {
     @IBOutlet weak var horizontalStackView: UIStackView!
     @IBOutlet weak var heightScrollView: NSLayoutConstraint!
     let animatedLogoView = AnimationView(frame: .zero)
-    
+    let simulatorTextFieldsFactory = INVSSimulatorTextFieldsFactory()
     var popupMessage: INVSPopupMessage?
     var interactor: INVSSimulatorInteractorProtocol?
     let router = INVSRouter()
@@ -71,16 +71,17 @@ public class INVSSimutatorViewControler: UIViewController {
     }
     
     public func mockInfo() {
-        initialValueTextField.floatingTextField.text = "R$50.000,00"
-        monthValueTextField.floatingTextField.text = "R$500,00"
-        interestRateTextField.floatingTextField.text = "3,00%"
-        totalMonthsTextField.floatingTextField.text = "60"
-        initialMonthlyRescueTextField.floatingTextField.text = "R$300,00"
-        increaseRescueTextField.floatingTextField.text = "R$200,00"
-        goalIncreaseRescueTextField.floatingTextField.text = "R$500,00"
+        initialValueTextField.textFieldText = "R$50.000,00"
+        monthValueTextField.textFieldText = "R$500,00"
+        interestRateTextField.textFieldText = "3,00%"
+        totalMonthsTextField.textFieldText = "60"
+        initialMonthlyRescueTextField.textFieldText = "R$300,00"
+        increaseRescueTextField.textFieldText = "R$200,00"
+        goalIncreaseRescueTextField.textFieldText = "R$500,00"
     }
     
     func setupUI() {
+        simulatorTextFieldsFactory.delegate = self
         setupTextFields()
         horizontalStackView.addBackground(color: .lightGray)
         view.backgroundColor = .INVSGray()
@@ -89,8 +90,8 @@ public class INVSSimutatorViewControler: UIViewController {
     private func setupTextFields() {
         INVSFloatingTextFieldType.initialValue.setupTextField(withTextField: initialValueTextField, andDelegate: self, valueTypeTextField: .currency, isRequired: true)
         INVSFloatingTextFieldType.monthValue.setupTextField(withTextField: monthValueTextField, andDelegate: self, valueTypeTextField: .currency)
-        INVSFloatingTextFieldType.interestRate.setupTextField(withTextField: interestRateTextField, andDelegate: self, valueTypeTextField: .percent, isRequired: true)
-        INVSFloatingTextFieldType.totalMonths.setupTextField(withTextField: totalMonthsTextField, andDelegate: self, valueTypeTextField: .months, isRequired: true)
+        INVSFloatingTextFieldType.interestRate.setupTextField(withTextField: interestRateTextField, andDelegate: self, valueTypeTextField: .percent, isRequired: true, shouldShowKeyboard: false)
+        INVSFloatingTextFieldType.totalTimes.setupTextField(withTextField: totalMonthsTextField, andDelegate: self, valueTypeTextField: .months, isRequired: true)
         INVSFloatingTextFieldType.initialMonthlyRescue.setupTextField(withTextField: initialMonthlyRescueTextField, andDelegate: self, valueTypeTextField: .currency, hasInfoButton: true)
         INVSFloatingTextFieldType.increaseRescue.setupTextField(withTextField: increaseRescueTextField, andDelegate: self, valueTypeTextField: .currency, hasInfoButton: true)
         INVSFloatingTextFieldType.goalIncreaseRescue.setupTextField(withTextField: goalIncreaseRescueTextField, andDelegate: self, valueTypeTextField: .currency, hasInfoButton: true)
@@ -229,6 +230,9 @@ public class INVSSimutatorViewControler: UIViewController {
 extension INVSSimutatorViewControler: INVSFloatingTextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: INVSFloatingTextField) {
         self.popupMessage?.hide()
+        if let allTextFields = interactor?.allTextFields {
+            simulatorTextFieldsFactory.checkTextFieldType(withSelectedTextField: textField, andAllTextFields: allTextFields)
+        }
     }
     func toolbarAction(_ textField: INVSFloatingTextField, typeOfAction type: INVSKeyboardToolbarButton) {
         interactor?.checkToolbarAction(withTextField: textField, typeOfAction: type)
@@ -239,6 +243,21 @@ extension INVSSimutatorViewControler: INVSFloatingTextFieldDelegate {
         interactor?.showInfo(withSender: textField)
     }
     
+}
+
+extension INVSSimutatorViewControler: INVSSimulatorTextFieldsFactoryDelegate, INVSInterestRateViewControllerDelegate {
+    
+    //MARK: INVSSimulatorTextFieldsFactoryDelegate
+    func routeToInterestRate(textFieldType: INVSFloatingTextFieldType) {
+        router.routeToInterestRate(textFieldType: textFieldType, withViewController: self, value: interestRateTextField.textFieldText)
+    }
+    
+    //MARK: INVSInterestRateViewControllerDelegate
+    func didChangeInterestRate(type: INVSInterestRateType, value: String) {
+        interestRateTextField.textFieldText = value
+        interactor?.interestRateType = type
+        totalMonthsTextField.placeholderLabel.text = type.getPlaceHolder()
+    }
 }
 
 extension INVSSimutatorViewControler: INVSSimutatorViewControlerProtocol {

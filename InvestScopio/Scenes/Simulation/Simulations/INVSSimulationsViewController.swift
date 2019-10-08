@@ -136,8 +136,8 @@ class INVSSimulationsViewController: UIViewController {
 
 extension INVSSimulationsViewController: INVSSimulationsTableviewDataSourceDelegateProtocol {
     
-    func didSelect(withSimulation simulation: INVSSimulatorModel, fromButton button: UIButton, heroId: String) {
-        router?.routeToSimulated(withViewController: self, fromButton: button, andSimulatorModel: simulation, heroId: heroId)
+    func didSelect(withSimulation simulation: INVSSimulatorModel) {
+        router?.routeToSimulated(withViewController: self, andSimulatorModel: simulation)
     }
     
     func didDelete(withSimulation simulation: INVSSimulatorModel, completion: @escaping (DidFinishDeleteSimulation)) {
@@ -202,7 +202,7 @@ extension INVSSimulationsViewController: INVSSimulationsViewControllerProtocol {
         var index = 0
         for cell in cells {
             
-            UIView.animate(withDuration: 1.5, delay: 0.05 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
+            UIView.animate(withDuration: 0.5, delay: 0.05 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
                 cell.transform = CGAffineTransform.identity
             }, completion: nil)
             index += 1

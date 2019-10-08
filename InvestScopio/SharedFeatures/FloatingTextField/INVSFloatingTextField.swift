@@ -35,10 +35,10 @@ class INVSFloatingTextField: UIView {
         }
     }
     
-    var textFieldTitle: String = "" {
+    var textFieldText: String = "" {
         didSet {
-            if textFieldTitle != "" {
-                floatingTextField.text = textFieldTitle
+            if textFieldText != "" {
+                floatingTextField.text = textFieldText
                 openKeyboard()
             }
         }
@@ -64,7 +64,8 @@ class INVSFloatingTextField: UIView {
         setupView()
     }
     
-    func setup(placeholder: String,typeTextField: INVSFloatingTextFieldType?, valueTypeTextField: INVSFloatingTextFieldValueType? = nil,keyboardType: UIKeyboardType = .numberPad , required: Bool = false, hasInfoButton: Bool = false, color: UIColor, smallFont: UIFont = UIFont.systemFont(ofSize: 11), bigFont: UIFont = UIFont.systemFont(ofSize: 16), leftButtons: [INVSKeyboardToolbarButton] = [INVSKeyboardToolbarButton.cancel], rightButtons: [INVSKeyboardToolbarButton] = [INVSKeyboardToolbarButton.ok]) {
+    func setup(placeholder: String,typeTextField: INVSFloatingTextFieldType?, valueTypeTextField: INVSFloatingTextFieldValueType? = nil,keyboardType: UIKeyboardType = .numberPad , required: Bool = false, hasInfoButton: Bool = false, color: UIColor, smallFont: UIFont = UIFont.systemFont(ofSize: 11), bigFont: UIFont = UIFont.systemFont(ofSize: 16), leftButtons: [INVSKeyboardToolbarButton] = [INVSKeyboardToolbarButton.cancel], rightButtons: [INVSKeyboardToolbarButton] = [INVSKeyboardToolbarButton.ok], shouldShowKeyboard: Bool = true) {
+
         placeholderLabel.text = placeholder
         floatingTextField.keyboardType = keyboardType
         self.typeTextField = typeTextField
@@ -81,14 +82,18 @@ class INVSFloatingTextField: UIView {
         if floatingTextField.text != nil && floatingTextField.text != "" {
             openKeyboard()
         }
-        setToolbar(leftButtons: leftButtons, rightButtons: rightButtons)
+        setToolbar(leftButtons: leftButtons, rightButtons: rightButtons, shouldShowKeyboard: shouldShowKeyboard)
     }
     
-    func setToolbar(leftButtons: [INVSKeyboardToolbarButton], rightButtons: [INVSKeyboardToolbarButton]) {
+    func setToolbar(leftButtons: [INVSKeyboardToolbarButton], rightButtons: [INVSKeyboardToolbarButton], shouldShowKeyboard: Bool) {
         let toolbar = INVSKeyboardToolbar()
         toolbar.toolBarDelegate = self
         toolbar.setup(leftButtons: leftButtons, rightButtons: rightButtons)
-        floatingTextField.inputAccessoryView = toolbar
+        if shouldShowKeyboard {
+            floatingTextField.inputAccessoryView = toolbar
+        } else {
+            floatingTextField.inputView = UIView()
+        }
     }
     
     func updateTextFieldUI() {
@@ -193,7 +198,7 @@ extension INVSFloatingTextField: UITextFieldDelegate, INVSKeyboardToolbarDelegat
         if isBackSpace {
             return true
         }
- 
+        textFieldText = textField.text ?? ""
         return false
     }
     

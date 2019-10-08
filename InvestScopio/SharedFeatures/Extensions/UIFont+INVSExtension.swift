@@ -10,11 +10,11 @@ import UIKit
 extension UIFont {
     
     static func INVSSmallFontDefault() -> UIFont {
-        return UIFont.systemFont(ofSize: 13)
+        return UIFont.systemFont(ofSize: 12)
     }
     
     static func INVSSmallFontDefaultBold() -> UIFont {
-        return UIFont.boldSystemFont(ofSize: 13)
+        return UIFont.boldSystemFont(ofSize: 12)
     }
     
     static func INVSFontDefault() -> UIFont {
@@ -42,10 +42,10 @@ extension UIFont {
     }
     
     static func INVSSubtitleBold() -> UIFont {
-        return UIFont.boldSystemFont(ofSize: 20)
+        return UIFont.boldSystemFont(ofSize: 18)
     }
     
     static func INVSSubtitle() -> UIFont {
-        return UIFont.systemFont(ofSize: 20)
+        return UIFont.systemFont(ofSize: 18)
     }
 }

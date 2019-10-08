@@ -16,7 +16,7 @@ typealias ErrorCompletion = (ConnectorError) -> ()
 final class INVSConector {
     
     // Can't init is singleton
-    private init() { }
+    private init() {}
     
     static let connector = INVSConector()
     let workerLogin: INVSLoginWorkerProtocol = INVSLoginWorker()
