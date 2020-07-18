@@ -17,14 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var tabBarController = UITabBarController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        setupFirebase()
-        let startViewController = INVSStartViewController.init(nibName: INVSStartViewController.toString(), bundle: Bundle(for: INVSStartViewController.self))
-        window!.rootViewController = startViewController
-        window!.makeKeyAndVisible()
-        
+//        window = UIWindow(frame: UIScreen.main.bounds)
+//        setupFirebase()
+//        let startViewController = INVSStartViewController.init(nibName: INVSStartViewController.toString(), bundle: Bundle(for: INVSStartViewController.self))
+//        window!.rootViewController = startViewController
+//        window!.makeKeyAndVisible()
+//        
         // Override point for customization after application launch.
         return true
+    }
+    
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        return UISceneConfiguration(name: "Default Configuration",
+        sessionRole: connectingSceneSession.role)
     }
     
     func setupFirebase() {

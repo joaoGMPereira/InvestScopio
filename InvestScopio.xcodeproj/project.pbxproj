@@ -247,8 +247,21 @@
 		4AFF3F0222BED1B20056A167 /* INVSBiometricsHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3F0022BED1B20056A167 /* INVSBiometricsHelpers.swift */; };
 		4AFF3F0422BF12120056A167 /* INVSConnectorHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3F0322BF12120056A167 /* INVSConnectorHelpers.swift */; };
 		4AFF3F0522BF12670056A167 /* INVSConnectorHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3F0322BF12120056A167 /* INVSConnectorHelpers.swift */; };
+		768D8BE324C208BF004BEADA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768D8BE224C208BF004BEADA /* SceneDelegate.swift */; };
+		768D8BE424C208BF004BEADA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768D8BE224C208BF004BEADA /* SceneDelegate.swift */; };
+		768D8BE724C22B35004BEADA /* SFSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768D8BE524C22B35004BEADA /* SFSymbols.swift */; };
+		768D8BE824C22B35004BEADA /* SFSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768D8BE524C22B35004BEADA /* SFSymbols.swift */; };
+		768D8BE924C22B35004BEADA /* SFSymbols+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768D8BE624C22B35004BEADA /* SFSymbols+Extensions.swift */; };
+		768D8BEA24C22B35004BEADA /* SFSymbols+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768D8BE624C22B35004BEADA /* SFSymbols+Extensions.swift */; };
+		768D8BF024C24490004BEADA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768D8BEF24C24490004BEADA /* LoginView.swift */; };
+		768D8BF124C24490004BEADA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768D8BEF24C24490004BEADA /* LoginView.swift */; };
+		768D8BF624C34023004BEADA /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768D8BF524C34023004BEADA /* KeyboardObserver.swift */; };
+		768D8BF724C34023004BEADA /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768D8BF524C34023004BEADA /* KeyboardObserver.swift */; };
+		768D8BF924C34CB4004BEADA /* FloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768D8BF824C34CB4004BEADA /* FloatingTextField.swift */; };
+		768D8BFA24C34CB4004BEADA /* FloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768D8BF824C34CB4004BEADA /* FloatingTextField.swift */; };
 		7B3FD35CB4A8123DF3A4C9AC /* Pods_InvestScopioDev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCDDCC66DBBAD541616D7347 /* Pods_InvestScopioDev.framework */; };
 		B8729DDDA4477CDE936382D1 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		DF8D069B37894F62C4DEAAD0 /* Pods_InvestScopio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E96C823BD39D66B3F18F93B9 /* Pods_InvestScopio.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -369,7 +382,7 @@
 		4AFF3E6722BA79E90056A167 /* INVSAccessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSAccessModel.swift; sourceTree = "<group>"; };
 		4AFF3E6A22BA8EB10056A167 /* Jsonable+INVSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Jsonable+INVSExtension.swift"; sourceTree = "<group>"; };
 		4AFF3E6D22BB207E0056A167 /* GoogleServiceInfoProd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GoogleServiceInfoProd.plist; sourceTree = "<group>"; };
-		4AFF3EDE22BB23F10056A167 /* InvestScopioDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InvestScopioDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AFF3EDE22BB23F10056A167 /* InvestScopioTeste.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InvestScopioTeste.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AFF3EE322BB28580056A167 /* InvestScopioDev-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "InvestScopioDev-Info.plist"; sourceTree = "<group>"; };
 		4AFF3EE822BBFF470056A167 /* GoogleServiceInfoDev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GoogleServiceInfoDev.plist; sourceTree = "<group>"; };
 		4AFF3EF022BD89990056A167 /* INVSBiometrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSBiometrics.swift; sourceTree = "<group>"; };
@@ -378,9 +391,16 @@
 		4AFF3EFD22BEC8660056A167 /* INVSRefreshTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSRefreshTokenRequest.swift; sourceTree = "<group>"; };
 		4AFF3F0022BED1B20056A167 /* INVSBiometricsHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSBiometricsHelpers.swift; sourceTree = "<group>"; };
 		4AFF3F0322BF12120056A167 /* INVSConnectorHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSConnectorHelpers.swift; sourceTree = "<group>"; };
+		768D8BE224C208BF004BEADA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		768D8BE524C22B35004BEADA /* SFSymbols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFSymbols.swift; sourceTree = "<group>"; };
+		768D8BE624C22B35004BEADA /* SFSymbols+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SFSymbols+Extensions.swift"; sourceTree = "<group>"; };
+		768D8BEF24C24490004BEADA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		768D8BF524C34023004BEADA /* KeyboardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
+		768D8BF824C34CB4004BEADA /* FloatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTextField.swift; sourceTree = "<group>"; };
 		96C9F1EA5800CB68A709EF1A /* Pods-InvestScopio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvestScopio.debug.xcconfig"; path = "Target Support Files/Pods-InvestScopio/Pods-InvestScopio.debug.xcconfig"; sourceTree = "<group>"; };
 		DCDDCC66DBBAD541616D7347 /* Pods_InvestScopioDev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InvestScopioDev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E51923B72D563C11FC98562D /* Pods-InvestScopio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvestScopio.release.xcconfig"; path = "Target Support Files/Pods-InvestScopio/Pods-InvestScopio.release.xcconfig"; sourceTree = "<group>"; };
+		E96C823BD39D66B3F18F93B9 /* Pods_InvestScopio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InvestScopio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -389,6 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8729DDDA4477CDE936382D1 /* (null) in Frameworks */,
+				DF8D069B37894F62C4DEAAD0 /* Pods_InvestScopio.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +428,7 @@
 			isa = PBXGroup;
 			children = (
 				DCDDCC66DBBAD541616D7347 /* Pods_InvestScopioDev.framework */,
+				E96C823BD39D66B3F18F93B9 /* Pods_InvestScopio.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -621,7 +643,7 @@
 			isa = PBXGroup;
 			children = (
 				4A4C68562295784900EDC8C6 /* InvestScopio.app */,
-				4AFF3EDE22BB23F10056A167 /* InvestScopioDev.app */,
+				4AFF3EDE22BB23F10056A167 /* InvestScopioTeste.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -638,7 +660,10 @@
 				4A107A9922A1790F00A7D8D1 /* ParticipantesSTRport.csv */,
 				4AFF3EE322BB28580056A167 /* InvestScopioDev-Info.plist */,
 				4A4C68AD2295796100EDC8C6 /* InvestScopioProd-Info.plist */,
+				768D8BE524C22B35004BEADA /* SFSymbols.swift */,
+				768D8BE624C22B35004BEADA /* SFSymbols+Extensions.swift */,
 				4A4C68AC2295796100EDC8C6 /* AppDelegate.swift */,
+				768D8BE224C208BF004BEADA /* SceneDelegate.swift */,
 			);
 			path = InvestScopio;
 			sourceTree = "<group>";
@@ -646,6 +671,7 @@
 		4A4C686C2295796100EDC8C6 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				768D8BEB24C2444E004BEADA /* LoginSU */,
 				4A27021C22CD409C005DA22A /* TalkWithUs */,
 				4A0FFE8022B08BF500D6A33A /* Login */,
 				4A4C687A2295796100EDC8C6 /* Start */,
@@ -967,6 +993,16 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		768D8BEB24C2444E004BEADA /* LoginSU */ = {
+			isa = PBXGroup;
+			children = (
+				768D8BEF24C24490004BEADA /* LoginView.swift */,
+				768D8BF524C34023004BEADA /* KeyboardObserver.swift */,
+				768D8BF824C34CB4004BEADA /* FloatingTextField.swift */,
+			);
+			path = LoginSU;
+			sourceTree = "<group>";
+		};
 		F4BF4408D4B1FD25E8984CE5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1016,7 +1052,7 @@
 			);
 			name = InvestScopioDev;
 			productName = InvestScopio;
-			productReference = 4AFF3EDE22BB23F10056A167 /* InvestScopioDev.app */;
+			productReference = 4AFF3EDE22BB23F10056A167 /* InvestScopioTeste.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1237,6 +1273,7 @@
 				4A0FFE8422B1160400D6A33A /* INVSLoginInteractor.swift in Sources */,
 				4A0FFE8622B1161D00D6A33A /* INVSLoginPresenter.swift in Sources */,
 				4A4C68CF2295796200EDC8C6 /* NumberFormatter+INVSExtension.swift in Sources */,
+				768D8BF024C24490004BEADA /* LoginView.swift in Sources */,
 				4A4C68D72295796200EDC8C6 /* INVSKeyChainWrapper.swift in Sources */,
 				4A27AA99229F6E4D00C45CC5 /* INVSSession.swift in Sources */,
 				4A121696229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift in Sources */,
@@ -1244,6 +1281,7 @@
 				4A4C68B22295796200EDC8C6 /* INVSSimulatedListViewController.swift in Sources */,
 				4A27AA96229F3F9F00C45CC5 /* INVSStartInteractor.swift in Sources */,
 				4A12631422A7DA99006133E5 /* BankModel.swift in Sources */,
+				768D8BE924C22B35004BEADA /* SFSymbols+Extensions.swift in Sources */,
 				4A4C68D22295796200EDC8C6 /* String+INVSExtension.swift in Sources */,
 				4A22FF382297837B001662FC /* INVSSimulatedContainerViewController.swift in Sources */,
 				4A4C68BE2295796200EDC8C6 /* INVSSimulatorWorker.swift in Sources */,
@@ -1262,6 +1300,7 @@
 				4A4C68D42295796200EDC8C6 /* INVSPopupMessageType.swift in Sources */,
 				4A4C68BD2295796200EDC8C6 /* INVSSimulatorPresenter.swift in Sources */,
 				4A0FFE9622B3051F00D6A33A /* INVSSignUpWorker.swift in Sources */,
+				768D8BF624C34023004BEADA /* KeyboardObserver.swift in Sources */,
 				4A27022822CD409D005DA22A /* INVSTalkWithUsViewController.swift in Sources */,
 				4A8E0E6522CD3F1E00897D38 /* INVSConnectorErrorProtocol.swift in Sources */,
 				4A27AA9B229F745C00C45CC5 /* INVSStartPresenter.swift in Sources */,
@@ -1283,6 +1322,7 @@
 				4A4C68CC2295796200EDC8C6 /* UIViewController+INVSExtension.swift in Sources */,
 				4A4C68B52295796200EDC8C6 /* INVSSimulatorHeaderView.swift in Sources */,
 				4A4C68BB2295796200EDC8C6 /* INVSSimulatorModel.swift in Sources */,
+				768D8BF924C34CB4004BEADA /* FloatingTextField.swift in Sources */,
 				4A4C68B82295796200EDC8C6 /* INVSStartViewController.swift in Sources */,
 				4A121692229AE96100759948 /* BalloonMarker.swift in Sources */,
 				4A8E0E4622CD3EB300897D38 /* INVSSimulationsViewController.swift in Sources */,
@@ -1292,7 +1332,9 @@
 				4A121694229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift in Sources */,
 				4AFF3E6322B9BC360056A167 /* INVSSignUpModel.swift in Sources */,
 				4A4C68D62295796200EDC8C6 /* GradientView.swift in Sources */,
+				768D8BE724C22B35004BEADA /* SFSymbols.swift in Sources */,
 				4AFF3E6B22BA8EB10056A167 /* Jsonable+INVSExtension.swift in Sources */,
+				768D8BE324C208BF004BEADA /* SceneDelegate.swift in Sources */,
 				4A8E0E3E22CD3EB300897D38 /* INVSSimulationsPresenter.swift in Sources */,
 				4A4C68BF2295796200EDC8C6 /* INVSSimulatorInteractor.swift in Sources */,
 				4AFF3F0422BF12120056A167 /* INVSConnectorHelpers.swift in Sources */,
@@ -1343,6 +1385,7 @@
 				4AFF3E8D22BB23F10056A167 /* INVSLoginInteractor.swift in Sources */,
 				4AFF3E8E22BB23F10056A167 /* INVSLoginPresenter.swift in Sources */,
 				4AFF3E8F22BB23F10056A167 /* NumberFormatter+INVSExtension.swift in Sources */,
+				768D8BF124C24490004BEADA /* LoginView.swift in Sources */,
 				4AFF3E9022BB23F10056A167 /* INVSKeyChainWrapper.swift in Sources */,
 				4AFF3E9122BB23F10056A167 /* INVSSession.swift in Sources */,
 				4AFF3E9222BB23F10056A167 /* INVSSimulatedChartsPresenter.swift in Sources */,
@@ -1350,6 +1393,7 @@
 				4AFF3E9422BB23F10056A167 /* INVSSimulatedListViewController.swift in Sources */,
 				4AFF3E9522BB23F10056A167 /* INVSStartInteractor.swift in Sources */,
 				4AFF3E9622BB23F10056A167 /* BankModel.swift in Sources */,
+				768D8BEA24C22B35004BEADA /* SFSymbols+Extensions.swift in Sources */,
 				4AFF3E9722BB23F10056A167 /* String+INVSExtension.swift in Sources */,
 				4AFF3E9822BB23F10056A167 /* INVSSimulatedContainerViewController.swift in Sources */,
 				4AFF3E9922BB23F10056A167 /* INVSSimulatorWorker.swift in Sources */,
@@ -1368,6 +1412,7 @@
 				4AFF3EA522BB23F10056A167 /* INVSPopupMessageType.swift in Sources */,
 				4AFF3EA622BB23F10056A167 /* INVSSimulatorPresenter.swift in Sources */,
 				4AFF3EA722BB23F10056A167 /* INVSSignUpWorker.swift in Sources */,
+				768D8BF724C34023004BEADA /* KeyboardObserver.swift in Sources */,
 				4A27022922CD409D005DA22A /* INVSTalkWithUsViewController.swift in Sources */,
 				4A8E0E6622CD3F1E00897D38 /* INVSConnectorErrorProtocol.swift in Sources */,
 				4AFF3EA822BB23F10056A167 /* INVSStartPresenter.swift in Sources */,
@@ -1389,6 +1434,7 @@
 				4AFF3EB922BB23F10056A167 /* UIViewController+INVSExtension.swift in Sources */,
 				4AFF3EBA22BB23F10056A167 /* INVSSimulatorHeaderView.swift in Sources */,
 				4AFF3EBB22BB23F10056A167 /* INVSSimulatorModel.swift in Sources */,
+				768D8BFA24C34CB4004BEADA /* FloatingTextField.swift in Sources */,
 				4AFF3EBC22BB23F10056A167 /* INVSStartViewController.swift in Sources */,
 				4AFF3EBD22BB23F10056A167 /* BalloonMarker.swift in Sources */,
 				4A8E0E4722CD3EB300897D38 /* INVSSimulationsViewController.swift in Sources */,
@@ -1398,7 +1444,9 @@
 				4AFF3EC022BB23F10056A167 /* INVSSimulatedChartsInteractor.swift in Sources */,
 				4AFF3EC122BB23F10056A167 /* INVSSignUpModel.swift in Sources */,
 				4AFF3EC222BB23F10056A167 /* GradientView.swift in Sources */,
+				768D8BE824C22B35004BEADA /* SFSymbols.swift in Sources */,
 				4AFF3EC322BB23F10056A167 /* Jsonable+INVSExtension.swift in Sources */,
+				768D8BE424C208BF004BEADA /* SceneDelegate.swift in Sources */,
 				4A8E0E3F22CD3EB300897D38 /* INVSSimulationsPresenter.swift in Sources */,
 				4AFF3EC422BB23F10056A167 /* INVSSimulatorInteractor.swift in Sources */,
 				4AFF3F0522BF12670056A167 /* INVSConnectorHelpers.swift in Sources */,
@@ -1471,7 +1519,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1526,7 +1574,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1553,6 +1601,7 @@
 					"DEV=0",
 				);
 				INFOPLIST_FILE = "InvestScopio/InvestScopioProd-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1584,6 +1633,7 @@
 					"DEV=0",
 				);
 				INFOPLIST_FILE = "InvestScopio/InvestScopioProd-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1614,13 +1664,14 @@
 					"DEV=1",
 				);
 				INFOPLIST_FILE = "InvestScopio/InvestScopioDev-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DEV";
-				PRODUCT_BUNDLE_IDENTIFIER = com.br.joao.gabriel.medeiros.pereira.InvestScopio.dev;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.br.joao.gabriel.medeiros.pereira.InvestScopio.teste;
+				PRODUCT_NAME = InvestScopioTeste;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1644,13 +1695,14 @@
 					"DEV=1",
 				);
 				INFOPLIST_FILE = "InvestScopio/InvestScopioDev-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DEV";
-				PRODUCT_BUNDLE_IDENTIFIER = com.br.joao.gabriel.medeiros.pereira.InvestScopio.dev;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.br.joao.gabriel.medeiros.pereira.InvestScopio.teste;
+				PRODUCT_NAME = InvestScopioTeste;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

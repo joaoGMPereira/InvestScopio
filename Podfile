@@ -1,5 +1,5 @@
 use_frameworks!
-platform :ios, '11.0'
+platform :ios, '13.0'
 
 
 def all_pods
@@ -16,6 +16,8 @@ def all_pods
   pod 'StepView'
   pod 'ZCAnimatedLabel', :git => 'https://github.com/joaoGMPereira/ZCAnimatedLabel.git'
   
+  
+  pod 'JewFeatures', :path => '../../JEW-FEATURE'
   
   #Resquests
   pod 'Alamofire'
