@@ -56,7 +56,7 @@ class INVSRouter: NSObject, INVSRoutingLogic {
     }
     
     func routeToLogin() {
-        INVSSession.session.user = nil
+        Session.session.user = nil
         guard let window = UIApplication.shared.keyWindow else {
             return
         }

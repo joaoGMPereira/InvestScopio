@@ -65,8 +65,7 @@ class INVSSimulatedChartsViewController: UIViewController {
                                             selectedTextColor: .INVSDefault()),
             options:[.backgroundColor(.INVSDefault()),
                      .indicatorViewBackgroundColor(.white),
-                     .cornerRadius(15.0),
-                     .bouncesOnChange(true)
+                     .cornerRadius(15.0)
             ])
         chartTypeSegmentedControl.addTarget(self, action: #selector(INVSSimulatedChartsViewController.segmentedControlChartTypeChanged(_:)), for: .valueChanged)
     }
@@ -128,8 +127,7 @@ extension INVSSimulatedChartsViewController: INVSSimulatedChartsViewControllerPr
                                             selectedTextColor: .white),
             options:[.backgroundColor(.white),
                      .indicatorViewBackgroundColor(.INVSDefault()),
-                     .cornerRadius(15.0),
-                     .bouncesOnChange(true)
+                     .cornerRadius(15.0)
             ])
         monthsSegmentedControl.addTarget(self, action: #selector(INVSSimulatedChartsViewController.segmentedControlMonthChanged(_:)), for: .valueChanged)
     }

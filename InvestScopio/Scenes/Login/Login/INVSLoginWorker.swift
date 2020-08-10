@@ -104,16 +104,16 @@ class INVSLoginWorker: NSObject,INVSLoginWorkerProtocol {
         
         let userRequest = INVSUserRequest(email: user.email, password: user.uid)
         
-        INVSConector.connector.request(withRoute: ConnectorRoutes.signin, method: .post, parameters: userRequest, responseClass: INVSAccessModel.self, headers: headers, shouldRetry: true, successCompletion: { (decodable) in
-            
-            var userResponse = user
-            if let access = decodable as? INVSAccessModel {
-                userResponse.access = access
-            }
-            successLoginHandler(userResponse)
-        }) { (error) in
-            errorCompletionHandler(error.title, error.message, true, .error)
-        }
+//        INVSConector.connector.request(withRoute: ConnectorRoutes.signin, method: .post, parameters: userRequest, responseClass: INVSAccessModel.self, headers: headers, shouldRetry: true, successCompletion: { (decodable) in
+//            
+//            var userResponse = user
+//            if let access = decodable as? INVSAccessModel {
+//                userResponse.access = access
+//            }
+//            successLoginHandler(userResponse)
+//        }) { (error) in
+//            errorCompletionHandler(error.title, error.message, true, .error)
+//        }
         
     }
     
@@ -132,11 +132,11 @@ class INVSLoginWorker: NSObject,INVSLoginWorkerProtocol {
     }
     
     func refreshToken(successRefreshCompletionHandler: @escaping (SuccessRefreshTokenHandler), errorRefreshCompletionHandler: @escaping (ErrorRefreshTokenHandler)) {
-        guard let headers = ["Content-Type": "application/json", "Authorization": INVSSession.session.user?.access?.accessToken] as? HTTPHeaders else {
+        guard let headers = ["Content-Type": "application/json", "Authorization": Session.session.user?.access?.accessToken] as? HTTPHeaders else {
             errorRefreshCompletionHandler(INVSConstants.RefreshErrors.title.rawValue,INVSConstants.RefreshErrors.message.rawValue, true, .error)
             return
         }
-        guard let refreshToken = INVSSession.session.user?.access?.refreshToken else {
+        guard let refreshToken = Session.session.user?.access?.refreshToken else {
             errorRefreshCompletionHandler(INVSConstants.RefreshErrors.title.rawValue,INVSConstants.RefreshErrors.message.rawValue, true, .error)
             return
         }
@@ -154,7 +154,7 @@ class INVSLoginWorker: NSObject,INVSLoginWorkerProtocol {
     
     
     func logout(logoutHandler: @escaping(LogoutHandler)) {
-        guard let headers = ["Content-Type": "application/json", "Authorization": INVSSession.session.user?.access?.accessToken] as? HTTPHeaders else {
+        guard let headers = ["Content-Type": "application/json", "Authorization": Session.session.user?.access?.accessToken] as? HTTPHeaders else {
             logoutHandler()
             return
         }

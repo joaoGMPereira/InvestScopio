@@ -23,10 +23,10 @@ final class INVSConector {
     
     static func getURL(withRoute route: String) -> URL? {
         var baseURL = URL(string: "\(INVSConstants.INVSServicesConstants.apiV1.rawValue)\(route)")
-        if INVSSession.session.isDev() {
-            baseURL = INVSSession.session.callService == .heroku ? URL(string: "\(INVSConstants.INVSServicesConstants.apiV1Dev.rawValue)\(route)") : URL(string: "\(INVSConstants.INVSServicesConstants.localHost.rawValue)\(route)")
+        if Session.session.isDev() {
+            baseURL = Session.session.callService == .heroku ? URL(string: "\(INVSConstants.INVSServicesConstants.apiV1Dev.rawValue)\(route)") : URL(string: "\(INVSConstants.INVSServicesConstants.localHost.rawValue)\(route)")
         }
-        return baseURL
+        return URL(string: "\(INVSConstants.INVSServicesConstants.localHost.rawValue)\(route)")
     }
     
     static func getVersion() -> URL? {
@@ -42,7 +42,7 @@ final class INVSConector {
         refreshToken(withRoute: route, successCompletion: { (shouldUpdateHeaders) in
             var headersUpdated = headers
             if shouldUpdateHeaders {
-                guard let headersWithAccessToken = ["Content-Type": "application/json", "Authorization": INVSSession.session.user?.access?.accessToken] as? HTTPHeaders else {
+                guard let headersWithAccessToken = ["Content-Type": "application/json", "Authorization": Session.session.user?.access?.accessToken] as? HTTPHeaders else {
                     errorCompletion(ConnectorError())
                     return
                 }
@@ -63,46 +63,7 @@ final class INVSConector {
     }
     
     private func requestBlock<T: Decodable>(withURL url: URL, method: HTTPMethod = .get, parameters: JSONAble? = nil, responseClass: T.Type, headers: HTTPHeaders? = nil, successCompletion: @escaping(SuccessResponse), errorCompletion: @escaping(ErrorCompletion)) {
-        Alamofire.request(url, method: method, parameters: parameters?.toDict(), encoding: JSONEncoding.default, headers: headers).validate().responseJSON { (response) in
-            
-            let responseResult = response.result
-            if responseResult.error != nil {
-                do {
-                    if let data = response.data {
-                        var apiError = try JSONDecoder().decode(ApiError.self, from: data)
-                        apiError.error = false
-                        errorCompletion(ConnectorError.init(error: .none, title: INVSFloatingTextFieldType.defaultErrorTitle(), message: apiError.reason))
-                    } else {
-                        errorCompletion(ConnectorError(error: .none))
-                    }
-                    return
-                }
-                catch {
-                    errorCompletion(ConnectorError(error: .none))
-                    return
-                }
-                
-            }
-            switch responseResult {
-            case .success:
-                do {
-                    if let data = response.data {
-                        let decodable = try JSONDecoder().decode(T.self, from: data)
-                        successCompletion(decodable)
-                    } else {
-                        errorCompletion(ConnectorError(error: .none))
-                    }
-                    break
-                }
-                catch {
-                    errorCompletion(ConnectorError(error: .none))
-                    break
-                }
-            case .failure:
-                errorCompletion((ConnectorError(error: .none)))
-                break
-            }
-        }
+//        source changed to `https://cdn.cocoapods.org/` from `trunk`
     }
     
     private func refreshToken(withRoute route:ConnectorRoutes, successCompletion: @escaping(SuccessRefreshResponse), errorCompletion: @escaping(ErrorCompletion)) {
@@ -111,18 +72,18 @@ final class INVSConector {
                 errorCompletion(ConnectorError.init(error: .logout, message: "URL Inválida!"))
                 return
             }
-            guard let refreshToken = INVSSession.session.user?.access?.refreshToken else {
+            guard let refreshToken = Session.session.user?.access?.refreshToken else {
                 errorCompletion(ConnectorError.init(error: .logout, message: "Refresh Token Inválido!"))
                 return
             }
-            guard let headers = ["Content-Type": "application/json", "Authorization": INVSSession.session.user?.access?.accessToken] as? HTTPHeaders else {
+            guard let headers = ["Content-Type": "application/json", "Authorization": Session.session.user?.access?.accessToken] as? HTTPHeaders else {
                 errorCompletion(ConnectorError.init(error: .logout, message: "Access Token Inválido!"))
                 return
             }
             let refreshTokenRequest = INVSRefreshTokenRequest.init(refreshToken: refreshToken)
             requestBlock(withURL: url, method: .post, parameters: refreshTokenRequest, responseClass: INVSAccessModel.self, headers: headers, successCompletion: { (decodable) in
                 let accessModel = decodable as? INVSAccessModel
-                INVSSession.session.user?.access = accessModel
+                Session.session.user?.access = accessModel
                 successCompletion(true)
             }) { (error) in
                 self.checkLoggedUser(successCompletion: {
@@ -170,7 +131,7 @@ final class INVSConector {
         if let emailRetrived = email, let securityRetrived = security {
             if let emailAES = INVSCrypto.decryptAES(withText: emailRetrived), let securityAES = INVSCrypto.decryptAES(withText: securityRetrived) {
                 workerLogin.loggedUser(withEmail: emailAES, security: securityAES, successCompletionHandler: { (userResponse) in
-                    INVSSession.session.user = userResponse
+                    Session.session.user = userResponse
                     successCompletion()
                 }) { (title, message, shouldHideAutomatically, popupType) in
                     INVSKeyChainWrapper.clear()

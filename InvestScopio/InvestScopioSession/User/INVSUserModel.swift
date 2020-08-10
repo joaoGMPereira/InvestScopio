@@ -8,11 +8,12 @@
 
 import Foundation
 import CryptoSwift
+import Combine
 
-struct INVSUserModel: JSONAble {
+class INVSUserModel: ObservableObject, Codable, JSONAble {
     var email: String = ""
     var uid: String = ""
-    var syncronized: Bool = false
+    var syncronized: Bool? = false
     var access: INVSAccessModel? = nil
     
     init(email: String, uid: String) {

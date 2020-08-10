@@ -33,7 +33,7 @@ enum INVSConstants {
     enum INVSServicesConstants: String {
         case apiV1 = "https://invest-scopio-backend.herokuapp.com/api/v1"
         case apiV1Dev = "https://invest-scopio-dev-backend.herokuapp.com/api/v1"
-        case localHost = "http://localhost:8080/api/v1"
+        case localHost = "http://localhost:8084/api/v1"
         case version = "version"
     }
     

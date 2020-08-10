@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct INVSSimulatorModel: JSONAble, Decodable {
+struct INVSSimulatorModel: JSONAble, Codable, Identifiable, Hashable {
     var initialValue: Double = 0.0 {
         didSet {
             initialValue = initialValue.INVSrounded()

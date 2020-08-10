@@ -13,14 +13,14 @@ struct INVSUserRequest: JSONAble {
     var password: String = ""
     
     init(email: String, password: String) {
-        if let emailAES = INVSCrypto.encryptAES(withText: email) {
-            self.email = emailAES
-        }
-        if let passwordAES = INVSCrypto.encryptAES(withText: password) {
-            self.password = passwordAES
-        }
+        self.email = email
+        self.password = password
     }
 }
 
-
-
+struct LoginRequest: Codable, JSONAble {
+    let firebaseID: String
+    let name: String
+    let email: String
+    let picture: String?
+}

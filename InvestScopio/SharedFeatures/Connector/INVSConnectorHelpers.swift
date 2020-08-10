@@ -11,6 +11,8 @@ import UIKit
 
 enum ConnectorRoutes {
     case signup
+    case publicKey
+    case accessToken
     case signin
     case logout
     case simulation
@@ -24,8 +26,12 @@ enum ConnectorRoutes {
         switch self {
         case .signup:
             return INVSConector.getURL(withRoute: "/account/sign-up")
+        case .publicKey:
+            return INVSConector.getURL(withRoute: "/public-key")
+        case .accessToken:
+            return INVSConector.getURL(withRoute: "/access-token")
         case .signin:
-            return INVSConector.getURL(withRoute: "/account/sign-in")
+            return INVSConector.getURL(withRoute: "/login")
         case .logout:
             return INVSConector.getURL(withRoute: "/account/logout")
         case .simulation:

@@ -7,23 +7,22 @@
 //
 
 import Foundation
+import Combine
 
-struct INVSAccessModel {
-    let refreshToken: String
+class INVSAccessModel: ObservableObject, Codable {
+    let refreshToken: String?
     let accessToken: String
-    let expiredAt: Date
+    let expiredAt: Date?
     let userID: Int?
-}
-
-extension INVSAccessModel: Decodable {
-    enum MyStructKeys: String, CodingKey { // declaring our keys
-        case refreshToken = "refreshToken"
-        case accessToken = "accessToken"
-        case expiredAt = "expiredAt"
-        case userID = "userID"
+    
+    required init(refreshToken: String, accessToken: String, expiredAt: Date, userID: Int?) {
+        self.refreshToken = refreshToken
+        self.accessToken = accessToken
+        self.expiredAt = expiredAt
+        self.userID = userID
     }
     
-    init(from decoder: Decoder) throws {
+    required convenience init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: MyStructKeys.self)
         let refreshToken: String = try container.decode(String.self, forKey: .refreshToken)
         let accessToken: String = try container.decode(String.self, forKey: .accessToken)
@@ -33,6 +32,16 @@ extension INVSAccessModel: Decodable {
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         let expiredAtDate = formatter.date(from: expiredAt)!
         self.init(refreshToken: refreshToken, accessToken: accessToken, expiredAt: expiredAtDate, userID: userId)
+    }
+    
+}
+
+extension INVSAccessModel {
+    enum MyStructKeys: String, CodingKey { // declaring our keys
+        case refreshToken = "refreshToken"
+        case accessToken = "accessToken"
+        case expiredAt = "expiredAt"
+        case userID = "userID"
     }
 }
 

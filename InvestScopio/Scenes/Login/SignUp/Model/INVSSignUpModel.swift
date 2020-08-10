@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct INVSSignUpModel: Decodable {
+struct INVSSignUpModel: Codable {
     var message: String
     var syncronized: Bool
 }

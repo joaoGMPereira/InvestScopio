@@ -51,7 +51,7 @@ class INVSStartInteractor: NSObject, INVSStartInteractorProtocol {
         if let emailRetrived = email, let securityRetrived = security {
             if let emailAES = INVSCrypto.decryptAES(withText: emailRetrived), let securityAES = INVSCrypto.decryptAES(withText: securityRetrived) {
                 workerLogin.loggedUser(withEmail: emailAES, security: securityAES, successCompletionHandler: { (userResponse) in
-                    INVSSession.session.user = userResponse
+                    Session.session.user = userResponse
                     self.presenter?.presentSuccessRememberedUserLogged()
                 }) { (title, message, shouldHideAutomatically, popupType) in
                     INVSKeyChainWrapper.clear()

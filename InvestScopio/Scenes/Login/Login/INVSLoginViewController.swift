@@ -80,19 +80,19 @@ class INVSLoginViewController: INVSPresentBaseViewController {
         let alertController = UIAlertController(title: "Escolha o ambiente", message: "Por default o ambiente do Heroku caso cancele.", preferredStyle: .actionSheet)
         
         let action1 = UIAlertAction(title: "Local", style: .default) { (action:UIAlertAction) in
-            INVSSession.session.callService = .localHost
+            Session.session.callService = .localHost
         }
         
         let action2 = UIAlertAction(title: "Heroku", style: .default) { (action:UIAlertAction) in
-            INVSSession.session.callService = .heroku
+            Session.session.callService = .heroku
         }
         
         let action3 = UIAlertAction(title: "Offline", style: .default) { (action:UIAlertAction) in
-            INVSSession.session.callService = .offline
+            Session.session.callService = .offline
         }
         
         let action4 = UIAlertAction(title: "Cancelar", style: .cancel) { (action:UIAlertAction) in
-            INVSSession.session.callService = .heroku
+            Session.session.callService = .heroku
             alertController.dismiss(animated: true, completion: nil)
         }
         
@@ -116,7 +116,7 @@ class INVSLoginViewController: INVSPresentBaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if INVSSession.session.isDev() {
+        if Session.session.isDev() {
             selectServer()
         }
     }

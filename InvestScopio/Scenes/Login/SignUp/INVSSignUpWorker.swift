@@ -61,14 +61,14 @@ class INVSSignUpWorker: NSObject,INVSSignUpWorkerProtocol {
     func signUpInvestScopio(user: INVSUserModel, signUpInvestScopioHandler: @escaping(SignUpInvestScopioHandler)) {
         let headers = ["Content-Type": "application/json"]
         
-        let userRequest = INVSUserRequest(email: user.email, password: user.uid)
+        let userRequest = INVSUserRequest(email: user.email ?? "", password: user.uid ?? "")
         
-        INVSConector.connector.request(withRoute: ConnectorRoutes.signup, method: .post, parameters: userRequest, responseClass: INVSSignUpModel.self, headers: headers, shouldRetry: true, successCompletion: { (decodable) in
-            let signUpModel = decodable as? INVSSignUpModel
-            signUpInvestScopioHandler(signUpModel?.syncronized ?? false, "Finalizado.\n", "Seu cadastro foi realizado com sucesso!", true, .alert)
-        }) { (error) in
-            signUpInvestScopioHandler(false, error.title, error.message, true, .alert)
-        }
+//        INVSConector.connector.request(withRoute: ConnectorRoutes.signup, method: .post, parameters: userRequest, responseClass: INVSSignUpModel.self, headers: headers, shouldRetry: true, successCompletion: { (decodable) in
+//            let signUpModel = decodable as? INVSSignUpModel
+//            signUpInvestScopioHandler(signUpModel?.syncronized ?? false, "Finalizado.\n", "Seu cadastro foi realizado com sucesso!", true, .alert)
+//        }) { (error) in
+//            signUpInvestScopioHandler(false, error.title, error.message, true, .alert)
+//        }
         
     }
     

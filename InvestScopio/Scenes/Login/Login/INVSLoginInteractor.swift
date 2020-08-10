@@ -31,16 +31,16 @@ class INVSLoginInteractor: INVSLoginInteractorProtocol {
     }
     func logIn() {
         worker.login(withTextFields: allTextFields, successCompletionHandler: { (userResponse) in
-            INVSSession.session.user = userResponse
-            self.presenter?.presentSuccessSignIn(withEmail: userResponse.email, security: userResponse.uid)
+            Session.session.user = userResponse
+            self.presenter?.presentSuccessSignIn(withEmail: userResponse.email ?? "", security: userResponse.uid ?? "")
         }, errorCompletionHandler: { (title, message, shouldHideAutomatically, popupType) in
             self.presenter?.presentErrorSignIn(titleError: title, messageError: message, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType)
         })
     }
     func logInAsAdmin() {
         worker.loginAsAdmin(successCompletionHandler: { (userResponse) in
-            INVSSession.session.user = userResponse
-            self.presenter?.presentSuccessSignInAsAdmin(withEmail: userResponse.email, security: userResponse.uid)
+            Session.session.user = userResponse
+            self.presenter?.presentSuccessSignInAsAdmin(withEmail: userResponse.email ?? "", security: userResponse.uid ?? "")
         }, errorCompletionHandler: { (title, message, shouldHideAutomatically, popupType) in
             self.presenter?.presentErrorAdminSignIn(titleError: title, messageError: message, shouldHideAutomatically: shouldHideAutomatically, popupType: popupType)
         })

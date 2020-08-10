@@ -9,15 +9,23 @@
 import Foundation
 import UIKit
 import SwiftUI
+import EnvironmentOverrides
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    let reachability = Reachability()
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: LoginView())
+            window.rootViewController = UIHostingController(rootView: LoginView(viewModel:
+                LoginViewModel(service:
+                    LoginService(webRepository:
+                        LoginWebRepository())
+                )
+                ).attachEnvironmentOverrides().environmentObject(reachability)
+            )
             self.window = window
             window.makeKeyAndVisible()
         }

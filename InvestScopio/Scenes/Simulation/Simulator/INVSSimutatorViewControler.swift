@@ -54,7 +54,7 @@ public class INVSSimutatorViewControler: UIViewController {
         presenter.controller = self
         interactor.presenter = presenter
         helpView.interactor = self.interactor
-        if INVSSession.session.isDev() {
+        if Session.session.isDev() {
             mockInfo()
         }
         setupUI()

@@ -17,7 +17,7 @@ protocol INVSSimulatedListWorkerProtocol {
 
 class INVSSimulatedListWorker: NSObject,INVSSimulatedListWorkerProtocol {
     func simulationProjection(with simulatorModel: INVSSimulatorModel, successCompletionHandler: @escaping (SuccessSimulatedHandler), errorCompletionHandler: @escaping (ErrorSimulatedHandler)) {
-        guard let headers = ["Content-Type": "application/json", "Authorization": INVSSession.session.user?.access?.accessToken] as? HTTPHeaders else {
+        guard let headers = ["Content-Type": "application/json", "Authorization": Session.session.user?.access?.accessToken] as? HTTPHeaders else {
             errorCompletionHandler(ConnectorError())
             return
         }

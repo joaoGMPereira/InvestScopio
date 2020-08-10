@@ -26,8 +26,7 @@ class INVSSimulatorHelpView: UIView {
                                         selectedTextColor: .INVSDefault()),
         options:[.backgroundColor(.INVSDefault()),
                  .indicatorViewBackgroundColor(.white),
-                 .cornerRadius(15.0),
-                 .bouncesOnChange(true)
+                 .cornerRadius(15.0)
         ])
     var stepView = StepView.init(frame: .zero, numberOfSteps: 2, circleBorderColor: .INVSDefault())
     var messageLabel = ZCAnimatedLabel()

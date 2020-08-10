@@ -7,8 +7,9 @@
 //
 
 import UIKit
-import Firebase
 import CryptoSwift
+import JewFeatures
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,13 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var tabBarController = UITabBarController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//        setupFirebase()
-//        let startViewController = INVSStartViewController.init(nibName: INVSStartViewController.toString(), bundle: Bundle(for: INVSStartViewController.self))
-//        window!.rootViewController = startViewController
-//        window!.makeKeyAndVisible()
-//        
-        // Override point for customization after application launch.
+        JEWUIColor.default.defaultColor = UIColor(named: "accent")!
+        JEWUIColor.default.lightDefaultColor = UIColor(named: "accentLight")!
+        JEWUIColor.default.darkDefaultColor = UIColor(named: "accentDark")!
+        JEWUIColor.default.backgroundColor = UIColor.systemBackground
+        UINavigationBar.appearance().tintColor = JEWUIColor.default.darkDefaultColor
+        UISwitch.appearance().onTintColor = .JEWDarkDefault()
+        //AppDelegate.shared.tabBarController.tabBar.tintColor = UIColor.JEWDarkDefault()
+        UITextField.appearance().tintColor = .JEWDarkDefault()
+        setupFirebase()
         return true
     }
     
@@ -33,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setupFirebase() {
-        if INVSSession.session.isDev() {
+        if Session.session.isDev() {
             let filePath = Bundle.main.path(forResource: "GoogleServiceInfoDev", ofType: "plist")
             guard let fileopts = FirebaseOptions(contentsOfFile: filePath!)
                 else { return }

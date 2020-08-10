@@ -16,7 +16,7 @@ class INVSSimulatedListInteractor: NSObject,INVSSimulatedListInteractorProtocol 
     var presenter: INVSSimulatedListPresenterProtocol?
     var simulatorModel = INVSSimulatorModel()
     var worker: INVSSimulatedListWorkerProtocol = INVSSimulatedListWorker()
-    var callService: ServiceType = INVSSession.session.callService
+    var callService: ServiceType = Session.session.callService
     func simulationProjection() {
         if callService == .heroku || callService == .localHost {
             worker.simulationProjection(with: simulatorModel, successCompletionHandler: { (simulatedValues) in
