@@ -48,18 +48,6 @@ extension Publisher {
         })
     }
     
-    func getResponse(completion: @escaping((Codable) -> Void), errorCompletion: @escaping((Error) -> Void)) -> AnyPublisher<Self.Output, Error> {
-        return tryMap { (response) -> Self.Output in
-            if let codable = response as? Codable {
-                completion(codable)
-            }
-            return response
-        }.mapError({ (error) -> Error in
-            errorCompletion(error)
-            return error
-        }).eraseToAnyPublisher()
-    }
-    
     func extractUnderlyingError() -> Publishers.MapError<Self, Failure> {
         mapError {
             ($0.underlyingError as? Failure) ?? $0

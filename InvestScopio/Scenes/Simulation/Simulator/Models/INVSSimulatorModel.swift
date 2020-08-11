@@ -42,5 +42,8 @@ struct INVSSimulatorModel: JSONAble, Codable, Identifiable, Hashable {
     }
     var isSimply: Bool? = true
     
-    var id: Int?
+    var id: String? {
+        return _id
+    }
+    var _id: String?
 }

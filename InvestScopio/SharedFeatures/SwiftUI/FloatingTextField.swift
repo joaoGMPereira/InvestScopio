@@ -15,7 +15,7 @@ struct FloatingTextField_Previews: PreviewProvider {
         JEWUIColor.default.lightDefaultColor = UIColor(named: "accentLight")!
         JEWUIColor.default.darkDefaultColor = UIColor(named: "accentDark")!
         return VStack {
-            FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: JEWFloatingTextFieldFormatBuilder().setAll(withPlaceholder: "Testando").setPlaceholderColor(color: .JEWDefault()).setTextFieldTextColor(color: .JEWBlack()).setSelectedColor(color: .JEWDefault()).setTextFieldValueType(type: JEWFloatingTextFieldValueType.percent), text: .constant(""))
+            FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: JEWFloatingTextFieldFormatBuilder().setAll(withPlaceholder: "Testando").setPlaceholderColor(color: .JEWDefault()).setTextFieldTextColor(color: .JEWBlack()).setSelectedColor(color: .JEWDefault()).setTextFieldValueType(type: JEWFloatingTextFieldValueType.percent), text: .constant(""), close: .constant(true))
                 .frame(width: 300, height: 50)
             Spacer()
         }
@@ -28,6 +28,7 @@ struct FloatingTextField: UIViewRepresentable {
     var toolbarBuilder: JEWFloatingTextFieldToolbarBuilder
     var formatBuilder: JEWFloatingTextFieldFormatBuilder
     @Binding var text: String
+    @Binding var close: Bool
     var hasInfoButton: Bool = false
     var isSecureTextEntry: Bool = false
     var autocapitalizationType = UITextAutocapitalizationType.none
@@ -60,6 +61,9 @@ struct FloatingTextField: UIViewRepresentable {
     
     func updateUIView(_ uiView: JEWFloatingTextField, context: Context) {
         uiView.textFieldText = self.text
+        if self.close {
+            uiView.clear()
+        }
     }
     
     func makeCoordinator() -> Coordinator {

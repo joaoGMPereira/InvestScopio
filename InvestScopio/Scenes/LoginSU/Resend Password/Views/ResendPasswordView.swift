@@ -32,7 +32,7 @@ struct ResendPasswordView: View {
                         }
                         .padding()
                         .padding(.top, geometry.safeAreaInsets.top)
-                        ResendPasswordFormView(emailText: self.$viewModel.email) {
+                        ResendPasswordFormView(emailText: self.$viewModel.email, close: self.$viewModel.close) {
                             self.viewModel.resendPassword() {
                                 self.kGuardian.showField = 0
                                 self.hasFinished()
@@ -85,11 +85,12 @@ struct ResendPasswordView: View {
 
 struct ResendPasswordFormView: View {
     @Binding var emailText: String
+    @Binding var close: Bool
     var didResendPasswordAction: (() -> Void)
     var body: some View {
         Form {
             Section(header: Text("Digite seu email").textFont().padding(.top, 16)) {
-                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(placeholder: "Email"), text: $emailText) { textfield, text, isBackspace in
+                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(placeholder: "Email"), text: $emailText, close: $close) { textfield, text, isBackspace in
                     self.emailText = text
                 }
                 .frame(height: 50)

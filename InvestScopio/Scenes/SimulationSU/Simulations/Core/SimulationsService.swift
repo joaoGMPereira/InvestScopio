@@ -30,8 +30,12 @@ struct SimulationsService: SimulationsServiceProtocol {
         simulations.wrappedValue = .isLoading(last: simulations.wrappedValue.value, cancelBag: cancelBag)
             self.repository
                 .simulations()
-                .sinkToLoadable {_ in 
-                   // simulations.wrappedValue = $0
+                .sinkToLoadable { response in
+                    guard let value = response.value else {
+                        simulations.wrappedValue = .failed(APIError.customError("Error"))
+                        return
+                    }
+                    simulations.wrappedValue = .loaded(value.data)
             }
             .store(in: cancelBag)
     }

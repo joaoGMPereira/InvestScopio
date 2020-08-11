@@ -20,7 +20,11 @@ class ResendPasswordViewModel: ObservableObject {
     @Published var showLoading = false
     @Published var showError = false
     @Published var showSuccess = false
-    @Published var close = true
+    @Published var close = true {
+        didSet {
+            email = String()
+        }
+    }
     @Published var messageError = String()
     @Published var messageSuccess = String()
 

@@ -14,7 +14,7 @@ import Foundation
 import SwiftUI
 
 protocol RegisterServiceProtocol {
-    func load(register: LoadableSubject<HTTPResponse<INVSSignUpModel>>, email: String, password: String)
+    func load(register: LoadableSubject<HTTPResponse<JEWUserResponse>>, email: String, password: String)
 }
 
 struct RegisterService: RegisterServiceProtocol {
@@ -25,33 +25,42 @@ struct RegisterService: RegisterServiceProtocol {
         self.repository = repository
     }
     
-    func load(register: LoadableSubject<HTTPResponse<INVSSignUpModel>>, email: String, password: String) {
+    func load(register: LoadableSubject<HTTPResponse<JEWUserResponse>>, email: String, password: String) {
         let cancelBag = CancelBag()
         register.wrappedValue = .isLoading(last: register.wrappedValue.value, cancelBag: cancelBag)
-        self.firebaseRegister(register: register, email: email.lowercased(), password: password) { (userModel) in
+        self.firebaseRegister(register: register, email: email.lowercased(), password: password) { (request) in
             self.repository
-                .register(user: INVSUserRequest(email: userModel.email, password: userModel.uid))
+                .register(user: request)
                 .sinkToLoadable { response in
+                    guard (response.value != nil) else {
+                        register.wrappedValue = .failed(APIError.customError("Atenção!\nDesculpe, tivemos algum problema, tente novamente mais tarde!"))
+                        return
+                    }
                     register.wrappedValue = response
             }
             .store(in: cancelBag)
         }
     }
     
-    private func firebaseRegister(register: LoadableSubject<HTTPResponse<INVSSignUpModel>>, email: String, password: String, successCompletion: @escaping (INVSUserModel) -> Void) {
+    private func firebaseRegister(register: LoadableSubject<HTTPResponse<JEWUserResponse>>, email: String, password: String, successCompletion: @escaping (UserRequest) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             guard let user = result?.user else {
-                JEWLogger.error(error ?? "Atenção\nDados inválidos, tente novamente.")
-                register.wrappedValue = .failed(APIError.customError("Atenção\nDados inválidos, tente novamente."))
+                var firebaseError = FireBaseErrorHandler.unknown
+                if let error = error {
+                    firebaseError = FireBaseErrorHandler(rawValue: error._code) ?? .unknown
+                }
+                let message = firebaseError.getFirebaseMessage()
+                JEWLogger.error(message)
+                register.wrappedValue = .failed(APIError.customError(message))
                 return
             }
-            successCompletion(INVSUserModel(email: user.email ?? "", uid: user.uid))
+            successCompletion(UserRequest(email: user.email, uid: user.uid, fullName: user.displayName, photoURL: user.photoURL))
         }
     }
 }
 
 struct StubRegisterService: RegisterServiceProtocol {
-    func load(register: LoadableSubject<HTTPResponse<INVSSignUpModel>>, email: String, password: String) {
+    func load(register: LoadableSubject<HTTPResponse<JEWUserResponse>>, email: String, password: String) {
         
     }
 }

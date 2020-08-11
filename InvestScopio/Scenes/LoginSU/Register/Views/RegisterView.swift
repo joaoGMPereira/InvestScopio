@@ -32,7 +32,7 @@ struct RegisterView: View {
                         }
                         .padding()
                         .padding(.top, geometry.safeAreaInsets.top)
-                        RegisterFormView(emailText: self.$viewModel.email, passwordText: self.$viewModel.password, passwordConfirmationText: self.$viewModel.confirmationPassword) {
+                        RegisterFormView(close: self.$viewModel.close, emailText: self.$viewModel.email, passwordText: self.$viewModel.password, passwordConfirmationText: self.$viewModel.confirmationPassword) {
                             self.viewModel.register() {
                                 self.kGuardian.showField = 0
                                 self.hasFinished()
@@ -83,6 +83,7 @@ struct RegisterView: View {
 
 
 struct RegisterFormView: View {
+    @Binding var close: Bool
     @Binding var emailText: String
     @Binding var passwordText: String
     @Binding var passwordConfirmationText: String
@@ -90,14 +91,14 @@ struct RegisterFormView: View {
     var body: some View {
         Form {
             Section(header: Text("Digite um email válido").textFont().padding(.top, 16)) {
-                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(placeholder: "Email"), text: $emailText) { textfield, text, isBackspace in
+                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(placeholder: "Email"), text: $emailText, close: $close) { textfield, text, isBackspace in
                     self.emailText = text
                 }
                 .frame(height: 50)
                 .listRowBackground(Color(UIColor.systemBackground))
             }
             Section(header: Text("Digite uma senha").textFont()) {
-                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(placeholder: "Senha"), text: $passwordText, isSecureTextEntry: true, didBeginEditing: { textfield in
+                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(placeholder: "Senha"), text: $passwordText, close: $close, isSecureTextEntry: true, didBeginEditing: { textfield in
                     self.passwordText = String()
                 }) { textfield, text, isBackspace in
                     self.passwordText = text
@@ -106,7 +107,7 @@ struct RegisterFormView: View {
                 .listRowBackground(Color(UIColor.systemBackground))
             }
             Section(header: Text("Confirme sua senha").textFont()) {
-                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(placeholder: "Confirmar Senha"), text: $passwordConfirmationText, isSecureTextEntry: true, tapOnToolbarButton: { textfield, type in
+                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(placeholder: "Confirmar Senha"), text: $passwordConfirmationText, close: $close, isSecureTextEntry: true, tapOnToolbarButton: { textfield, type in
                     self.didRegisterAction()
                 }, didBeginEditing: { textfield in
                     self.passwordConfirmationText = String()

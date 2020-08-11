@@ -293,6 +293,10 @@
 		768D8C0224C393A4004BEADA /* LoginComponentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768D8C0024C393A4004BEADA /* LoginComponentsView.swift */; };
 		768D8C0424C3A2F8004BEADA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768D8C0324C3A2F8004BEADA /* LoginViewModel.swift */; };
 		768D8C0524C3A2F8004BEADA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768D8C0324C3A2F8004BEADA /* LoginViewModel.swift */; };
+		7698A68224E1A93D00A93964 /* AccessRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7698A68124E1A93D00A93964 /* AccessRepository.swift */; };
+		7698A68324E1A93D00A93964 /* AccessRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7698A68124E1A93D00A93964 /* AccessRepository.swift */; };
+		7698A68524E1B06900A93964 /* HTTPEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7698A68424E1B06900A93964 /* HTTPEntities.swift */; };
+		7698A68624E1B06900A93964 /* HTTPEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7698A68424E1B06900A93964 /* HTTPEntities.swift */; };
 		76B2602624C5EBB7003BF4B4 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B2602524C5EBB7003BF4B4 /* BlurView.swift */; };
 		76B2602724C5EBB7003BF4B4 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B2602524C5EBB7003BF4B4 /* BlurView.swift */; };
 		76C15C6824C7A7F800045D9A /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C15C6724C7A7F800045D9A /* RegisterView.swift */; };
@@ -480,6 +484,8 @@
 		768D8BFD24C39370004BEADA /* Text+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extensions.swift"; sourceTree = "<group>"; };
 		768D8C0024C393A4004BEADA /* LoginComponentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginComponentsView.swift; sourceTree = "<group>"; };
 		768D8C0324C3A2F8004BEADA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		7698A68124E1A93D00A93964 /* AccessRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessRepository.swift; sourceTree = "<group>"; };
+		7698A68424E1B06900A93964 /* HTTPEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPEntities.swift; sourceTree = "<group>"; };
 		76B2602524C5EBB7003BF4B4 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		76C15C6724C7A7F800045D9A /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		76C15C6D24C7A80500045D9A /* ResendPasswordService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResendPasswordService.swift; sourceTree = "<group>"; };
@@ -1108,6 +1114,8 @@
 				767DD85F24C3AC14006FDC1A /* WebRepository.swift */,
 				76069E6424C5D5A3009DED56 /* Reachability.swift */,
 				76C15C9F24CE011800045D9A /* RefreshRepository.swift */,
+				7698A68124E1A93D00A93964 /* AccessRepository.swift */,
+				7698A68424E1B06900A93964 /* HTTPEntities.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1595,10 +1603,12 @@
 				768D8BF624C34023004BEADA /* KeyboardObserver.swift in Sources */,
 				4A27022822CD409D005DA22A /* INVSTalkWithUsViewController.swift in Sources */,
 				76C15C9B24CCEAE500045D9A /* SimulationsService.swift in Sources */,
+				7698A68224E1A93D00A93964 /* AccessRepository.swift in Sources */,
 				4A8E0E6522CD3F1E00897D38 /* INVSConnectorErrorProtocol.swift in Sources */,
 				4A27AA9B229F745C00C45CC5 /* INVSStartPresenter.swift in Sources */,
 				4A4C68C62295796200EDC8C6 /* INVSFloatingTextFieldValueType.swift in Sources */,
 				4A4C68CB2295796200EDC8C6 /* UIImage+INVSExtension.swift in Sources */,
+				7698A68524E1B06900A93964 /* HTTPEntities.swift in Sources */,
 				4A12631222A7DA7A006133E5 /* MarketModel.swift in Sources */,
 				4A107AA222A3279600A7D8D1 /* INVSSimulatorHelpView.swift in Sources */,
 				4A4C68D02295796200EDC8C6 /* CAShapeLayer+INVSExtension.swift in Sources */,
@@ -1737,10 +1747,12 @@
 				768D8BF724C34023004BEADA /* KeyboardObserver.swift in Sources */,
 				4A27022922CD409D005DA22A /* INVSTalkWithUsViewController.swift in Sources */,
 				76C15C9C24CCEAE500045D9A /* SimulationsService.swift in Sources */,
+				7698A68324E1A93D00A93964 /* AccessRepository.swift in Sources */,
 				4A8E0E6622CD3F1E00897D38 /* INVSConnectorErrorProtocol.swift in Sources */,
 				4AFF3EA822BB23F10056A167 /* INVSStartPresenter.swift in Sources */,
 				4AFF3EAA22BB23F10056A167 /* INVSFloatingTextFieldValueType.swift in Sources */,
 				4AFF3EAB22BB23F10056A167 /* UIImage+INVSExtension.swift in Sources */,
+				7698A68624E1B06900A93964 /* HTTPEntities.swift in Sources */,
 				4AFF3EAC22BB23F10056A167 /* MarketModel.swift in Sources */,
 				4AFF3EAD22BB23F10056A167 /* INVSSimulatorHelpView.swift in Sources */,
 				4AFF3EAE22BB23F10056A167 /* CAShapeLayer+INVSExtension.swift in Sources */,

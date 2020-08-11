@@ -8,11 +8,12 @@
 
 import Foundation
 import SwiftUI
+import JewFeatures
 
 class RegisterViewModel: ObservableObject {
     
     @Published var user = INVSUserModel(email: "", uid: "")
-    @Published var registerLoadable: Loadable<HTTPResponse<INVSSignUpModel>> {
+    @Published var registerLoadable: Loadable<HTTPResponse<JEWUserResponse>> {
         didSet {
             build(state: registerLoadable)
         }
@@ -20,7 +21,13 @@ class RegisterViewModel: ObservableObject {
     @Published var showLoading = false
     @Published var showError = false
     @Published var showSuccess = false
-    @Published var close = true
+    @Published var close = true {
+        didSet {
+            email = String()
+            password = String()
+            confirmationPassword = String()
+        }
+    }
     @Published var messageError = String()
     @Published var messageSuccess = String()
 
@@ -75,7 +82,7 @@ class RegisterViewModel: ObservableObject {
         return true
     }
     
-    func build(state: Loadable<HTTPResponse<INVSSignUpModel>>) {
+    func build(state: Loadable<HTTPResponse<JEWUserResponse>>) {
         switch state {
         case .notRequested:
             break
@@ -102,7 +109,6 @@ class RegisterViewModel: ObservableObject {
                 self.showError = true
             }
             self.showLoading = false
-            //Show Alert
             break
         }
     }

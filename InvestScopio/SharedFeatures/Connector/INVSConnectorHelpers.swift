@@ -16,7 +16,7 @@ enum ConnectorRoutes {
     case signin
     case logout
     case simulation
-    case userSimulations
+    case userSimulations(_ id: String)
     case deleteSimulation
     case deleteAllSimulations
     case evaluate
@@ -25,7 +25,7 @@ enum ConnectorRoutes {
     func getRoute() -> URL? {
         switch self {
         case .signup:
-            return INVSConector.getURL(withRoute: "/account/sign-up")
+            return INVSConector.getURL(withRoute: "/register")
         case .publicKey:
             return INVSConector.getURL(withRoute: "/public-key")
         case .accessToken:
@@ -36,8 +36,8 @@ enum ConnectorRoutes {
             return INVSConector.getURL(withRoute: "/account/logout")
         case .simulation:
             return INVSConector.getURL(withRoute: "/simulation/simulator")
-        case .userSimulations:
-            return INVSConector.getURL(withRoute: "/simulation/simulations")
+        case .userSimulations(let id):
+            return INVSConector.getURL(withRoute: "/simulation/user/\(id)")
         case .deleteSimulation:
             return INVSConector.getURL(withRoute: "/simulation/delete")
         case .deleteAllSimulations:

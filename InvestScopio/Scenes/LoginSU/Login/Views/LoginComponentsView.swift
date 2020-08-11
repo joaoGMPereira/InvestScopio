@@ -35,14 +35,14 @@ struct LoginFormView: View {
     var body: some View {
         Form {
             Section(header: Text("Digite seu email").textFont().padding(.top, 16)) {
-                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(placeholder: "Email"), text: $emailText) { textfield, text, isBackspace in
+                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(placeholder: "Email"), text: $emailText, close: .constant(false)) { textfield, text, isBackspace in
                     self.emailText = text
                 }
                 .frame(height: 50)
                 .listRowBackground(Color(UIColor.systemBackground))
             }
             Section(header: Text("Digite sua senha").textFont()) {
-                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(placeholder: "Senha"), text: $passwordText, isSecureTextEntry: true, tapOnToolbarButton: { textfield, type in
+                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(placeholder: "Senha"), text: $passwordText, close: .constant(false), isSecureTextEntry: true, tapOnToolbarButton: { textfield, type in
                     self.didLoginAction()
                 }, didBeginEditing: { textfield in
                     self.passwordText = String()

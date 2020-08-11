@@ -50,25 +50,19 @@ class SimulationsViewModel: ObservableObject {
         case .isLoading(_, _):
             self.showError = false
             self.showLoading = true
-            //Show Loading
+
             break
         case .loaded(let response):
-            //self.messageSuccess = respons
-            self.showSuccess = true
+            self.simulations = response
             self.showError = false
             self.showLoading = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.close = true
-                self.showSuccess = false
-            }
-            
         case .failed(let error):
             if let apiError = error as? APIError {
                 self.messageError = apiError.errorDescription ?? String()
                 self.showError = true
             }
             self.showLoading = false
-            //Show Alert
+
             break
         }
     }

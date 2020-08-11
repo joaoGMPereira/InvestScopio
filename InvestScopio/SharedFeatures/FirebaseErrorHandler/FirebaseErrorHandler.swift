@@ -17,23 +17,26 @@ enum FireBaseErrorHandler: Int {
     case codeUserNotFound = 17011
     case codeInvalidUserToken = 17017
     case codeWeakPassword = 17026
+    case unknown = 999
     
-    func getFirebaseError() -> FirebaseError {
+    func getFirebaseMessage() -> String {
         switch self {
         case .codeUserDisabled:
-            return FirebaseError(titleError: INVSFloatingTextFieldType.defaultErrorTitle(), messageError: "Email desativado!", shouldHideAutomatically: true, popupType:.error)
+            return "Atenção!\nEmail desativado!"
         case .codeEmailAlreadyInUse:
-            return FirebaseError(titleError: INVSFloatingTextFieldType.defaultErrorTitle(), messageError: "Este email já está sendo usado por outro usuário!", shouldHideAutomatically: true, popupType:.error)
+            return "Atenção!\nEmail já cadastrado!"
         case .codeInvalidEmail:
-            return FirebaseError(titleError: INVSFloatingTextFieldType.defaultErrorTitle(), messageError: "Email inválido!", shouldHideAutomatically: true, popupType:.error)
+            return "Atenção!\nEmail inválido!"
         case .codeWrongPassword:
-            return FirebaseError(titleError: INVSFloatingTextFieldType.defaultErrorTitle(), messageError: "Senha incorreta!", shouldHideAutomatically: true, popupType:.error)
+            return "Atenção!\nSenha incorreta!"
         case .codeUserNotFound:
-            return FirebaseError(titleError: INVSFloatingTextFieldType.defaultErrorTitle(), messageError: "Email não cadastrado!", shouldHideAutomatically: true, popupType:.error)
+            return "Atenção!\nEmail não cadastrado!"
         case .codeInvalidUserToken:
-            return FirebaseError(titleError: INVSFloatingTextFieldType.defaultErrorTitle(), messageError: "Tente logar novamente em breve!", shouldHideAutomatically: true, popupType:.error)
+            return "Atenção!\nTente logar novamente em breve!"
         case .codeWeakPassword:
-            return FirebaseError(titleError: INVSFloatingTextFieldType.defaultErrorTitle(), messageError: "Sua senha deve ter pelo menos 6 caracteres!", shouldHideAutomatically: true, popupType:.error)
+            return "Atenção!\nSua senha deve ter pelo menos 6 caracteres!"
+        default:
+            return "Atenção!\nDesculpe, tivemos algum problema, tente novamente mais tarde!"
         }
         
     }

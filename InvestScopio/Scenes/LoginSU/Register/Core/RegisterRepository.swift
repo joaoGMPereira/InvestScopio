@@ -8,10 +8,10 @@
 
 import Combine
 import Foundation
-
+import JewFeatures
 
 protocol RegisterRepositoryProtocol: WebRepository {
-    func register(user: INVSUserRequest) -> AnyPublisher<HTTPResponse<INVSSignUpModel>, Error>
+    func register(user: UserRequest) -> AnyPublisher<HTTPResponse<JEWUserResponse>, Error>
 }
 
 struct RegisterRepository: RegisterRepositoryProtocol {
@@ -25,8 +25,13 @@ struct RegisterRepository: RegisterRepositoryProtocol {
         self.baseURL = "https://invest-scopio-dev-backend.herokuapp.com/api/v1"
     }
     
-    func register(user: INVSUserRequest) -> AnyPublisher<HTTPResponse<INVSSignUpModel>, Error> {
-        return call(endpoint: API.register(user: user))
+    func register(user: UserRequest) -> AnyPublisher<HTTPResponse<JEWUserResponse>, Error> {
+        return AccessRepository.getAccess()
+            .flatMap({ (response) -> AnyPublisher<HTTPResponse<JEWUserResponse>, Error> in
+                JEWSession.session.services.token = response.data.accessToken
+                return self.call(endpoint: API.register(user: user))
+            })
+            .eraseToAnyPublisher()
     }
 }
 
@@ -34,7 +39,7 @@ struct RegisterRepository: RegisterRepositoryProtocol {
 
 extension RegisterRepository {
     enum API {
-        case register(user: INVSUserRequest)
+        case register(user: UserRequest)
     }
 }
 
@@ -56,18 +61,18 @@ extension RegisterRepository.API: APICall {
         }
     }
     var headers: [String: String]? {
-        return ["Content-Type": "application/json"]
+        return ["Content-Type": "application/json", "access-token": JEWSession.session.services.token]
     }
+    
     func body() -> HTTPRequest? {
         switch self {
         case .register(user: let user):
-//            if let theJSONData = try? JSONSerialization.data(
-//                withJSONObject: user.toDict(),
-//            options: []) {
-//                return theJSONData
-//            }
+            if  let theJSONData = try? JSONSerialization.data(
+                withJSONObject: user.toDict(),
+                options: []), let encryptedAESCryptoString = AES256Crypter.crypto.encrypt(theJSONData) {
+                return HTTPRequest(data: encryptedAESCryptoString)
+            }
             return nil
         }
-        return nil
     }
 }

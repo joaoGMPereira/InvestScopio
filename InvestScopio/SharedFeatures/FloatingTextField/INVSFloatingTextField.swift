@@ -208,13 +208,15 @@ extension INVSFloatingTextField: UITextFieldDelegate, INVSKeyboardToolbarDelegat
     }
     
     func openKeyboard() {
-        UIView.animate(withDuration: 0.5) { [weak self] in
-            self?.bottomLabelConstraint.constant = -(self?.frame.height ?? 50)/2
-            self?.topTextFieldConstraint.constant = (self?.frame.height ?? 50)/2
-            self?.placeholderLabel.font = self?.smallFont
-            self?.placeholderLabel.textColor = self?.currentlySelectedColor
-            self?.bottomLineView.backgroundColor = self?.currentlySelectedColor
-            self?.layoutIfNeeded()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            UIView.animate(withDuration: 0.5) { [weak self] in
+                self?.bottomLabelConstraint.constant = -(self?.frame.height ?? 50)/2
+                self?.topTextFieldConstraint.constant = (self?.frame.height ?? 50)/2
+                self?.placeholderLabel.font = self?.smallFont
+                self?.placeholderLabel.textColor = self?.currentlySelectedColor
+                self?.bottomLineView.backgroundColor = self?.currentlySelectedColor
+                self?.layoutIfNeeded()
+            }
         }
     }
     

@@ -36,28 +36,6 @@ class INVSLoginWorker: NSObject,INVSLoginWorkerProtocol {
             errorCompletionHandler(textFieldsError.title, textFieldsError.message, true, .error)
             return
         }
-        if let email = textFields.filter({$0.typeTextField == .email}).first?.floatingTextField.text?.lowercased(), let password = textFields.filter({$0.typeTextField == .password}).first?.floatingTextField.text {
-            
-            Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-                guard let user = result?.user else {
-                    if let error = error {
-                        if let firebaseErrorHandler = FireBaseErrorHandler.init(rawValue: error._code)?.getFirebaseError() {
-                            errorCompletionHandler(firebaseErrorHandler.titleError, firebaseErrorHandler.messageError, firebaseErrorHandler.shouldHideAutomatically, firebaseErrorHandler.popupType)
-                            return
-                        }
-                    }
-                    errorCompletionHandler(INVSFloatingTextFieldType.defaultErrorTitle(), INVSFloatingTextFieldType.defaultErrorMessage(), true, .error)
-                    return
-                }
-                let userFirebaseModel = INVSUserModel.init(email: user.email ?? "", uid: user.uid)
-                self.signInInvestScopioAPI(user: userFirebaseModel, successLoginHandler: { (userAPI) in
-                    successCompletionHandler(userAPI)
-                }, errorCompletionHandler: { (title, message, shouldHideAutomatically, popupType) in
-                    errorCompletionHandler(title, message, shouldHideAutomatically, popupType)
-                })
-                return
-            }
-        }
     }
     
     func loginAsAdmin(successCompletionHandler: @escaping (SuccessLoginHandler), errorCompletionHandler: @escaping (ErrorLoginHandler)) {
@@ -70,23 +48,6 @@ class INVSLoginWorker: NSObject,INVSLoginWorkerProtocol {
     
     private func login(email: String, password: String, successCompletionHandler: @escaping (SuccessLoginHandler), errorCompletionHandler: @escaping (ErrorLoginHandler)) {
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-            guard let user = result?.user else {
-                if let error = error {
-                    if let firebaseErrorHandler = FireBaseErrorHandler.init(rawValue: error._code)?.getFirebaseError() {
-                        errorCompletionHandler(firebaseErrorHandler.titleError, firebaseErrorHandler.messageError, firebaseErrorHandler.shouldHideAutomatically, firebaseErrorHandler.popupType)
-                        return
-                    }
-                }
-                errorCompletionHandler(INVSFloatingTextFieldType.defaultErrorTitle(), INVSFloatingTextFieldType.defaultErrorMessage(), true, .error)
-                return
-            }
-            let userFirebaseModel = INVSUserModel.init(email: user.email ?? "", uid: user.uid)
-            self.signInInvestScopioAPI(user: userFirebaseModel, successLoginHandler: { (userAPI) in
-                successCompletionHandler(userAPI)
-            }, errorCompletionHandler: { (title, message, shouldHideAutomatically, popupType) in
-                errorCompletionHandler(title, message, shouldHideAutomatically, popupType)
-            })
-            return
         }
     }
     
@@ -102,7 +63,7 @@ class INVSLoginWorker: NSObject,INVSLoginWorkerProtocol {
     func signInInvestScopioAPI(user: INVSUserModel, successLoginHandler: @escaping(SuccessLoginHandler), errorCompletionHandler:@escaping(ErrorLoginHandler)) {
         let headers = ["Content-Type": "application/json"]
         
-        let userRequest = INVSUserRequest(email: user.email, password: user.uid)
+        let userRequest = UserRequest(email: user.email, uid: user.uid, fullName: "")
         
 //        INVSConector.connector.request(withRoute: ConnectorRoutes.signin, method: .post, parameters: userRequest, responseClass: INVSAccessModel.self, headers: headers, shouldRetry: true, successCompletion: { (decodable) in
 //            

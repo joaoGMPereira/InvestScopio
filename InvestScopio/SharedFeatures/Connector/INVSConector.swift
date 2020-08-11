@@ -67,34 +67,34 @@ final class INVSConector {
     }
     
     private func refreshToken(withRoute route:ConnectorRoutes, successCompletion: @escaping(SuccessRefreshResponse), errorCompletion: @escaping(ErrorCompletion)) {
-        if route != .signup &&  route != .signin &&  route != .logout {
-            guard let url = ConnectorRoutes.refreshToken.getRoute() else {
-                errorCompletion(ConnectorError.init(error: .logout, message: "URL Inválida!"))
-                return
-            }
-            guard let refreshToken = Session.session.user?.access?.refreshToken else {
-                errorCompletion(ConnectorError.init(error: .logout, message: "Refresh Token Inválido!"))
-                return
-            }
-            guard let headers = ["Content-Type": "application/json", "Authorization": Session.session.user?.access?.accessToken] as? HTTPHeaders else {
-                errorCompletion(ConnectorError.init(error: .logout, message: "Access Token Inválido!"))
-                return
-            }
-            let refreshTokenRequest = INVSRefreshTokenRequest.init(refreshToken: refreshToken)
-            requestBlock(withURL: url, method: .post, parameters: refreshTokenRequest, responseClass: INVSAccessModel.self, headers: headers, successCompletion: { (decodable) in
-                let accessModel = decodable as? INVSAccessModel
-                Session.session.user?.access = accessModel
-                successCompletion(true)
-            }) { (error) in
-                self.checkLoggedUser(successCompletion: {
-                    successCompletion(true)
-                }, errorCompletion: { (checkLoggedUserError) in
-                    errorCompletion(checkLoggedUserError)
-                })
-            }
-        } else {
-            successCompletion(false)
-        }
+//        if route != .signup &&  route != .signin &&  route != .logout {
+//            guard let url = ConnectorRoutes.refreshToken.getRoute() else {
+//                errorCompletion(ConnectorError.init(error: .logout, message: "URL Inválida!"))
+//                return
+//            }
+//            guard let refreshToken = Session.session.user?.access?.refreshToken else {
+//                errorCompletion(ConnectorError.init(error: .logout, message: "Refresh Token Inválido!"))
+//                return
+//            }
+//            guard let headers = ["Content-Type": "application/json", "Authorization": Session.session.user?.access?.accessToken] as? HTTPHeaders else {
+//                errorCompletion(ConnectorError.init(error: .logout, message: "Access Token Inválido!"))
+//                return
+//            }
+//            let refreshTokenRequest = INVSRefreshTokenRequest.init(refreshToken: refreshToken)
+//            requestBlock(withURL: url, method: .post, parameters: refreshTokenRequest, responseClass: INVSAccessModel.self, headers: headers, successCompletion: { (decodable) in
+//                let accessModel = decodable as? INVSAccessModel
+//                Session.session.user?.access = accessModel
+//                successCompletion(true)
+//            }) { (error) in
+//                self.checkLoggedUser(successCompletion: {
+//                    successCompletion(true)
+//                }, errorCompletion: { (checkLoggedUserError) in
+//                    errorCompletion(checkLoggedUserError)
+//                })
+//            }
+//        } else {
+//            successCompletion(false)
+//        }
     }
     
     

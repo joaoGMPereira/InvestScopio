@@ -8,19 +8,17 @@
 
 import Foundation
 import CryptoSwift
-struct INVSUserRequest: JSONAble {
-    var email: String = ""
-    var password: String = ""
-    
-    init(email: String, password: String) {
-        self.email = email
-        self.password = password
-    }
-}
 
-struct LoginRequest: Codable, JSONAble {
+struct UserRequest: Codable, JSONAble {
     let firebaseID: String
     let name: String
     let email: String
     let picture: String?
+    
+    public init(email: String?, uid: String, fullName: String?, photoURL: URL? = nil) {
+        self.email = email ?? "User Without Email"
+        self.firebaseID = uid
+        self.name = fullName ?? "User Without Name"
+        self.picture = photoURL?.absoluteString
+    }
 }

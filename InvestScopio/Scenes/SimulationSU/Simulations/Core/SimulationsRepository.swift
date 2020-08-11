@@ -8,7 +8,7 @@
 
 import Combine
 import Foundation
-
+import JewFeatures
 
 protocol SimulationsRepositoryProtocol: WebRepository {
     func simulations() -> AnyPublisher<HTTPResponse<[INVSSimulatorModel]>, Error>
@@ -16,17 +16,8 @@ protocol SimulationsRepositoryProtocol: WebRepository {
 
 struct SimulationsRepository: SimulationsRepositoryProtocol {
     
-    let session: URLSession
-    let baseURL: String
-    let bgQueue = DispatchQueue(label: "bg_parse_queue")
-    
-    init(session: URLSession? = nil, baseURL: String? = nil) {
-        self.session = Self.configuredURLSession()
-        self.baseURL = "https://invest-scopio-dev-backend.herokuapp.com/api/v1"
-    }
-    
     func simulations() -> AnyPublisher<HTTPResponse<[INVSSimulatorModel]>, Error> {
-        return call(endpoint: API.simulations, shouldRefreshToken: true)
+        return call(endpoint: API.simulations)
     }
 }
 
@@ -43,7 +34,7 @@ extension SimulationsRepository.API: APICall {
     var route: ConnectorRoutes {
         switch self {
         case .simulations:
-            return .userSimulations
+            return .userSimulations(JEWSession.session.user?.uid ?? String())
         }
     }
     var method: HTTPMethod {

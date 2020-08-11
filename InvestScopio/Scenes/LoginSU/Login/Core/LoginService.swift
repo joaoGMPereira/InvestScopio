@@ -30,13 +30,17 @@ struct LoginService: LoginServiceProtocol {
         self.firebaseLogin(userLoadable: userLoadable, email: email.lowercased(), password: password) { (userModel) in
             JEWSession.session.user = userModel
             self.webRepository
-                .login(request: LoginRequest(firebaseID: userModel.uid, name: userModel.fullName, email: userModel.email, picture: userModel.photoURL?.absoluteString))
+                .login(request: UserRequest(email: userModel.email, uid: userModel.uid, fullName: userModel.fullName, photoURL: userModel.photoURL))
                 .sinkToLoadable { response in
                     guard let value = response.value else {
+                        JEWSession.session.services.publicKey = String()
+                        JEWSession.session.services.token = String()
+                        JEWSession.session.services.sessionToken = String()
                         userLoadable.wrappedValue = .failed(APIError.customError("Atenção!\nDesculpe, tivemos algum problema, tente novamente mais tarde!"))
                         return
                     }
                     userLoadable.wrappedValue = .loaded(value)
+                    JEWSession.session.services.sessionToken = value.data.sessionToken
             }
             .store(in: cancelBag)
         }

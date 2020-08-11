@@ -33,12 +33,6 @@ class INVSSignUpWorker: NSObject,INVSSignUpWorkerProtocol {
             
             Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
                 guard result != nil else {
-                    if let error = error {
-                        if let firebaseErrorHandler = FireBaseErrorHandler.init(rawValue: error._code)?.getFirebaseError() {
-                            errorCompletionHandler(firebaseErrorHandler.titleError, firebaseErrorHandler.messageError, firebaseErrorHandler.shouldHideAutomatically, firebaseErrorHandler.popupType)
-                         return
-                        }
-                    }
                     errorCompletionHandler(INVSFloatingTextFieldType.defaultErrorTitle(), INVSFloatingTextFieldType.defaultErrorMessage(), true, .error)
                     return
                 }
@@ -61,7 +55,7 @@ class INVSSignUpWorker: NSObject,INVSSignUpWorkerProtocol {
     func signUpInvestScopio(user: INVSUserModel, signUpInvestScopioHandler: @escaping(SignUpInvestScopioHandler)) {
         let headers = ["Content-Type": "application/json"]
         
-        let userRequest = INVSUserRequest(email: user.email ?? "", password: user.uid ?? "")
+        //let userRequest = UserRequest(email: user.email ?? "", password: user.uid ?? "")
         
 //        INVSConector.connector.request(withRoute: ConnectorRoutes.signup, method: .post, parameters: userRequest, responseClass: INVSSignUpModel.self, headers: headers, shouldRetry: true, successCompletion: { (decodable) in
 //            let signUpModel = decodable as? INVSSignUpModel

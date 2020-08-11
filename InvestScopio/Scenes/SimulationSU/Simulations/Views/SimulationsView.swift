@@ -12,13 +12,13 @@ import SwiftUICharts
 import QGrid
 
 struct SimulationsView: View {
-    @State var simulations = INVSSimulatorModel.simulationsTeste
+    //@State var simulations = INVSSimulatorModel.simulationsTeste
     @ObservedObject var viewModel: SimulationsViewModel
     @State var cellSize = CGSize.zero
     var body: some View {
         ZStack {
             Color.init(.systemGroupedBackground).edgesIgnoringSafeArea(.all)
-            List(simulations) { simulation in
+            List(viewModel.simulations) { simulation in
                 Section {
                     SimulationCell(simulation: simulation, cellSize: self.$cellSize)
                 }
@@ -49,7 +49,7 @@ struct SimulationCell: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            HeaderSimulationCell(showChart: $showChart)
+            HeaderSimulationCell(showChart: $showChart, simulation: simulation)
             if UIDevice.current.userInterfaceIdiom == .pad {
                 HStack {
                     contentView(showChart: $showChart)
@@ -68,7 +68,7 @@ struct SimulationCell: View {
     
     func contentView(showChart: Binding<Bool>) -> some View {
         Group {
-            BodySimulationCell()
+            BodySimulationCell(simulation: simulation)
             if self.showChart {
                 BarChartView(data: ChartData(values: [("01/2020",3000), ("02/2020",3100), ("03/2020",3200), ("04/2020",3500)]), title: "Valor Atual: R$ 3,500.00", style: self.getChartStyle(), form: .init(width: UIDevice.current.userInterfaceIdiom == .pad ? 200 : cellSize.width, height: 300), dropShadow: false, valueSpecifier: "R$ %.2f")
             }
@@ -79,11 +79,12 @@ struct SimulationCell: View {
 
 struct HeaderSimulationCell: View {
     @Binding var showChart: Bool
+    var simulation: INVSSimulatorModel
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
                 Text("Valor Inicial:").font(.headline).minimumScaleFactor(0.5)
-                Text("R$ 5.000.000.000,00").font(.callout).minimumScaleFactor(0.5)
+                Text(simulation.initialValue.currencyFormat()).font(.callout).minimumScaleFactor(0.5)
             }
             .lineLimit(1)
             Spacer()
@@ -97,11 +98,12 @@ struct HeaderSimulationCell: View {
 }
 
 struct BodySimulationCell: View {
+    var simulation: INVSSimulatorModel
     var body: some View {
         VStack(spacing: 8) {
-            SectionView(firstTitle: "Valor Mensal", firstValue: "R$ 500,00", secondTitle: "Taxa de Juros", secondValue: "3,00%")
-            SectionView(firstTitle: "Total de Meses", firstValue: "60", secondTitle: "Valor Inicial de Resgate", secondValue: "R$ 300,00")
-            SectionView(firstTitle: "Acréscimo no Resgate", firstValue: "R$ 200,00", secondTitle: "Próximo Objetivo", secondValue: "3,00%")
+            SectionView(firstTitle: "Valor Mensal", firstValue: simulation.monthValue.currencyFormat(), secondTitle: "Taxa de Juros", secondValue: simulation.interestRate.currencyFormat().percentFormat())
+            SectionView(firstTitle: "Total de Meses", firstValue: "\(simulation.totalMonths)", secondTitle: "Valor Inicial de Resgate", secondValue: simulation.initialMonthlyRescue.currencyFormat())
+            SectionView(firstTitle: "Acréscimo no Resgate", firstValue: simulation.increaseRescue.currencyFormat(), secondTitle: "Próximo Objetivo", secondValue: simulation.goalIncreaseRescue.currencyFormat())
         }
     }
 }
@@ -141,5 +143,5 @@ struct SimulationsView_Previews: PreviewProvider {
 }
 
 extension INVSSimulatorModel {
-    static let simulationsTeste = [INVSSimulatorModel.init(initialValue: 30000, monthValue: 500, interestRate: 3, totalMonths: 30, initialMonthlyRescue: 20, increaseRescue: 50, goalIncreaseRescue: 300, isSimply: false, id: 1312313188882312), INVSSimulatorModel.init(initialValue: 30000, monthValue: 500, interestRate: 3, totalMonths: 30, initialMonthlyRescue: 20, increaseRescue: 50, goalIncreaseRescue: 300, isSimply: false, id: 1319999923131212), INVSSimulatorModel.init(initialValue: 30000, monthValue: 500, interestRate: 3, totalMonths: 30, initialMonthlyRescue: 20, increaseRescue: 50, goalIncreaseRescue: 300, isSimply: false, id: 131929212312), INVSSimulatorModel.init(initialValue: 30000, monthValue: 500, interestRate: 3, totalMonths: 30, initialMonthlyRescue: 20, increaseRescue: 50, goalIncreaseRescue: 300, isSimply: false, id: 13191919123), INVSSimulatorModel.init(initialValue: 30000, monthValue: 500, interestRate: 3, totalMonths: 30, initialMonthlyRescue: 20, increaseRescue: 50, goalIncreaseRescue: 300, isSimply: false, id: 13891112312312), INVSSimulatorModel.init(initialValue: 30000, monthValue: 500, interestRate: 3, totalMonths: 30, initialMonthlyRescue: 20, increaseRescue: 50, goalIncreaseRescue: 300, isSimply: false, id: 8912371293), INVSSimulatorModel.init(initialValue: 30000, monthValue: 500, interestRate: 3, totalMonths: 30, initialMonthlyRescue: 20, increaseRescue: 50, goalIncreaseRescue: 300, isSimply: false, id: 91829228), INVSSimulatorModel.init(initialValue: 30000, monthValue: 500, interestRate: 3, totalMonths: 30, initialMonthlyRescue: 20, increaseRescue: 50, goalIncreaseRescue: 300, isSimply: false, id: 47827319), INVSSimulatorModel.init(initialValue: 30000, monthValue: 500, interestRate: 3, totalMonths: 30, initialMonthlyRescue: 20, increaseRescue: 50, goalIncreaseRescue: 300, isSimply: false, id: 138129312), INVSSimulatorModel.init(initialValue: 30000, monthValue: 500, interestRate: 3, totalMonths: 30, initialMonthlyRescue: 20, increaseRescue: 50, goalIncreaseRescue: 300, isSimply: false, id: 19831299), INVSSimulatorModel.init(initialValue: 30000, monthValue: 500, interestRate: 3, totalMonths: 30, initialMonthlyRescue: 20, increaseRescue: 50, goalIncreaseRescue: 300, isSimply: false, id: 2938129), INVSSimulatorModel.init(initialValue: 30000, monthValue: 500, interestRate: 3, totalMonths: 30, initialMonthlyRescue: 20, increaseRescue: 50, goalIncreaseRescue: 300, isSimply: false, id: 71823711), INVSSimulatorModel.init(initialValue: 30000, monthValue: 500, interestRate: 3, totalMonths: 30, initialMonthlyRescue: 20, increaseRescue: 50, goalIncreaseRescue: 300, isSimply: false, id: 1129381239)]
+    static let simulationsTeste = [INVSSimulatorModel.init(initialValue: 30000, monthValue: 500, interestRate: 3, totalMonths: 30, initialMonthlyRescue: 20, increaseRescue: 50, goalIncreaseRescue: 300, isSimply: false, _id: "teste")]
 }

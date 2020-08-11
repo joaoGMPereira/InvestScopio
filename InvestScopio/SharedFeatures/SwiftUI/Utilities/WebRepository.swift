@@ -16,58 +16,28 @@ protocol WebRepository {
 }
 
 extension WebRepository {
+    var session: URLSession { Self.configuredURLSession() }
+    var bgQueue: DispatchQueue { DispatchQueue(label: "bg_parse_queue") }
+}
+
+extension WebRepository {
     
     static func configuredURLSession() -> URLSession {
-        //        let configuration = URLSessionConfiguration.default
-        //        configuration.timeoutIntervalForRequest = 60
-        //        configuration.timeoutIntervalForResource = 120
-        //        configuration.waitsForConnectivity = true
-        //        configuration.httpMaximumConnectionsPerHost = 5
-        //        configuration.requestCachePolicy = .returnCacheDataElseLoad
-        //        configuration.urlCache = .shared
         return URLSession(configuration: .default)
     }
     
-    func call<Value>(endpoint: APICall, httpCodes: HTTPCodes = .success, shouldRefreshToken: Bool = false) -> AnyPublisher<HTTPResponse<Value>, Error>
+    func call<Value>(endpoint: APICall, httpCodes: HTTPCodes = .success) -> AnyPublisher<HTTPResponse<Value>, Error>
         where Value: Decodable {
             do {
                 let request = try endpoint.urlRequest()
-                
-                return session
+                JEWLogger.info(request)
+                return URLSession.shared
                     .dataTaskPublisher(for: request)
                     .requestJSON(httpCodes: httpCodes)
             } catch let error {
                 return Fail<HTTPResponse<Value>, Error>(error: error).eraseToAnyPublisher()
             }
     }
-    
-    func callRequest<Value>(endpoint: APICall, httpCodes: HTTPCodes = .success) -> AnyPublisher<HTTPResponse<Value>, Error>
-        where Value: Decodable {
-            do {
-                let request = try endpoint.urlRequest()
-                
-                return session
-                    .dataTaskPublisher(for: request)
-                    .requestJSON(httpCodes: httpCodes)
-            } catch let error {
-                return Fail<HTTPResponse<Value>, Error>(error: error).eraseToAnyPublisher()
-            }
-    }
-    
-    //    private func refreshToken(withRoute route:ConnectorRoutes, shouldRefreshToken: Bool) -> AnyPublisher<Bool, Error> {
-    //        if shouldRefreshToken == false {
-    //            return Just.withErrorType(true, Error.self)
-    //        }
-    //        guard let headers = ["Content-Type": "application/json", "Authorization": Session.session.user?.access?.accessToken] as? [String: String], let refreshToken = Session.session.user?.access?.refreshToken else {
-    //            return Fail<Bool, Error>(error: APIError.logout).eraseToAnyPublisher()
-    //        }
-    //        let refreshTokenRequest = INVSRefreshTokenRequest.init(refreshToken: refreshToken)
-    //        let request: AnyPublisher<INVSAccessModel, Error> = callRequest(endpoint: RefreshRepository.API.refreshToken(headers: headers, request: refreshTokenRequest))
-    //        return request.flatMap { (accessModel) -> AnyPublisher<Bool, Error> in
-    //            Session.session.user?.access = accessModel
-    //            return Just.withErrorType(true, Error.self)
-    //        }.eraseToAnyPublisher()
-    //    }
 }
 
 // MARK: - Helpers
@@ -95,19 +65,4 @@ private extension Publisher where Output == URLSession.DataTaskPublisher.Output 
         }
         .eraseToAnyPublisher()
     }
-}
-
-struct HTTPResponse<Value>: Codable where Value: Codable {
-    let data: Value
-    let message: String?
-    let response: BaseResponse
-    
-    struct BaseResponse: Codable {
-        let code: Int
-        let status: String
-    }
-}
-
-struct HTTPRequest: Codable, JSONAble {
-    let data: String
 }
