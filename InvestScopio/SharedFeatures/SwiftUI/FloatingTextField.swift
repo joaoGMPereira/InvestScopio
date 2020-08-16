@@ -56,6 +56,11 @@ struct FloatingTextField: UIViewRepresentable {
         }
         types.append(.CodeView)
         streetNameTextFieldFactory.setup(buildersType: types, delegate: context.coordinator)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            if !floatingTextField.textFieldText.isEmpty {
+                floatingTextField.openKeyboard()
+            }
+        }
         return floatingTextField
     }
     

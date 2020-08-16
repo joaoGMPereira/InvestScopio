@@ -32,7 +32,9 @@ class LoginViewModel: ObservableObject {
     
     func checkUserSavedEmail() {
         if let email = INVSKeyChainWrapper.retrieve(withKey: INVSConstants.LoginKeyChainConstants.lastLoginEmail.rawValue), let emailDecrypted = INVSCrypto.decryptAES(withText: email) {
-            self.email = emailDecrypted
+            //DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.email = emailDecrypted
+           // }
         }
         if let enableAuthentication =
             INVSKeyChainWrapper.retrieveBool(withKey: INVSConstants.LoginKeyChainConstants.hasEnableBiometricAuthentication.rawValue) {

@@ -297,6 +297,10 @@
 		7698A68324E1A93D00A93964 /* AccessRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7698A68124E1A93D00A93964 /* AccessRepository.swift */; };
 		7698A68524E1B06900A93964 /* HTTPEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7698A68424E1B06900A93964 /* HTTPEntities.swift */; };
 		7698A68624E1B06900A93964 /* HTTPEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7698A68424E1B06900A93964 /* HTTPEntities.swift */; };
+		7698A68D24E347C500A93964 /* SUIJEWLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7698A68A24E347C400A93964 /* SUIJEWLoadingView.swift */; };
+		7698A68E24E347C500A93964 /* SUIJEWLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7698A68A24E347C400A93964 /* SUIJEWLoadingView.swift */; };
+		7698A68F24E347C500A93964 /* SUIJewGenericView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7698A68C24E347C400A93964 /* SUIJewGenericView.swift */; };
+		7698A69024E347C500A93964 /* SUIJewGenericView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7698A68C24E347C400A93964 /* SUIJewGenericView.swift */; };
 		76B2602624C5EBB7003BF4B4 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B2602524C5EBB7003BF4B4 /* BlurView.swift */; };
 		76B2602724C5EBB7003BF4B4 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B2602524C5EBB7003BF4B4 /* BlurView.swift */; };
 		76C15C6824C7A7F800045D9A /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C15C6724C7A7F800045D9A /* RegisterView.swift */; };
@@ -321,6 +325,10 @@
 		76C15C9E24CCEAE500045D9A /* SimulationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C15C9824CCEAE500045D9A /* SimulationsViewModel.swift */; };
 		76C15CA024CE011800045D9A /* RefreshRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C15C9F24CE011800045D9A /* RefreshRepository.swift */; };
 		76C15CA124CE011800045D9A /* RefreshRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C15C9F24CE011800045D9A /* RefreshRepository.swift */; };
+		76CAEE5424E8EC1B0044508E /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 76CAEE5324E8EC1B0044508E /* Introspect */; };
+		76CAEE5624E8EC2D0044508E /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 76CAEE5524E8EC2D0044508E /* Introspect */; };
+		76CAEE5824E9B7D80044508E /* WorkingAroundSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAEE5724E9B7D80044508E /* WorkingAroundSUI.swift */; };
+		76CAEE5924E9B8170044508E /* WorkingAroundSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAEE5724E9B7D80044508E /* WorkingAroundSUI.swift */; };
 		76D017C824C6681B0092F1A6 /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D017C724C6681B0092F1A6 /* RegisterRepository.swift */; };
 		76D017C924C6681B0092F1A6 /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D017C724C6681B0092F1A6 /* RegisterRepository.swift */; };
 		76D017CB24C6682D0092F1A6 /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D017CA24C6682D0092F1A6 /* RegisterService.swift */; };
@@ -486,6 +494,8 @@
 		768D8C0324C3A2F8004BEADA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		7698A68124E1A93D00A93964 /* AccessRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessRepository.swift; sourceTree = "<group>"; };
 		7698A68424E1B06900A93964 /* HTTPEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPEntities.swift; sourceTree = "<group>"; };
+		7698A68A24E347C400A93964 /* SUIJEWLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SUIJEWLoadingView.swift; sourceTree = "<group>"; };
+		7698A68C24E347C400A93964 /* SUIJewGenericView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SUIJewGenericView.swift; sourceTree = "<group>"; };
 		76B2602524C5EBB7003BF4B4 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		76C15C6724C7A7F800045D9A /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		76C15C6D24C7A80500045D9A /* ResendPasswordService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResendPasswordService.swift; sourceTree = "<group>"; };
@@ -496,6 +506,7 @@
 		76C15C9724CCEAE400045D9A /* SimulationsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulationsService.swift; sourceTree = "<group>"; };
 		76C15C9824CCEAE500045D9A /* SimulationsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulationsViewModel.swift; sourceTree = "<group>"; };
 		76C15C9F24CE011800045D9A /* RefreshRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshRepository.swift; sourceTree = "<group>"; };
+		76CAEE5724E9B7D80044508E /* WorkingAroundSUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingAroundSUI.swift; sourceTree = "<group>"; };
 		76D017C724C6681B0092F1A6 /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
 		76D017CA24C6682D0092F1A6 /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
 		76D017CD24C66C4A0092F1A6 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
@@ -511,6 +522,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76C15C8A24CB99FE00045D9A /* QGrid in Frameworks */,
+				76CAEE5624E8EC2D0044508E /* Introspect in Frameworks */,
 				B8729DDDA4477CDE936382D1 /* (null) in Frameworks */,
 				76C15C8224C9267300045D9A /* SwiftUICharts in Frameworks */,
 				DF8D069B37894F62C4DEAAD0 /* Pods_InvestScopio.framework in Frameworks */,
@@ -524,6 +536,7 @@
 			files = (
 				76C15C8824CB99F100045D9A /* QGrid in Frameworks */,
 				76C15C8024C9265300045D9A /* SwiftUICharts in Frameworks */,
+				76CAEE5424E8EC1B0044508E /* Introspect in Frameworks */,
 				76D017D424C6800F0092F1A6 /* EnvironmentOverrides in Frameworks */,
 				7B3FD35CB4A8123DF3A4C9AC /* Pods_InvestScopioDev.framework in Frameworks */,
 			);
@@ -770,6 +783,7 @@
 				4A4C68AD2295796100EDC8C6 /* InvestScopioProd-Info.plist */,
 				4A4C68AC2295796100EDC8C6 /* AppDelegate.swift */,
 				768D8BE224C208BF004BEADA /* SceneDelegate.swift */,
+				76CAEE5724E9B7D80044508E /* WorkingAroundSUI.swift */,
 			);
 			path = InvestScopio;
 			sourceTree = "<group>";
@@ -1142,6 +1156,8 @@
 		768D8BFC24C39357004BEADA /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				7698A68B24E347C400A93964 /* GenericView */,
+				7698A68924E347C400A93964 /* LoadingView */,
 				767DD86C24C3AC77006FDC1A /* Utilities */,
 				768D8BF524C34023004BEADA /* KeyboardObserver.swift */,
 				768D8BF824C34CB4004BEADA /* FloatingTextField.swift */,
@@ -1153,6 +1169,22 @@
 				76B2602524C5EBB7003BF4B4 /* BlurView.swift */,
 			);
 			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		7698A68924E347C400A93964 /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				7698A68A24E347C400A93964 /* SUIJEWLoadingView.swift */,
+			);
+			path = LoadingView;
+			sourceTree = "<group>";
+		};
+		7698A68B24E347C400A93964 /* GenericView */ = {
+			isa = PBXGroup;
+			children = (
+				7698A68C24E347C400A93964 /* SUIJewGenericView.swift */,
+			);
+			path = GenericView;
 			sourceTree = "<group>";
 		};
 		76B2602024C5EB24003BF4B4 /* Views */ = {
@@ -1304,6 +1336,7 @@
 				76D017D124C67F830092F1A6 /* EnvironmentOverrides */,
 				76C15C8124C9267300045D9A /* SwiftUICharts */,
 				76C15C8924CB99FE00045D9A /* QGrid */,
+				76CAEE5524E8EC2D0044508E /* Introspect */,
 			);
 			productName = InvestScopio;
 			productReference = 4A4C68562295784900EDC8C6 /* InvestScopio.app */;
@@ -1328,6 +1361,7 @@
 				76D017D324C6800F0092F1A6 /* EnvironmentOverrides */,
 				76C15C7F24C9265300045D9A /* SwiftUICharts */,
 				76C15C8724CB99F100045D9A /* QGrid */,
+				76CAEE5324E8EC1B0044508E /* Introspect */,
 			);
 			productName = InvestScopio;
 			productReference = 4AFF3EDE22BB23F10056A167 /* InvestScopioTeste.app */;
@@ -1361,6 +1395,7 @@
 				76D017D024C67F830092F1A6 /* XCRemoteSwiftPackageReference "EnvironmentOverrides" */,
 				76C15C7E24C9265300045D9A /* XCRemoteSwiftPackageReference "ChartView" */,
 				76C15C8624CB99F100045D9A /* XCRemoteSwiftPackageReference "QGrid" */,
+				76CAEE5224E8EC1B0044508E /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = 4A4C68572295784900EDC8C6 /* Products */;
 			projectDirPath = "";
@@ -1575,6 +1610,7 @@
 				4A4C68B22295796200EDC8C6 /* INVSSimulatedListViewController.swift in Sources */,
 				4A27AA96229F3F9F00C45CC5 /* INVSStartInteractor.swift in Sources */,
 				4A12631422A7DA99006133E5 /* BankModel.swift in Sources */,
+				7698A68D24E347C500A93964 /* SUIJEWLoadingView.swift in Sources */,
 				768D8BE924C22B35004BEADA /* SFSymbols+Extensions.swift in Sources */,
 				4A4C68D22295796200EDC8C6 /* String+INVSExtension.swift in Sources */,
 				4A22FF382297837B001662FC /* INVSSimulatedContainerViewController.swift in Sources */,
@@ -1611,6 +1647,7 @@
 				7698A68524E1B06900A93964 /* HTTPEntities.swift in Sources */,
 				4A12631222A7DA7A006133E5 /* MarketModel.swift in Sources */,
 				4A107AA222A3279600A7D8D1 /* INVSSimulatorHelpView.swift in Sources */,
+				7698A68F24E347C500A93964 /* SUIJewGenericView.swift in Sources */,
 				4A4C68D02295796200EDC8C6 /* CAShapeLayer+INVSExtension.swift in Sources */,
 				4A0FFEA222B41C1B00D6A33A /* INVSResendPasswordInteractor.swift in Sources */,
 				767DD87124C3C384006FDC1A /* LoginService.swift in Sources */,
@@ -1639,6 +1676,7 @@
 				767DD86124C3AC14006FDC1A /* Loadable.swift in Sources */,
 				4A8E0E4822CD3EB300897D38 /* INVSDeleteSimulationResponse.swift in Sources */,
 				4A4C68BC2295796200EDC8C6 /* INVSSimutatorViewControler.swift in Sources */,
+				76CAEE5824E9B7D80044508E /* WorkingAroundSUI.swift in Sources */,
 				4A121694229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift in Sources */,
 				76C15C7C24C91B6800045D9A /* SimulationsView.swift in Sources */,
 				4AFF3E6322B9BC360056A167 /* INVSSignUpModel.swift in Sources */,
@@ -1719,6 +1757,7 @@
 				4AFF3E9422BB23F10056A167 /* INVSSimulatedListViewController.swift in Sources */,
 				4AFF3E9522BB23F10056A167 /* INVSStartInteractor.swift in Sources */,
 				4AFF3E9622BB23F10056A167 /* BankModel.swift in Sources */,
+				7698A68E24E347C500A93964 /* SUIJEWLoadingView.swift in Sources */,
 				768D8BEA24C22B35004BEADA /* SFSymbols+Extensions.swift in Sources */,
 				4AFF3E9722BB23F10056A167 /* String+INVSExtension.swift in Sources */,
 				4AFF3E9822BB23F10056A167 /* INVSSimulatedContainerViewController.swift in Sources */,
@@ -1755,6 +1794,7 @@
 				7698A68624E1B06900A93964 /* HTTPEntities.swift in Sources */,
 				4AFF3EAC22BB23F10056A167 /* MarketModel.swift in Sources */,
 				4AFF3EAD22BB23F10056A167 /* INVSSimulatorHelpView.swift in Sources */,
+				7698A69024E347C500A93964 /* SUIJewGenericView.swift in Sources */,
 				4AFF3EAE22BB23F10056A167 /* CAShapeLayer+INVSExtension.swift in Sources */,
 				4AFF3EAF22BB23F10056A167 /* INVSResendPasswordInteractor.swift in Sources */,
 				767DD87224C3C384006FDC1A /* LoginService.swift in Sources */,
@@ -1783,6 +1823,7 @@
 				767DD86224C3AC14006FDC1A /* Loadable.swift in Sources */,
 				4A8E0E4922CD3EB300897D38 /* INVSDeleteSimulationResponse.swift in Sources */,
 				4AFF3EBF22BB23F10056A167 /* INVSSimutatorViewControler.swift in Sources */,
+				76CAEE5924E9B8170044508E /* WorkingAroundSUI.swift in Sources */,
 				4AFF3EC022BB23F10056A167 /* INVSSimulatedChartsInteractor.swift in Sources */,
 				76C15C7D24C91B6800045D9A /* SimulationsView.swift in Sources */,
 				4AFF3EC122BB23F10056A167 /* INVSSignUpModel.swift in Sources */,
@@ -2106,6 +2147,14 @@
 				minimumVersion = 0.1.4;
 			};
 		};
+		76CAEE5224E8EC1B0044508E /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 		76D017D024C67F830092F1A6 /* XCRemoteSwiftPackageReference "EnvironmentOverrides" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nalexn/EnvironmentOverrides";
@@ -2136,6 +2185,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 76C15C8624CB99F100045D9A /* XCRemoteSwiftPackageReference "QGrid" */;
 			productName = QGrid;
+		};
+		76CAEE5324E8EC1B0044508E /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76CAEE5224E8EC1B0044508E /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
+		76CAEE5524E8EC2D0044508E /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76CAEE5224E8EC1B0044508E /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
 		};
 		76D017D124C67F830092F1A6 /* EnvironmentOverrides */ = {
 			isa = XCSwiftPackageProductDependency;

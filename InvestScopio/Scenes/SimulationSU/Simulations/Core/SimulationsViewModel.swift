@@ -11,13 +11,13 @@ import SwiftUI
 
 class SimulationsViewModel: ObservableObject {
     
-    @Published var simulations = [INVSSimulatorModel]()
+    @Published var simulations = INVSSimulatorModel.simulationsTeste
     @Published var simulationsLoadable: Loadable<[INVSSimulatorModel]> {
         didSet {
             build(state: simulationsLoadable)
         }
     }
-    @Published var showLoading = false
+    @Published var state: ViewState = .loading
     @Published var showError = false
     @Published var showSuccess = false
     @Published var close = true
@@ -49,20 +49,19 @@ class SimulationsViewModel: ObservableObject {
             
         case .isLoading(_, _):
             self.showError = false
-            self.showLoading = true
+            self.state = .loading
 
             break
         case .loaded(let response):
             self.simulations = response
             self.showError = false
-            self.showLoading = false
+            self.state = .loaded
         case .failed(let error):
             if let apiError = error as? APIError {
                 self.messageError = apiError.errorDescription ?? String()
                 self.showError = true
             }
-            self.showLoading = false
-
+            self.state = .loaded
             break
         }
     }
