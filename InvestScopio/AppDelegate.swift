@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         JEWUIColor.default.backgroundColor = UIColor.systemBackground
         UINavigationBar.appearance().tintColor = JEWUIColor.default.darkDefaultColor
         UISwitch.appearance().onTintColor = .JEWDarkDefault()
-        //AppDelegate.shared.tabBarController.tabBar.tintColor = UIColor.JEWDarkDefault()
         UITextField.appearance().tintColor = .JEWDarkDefault()
         setupFirebase()
         return true

@@ -67,9 +67,9 @@ extension LoginWebRepository.API: APICall {
     func body() -> HTTPRequest? {
         switch self {
         case .login(let request):
-            if  let theJSONData = try? JSONSerialization.data(
-                                       withJSONObject: request.toDict(),
-                                       options: []), let encryptedAESCryptoString = AES256Crypter.crypto.encrypt(theJSONData) {
+            if let theJSONData = try? JSONSerialization.data(
+                withJSONObject: request.toDict(),
+                options: []), let encryptedAESCryptoString = AES256Crypter.crypto.encrypt(theJSONData) {
                 return HTTPRequest(data: encryptedAESCryptoString)
             }
             return nil

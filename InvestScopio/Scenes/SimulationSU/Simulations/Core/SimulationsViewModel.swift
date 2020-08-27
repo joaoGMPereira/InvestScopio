@@ -8,37 +8,39 @@
 
 import Foundation
 import SwiftUI
+import JewFeatures
 
 class SimulationsViewModel: ObservableObject {
     
-    @Published var simulations = INVSSimulatorModel.simulationsTeste
+    @Published var simulations = INVSSimulatorModel.simulationsPlaceholders
     @Published var simulationsLoadable: Loadable<[INVSSimulatorModel]> {
         didSet {
             build(state: simulationsLoadable)
         }
     }
     @Published var state: ViewState = .loading
-    @Published var showError = false
-    @Published var showSuccess = false
-    @Published var close = true
+    @Published var reload = false
     @Published var messageError = String()
     @Published var messageSuccess = String()
     
     let simulationsService: SimulationsServiceProtocol
+    var completion: (() -> Void)?
+    var failure:((AppPopupSettings) -> Void)?
 
     init(service: SimulationsServiceProtocol) {
         self._simulationsLoadable = .init(initialValue: .notRequested)
         self.simulationsService = service
     }
     
-    func getSimulations() {
+    func getSimulations(completion: @escaping () -> Void, failure: @escaping (AppPopupSettings) -> Void) {
+        self.completion = completion
+        self.failure = failure
         switch simulationsLoadable {
         case .notRequested, .loaded(_), .failed(_):
             simulationsService
                 .load(simulations: loadableSubject(\.simulationsLoadable))
             
         case .isLoading(_, _): break
-            //aguarde um momento
         }
     }
     
@@ -48,18 +50,22 @@ class SimulationsViewModel: ObservableObject {
             break
             
         case .isLoading(_, _):
-            self.showError = false
             self.state = .loading
 
             break
         case .loaded(let response):
             self.simulations = response
-            self.showError = false
+            if self.simulations.count == 0 {
+                messageError = "Atenção!\nNenhuma simulação foi encontrada, realize sua primeira simulação."
+                self.failure?(AppPopupSettings(message: messageError, textColor: .white, backgroundColor: Color(.JEWDarkDefault()), position: .top, show: true))
+            } else {
+                self.completion?()
+            }
             self.state = .loaded
         case .failed(let error):
             if let apiError = error as? APIError {
                 self.messageError = apiError.errorDescription ?? String()
-                self.showError = true
+                self.failure?(AppPopupSettings(message: messageError, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true))
             }
             self.state = .loaded
             break

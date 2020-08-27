@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import JewFeatures
 
 enum Position {
     case top
@@ -58,11 +59,21 @@ struct PopupView: View {
     @Binding var position: Position
     
     @Binding var show: Bool
+    @Binding var checkReachability: Bool
     
     @State var animate: Bool = false
     
     @State var rect: CGRect = .zero
     let padding: CGFloat = 16
+    
+    init(text: Binding<String>, textColor: Binding<Color>, backgroundColor: Binding<Color>, position: Binding<Position>, show: Binding<Bool>, checkReachability: Binding<Bool> = .constant(false)) {
+        self._text = text
+        self._textColor = textColor
+        self._backgroundColor = show.wrappedValue ? backgroundColor : .constant(.clear)
+        self._position = position
+        self._show = show
+        self._checkReachability = checkReachability
+    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -76,25 +87,25 @@ struct PopupView: View {
                 Spacer()
             }
             HStack {
-            Text(self.text).textFont()
+                Text(updatedText).textFont()
                 Spacer()
             }
-                .foregroundColor(self.textColor)
-                .frame(width: geometry.size.width - (self.padding * 2))
-                .padding(.horizontal, self.padding)
-                .offset(y: position.offSet(geometry: geometry))
-                .padding(.bottom, position.offSet(geometry: geometry) + self.padding)
-                .background(self.backgroundColor)
-                .overlay(GeometryReader { geometry in
-                    Group { () -> AnyView in
-                        DispatchQueue.main.async {
-                            let updatedRect = geometry.frame(in: .global)
-                            self.rect = updatedRect
-                        }
-                        
-                        return AnyView(Color.clear)
+            .foregroundColor(updatedTextColor)
+            .frame(width: geometry.size.width - (self.padding * 2))
+            .padding(.horizontal, self.padding)
+            .offset(y: position.offSet(geometry: geometry))
+            .padding(.bottom, position.offSet(geometry: geometry) + self.padding)
+            .background(updatedBackgroundColor)
+            .overlay(GeometryReader { geometry in
+                Group { () -> AnyView in
+                    let updatedRect = geometry.frame(in: .global)
+                    DispatchQueue.main.async {
+                        self.rect = updatedRect
                     }
-                })
+                    
+                    return AnyView(Color.clear)
+                }
+            })
                 .cornerRadius(16, corners: position.cornerRadius())
             if position == .top {
                 Spacer()
@@ -102,7 +113,7 @@ struct PopupView: View {
             
         }
         .edgesIgnoringSafeArea(.all)
-        .offset(y: position.position(show: show, height: rect.height, safeAreaInsets: geometry.safeAreaInsets))
+        .offset(y: position.position(show: updatedShow, height: rect.height, safeAreaInsets: geometry.safeAreaInsets))
         .animation(animate ? Animation.easeInOut(duration: 0.3): .none)
         .onTapGesture {
             self.show = false
@@ -112,5 +123,37 @@ struct PopupView: View {
                 self.animate = true
             }
         }
+    }
+    
+    var updatedTextColor: Color {
+        var updatedTextColor = textColor
+        if checkReachability && !reachability.isConnected {
+            updatedTextColor = .white
+        }
+        return updatedTextColor
+    }
+    
+    var updatedText: String {
+        var updatedText = text
+        if checkReachability && !reachability.isConnected {
+            updatedText = "Atenção\nVocê está desconectado, verifique sua conexão!"
+        }
+        return updatedText
+    }
+    
+    var updatedBackgroundColor: Color {
+        var updatedBackgroundColor = backgroundColor
+        if checkReachability && !reachability.isConnected {
+            updatedBackgroundColor = Color(.JEWDarkDefault())
+        }
+        return updatedBackgroundColor
+    }
+    
+    var updatedShow: Bool {
+        var updatedShow = show
+        if checkReachability && !reachability.isConnected {
+            updatedShow = true
+        }
+        return updatedShow
     }
 }

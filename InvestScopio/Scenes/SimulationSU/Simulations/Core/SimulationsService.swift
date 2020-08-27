@@ -43,6 +43,25 @@ struct SimulationsService: SimulationsServiceProtocol {
 
 struct StubSimulationsService: SimulationsServiceProtocol {
     func load(simulations: LoadableSubject<[INVSSimulatorModel]>) {
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            simulations.wrappedValue = .loaded(INVSSimulatorModel.simulationsPlaceholders)
+        }
+    }
+}
+
+
+struct StubSimulationsServiceFailure: SimulationsServiceProtocol {
+    func load(simulations: LoadableSubject<[INVSSimulatorModel]>) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            simulations.wrappedValue = .failed(APIError.customError("Error"))
+        }
+    }
+}
+
+struct StubSimulationsServiceEmptySimulations: SimulationsServiceProtocol {
+    func load(simulations: LoadableSubject<[INVSSimulatorModel]>) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            simulations.wrappedValue = .loaded([INVSSimulatorModel]())
+        }
     }
 }

@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-
+import JewFeatures
 struct LoadingButton: View {
     @Binding var isLoading: Bool
     var title: String
@@ -39,7 +39,7 @@ struct LoadingButton: View {
 
 struct LoadingButton_Previews: PreviewProvider {
     static var previews: some View {
-        LoadingButton(isLoading: .constant(false), title: "Teste", color: Color.red, isFill: true) {
+        LoadingButton(isLoading: .constant(false), title: "Teste", color: Color(.JEWRed()), isFill: true) {
             
         }.padding()
     }

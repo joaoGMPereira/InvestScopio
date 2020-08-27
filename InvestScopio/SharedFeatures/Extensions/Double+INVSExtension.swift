@@ -33,6 +33,6 @@ extension Double {
 //            return "0"
 //        }
         
-        return formatter.string(from: number)!
+        return formatter.string(from: number) ?? String()
     }
 }

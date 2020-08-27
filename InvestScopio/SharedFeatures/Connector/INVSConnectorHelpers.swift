@@ -16,7 +16,7 @@ enum ConnectorRoutes {
     case signin
     case logout
     case simulation
-    case userSimulations(_ id: String)
+    case userSimulations
     case deleteSimulation
     case deleteAllSimulations
     case evaluate
@@ -35,9 +35,9 @@ enum ConnectorRoutes {
         case .logout:
             return INVSConector.getURL(withRoute: "/account/logout")
         case .simulation:
-            return INVSConector.getURL(withRoute: "/simulation/simulator")
-        case .userSimulations(let id):
-            return INVSConector.getURL(withRoute: "/simulation/user/\(id)")
+            return INVSConector.getURL(withRoute: "/simulation")
+        case .userSimulations:
+            return INVSConector.getURL(withRoute: "/userSimulations")
         case .deleteSimulation:
             return INVSConector.getURL(withRoute: "/simulation/delete")
         case .deleteAllSimulations:

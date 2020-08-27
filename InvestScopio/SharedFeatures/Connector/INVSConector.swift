@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import JewFeatures
 typealias SuccessResponse = (Decodable) -> ()
 typealias FinishResponse = () -> ()
 typealias SuccessRefreshResponse = (_ shouldUpdateHeaders: Bool) -> ()
@@ -26,7 +27,7 @@ final class INVSConector {
         if Session.session.isDev() {
             baseURL = Session.session.callService == .heroku ? URL(string: "\(INVSConstants.INVSServicesConstants.apiV1Dev.rawValue)\(route)") : URL(string: "\(INVSConstants.INVSServicesConstants.localHost.rawValue)\(route)")
         }
-        return URL(string: "\(INVSConstants.INVSServicesConstants.localHost.rawValue)\(route)")
+        return URL(string: "\(JEWConstants.Services.dev.rawValue)\(route)")
     }
     
     static func getVersion() -> URL? {

@@ -18,17 +18,17 @@ class Reachability: ObservableObject {
     }
     
     public func enable() {
-      //  self.timerToCheck = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(Reachability.check), userInfo: nil, repeats: true)
-//        NetworkReachabilityManager()?.startListening(onQueue: DispatchQueue.main, onUpdatePerforming: { (status) in
-//            switch status {
-//            case .unknown:
-//                self.hasDisconnect()
-//            case .notReachable:
-//                self.hasDisconnect()
-//            case .reachable(_):
-//                self.hasConnected()
-//            }
-//        })
+        self.timerToCheck = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(Reachability.check), userInfo: nil, repeats: true)
+        NetworkReachabilityManager()?.startListening(onQueue: DispatchQueue.main, onUpdatePerforming: { (status) in
+            switch status {
+            case .unknown:
+                self.hasDisconnect()
+            case .notReachable:
+                self.hasDisconnect()
+            case .reachable(_):
+                self.hasConnected()
+            }
+        })
     }
     @discardableResult @objc public func check() -> Bool {
         if let isReachable = NetworkReachabilityManager()?.isReachable {

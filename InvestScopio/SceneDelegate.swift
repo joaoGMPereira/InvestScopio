@@ -10,26 +10,22 @@ import Foundation
 import UIKit
 import SwiftUI
 import EnvironmentOverrides
+import Charts
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
     var window: UIWindow?
     let reachability = Reachability()
-    
+    let appSettings = AppSettings()
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         if let windowScene = scene as? UIWindowScene {
             WorkingAroundSUI.tableViewWorkingAround()
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: LoginView(viewModel:
-                LoginViewModel(service:
-                    LoginService(webRepository:
-                        LoginWebRepository())
-                )
-                ).attachEnvironmentOverrides().environmentObject(reachability)
+            window.rootViewController = UIHostingController(rootView:
+                AppRouterView().environmentObject(appSettings).environmentObject(reachability)
             )
             self.window = window
             window.makeKeyAndVisible()
         }
     }
-    
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+import JewFeatures
 
 class ResendPasswordViewModel: ObservableObject {
     
@@ -18,7 +19,6 @@ class ResendPasswordViewModel: ObservableObject {
         }
     }
     @Published var showLoading = false
-    @Published var showError = false
     @Published var showSuccess = false
     @Published var close = true {
         didSet {
@@ -30,15 +30,17 @@ class ResendPasswordViewModel: ObservableObject {
 
     let resendPasswordService: ResendPasswordServiceProtocol
     var email = String()
-    var hasFinished: (() -> Void)?
+    var completion: (() -> Void)?
+    var failure:((AppPopupSettings) -> Void)?
     
     init(service: ResendPasswordServiceProtocol) {
         self._resendPasswordLoadable = .init(initialValue: .notRequested)
         self.resendPasswordService = service
     }
     
-    func resendPassword(hasFinished: @escaping () -> Void) {
-        self.hasFinished = hasFinished
+    func resendPassword(completion: @escaping () -> Void, failure: @escaping (AppPopupSettings) -> Void) {
+        self.completion = completion
+        self.failure = failure
         if hasRequiredFields() {
             switch resendPasswordLoadable {
             case .notRequested, .loaded(_), .failed(_):
@@ -66,16 +68,13 @@ class ResendPasswordViewModel: ObservableObject {
             break
             
         case .isLoading(_, _):
-            self.showError = false
             self.showLoading = true
-            //Show Loading
             break
         case .loaded(let response):
             self.messageSuccess = response
             self.showSuccess = true
-            self.showError = false
             self.showLoading = false
-            self.hasFinished?()
+            self.completion?()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.close = true
                 self.showSuccess = false
@@ -84,10 +83,9 @@ class ResendPasswordViewModel: ObservableObject {
         case .failed(let error):
             if let apiError = error as? APIError {
                 self.messageError = apiError.errorDescription ?? String()
-                self.showError = true
+                self.failure?(AppPopupSettings(message: messageError, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true))
             }
             self.showLoading = false
-            //Show Alert
             break
         }
     }

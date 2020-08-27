@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import JewFeatures
 
 struct LoadingView<ShapeLoading>: View where ShapeLoading: ShapeStyle {
     @State var animate = false
@@ -39,6 +40,6 @@ struct LoadingView<ShapeLoading>: View where ShapeLoading: ShapeStyle {
 
 struct LoadingView_Previews: PreviewProvider {
     static var previews: some View {
-        LoadingView(showLoading: .constant(true), shape: .constant(Color.red), size: .constant(44), lineWidth: .constant(4))
+        LoadingView(showLoading: .constant(true), shape: .constant(Color(.JEWRed())), size: .constant(44), lineWidth: .constant(4))
     }
 }

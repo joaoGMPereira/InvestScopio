@@ -19,7 +19,6 @@ class RegisterViewModel: ObservableObject {
         }
     }
     @Published var showLoading = false
-    @Published var showError = false
     @Published var showSuccess = false
     @Published var close = true {
         didSet {
@@ -35,15 +34,17 @@ class RegisterViewModel: ObservableObject {
     var email = String()
     var password = String()
     var confirmationPassword = String()
-    var hasFinished: (() -> Void)?
+    var completion: (() -> Void)?
+    var failure:((AppPopupSettings) -> Void)?
     
     init(service: RegisterServiceProtocol) {
         self._registerLoadable = .init(initialValue: .notRequested)
         self.registerService = service
     }
     
-    func register(hasFinished: @escaping () -> Void) {
-        self.hasFinished = hasFinished
+    func register(completion: @escaping () -> Void, failure: @escaping (AppPopupSettings) -> Void) {
+        self.completion = completion
+        self.failure = failure
         if hasRequiredFields() {
             switch registerLoadable {
             case .notRequested, .loaded(_), .failed(_):
@@ -88,16 +89,13 @@ class RegisterViewModel: ObservableObject {
             break
             
         case .isLoading(_, _):
-            self.showError = false
             self.showLoading = true
-            //Show Loading
             break
         case .loaded(let response):
             self.messageSuccess = response.message ?? String()
             self.showSuccess = true
-            self.showError = false
             self.showLoading = false
-            self.hasFinished?()
+            self.completion?()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.close = true
                 self.showSuccess = false
@@ -106,7 +104,7 @@ class RegisterViewModel: ObservableObject {
         case .failed(let error):
             if let apiError = error as? APIError {
                 self.messageError = apiError.errorDescription ?? String()
-                self.showError = true
+                self.failure?(AppPopupSettings(message: messageError, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true))
             }
             self.showLoading = false
             break

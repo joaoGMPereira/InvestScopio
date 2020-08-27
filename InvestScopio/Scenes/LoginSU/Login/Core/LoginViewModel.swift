@@ -15,15 +15,15 @@ class LoginViewModel: ObservableObject {
             build(state: loginLoadable)
         }
     }
-    @Published var showError = false
     @Published var messageError = String()
     @Published var showLoading = false
-    @Published var showSimulations = false
     
     let loginService: LoginServiceProtocol
     var email = String()
     var password = String()
     var saveData = false
+    var completion: (() -> Void)?
+    var failure: ((AppPopupSettings) -> Void)?
     
     init(service: LoginServiceProtocol) {
         self._loginLoadable = .init(initialValue: .notRequested)
@@ -51,7 +51,9 @@ class LoginViewModel: ObservableObject {
         }
     }
     
-    func login() {
+    func login(completion: @escaping () -> Void, failure: @escaping (AppPopupSettings) -> Void) {
+        self.completion = completion
+        self.failure = failure
         if hasRequiredFields() {
             switch loginLoadable {
             case .notRequested, .loaded(_), .failed(_):
@@ -78,25 +80,21 @@ class LoginViewModel: ObservableObject {
             break
             
         case .isLoading(_, _):
-            self.showError = false
             self.showLoading = true
-            //Show Loading
             break
         case .loaded(_):
-            self.messageError = "Autenticado com sucesso!"
-            self.showSimulations = true
-            self.showError = false
             self.showLoading = false
             if saveData {
                 rememberUser()
             } else {
                 INVSKeyChainWrapper.clear()
             }
+            completion?()
             
         case .failed(let error):
             if let apiError = error as? APIError {
                 self.messageError = apiError.errorDescription ?? String()
-                self.showError = true
+                self.failure?(AppPopupSettings(message: messageError, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true))
             }
             self.showLoading = false
             break

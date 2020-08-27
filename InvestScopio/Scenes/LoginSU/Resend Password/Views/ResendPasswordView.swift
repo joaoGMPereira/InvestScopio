@@ -11,6 +11,7 @@ import JewFeatures
 
 struct ResendPasswordView: View {
     @EnvironmentObject var reachability: Reachability
+    @EnvironmentObject var settings: AppSettings
     @ObservedObject var viewModel: ResendPasswordViewModel
     @ObservedObject var kGuardian: KeyboardGuardian
     var hasFinished: () -> Void
@@ -22,6 +23,7 @@ struct ResendPasswordView: View {
                     BlurView(style: .systemThinMaterial).onTapGesture {
                         self.kGuardian.showField = 0
                         self.viewModel.close = false
+                        self.settings.popup = AppPopupSettings()
                         UIApplication.shared.endEditing()
                     }
                     VStack {
@@ -33,25 +35,34 @@ struct ResendPasswordView: View {
                         .padding()
                         .padding(.top, geometry.safeAreaInsets.top)
                         ResendPasswordFormView(emailText: self.$viewModel.email, close: self.$viewModel.close) {
-                            self.viewModel.resendPassword() {
+                            self.viewModel.resendPassword(completion: {
+                                self.settings.popup = AppPopupSettings()
                                 self.kGuardian.showField = 0
                                 self.hasFinished()
+                                self.viewModel.email = String()
+                            }) { popupSettings in
+                                self.settings.popup = popupSettings
                             }
+                            
                         }
                         .background(GeometryGetter(rect: self.$kGuardian.rects[2]))
                         
                         HStack {
-                            LoadingButton(isLoading: .constant(false), title: "Cancelar", color: Color.red, isFill: false) {
+                            LoadingButton(isLoading: .constant(false), title: "Cancelar", color: Color(.JEWRed()), isFill: false) {
                                 self.kGuardian.showField = 0
                                 UIApplication.shared.endEditing()
                                 self.viewModel.close = true
+                                self.settings.popup = AppPopupSettings()
                             }
                             LoadingButton(isLoading: self.$viewModel.showLoading, title: "Recuperar", color: Color("accent"), isFill: true) {
                                 UIApplication.shared.endEditing()
-                                self.viewModel.resendPassword() {
+                                self.viewModel.resendPassword(completion: {
+                                    self.settings.popup = AppPopupSettings()
                                     self.kGuardian.showField = 0
                                     self.hasFinished()
                                     self.viewModel.email = String()
+                                }) { popupSettings in
+                                    self.settings.popup = popupSettings
                                 }
                             }
                         }
@@ -64,21 +75,8 @@ struct ResendPasswordView: View {
                 .animation(Animation.spring())
             }
             .edgesIgnoringSafeArea(.all)
-            self.showError(text: self.$viewModel.messageError, textColor: .constant(Color.white), backgroundColor: .constant(Color.red), position: .constant(.top), show: self.$viewModel.showError)
-            PopupView(text: self.$viewModel.messageSuccess, textColor: .constant(Color.white), backgroundColor: .constant(Color(.JEWDarkDefault())), position: .constant(.bottom), show: self.$viewModel.showSuccess)
+            PopupView(text: self.$viewModel.messageSuccess, textColor: .constant(Color.white), backgroundColor: .constant(Color(.JEWDarkDefault())), position: .constant(.bottom), show: self.$viewModel.showSuccess, checkReachability: .constant(false))
         }
-    }
-    
-    func showError(text: Binding<String>, textColor: Binding<Color>, backgroundColor: Binding<Color>, position: Binding<Position>, show: Binding<Bool>) -> some View {
-        var updatedShowError = show
-        var updatedText = text
-        var updatedBackgroundColor = backgroundColor
-        if reachability.isConnected == false {
-            updatedShowError = .constant(true)
-            updatedText = .constant("Atenção\nVocê está desconectado, verifique sua conexão!")
-            updatedBackgroundColor = .constant(Color(.JEWDarkDefault()))
-        }
-        return PopupView(text: updatedText, textColor: textColor, backgroundColor: updatedBackgroundColor, position: position, show: updatedShowError)
     }
 }
 
@@ -90,7 +88,9 @@ struct ResendPasswordFormView: View {
     var body: some View {
         Form {
             Section(header: Text("Digite seu email").textFont().padding(.top, 16)) {
-                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(placeholder: "Email"), text: $emailText, close: $close) { textfield, text, isBackspace in
+                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(placeholder: "Email"), text: $emailText, close: $close,tapOnToolbarButton: { textfield, type in
+                    self.didResendPasswordAction()
+                }) { textfield, text, isBackspace in
                     self.emailText = text
                 }
                 .frame(height: 50)

@@ -58,7 +58,7 @@ struct LoginFormView: View {
             }
         }
         .background(GeometryGetter(rect: self.$rects[0]))
-        .animation(.none)
+        .animation(.default)
         .frame(height: 320.0)
         .listStyle(GroupedListStyle())
         .environment(\.horizontalSizeClass, .regular)

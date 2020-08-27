@@ -12,6 +12,8 @@ struct WorkingAroundSUI {
     static func tableViewWorkingAround() {
         UITableView.appearance().tableFooterView = UIView()
         UITableViewCell.appearance().backgroundColor = .clear
+        UITableView.appearance().backgroundColor = .clear
         UITableView.appearance().separatorStyle = .none
+        UITableViewCell.appearance().selectionStyle = .none
     }
 }

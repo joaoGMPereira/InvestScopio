@@ -11,6 +11,7 @@ import JewFeatures
 
 struct RegisterView: View {
     @EnvironmentObject var reachability: Reachability
+    @EnvironmentObject var settings: AppSettings
     @ObservedObject var viewModel: RegisterViewModel
     @ObservedObject var kGuardian: KeyboardGuardian
     var hasFinished: () -> Void
@@ -33,24 +34,31 @@ struct RegisterView: View {
                         .padding()
                         .padding(.top, geometry.safeAreaInsets.top)
                         RegisterFormView(close: self.$viewModel.close, emailText: self.$viewModel.email, passwordText: self.$viewModel.password, passwordConfirmationText: self.$viewModel.confirmationPassword) {
-                            self.viewModel.register() {
+                            self.viewModel.register(completion: {
+                                self.settings.popup = AppPopupSettings()
                                 self.kGuardian.showField = 0
                                 self.hasFinished()
+                            }) { popupSettings in
+                                self.settings.popup = popupSettings
                             }
                         }
                         .background(GeometryGetter(rect: self.$kGuardian.rects[1]))
                         
                         HStack {
-                            LoadingButton(isLoading: .constant(false), title: "Cancelar", color: Color.red, isFill: false) {
+                            LoadingButton(isLoading: .constant(false), title: "Cancelar", color: Color(.JEWRed()), isFill: false) {
                                 self.kGuardian.showField = 0
                                 self.viewModel.close = true
+                                self.settings.popup = AppPopupSettings()
                                 UIApplication.shared.endEditing()
                             }
                             LoadingButton(isLoading: self.$viewModel.showLoading, title: "Cadastrar", color: Color("accent"), isFill: true) {
                                 UIApplication.shared.endEditing()
-                                self.viewModel.register() {
+                                self.viewModel.register(completion: {
+                                    self.settings.popup = AppPopupSettings()
                                     self.kGuardian.showField = 0
                                     self.hasFinished()
+                                }) { popupSettings in
+                                    self.settings.popup = popupSettings
                                 }
                             }
                         }
@@ -63,21 +71,8 @@ struct RegisterView: View {
                 .animation(Animation.spring())
             }
             .edgesIgnoringSafeArea(.all)
-            self.showError(text: self.$viewModel.messageError, textColor: .constant(Color.white), backgroundColor: .constant(Color.red), position: .constant(.top), show: self.$viewModel.showError)
             PopupView(text: self.$viewModel.messageSuccess, textColor: .constant(Color.white), backgroundColor: .constant(Color(.JEWDarkDefault())), position: .constant(.bottom), show: self.$viewModel.showSuccess)
         }
-    }
-    
-    func showError(text: Binding<String>, textColor: Binding<Color>, backgroundColor: Binding<Color>, position: Binding<Position>, show: Binding<Bool>) -> some View {
-        var updatedShowError = show
-        var updatedText = text
-        var updatedBackgroundColor = backgroundColor
-        if reachability.isConnected == false {
-            updatedShowError = .constant(true)
-            updatedText = .constant("Atenção\nVocê está desconectado, verifique sua conexão!")
-            updatedBackgroundColor = .constant(Color(.JEWDarkDefault()))
-        }
-        return PopupView(text: updatedText, textColor: textColor, backgroundColor: updatedBackgroundColor, position: position, show: updatedShowError)
     }
 }
 

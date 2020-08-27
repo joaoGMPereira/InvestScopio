@@ -34,7 +34,7 @@ extension SimulationsRepository.API: APICall {
     var route: ConnectorRoutes {
         switch self {
         case .simulations:
-            return .userSimulations(JEWSession.session.user?.uid ?? String())
+            return .userSimulations
         }
     }
     var method: HTTPMethod {
@@ -44,8 +44,7 @@ extension SimulationsRepository.API: APICall {
         }
     }
     var headers: [String: String]? {
-        guard let accessToken = Session.session.user?.access?.accessToken else { return nil }
-        return ["Content-Type": "application/json", "Authorization": accessToken]
+        return ["Content-Type": "application/json", "session-token": JEWSession.session.services.sessionToken]
     }
     func body() -> HTTPRequest? {
         return nil
