@@ -48,13 +48,13 @@ struct ResendPasswordView: View {
                         .background(GeometryGetter(rect: self.$kGuardian.rects[2]))
                         
                         HStack {
-                            LoadingButton(isLoading: .constant(false), title: "Cancelar", color: Color(.JEWRed()), isFill: false) {
+                            LoadingButton(isLoading: .constant(false), model: LoadingButtonModel(title: "Cancelar", color: Color(.JEWRed()), isFill: false)) {
                                 self.kGuardian.showField = 0
                                 UIApplication.shared.endEditing()
                                 self.viewModel.close = true
                                 self.settings.popup = AppPopupSettings()
                             }
-                            LoadingButton(isLoading: self.$viewModel.showLoading, title: "Recuperar", color: Color("accent"), isFill: true) {
+                            LoadingButton(isLoading: self.$viewModel.showLoading, model: LoadingButtonModel(title: "Recuperar", color: Color("accent"), isFill: true)) {
                                 UIApplication.shared.endEditing()
                                 self.viewModel.resendPassword(completion: {
                                     self.settings.popup = AppPopupSettings()
@@ -72,7 +72,7 @@ struct ResendPasswordView: View {
                 }
                 .offset(y: self.viewModel.close ? geometry.size.height : 0)
                 .offset(y: self.kGuardian.slide)
-                .animation(Animation.spring())
+                .animation(.spring())
             }
             .edgesIgnoringSafeArea(.all)
             PopupView(text: self.$viewModel.messageSuccess, textColor: .constant(Color.white), backgroundColor: .constant(Color(.JEWDarkDefault())), position: .constant(.bottom), show: self.$viewModel.showSuccess, checkReachability: .constant(false))

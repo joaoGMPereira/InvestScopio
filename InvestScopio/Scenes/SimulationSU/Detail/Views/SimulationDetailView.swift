@@ -30,14 +30,22 @@ struct SimulationDetailView: View {
    
     var body: some View {
         ZStack {
-            VStack(spacing: 4) {
+            VStack(spacing: 8) {
                 Picker("TabsDetail", selection: $viewModel.typeIndex) {
                     ForEach(0 ..< viewModel.tabs.count) { index in
                         Text(self.viewModel.tabs[index]).tag(index)
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
-                .padding(.horizontal, 8)
+                .padding([.top, .horizontal], 8)
+                if viewModel.typeIndex == 0 {
+                    List {
+                        SimulationCell(simulation: viewModel.simulation, state: self.$viewModel.state, cellSize: self.$cellSize){}
+                        ForEach(self.viewModel.simulateds, id: \.id) { simulated in
+                            SimulatedCell(simulated: simulated, cellSize: self.$cellSize, state: self.$viewModel.state)
+                        }
+                    }.id(UUID())
+                }
                 if viewModel.typeIndex == 1 {
                     Picker("TabsValues", selection: $viewModel.valueIndex) {
                         ForEach(0 ..< viewModel.tabValues.count) { index in
@@ -54,14 +62,7 @@ struct SimulationDetailView: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .padding(.horizontal, 24)
                 }
-                if viewModel.typeIndex == 0 {
-                    List {
-                        SimulationCell(simulation: viewModel.simulation, state: self.$viewModel.state, cellSize: self.$cellSize){}
-                        ForEach(self.viewModel.simulateds, id: \.id) { simulated in
-                            SimulatedCell(simulated: simulated, cellSize: self.$cellSize, state: self.$viewModel.state)
-                        }
-                    }.transition(AnyTransition.move(edge: .leading))
-                }
+                
                 if viewModel.typeIndex == 1 {
                     LineChart(entries: viewModel.entries, months: viewModel.monthsValue ?? 0, granularity: viewModel.granularity, axisMaximum: viewModel.maximumValue, label: viewModel.description).setChartDataBase(ChartDataBaseBridge(informationData: ChartInformationDataBridge(leftAxis: LeftAxisBridge(formatter: leftAxisFormatter), xAxis: XAxisBridge(formatter: xAxisFormatter)))).setChartDataSet(LineChartDataSetBaseBridge(xAxisDuration: viewModel.shouldAnimate ? 0.0 : 0, yAxisDuration: viewModel.shouldAnimate ? 0.5 : 0))
                 }

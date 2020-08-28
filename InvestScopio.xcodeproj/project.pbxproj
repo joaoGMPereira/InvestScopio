@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A0FFE7F22AF298000D6A33A /* INVSSimulatedListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE7E22AF298000D6A33A /* INVSSimulatedListWorker.swift */; };
 		4A0FFE8222B115E400D6A33A /* INVSLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8122B115E400D6A33A /* INVSLoginViewController.swift */; };
 		4A0FFE8422B1160400D6A33A /* INVSLoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8322B1160400D6A33A /* INVSLoginInteractor.swift */; };
 		4A0FFE8622B1161D00D6A33A /* INVSLoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8522B1161D00D6A33A /* INVSLoginPresenter.swift */; };
@@ -29,17 +28,10 @@
 		4A0FFEAF22B57A7200D6A33A /* INVSBlurViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0FFEAD22B57A7200D6A33A /* INVSBlurViewController.xib */; };
 		4A0FFEB222B5890900D6A33A /* INVSAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFEB122B5890900D6A33A /* INVSAlertViewController.swift */; };
 		4A107A9A22A1791000A7D8D1 /* ParticipantesSTRport.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4A107A9922A1790F00A7D8D1 /* ParticipantesSTRport.csv */; };
-		4A107AA222A3279600A7D8D1 /* INVSSimulatorHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A107AA122A3279600A7D8D1 /* INVSSimulatorHelpView.swift */; };
-		4A121692229AE96100759948 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A121691229AE96100759948 /* BalloonMarker.swift */; };
-		4A121694229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A121693229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift */; };
-		4A121696229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A121695229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift */; };
 		4A12631222A7DA7A006133E5 /* MarketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A12631122A7DA7A006133E5 /* MarketModel.swift */; };
 		4A12631422A7DA99006133E5 /* BankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A12631322A7DA99006133E5 /* BankModel.swift */; };
 		4A12631722A7DC7A006133E5 /* INVSConector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A12631622A7DC7A006133E5 /* INVSConector.swift */; };
 		4A12631D22A7F1BB006133E5 /* INVSVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A12631C22A7F1BB006133E5 /* INVSVersionModel.swift */; };
-		4A22FF3322976CAF001662FC /* INVSSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22FF3222976CAF001662FC /* INVSSwitchView.swift */; };
-		4A22FF382297837B001662FC /* INVSSimulatedContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22FF362297837B001662FC /* INVSSimulatedContainerViewController.swift */; };
-		4A22FF3C22980B89001662FC /* INVSSimulatedChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22FF3B22980B89001662FC /* INVSSimulatedChartsViewController.swift */; };
 		4A27022422CD409D005DA22A /* INVSTalkWithUsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A27021D22CD409C005DA22A /* INVSTalkWithUsWorker.swift */; };
 		4A27022522CD409D005DA22A /* INVSTalkWithUsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A27021D22CD409C005DA22A /* INVSTalkWithUsWorker.swift */; };
 		4A27022622CD409D005DA22A /* INVSTalkWithUsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A27021E22CD409C005DA22A /* INVSTalkWithUsInteractor.swift */; };
@@ -56,26 +48,9 @@
 		4A27AA99229F6E4D00C45CC5 /* INVSSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AA98229F6E4D00C45CC5 /* INVSSession.swift */; };
 		4A27AA9B229F745C00C45CC5 /* INVSStartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AA9A229F745C00C45CC5 /* INVSStartPresenter.swift */; };
 		4A2B05A6229C19220024F83A /* INVSStartWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B05A5229C19220024F83A /* INVSStartWorker.swift */; };
-		4A2B05A9229DF30E0024F83A /* INVSSimulatedTotalChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B05A8229DF30E0024F83A /* INVSSimulatedTotalChartView.swift */; };
-		4A2B05AB229E02E60024F83A /* INVSSimulatedRescueChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B05AA229E02E60024F83A /* INVSSimulatedRescueChartView.swift */; };
 		4A45D0D222A44576001383B4 /* NSAttributedString+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A45D0D122A44576001383B4 /* NSAttributedString+INVSExtension.swift */; };
-		4A45D0D422A4463D001383B4 /* INVSSimulatedHelpViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A45D0D322A4463D001383B4 /* INVSSimulatedHelpViewType.swift */; };
-		4A4C68AF2295796200EDC8C6 /* INVSSimulatorTableviewDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C686F2295796100EDC8C6 /* INVSSimulatorTableviewDataSourceDelegate.swift */; };
-		4A4C68B02295796200EDC8C6 /* INVSSimulatedListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68702295796100EDC8C6 /* INVSSimulatedListInteractor.swift */; };
-		4A4C68B12295796200EDC8C6 /* INVSSimulatedValueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68722295796100EDC8C6 /* INVSSimulatedValueModel.swift */; };
-		4A4C68B22295796200EDC8C6 /* INVSSimulatedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68732295796100EDC8C6 /* INVSSimulatedListViewController.swift */; };
-		4A4C68B42295796200EDC8C6 /* INVSSimulatedListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68752295796100EDC8C6 /* INVSSimulatedListPresenter.swift */; };
-		4A4C68B52295796200EDC8C6 /* INVSSimulatorHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68772295796100EDC8C6 /* INVSSimulatorHeaderView.swift */; };
-		4A4C68B62295796200EDC8C6 /* INVSSimulatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C68782295796100EDC8C6 /* INVSSimulatorCell.xib */; };
-		4A4C68B72295796200EDC8C6 /* INVSSimulatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68792295796100EDC8C6 /* INVSSimulatorCell.swift */; };
 		4A4C68B82295796200EDC8C6 /* INVSStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C687B2295796100EDC8C6 /* INVSStartViewController.swift */; };
 		4A4C68B92295796200EDC8C6 /* INVSStartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C687C2295796100EDC8C6 /* INVSStartViewController.xib */; };
-		4A4C68BA2295796200EDC8C6 /* INVSSimutatorViewControler.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C687E2295796100EDC8C6 /* INVSSimutatorViewControler.xib */; };
-		4A4C68BB2295796200EDC8C6 /* INVSSimulatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68802295796100EDC8C6 /* INVSSimulatorModel.swift */; };
-		4A4C68BC2295796200EDC8C6 /* INVSSimutatorViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68812295796100EDC8C6 /* INVSSimutatorViewControler.swift */; };
-		4A4C68BD2295796200EDC8C6 /* INVSSimulatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68822295796100EDC8C6 /* INVSSimulatorPresenter.swift */; };
-		4A4C68BE2295796200EDC8C6 /* INVSSimulatorWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68832295796100EDC8C6 /* INVSSimulatorWorker.swift */; };
-		4A4C68BF2295796200EDC8C6 /* INVSSimulatorInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68842295796100EDC8C6 /* INVSSimulatorInteractor.swift */; };
 		4A4C68C02295796200EDC8C6 /* INVSRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68852295796100EDC8C6 /* INVSRouter.swift */; };
 		4A4C68C12295796200EDC8C6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C68872295796100EDC8C6 /* Images.xcassets */; };
 		4A4C68C32295796200EDC8C6 /* INVSPresentBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C688B2295796100EDC8C6 /* INVSPresentBaseViewController.swift */; };
@@ -102,24 +77,6 @@
 		4A4C68D82295796200EDC8C6 /* INVSCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68A72295796100EDC8C6 /* INVSCodeView.swift */; };
 		4A4C68DA2295796200EDC8C6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C68A92295796100EDC8C6 /* LaunchScreen.xib */; };
 		4A4C68DC2295796200EDC8C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68AC2295796100EDC8C6 /* AppDelegate.swift */; };
-		4A8E0E3E22CD3EB300897D38 /* INVSSimulationsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8E0E3222CD3EB300897D38 /* INVSSimulationsPresenter.swift */; };
-		4A8E0E3F22CD3EB300897D38 /* INVSSimulationsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8E0E3222CD3EB300897D38 /* INVSSimulationsPresenter.swift */; };
-		4A8E0E4022CD3EB300897D38 /* INVSSimulationsTableviewDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8E0E3422CD3EB300897D38 /* INVSSimulationsTableviewDataSourceDelegate.swift */; };
-		4A8E0E4122CD3EB300897D38 /* INVSSimulationsTableviewDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8E0E3422CD3EB300897D38 /* INVSSimulationsTableviewDataSourceDelegate.swift */; };
-		4A8E0E4222CD3EB300897D38 /* INVSSimulationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8E0E3522CD3EB300897D38 /* INVSSimulationsViewController.xib */; };
-		4A8E0E4322CD3EB300897D38 /* INVSSimulationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8E0E3522CD3EB300897D38 /* INVSSimulationsViewController.xib */; };
-		4A8E0E4422CD3EB300897D38 /* INVSSimulationsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8E0E3622CD3EB300897D38 /* INVSSimulationsInteractor.swift */; };
-		4A8E0E4522CD3EB300897D38 /* INVSSimulationsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8E0E3622CD3EB300897D38 /* INVSSimulationsInteractor.swift */; };
-		4A8E0E4622CD3EB300897D38 /* INVSSimulationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8E0E3722CD3EB300897D38 /* INVSSimulationsViewController.swift */; };
-		4A8E0E4722CD3EB300897D38 /* INVSSimulationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8E0E3722CD3EB300897D38 /* INVSSimulationsViewController.swift */; };
-		4A8E0E4822CD3EB300897D38 /* INVSDeleteSimulationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8E0E3922CD3EB300897D38 /* INVSDeleteSimulationResponse.swift */; };
-		4A8E0E4922CD3EB300897D38 /* INVSDeleteSimulationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8E0E3922CD3EB300897D38 /* INVSDeleteSimulationResponse.swift */; };
-		4A8E0E4A22CD3EB300897D38 /* INVSSimulationsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8E0E3A22CD3EB300897D38 /* INVSSimulationsWorker.swift */; };
-		4A8E0E4B22CD3EB300897D38 /* INVSSimulationsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8E0E3A22CD3EB300897D38 /* INVSSimulationsWorker.swift */; };
-		4A8E0E4C22CD3EB300897D38 /* INVSSimulationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8E0E3C22CD3EB300897D38 /* INVSSimulationCell.swift */; };
-		4A8E0E4D22CD3EB300897D38 /* INVSSimulationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8E0E3C22CD3EB300897D38 /* INVSSimulationCell.swift */; };
-		4A8E0E4E22CD3EB300897D38 /* INVSSimulationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8E0E3D22CD3EB300897D38 /* INVSSimulationCell.xib */; };
-		4A8E0E4F22CD3EB300897D38 /* INVSSimulationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8E0E3D22CD3EB300897D38 /* INVSSimulationCell.xib */; };
 		4A8E0E6522CD3F1E00897D38 /* INVSConnectorErrorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8E0E6422CD3F1E00897D38 /* INVSConnectorErrorProtocol.swift */; };
 		4A8E0E6622CD3F1E00897D38 /* INVSConnectorErrorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8E0E6422CD3F1E00897D38 /* INVSConnectorErrorProtocol.swift */; };
 		4A8E0E6E22CD3F6500897D38 /* animatedLoadingPurple.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A8E0E6722CD3F6400897D38 /* animatedLoadingPurple.json */; };
@@ -142,62 +99,46 @@
 		4AFF3E6522B9CA520056A167 /* INVSUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E6422B9CA520056A167 /* INVSUserRequest.swift */; };
 		4AFF3E6822BA79E90056A167 /* INVSAccessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E6722BA79E90056A167 /* INVSAccessModel.swift */; };
 		4AFF3E6B22BA8EB10056A167 /* Jsonable+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E6A22BA8EB10056A167 /* Jsonable+INVSExtension.swift */; };
-		4AFF3E7422BB23F10056A167 /* INVSSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22FF3222976CAF001662FC /* INVSSwitchView.swift */; };
 		4AFF3E7522BB23F10056A167 /* INVSPopupMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68A12295796100EDC8C6 /* INVSPopupMessage.swift */; };
-		4AFF3E7622BB23F10056A167 /* INVSSimulatedListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE7E22AF298000D6A33A /* INVSSimulatedListWorker.swift */; };
 		4AFF3E7722BB23F10056A167 /* NSAttributedString+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A45D0D122A44576001383B4 /* NSAttributedString+INVSExtension.swift */; };
 		4AFF3E7822BB23F10056A167 /* INVSUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E5C22B9B2170056A167 /* INVSUserModel.swift */; };
 		4AFF3E7922BB23F10056A167 /* INVSSignUpInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9422B3051E00D6A33A /* INVSSignUpInteractor.swift */; };
-		4AFF3E7A22BB23F10056A167 /* INVSSimulatedValueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68722295796100EDC8C6 /* INVSSimulatedValueModel.swift */; };
 		4AFF3E7B22BB23F10056A167 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68AC2295796100EDC8C6 /* AppDelegate.swift */; };
 		4AFF3E7C22BB23F10056A167 /* INVSUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E6422B9CA520056A167 /* INVSUserRequest.swift */; };
 		4AFF3E7D22BB23F10056A167 /* INVSConector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A12631622A7DC7A006133E5 /* INVSConector.swift */; };
 		4AFF3E7E22BB23F10056A167 /* INVSAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFEB122B5890900D6A33A /* INVSAlertViewController.swift */; };
-		4AFF3E7F22BB23F10056A167 /* INVSSimulatedHelpViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A45D0D322A4463D001383B4 /* INVSSimulatedHelpViewType.swift */; };
 		4AFF3E8022BB23F10056A167 /* UIView+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8B22B2D84F00D6A33A /* UIView+INVSExtension.swift */; };
 		4AFF3E8122BB23F10056A167 /* INVSConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C688D2295796100EDC8C6 /* INVSConstants.swift */; };
 		4AFF3E8222BB23F10056A167 /* INVSResendPasswordWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9A22B41C1A00D6A33A /* INVSResendPasswordWorker.swift */; };
 		4AFF3E8322BB23F10056A167 /* INVSResendPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9C22B41C1A00D6A33A /* INVSResendPasswordViewController.swift */; };
 		4AFF3E8422BB23F10056A167 /* UIFont+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68982295796100EDC8C6 /* UIFont+INVSExtension.swift */; };
 		4AFF3E8522BB23F10056A167 /* INVSPresentBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C688B2295796100EDC8C6 /* INVSPresentBaseViewController.swift */; };
-		4AFF3E8622BB23F10056A167 /* INVSSimulatedTotalChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B05A8229DF30E0024F83A /* INVSSimulatedTotalChartView.swift */; };
-		4AFF3E8722BB23F10056A167 /* INVSSimulatedListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68752295796100EDC8C6 /* INVSSimulatedListPresenter.swift */; };
 		4AFF3E8822BB23F10056A167 /* INVSVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A12631C22A7F1BB006133E5 /* INVSVersionModel.swift */; };
-		4AFF3E8922BB23F10056A167 /* INVSSimulatedRescueChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B05AA229E02E60024F83A /* INVSSimulatedRescueChartView.swift */; };
 		4AFF3E8A22BB23F10056A167 /* INVSBlurViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFEAC22B57A7200D6A33A /* INVSBlurViewController.swift */; };
-		4AFF3E8B22BB23F10056A167 /* INVSSimulatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68792295796100EDC8C6 /* INVSSimulatorCell.swift */; };
 		4AFF3E8C22BB23F10056A167 /* UIColor+INVSPaletteColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68942295796100EDC8C6 /* UIColor+INVSPaletteColors.swift */; };
 		4AFF3E8D22BB23F10056A167 /* INVSLoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8322B1160400D6A33A /* INVSLoginInteractor.swift */; };
 		4AFF3E8E22BB23F10056A167 /* INVSLoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8522B1161D00D6A33A /* INVSLoginPresenter.swift */; };
 		4AFF3E8F22BB23F10056A167 /* NumberFormatter+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C689A2295796100EDC8C6 /* NumberFormatter+INVSExtension.swift */; };
 		4AFF3E9022BB23F10056A167 /* INVSKeyChainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68A52295796100EDC8C6 /* INVSKeyChainWrapper.swift */; };
 		4AFF3E9122BB23F10056A167 /* INVSSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AA98229F6E4D00C45CC5 /* INVSSession.swift */; };
-		4AFF3E9222BB23F10056A167 /* INVSSimulatedChartsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A121695229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift */; };
 		4AFF3E9322BB23F10056A167 /* UIStackview+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68992295796100EDC8C6 /* UIStackview+INVSExtension.swift */; };
-		4AFF3E9422BB23F10056A167 /* INVSSimulatedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68732295796100EDC8C6 /* INVSSimulatedListViewController.swift */; };
 		4AFF3E9522BB23F10056A167 /* INVSStartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AA95229F3F9F00C45CC5 /* INVSStartInteractor.swift */; };
 		4AFF3E9622BB23F10056A167 /* BankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A12631322A7DA99006133E5 /* BankModel.swift */; };
 		4AFF3E9722BB23F10056A167 /* String+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C689D2295796100EDC8C6 /* String+INVSExtension.swift */; };
-		4AFF3E9822BB23F10056A167 /* INVSSimulatedContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22FF362297837B001662FC /* INVSSimulatedContainerViewController.swift */; };
-		4AFF3E9922BB23F10056A167 /* INVSSimulatorWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68832295796100EDC8C6 /* INVSSimulatorWorker.swift */; };
 		4AFF3E9A22BB23F10056A167 /* INVSLoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFEA622B4729100D6A33A /* INVSLoadingButton.swift */; };
 		4AFF3E9B22BB23F10056A167 /* INVSLoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8922B1166200D6A33A /* INVSLoginWorker.swift */; };
-		4AFF3E9C22BB23F10056A167 /* INVSSimulatorTableviewDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C686F2295796100EDC8C6 /* INVSSimulatorTableviewDataSourceDelegate.swift */; };
 		4AFF3E9D22BB23F10056A167 /* INVSCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E5F22B9B32E0056A167 /* INVSCrypto.swift */; };
 		4AFF3E9E22BB23F10056A167 /* INVSKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68922295796100EDC8C6 /* INVSKeyboardToolbar.swift */; };
 		4AFF3EA022BB23F10056A167 /* INVSFloatingTextFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68912295796100EDC8C6 /* INVSFloatingTextFieldType.swift */; };
 		4AFF3EA122BB23F10056A167 /* INVSCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68A72295796100EDC8C6 /* INVSCodeView.swift */; };
 		4AFF3EA222BB23F10056A167 /* INVSAccessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E6722BA79E90056A167 /* INVSAccessModel.swift */; };
 		4AFF3EA322BB23F10056A167 /* INVSSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8E22B2FF0300D6A33A /* INVSSignUpViewController.swift */; };
-		4AFF3EA422BB23F10056A167 /* INVSSimulatedListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68702295796100EDC8C6 /* INVSSimulatedListInteractor.swift */; };
 		4AFF3EA522BB23F10056A167 /* INVSPopupMessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68A02295796100EDC8C6 /* INVSPopupMessageType.swift */; };
-		4AFF3EA622BB23F10056A167 /* INVSSimulatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68822295796100EDC8C6 /* INVSSimulatorPresenter.swift */; };
 		4AFF3EA722BB23F10056A167 /* INVSSignUpWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9322B3051E00D6A33A /* INVSSignUpWorker.swift */; };
 		4AFF3EA822BB23F10056A167 /* INVSStartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AA9A229F745C00C45CC5 /* INVSStartPresenter.swift */; };
 		4AFF3EAA22BB23F10056A167 /* INVSFloatingTextFieldValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68902295796100EDC8C6 /* INVSFloatingTextFieldValueType.swift */; };
 		4AFF3EAB22BB23F10056A167 /* UIImage+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68962295796100EDC8C6 /* UIImage+INVSExtension.swift */; };
 		4AFF3EAC22BB23F10056A167 /* MarketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A12631122A7DA7A006133E5 /* MarketModel.swift */; };
-		4AFF3EAD22BB23F10056A167 /* INVSSimulatorHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A107AA122A3279600A7D8D1 /* INVSSimulatorHelpView.swift */; };
 		4AFF3EAE22BB23F10056A167 /* CAShapeLayer+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C689B2295796100EDC8C6 /* CAShapeLayer+INVSExtension.swift */; };
 		4AFF3EAF22BB23F10056A167 /* INVSResendPasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9D22B41C1A00D6A33A /* INVSResendPasswordInteractor.swift */; };
 		4AFF3EB022BB23F10056A167 /* UIWindow+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C689E2295796100EDC8C6 /* UIWindow+INVSExtension.swift */; };
@@ -206,41 +147,28 @@
 		4AFF3EB322BB23F10056A167 /* INVSSignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9222B3051E00D6A33A /* INVSSignUpPresenter.swift */; };
 		4AFF3EB422BB23F10056A167 /* FirebaseErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFEA422B438B000D6A33A /* FirebaseErrorHandler.swift */; };
 		4AFF3EB522BB23F10056A167 /* INVSFloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C688F2295796100EDC8C6 /* INVSFloatingTextField.swift */; };
-		4AFF3EB622BB23F10056A167 /* INVSSimulatedChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22FF3B22980B89001662FC /* INVSSimulatedChartsViewController.swift */; };
 		4AFF3EB722BB23F10056A167 /* INVSLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8122B115E400D6A33A /* INVSLoginViewController.swift */; };
 		4AFF3EB822BB23F10056A167 /* UIButton+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68952295796100EDC8C6 /* UIButton+INVSExtension.swift */; };
 		4AFF3EB922BB23F10056A167 /* UIViewController+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68972295796100EDC8C6 /* UIViewController+INVSExtension.swift */; };
-		4AFF3EBA22BB23F10056A167 /* INVSSimulatorHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68772295796100EDC8C6 /* INVSSimulatorHeaderView.swift */; };
-		4AFF3EBB22BB23F10056A167 /* INVSSimulatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68802295796100EDC8C6 /* INVSSimulatorModel.swift */; };
 		4AFF3EBC22BB23F10056A167 /* INVSStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C687B2295796100EDC8C6 /* INVSStartViewController.swift */; };
-		4AFF3EBD22BB23F10056A167 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A121691229AE96100759948 /* BalloonMarker.swift */; };
 		4AFF3EBE22BB23F10056A167 /* INVSResendPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9B22B41C1A00D6A33A /* INVSResendPasswordPresenter.swift */; };
-		4AFF3EBF22BB23F10056A167 /* INVSSimutatorViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68812295796100EDC8C6 /* INVSSimutatorViewControler.swift */; };
-		4AFF3EC022BB23F10056A167 /* INVSSimulatedChartsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A121693229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift */; };
 		4AFF3EC122BB23F10056A167 /* INVSSignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E6222B9BC360056A167 /* INVSSignUpModel.swift */; };
 		4AFF3EC222BB23F10056A167 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68A32295796100EDC8C6 /* GradientView.swift */; };
 		4AFF3EC322BB23F10056A167 /* Jsonable+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E6A22BA8EB10056A167 /* Jsonable+INVSExtension.swift */; };
-		4AFF3EC422BB23F10056A167 /* INVSSimulatorInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68842295796100EDC8C6 /* INVSSimulatorInteractor.swift */; };
 		4AFF3EC522BB23F10056A167 /* INVSRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68852295796100EDC8C6 /* INVSRouter.swift */; };
 		4AFF3EC922BB23F10056A167 /* INVSSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0FFE8F22B2FF0300D6A33A /* INVSSignUpViewController.xib */; };
-		4AFF3ECA22BB23F10056A167 /* INVSSimulatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C68782295796100EDC8C6 /* INVSSimulatorCell.xib */; };
 		4AFF3ECB22BB23F10056A167 /* INVSResendPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0FFE9922B41C1A00D6A33A /* INVSResendPasswordViewController.xib */; };
 		4AFF3ECD22BB23F10056A167 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C68872295796100EDC8C6 /* Images.xcassets */; };
 		4AFF3ED122BB23F10056A167 /* INVSBlurViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0FFEAD22B57A7200D6A33A /* INVSBlurViewController.xib */; };
 		4AFF3ED222BB23F10056A167 /* ParticipantesSTRport.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4A107A9922A1790F00A7D8D1 /* ParticipantesSTRport.csv */; };
 		4AFF3ED322BB23F10056A167 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C68A92295796100EDC8C6 /* LaunchScreen.xib */; };
-		4AFF3ED422BB23F10056A167 /* INVSSimutatorViewControler.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C687E2295796100EDC8C6 /* INVSSimutatorViewControler.xib */; };
 		4AFF3ED622BB23F10056A167 /* INVSStartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C687C2295796100EDC8C6 /* INVSStartViewController.xib */; };
-		4AFF3EE422BB28580056A167 /* InvestScopioDev-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AFF3EE322BB28580056A167 /* InvestScopioDev-Info.plist */; };
-		4AFF3EE522BB2AD90056A167 /* InvestScopioProd-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C68AD2295796100EDC8C6 /* InvestScopioProd-Info.plist */; };
 		4AFF3EEA22BC00820056A167 /* GoogleServiceInfoProd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AFF3E6D22BB207E0056A167 /* GoogleServiceInfoProd.plist */; };
 		4AFF3EEB22BC00860056A167 /* GoogleServiceInfoDev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AFF3EE822BBFF470056A167 /* GoogleServiceInfoDev.plist */; };
 		4AFF3EF122BD89990056A167 /* INVSBiometrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3EF022BD89990056A167 /* INVSBiometrics.swift */; };
 		4AFF3EF222BD8A1E0056A167 /* INVSBiometrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3EF022BD89990056A167 /* INVSBiometrics.swift */; };
 		4AFF3EF622BE8C0A0056A167 /* INVSLogoutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3EF522BE8C0A0056A167 /* INVSLogoutResponse.swift */; };
 		4AFF3EF722BE8C0D0056A167 /* INVSLogoutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3EF522BE8C0A0056A167 /* INVSLogoutResponse.swift */; };
-		4AFF3EFA22BEB8910056A167 /* INVSSimulatorHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3EF922BEB8910056A167 /* INVSSimulatorHelpView.swift */; };
-		4AFF3EFB22BEB8910056A167 /* INVSSimulatorHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3EF922BEB8910056A167 /* INVSSimulatorHelpView.swift */; };
 		4AFF3EFE22BEC8660056A167 /* INVSRefreshTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3EFD22BEC8660056A167 /* INVSRefreshTokenRequest.swift */; };
 		4AFF3EFF22BEC8660056A167 /* INVSRefreshTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3EFD22BEC8660056A167 /* INVSRefreshTokenRequest.swift */; };
 		4AFF3F0122BED1B20056A167 /* INVSBiometricsHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3F0022BED1B20056A167 /* INVSBiometricsHelpers.swift */; };
@@ -257,6 +185,34 @@
 		76069E6324C52616009DED56 /* RoundedRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76069E6124C52616009DED56 /* RoundedRadius.swift */; };
 		76069E6524C5D5A3009DED56 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76069E6424C5D5A3009DED56 /* Reachability.swift */; };
 		76069E6624C5D5A4009DED56 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76069E6424C5D5A3009DED56 /* Reachability.swift */; };
+		7611A13F24F1DAB50012BE56 /* INVSSimulatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A13E24F1DAB40012BE56 /* INVSSimulatorModel.swift */; };
+		7611A14024F1DAB50012BE56 /* INVSSimulatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A13E24F1DAB40012BE56 /* INVSSimulatorModel.swift */; };
+		7611A14224F1DADD0012BE56 /* INVSSimulatedValueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A14124F1DADD0012BE56 /* INVSSimulatedValueModel.swift */; };
+		7611A14324F1DADD0012BE56 /* INVSSimulatedValueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A14124F1DADD0012BE56 /* INVSSimulatedValueModel.swift */; };
+		7611A21A24F495D30012BE56 /* LineChartBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A21924F495D30012BE56 /* LineChartBridge.swift */; };
+		7611A21B24F495D30012BE56 /* LineChartBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A21924F495D30012BE56 /* LineChartBridge.swift */; };
+		7611A21E24F4969E0012BE56 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A21D24F4969D0012BE56 /* BalloonMarker.swift */; };
+		7611A21F24F4969E0012BE56 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A21D24F4969D0012BE56 /* BalloonMarker.swift */; };
+		7611A22524F5EDFD0012BE56 /* ChartDataBaseBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A22424F5EDFD0012BE56 /* ChartDataBaseBridge.swift */; };
+		7611A22624F5EDFD0012BE56 /* ChartDataBaseBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A22424F5EDFD0012BE56 /* ChartDataBaseBridge.swift */; };
+		7611A22824F5EE210012BE56 /* ChartInterativeDataBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A22724F5EE210012BE56 /* ChartInterativeDataBridge.swift */; };
+		7611A22924F5EE210012BE56 /* ChartInterativeDataBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A22724F5EE210012BE56 /* ChartInterativeDataBridge.swift */; };
+		7611A22B24F5EE5F0012BE56 /* ChartInformationDataBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A22A24F5EE5F0012BE56 /* ChartInformationDataBridge.swift */; };
+		7611A22C24F5EE5F0012BE56 /* ChartInformationDataBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A22A24F5EE5F0012BE56 /* ChartInformationDataBridge.swift */; };
+		7611A22F24F5EEBA0012BE56 /* LineChartDataSetBaseBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A22E24F5EEBA0012BE56 /* LineChartDataSetBaseBridge.swift */; };
+		7611A23024F5EEBA0012BE56 /* LineChartDataSetBaseBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A22E24F5EEBA0012BE56 /* LineChartDataSetBaseBridge.swift */; };
+		7611A23424F864F90012BE56 /* advanced-swiftui-animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A23324F864F80012BE56 /* advanced-swiftui-animations.swift */; };
+		7611A23524F864F90012BE56 /* advanced-swiftui-animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A23324F864F80012BE56 /* advanced-swiftui-animations.swift */; };
+		7611A23E24F888BE0012BE56 /* AnimatedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A23D24F888BE0012BE56 /* AnimatedText.swift */; };
+		7611A23F24F888BE0012BE56 /* AnimatedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A23D24F888BE0012BE56 /* AnimatedText.swift */; };
+		7611A24224F894100012BE56 /* SimulationCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A24124F894100012BE56 /* SimulationCreationView.swift */; };
+		7611A24324F894100012BE56 /* SimulationCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A24124F894100012BE56 /* SimulationCreationView.swift */; };
+		7611A24524F8941D0012BE56 /* SimulationCreationViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A24424F8941D0012BE56 /* SimulationCreationViewType.swift */; };
+		7611A24624F8941D0012BE56 /* SimulationCreationViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A24424F8941D0012BE56 /* SimulationCreationViewType.swift */; };
+		7611A24B24F897300012BE56 /* SimulationCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A24A24F897300012BE56 /* SimulationCreationViewModel.swift */; };
+		7611A24C24F897300012BE56 /* SimulationCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A24A24F897300012BE56 /* SimulationCreationViewModel.swift */; };
+		7611A24E24F89B130012BE56 /* DoubleButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A24D24F89B130012BE56 /* DoubleButtons.swift */; };
+		7611A24F24F89B130012BE56 /* DoubleButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A24D24F89B130012BE56 /* DoubleButtons.swift */; };
 		767DD86124C3AC14006FDC1A /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767DD85D24C3AC14006FDC1A /* Loadable.swift */; };
 		767DD86224C3AC14006FDC1A /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767DD85D24C3AC14006FDC1A /* Loadable.swift */; };
 		767DD86324C3AC14006FDC1A /* NetworkingHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767DD85E24C3AC14006FDC1A /* NetworkingHelpers.swift */; };
@@ -313,8 +269,6 @@
 		76C15C7824C7A80500045D9A /* ResendPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C15C7024C7A80500045D9A /* ResendPasswordView.swift */; };
 		76C15C7C24C91B6800045D9A /* SimulationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C15C7B24C91B6800045D9A /* SimulationsView.swift */; };
 		76C15C7D24C91B6800045D9A /* SimulationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C15C7B24C91B6800045D9A /* SimulationsView.swift */; };
-		76C15C8024C9265300045D9A /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 76C15C7F24C9265300045D9A /* SwiftUICharts */; };
-		76C15C8224C9267300045D9A /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 76C15C8124C9267300045D9A /* SwiftUICharts */; };
 		76C15C8824CB99F100045D9A /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 76C15C8724CB99F100045D9A /* QGrid */; };
 		76C15C8A24CB99FE00045D9A /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 76C15C8924CB99FE00045D9A /* QGrid */; };
 		76C15C9924CCEAE500045D9A /* SimulationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C15C9624CCEAE400045D9A /* SimulationsRepository.swift */; };
@@ -329,6 +283,16 @@
 		76CAEE5624E8EC2D0044508E /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 76CAEE5524E8EC2D0044508E /* Introspect */; };
 		76CAEE5824E9B7D80044508E /* WorkingAroundSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAEE5724E9B7D80044508E /* WorkingAroundSUI.swift */; };
 		76CAEE5924E9B8170044508E /* WorkingAroundSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAEE5724E9B7D80044508E /* WorkingAroundSUI.swift */; };
+		76CAEE5B24E9BD250044508E /* SimulationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAEE5A24E9BD250044508E /* SimulationCell.swift */; };
+		76CAEE5C24E9BD250044508E /* SimulationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAEE5A24E9BD250044508E /* SimulationCell.swift */; };
+		76CAEE6024E9C6F20044508E /* zExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAEE5E24E9C6F20044508E /* zExample.swift */; };
+		76CAEE6124E9C6F20044508E /* zExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAEE5E24E9C6F20044508E /* zExample.swift */; };
+		76CAEE6224E9C6F20044508E /* UIKitTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAEE5F24E9C6F20044508E /* UIKitTabView.swift */; };
+		76CAEE6324E9C6F20044508E /* UIKitTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAEE5F24E9C6F20044508E /* UIKitTabView.swift */; };
+		76CAEE6824E9C8460044508E /* AppRouterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAEE6724E9C8460044508E /* AppRouterView.swift */; };
+		76CAEE6924E9C8460044508E /* AppRouterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAEE6724E9C8460044508E /* AppRouterView.swift */; };
+		76CAEE6C24E9D7880044508E /* TalkWithUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAEE6B24E9D7880044508E /* TalkWithUsView.swift */; };
+		76CAEE6D24E9D7880044508E /* TalkWithUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAEE6B24E9D7880044508E /* TalkWithUsView.swift */; };
 		76D017C824C6681B0092F1A6 /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D017C724C6681B0092F1A6 /* RegisterRepository.swift */; };
 		76D017C924C6681B0092F1A6 /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D017C724C6681B0092F1A6 /* RegisterRepository.swift */; };
 		76D017CB24C6682D0092F1A6 /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D017CA24C6682D0092F1A6 /* RegisterService.swift */; };
@@ -337,6 +301,16 @@
 		76D017CF24C66C4A0092F1A6 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D017CD24C66C4A0092F1A6 /* RegisterViewModel.swift */; };
 		76D017D224C67F830092F1A6 /* EnvironmentOverrides in Frameworks */ = {isa = PBXBuildFile; productRef = 76D017D124C67F830092F1A6 /* EnvironmentOverrides */; };
 		76D017D424C6800F0092F1A6 /* EnvironmentOverrides in Frameworks */ = {isa = PBXBuildFile; productRef = 76D017D324C6800F0092F1A6 /* EnvironmentOverrides */; };
+		76E458A724E9FDE300CFACC4 /* SimulationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E458A624E9FDE300CFACC4 /* SimulationDetailView.swift */; };
+		76E458A824E9FDE300CFACC4 /* SimulationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E458A624E9FDE300CFACC4 /* SimulationDetailView.swift */; };
+		76E458AC24EA02B500CFACC4 /* SimulationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E458AB24EA02B500CFACC4 /* SimulationDetailViewModel.swift */; };
+		76E458AD24EA02B500CFACC4 /* SimulationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E458AB24EA02B500CFACC4 /* SimulationDetailViewModel.swift */; };
+		76E45B3124ECB54200CFACC4 /* SimulationDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E45B2F24ECB54200CFACC4 /* SimulationDetailRepository.swift */; };
+		76E45B3224ECB54200CFACC4 /* SimulationDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E45B2F24ECB54200CFACC4 /* SimulationDetailRepository.swift */; };
+		76E45B3324ECB54200CFACC4 /* SimulationDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E45B3024ECB54200CFACC4 /* SimulationDetailService.swift */; };
+		76E45B3424ECB54200CFACC4 /* SimulationDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E45B3024ECB54200CFACC4 /* SimulationDetailService.swift */; };
+		76E45B3724EF638F00CFACC4 /* NavigationStack in Frameworks */ = {isa = PBXBuildFile; productRef = 76E45B3624EF638F00CFACC4 /* NavigationStack */; };
+		76E45B3924EF63A300CFACC4 /* NavigationStack in Frameworks */ = {isa = PBXBuildFile; productRef = 76E45B3824EF63A300CFACC4 /* NavigationStack */; };
 		7B3FD35CB4A8123DF3A4C9AC /* Pods_InvestScopioDev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCDDCC66DBBAD541616D7347 /* Pods_InvestScopioDev.framework */; };
 		B8729DDDA4477CDE936382D1 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		DF8D069B37894F62C4DEAAD0 /* Pods_InvestScopio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E96C823BD39D66B3F18F93B9 /* Pods_InvestScopio.framework */; };
@@ -345,7 +319,6 @@
 /* Begin PBXFileReference section */
 		2F3204CC7D9739973E0B480A /* Pods-InvestScopioDev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvestScopioDev.debug.xcconfig"; path = "Target Support Files/Pods-InvestScopioDev/Pods-InvestScopioDev.debug.xcconfig"; sourceTree = "<group>"; };
 		337722A1A99D475EDC282B99 /* Pods-InvestScopioDev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvestScopioDev.release.xcconfig"; path = "Target Support Files/Pods-InvestScopioDev/Pods-InvestScopioDev.release.xcconfig"; sourceTree = "<group>"; };
-		4A0FFE7E22AF298000D6A33A /* INVSSimulatedListWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedListWorker.swift; sourceTree = "<group>"; };
 		4A0FFE8122B115E400D6A33A /* INVSLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = INVSLoginViewController.swift; path = InvestScopio/Scenes/Login/Login/INVSLoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		4A0FFE8322B1160400D6A33A /* INVSLoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSLoginInteractor.swift; sourceTree = "<group>"; };
 		4A0FFE8522B1161D00D6A33A /* INVSLoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSLoginPresenter.swift; sourceTree = "<group>"; };
@@ -367,17 +340,10 @@
 		4A0FFEAD22B57A7200D6A33A /* INVSBlurViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = INVSBlurViewController.xib; sourceTree = "<group>"; };
 		4A0FFEB122B5890900D6A33A /* INVSAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSAlertViewController.swift; sourceTree = "<group>"; };
 		4A107A9922A1790F00A7D8D1 /* ParticipantesSTRport.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ParticipantesSTRport.csv; sourceTree = "<group>"; };
-		4A107AA122A3279600A7D8D1 /* INVSSimulatorHelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = INVSSimulatorHelpView.swift; path = ../INVSSimulatorHelpView.swift; sourceTree = "<group>"; };
-		4A121691229AE96100759948 /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
-		4A121693229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedChartsInteractor.swift; sourceTree = "<group>"; };
-		4A121695229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedChartsPresenter.swift; sourceTree = "<group>"; };
 		4A12631122A7DA7A006133E5 /* MarketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketModel.swift; sourceTree = "<group>"; };
 		4A12631322A7DA99006133E5 /* BankModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankModel.swift; sourceTree = "<group>"; };
 		4A12631622A7DC7A006133E5 /* INVSConector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSConector.swift; sourceTree = "<group>"; };
 		4A12631C22A7F1BB006133E5 /* INVSVersionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSVersionModel.swift; sourceTree = "<group>"; };
-		4A22FF3222976CAF001662FC /* INVSSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSwitchView.swift; sourceTree = "<group>"; };
-		4A22FF362297837B001662FC /* INVSSimulatedContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedContainerViewController.swift; sourceTree = "<group>"; };
-		4A22FF3B22980B89001662FC /* INVSSimulatedChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedChartsViewController.swift; sourceTree = "<group>"; };
 		4A27021D22CD409C005DA22A /* INVSTalkWithUsWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSTalkWithUsWorker.swift; sourceTree = "<group>"; };
 		4A27021E22CD409C005DA22A /* INVSTalkWithUsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSTalkWithUsInteractor.swift; sourceTree = "<group>"; };
 		4A27021F22CD409C005DA22A /* INVSTalkWithUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSTalkWithUsViewController.swift; sourceTree = "<group>"; };
@@ -388,27 +354,10 @@
 		4A27AA98229F6E4D00C45CC5 /* INVSSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSession.swift; sourceTree = "<group>"; };
 		4A27AA9A229F745C00C45CC5 /* INVSStartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSStartPresenter.swift; sourceTree = "<group>"; };
 		4A2B05A5229C19220024F83A /* INVSStartWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSStartWorker.swift; sourceTree = "<group>"; };
-		4A2B05A8229DF30E0024F83A /* INVSSimulatedTotalChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedTotalChartView.swift; sourceTree = "<group>"; };
-		4A2B05AA229E02E60024F83A /* INVSSimulatedRescueChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedRescueChartView.swift; sourceTree = "<group>"; };
 		4A45D0D122A44576001383B4 /* NSAttributedString+INVSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+INVSExtension.swift"; sourceTree = "<group>"; };
-		4A45D0D322A4463D001383B4 /* INVSSimulatedHelpViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSSimulatedHelpViewType.swift; sourceTree = "<group>"; };
 		4A4C68562295784900EDC8C6 /* InvestScopio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InvestScopio.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4A4C686F2295796100EDC8C6 /* INVSSimulatorTableviewDataSourceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorTableviewDataSourceDelegate.swift; sourceTree = "<group>"; };
-		4A4C68702295796100EDC8C6 /* INVSSimulatedListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatedListInteractor.swift; sourceTree = "<group>"; };
-		4A4C68722295796100EDC8C6 /* INVSSimulatedValueModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatedValueModel.swift; sourceTree = "<group>"; };
-		4A4C68732295796100EDC8C6 /* INVSSimulatedListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatedListViewController.swift; sourceTree = "<group>"; };
-		4A4C68752295796100EDC8C6 /* INVSSimulatedListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatedListPresenter.swift; sourceTree = "<group>"; };
-		4A4C68772295796100EDC8C6 /* INVSSimulatorHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorHeaderView.swift; sourceTree = "<group>"; };
-		4A4C68782295796100EDC8C6 /* INVSSimulatorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = INVSSimulatorCell.xib; sourceTree = "<group>"; };
-		4A4C68792295796100EDC8C6 /* INVSSimulatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorCell.swift; sourceTree = "<group>"; };
 		4A4C687B2295796100EDC8C6 /* INVSStartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSStartViewController.swift; sourceTree = "<group>"; };
 		4A4C687C2295796100EDC8C6 /* INVSStartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = INVSStartViewController.xib; sourceTree = "<group>"; };
-		4A4C687E2295796100EDC8C6 /* INVSSimutatorViewControler.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = INVSSimutatorViewControler.xib; sourceTree = "<group>"; };
-		4A4C68802295796100EDC8C6 /* INVSSimulatorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorModel.swift; sourceTree = "<group>"; };
-		4A4C68812295796100EDC8C6 /* INVSSimutatorViewControler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimutatorViewControler.swift; sourceTree = "<group>"; };
-		4A4C68822295796100EDC8C6 /* INVSSimulatorPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorPresenter.swift; sourceTree = "<group>"; };
-		4A4C68832295796100EDC8C6 /* INVSSimulatorWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorWorker.swift; sourceTree = "<group>"; };
-		4A4C68842295796100EDC8C6 /* INVSSimulatorInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorInteractor.swift; sourceTree = "<group>"; };
 		4A4C68852295796100EDC8C6 /* INVSRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSRouter.swift; sourceTree = "<group>"; };
 		4A4C68872295796100EDC8C6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4A4C688B2295796100EDC8C6 /* INVSPresentBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSPresentBaseViewController.swift; sourceTree = "<group>"; };
@@ -436,15 +385,6 @@
 		4A4C68AA2295796100EDC8C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4A4C68AC2295796100EDC8C6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A4C68AD2295796100EDC8C6 /* InvestScopioProd-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "InvestScopioProd-Info.plist"; sourceTree = "<group>"; };
-		4A8E0E3222CD3EB300897D38 /* INVSSimulationsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulationsPresenter.swift; sourceTree = "<group>"; };
-		4A8E0E3422CD3EB300897D38 /* INVSSimulationsTableviewDataSourceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulationsTableviewDataSourceDelegate.swift; sourceTree = "<group>"; };
-		4A8E0E3522CD3EB300897D38 /* INVSSimulationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = INVSSimulationsViewController.xib; sourceTree = "<group>"; };
-		4A8E0E3622CD3EB300897D38 /* INVSSimulationsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulationsInteractor.swift; sourceTree = "<group>"; };
-		4A8E0E3722CD3EB300897D38 /* INVSSimulationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulationsViewController.swift; sourceTree = "<group>"; };
-		4A8E0E3922CD3EB300897D38 /* INVSDeleteSimulationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSDeleteSimulationResponse.swift; sourceTree = "<group>"; };
-		4A8E0E3A22CD3EB300897D38 /* INVSSimulationsWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulationsWorker.swift; sourceTree = "<group>"; };
-		4A8E0E3C22CD3EB300897D38 /* INVSSimulationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulationCell.swift; sourceTree = "<group>"; };
-		4A8E0E3D22CD3EB300897D38 /* INVSSimulationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = INVSSimulationCell.xib; sourceTree = "<group>"; };
 		4A8E0E6422CD3F1E00897D38 /* INVSConnectorErrorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSConnectorErrorProtocol.swift; sourceTree = "<group>"; };
 		4A8E0E6722CD3F6400897D38 /* animatedLoadingPurple.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animatedLoadingPurple.json; sourceTree = "<group>"; };
 		4A8E0E6822CD3F6400897D38 /* star.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = star.json; sourceTree = "<group>"; };
@@ -465,7 +405,6 @@
 		4AFF3EE822BBFF470056A167 /* GoogleServiceInfoDev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GoogleServiceInfoDev.plist; sourceTree = "<group>"; };
 		4AFF3EF022BD89990056A167 /* INVSBiometrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSBiometrics.swift; sourceTree = "<group>"; };
 		4AFF3EF522BE8C0A0056A167 /* INVSLogoutResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSLogoutResponse.swift; sourceTree = "<group>"; };
-		4AFF3EF922BEB8910056A167 /* INVSSimulatorHelpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorHelpView.swift; sourceTree = "<group>"; };
 		4AFF3EFD22BEC8660056A167 /* INVSRefreshTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSRefreshTokenRequest.swift; sourceTree = "<group>"; };
 		4AFF3F0022BED1B20056A167 /* INVSBiometricsHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSBiometricsHelpers.swift; sourceTree = "<group>"; };
 		4AFF3F0322BF12120056A167 /* INVSConnectorHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSConnectorHelpers.swift; sourceTree = "<group>"; };
@@ -474,6 +413,20 @@
 		76069E5E24C525FD009DED56 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		76069E6124C52616009DED56 /* RoundedRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRadius.swift; sourceTree = "<group>"; };
 		76069E6424C5D5A3009DED56 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		7611A13E24F1DAB40012BE56 /* INVSSimulatorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatorModel.swift; sourceTree = "<group>"; };
+		7611A14124F1DADD0012BE56 /* INVSSimulatedValueModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSSimulatedValueModel.swift; sourceTree = "<group>"; };
+		7611A21924F495D30012BE56 /* LineChartBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartBridge.swift; sourceTree = "<group>"; };
+		7611A21D24F4969D0012BE56 /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
+		7611A22424F5EDFD0012BE56 /* ChartDataBaseBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDataBaseBridge.swift; sourceTree = "<group>"; };
+		7611A22724F5EE210012BE56 /* ChartInterativeDataBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartInterativeDataBridge.swift; sourceTree = "<group>"; };
+		7611A22A24F5EE5F0012BE56 /* ChartInformationDataBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartInformationDataBridge.swift; sourceTree = "<group>"; };
+		7611A22E24F5EEBA0012BE56 /* LineChartDataSetBaseBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartDataSetBaseBridge.swift; sourceTree = "<group>"; };
+		7611A23324F864F80012BE56 /* advanced-swiftui-animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "advanced-swiftui-animations.swift"; sourceTree = "<group>"; };
+		7611A23D24F888BE0012BE56 /* AnimatedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedText.swift; sourceTree = "<group>"; };
+		7611A24124F894100012BE56 /* SimulationCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationCreationView.swift; sourceTree = "<group>"; };
+		7611A24424F8941D0012BE56 /* SimulationCreationViewType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulationCreationViewType.swift; sourceTree = "<group>"; };
+		7611A24A24F897300012BE56 /* SimulationCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationCreationViewModel.swift; sourceTree = "<group>"; };
+		7611A24D24F89B130012BE56 /* DoubleButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleButtons.swift; sourceTree = "<group>"; };
 		767DD85D24C3AC14006FDC1A /* Loadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		767DD85E24C3AC14006FDC1A /* NetworkingHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingHelpers.swift; sourceTree = "<group>"; };
 		767DD85F24C3AC14006FDC1A /* WebRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRepository.swift; sourceTree = "<group>"; };
@@ -507,9 +460,18 @@
 		76C15C9824CCEAE500045D9A /* SimulationsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulationsViewModel.swift; sourceTree = "<group>"; };
 		76C15C9F24CE011800045D9A /* RefreshRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshRepository.swift; sourceTree = "<group>"; };
 		76CAEE5724E9B7D80044508E /* WorkingAroundSUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingAroundSUI.swift; sourceTree = "<group>"; };
+		76CAEE5A24E9BD250044508E /* SimulationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationCell.swift; sourceTree = "<group>"; };
+		76CAEE5E24E9C6F20044508E /* zExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = zExample.swift; sourceTree = "<group>"; };
+		76CAEE5F24E9C6F20044508E /* UIKitTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitTabView.swift; sourceTree = "<group>"; };
+		76CAEE6724E9C8460044508E /* AppRouterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouterView.swift; sourceTree = "<group>"; };
+		76CAEE6B24E9D7880044508E /* TalkWithUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkWithUsView.swift; sourceTree = "<group>"; };
 		76D017C724C6681B0092F1A6 /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
 		76D017CA24C6682D0092F1A6 /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
 		76D017CD24C66C4A0092F1A6 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		76E458A624E9FDE300CFACC4 /* SimulationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationDetailView.swift; sourceTree = "<group>"; };
+		76E458AB24EA02B500CFACC4 /* SimulationDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationDetailViewModel.swift; sourceTree = "<group>"; };
+		76E45B2F24ECB54200CFACC4 /* SimulationDetailRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulationDetailRepository.swift; sourceTree = "<group>"; };
+		76E45B3024ECB54200CFACC4 /* SimulationDetailService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulationDetailService.swift; sourceTree = "<group>"; };
 		96C9F1EA5800CB68A709EF1A /* Pods-InvestScopio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvestScopio.debug.xcconfig"; path = "Target Support Files/Pods-InvestScopio/Pods-InvestScopio.debug.xcconfig"; sourceTree = "<group>"; };
 		DCDDCC66DBBAD541616D7347 /* Pods_InvestScopioDev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InvestScopioDev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E51923B72D563C11FC98562D /* Pods-InvestScopio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvestScopio.release.xcconfig"; path = "Target Support Files/Pods-InvestScopio/Pods-InvestScopio.release.xcconfig"; sourceTree = "<group>"; };
@@ -522,9 +484,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				76C15C8A24CB99FE00045D9A /* QGrid in Frameworks */,
+				76E45B3924EF63A300CFACC4 /* NavigationStack in Frameworks */,
 				76CAEE5624E8EC2D0044508E /* Introspect in Frameworks */,
 				B8729DDDA4477CDE936382D1 /* (null) in Frameworks */,
-				76C15C8224C9267300045D9A /* SwiftUICharts in Frameworks */,
 				DF8D069B37894F62C4DEAAD0 /* Pods_InvestScopio.framework in Frameworks */,
 				76D017D224C67F830092F1A6 /* EnvironmentOverrides in Frameworks */,
 			);
@@ -535,7 +497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76C15C8824CB99F100045D9A /* QGrid in Frameworks */,
-				76C15C8024C9265300045D9A /* SwiftUICharts in Frameworks */,
+				76E45B3724EF638F00CFACC4 /* NavigationStack in Frameworks */,
 				76CAEE5424E8EC1B0044508E /* Introspect in Frameworks */,
 				76D017D424C6800F0092F1A6 /* EnvironmentOverrides in Frameworks */,
 				7B3FD35CB4A8123DF3A4C9AC /* Pods_InvestScopioDev.framework in Frameworks */,
@@ -623,23 +585,6 @@
 			path = BlurViewController;
 			sourceTree = "<group>";
 		};
-		4A107AA322A3279C00A7D8D1 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				4A107AA122A3279600A7D8D1 /* INVSSimulatorHelpView.swift */,
-				4A45D0D322A4463D001383B4 /* INVSSimulatedHelpViewType.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		4A121690229AE96100759948 /* BallonMarker */ = {
-			isa = PBXGroup;
-			children = (
-				4A121691229AE96100759948 /* BalloonMarker.swift */,
-			);
-			path = BallonMarker;
-			sourceTree = "<group>";
-		};
 		4A12630E22A7DA2F006133E5 /* BankModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -672,39 +617,6 @@
 				4A12631C22A7F1BB006133E5 /* INVSVersionModel.swift */,
 			);
 			path = Version;
-			sourceTree = "<group>";
-		};
-		4A22FF342297833B001662FC /* SimulatedListViewController */ = {
-			isa = PBXGroup;
-			children = (
-				4A4C68762295796100EDC8C6 /* Views */,
-				4A4C68712295796100EDC8C6 /* Models */,
-				4A4C686E2295796100EDC8C6 /* DataSource */,
-				4A4C68702295796100EDC8C6 /* INVSSimulatedListInteractor.swift */,
-				4A4C68732295796100EDC8C6 /* INVSSimulatedListViewController.swift */,
-				4A4C68752295796100EDC8C6 /* INVSSimulatedListPresenter.swift */,
-				4A0FFE7E22AF298000D6A33A /* INVSSimulatedListWorker.swift */,
-			);
-			path = SimulatedListViewController;
-			sourceTree = "<group>";
-		};
-		4A22FF3522978350001662FC /* SimulatedContainerViewController */ = {
-			isa = PBXGroup;
-			children = (
-				4A22FF362297837B001662FC /* INVSSimulatedContainerViewController.swift */,
-			);
-			path = SimulatedContainerViewController;
-			sourceTree = "<group>";
-		};
-		4A22FF3A22980B50001662FC /* SimulatedChartsViewController */ = {
-			isa = PBXGroup;
-			children = (
-				4A2B05A7229DF2A90024F83A /* SimulatedChartViews */,
-				4A22FF3B22980B89001662FC /* INVSSimulatedChartsViewController.swift */,
-				4A121693229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift */,
-				4A121695229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift */,
-			);
-			path = SimulatedChartsViewController;
 			sourceTree = "<group>";
 		};
 		4A27021C22CD409C005DA22A /* TalkWithUs */ = {
@@ -741,15 +653,6 @@
 			path = InvestScopioSession;
 			sourceTree = "<group>";
 		};
-		4A2B05A7229DF2A90024F83A /* SimulatedChartViews */ = {
-			isa = PBXGroup;
-			children = (
-				4A2B05A8229DF30E0024F83A /* INVSSimulatedTotalChartView.swift */,
-				4A2B05AA229E02E60024F83A /* INVSSimulatedRescueChartView.swift */,
-			);
-			path = SimulatedChartViews;
-			sourceTree = "<group>";
-		};
 		4A4C684D2295784900EDC8C6 = {
 			isa = PBXGroup;
 			children = (
@@ -782,6 +685,7 @@
 				4AFF3EE322BB28580056A167 /* InvestScopioDev-Info.plist */,
 				4A4C68AD2295796100EDC8C6 /* InvestScopioProd-Info.plist */,
 				4A4C68AC2295796100EDC8C6 /* AppDelegate.swift */,
+				7611A23324F864F80012BE56 /* advanced-swiftui-animations.swift */,
 				768D8BE224C208BF004BEADA /* SceneDelegate.swift */,
 				76CAEE5724E9B7D80044508E /* WorkingAroundSUI.swift */,
 			);
@@ -791,52 +695,16 @@
 		4A4C686C2295796100EDC8C6 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				76CAEE6A24E9D7670044508E /* TalkWithUsSU */,
 				76C15C7924C91B3A00045D9A /* SimulationSU */,
 				768D8BEB24C2444E004BEADA /* LoginSU */,
 				4A27021C22CD409C005DA22A /* TalkWithUs */,
 				4A0FFE8022B08BF500D6A33A /* Login */,
 				4A4C687A2295796100EDC8C6 /* Start */,
-				4A4C687D2295796100EDC8C6 /* Simulation */,
 				4A4C68852295796100EDC8C6 /* INVSRouter.swift */,
+				76CAEE6724E9C8460044508E /* AppRouterView.swift */,
 			);
 			path = Scenes;
-			sourceTree = "<group>";
-		};
-		4A4C686D2295796100EDC8C6 /* Simulated */ = {
-			isa = PBXGroup;
-			children = (
-				4A22FF3522978350001662FC /* SimulatedContainerViewController */,
-				4A22FF342297833B001662FC /* SimulatedListViewController */,
-				4A22FF3A22980B50001662FC /* SimulatedChartsViewController */,
-			);
-			path = Simulated;
-			sourceTree = "<group>";
-		};
-		4A4C686E2295796100EDC8C6 /* DataSource */ = {
-			isa = PBXGroup;
-			children = (
-				4A4C686F2295796100EDC8C6 /* INVSSimulatorTableviewDataSourceDelegate.swift */,
-			);
-			path = DataSource;
-			sourceTree = "<group>";
-		};
-		4A4C68712295796100EDC8C6 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				4A4C68722295796100EDC8C6 /* INVSSimulatedValueModel.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		4A4C68762295796100EDC8C6 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				4A4C68772295796100EDC8C6 /* INVSSimulatorHeaderView.swift */,
-				4A4C68782295796100EDC8C6 /* INVSSimulatorCell.xib */,
-				4A4C68792295796100EDC8C6 /* INVSSimulatorCell.swift */,
-				4A22FF3222976CAF001662FC /* INVSSwitchView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		4A4C687A2295796100EDC8C6 /* Start */ = {
@@ -849,24 +717,6 @@
 				4A4C687C2295796100EDC8C6 /* INVSStartViewController.xib */,
 			);
 			path = Start;
-			sourceTree = "<group>";
-		};
-		4A4C687D2295796100EDC8C6 /* Simulation */ = {
-			isa = PBXGroup;
-			children = (
-				4A8E0E3122CD3EB300897D38 /* Simulations */,
-				4A4C686D2295796100EDC8C6 /* Simulated */,
-				4AFF3EF822BEB4CF0056A167 /* Simulator */,
-			);
-			path = Simulation;
-			sourceTree = "<group>";
-		};
-		4A4C687F2295796100EDC8C6 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				4A4C68802295796100EDC8C6 /* INVSSimulatorModel.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		4A4C68862295796100EDC8C6 /* Assets */ = {
@@ -887,6 +737,7 @@
 		4A4C68892295796100EDC8C6 /* SharedFeatures */ = {
 			isa = PBXGroup;
 			children = (
+				7611A21C24F4969D0012BE56 /* BallonMarker */,
 				768D8BFC24C39357004BEADA /* SwiftUI */,
 				768D8BFB24C39336004BEADA /* SFSymbols */,
 				4AFF3EEF22BD89840056A167 /* Biometrics */,
@@ -895,7 +746,6 @@
 				4A0FFEA822B472DC00D6A33A /* LoadingButton */,
 				4A0FFEA322B4387400D6A33A /* FirebaseErrorHandler */,
 				4A12631522A7DC6B006133E5 /* Connector */,
-				4A121690229AE96100759948 /* BallonMarker */,
 				4A4C688A2295796100EDC8C6 /* PresentBaseViewController */,
 				4A4C688C2295796100EDC8C6 /* Constants */,
 				4A4C688E2295796100EDC8C6 /* FloatingTextField */,
@@ -989,46 +839,6 @@
 			path = CodeView;
 			sourceTree = "<group>";
 		};
-		4A8E0E3122CD3EB300897D38 /* Simulations */ = {
-			isa = PBXGroup;
-			children = (
-				4A8E0E3222CD3EB300897D38 /* INVSSimulationsPresenter.swift */,
-				4A8E0E3322CD3EB300897D38 /* DataSource */,
-				4A8E0E3522CD3EB300897D38 /* INVSSimulationsViewController.xib */,
-				4A8E0E3622CD3EB300897D38 /* INVSSimulationsInteractor.swift */,
-				4A8E0E3722CD3EB300897D38 /* INVSSimulationsViewController.swift */,
-				4A8E0E3822CD3EB300897D38 /* Models */,
-				4A8E0E3A22CD3EB300897D38 /* INVSSimulationsWorker.swift */,
-				4A8E0E3B22CD3EB300897D38 /* Views */,
-			);
-			path = Simulations;
-			sourceTree = "<group>";
-		};
-		4A8E0E3322CD3EB300897D38 /* DataSource */ = {
-			isa = PBXGroup;
-			children = (
-				4A8E0E3422CD3EB300897D38 /* INVSSimulationsTableviewDataSourceDelegate.swift */,
-			);
-			path = DataSource;
-			sourceTree = "<group>";
-		};
-		4A8E0E3822CD3EB300897D38 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				4A8E0E3922CD3EB300897D38 /* INVSDeleteSimulationResponse.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		4A8E0E3B22CD3EB300897D38 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				4A8E0E3C22CD3EB300897D38 /* INVSSimulationCell.swift */,
-				4A8E0E3D22CD3EB300897D38 /* INVSSimulationCell.xib */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		4AFF3E5B22B9B1F30056A167 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -1093,21 +903,6 @@
 			path = Biometrics;
 			sourceTree = "<group>";
 		};
-		4AFF3EF822BEB4CF0056A167 /* Simulator */ = {
-			isa = PBXGroup;
-			children = (
-				4AFF3EF922BEB8910056A167 /* INVSSimulatorHelpView.swift */,
-				4A107AA322A3279C00A7D8D1 /* Views */,
-				4A4C687F2295796100EDC8C6 /* Models */,
-				4A4C687E2295796100EDC8C6 /* INVSSimutatorViewControler.xib */,
-				4A4C68812295796100EDC8C6 /* INVSSimutatorViewControler.swift */,
-				4A4C68822295796100EDC8C6 /* INVSSimulatorPresenter.swift */,
-				4A4C68832295796100EDC8C6 /* INVSSimulatorWorker.swift */,
-				4A4C68842295796100EDC8C6 /* INVSSimulatorInteractor.swift */,
-			);
-			path = Simulator;
-			sourceTree = "<group>";
-		};
 		4AFF3EFC22BEC83E0056A167 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1115,6 +910,116 @@
 				4AFF3EFD22BEC8660056A167 /* INVSRefreshTokenRequest.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		7611A13524F039F60012BE56 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		7611A14424F1DC330012BE56 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7611A14124F1DADD0012BE56 /* INVSSimulatedValueModel.swift */,
+				7611A13E24F1DAB40012BE56 /* INVSSimulatorModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7611A21824F495C30012BE56 /* LineChartBridge */ = {
+			isa = PBXGroup;
+			children = (
+				7611A22024F5EDBC0012BE56 /* Entities */,
+				7611A21924F495D30012BE56 /* LineChartBridge.swift */,
+			);
+			path = LineChartBridge;
+			sourceTree = "<group>";
+		};
+		7611A21C24F4969D0012BE56 /* BallonMarker */ = {
+			isa = PBXGroup;
+			children = (
+				7611A21D24F4969D0012BE56 /* BalloonMarker.swift */,
+			);
+			path = BallonMarker;
+			sourceTree = "<group>";
+		};
+		7611A22024F5EDBC0012BE56 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				7611A22324F5EDDE0012BE56 /* Base */,
+				7611A22224F5EDD60012BE56 /* Interative */,
+				7611A22124F5EDCA0012BE56 /* Information */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		7611A22124F5EDCA0012BE56 /* Information */ = {
+			isa = PBXGroup;
+			children = (
+				7611A22A24F5EE5F0012BE56 /* ChartInformationDataBridge.swift */,
+			);
+			path = Information;
+			sourceTree = "<group>";
+		};
+		7611A22224F5EDD60012BE56 /* Interative */ = {
+			isa = PBXGroup;
+			children = (
+				7611A22724F5EE210012BE56 /* ChartInterativeDataBridge.swift */,
+			);
+			path = Interative;
+			sourceTree = "<group>";
+		};
+		7611A22324F5EDDE0012BE56 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				7611A22424F5EDFD0012BE56 /* ChartDataBaseBridge.swift */,
+				7611A22E24F5EEBA0012BE56 /* LineChartDataSetBaseBridge.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		7611A23C24F888730012BE56 /* AnimatedText */ = {
+			isa = PBXGroup;
+			children = (
+				7611A23D24F888BE0012BE56 /* AnimatedText.swift */,
+			);
+			path = AnimatedText;
+			sourceTree = "<group>";
+		};
+		7611A24024F893FE0012BE56 /* Creation */ = {
+			isa = PBXGroup;
+			children = (
+				7611A24924F897120012BE56 /* Extra */,
+				7611A24824F897040012BE56 /* Core */,
+				7611A24724F897020012BE56 /* Views */,
+			);
+			path = Creation;
+			sourceTree = "<group>";
+		};
+		7611A24724F897020012BE56 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7611A24124F894100012BE56 /* SimulationCreationView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7611A24824F897040012BE56 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				7611A24A24F897300012BE56 /* SimulationCreationViewModel.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		7611A24924F897120012BE56 /* Extra */ = {
+			isa = PBXGroup;
+			children = (
+				7611A24424F8941D0012BE56 /* SimulationCreationViewType.swift */,
+			);
+			path = Extra;
 			sourceTree = "<group>";
 		};
 		767DD86C24C3AC77006FDC1A /* Utilities */ = {
@@ -1156,6 +1061,9 @@
 		768D8BFC24C39357004BEADA /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				7611A23C24F888730012BE56 /* AnimatedText */,
+				7611A21824F495C30012BE56 /* LineChartBridge */,
+				76CAEE5D24E9C6E60044508E /* TabView */,
 				7698A68B24E347C400A93964 /* GenericView */,
 				7698A68924E347C400A93964 /* LoadingView */,
 				767DD86C24C3AC77006FDC1A /* Utilities */,
@@ -1167,6 +1075,7 @@
 				76069E5E24C525FD009DED56 /* PopupView.swift */,
 				76069E6124C52616009DED56 /* RoundedRadius.swift */,
 				76B2602524C5EBB7003BF4B4 /* BlurView.swift */,
+				7611A24D24F89B130012BE56 /* DoubleButtons.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -1235,6 +1144,9 @@
 		76C15C7924C91B3A00045D9A /* SimulationSU */ = {
 			isa = PBXGroup;
 			children = (
+				7611A24024F893FE0012BE56 /* Creation */,
+				7611A14424F1DC330012BE56 /* Models */,
+				76CAEE6E24E9F3250044508E /* Detail */,
 				76C15C7A24C91B4D00045D9A /* Simulations */,
 			);
 			path = SimulationSU;
@@ -1243,6 +1155,7 @@
 		76C15C7A24C91B4D00045D9A /* Simulations */ = {
 			isa = PBXGroup;
 			children = (
+				7611A13524F039F60012BE56 /* Router */,
 				76C15C8C24CCEA8D00045D9A /* Core */,
 				76C15C8B24CCEA8400045D9A /* Views */,
 			);
@@ -1253,6 +1166,7 @@
 			isa = PBXGroup;
 			children = (
 				76C15C7B24C91B6800045D9A /* SimulationsView.swift */,
+				76CAEE5A24E9BD250044508E /* SimulationCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1265,6 +1179,32 @@
 				76C15C9824CCEAE500045D9A /* SimulationsViewModel.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		76CAEE5D24E9C6E60044508E /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+				76CAEE5F24E9C6F20044508E /* UIKitTabView.swift */,
+				76CAEE5E24E9C6F20044508E /* zExample.swift */,
+			);
+			path = TabView;
+			sourceTree = "<group>";
+		};
+		76CAEE6A24E9D7670044508E /* TalkWithUsSU */ = {
+			isa = PBXGroup;
+			children = (
+				76CAEE6B24E9D7880044508E /* TalkWithUsView.swift */,
+			);
+			path = TalkWithUsSU;
+			sourceTree = "<group>";
+		};
+		76CAEE6E24E9F3250044508E /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				76E458AA24EA029F00CFACC4 /* Views */,
+				76E458A924EA029A00CFACC4 /* Core */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		76D017C324C603350092F1A6 /* Login */ = {
@@ -1303,6 +1243,24 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		76E458A924EA029A00CFACC4 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				76E45B2F24ECB54200CFACC4 /* SimulationDetailRepository.swift */,
+				76E45B3024ECB54200CFACC4 /* SimulationDetailService.swift */,
+				76E458AB24EA02B500CFACC4 /* SimulationDetailViewModel.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		76E458AA24EA029F00CFACC4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				76E458A624E9FDE300CFACC4 /* SimulationDetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F4BF4408D4B1FD25E8984CE5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1334,9 +1292,9 @@
 			name = InvestScopio;
 			packageProductDependencies = (
 				76D017D124C67F830092F1A6 /* EnvironmentOverrides */,
-				76C15C8124C9267300045D9A /* SwiftUICharts */,
 				76C15C8924CB99FE00045D9A /* QGrid */,
 				76CAEE5524E8EC2D0044508E /* Introspect */,
+				76E45B3824EF63A300CFACC4 /* NavigationStack */,
 			);
 			productName = InvestScopio;
 			productReference = 4A4C68562295784900EDC8C6 /* InvestScopio.app */;
@@ -1359,9 +1317,9 @@
 			name = InvestScopioDev;
 			packageProductDependencies = (
 				76D017D324C6800F0092F1A6 /* EnvironmentOverrides */,
-				76C15C7F24C9265300045D9A /* SwiftUICharts */,
 				76C15C8724CB99F100045D9A /* QGrid */,
 				76CAEE5324E8EC1B0044508E /* Introspect */,
+				76E45B3624EF638F00CFACC4 /* NavigationStack */,
 			);
 			productName = InvestScopio;
 			productReference = 4AFF3EDE22BB23F10056A167 /* InvestScopioTeste.app */;
@@ -1374,7 +1332,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = "Joao Medeiros Pereira";
 				TargetAttributes = {
 					4A4C68552295784900EDC8C6 = {
@@ -1393,9 +1351,9 @@
 			mainGroup = 4A4C684D2295784900EDC8C6;
 			packageReferences = (
 				76D017D024C67F830092F1A6 /* XCRemoteSwiftPackageReference "EnvironmentOverrides" */,
-				76C15C7E24C9265300045D9A /* XCRemoteSwiftPackageReference "ChartView" */,
 				76C15C8624CB99F100045D9A /* XCRemoteSwiftPackageReference "QGrid" */,
 				76CAEE5224E8EC1B0044508E /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				76E45B3524EF638F00CFACC4 /* XCRemoteSwiftPackageReference "swiftui-navigation-stack" */,
 			);
 			productRefGroup = 4A4C68572295784900EDC8C6 /* Products */;
 			projectDirPath = "";
@@ -1412,24 +1370,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A8E0E4E22CD3EB300897D38 /* INVSSimulationCell.xib in Resources */,
 				4A27022A22CD409D005DA22A /* INVSTalkWithUsViewController.xib in Resources */,
 				4A0FFE9122B2FF0300D6A33A /* INVSSignUpViewController.xib in Resources */,
-				4A8E0E4222CD3EB300897D38 /* INVSSimulationsViewController.xib in Resources */,
 				4A8E0E7422CD3F6500897D38 /* refreshAnimationPurple.json in Resources */,
 				4A8E0E7A22CD3F6500897D38 /* closePlusAnimation.json in Resources */,
-				4A4C68B62295796200EDC8C6 /* INVSSimulatorCell.xib in Resources */,
 				4A0FFE9E22B41C1B00D6A33A /* INVSResendPasswordViewController.xib in Resources */,
 				4AFF3EEA22BC00820056A167 /* GoogleServiceInfoProd.plist in Resources */,
 				4A4C68C12295796200EDC8C6 /* Images.xcassets in Resources */,
-				4AFF3EE522BB2AD90056A167 /* InvestScopioProd-Info.plist in Resources */,
 				4A8E0E7222CD3F6500897D38 /* animatedLoadingWhite.json in Resources */,
 				4A0FFEAF22B57A7200D6A33A /* INVSBlurViewController.xib in Resources */,
 				4A107A9A22A1791000A7D8D1 /* ParticipantesSTRport.csv in Resources */,
 				4A8E0E7022CD3F6500897D38 /* star.json in Resources */,
 				4A4C68DA2295796200EDC8C6 /* LaunchScreen.xib in Resources */,
 				4A8E0E6E22CD3F6500897D38 /* animatedLoadingPurple.json in Resources */,
-				4A4C68BA2295796200EDC8C6 /* INVSSimutatorViewControler.xib in Resources */,
 				4A4C68B92295796200EDC8C6 /* INVSStartViewController.xib in Resources */,
 				4A8E0E7622CD3F6500897D38 /* animatedLogo.json in Resources */,
 				4A8E0E7822CD3F6500897D38 /* animatedLogoWhite.json in Resources */,
@@ -1440,22 +1393,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A8E0E4F22CD3EB300897D38 /* INVSSimulationCell.xib in Resources */,
 				4A27022B22CD409D005DA22A /* INVSTalkWithUsViewController.xib in Resources */,
 				4AFF3EC922BB23F10056A167 /* INVSSignUpViewController.xib in Resources */,
-				4A8E0E4322CD3EB300897D38 /* INVSSimulationsViewController.xib in Resources */,
 				4A8E0E7522CD3F6500897D38 /* refreshAnimationPurple.json in Resources */,
 				4A8E0E7B22CD3F6500897D38 /* closePlusAnimation.json in Resources */,
-				4AFF3ECA22BB23F10056A167 /* INVSSimulatorCell.xib in Resources */,
 				4AFF3ECB22BB23F10056A167 /* INVSResendPasswordViewController.xib in Resources */,
-				4AFF3EE422BB28580056A167 /* InvestScopioDev-Info.plist in Resources */,
 				4AFF3ECD22BB23F10056A167 /* Images.xcassets in Resources */,
 				4AFF3ED122BB23F10056A167 /* INVSBlurViewController.xib in Resources */,
 				4A8E0E7322CD3F6500897D38 /* animatedLoadingWhite.json in Resources */,
 				4AFF3ED222BB23F10056A167 /* ParticipantesSTRport.csv in Resources */,
 				4AFF3ED322BB23F10056A167 /* LaunchScreen.xib in Resources */,
 				4A8E0E7122CD3F6500897D38 /* star.json in Resources */,
-				4AFF3ED422BB23F10056A167 /* INVSSimutatorViewControler.xib in Resources */,
 				4A8E0E6F22CD3F6500897D38 /* animatedLoadingPurple.json in Resources */,
 				4AFF3EEB22BC00860056A167 /* GoogleServiceInfoDev.plist in Resources */,
 				4AFF3ED622BB23F10056A167 /* INVSStartViewController.xib in Resources */,
@@ -1553,49 +1501,46 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AFF3EF622BE8C0A0056A167 /* INVSLogoutResponse.swift in Sources */,
-				4A22FF3322976CAF001662FC /* INVSSwitchView.swift in Sources */,
 				4A4C68D52295796200EDC8C6 /* INVSPopupMessage.swift in Sources */,
-				4A0FFE7F22AF298000D6A33A /* INVSSimulatedListWorker.swift in Sources */,
 				767DD86A24C3AC37006FDC1A /* CancelBag.swift in Sources */,
+				7611A14224F1DADD0012BE56 /* INVSSimulatedValueModel.swift in Sources */,
 				4A27022622CD409D005DA22A /* INVSTalkWithUsInteractor.swift in Sources */,
+				7611A23424F864F90012BE56 /* advanced-swiftui-animations.swift in Sources */,
 				76069E5C24C4DA96009DED56 /* LoadingButton.swift in Sources */,
 				76C15C9924CCEAE500045D9A /* SimulationsRepository.swift in Sources */,
+				7611A24E24F89B130012BE56 /* DoubleButtons.swift in Sources */,
 				76069E6224C52616009DED56 /* RoundedRadius.swift in Sources */,
 				4A45D0D222A44576001383B4 /* NSAttributedString+INVSExtension.swift in Sources */,
-				4A8E0E4C22CD3EB300897D38 /* INVSSimulationCell.swift in Sources */,
 				4AFF3E5D22B9B2170056A167 /* INVSUserModel.swift in Sources */,
 				76B2602624C5EBB7003BF4B4 /* BlurView.swift in Sources */,
 				768D8C0424C3A2F8004BEADA /* LoginViewModel.swift in Sources */,
 				4A0FFE9722B3051F00D6A33A /* INVSSignUpInteractor.swift in Sources */,
-				4A4C68B12295796200EDC8C6 /* INVSSimulatedValueModel.swift in Sources */,
+				76CAEE6824E9C8460044508E /* AppRouterView.swift in Sources */,
 				4A4C68DC2295796200EDC8C6 /* AppDelegate.swift in Sources */,
 				76D017C824C6681B0092F1A6 /* RegisterRepository.swift in Sources */,
 				4AFF3E6522B9CA520056A167 /* INVSUserRequest.swift in Sources */,
 				4A12631722A7DC7A006133E5 /* INVSConector.swift in Sources */,
 				76D017CB24C6682D0092F1A6 /* RegisterService.swift in Sources */,
 				4A0FFEB222B5890900D6A33A /* INVSAlertViewController.swift in Sources */,
-				4A8E0E4022CD3EB300897D38 /* INVSSimulationsTableviewDataSourceDelegate.swift in Sources */,
-				4A45D0D422A4463D001383B4 /* INVSSimulatedHelpViewType.swift in Sources */,
 				4A0FFE8C22B2D84F00D6A33A /* UIView+INVSExtension.swift in Sources */,
 				4A4C68C42295796200EDC8C6 /* INVSConstants.swift in Sources */,
 				4A0FFE9F22B41C1B00D6A33A /* INVSResendPasswordWorker.swift in Sources */,
+				76CAEE6224E9C6F20044508E /* UIKitTabView.swift in Sources */,
+				7611A22524F5EDFD0012BE56 /* ChartDataBaseBridge.swift in Sources */,
 				4A27022C22CD409D005DA22A /* INSEvaluateModel.swift in Sources */,
+				7611A24B24F897300012BE56 /* SimulationCreationViewModel.swift in Sources */,
 				4A0FFEA122B41C1B00D6A33A /* INVSResendPasswordViewController.swift in Sources */,
 				4A4C68CD2295796200EDC8C6 /* UIFont+INVSExtension.swift in Sources */,
-				4A8E0E4422CD3EB300897D38 /* INVSSimulationsInteractor.swift in Sources */,
-				4A8E0E4A22CD3EB300897D38 /* INVSSimulationsWorker.swift in Sources */,
+				76E458A724E9FDE300CFACC4 /* SimulationDetailView.swift in Sources */,
 				4A27022422CD409D005DA22A /* INVSTalkWithUsWorker.swift in Sources */,
+				7611A13F24F1DAB50012BE56 /* INVSSimulatorModel.swift in Sources */,
 				767DD87424C3C800006FDC1A /* Store.swift in Sources */,
-				4AFF3EFA22BEB8910056A167 /* INVSSimulatorHelpView.swift in Sources */,
+				76CAEE5B24E9BD250044508E /* SimulationCell.swift in Sources */,
 				4A4C68C32295796200EDC8C6 /* INVSPresentBaseViewController.swift in Sources */,
-				4A2B05A9229DF30E0024F83A /* INVSSimulatedTotalChartView.swift in Sources */,
-				4A4C68B42295796200EDC8C6 /* INVSSimulatedListPresenter.swift in Sources */,
 				4A12631D22A7F1BB006133E5 /* INVSVersionModel.swift in Sources */,
-				4A2B05AB229E02E60024F83A /* INVSSimulatedRescueChartView.swift in Sources */,
 				4A0FFEAE22B57A7200D6A33A /* INVSBlurViewController.swift in Sources */,
 				4A27022E22CD409D005DA22A /* INVSTalkWithUsPresenter.swift in Sources */,
 				76C15CA024CE011800045D9A /* RefreshRepository.swift in Sources */,
-				4A4C68B72295796200EDC8C6 /* INVSSimulatorCell.swift in Sources */,
 				4AFF3F0122BED1B20056A167 /* INVSBiometricsHelpers.swift in Sources */,
 				4A4C68C92295796200EDC8C6 /* UIColor+INVSPaletteColors.swift in Sources */,
 				4A0FFE8422B1160400D6A33A /* INVSLoginInteractor.swift in Sources */,
@@ -1605,23 +1550,23 @@
 				768D8BF024C24490004BEADA /* LoginView.swift in Sources */,
 				4A4C68D72295796200EDC8C6 /* INVSKeyChainWrapper.swift in Sources */,
 				4A27AA99229F6E4D00C45CC5 /* INVSSession.swift in Sources */,
-				4A121696229AFB4B00759948 /* INVSSimulatedChartsPresenter.swift in Sources */,
 				4A4C68CE2295796200EDC8C6 /* UIStackview+INVSExtension.swift in Sources */,
-				4A4C68B22295796200EDC8C6 /* INVSSimulatedListViewController.swift in Sources */,
+				76CAEE6C24E9D7880044508E /* TalkWithUsView.swift in Sources */,
+				7611A21A24F495D30012BE56 /* LineChartBridge.swift in Sources */,
+				76CAEE6024E9C6F20044508E /* zExample.swift in Sources */,
 				4A27AA96229F3F9F00C45CC5 /* INVSStartInteractor.swift in Sources */,
+				7611A23E24F888BE0012BE56 /* AnimatedText.swift in Sources */,
 				4A12631422A7DA99006133E5 /* BankModel.swift in Sources */,
 				7698A68D24E347C500A93964 /* SUIJEWLoadingView.swift in Sources */,
 				768D8BE924C22B35004BEADA /* SFSymbols+Extensions.swift in Sources */,
 				4A4C68D22295796200EDC8C6 /* String+INVSExtension.swift in Sources */,
-				4A22FF382297837B001662FC /* INVSSimulatedContainerViewController.swift in Sources */,
-				4A4C68BE2295796200EDC8C6 /* INVSSimulatorWorker.swift in Sources */,
 				4A0FFEA722B4729100D6A33A /* INVSLoadingButton.swift in Sources */,
 				767DD86524C3AC14006FDC1A /* WebRepository.swift in Sources */,
 				767DD86324C3AC14006FDC1A /* NetworkingHelpers.swift in Sources */,
 				4A0FFE8A22B1166200D6A33A /* INVSLoginWorker.swift in Sources */,
-				4A4C68AF2295796200EDC8C6 /* INVSSimulatorTableviewDataSourceDelegate.swift in Sources */,
 				4AFF3EFE22BEC8660056A167 /* INVSRefreshTokenRequest.swift in Sources */,
 				4AFF3E6022B9B32E0056A167 /* INVSCrypto.swift in Sources */,
+				7611A22F24F5EEBA0012BE56 /* LineChartDataSetBaseBridge.swift in Sources */,
 				4A4C68C82295796200EDC8C6 /* INVSKeyboardToolbar.swift in Sources */,
 				4A4C68C72295796200EDC8C6 /* INVSFloatingTextFieldType.swift in Sources */,
 				4A4C68D82295796200EDC8C6 /* INVSCodeView.swift in Sources */,
@@ -1629,24 +1574,24 @@
 				4AFF3E6822BA79E90056A167 /* INVSAccessModel.swift in Sources */,
 				4A0FFE9022B2FF0300D6A33A /* INVSSignUpViewController.swift in Sources */,
 				4AFF3EF122BD89990056A167 /* INVSBiometrics.swift in Sources */,
-				4A4C68B02295796200EDC8C6 /* INVSSimulatedListInteractor.swift in Sources */,
 				4A4C68D42295796200EDC8C6 /* INVSPopupMessageType.swift in Sources */,
 				768D8BFE24C39370004BEADA /* Text+Extensions.swift in Sources */,
 				76069E6524C5D5A3009DED56 /* Reachability.swift in Sources */,
-				4A4C68BD2295796200EDC8C6 /* INVSSimulatorPresenter.swift in Sources */,
 				76D017CE24C66C4A0092F1A6 /* RegisterViewModel.swift in Sources */,
 				4A0FFE9622B3051F00D6A33A /* INVSSignUpWorker.swift in Sources */,
 				768D8BF624C34023004BEADA /* KeyboardObserver.swift in Sources */,
 				4A27022822CD409D005DA22A /* INVSTalkWithUsViewController.swift in Sources */,
 				76C15C9B24CCEAE500045D9A /* SimulationsService.swift in Sources */,
 				7698A68224E1A93D00A93964 /* AccessRepository.swift in Sources */,
+				7611A21E24F4969E0012BE56 /* BalloonMarker.swift in Sources */,
 				4A8E0E6522CD3F1E00897D38 /* INVSConnectorErrorProtocol.swift in Sources */,
+				76E45B3124ECB54200CFACC4 /* SimulationDetailRepository.swift in Sources */,
 				4A27AA9B229F745C00C45CC5 /* INVSStartPresenter.swift in Sources */,
 				4A4C68C62295796200EDC8C6 /* INVSFloatingTextFieldValueType.swift in Sources */,
+				7611A24524F8941D0012BE56 /* SimulationCreationViewType.swift in Sources */,
 				4A4C68CB2295796200EDC8C6 /* UIImage+INVSExtension.swift in Sources */,
 				7698A68524E1B06900A93964 /* HTTPEntities.swift in Sources */,
 				4A12631222A7DA7A006133E5 /* MarketModel.swift in Sources */,
-				4A107AA222A3279600A7D8D1 /* INVSSimulatorHelpView.swift in Sources */,
 				7698A68F24E347C500A93964 /* SUIJewGenericView.swift in Sources */,
 				4A4C68D02295796200EDC8C6 /* CAShapeLayer+INVSExtension.swift in Sources */,
 				4A0FFEA222B41C1B00D6A33A /* INVSResendPasswordInteractor.swift in Sources */,
@@ -1657,27 +1602,20 @@
 				767DD86E24C3AE7B006FDC1A /* LoginRepository.swift in Sources */,
 				4A2B05A6229C19220024F83A /* INVSStartWorker.swift in Sources */,
 				4A4C68D12295796200EDC8C6 /* Double+INVSExtension.swift in Sources */,
+				76E458AC24EA02B500CFACC4 /* SimulationDetailViewModel.swift in Sources */,
 				4A0FFE9522B3051F00D6A33A /* INVSSignUpPresenter.swift in Sources */,
 				76069E5924C3EED6009DED56 /* LoadingView.swift in Sources */,
 				4A0FFEA522B438B000D6A33A /* FirebaseErrorHandler.swift in Sources */,
 				4A4C68C52295796200EDC8C6 /* INVSFloatingTextField.swift in Sources */,
-				4A22FF3C22980B89001662FC /* INVSSimulatedChartsViewController.swift in Sources */,
 				4A0FFE8222B115E400D6A33A /* INVSLoginViewController.swift in Sources */,
 				4A4C68CA2295796200EDC8C6 /* UIButton+INVSExtension.swift in Sources */,
 				4A4C68CC2295796200EDC8C6 /* UIViewController+INVSExtension.swift in Sources */,
-				4A4C68B52295796200EDC8C6 /* INVSSimulatorHeaderView.swift in Sources */,
-				4A4C68BB2295796200EDC8C6 /* INVSSimulatorModel.swift in Sources */,
 				768D8BF924C34CB4004BEADA /* FloatingTextField.swift in Sources */,
 				4A4C68B82295796200EDC8C6 /* INVSStartViewController.swift in Sources */,
-				4A121692229AE96100759948 /* BalloonMarker.swift in Sources */,
-				4A8E0E4622CD3EB300897D38 /* INVSSimulationsViewController.swift in Sources */,
 				768042FF24D63DBE00AF56BA /* LoginEntities.swift in Sources */,
 				4A0FFEA022B41C1B00D6A33A /* INVSResendPasswordPresenter.swift in Sources */,
 				767DD86124C3AC14006FDC1A /* Loadable.swift in Sources */,
-				4A8E0E4822CD3EB300897D38 /* INVSDeleteSimulationResponse.swift in Sources */,
-				4A4C68BC2295796200EDC8C6 /* INVSSimutatorViewControler.swift in Sources */,
 				76CAEE5824E9B7D80044508E /* WorkingAroundSUI.swift in Sources */,
-				4A121694229AFB3D00759948 /* INVSSimulatedChartsInteractor.swift in Sources */,
 				76C15C7C24C91B6800045D9A /* SimulationsView.swift in Sources */,
 				4AFF3E6322B9BC360056A167 /* INVSSignUpModel.swift in Sources */,
 				4A4C68D62295796200EDC8C6 /* GradientView.swift in Sources */,
@@ -1686,10 +1624,12 @@
 				76C15C9D24CCEAE500045D9A /* SimulationsViewModel.swift in Sources */,
 				76069E5F24C525FD009DED56 /* PopupView.swift in Sources */,
 				768D8BE324C208BF004BEADA /* SceneDelegate.swift in Sources */,
-				4A8E0E3E22CD3EB300897D38 /* INVSSimulationsPresenter.swift in Sources */,
+				7611A22824F5EE210012BE56 /* ChartInterativeDataBridge.swift in Sources */,
+				76E45B3324ECB54200CFACC4 /* SimulationDetailService.swift in Sources */,
+				7611A22B24F5EE5F0012BE56 /* ChartInformationDataBridge.swift in Sources */,
 				76C15C7324C7A80500045D9A /* ResendPasswordService.swift in Sources */,
-				4A4C68BF2295796200EDC8C6 /* INVSSimulatorInteractor.swift in Sources */,
 				4AFF3F0422BF12120056A167 /* INVSConnectorHelpers.swift in Sources */,
+				7611A24224F894100012BE56 /* SimulationCreationView.swift in Sources */,
 				767DD86724C3AC14006FDC1A /* APICall.swift in Sources */,
 				4A4C68C02295796200EDC8C6 /* INVSRouter.swift in Sources */,
 			);
@@ -1700,49 +1640,46 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AFF3EF722BE8C0D0056A167 /* INVSLogoutResponse.swift in Sources */,
-				4AFF3E7422BB23F10056A167 /* INVSSwitchView.swift in Sources */,
 				4AFF3E7522BB23F10056A167 /* INVSPopupMessage.swift in Sources */,
-				4AFF3E7622BB23F10056A167 /* INVSSimulatedListWorker.swift in Sources */,
 				767DD86B24C3AC37006FDC1A /* CancelBag.swift in Sources */,
+				7611A14324F1DADD0012BE56 /* INVSSimulatedValueModel.swift in Sources */,
 				4A27022722CD409D005DA22A /* INVSTalkWithUsInteractor.swift in Sources */,
+				7611A23524F864F90012BE56 /* advanced-swiftui-animations.swift in Sources */,
 				76069E5D24C4DA96009DED56 /* LoadingButton.swift in Sources */,
 				76C15C9A24CCEAE500045D9A /* SimulationsRepository.swift in Sources */,
+				7611A24F24F89B130012BE56 /* DoubleButtons.swift in Sources */,
 				76069E6324C52616009DED56 /* RoundedRadius.swift in Sources */,
 				4AFF3E7722BB23F10056A167 /* NSAttributedString+INVSExtension.swift in Sources */,
-				4A8E0E4D22CD3EB300897D38 /* INVSSimulationCell.swift in Sources */,
 				4AFF3E7822BB23F10056A167 /* INVSUserModel.swift in Sources */,
 				76B2602724C5EBB7003BF4B4 /* BlurView.swift in Sources */,
 				768D8C0524C3A2F8004BEADA /* LoginViewModel.swift in Sources */,
 				4AFF3E7922BB23F10056A167 /* INVSSignUpInteractor.swift in Sources */,
-				4AFF3E7A22BB23F10056A167 /* INVSSimulatedValueModel.swift in Sources */,
+				76CAEE6924E9C8460044508E /* AppRouterView.swift in Sources */,
 				4AFF3E7B22BB23F10056A167 /* AppDelegate.swift in Sources */,
 				76D017C924C6681B0092F1A6 /* RegisterRepository.swift in Sources */,
 				4AFF3E7C22BB23F10056A167 /* INVSUserRequest.swift in Sources */,
 				4AFF3E7D22BB23F10056A167 /* INVSConector.swift in Sources */,
 				76D017CC24C6682D0092F1A6 /* RegisterService.swift in Sources */,
 				4AFF3E7E22BB23F10056A167 /* INVSAlertViewController.swift in Sources */,
-				4A8E0E4122CD3EB300897D38 /* INVSSimulationsTableviewDataSourceDelegate.swift in Sources */,
-				4AFF3E7F22BB23F10056A167 /* INVSSimulatedHelpViewType.swift in Sources */,
 				4AFF3E8022BB23F10056A167 /* UIView+INVSExtension.swift in Sources */,
 				4AFF3E8122BB23F10056A167 /* INVSConstants.swift in Sources */,
 				4AFF3E8222BB23F10056A167 /* INVSResendPasswordWorker.swift in Sources */,
+				76CAEE6324E9C6F20044508E /* UIKitTabView.swift in Sources */,
+				7611A22624F5EDFD0012BE56 /* ChartDataBaseBridge.swift in Sources */,
 				4A27022D22CD409D005DA22A /* INSEvaluateModel.swift in Sources */,
+				7611A24C24F897300012BE56 /* SimulationCreationViewModel.swift in Sources */,
 				4AFF3E8322BB23F10056A167 /* INVSResendPasswordViewController.swift in Sources */,
 				4AFF3E8422BB23F10056A167 /* UIFont+INVSExtension.swift in Sources */,
-				4A8E0E4522CD3EB300897D38 /* INVSSimulationsInteractor.swift in Sources */,
-				4A8E0E4B22CD3EB300897D38 /* INVSSimulationsWorker.swift in Sources */,
+				76E458A824E9FDE300CFACC4 /* SimulationDetailView.swift in Sources */,
 				4A27022522CD409D005DA22A /* INVSTalkWithUsWorker.swift in Sources */,
+				7611A14024F1DAB50012BE56 /* INVSSimulatorModel.swift in Sources */,
 				767DD87524C3C800006FDC1A /* Store.swift in Sources */,
-				4AFF3EFB22BEB8910056A167 /* INVSSimulatorHelpView.swift in Sources */,
+				76CAEE5C24E9BD250044508E /* SimulationCell.swift in Sources */,
 				4AFF3E8522BB23F10056A167 /* INVSPresentBaseViewController.swift in Sources */,
-				4AFF3E8622BB23F10056A167 /* INVSSimulatedTotalChartView.swift in Sources */,
-				4AFF3E8722BB23F10056A167 /* INVSSimulatedListPresenter.swift in Sources */,
 				4AFF3E8822BB23F10056A167 /* INVSVersionModel.swift in Sources */,
-				4AFF3E8922BB23F10056A167 /* INVSSimulatedRescueChartView.swift in Sources */,
 				4AFF3E8A22BB23F10056A167 /* INVSBlurViewController.swift in Sources */,
 				4A27022F22CD409D005DA22A /* INVSTalkWithUsPresenter.swift in Sources */,
 				76C15CA124CE011800045D9A /* RefreshRepository.swift in Sources */,
-				4AFF3E8B22BB23F10056A167 /* INVSSimulatorCell.swift in Sources */,
 				4AFF3F0222BED1B20056A167 /* INVSBiometricsHelpers.swift in Sources */,
 				4AFF3E8C22BB23F10056A167 /* UIColor+INVSPaletteColors.swift in Sources */,
 				4AFF3E8D22BB23F10056A167 /* INVSLoginInteractor.swift in Sources */,
@@ -1752,23 +1689,23 @@
 				768D8BF124C24490004BEADA /* LoginView.swift in Sources */,
 				4AFF3E9022BB23F10056A167 /* INVSKeyChainWrapper.swift in Sources */,
 				4AFF3E9122BB23F10056A167 /* INVSSession.swift in Sources */,
-				4AFF3E9222BB23F10056A167 /* INVSSimulatedChartsPresenter.swift in Sources */,
 				4AFF3E9322BB23F10056A167 /* UIStackview+INVSExtension.swift in Sources */,
-				4AFF3E9422BB23F10056A167 /* INVSSimulatedListViewController.swift in Sources */,
+				76CAEE6D24E9D7880044508E /* TalkWithUsView.swift in Sources */,
+				7611A21B24F495D30012BE56 /* LineChartBridge.swift in Sources */,
+				76CAEE6124E9C6F20044508E /* zExample.swift in Sources */,
 				4AFF3E9522BB23F10056A167 /* INVSStartInteractor.swift in Sources */,
+				7611A23F24F888BE0012BE56 /* AnimatedText.swift in Sources */,
 				4AFF3E9622BB23F10056A167 /* BankModel.swift in Sources */,
 				7698A68E24E347C500A93964 /* SUIJEWLoadingView.swift in Sources */,
 				768D8BEA24C22B35004BEADA /* SFSymbols+Extensions.swift in Sources */,
 				4AFF3E9722BB23F10056A167 /* String+INVSExtension.swift in Sources */,
-				4AFF3E9822BB23F10056A167 /* INVSSimulatedContainerViewController.swift in Sources */,
-				4AFF3E9922BB23F10056A167 /* INVSSimulatorWorker.swift in Sources */,
 				4AFF3E9A22BB23F10056A167 /* INVSLoadingButton.swift in Sources */,
 				767DD86624C3AC14006FDC1A /* WebRepository.swift in Sources */,
 				767DD86424C3AC14006FDC1A /* NetworkingHelpers.swift in Sources */,
 				4AFF3E9B22BB23F10056A167 /* INVSLoginWorker.swift in Sources */,
-				4AFF3E9C22BB23F10056A167 /* INVSSimulatorTableviewDataSourceDelegate.swift in Sources */,
 				4AFF3EFF22BEC8660056A167 /* INVSRefreshTokenRequest.swift in Sources */,
 				4AFF3E9D22BB23F10056A167 /* INVSCrypto.swift in Sources */,
+				7611A23024F5EEBA0012BE56 /* LineChartDataSetBaseBridge.swift in Sources */,
 				4AFF3E9E22BB23F10056A167 /* INVSKeyboardToolbar.swift in Sources */,
 				4AFF3EA022BB23F10056A167 /* INVSFloatingTextFieldType.swift in Sources */,
 				4AFF3EA122BB23F10056A167 /* INVSCodeView.swift in Sources */,
@@ -1776,24 +1713,24 @@
 				4AFF3EA222BB23F10056A167 /* INVSAccessModel.swift in Sources */,
 				4AFF3EA322BB23F10056A167 /* INVSSignUpViewController.swift in Sources */,
 				4AFF3EF222BD8A1E0056A167 /* INVSBiometrics.swift in Sources */,
-				4AFF3EA422BB23F10056A167 /* INVSSimulatedListInteractor.swift in Sources */,
 				4AFF3EA522BB23F10056A167 /* INVSPopupMessageType.swift in Sources */,
 				768D8BFF24C39370004BEADA /* Text+Extensions.swift in Sources */,
 				76069E6624C5D5A4009DED56 /* Reachability.swift in Sources */,
-				4AFF3EA622BB23F10056A167 /* INVSSimulatorPresenter.swift in Sources */,
 				76D017CF24C66C4A0092F1A6 /* RegisterViewModel.swift in Sources */,
 				4AFF3EA722BB23F10056A167 /* INVSSignUpWorker.swift in Sources */,
 				768D8BF724C34023004BEADA /* KeyboardObserver.swift in Sources */,
 				4A27022922CD409D005DA22A /* INVSTalkWithUsViewController.swift in Sources */,
 				76C15C9C24CCEAE500045D9A /* SimulationsService.swift in Sources */,
 				7698A68324E1A93D00A93964 /* AccessRepository.swift in Sources */,
+				7611A21F24F4969E0012BE56 /* BalloonMarker.swift in Sources */,
 				4A8E0E6622CD3F1E00897D38 /* INVSConnectorErrorProtocol.swift in Sources */,
+				76E45B3224ECB54200CFACC4 /* SimulationDetailRepository.swift in Sources */,
 				4AFF3EA822BB23F10056A167 /* INVSStartPresenter.swift in Sources */,
 				4AFF3EAA22BB23F10056A167 /* INVSFloatingTextFieldValueType.swift in Sources */,
+				7611A24624F8941D0012BE56 /* SimulationCreationViewType.swift in Sources */,
 				4AFF3EAB22BB23F10056A167 /* UIImage+INVSExtension.swift in Sources */,
 				7698A68624E1B06900A93964 /* HTTPEntities.swift in Sources */,
 				4AFF3EAC22BB23F10056A167 /* MarketModel.swift in Sources */,
-				4AFF3EAD22BB23F10056A167 /* INVSSimulatorHelpView.swift in Sources */,
 				7698A69024E347C500A93964 /* SUIJewGenericView.swift in Sources */,
 				4AFF3EAE22BB23F10056A167 /* CAShapeLayer+INVSExtension.swift in Sources */,
 				4AFF3EAF22BB23F10056A167 /* INVSResendPasswordInteractor.swift in Sources */,
@@ -1804,27 +1741,20 @@
 				767DD86F24C3AE7B006FDC1A /* LoginRepository.swift in Sources */,
 				4AFF3EB122BB23F10056A167 /* INVSStartWorker.swift in Sources */,
 				4AFF3EB222BB23F10056A167 /* Double+INVSExtension.swift in Sources */,
+				76E458AD24EA02B500CFACC4 /* SimulationDetailViewModel.swift in Sources */,
 				4AFF3EB322BB23F10056A167 /* INVSSignUpPresenter.swift in Sources */,
 				76069E5A24C3EED6009DED56 /* LoadingView.swift in Sources */,
 				4AFF3EB422BB23F10056A167 /* FirebaseErrorHandler.swift in Sources */,
 				4AFF3EB522BB23F10056A167 /* INVSFloatingTextField.swift in Sources */,
-				4AFF3EB622BB23F10056A167 /* INVSSimulatedChartsViewController.swift in Sources */,
 				4AFF3EB722BB23F10056A167 /* INVSLoginViewController.swift in Sources */,
 				4AFF3EB822BB23F10056A167 /* UIButton+INVSExtension.swift in Sources */,
 				4AFF3EB922BB23F10056A167 /* UIViewController+INVSExtension.swift in Sources */,
-				4AFF3EBA22BB23F10056A167 /* INVSSimulatorHeaderView.swift in Sources */,
-				4AFF3EBB22BB23F10056A167 /* INVSSimulatorModel.swift in Sources */,
 				768D8BFA24C34CB4004BEADA /* FloatingTextField.swift in Sources */,
 				4AFF3EBC22BB23F10056A167 /* INVSStartViewController.swift in Sources */,
-				4AFF3EBD22BB23F10056A167 /* BalloonMarker.swift in Sources */,
-				4A8E0E4722CD3EB300897D38 /* INVSSimulationsViewController.swift in Sources */,
 				7680430024D63DBE00AF56BA /* LoginEntities.swift in Sources */,
 				4AFF3EBE22BB23F10056A167 /* INVSResendPasswordPresenter.swift in Sources */,
 				767DD86224C3AC14006FDC1A /* Loadable.swift in Sources */,
-				4A8E0E4922CD3EB300897D38 /* INVSDeleteSimulationResponse.swift in Sources */,
-				4AFF3EBF22BB23F10056A167 /* INVSSimutatorViewControler.swift in Sources */,
 				76CAEE5924E9B8170044508E /* WorkingAroundSUI.swift in Sources */,
-				4AFF3EC022BB23F10056A167 /* INVSSimulatedChartsInteractor.swift in Sources */,
 				76C15C7D24C91B6800045D9A /* SimulationsView.swift in Sources */,
 				4AFF3EC122BB23F10056A167 /* INVSSignUpModel.swift in Sources */,
 				4AFF3EC222BB23F10056A167 /* GradientView.swift in Sources */,
@@ -1833,10 +1763,12 @@
 				76C15C9E24CCEAE500045D9A /* SimulationsViewModel.swift in Sources */,
 				76069E6024C525FD009DED56 /* PopupView.swift in Sources */,
 				768D8BE424C208BF004BEADA /* SceneDelegate.swift in Sources */,
-				4A8E0E3F22CD3EB300897D38 /* INVSSimulationsPresenter.swift in Sources */,
+				7611A22924F5EE210012BE56 /* ChartInterativeDataBridge.swift in Sources */,
+				76E45B3424ECB54200CFACC4 /* SimulationDetailService.swift in Sources */,
+				7611A22C24F5EE5F0012BE56 /* ChartInformationDataBridge.swift in Sources */,
 				76C15C7424C7A80500045D9A /* ResendPasswordService.swift in Sources */,
-				4AFF3EC422BB23F10056A167 /* INVSSimulatorInteractor.swift in Sources */,
 				4AFF3F0522BF12670056A167 /* INVSConnectorHelpers.swift in Sources */,
+				7611A24324F894100012BE56 /* SimulationCreationView.swift in Sources */,
 				767DD86824C3AC14006FDC1A /* APICall.swift in Sources */,
 				4AFF3EC522BB23F10056A167 /* INVSRouter.swift in Sources */,
 			);
@@ -2131,14 +2063,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		76C15C7E24C9265300045D9A /* XCRemoteSwiftPackageReference "ChartView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppPear/ChartView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.5.3;
-			};
-		};
 		76C15C8624CB99F100045D9A /* XCRemoteSwiftPackageReference "QGrid" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Q-Mobile/QGrid";
@@ -2163,19 +2087,17 @@
 				minimumVersion = 0.0.2;
 			};
 		};
+		76E45B3524EF638F00CFACC4 /* XCRemoteSwiftPackageReference "swiftui-navigation-stack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/biobeats/swiftui-navigation-stack.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		76C15C7F24C9265300045D9A /* SwiftUICharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 76C15C7E24C9265300045D9A /* XCRemoteSwiftPackageReference "ChartView" */;
-			productName = SwiftUICharts;
-		};
-		76C15C8124C9267300045D9A /* SwiftUICharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 76C15C7E24C9265300045D9A /* XCRemoteSwiftPackageReference "ChartView" */;
-			productName = SwiftUICharts;
-		};
 		76C15C8724CB99F100045D9A /* QGrid */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 76C15C8624CB99F100045D9A /* XCRemoteSwiftPackageReference "QGrid" */;
@@ -2205,6 +2127,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 76D017D024C67F830092F1A6 /* XCRemoteSwiftPackageReference "EnvironmentOverrides" */;
 			productName = EnvironmentOverrides;
+		};
+		76E45B3624EF638F00CFACC4 /* NavigationStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76E45B3524EF638F00CFACC4 /* XCRemoteSwiftPackageReference "swiftui-navigation-stack" */;
+			productName = NavigationStack;
+		};
+		76E45B3824EF63A300CFACC4 /* NavigationStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76E45B3524EF638F00CFACC4 /* XCRemoteSwiftPackageReference "swiftui-navigation-stack" */;
+			productName = NavigationStack;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

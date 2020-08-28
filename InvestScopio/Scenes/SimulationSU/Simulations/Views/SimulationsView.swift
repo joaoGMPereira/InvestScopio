@@ -39,7 +39,7 @@ struct SimulationsView: View {
                 } else {
                     LitSimulations(viewModel: viewModel, detailViewModel: detailViewModel)
                 }
-                BottomButtons(firstCompletion: {
+                DoubleButtons(firstIsLoading: .constant(false), secondIsLoading: .constant(false), firstModel: .init(title: "Limpar Histórico", color: Color("accent"), isFill: false), secondModel: .init(title: "Nova Simulação", color: Color("accent"), isFill: true), firstCompletion: {
                     self.settings.popup = AppPopupSettings(message: "Atenção\nTODO LIMPAR HISTORICO", textColor: .black, backgroundColor: Color(.JEWLightDefault()), position: .top, show: true)
                     
                 }) {
@@ -111,19 +111,6 @@ struct LitSimulations: View {
                 }
             }
         }
-    }
-}
-
-struct BottomButtons: View {
-    var firstCompletion: () -> Void
-    var secondCompletion: () -> Void
-    var body: some View {
-        HStack(spacing: 8) {
-            LoadingButton(isLoading: .constant(false), title: "Limpar Histórico", color: Color("accent"), isFill: false, action: firstCompletion)
-            LoadingButton(isLoading: .constant(false), title: "Nova Simulação", color: Color("accent"), isFill: true, action: secondCompletion)
-        }
-        .padding(.horizontal, 16)
-        .padding(.bottom, 8)
     }
 }
 

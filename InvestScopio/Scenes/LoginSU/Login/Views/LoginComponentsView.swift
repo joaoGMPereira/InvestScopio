@@ -58,7 +58,7 @@ struct LoginFormView: View {
             }
         }
         .background(GeometryGetter(rect: self.$rects[0]))
-        .animation(.default)
+        .animation(.none)
         .frame(height: 320.0)
         .listStyle(GroupedListStyle())
         .environment(\.horizontalSizeClass, .regular)
@@ -79,10 +79,10 @@ struct BottomButtonsView: View {
     var body: some View {
         VStack(spacing: 8) {
             HStack {
-                LoadingButton(isLoading: .constant(false), title: "Cadastrar", color: Color("accent"), isFill: false) {
+                LoadingButton(isLoading: .constant(false), model: LoadingButtonModel(title: "Cadastrar", color: Color("accent"), isFill: false)) {
                     self.didRegisterAction()
                 }
-                LoadingButton(isLoading: $isLoading, title: "Login", color: Color("accent"), isFill: true) {
+                LoadingButton(isLoading: $isLoading, model: LoadingButtonModel(title: "Login", color: Color("accent"), isFill: true)) {
                     self.didLoginAction()
                 }
             }.padding(.horizontal)

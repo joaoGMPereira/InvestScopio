@@ -28,7 +28,7 @@ extension NSAttributedString {
     }
     
     static func set(withText text: String, andFont font:UIFont) -> NSAttributedString {
-        return NSAttributedString.init(string: text, attributes: [NSAttributedString.Key.font : font])
+        return NSAttributedString.init(string: text, attributes: [NSAttributedString.Key.font : font, NSAttributedString.Key.foregroundColor: UIColor.label])
     }
     
     

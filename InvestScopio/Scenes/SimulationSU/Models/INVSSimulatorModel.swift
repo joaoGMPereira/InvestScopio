@@ -46,6 +46,93 @@ struct INVSSimulatorModel: JSONAble, Codable, Identifiable, Hashable {
         return _id
     }
     var _id: String?
+    
+    func generateDynamicContent() -> [SectionModel] {
+        var sections = [SectionModel]()
+        var secondSection = SectionModel()
+        var thirdSection = SectionModel()
+        var fourthSection = SectionModel()
+        
+        sections.append(SectionModel(firstKey: "Valor Inicial", firstValue: initialValue.currencyFormat(), secondKey: "Total de Meses", secondValue: "\(totalMonths)"))
+        
+        secondSection.firstKey = "Taxa de Juros"
+        secondSection.firstValue = interestRate.currencyFormat().percentFormat()
+        
+        if monthValue != .zero {
+            secondSection.secondKey = "Valor Mensal"
+            secondSection.secondValue = monthValue.currencyFormat()
+        }
+        
+        if initialMonthlyRescue != .zero {
+            if secondSection.secondKey == nil {
+                secondSection.secondKey = "Valor Inicial de Resgate"
+                secondSection.secondValue = initialMonthlyRescue.currencyFormat()
+            } else {
+                thirdSection.firstKey = "Valor Inicial de Resgate"
+                thirdSection.firstValue = initialMonthlyRescue.currencyFormat()
+            }
+        }
+        
+        if increaseRescue != .zero {
+            if secondSection.secondKey == nil {
+                secondSection.secondKey = "Acréscimo no Resgate"
+                secondSection.secondValue = increaseRescue.currencyFormat()
+            } else if thirdSection.firstKey.isEmpty {
+                thirdSection.firstKey = "Acréscimo no Resgate"
+                thirdSection.firstValue = increaseRescue.currencyFormat()
+            } else if thirdSection.secondKey == nil {
+                thirdSection.secondKey = "Acréscimo no Resgate"
+                thirdSection.secondValue = increaseRescue.currencyFormat()
+            } else {
+                fourthSection.firstKey = "Acréscimo no Resgate"
+                fourthSection.firstValue = increaseRescue.currencyFormat()
+            }
+        }
+        if goalIncreaseRescue != .zero {
+            if secondSection.secondKey == nil {
+                secondSection.secondKey = "Próximo Objetivo"
+                secondSection.secondValue = goalIncreaseRescue.currencyFormat()
+            } else if thirdSection.firstKey.isEmpty {
+                thirdSection.firstKey = "Próximo Objetivo"
+                thirdSection.firstValue = goalIncreaseRescue.currencyFormat()
+            } else if thirdSection.secondKey == nil {
+                thirdSection.secondKey = "Próximo Objetivo"
+                thirdSection.secondValue = goalIncreaseRescue.currencyFormat()
+            } else if fourthSection.firstKey.isEmpty {
+                fourthSection.firstKey = "Próximo Objetivo"
+                fourthSection.firstValue = goalIncreaseRescue.currencyFormat()
+            } else {
+                fourthSection.secondKey = "Próximo Objetivo"
+                fourthSection.secondValue = goalIncreaseRescue.currencyFormat()
+            }
+        }
+        
+        if !secondSection.firstKey.isEmpty {
+            sections.append(secondSection)
+        }
+        if !thirdSection.firstKey.isEmpty {
+            sections.append(thirdSection)
+        }
+        
+        if !fourthSection.firstKey.isEmpty {
+            sections.append(fourthSection)
+        }
+        return sections
+    }
+}
+
+struct SectionModel: Identifiable {
+    var id: UUID = UUID()
+    var firstKey: String = String()
+    var firstValue: String = String()
+    var secondKey: String? = nil
+    var secondValue: String? = nil
+    var hasFirstSection: Bool {
+        return firstKey != String()
+    }
+    var hasSecondSection: Bool {
+        return secondKey != nil
+    }
 }
 
 
