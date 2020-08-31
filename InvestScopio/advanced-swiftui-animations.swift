@@ -166,7 +166,8 @@ struct Example1PolygonShape: Shape {
             if i == 0 {
                 path.move(to: pt) // move to first vertex
             } else {
-                path.addLine(to: pt) // draw line to next vertex
+                path.addLine(to: pt)
+                // draw line to next vertex
             }
         }
         

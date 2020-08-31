@@ -11,12 +11,12 @@
         }
       },
       {
-        "package": "QGrid",
-        "repositoryURL": "https://github.com/Q-Mobile/QGrid",
+        "package": "StepperView",
+        "repositoryURL": "https://github.com/badrinathvm/StepperView.git",
         "state": {
           "branch": null,
-          "revision": "804e59f8cb9f66b226685e9369fb82029742b83a",
-          "version": "0.1.4"
+          "revision": "097e5099f8a79cf7c73f2dbe52638c60a67dd143",
+          "version": "1.5.2"
         }
       },
       {

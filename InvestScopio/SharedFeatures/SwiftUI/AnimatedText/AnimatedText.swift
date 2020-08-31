@@ -24,9 +24,14 @@ struct AnimatedText: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: ZCAnimatedLabel, context: Context) {
-        uiView.attributedString = message
-        uiView.startAppearAnimation()
-        size(uiView.intrinsicContentSize)
+        if uiView.attributedString != message {
+            uiView.attributedString = message
+            uiView.startAppearAnimation()
+            if message.string.isEmpty {
+                uiView.layoutTool.clean()
+            }
+            size(message.string.isEmpty ? .zero : uiView.intrinsicContentSize)
+        }
     }
     
     func makeCoordinator() -> Coordinator {

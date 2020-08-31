@@ -20,7 +20,7 @@ class LoginViewModel: ObservableObject {
     
     let loginService: LoginServiceProtocol
     var email = String()
-    var password = String()
+    var password = "123456"
     var saveData = false
     var completion: (() -> Void)?
     var failure: ((AppPopupSettings) -> Void)?

@@ -231,6 +231,14 @@
 		767DD87524C3C800006FDC1A /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767DD87324C3C800006FDC1A /* Store.swift */; };
 		768042FF24D63DBE00AF56BA /* LoginEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768042FE24D63DBE00AF56BA /* LoginEntities.swift */; };
 		7680430024D63DBE00AF56BA /* LoginEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768042FE24D63DBE00AF56BA /* LoginEntities.swift */; };
+		76843B8A24FD2C780048F6B3 /* JewSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76843B8924FD2C780048F6B3 /* JewSegmentedControl.swift */; };
+		76843B8B24FD2C780048F6B3 /* JewSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76843B8924FD2C780048F6B3 /* JewSegmentedControl.swift */; };
+		768B341024FAF7E600D80BDE /* SplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768B340F24FAF7E600D80BDE /* SplitView.swift */; };
+		768B341124FAF7E600D80BDE /* SplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768B340F24FAF7E600D80BDE /* SplitView.swift */; };
+		768B341424FAFCDB00D80BDE /* StepperView in Frameworks */ = {isa = PBXBuildFile; productRef = 768B341324FAFCDB00D80BDE /* StepperView */; };
+		768B341624FAFCE600D80BDE /* StepperView in Frameworks */ = {isa = PBXBuildFile; productRef = 768B341524FAFCE600D80BDE /* StepperView */; };
+		768B341924FB513500D80BDE /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768B341824FB513500D80BDE /* Step.swift */; };
+		768B341A24FB513500D80BDE /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768B341824FB513500D80BDE /* Step.swift */; };
 		768D8BE324C208BF004BEADA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768D8BE224C208BF004BEADA /* SceneDelegate.swift */; };
 		768D8BE424C208BF004BEADA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768D8BE224C208BF004BEADA /* SceneDelegate.swift */; };
 		768D8BE724C22B35004BEADA /* SFSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768D8BE524C22B35004BEADA /* SFSymbols.swift */; };
@@ -269,8 +277,6 @@
 		76C15C7824C7A80500045D9A /* ResendPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C15C7024C7A80500045D9A /* ResendPasswordView.swift */; };
 		76C15C7C24C91B6800045D9A /* SimulationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C15C7B24C91B6800045D9A /* SimulationsView.swift */; };
 		76C15C7D24C91B6800045D9A /* SimulationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C15C7B24C91B6800045D9A /* SimulationsView.swift */; };
-		76C15C8824CB99F100045D9A /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 76C15C8724CB99F100045D9A /* QGrid */; };
-		76C15C8A24CB99FE00045D9A /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 76C15C8924CB99FE00045D9A /* QGrid */; };
 		76C15C9924CCEAE500045D9A /* SimulationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C15C9624CCEAE400045D9A /* SimulationsRepository.swift */; };
 		76C15C9A24CCEAE500045D9A /* SimulationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C15C9624CCEAE400045D9A /* SimulationsRepository.swift */; };
 		76C15C9B24CCEAE500045D9A /* SimulationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C15C9724CCEAE400045D9A /* SimulationsService.swift */; };
@@ -436,6 +442,9 @@
 		767DD87024C3C384006FDC1A /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		767DD87324C3C800006FDC1A /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		768042FE24D63DBE00AF56BA /* LoginEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntities.swift; sourceTree = "<group>"; };
+		76843B8924FD2C780048F6B3 /* JewSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JewSegmentedControl.swift; sourceTree = "<group>"; };
+		768B340F24FAF7E600D80BDE /* SplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitView.swift; sourceTree = "<group>"; };
+		768B341824FB513500D80BDE /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		768D8BE224C208BF004BEADA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		768D8BE524C22B35004BEADA /* SFSymbols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFSymbols.swift; sourceTree = "<group>"; };
 		768D8BE624C22B35004BEADA /* SFSymbols+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SFSymbols+Extensions.swift"; sourceTree = "<group>"; };
@@ -483,10 +492,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76C15C8A24CB99FE00045D9A /* QGrid in Frameworks */,
 				76E45B3924EF63A300CFACC4 /* NavigationStack in Frameworks */,
 				76CAEE5624E8EC2D0044508E /* Introspect in Frameworks */,
 				B8729DDDA4477CDE936382D1 /* (null) in Frameworks */,
+				768B341424FAFCDB00D80BDE /* StepperView in Frameworks */,
 				DF8D069B37894F62C4DEAAD0 /* Pods_InvestScopio.framework in Frameworks */,
 				76D017D224C67F830092F1A6 /* EnvironmentOverrides in Frameworks */,
 			);
@@ -496,9 +505,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76C15C8824CB99F100045D9A /* QGrid in Frameworks */,
 				76E45B3724EF638F00CFACC4 /* NavigationStack in Frameworks */,
 				76CAEE5424E8EC1B0044508E /* Introspect in Frameworks */,
+				768B341624FAFCE600D80BDE /* StepperView in Frameworks */,
 				76D017D424C6800F0092F1A6 /* EnvironmentOverrides in Frameworks */,
 				7B3FD35CB4A8123DF3A4C9AC /* Pods_InvestScopioDev.framework in Frameworks */,
 			);
@@ -1039,6 +1048,22 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		768B340E24FAF7D300D80BDE /* SplitView */ = {
+			isa = PBXGroup;
+			children = (
+				768B340F24FAF7E600D80BDE /* SplitView.swift */,
+			);
+			path = SplitView;
+			sourceTree = "<group>";
+		};
+		768B341724FB512A00D80BDE /* Step */ = {
+			isa = PBXGroup;
+			children = (
+				768B341824FB513500D80BDE /* Step.swift */,
+			);
+			path = Step;
+			sourceTree = "<group>";
+		};
 		768D8BEB24C2444E004BEADA /* LoginSU */ = {
 			isa = PBXGroup;
 			children = (
@@ -1061,6 +1086,8 @@
 		768D8BFC24C39357004BEADA /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				768B341724FB512A00D80BDE /* Step */,
+				768B340E24FAF7D300D80BDE /* SplitView */,
 				7611A23C24F888730012BE56 /* AnimatedText */,
 				7611A21824F495C30012BE56 /* LineChartBridge */,
 				76CAEE5D24E9C6E60044508E /* TabView */,
@@ -1076,6 +1103,7 @@
 				76069E6124C52616009DED56 /* RoundedRadius.swift */,
 				76B2602524C5EBB7003BF4B4 /* BlurView.swift */,
 				7611A24D24F89B130012BE56 /* DoubleButtons.swift */,
+				76843B8924FD2C780048F6B3 /* JewSegmentedControl.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -1292,9 +1320,9 @@
 			name = InvestScopio;
 			packageProductDependencies = (
 				76D017D124C67F830092F1A6 /* EnvironmentOverrides */,
-				76C15C8924CB99FE00045D9A /* QGrid */,
 				76CAEE5524E8EC2D0044508E /* Introspect */,
 				76E45B3824EF63A300CFACC4 /* NavigationStack */,
+				768B341324FAFCDB00D80BDE /* StepperView */,
 			);
 			productName = InvestScopio;
 			productReference = 4A4C68562295784900EDC8C6 /* InvestScopio.app */;
@@ -1317,9 +1345,9 @@
 			name = InvestScopioDev;
 			packageProductDependencies = (
 				76D017D324C6800F0092F1A6 /* EnvironmentOverrides */,
-				76C15C8724CB99F100045D9A /* QGrid */,
 				76CAEE5324E8EC1B0044508E /* Introspect */,
 				76E45B3624EF638F00CFACC4 /* NavigationStack */,
+				768B341524FAFCE600D80BDE /* StepperView */,
 			);
 			productName = InvestScopio;
 			productReference = 4AFF3EDE22BB23F10056A167 /* InvestScopioTeste.app */;
@@ -1351,9 +1379,9 @@
 			mainGroup = 4A4C684D2295784900EDC8C6;
 			packageReferences = (
 				76D017D024C67F830092F1A6 /* XCRemoteSwiftPackageReference "EnvironmentOverrides" */,
-				76C15C8624CB99F100045D9A /* XCRemoteSwiftPackageReference "QGrid" */,
 				76CAEE5224E8EC1B0044508E /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				76E45B3524EF638F00CFACC4 /* XCRemoteSwiftPackageReference "swiftui-navigation-stack" */,
+				768B341224FAFCDB00D80BDE /* XCRemoteSwiftPackageReference "StepperView" */,
 			);
 			productRefGroup = 4A4C68572295784900EDC8C6 /* Products */;
 			projectDirPath = "";
@@ -1515,6 +1543,7 @@
 				76B2602624C5EBB7003BF4B4 /* BlurView.swift in Sources */,
 				768D8C0424C3A2F8004BEADA /* LoginViewModel.swift in Sources */,
 				4A0FFE9722B3051F00D6A33A /* INVSSignUpInteractor.swift in Sources */,
+				768B341024FAF7E600D80BDE /* SplitView.swift in Sources */,
 				76CAEE6824E9C8460044508E /* AppRouterView.swift in Sources */,
 				4A4C68DC2295796200EDC8C6 /* AppDelegate.swift in Sources */,
 				76D017C824C6681B0092F1A6 /* RegisterRepository.swift in Sources */,
@@ -1536,6 +1565,7 @@
 				7611A13F24F1DAB50012BE56 /* INVSSimulatorModel.swift in Sources */,
 				767DD87424C3C800006FDC1A /* Store.swift in Sources */,
 				76CAEE5B24E9BD250044508E /* SimulationCell.swift in Sources */,
+				76843B8A24FD2C780048F6B3 /* JewSegmentedControl.swift in Sources */,
 				4A4C68C32295796200EDC8C6 /* INVSPresentBaseViewController.swift in Sources */,
 				4A12631D22A7F1BB006133E5 /* INVSVersionModel.swift in Sources */,
 				4A0FFEAE22B57A7200D6A33A /* INVSBlurViewController.swift in Sources */,
@@ -1563,6 +1593,7 @@
 				4A0FFEA722B4729100D6A33A /* INVSLoadingButton.swift in Sources */,
 				767DD86524C3AC14006FDC1A /* WebRepository.swift in Sources */,
 				767DD86324C3AC14006FDC1A /* NetworkingHelpers.swift in Sources */,
+				768B341924FB513500D80BDE /* Step.swift in Sources */,
 				4A0FFE8A22B1166200D6A33A /* INVSLoginWorker.swift in Sources */,
 				4AFF3EFE22BEC8660056A167 /* INVSRefreshTokenRequest.swift in Sources */,
 				4AFF3E6022B9B32E0056A167 /* INVSCrypto.swift in Sources */,
@@ -1654,6 +1685,7 @@
 				76B2602724C5EBB7003BF4B4 /* BlurView.swift in Sources */,
 				768D8C0524C3A2F8004BEADA /* LoginViewModel.swift in Sources */,
 				4AFF3E7922BB23F10056A167 /* INVSSignUpInteractor.swift in Sources */,
+				768B341124FAF7E600D80BDE /* SplitView.swift in Sources */,
 				76CAEE6924E9C8460044508E /* AppRouterView.swift in Sources */,
 				4AFF3E7B22BB23F10056A167 /* AppDelegate.swift in Sources */,
 				76D017C924C6681B0092F1A6 /* RegisterRepository.swift in Sources */,
@@ -1675,6 +1707,7 @@
 				7611A14024F1DAB50012BE56 /* INVSSimulatorModel.swift in Sources */,
 				767DD87524C3C800006FDC1A /* Store.swift in Sources */,
 				76CAEE5C24E9BD250044508E /* SimulationCell.swift in Sources */,
+				76843B8B24FD2C780048F6B3 /* JewSegmentedControl.swift in Sources */,
 				4AFF3E8522BB23F10056A167 /* INVSPresentBaseViewController.swift in Sources */,
 				4AFF3E8822BB23F10056A167 /* INVSVersionModel.swift in Sources */,
 				4AFF3E8A22BB23F10056A167 /* INVSBlurViewController.swift in Sources */,
@@ -1702,6 +1735,7 @@
 				4AFF3E9A22BB23F10056A167 /* INVSLoadingButton.swift in Sources */,
 				767DD86624C3AC14006FDC1A /* WebRepository.swift in Sources */,
 				767DD86424C3AC14006FDC1A /* NetworkingHelpers.swift in Sources */,
+				768B341A24FB513500D80BDE /* Step.swift in Sources */,
 				4AFF3E9B22BB23F10056A167 /* INVSLoginWorker.swift in Sources */,
 				4AFF3EFF22BEC8660056A167 /* INVSRefreshTokenRequest.swift in Sources */,
 				4AFF3E9D22BB23F10056A167 /* INVSCrypto.swift in Sources */,
@@ -2063,12 +2097,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		76C15C8624CB99F100045D9A /* XCRemoteSwiftPackageReference "QGrid" */ = {
+		768B341224FAFCDB00D80BDE /* XCRemoteSwiftPackageReference "StepperView" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Q-Mobile/QGrid";
+			repositoryURL = "https://github.com/badrinathvm/StepperView.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.4;
+				minimumVersion = 1.5.2;
 			};
 		};
 		76CAEE5224E8EC1B0044508E /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
@@ -2098,15 +2132,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		76C15C8724CB99F100045D9A /* QGrid */ = {
+		768B341324FAFCDB00D80BDE /* StepperView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 76C15C8624CB99F100045D9A /* XCRemoteSwiftPackageReference "QGrid" */;
-			productName = QGrid;
+			package = 768B341224FAFCDB00D80BDE /* XCRemoteSwiftPackageReference "StepperView" */;
+			productName = StepperView;
 		};
-		76C15C8924CB99FE00045D9A /* QGrid */ = {
+		768B341524FAFCE600D80BDE /* StepperView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 76C15C8624CB99F100045D9A /* XCRemoteSwiftPackageReference "QGrid" */;
-			productName = QGrid;
+			package = 768B341224FAFCDB00D80BDE /* XCRemoteSwiftPackageReference "StepperView" */;
+			productName = StepperView;
 		};
 		76CAEE5324E8EC1B0044508E /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;

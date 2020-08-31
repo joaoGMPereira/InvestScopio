@@ -28,7 +28,7 @@ struct LoadingButton: View {
             }.frame(minWidth: .none, maxWidth: .infinity, minHeight: .none, maxHeight: dynamicButtonHeight(), alignment: .center)
         }
         .frame(maxWidth: .infinity)
-        .frame(minHeight: 44)
+        .frame(minHeight: dynamicButtonHeight())
         .background(RoundedRectangle(cornerRadius: 22)
         .foregroundColor(model.isFill ? model.color : .clear))
         .background(RoundedRectangle(cornerRadius: 22, style: .continuous)

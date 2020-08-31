@@ -19,7 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let appSettings = AppSettings()
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         if let windowScene = scene as? UIWindowScene {
-            WorkingAroundSUI.tableViewWorkingAround()
+            WorkingAroundSUI.setupWorkingArounds()
+            
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(rootView:
                 AppRouterView().environmentObject(appSettings).environmentObject(reachability)

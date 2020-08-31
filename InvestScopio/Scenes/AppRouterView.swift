@@ -8,6 +8,7 @@
 
 import SwiftUI
 import JewFeatures
+import Introspect
 
 struct AppRouterView: View {
     @EnvironmentObject var settings: AppSettings

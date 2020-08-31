@@ -11,20 +11,20 @@ import UIKit
 
 extension NSAttributedString {
     
-    static func title(withText text: String) -> NSAttributedString {
+    static func title(withText text: String, scale: CGFloat = 1) -> NSAttributedString {
         return set(withText: text, andFont: UIFont.INVSTitle())
     }
     
-    static func titleBold(withText text: String) -> NSAttributedString {
-        return set(withText: text, andFont: UIFont.INVSTitleBold())
+    static func titleBold(withText text: String, scale: CGFloat = 1) -> NSAttributedString {
+        return set(withText: text, andFont: UIFont.INVSTitleBold(scale: scale))
     }
     
-    static func subtitle(withText text: String) -> NSAttributedString {
-        return set(withText: text, andFont: UIFont.INVSSubtitle())
+    static func subtitle(withText text: String, scale: CGFloat = 1) -> NSAttributedString {
+        return set(withText: text, andFont: UIFont.INVSSubtitle(scale: scale))
     }
     
-    static func subtitleBold(withText text: String) -> NSAttributedString {
-        return set(withText: text, andFont: UIFont.INVSSubtitleBold())
+    static func subtitleBold(withText text: String, scale: CGFloat = 1) -> NSAttributedString {
+        return set(withText: text, andFont: UIFont.INVSSubtitleBold(scale: scale))
     }
     
     static func set(withText text: String, andFont font:UIFont) -> NSAttributedString {

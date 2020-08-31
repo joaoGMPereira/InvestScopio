@@ -9,43 +9,43 @@ import Foundation
 import UIKit
 extension UIFont {
     
-    static func INVSSmallFontDefault() -> UIFont {
-        return UIFont.systemFont(ofSize: 13)
+    static func INVSSmallFontDefault(scale: CGFloat = 1) -> UIFont {
+        return UIFont.systemFont(ofSize: 13 * scale)
     }
     
-    static func INVSSmallFontDefaultBold() -> UIFont {
-        return UIFont.boldSystemFont(ofSize: 13)
+    static func INVSSmallFontDefaultBold(scale: CGFloat = 1) -> UIFont {
+        return UIFont.boldSystemFont(ofSize: 13 * scale)
     }
     
-    static func INVSFontDefault() -> UIFont {
-        return UIFont.systemFont(ofSize: 14)
+    static func INVSFontDefault(scale: CGFloat = 1) -> UIFont {
+        return UIFont.systemFont(ofSize: 14 * scale)
     }
     
-    static func INVSFontDefaultBold() -> UIFont {
-        return UIFont.boldSystemFont(ofSize: 14)
+    static func INVSFontDefaultBold(scale: CGFloat = 1) -> UIFont {
+        return UIFont.boldSystemFont(ofSize: 14 * scale)
     }
     
-    static func INVSFontBig() -> UIFont {
-        return UIFont.systemFont(ofSize: 16)
+    static func INVSFontBig(scale: CGFloat = 1) -> UIFont {
+        return UIFont.systemFont(ofSize: 16 * scale)
     }
     
-    static func INVSFontBigBold() -> UIFont {
-        return UIFont.boldSystemFont(ofSize: 16)
+    static func INVSFontBigBold(scale: CGFloat = 1) -> UIFont {
+        return UIFont.boldSystemFont(ofSize: 16 * scale)
     }
     
-    static func INVSTitleBold() -> UIFont {
-        return UIFont.boldSystemFont(ofSize: 24)
+    static func INVSTitleBold(scale: CGFloat = 1) -> UIFont {
+        return UIFont.boldSystemFont(ofSize: 24 * scale)
     }
     
-    static func INVSTitle() -> UIFont {
-        return UIFont.systemFont(ofSize: 24)
+    static func INVSTitle(scale: CGFloat = 1) -> UIFont {
+        return UIFont.systemFont(ofSize: 24 * scale)
     }
     
-    static func INVSSubtitleBold() -> UIFont {
-        return UIFont.boldSystemFont(ofSize: 20)
+    static func INVSSubtitleBold(scale: CGFloat = 1) -> UIFont {
+        return UIFont.boldSystemFont(ofSize: 20 * scale)
     }
     
-    static func INVSSubtitle() -> UIFont {
-        return UIFont.systemFont(ofSize: 20)
+    static func INVSSubtitle(scale: CGFloat = 1) -> UIFont {
+        return UIFont.systemFont(ofSize: 20 * scale)
     }
 }
