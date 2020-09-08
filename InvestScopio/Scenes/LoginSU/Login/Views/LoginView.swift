@@ -19,8 +19,7 @@ struct LoginView: View {
     @State var showRegister = false
     
     var body: some View {
-        UITableView.appearance().backgroundColor = .clear
-        return ZStack {
+        ZStack {
             VStack(spacing: 16) {
                 HeaderView()
                 ScrollView {

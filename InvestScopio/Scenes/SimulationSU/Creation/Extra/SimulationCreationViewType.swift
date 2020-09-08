@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import JewFeatures
 import SwiftUI
 import ZCAnimatedLabel
 
-enum SimulationCreationViewType: Int {
+enum SimulationCreationViewType: Int, CaseIterable {
     case initialStep = 0
     case firstStep
     case secondStep
@@ -21,9 +22,22 @@ enum SimulationCreationViewType: Int {
     case seventhStep
     case lastStep
     
+    func isRequired() -> Bool {
+        switch self {
+        case .initialStep, .secondStep, .fifthStep, .sixthStep, .seventhStep, .lastStep:
+            return false
+        case .firstStep:
+            return true
+        case .thirdStep:
+            return true
+        case .fourthStep:
+            return true
+        }
+    }
+    
     func setNextStepPlaceHolder() -> String {
         switch self {
-        case .initialStep:
+        case .initialStep, .lastStep:
             return String()
         case .firstStep:
             return "Valor Inicial"
@@ -39,11 +53,21 @@ enum SimulationCreationViewType: Int {
             return "Acréscimo no resgate"
         case .seventhStep:
             return "Objetivo de rendimento para aumento de resgate"
-        case .lastStep:
-            return String()
         }
     }
     
+    func setFormat() -> JEWFloatingTextFieldValueType {
+        switch self {
+        case .initialStep, .lastStep:
+            return .none
+        case .firstStep, .secondStep, .fifthStep, .sixthStep, .seventhStep:
+            return .currency
+        case .thirdStep:
+            return .percent
+        case .fourthStep:
+            return .months
+        }
+    }
     
     func setNextStep(size: ContentSizeCategory) -> NSMutableAttributedString {
         let scale = calculateScale(size: size)

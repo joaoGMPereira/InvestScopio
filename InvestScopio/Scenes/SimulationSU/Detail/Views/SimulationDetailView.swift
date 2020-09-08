@@ -27,17 +27,14 @@ struct SimulationDetailView: View {
     @ObservedObject var viewModel: SimulationDetailViewModel
     @EnvironmentObject var reachability: Reachability
     @State var cellSize = CGSize.zero
+    
+    @State var chartSize = CGSize.zero
    
     var body: some View {
         ZStack {
             VStack(spacing: 8) {
-                Picker("TabsDetail", selection: $viewModel.typeIndex) {
-                    ForEach(0 ..< viewModel.tabs.count) { index in
-                        Text(self.viewModel.tabs[index]).tag(index)
-                    }
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding([.top, .horizontal], 8)
+                
+                JewSegmentedControl(selectedIndex: $viewModel.typeIndex, rects: $viewModel.rectsType, titles: $viewModel.tabs, selectedColor: Color("backgroundSelected4"), unselectedColor: Color("background4"), coordinateSpaceName: "TabsDetail").padding([.top, .horizontal], 8)
                 if viewModel.typeIndex == 0 {
                     List {
                         SimulationCell(simulation: viewModel.simulation, state: self.$viewModel.state, cellSize: self.$cellSize){}
@@ -47,24 +44,13 @@ struct SimulationDetailView: View {
                     }.id(UUID())
                 }
                 if viewModel.typeIndex == 1 {
-                    Picker("TabsValues", selection: $viewModel.valueIndex) {
-                        ForEach(0 ..< viewModel.tabValues.count) { index in
-                            Text(self.viewModel.tabValues[index]).tag(index)
-                        }
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-                    .padding(.horizontal, 16)
-                    Picker("TabsMonths", selection: $viewModel.monthsIndex) {
-                        ForEach(0 ..< viewModel.monthsTabs.count) { index in
-                            Text(self.viewModel.monthsTabs[index]).tag(index)
-                        }
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-                    .padding(.horizontal, 24)
-                }
-                
-                if viewModel.typeIndex == 1 {
-                    LineChart(entries: viewModel.entries, months: viewModel.monthsValue ?? 0, granularity: viewModel.granularity, axisMaximum: viewModel.maximumValue, label: viewModel.description).setChartDataBase(ChartDataBaseBridge(informationData: ChartInformationDataBridge(leftAxis: LeftAxisBridge(formatter: leftAxisFormatter), xAxis: XAxisBridge(formatter: xAxisFormatter)))).setChartDataSet(LineChartDataSetBaseBridge(xAxisDuration: viewModel.shouldAnimate ? 0.0 : 0, yAxisDuration: viewModel.shouldAnimate ? 0.5 : 0))
+                    ScrollView {
+                    JewSegmentedControl(selectedIndex: $viewModel.valueIndex, rects: $viewModel.rectsValue, titles: $viewModel.tabValues, selectedColor: Color("backgroundSelected4"), unselectedColor: Color("background4"), coordinateSpaceName: "TabsValues").padding(.horizontal, 16)
+                    
+                    JewSegmentedControl(selectedIndex: $viewModel.monthsIndex, rects: $viewModel.rectsMonths, titles: $viewModel.monthsTabs, selectedColor: Color("backgroundSelected4"), unselectedColor: Color("background4"), coordinateSpaceName: "TabsMonths").padding(.horizontal, 24)
+                    
+                        LineChart(entries: viewModel.entries, months: viewModel.monthsValue ?? 0, granularity: viewModel.granularity, axisMaximum: viewModel.maximumValue, label: viewModel.description).setChartDataBase(ChartDataBaseBridge(informationData: ChartInformationDataBridge(leftAxis: LeftAxisBridge(formatter: leftAxisFormatter), xAxis: XAxisBridge(formatter: xAxisFormatter)))).setChartDataSet(LineChartDataSetBaseBridge(xAxisDuration: viewModel.shouldAnimate ? 0.0 : 0, yAxisDuration: viewModel.shouldAnimate ? 0.5 : 0)).frame(width: chartSize.width, height: chartSize.width)
+                    }.getContent(size: $chartSize)
                 }
             }
         }.navigationBarTitle("Simulação", displayMode: .large)

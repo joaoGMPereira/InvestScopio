@@ -16,7 +16,8 @@ struct AppRouterView: View {
     let registerViewModel = RegisterViewModel(service: RegisterService(repository: RegisterRepository()))
     let resendPasswordViewModel = ResendPasswordViewModel(service: ResendPasswordService())
     let simulationsViewModel = SimulationsViewModel(service: SimulationsService(repository: SimulationsRepository()))
-    let simulationCreationViewModel = SimulationCreationViewModel()
+    let simulationCreationStepViewModel = SimulationCreationStepViewModel()
+    let simulationCreationViewModel = SimulationCreationViewModel(allSteps: StepModel.allDefaultSteps)
     var body: some View {
         ZStack {
             if settings.isLogged {
@@ -27,7 +28,7 @@ struct AppRouterView: View {
                             Image(systemName: SFSymbol.listBullet.rawValue)
                             Text("Simulações")
                     }
-                    SimulationCreationView(viewModel: simulationCreationViewModel)
+                    SimulationCreationView(viewModel: simulationCreationViewModel, stepViewModel: simulationCreationStepViewModel)
                         .tag(1)
                         .tabItem {
                             Image(systemName: SFSymbol.chartBarFill.rawValue)
@@ -40,7 +41,7 @@ struct AppRouterView: View {
                             Text("Fale conosco")
                     }
                 }
-                .accentColor(Color.init(.JEWDefault()))
+                .accentColor(Color(.JEWDefault()))
                 .attachEnvironmentOverrides()
             } else {
                 LoginView(viewModel: loginViewModel, registerViewModel: registerViewModel, resendPasswordViewModel: resendPasswordViewModel)

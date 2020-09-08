@@ -12,130 +12,78 @@ import JewFeatures
 
 struct SimulationCreationView: View {
     @ObservedObject var viewModel: SimulationCreationViewModel
-    @Environment(\.sizeCategory) private var defaultSizeCategory: ContentSizeCategory
+    @ObservedObject var stepViewModel: SimulationCreationStepViewModel
+    @Environment(\.sizeCategory) internal var defaultSizeCategory: ContentSizeCategory
     @EnvironmentObject var reachability: Reachability
     @EnvironmentObject var settings: AppSettings
-    @State var teste = CreateSimulationSegments.completed
-    @State var rects = Array<CGRect>(repeating: CGRect(), count: 6)
-    @State var titles : [String] = CreateSimulationSegments.allLocalizedText
+    
     var body: some View {
-        
-        return SplitView(isOpened: $viewModel.isOpened, minHeight: 22) {
-            VStack {
-                Color("secondary").cornerRadius(2).frame(width: 40, height: 4).padding(.top, 8)
-                ScrollView(.vertical, showsIndicators: false) {
-                    VStack(spacing: 16) {
-                        self.header()
-                        self.form()
-                        self.bottomButtons()
-                        Spacer()
-                    }
-                }.introspectScrollView { (scrollView) in
-                    switch self.defaultSizeCategory {
-                    case .accessibilityLarge:
-                        scrollView.isScrollEnabled = true
-                    case .accessibilityExtraLarge:
-                        scrollView.isScrollEnabled = true
-                    case .accessibilityExtraExtraLarge:
-                        scrollView.isScrollEnabled = true
-                    case .accessibilityExtraExtraExtraLarge:
-                        scrollView.isScrollEnabled = true
-                    default:
-                        scrollView.isScrollEnabled = false
-                    }
+        ZStack {
+            defaultView()
+            stepView()
+        }
+    }
+}
+
+//MARK: - Default View
+extension SimulationCreationView {
+    func defaultView() -> some View {
+        NavigationView {
+            ScrollView {
+                VStack(spacing: 16) {
+                    firstSteps()
+                    middleSteps()
+                    finalSteps()
                 }
-                Spacer()
             }
+            .padding(.bottom, 22)
+            .navigationBarTitle("Simulação", displayMode: .large)
         }
     }
     
-    func header() -> some View {
-        VStack {
-            if viewModel.showHeader {
-                JewSegmentedControl(selectedIndex: $viewModel.selectedIndex, rects: $rects, titles: $titles, selectedColor: Color("selectedSegment"), unselectedColor: Color("background4"), coordinateSpaceName: "SimulationCreationSegmentedControl").padding(.horizontal)
-                Step(passed: self.$viewModel.passed, progress: self.$viewModel.progress, quantity: self.$viewModel.quantity, progressedColor: Color(.JEWDefault()), unprogressedColor: Color("background4")).padding(.horizontal)
-                Spacer()
-            }
+    fileprivate func firstSteps() -> some View {
+        return ForEach(Range(0...1), id: \.self) { index in
+            self.stepTextField(index: index).padding(.horizontal)
         }
     }
     
-    func form() -> some View {
-        VStack {
-            Spacer()
-            AnimatedText(message: self.viewModel.isOpened ? self.viewModel.step.setNextStep(size:self.defaultSizeCategory) : NSMutableAttributedString(string: String())) { size in
-                DispatchQueue.main.async {
-                    self.viewModel.textHeight = size.height
-                }
-            }
-            .frame(height: self.viewModel.textHeight)
-            if viewModel.showTextField {
-                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(placeholder: viewModel.step.setNextStepPlaceHolder()), text: self.$viewModel.text, close: self.$viewModel.close) { textfield, text, isBackspace in
-                    self.viewModel.text = text
-                }
-                .frame(height: 50)
-                .padding(8)
-                .background(Color(.systemBackground))
-                .cornerRadius(8)
-                .padding()
-            }
-        }.background(Color(UIColor.systemGray5))
-            .cornerRadius(16)
-            .padding()
+    fileprivate func middleSteps() -> some View {
+        HStack(spacing: 8) {
+            stepTextField(index: 2)
+            stepTextField(index: 3)
+        }.padding(.horizontal)
     }
     
-    func bottomButtons() -> some View {
-        Group {
-            if self.viewModel.isOpened && self.viewModel.showBottomButtons {
-                DoubleButtons(firstIsLoading: .constant(false), secondIsLoading: .constant(false), firstModel: .init(title: "Simplificada", color: Color(.JEWLightDefault()), isFill: true), secondModel: .init(title: "Completa", color: Color(.JEWDefault()), isFill: true), firstCompletion: {
-                    self.viewModel.selectedIndex = 0
-                    
-                }) {
-                    self.viewModel.selectedIndex = 1
+    fileprivate func finalSteps() -> some View {
+        return ForEach(4..<viewModel.allSteps.count, id: \.self) { index in
+            self.stepTextField(index: index).padding(.horizontal)
+        }
+    }
+    
+    fileprivate func stepTextField(index: Int) -> some View {
+        ZStack {
+            FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [.cancel, .back], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(placeholderColor: .label), placeholder: .constant(self.viewModel.allSteps[index].type.setNextStepPlaceHolder()), text: self.$viewModel.allSteps[index].value, formatType: .constant(self.viewModel.allSteps[index].type.setFormat()), close: self.$viewModel.close, shouldBecomeFirstResponder: .constant(false), tapOnToolbarButton: { textField, type in
+                //self.tapOnToolbar(textField: textField, type: type)
+            }) { textfield, text, isBackspace in
+                var updatedText = text
+                if isBackspace && !text.isEmpty {
+                    updatedText.removeLast()
                 }
+                // self.stepViewModel.updateStep(textField: textfield, text: updatedText)
+            }
+            .frame(height: 50)
+            .padding(8)
+            GeometryReader { geometry in
+                Rectangle().frame(height: 2).foregroundColor(Color(.JEWDefault())).position(x: geometry.size.width/2, y: geometry.size.height - 1)
             }
         }
+        .background(Color(.systemGray5))
+        .clipShape(RoundedRectangle(cornerRadius: 8))
     }
 }
 
 struct SimulationCreationView_Previews: PreviewProvider {
     static var previews: some View {
-        SimulationCreationView(viewModel: SimulationCreationViewModel())
-    }
-}
-
-
-public protocol SegmentedPickerViewElementTraits: Hashable {
-    var localizedText: String { get }
-}
-
-enum CreateSimulationSegments: Int, CaseIterable {
-    case simply
-    case completed
-    case teste
-    case teste2
-    case teste3
-    case teste4
-    
-    static var allLocalizedText: [String] {
-        return allCases.map { $0.localizedText }
-    }
-}
-
-extension CreateSimulationSegments: SegmentedPickerViewElementTraits {
-    var localizedText: String {
-        switch self {
-        case .simply:
-            return "test"
-        case .completed:
-            return "test1"
-        case .teste:
-            return "test2"
-        case .teste2:
-            return "test3"
-        case .teste3:
-            return "test4"
-        case .teste4:
-            return "test5"
-        }
+        SimulationCreationView(viewModel: SimulationCreationViewModel(), stepViewModel: SimulationCreationStepViewModel())
     }
 }

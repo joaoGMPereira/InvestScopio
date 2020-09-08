@@ -90,7 +90,7 @@ PODS:
   - nanopb/encode (1.30905.0)
   - PodAsset (1.0.0)
   - PromisesObjC (1.2.9)
-  - SkeletonView (1.8.7)
+  - SkeletonView (1.8.8)
   - StepView (1.0.5)
   - SwiftKeychainWrapper (3.4.0)
   - SwiftyRSA (1.6.0):
@@ -154,13 +154,13 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   CryptoSwift:
-    :commit: 04414a31ca7d61dd1b98a57277bd1868d1a36b0c
+    :commit: 81d58abae1a3ef70424d8d2ca387fbd395df0edb
     :git: https://github.com/krzyzanowskim/CryptoSwift
   Hero:
     :commit: '6220387'
     :git: https://github.com/barrault01/Hero.git
   SkeletonView:
-    :commit: ad28803221284858d954ec300b68365602df2d76
+    :commit: b93bae7b4923d049a7efd5ae60e236180ea8bec4
     :git: https://github.com/Juanpe/SkeletonView.git
   ZCAnimatedLabel:
     :commit: 9d1ffa4a343b7b787b23564f6889faaf3bee851d
@@ -188,7 +188,7 @@ SPEC CHECKSUMS:
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PodAsset: c2c2b20013c1edf698fea2bacba6e75a638537a2
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
-  SkeletonView: ba5370f41280b2f0a76918bb143c1294232bb4f4
+  SkeletonView: e37c282c1b228547b83daf47605f79c3aeb1df9a
   StepView: e69413ca377b42c5777d446854bb036ff8e988fd
   SwiftKeychainWrapper: 6fc49fbf7d4a6b0772917acb0e53a1639f6078d6
   SwiftyRSA: 3b9c9179744217951facc6a3e9ae8d8c97061ffa

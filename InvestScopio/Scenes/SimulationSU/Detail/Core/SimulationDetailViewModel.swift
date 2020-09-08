@@ -38,10 +38,14 @@ class SimulationDetailViewModel: ObservableObject {
             }
         }
     }
+    
     @Published var valueIndex: Int = .zero
     @Published var monthsIndex: Int = .zero
     @Published var tabs = ["Lista","Grafico"]
     @Published var tabValues = ["Investido","Resgate"]
+    @Published var rectsType = Array<CGRect>(repeating: CGRect(), count: ["Lista","Grafico"].count)
+    @Published var rectsValue = Array<CGRect>(repeating: CGRect(), count: 0)
+    @Published var rectsMonths = Array<CGRect>(repeating: CGRect(), count: 0)
     @Published var simulationDetailLoadable: Loadable<[INVSSimulatedValueModel]> {
         didSet {
             build(state: simulationDetailLoadable)
@@ -179,6 +183,7 @@ class SimulationDetailViewModel: ObservableObject {
                 }
             }
         }
+        rectsMonths = Array<CGRect>(repeating: CGRect(), count: segmentValues.count)
         return segmentValues
     }
     
@@ -205,6 +210,7 @@ class SimulationDetailViewModel: ObservableObject {
             } else {
                 tabValues = ["Investido","Resgate"]
             }
+            rectsValue = Array<CGRect>(repeating: CGRect(), count: tabValues.count)
             self.showError = false
             self.state = .loaded
         case .failed(let error):

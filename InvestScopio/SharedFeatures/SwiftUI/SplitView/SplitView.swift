@@ -29,12 +29,14 @@ enum SplitViewDirection {
 struct SplitView<Content: View>: View {
     let content: () -> Content
     var minHeight: CGFloat
+    var forceCloseWhenDisappear: Bool
     @State private var updatedHeight: CGFloat
     @Binding private var isOpened: Bool
     
-    public init(isOpened: Binding<Bool>, minHeight: CGFloat = 66, @ViewBuilder content: @escaping () -> Content) {
+    public init(isOpened: Binding<Bool>, minHeight: CGFloat = 66, forceCloseWhenDisappear: Bool = false, @ViewBuilder content: @escaping () -> Content) {
         self._isOpened = isOpened
         self.minHeight = minHeight
+        self.forceCloseWhenDisappear = forceCloseWhenDisappear
         self.content = content
         self._updatedHeight = .init(initialValue: minHeight)
         
@@ -89,6 +91,11 @@ struct SplitView<Content: View>: View {
                         }
                     })
             )
+        }.onDisappear {
+            if self.forceCloseWhenDisappear {
+                self.isOpened = false
+                self.updatedHeight = self.minHeight
+            }
         }
     }
 }

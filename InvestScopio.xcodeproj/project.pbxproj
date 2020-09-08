@@ -209,10 +209,18 @@
 		7611A24324F894100012BE56 /* SimulationCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A24124F894100012BE56 /* SimulationCreationView.swift */; };
 		7611A24524F8941D0012BE56 /* SimulationCreationViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A24424F8941D0012BE56 /* SimulationCreationViewType.swift */; };
 		7611A24624F8941D0012BE56 /* SimulationCreationViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A24424F8941D0012BE56 /* SimulationCreationViewType.swift */; };
-		7611A24B24F897300012BE56 /* SimulationCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A24A24F897300012BE56 /* SimulationCreationViewModel.swift */; };
-		7611A24C24F897300012BE56 /* SimulationCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A24A24F897300012BE56 /* SimulationCreationViewModel.swift */; };
+		7611A24B24F897300012BE56 /* SimulationCreationStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A24A24F897300012BE56 /* SimulationCreationStepViewModel.swift */; };
+		7611A24C24F897300012BE56 /* SimulationCreationStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A24A24F897300012BE56 /* SimulationCreationStepViewModel.swift */; };
 		7611A24E24F89B130012BE56 /* DoubleButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A24D24F89B130012BE56 /* DoubleButtons.swift */; };
 		7611A24F24F89B130012BE56 /* DoubleButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A24D24F89B130012BE56 /* DoubleButtons.swift */; };
+		7655A2C725070CBC004B3E0D /* SimulationCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655A2C625070CBC004B3E0D /* SimulationCreationViewModel.swift */; };
+		7655A2C825070CBC004B3E0D /* SimulationCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655A2C625070CBC004B3E0D /* SimulationCreationViewModel.swift */; };
+		7655A2CA25071297004B3E0D /* CreateSimulationSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655A2C925071297004B3E0D /* CreateSimulationSegments.swift */; };
+		7655A2CB25071297004B3E0D /* CreateSimulationSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655A2C925071297004B3E0D /* CreateSimulationSegments.swift */; };
+		7655A2CD250712C3004B3E0D /* StepModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655A2CC250712C3004B3E0D /* StepModel.swift */; };
+		7655A2CE250712C3004B3E0D /* StepModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655A2CC250712C3004B3E0D /* StepModel.swift */; };
+		7655A2D02507FA7B004B3E0D /* SimulationCreationView+StepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655A2CF2507FA7A004B3E0D /* SimulationCreationView+StepView.swift */; };
+		7655A2D12507FA7B004B3E0D /* SimulationCreationView+StepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655A2CF2507FA7A004B3E0D /* SimulationCreationView+StepView.swift */; };
 		767DD86124C3AC14006FDC1A /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767DD85D24C3AC14006FDC1A /* Loadable.swift */; };
 		767DD86224C3AC14006FDC1A /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767DD85D24C3AC14006FDC1A /* Loadable.swift */; };
 		767DD86324C3AC14006FDC1A /* NetworkingHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767DD85E24C3AC14006FDC1A /* NetworkingHelpers.swift */; };
@@ -431,8 +439,12 @@
 		7611A23D24F888BE0012BE56 /* AnimatedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedText.swift; sourceTree = "<group>"; };
 		7611A24124F894100012BE56 /* SimulationCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationCreationView.swift; sourceTree = "<group>"; };
 		7611A24424F8941D0012BE56 /* SimulationCreationViewType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulationCreationViewType.swift; sourceTree = "<group>"; };
-		7611A24A24F897300012BE56 /* SimulationCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationCreationViewModel.swift; sourceTree = "<group>"; };
+		7611A24A24F897300012BE56 /* SimulationCreationStepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationCreationStepViewModel.swift; sourceTree = "<group>"; };
 		7611A24D24F89B130012BE56 /* DoubleButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleButtons.swift; sourceTree = "<group>"; };
+		7655A2C625070CBC004B3E0D /* SimulationCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationCreationViewModel.swift; sourceTree = "<group>"; };
+		7655A2C925071297004B3E0D /* CreateSimulationSegments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSimulationSegments.swift; sourceTree = "<group>"; };
+		7655A2CC250712C3004B3E0D /* StepModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepModel.swift; sourceTree = "<group>"; };
+		7655A2CF2507FA7A004B3E0D /* SimulationCreationView+StepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SimulationCreationView+StepView.swift"; sourceTree = "<group>"; };
 		767DD85D24C3AC14006FDC1A /* Loadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		767DD85E24C3AC14006FDC1A /* NetworkingHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingHelpers.swift; sourceTree = "<group>"; };
 		767DD85F24C3AC14006FDC1A /* WebRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRepository.swift; sourceTree = "<group>"; };
@@ -1011,6 +1023,7 @@
 			isa = PBXGroup;
 			children = (
 				7611A24124F894100012BE56 /* SimulationCreationView.swift */,
+				7655A2CF2507FA7A004B3E0D /* SimulationCreationView+StepView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1018,7 +1031,8 @@
 		7611A24824F897040012BE56 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				7611A24A24F897300012BE56 /* SimulationCreationViewModel.swift */,
+				7611A24A24F897300012BE56 /* SimulationCreationStepViewModel.swift */,
+				7655A2C625070CBC004B3E0D /* SimulationCreationViewModel.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1027,6 +1041,8 @@
 			isa = PBXGroup;
 			children = (
 				7611A24424F8941D0012BE56 /* SimulationCreationViewType.swift */,
+				7655A2C925071297004B3E0D /* CreateSimulationSegments.swift */,
+				7655A2CC250712C3004B3E0D /* StepModel.swift */,
 			);
 			path = Extra;
 			sourceTree = "<group>";
@@ -1557,7 +1573,7 @@
 				76CAEE6224E9C6F20044508E /* UIKitTabView.swift in Sources */,
 				7611A22524F5EDFD0012BE56 /* ChartDataBaseBridge.swift in Sources */,
 				4A27022C22CD409D005DA22A /* INSEvaluateModel.swift in Sources */,
-				7611A24B24F897300012BE56 /* SimulationCreationViewModel.swift in Sources */,
+				7611A24B24F897300012BE56 /* SimulationCreationStepViewModel.swift in Sources */,
 				4A0FFEA122B41C1B00D6A33A /* INVSResendPasswordViewController.swift in Sources */,
 				4A4C68CD2295796200EDC8C6 /* UIFont+INVSExtension.swift in Sources */,
 				76E458A724E9FDE300CFACC4 /* SimulationDetailView.swift in Sources */,
@@ -1578,12 +1594,14 @@
 				4A0FFE8622B1161D00D6A33A /* INVSLoginPresenter.swift in Sources */,
 				4A4C68CF2295796200EDC8C6 /* NumberFormatter+INVSExtension.swift in Sources */,
 				768D8BF024C24490004BEADA /* LoginView.swift in Sources */,
+				7655A2D02507FA7B004B3E0D /* SimulationCreationView+StepView.swift in Sources */,
 				4A4C68D72295796200EDC8C6 /* INVSKeyChainWrapper.swift in Sources */,
 				4A27AA99229F6E4D00C45CC5 /* INVSSession.swift in Sources */,
 				4A4C68CE2295796200EDC8C6 /* UIStackview+INVSExtension.swift in Sources */,
 				76CAEE6C24E9D7880044508E /* TalkWithUsView.swift in Sources */,
 				7611A21A24F495D30012BE56 /* LineChartBridge.swift in Sources */,
 				76CAEE6024E9C6F20044508E /* zExample.swift in Sources */,
+				7655A2CA25071297004B3E0D /* CreateSimulationSegments.swift in Sources */,
 				4A27AA96229F3F9F00C45CC5 /* INVSStartInteractor.swift in Sources */,
 				7611A23E24F888BE0012BE56 /* AnimatedText.swift in Sources */,
 				4A12631422A7DA99006133E5 /* BankModel.swift in Sources */,
@@ -1606,6 +1624,8 @@
 				4A0FFE9022B2FF0300D6A33A /* INVSSignUpViewController.swift in Sources */,
 				4AFF3EF122BD89990056A167 /* INVSBiometrics.swift in Sources */,
 				4A4C68D42295796200EDC8C6 /* INVSPopupMessageType.swift in Sources */,
+				7655A2CD250712C3004B3E0D /* StepModel.swift in Sources */,
+				7655A2C725070CBC004B3E0D /* SimulationCreationViewModel.swift in Sources */,
 				768D8BFE24C39370004BEADA /* Text+Extensions.swift in Sources */,
 				76069E6524C5D5A3009DED56 /* Reachability.swift in Sources */,
 				76D017CE24C66C4A0092F1A6 /* RegisterViewModel.swift in Sources */,
@@ -1699,7 +1719,7 @@
 				76CAEE6324E9C6F20044508E /* UIKitTabView.swift in Sources */,
 				7611A22624F5EDFD0012BE56 /* ChartDataBaseBridge.swift in Sources */,
 				4A27022D22CD409D005DA22A /* INSEvaluateModel.swift in Sources */,
-				7611A24C24F897300012BE56 /* SimulationCreationViewModel.swift in Sources */,
+				7611A24C24F897300012BE56 /* SimulationCreationStepViewModel.swift in Sources */,
 				4AFF3E8322BB23F10056A167 /* INVSResendPasswordViewController.swift in Sources */,
 				4AFF3E8422BB23F10056A167 /* UIFont+INVSExtension.swift in Sources */,
 				76E458A824E9FDE300CFACC4 /* SimulationDetailView.swift in Sources */,
@@ -1720,12 +1740,14 @@
 				4AFF3E8E22BB23F10056A167 /* INVSLoginPresenter.swift in Sources */,
 				4AFF3E8F22BB23F10056A167 /* NumberFormatter+INVSExtension.swift in Sources */,
 				768D8BF124C24490004BEADA /* LoginView.swift in Sources */,
+				7655A2D12507FA7B004B3E0D /* SimulationCreationView+StepView.swift in Sources */,
 				4AFF3E9022BB23F10056A167 /* INVSKeyChainWrapper.swift in Sources */,
 				4AFF3E9122BB23F10056A167 /* INVSSession.swift in Sources */,
 				4AFF3E9322BB23F10056A167 /* UIStackview+INVSExtension.swift in Sources */,
 				76CAEE6D24E9D7880044508E /* TalkWithUsView.swift in Sources */,
 				7611A21B24F495D30012BE56 /* LineChartBridge.swift in Sources */,
 				76CAEE6124E9C6F20044508E /* zExample.swift in Sources */,
+				7655A2CB25071297004B3E0D /* CreateSimulationSegments.swift in Sources */,
 				4AFF3E9522BB23F10056A167 /* INVSStartInteractor.swift in Sources */,
 				7611A23F24F888BE0012BE56 /* AnimatedText.swift in Sources */,
 				4AFF3E9622BB23F10056A167 /* BankModel.swift in Sources */,
@@ -1748,6 +1770,8 @@
 				4AFF3EA322BB23F10056A167 /* INVSSignUpViewController.swift in Sources */,
 				4AFF3EF222BD8A1E0056A167 /* INVSBiometrics.swift in Sources */,
 				4AFF3EA522BB23F10056A167 /* INVSPopupMessageType.swift in Sources */,
+				7655A2CE250712C3004B3E0D /* StepModel.swift in Sources */,
+				7655A2C825070CBC004B3E0D /* SimulationCreationViewModel.swift in Sources */,
 				768D8BFF24C39370004BEADA /* Text+Extensions.swift in Sources */,
 				76069E6624C5D5A4009DED56 /* Reachability.swift in Sources */,
 				76D017CF24C66C4A0092F1A6 /* RegisterViewModel.swift in Sources */,

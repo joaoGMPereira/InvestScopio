@@ -22,9 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         JEWUIColor.default.lightDefaultColor = UIColor(named: "accentLight")!
         JEWUIColor.default.darkDefaultColor = UIColor(named: "accentDark")!
         JEWUIColor.default.backgroundColor = UIColor.systemBackground
-        UINavigationBar.appearance().tintColor = JEWUIColor.default.darkDefaultColor
-        UISwitch.appearance().onTintColor = .JEWDarkDefault()
-        UITextField.appearance().tintColor = .JEWDarkDefault()
+        UINavigationBar.appearance().tintColor = .JEWDefault()
+        UISwitch.appearance().onTintColor = .JEWDefault()
+        UITextField.appearance().tintColor = .JEWDefault()
         setupFirebase()
         return true
     }

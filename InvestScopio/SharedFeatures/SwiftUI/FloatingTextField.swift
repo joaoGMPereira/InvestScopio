@@ -15,7 +15,7 @@ struct FloatingTextField_Previews: PreviewProvider {
         JEWUIColor.default.lightDefaultColor = UIColor(named: "accentLight")!
         JEWUIColor.default.darkDefaultColor = UIColor(named: "accentDark")!
         return VStack {
-            FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: JEWFloatingTextFieldFormatBuilder().setAll(withPlaceholder: "Testando").setPlaceholderColor(color: .JEWDefault()).setTextFieldTextColor(color: .JEWBlack()).setSelectedColor(color: .JEWDefault()).setTextFieldValueType(type: JEWFloatingTextFieldValueType.percent), text: .constant(""), close: .constant(true))
+            FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: JEWFloatingTextFieldFormatBuilder().setAll(withPlaceholder: "Testando").setPlaceholderColor(color: .JEWDefault()).setTextFieldTextColor(color: .JEWBlack()).setSelectedColor(color: .JEWDefault()).setTextFieldValueType(type: JEWFloatingTextFieldValueType.percent), placeholder: .constant("Testando"), text: .constant(""), formatType: .constant(.none), close: .constant(true), shouldBecomeFirstResponder: .constant(false))
                 .frame(width: 300, height: 50)
             Spacer()
         }
@@ -27,8 +27,11 @@ struct FloatingTextField: UIViewRepresentable {
     
     var toolbarBuilder: JEWFloatingTextFieldToolbarBuilder
     var formatBuilder: JEWFloatingTextFieldFormatBuilder
+    @Binding var placeholder: String
     @Binding var text: String
+    @Binding var formatType: JEWFloatingTextFieldValueType
     @Binding var close: Bool
+    @Binding var shouldBecomeFirstResponder: Bool
     var hasInfoButton: Bool = false
     var isSecureTextEntry: Bool = false
     var autocapitalizationType = UITextAutocapitalizationType.none
@@ -38,8 +41,8 @@ struct FloatingTextField: UIViewRepresentable {
     var didEndEditing: ((JEWFloatingTextField) -> Void)?
     var onChanged: ((JEWFloatingTextField, _ text: String, _ isBackspace: Bool) -> Void)?
     
-    static func defaultFormatBuilder(placeholder: String, valueType: JEWFloatingTextFieldValueType = .none, hideBottomView: Bool = true) -> JEWFloatingTextFieldFormatBuilder {
-        JEWFloatingTextFieldFormatBuilder().setAll(withPlaceholder: placeholder).setBigFont(font: UIFont.systemFont(ofSize: UIFont.systemFontSize, weight: .semibold)).setSmallFont(font: UIFont.systemFont(ofSize: UIFont.smallSystemFontSize, weight: .bold)).setPlaceholderColor(color: .JEWDefault()).setTextFieldTextColor(color: .label).setTextFieldValueType(type: valueType).setHideBottomView(isHidden: hideBottomView)
+    static func defaultFormatBuilder(placeholderColor: UIColor = .JEWDefault(), valueType: JEWFloatingTextFieldValueType = .none, hideBottomView: Bool = true) -> JEWFloatingTextFieldFormatBuilder {
+        JEWFloatingTextFieldFormatBuilder().setAll(withPlaceholder: String()).setBigFont(font: UIFont.systemFont(ofSize: UIFont.systemFontSize, weight: .semibold)).setSmallFont(font: UIFont.systemFont(ofSize: UIFont.smallSystemFontSize, weight: .bold)).setPlaceholderColor(color: placeholderColor).setTextFieldTextColor(color: .label).setTextFieldValueType(type: valueType).setHideBottomView(isHidden: hideBottomView)
     }
     
     func makeUIView(context: Context) -> JEWFloatingTextField {
@@ -65,9 +68,17 @@ struct FloatingTextField: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: JEWFloatingTextField, context: Context) {
+        uiView.placeholderLabel.text = self.placeholder
         uiView.textFieldText = self.text
+        uiView.valueTypeTextField = self.formatType
         if self.close {
             uiView.clear()
+        }
+        if self.shouldBecomeFirstResponder {
+            uiView.textField.becomeFirstResponder()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                uiView.openKeyboard()
+            }
         }
     }
     
