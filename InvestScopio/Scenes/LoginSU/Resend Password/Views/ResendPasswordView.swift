@@ -94,14 +94,14 @@ struct ResendPasswordFormView: View {
                     self.emailText = text
                 }
                 .frame(height: 50)
-                .listRowBackground(Color(UIColor.systemBackground))
+                .listRowBackground(Color(.JEWBackground()))
             }
         }
         .animation(.linear)
         .frame(height: 150)
         .listStyle(GroupedListStyle())
         .environment(\.horizontalSizeClass, .regular)
-        .background(Color(UIColor.systemGray5))
+        .background(Color(.systemGray6))
         .cornerRadius(16)
         .padding()
     }

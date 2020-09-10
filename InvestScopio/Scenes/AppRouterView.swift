@@ -22,7 +22,7 @@ struct AppRouterView: View {
     var body: some View {
         ZStack {
             if settings.isLogged {
-                TabView {
+                TabView(selection: $settings.tabSelection) {
                     SimulationsView(viewModel: simulationsViewModel)
                         .tag(0)
                         .tabItem {
@@ -62,6 +62,7 @@ struct LoginRouterView_Previews: PreviewProvider {
 
 class AppSettings: ObservableObject {
     @Published var isLogged = false
+    @Published var tabSelection = 1
     @Published var popup = AppPopupSettings()
 }
 

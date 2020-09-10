@@ -12,6 +12,8 @@ struct TalkWithUsView: View {
     @EnvironmentObject var settings: AppSettings
     var body: some View {
         NavigationView {
+            ZStack {
+                Color(.JEWBackground())
             List {
                 Section {
                     Button(action: {
@@ -26,9 +28,11 @@ struct TalkWithUsView: View {
                 .frame(height: 50)
                 .listRowBackground(Color(UIColor.systemGray6))
             }
+            .padding(.top, 16)
             .listStyle(GroupedListStyle())
             .environment(\.horizontalSizeClass, .regular)
             .navigationBarTitle("Fale Conosco", displayMode: .large)
+            }
         }
     }
 }

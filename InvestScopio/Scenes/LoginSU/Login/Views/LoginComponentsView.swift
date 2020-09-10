@@ -39,7 +39,7 @@ struct LoginFormView: View {
                     self.emailText = text
                 }
                 .frame(height: 50)
-                .listRowBackground(Color(UIColor.systemBackground))
+                .listRowBackground(Color(.JEWBackground()))
             }
             Section(header: Text("Digite sua senha").textFont()) {
                 FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(), placeholder: .constant("Senha"), text: $passwordText, formatType: .constant(.none), keyboardType: .constant(.default), close: .constant(false), shouldBecomeFirstResponder: .constant(false), isSecureTextEntry: true, tapOnToolbarButton: { textfield, type in
@@ -50,11 +50,11 @@ struct LoginFormView: View {
                     self.passwordText = text
                 }
                 .frame(height: 50)
-                .listRowBackground(Color(UIColor.systemBackground))
+                .listRowBackground(Color(.JEWBackground()))
             }
             Section {
                 Toggle(isOn: $saveData) { Text("Salvar dados").textFont() }
-                    .listRowBackground(Color(UIColor.systemBackground))
+                    .listRowBackground(Color(.JEWBackground()))
             }
         }
         .background(GeometryGetter(rect: self.$rects[0]))

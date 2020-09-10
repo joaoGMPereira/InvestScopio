@@ -21,10 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         JEWUIColor.default.defaultColor = UIColor(named: "accent")!
         JEWUIColor.default.lightDefaultColor = UIColor(named: "accentLight")!
         JEWUIColor.default.darkDefaultColor = UIColor(named: "accentDark")!
-        JEWUIColor.default.backgroundColor = UIColor.systemBackground
+        JEWUIColor.default.backgroundColor = UIColor(named: "primaryBackground")!
         UINavigationBar.appearance().tintColor = .JEWDefault()
         UISwitch.appearance().onTintColor = .JEWDefault()
         UITextField.appearance().tintColor = .JEWDefault()
+        
         setupFirebase()
         return true
     }

@@ -20,6 +20,7 @@ struct DoubleButtons: View {
             LoadingButton(isLoading: $firstIsLoading, model: firstModel, action: firstCompletion)
             LoadingButton(isLoading: $secondIsLoading, model: secondModel, action: secondCompletion)
         }
+        .background(Color(.JEWBackground()))
         .padding(.horizontal, 16)
         .padding(.bottom, 8)
     }

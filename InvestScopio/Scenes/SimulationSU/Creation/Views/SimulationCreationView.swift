@@ -47,13 +47,19 @@ extension SimulationCreationView {
                                 self.settings.popup = settings
                             })
                         }) {
-                            self.viewModel.selectSecondButton() {
+                            self.viewModel.cleanTextFields() {
                                 self.settings.popup = AppPopupSettings()
                             }
                         }
                     }
                 }
             }
+            .padding(.top, 16)
+            .padding(.bottom, 22)
+            .navigationBarTitle("Simulação", displayMode: .inline)
+            .introspectViewController(customize: { (view) in
+                view.background = .JEWBackground()
+            })
             .introspectScrollView(customize: { (scrollView) in
                 if self.viewModel.shouldScrollBottom {
                     scrollView.scrollTo(edge: .bottom, animated: true)
@@ -61,9 +67,10 @@ extension SimulationCreationView {
                     scrollView.scrollTo(edge: .top, animated: true)
                 }
             })
-                .padding(.top, 16)
-                .padding(.bottom, 22)
-                .navigationBarTitle("Simulação", displayMode: .inline)
+        }.onDisappear {
+            self.viewModel.cleanTextFields() {
+                self.settings.popup = AppPopupSettings()
+            }
         }
     }
     
@@ -105,21 +112,20 @@ extension SimulationCreationView {
                 Rectangle().frame(height: 2).foregroundColor(self.viewModel.allSteps[index].hasError ? Color(.JEWRed()) : Color(.JEWDefault())).position(x: geometry.size.width/2, y: geometry.size.height - 1)
             }
         }
-        .background(Color(.systemGray5))
+        .background(Color(.systemGray6))
         .clipShape(RoundedRectangle(cornerRadius: 8))
     }
     
     func tapOnToolbar(textField: JEWFloatingTextField, type: JEWKeyboardToolbarButton, index: Int) {
         switch type {
         case .cancel:
-            UIApplication.shared.endEditing()
-            break
+            self.viewModel.cancel(index: index)
         case .back:
             self.viewModel.backStep(index: index) {
                 self.settings.popup = AppPopupSettings()
             }
         case .ok:
-            self.viewModel.nextStep(textField: textField, index: index, completion: {
+            self.viewModel.nextStep(index: index, completion: {
                 self.settings.popup = AppPopupSettings()
             }){ popupSetting in
                 self.settings.popup = popupSetting

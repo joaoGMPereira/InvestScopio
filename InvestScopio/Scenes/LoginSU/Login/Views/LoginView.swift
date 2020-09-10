@@ -63,7 +63,7 @@ struct LoginView: View {
                 }.offset(y: kGuardian.slide).animation( .easeInOut(duration: hasAppeared ? 0.3 : 0))
             }
             .padding(.top, 32)
-            .background(Color(UIColor.systemBackground))
+            .background(Color("primaryBackground"))
             .edgesIgnoringSafeArea(.all)
             .onAppear {
                 self.kGuardian.addObserver()

@@ -14,7 +14,7 @@ extension SimulationCreationView {
     func stepView() -> some View {
         SplitView(isOpened: $stepViewModel.isOpened, minHeight: 22, forceCloseWhenDisappear: true) {
             VStack {
-                Color("secondary").cornerRadius(2).frame(width: 40, height: 4).padding(.top, 8)
+                Color("contrastBackground").cornerRadius(2).frame(width: 40, height: 4).padding(.top, 8)
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 16) {
                         self.header()
@@ -51,8 +51,8 @@ extension SimulationCreationView {
     func header() -> some View {
         VStack {
             if stepViewModel.showHeader {
-                JewSegmentedControl(selectedIndex: $stepViewModel.selectedIndex, rects: $stepViewModel.rects, titles: $stepViewModel.titles, selectedColor: Color("backgroundSelected4"), unselectedColor: Color("background4"), coordinateSpaceName: "SimulationCreationSegmentedControl").padding(.horizontal)
-                Step(passed: self.$stepViewModel.passed, progress: self.$stepViewModel.progress, quantity: self.$stepViewModel.quantity, progressedColor: Color(.JEWDefault()), unprogressedColor: Color("background4")).padding(.horizontal)
+                JewSegmentedControl(selectedIndex: $stepViewModel.selectedIndex, rects: $stepViewModel.rects, titles: $stepViewModel.titles, selectedColor: Color("accessoryBackgroundSelected"), unselectedColor: Color("accessoryBackground"), coordinateSpaceName: "SimulationCreationSegmentedControl").padding(.horizontal)
+                Step(passed: self.$stepViewModel.passed, progress: self.$stepViewModel.progress, quantity: self.$stepViewModel.quantity, progressedColor: Color(.JEWDefault()), unprogressedColor: Color("accessoryBackground")).padding(.horizontal)
             }
         }
     }
@@ -84,11 +84,11 @@ extension SimulationCreationView {
                         Rectangle().frame(height: 2).foregroundColor(Color(.JEWDefault())).position(x: geometry.size.width/2, y: geometry.size.height - 1)
                     }
                 }
-                .background(Color(.systemBackground))
+                .background(Color(.JEWBackground()))
                 .clipShape(RoundedRectangle(cornerRadius: 8))
                 .padding()
             }
-        }.background(Color(UIColor.systemGray5))
+        }.background(Color("cellBackground"))
             .cornerRadius(16)
             .padding()
     }

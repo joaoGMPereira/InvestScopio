@@ -27,6 +27,15 @@ class SimulationCreationViewModel: NSObject, ObservableObject {
     
     func didBeginEditing(index: Int) {
         shouldScrollBottom = index > 3
+        for (indexStep, _) in allSteps.enumerated() {
+            allSteps[indexStep].shouldBecomeFirstResponder = false
+        }
+        allSteps[index].shouldBecomeFirstResponder = true
+    }
+    
+    func cancel(index: Int) {
+        allSteps[index].shouldBecomeFirstResponder = false
+        UIApplication.shared.endEditing()
     }
     
     func backStep(index: Int, completion: @escaping () -> Void) {
@@ -41,7 +50,7 @@ class SimulationCreationViewModel: NSObject, ObservableObject {
         allSteps[index].value = text
     }
     
-    func nextStep(textField: JEWFloatingTextField, index: Int, completion: @escaping () -> Void, failure: @escaping (AppPopupSettings) -> Void) {
+    func nextStep(index: Int, completion: @escaping () -> Void, failure: @escaping (AppPopupSettings) -> Void) {
         completion()
         allSteps[index].shouldBecomeFirstResponder = false
         if allSteps.indices.contains(index + 1) {
@@ -58,7 +67,9 @@ class SimulationCreationViewModel: NSObject, ObservableObject {
             fillSimulation()
             completion(simulation)
             shouldSimulate = true
-            cleanTextFields()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.cleanTextFields()
+            }
         }
     }
     
@@ -129,8 +140,9 @@ class SimulationCreationViewModel: NSObject, ObservableObject {
         return validRequiredSteps
     }
     
-    func selectSecondButton(completion: @escaping () -> Void) {
+    func cleanTextFields(completion: @escaping () -> Void) {
         cleanTextFields()
+        completion()
     }
     
     private func cleanTextFields() {
@@ -139,7 +151,9 @@ class SimulationCreationViewModel: NSObject, ObservableObject {
         for (index, _) in allSteps.enumerated() {
             allSteps[index].value = String()
             allSteps[index].shouldBecomeFirstResponder = false
+            allSteps[index].hasError = false
         }
+        UIApplication.shared.endEditing()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.close = false
         }

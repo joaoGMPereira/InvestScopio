@@ -39,18 +39,22 @@ struct SimulationsView: View {
                 } else {
                     LitSimulations(viewModel: viewModel, detailViewModel: detailViewModel)
                 }
-                DoubleButtons(firstIsLoading: .constant(false), secondIsLoading: .constant(false), firstModel: .init(title: "Limpar Histórico", color: Color("accent"), isFill: false), secondModel: .init(title: "Nova Simulação", color: Color("accent"), isFill: true), firstCompletion: {
-                    self.settings.popup = AppPopupSettings(message: "Atenção\nTODO LIMPAR HISTORICO", textColor: .black, backgroundColor: Color(.JEWLightDefault()), position: .top, show: true)
-                    
+                DoubleButtons(firstIsLoading: .constant(false), secondIsLoading: .constant(false), firstModel: .init(title: "Nova Simulação", color: Color("accent"), isFill: true), secondModel: .init(title: "Limpar Histórico", color: Color("accent"), isFill: false), firstCompletion: {
+                    self.settings.tabSelection = 1
                 }) {
-                    self.settings.popup = AppPopupSettings(message: "Atenção\nTODO NOVA SIMULACAO", textColor: .black, backgroundColor: Color(.JEWLightDefault()), position: .top, show: true)
+                    self.settings.popup = AppPopupSettings(message: "Atenção\nTODO LIMPAR HISTORICO", textColor: .black, backgroundColor: Color(.JEWLightDefault()), position: .top, show: true)
                 }
             }
+            .introspectViewController(customize: { (view) in
+                view.background = .JEWBackground()
+            })
             .navigationBarTitle("Simulações", displayMode: .large)
             .navigationBarItems(trailing:
                 Button(action: {
                     self.viewModel.reload = true
-                    self.getSimulations()
+                    DispatchQueue.main.async {
+                        self.getSimulations()
+                    }
                 }, label: {
                     Image(systemName: SFSymbol.arrow2Circlepath.rawValue)
                         .rotationEffect(Angle(degrees: self.viewModel.reload ? 360.0 : 0.0))
@@ -58,7 +62,9 @@ struct SimulationsView: View {
                 })
             )
             .onAppear {
-                self.getSimulations()
+                DispatchQueue.main.async {
+                    self.getSimulations()
+                }
             }
         }
     }

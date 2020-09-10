@@ -90,7 +90,7 @@ struct RegisterFormView: View {
                     self.emailText = text
                 }
                 .frame(height: 50)
-                .listRowBackground(Color(UIColor.systemBackground))
+                .listRowBackground(Color(.JEWBackground()))
             }
             Section(header: Text("Digite uma senha").textFont()) {
                 FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(), placeholder: .constant("Senha"), text: $passwordText, formatType: .constant(.none), keyboardType: .constant(.default), close: $close, shouldBecomeFirstResponder: .constant(false), isSecureTextEntry: true, didBeginEditing: { textfield in
@@ -99,7 +99,7 @@ struct RegisterFormView: View {
                     self.passwordText = text
                 }
                 .frame(height: 50)
-                .listRowBackground(Color(UIColor.systemBackground))
+                .listRowBackground(Color(.JEWBackground()))
             }
             Section(header: Text("Confirme sua senha").textFont()) {
                 FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(), placeholder: .constant("Confirmar Senha"), text: $passwordConfirmationText, formatType: .constant(.none), keyboardType: .constant(.default), close: $close, shouldBecomeFirstResponder: .constant(false), isSecureTextEntry: true, tapOnToolbarButton: { textfield, type in
@@ -110,7 +110,7 @@ struct RegisterFormView: View {
                     self.passwordConfirmationText = text
                 }
                 .frame(height: 50)
-                .listRowBackground(Color(UIColor.systemBackground))
+                .listRowBackground(Color(.JEWBackground()))
                 
             }
         }
@@ -118,7 +118,7 @@ struct RegisterFormView: View {
         .frame(height: 360)
         .listStyle(GroupedListStyle())
         .environment(\.horizontalSizeClass, .regular)
-        .background(Color(UIColor.systemGray5))
+        .background(Color(.systemGray6))
         .cornerRadius(16)
         .padding()
     }

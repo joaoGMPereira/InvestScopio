@@ -26,9 +26,9 @@ struct SimulationCell: View {
             }
             .getContent(size: $cellSize)
             .padding()
-            .background(Color("background3"))
+            .background(Color("cellBackground"))
             .cornerRadius(8)
-            .shadow(color: Color.primary.opacity(0.3), radius: 8, x: 0.5, y: 0.5)
+            .shadow(color: Color("accessoryBackground").opacity(0.8), radius: 8)
             .padding([.top, .bottom], 8)
         }
         .allowsHitTesting(selectable)
