@@ -18,6 +18,7 @@ struct AppRouterView: View {
     let simulationsViewModel = SimulationsViewModel(service: SimulationsService(repository: SimulationsRepository()))
     let simulationCreationStepViewModel = SimulationCreationStepViewModel()
     let simulationCreationViewModel = SimulationCreationViewModel(allSteps: StepModel.allDefaultSteps)
+    let simulationCreationDetailViewModel = SimulationDetailViewModel(service: SimulationDetailService(repository: SimulationDetailRepository()))
     var body: some View {
         ZStack {
             if settings.isLogged {
@@ -28,7 +29,7 @@ struct AppRouterView: View {
                             Image(systemName: SFSymbol.listBullet.rawValue)
                             Text("Simulações")
                     }
-                    SimulationCreationView(viewModel: simulationCreationViewModel, stepViewModel: simulationCreationStepViewModel)
+                    SimulationCreationView(viewModel: simulationCreationViewModel, detailViewModel: simulationCreationDetailViewModel, stepViewModel: simulationCreationStepViewModel)
                         .tag(1)
                         .tabItem {
                             Image(systemName: SFSymbol.chartBarFill.rawValue)

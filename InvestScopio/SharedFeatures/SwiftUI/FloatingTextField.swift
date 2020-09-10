@@ -15,7 +15,7 @@ struct FloatingTextField_Previews: PreviewProvider {
         JEWUIColor.default.lightDefaultColor = UIColor(named: "accentLight")!
         JEWUIColor.default.darkDefaultColor = UIColor(named: "accentDark")!
         return VStack {
-            FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: JEWFloatingTextFieldFormatBuilder().setAll(withPlaceholder: "Testando").setPlaceholderColor(color: .JEWDefault()).setTextFieldTextColor(color: .JEWBlack()).setSelectedColor(color: .JEWDefault()).setTextFieldValueType(type: JEWFloatingTextFieldValueType.percent), placeholder: .constant("Testando"), text: .constant(""), formatType: .constant(.none), close: .constant(true), shouldBecomeFirstResponder: .constant(false))
+            FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: JEWFloatingTextFieldFormatBuilder().setAll(withPlaceholder: "Testando").setPlaceholderColor(color: .JEWDefault()).setTextFieldTextColor(color: .JEWBlack()).setSelectedColor(color: .JEWDefault()).setTextFieldValueType(type: JEWFloatingTextFieldValueType.percent), placeholder: .constant("Testando"), text: .constant(""), formatType: .constant(.none), keyboardType: .constant(.default), close: .constant(true), shouldBecomeFirstResponder: .constant(false))
                 .frame(width: 300, height: 50)
             Spacer()
         }
@@ -30,6 +30,7 @@ struct FloatingTextField: UIViewRepresentable {
     @Binding var placeholder: String
     @Binding var text: String
     @Binding var formatType: JEWFloatingTextFieldValueType
+    @Binding var keyboardType: UIKeyboardType
     @Binding var close: Bool
     @Binding var shouldBecomeFirstResponder: Bool
     var hasInfoButton: Bool = false
@@ -71,6 +72,7 @@ struct FloatingTextField: UIViewRepresentable {
         uiView.placeholderLabel.text = self.placeholder
         uiView.textFieldText = self.text
         uiView.valueTypeTextField = self.formatType
+        uiView.textField.keyboardType = self.keyboardType
         if self.close {
             uiView.clear()
         }

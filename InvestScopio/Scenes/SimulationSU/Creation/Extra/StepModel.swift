@@ -13,6 +13,8 @@ class StepModel {
     var value: String
     var type: SimulationCreationViewType
     var isRequired: Bool
+    var shouldBecomeFirstResponder: Bool = false
+    var hasError: Bool = false
     
     init(key: String = String(), value: String = String(), type: SimulationCreationViewType = .initialStep, isRequired: Bool = false) {
         self.key = key
@@ -27,7 +29,7 @@ class StepModel {
             var isRequired = true
             
             switch type {
-            case .thirdStep, .fifthStep, .sixthStep, .seventhStep:
+            case .secondStep, .fifthStep, .sixthStep, .seventhStep:
                 isRequired = false
             default:
                 break

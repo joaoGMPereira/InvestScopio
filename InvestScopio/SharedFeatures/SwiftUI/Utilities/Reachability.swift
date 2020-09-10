@@ -39,10 +39,14 @@ class Reachability: ObservableObject {
     }
 
     func hasConnected() {
-        self.isConnected = true
+        if isConnected != true {
+            self.isConnected = true
+        }
     }
 
     func hasDisconnect() {
-       self.isConnected = false
+        if isConnected != false {
+            self.isConnected = false
+        }
     }
 }
