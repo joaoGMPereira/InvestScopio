@@ -39,9 +39,9 @@ enum ConnectorRoutes {
         case .userSimulations:
             return INVSConector.getURL(withRoute: "/userSimulations")
         case .deleteSimulation:
-            return INVSConector.getURL(withRoute: "/simulation/delete")
+            return INVSConector.getURL(withRoute: "/deleteSimulation")
         case .deleteAllSimulations:
-            return INVSConector.getURL(withRoute: "/simulation/deleteAll")
+            return INVSConector.getURL(withRoute: "/deleteAllSimulations")
         case .evaluate:
             return INVSConector.getURL(withRoute: "/evaluation/evaluate")
         case .refreshToken:

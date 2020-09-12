@@ -122,7 +122,7 @@ class SimulationDetailViewModel: ObservableObject {
     }
     
     let simulationDetailService: SimulationDetailServiceProtocol
-
+    
     init(service: SimulationDetailServiceProtocol) {
         self._simulationDetailLoadable = .init(initialValue: .notRequested)
         self.simulationDetailService = service
@@ -146,8 +146,10 @@ class SimulationDetailViewModel: ObservableObject {
         var entries = [ChartDataEntry]()
         entries.append(ChartDataEntry(x: 0, y: chartType == .profitability ? simulation.initialValue: 0))
         for month in 0...months-1 {
-            let simulatedValue = simulateds[month]
-            entries.append(ChartDataEntry(x: Double(month+1), y: chartType == .profitability ? simulatedValue.total ?? 0 : simulatedValue.totalRescue ?? 0))
+            if simulateds.indices.contains(month) {
+                let simulatedValue = simulateds[month]
+                entries.append(ChartDataEntry(x: Double(month+1), y: chartType == .profitability ? simulatedValue.total ?? 0 : simulatedValue.totalRescue ?? 0))
+            }
         }
         return entries
     }
@@ -201,7 +203,7 @@ class SimulationDetailViewModel: ObservableObject {
         case .isLoading(_, _):
             self.showError = false
             self.state = .loading
-
+            
             break
         case .loaded(let response):
             self.simulateds = response

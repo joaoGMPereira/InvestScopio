@@ -48,11 +48,11 @@ private extension Publisher where Output == URLSession.DataTaskPublisher.Output 
             assert(!Thread.isMainThread)
             guard let code = ($0.1 as? HTTPURLResponse)?.statusCode else {
                 JEWLogger.error($0)
-                throw APIError.unexpectedResponse
+                throw APIError.default
             }
             guard httpCodes.contains(code) else {
                 JEWLogger.error($0)
-                throw APIError.httpCode(code)
+                throw APIError.default
             }
             return $0.0
         }

@@ -58,6 +58,14 @@ class SimulationCreationViewModel: NSObject, ObservableObject {
         }
     }
     
+    func updateSteps(steps: [StepModel]) {
+        allSteps.enumerated().forEach { (index, step) in
+            if let matchedStep = steps.filter({$0.type == step.type}).first {
+                allSteps[index].value = matchedStep.value
+            }
+        }
+    }
+    
     func selectFirstButton(completion: @escaping (INVSSimulatorModel) -> Void, failure: @escaping (AppPopupSettings) -> Void) {
         guard isValidRequiredSteps() else {
             failure(AppPopupSettings.init(message: "Prencha todos os campos obrigatórios com um valor maior que zero para prosseguir!", textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true))
@@ -68,7 +76,7 @@ class SimulationCreationViewModel: NSObject, ObservableObject {
             completion(simulation)
             shouldSimulate = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.cleanTextFields()
+                self.updateTextFields()
             }
         }
     }
@@ -141,15 +149,17 @@ class SimulationCreationViewModel: NSObject, ObservableObject {
     }
     
     func cleanTextFields(completion: @escaping () -> Void) {
-        cleanTextFields()
+        updateTextFields(clean: true)
         completion()
     }
     
-    private func cleanTextFields() {
+    private func updateTextFields(clean: Bool = false) {
         close = true
         simulation = INVSSimulatorModel()
         for (index, _) in allSteps.enumerated() {
+            if clean {
             allSteps[index].value = String()
+            }
             allSteps[index].shouldBecomeFirstResponder = false
             allSteps[index].hasError = false
         }

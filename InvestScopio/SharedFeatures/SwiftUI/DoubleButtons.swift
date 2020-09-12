@@ -13,6 +13,7 @@ struct DoubleButtons: View {
     @Binding var secondIsLoading: Bool
     var firstModel: LoadingButtonModel
     var secondModel: LoadingButtonModel
+    var background: Color
     var firstCompletion: () -> Void
     var secondCompletion: () -> Void
     var body: some View {
@@ -20,7 +21,7 @@ struct DoubleButtons: View {
             LoadingButton(isLoading: $firstIsLoading, model: firstModel, action: firstCompletion)
             LoadingButton(isLoading: $secondIsLoading, model: secondModel, action: secondCompletion)
         }
-        .background(Color(.JEWBackground()))
+        .background(background)
         .padding(.horizontal, 16)
         .padding(.bottom, 8)
     }

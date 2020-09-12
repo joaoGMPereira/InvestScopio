@@ -24,25 +24,20 @@ extension APICall {
 }
 
 enum APIError: Error {
+    case `default`
     case customError(String)
-    case invalidURL
-    case httpCode(HTTPCode)
-    case unexpectedResponse
-    case imageProcessing([URLRequest])
     case logout
 }
 
 extension APIError: LocalizedError {
     var errorDescription: String? {
         switch self {
-        case .invalidURL: return "Invalid URL"
-        case let .httpCode(code): return "Unexpected HTTP code: \(code)"
-        case .unexpectedResponse: return "Unexpected response from the server"
-        case .imageProcessing: return "Unable to load image"
         case .customError(let message):
             return message
         case .logout:
             return "Sessão finalizada!"
+        case .default:
+            return "Atenção!\nDesculpe, tivemos algum problema, tente novamente mais tarde!"
         }
     }
 }
@@ -50,7 +45,7 @@ extension APIError: LocalizedError {
 extension APICall {
     func urlRequest() throws -> URLRequest {
         guard let url = route.getRoute() else {
-            throw APIError.invalidURL
+            throw APIError.default
         }
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue

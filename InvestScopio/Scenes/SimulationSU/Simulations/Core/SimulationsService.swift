@@ -15,6 +15,7 @@ import SwiftUI
 
 protocol SimulationsServiceProtocol {
     func load(simulations: LoadableSubject<[INVSSimulatorModel]>)
+    func delete(simulations: LoadableSubject<DeleteSimulationModel>)
 }
 
 struct SimulationsService: SimulationsServiceProtocol {
@@ -32,7 +33,22 @@ struct SimulationsService: SimulationsServiceProtocol {
                 .simulations()
                 .sinkToLoadable { response in
                     guard let value = response.value else {
-                        simulations.wrappedValue = .failed(APIError.customError("Error"))
+                        simulations.wrappedValue = .failed(APIError.customError("Atenção!\nDesculpe, tivemos algum problema, tente novamente mais tarde!"))
+                        return
+                    }
+                    simulations.wrappedValue = .loaded(value.data)
+            }
+            .store(in: cancelBag)
+    }
+    
+    func delete(simulations: LoadableSubject<DeleteSimulationModel>) {
+        let cancelBag = CancelBag()
+        simulations.wrappedValue = .isLoading(last: simulations.wrappedValue.value, cancelBag: cancelBag)
+            self.repository
+                .deleteSimulations()
+                .sinkToLoadable { response in
+                    guard let value = response.value else {
+                        simulations.wrappedValue = .failed(APIError.customError("Atenção!\nDesculpe, tivemos algum problema, tente novamente mais tarde!"))
                         return
                     }
                     simulations.wrappedValue = .loaded(value.data)
@@ -42,6 +58,10 @@ struct SimulationsService: SimulationsServiceProtocol {
 }
 
 struct StubSimulationsService: SimulationsServiceProtocol {
+    func delete(simulations: LoadableSubject<DeleteSimulationModel>) {
+        
+    }
+    
     func load(simulations: LoadableSubject<[INVSSimulatorModel]>) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             simulations.wrappedValue = .loaded(INVSSimulatorModel.simulationsPlaceholders)
@@ -51,6 +71,10 @@ struct StubSimulationsService: SimulationsServiceProtocol {
 
 
 struct StubSimulationsServiceFailure: SimulationsServiceProtocol {
+    func delete(simulations: LoadableSubject<DeleteSimulationModel>) {
+        
+    }
+    
     func load(simulations: LoadableSubject<[INVSSimulatorModel]>) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             simulations.wrappedValue = .failed(APIError.customError("Error"))
@@ -59,6 +83,10 @@ struct StubSimulationsServiceFailure: SimulationsServiceProtocol {
 }
 
 struct StubSimulationsServiceEmptySimulations: SimulationsServiceProtocol {
+    func delete(simulations: LoadableSubject<DeleteSimulationModel>) {
+        
+    }
+    
     func load(simulations: LoadableSubject<[INVSSimulatorModel]>) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             simulations.wrappedValue = .loaded([INVSSimulatorModel]())

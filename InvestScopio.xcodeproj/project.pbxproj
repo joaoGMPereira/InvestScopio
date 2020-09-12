@@ -213,6 +213,8 @@
 		7611A24C24F897300012BE56 /* SimulationCreationStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A24A24F897300012BE56 /* SimulationCreationStepViewModel.swift */; };
 		7611A24E24F89B130012BE56 /* DoubleButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A24D24F89B130012BE56 /* DoubleButtons.swift */; };
 		7611A24F24F89B130012BE56 /* DoubleButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A24D24F89B130012BE56 /* DoubleButtons.swift */; };
+		7623BA37250D859700A3091E /* DeleteSimulationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623BA36250D859700A3091E /* DeleteSimulationModel.swift */; };
+		7623BA38250D859700A3091E /* DeleteSimulationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623BA36250D859700A3091E /* DeleteSimulationModel.swift */; };
 		7655A2C725070CBC004B3E0D /* SimulationCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655A2C625070CBC004B3E0D /* SimulationCreationViewModel.swift */; };
 		7655A2C825070CBC004B3E0D /* SimulationCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655A2C625070CBC004B3E0D /* SimulationCreationViewModel.swift */; };
 		7655A2CA25071297004B3E0D /* CreateSimulationSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655A2C925071297004B3E0D /* CreateSimulationSegments.swift */; };
@@ -441,6 +443,7 @@
 		7611A24424F8941D0012BE56 /* SimulationCreationViewType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulationCreationViewType.swift; sourceTree = "<group>"; };
 		7611A24A24F897300012BE56 /* SimulationCreationStepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationCreationStepViewModel.swift; sourceTree = "<group>"; };
 		7611A24D24F89B130012BE56 /* DoubleButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleButtons.swift; sourceTree = "<group>"; };
+		7623BA36250D859700A3091E /* DeleteSimulationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteSimulationModel.swift; sourceTree = "<group>"; };
 		7655A2C625070CBC004B3E0D /* SimulationCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationCreationViewModel.swift; sourceTree = "<group>"; };
 		7655A2C925071297004B3E0D /* CreateSimulationSegments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSimulationSegments.swift; sourceTree = "<group>"; };
 		7655A2CC250712C3004B3E0D /* StepModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepModel.swift; sourceTree = "<group>"; };
@@ -945,6 +948,7 @@
 			children = (
 				7611A14124F1DADD0012BE56 /* INVSSimulatedValueModel.swift */,
 				7611A13E24F1DAB40012BE56 /* INVSSimulatorModel.swift */,
+				7623BA36250D859700A3091E /* DeleteSimulationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1587,6 +1591,7 @@
 				4A0FFEAE22B57A7200D6A33A /* INVSBlurViewController.swift in Sources */,
 				4A27022E22CD409D005DA22A /* INVSTalkWithUsPresenter.swift in Sources */,
 				76C15CA024CE011800045D9A /* RefreshRepository.swift in Sources */,
+				7623BA37250D859700A3091E /* DeleteSimulationModel.swift in Sources */,
 				4AFF3F0122BED1B20056A167 /* INVSBiometricsHelpers.swift in Sources */,
 				4A4C68C92295796200EDC8C6 /* UIColor+INVSPaletteColors.swift in Sources */,
 				4A0FFE8422B1160400D6A33A /* INVSLoginInteractor.swift in Sources */,
@@ -1733,6 +1738,7 @@
 				4AFF3E8A22BB23F10056A167 /* INVSBlurViewController.swift in Sources */,
 				4A27022F22CD409D005DA22A /* INVSTalkWithUsPresenter.swift in Sources */,
 				76C15CA124CE011800045D9A /* RefreshRepository.swift in Sources */,
+				7623BA38250D859700A3091E /* DeleteSimulationModel.swift in Sources */,
 				4AFF3F0222BED1B20056A167 /* INVSBiometricsHelpers.swift in Sources */,
 				4AFF3E8C22BB23F10056A167 /* UIColor+INVSPaletteColors.swift in Sources */,
 				4AFF3E8D22BB23F10056A167 /* INVSLoginInteractor.swift in Sources */,

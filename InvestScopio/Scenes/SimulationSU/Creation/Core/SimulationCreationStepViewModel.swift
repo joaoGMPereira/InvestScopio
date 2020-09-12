@@ -174,23 +174,25 @@ extension SimulationCreationStepViewModel {
         }
     }
     
-    func selectFirstButton() {
+    func selectFirstButton(completion: @escaping (_ allSteps: [StepModel]) -> Void) {
         if step == .initialStep {
             selectedIndex = 0
         }
         
         if step == .lastStep {
-            print("TODO")
+            completion(allSteps)
+            self.isOpened = false
         }
     }
     
-    func selectSecondButton() {
+    func selectSecondButton(completion: @escaping (_ allSteps: [StepModel]) -> Void) {
         if step == .initialStep {
             selectedIndex = 1
         }
         
         if step == .lastStep {
-            print("TODO")
+            completion(allSteps)
+            self.isOpened = false
         }
     }
 }

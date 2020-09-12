@@ -39,10 +39,12 @@ struct SimulationsView: View {
                 } else {
                     LitSimulations(viewModel: viewModel, detailViewModel: detailViewModel)
                 }
-                DoubleButtons(firstIsLoading: .constant(false), secondIsLoading: .constant(false), firstModel: .init(title: "Nova Simulação", color: Color("accent"), isFill: true), secondModel: .init(title: "Limpar Histórico", color: Color("accent"), isFill: false), firstCompletion: {
+                DoubleButtons(firstIsLoading: .constant(false), secondIsLoading: .constant(false), firstModel: .init(title: "Nova Simulação", color: Color(.JEWDefault()), isFill: true), secondModel: .init(title: "Limpar Histórico", color: Color(.JEWDefault()), isFill: false), background: Color(.JEWBackground()), firstCompletion: {
                     self.settings.tabSelection = 1
                 }) {
-                    self.settings.popup = AppPopupSettings(message: "Atenção\nTODO LIMPAR HISTORICO", textColor: .black, backgroundColor: Color(.JEWLightDefault()), position: .top, show: true)
+                    self.viewModel.deleteSimulations(completion: { settings in
+                        self.settings.popup = settings
+                    })
                 }
             }
             .introspectViewController(customize: { (view) in

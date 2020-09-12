@@ -58,7 +58,9 @@ struct SimulationDetailView: View {
             })
         }.navigationBarTitle("Simulação", displayMode: .large)
         .onAppear {
-            self.viewModel.simulationDetail()
+            DispatchQueue.main.async {
+                self.viewModel.simulationDetail()
+            }
         }.animation(.easeInOut)
     }
 }

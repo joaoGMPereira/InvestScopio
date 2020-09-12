@@ -28,6 +28,7 @@ struct LoginView: View {
                         self.viewModel.login(completion: {
                             self.settings.popup = AppPopupSettings()
                             self.settings.isLogged = true
+                            self.settings.tabSelection = 1
                         }) { popupSettings in
                         self.settings.popup = popupSettings
                         }
@@ -39,6 +40,7 @@ struct LoginView: View {
                             self.resendPasswordViewModel.close = false
                     }, didAdminLoginAction: {
                         self.viewModel.login(completion: {
+                            self.settings.tabSelection = 1
                             self.settings.popup = AppPopupSettings()
                             self.settings.isLogged = true
                             self.settings.popup = AppPopupSettings()
@@ -54,6 +56,7 @@ struct LoginView: View {
                         UIApplication.shared.endEditing()
                         self.viewModel.login(completion: {
                             self.settings.popup = AppPopupSettings()
+                            self.settings.tabSelection = 1
                             self.settings.isLogged = true
                         }) { popupSettings in
                         self.settings.popup = popupSettings

@@ -96,11 +96,23 @@ extension SimulationCreationView {
     func bottomButtons() -> some View {
         Group {
             if self.stepViewModel.isOpened && self.stepViewModel.showBottomButtons {
-                DoubleButtons(firstIsLoading: .constant(false), secondIsLoading: .constant(false), firstModel: .init(title: stepViewModel.firstButtonTitle, color: Color(.JEWLightDefault()), isFill: true), secondModel: .init(title: stepViewModel.secondButtonTitle, color: Color(.JEWDefault()), isFill: true), firstCompletion: {
-                    self.stepViewModel.selectFirstButton()
+                DoubleButtons(firstIsLoading: .constant(false), secondIsLoading: .constant(false), firstModel: .init(title: stepViewModel.firstButtonTitle, color: Color(.JEWDefault()), isFill: true), secondModel: .init(title: stepViewModel.secondButtonTitle, color: Color(.JEWDefault()), isFill: false), background: Color("secondaryBackground"), firstCompletion: {
+                    self.stepViewModel.selectFirstButton { (steps) in
+                        self.viewModel.updateSteps(steps: steps)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                            self.viewModel.selectFirstButton(completion: { (simulation) in
+                                self.settings.popup = AppPopupSettings()
+                                self.detailViewModel.simulation = simulation
+                            }, failure: { (settings) in
+                                self.settings.popup = settings
+                            })
+                        }
+                    }
                     
                 }) {
-                    self.stepViewModel.selectSecondButton()
+                    self.stepViewModel.selectSecondButton { (steps) in
+                        self.viewModel.updateSteps(steps: steps)
+                    }
                 }
             }
         }

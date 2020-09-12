@@ -39,7 +39,7 @@ extension SimulationCreationView {
                         firstSteps()
                         middleSteps()
                         finalSteps()
-                        DoubleButtons(firstIsLoading: .constant(false), secondIsLoading: .constant(false), firstModel: .init(title: "Simular", color: Color(.JEWDefault()), isFill: true), secondModel: .init(title: "Nova Simulação", color: Color(.JEWDefault()), isFill: false), firstCompletion: {
+                        DoubleButtons(firstIsLoading: .constant(false), secondIsLoading: .constant(false), firstModel: .init(title: "Simular", color: Color(.JEWDefault()), isFill: true), secondModel: .init(title: "Nova Simulação", color: Color(.JEWDefault()), isFill: false), background: Color(.JEWBackground()), firstCompletion: {
                             self.viewModel.selectFirstButton(completion: { (simulation) in
                                 self.settings.popup = AppPopupSettings()
                                 self.detailViewModel.simulation = simulation
@@ -68,6 +68,7 @@ extension SimulationCreationView {
                 }
             })
         }.onDisappear {
+            self.viewModel.shouldSimulate = false
             self.viewModel.cleanTextFields() {
                 self.settings.popup = AppPopupSettings()
             }
