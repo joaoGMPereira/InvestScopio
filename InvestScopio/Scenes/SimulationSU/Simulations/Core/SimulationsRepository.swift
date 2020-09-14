@@ -13,16 +13,21 @@ import JewFeatures
 protocol SimulationsRepositoryProtocol: WebRepository {
     func simulations() -> AnyPublisher<HTTPResponse<[INVSSimulatorModel]>, Error>
     func deleteSimulations() -> AnyPublisher<HTTPResponse<DeleteSimulationModel>, Error>
+    func deleteSimulation(id: String) -> AnyPublisher<HTTPResponse<DeleteSimulationModel>, Error>
 }
 
 struct SimulationsRepository: SimulationsRepositoryProtocol {
-    
+
     func simulations() -> AnyPublisher<HTTPResponse<[INVSSimulatorModel]>, Error> {
         return call(endpoint: API.simulations)
     }
     
     func deleteSimulations() -> AnyPublisher<HTTPResponse<DeleteSimulationModel>, Error> {
-        return call(endpoint: API.removeAll)
+        return call(endpoint: API.deleteAll)
+    }
+    
+    func deleteSimulation(id: String) -> AnyPublisher<HTTPResponse<DeleteSimulationModel>, Error> {
+        return call(endpoint: API.delete(id))
     }
 }
 
@@ -31,7 +36,8 @@ struct SimulationsRepository: SimulationsRepositoryProtocol {
 extension SimulationsRepository {
     enum API {
         case simulations
-        case removeAll
+        case deleteAll
+        case delete(_ id: String)
     }
 }
 
@@ -41,21 +47,26 @@ extension SimulationsRepository.API: APICall {
         switch self {
         case .simulations:
             return .userSimulations
-        case .removeAll:
+        case .deleteAll:
             return .deleteAllSimulations
+        case .delete(let id):
+            return .deleteSimulation(id)
         }
     }
     var method: HTTPMethod {
         switch self {
         case .simulations:
             return .get
-        case .removeAll:
+        case .deleteAll:
+            return .delete
+        case .delete:
             return .delete
         }
     }
     var headers: [String: String]? {
         return ["Content-Type": "application/json", "session-token": JEWSession.session.services.sessionToken]
     }
+    
     func body() -> HTTPRequest? {
         return nil
     }

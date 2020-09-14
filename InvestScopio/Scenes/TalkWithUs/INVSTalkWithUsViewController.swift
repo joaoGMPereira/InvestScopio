@@ -42,7 +42,7 @@ class INVSTalkWithUsViewController: UIViewController {
     var feedbackShapeLayer: CAShapeLayer?
     
     var interactor: INVSTalkWithUsInteractorProtocol?
-    var router: INVSRoutingLogic? = INVSRouter()
+  //  var router: INVSRoutingLogic? = INVSRouter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,14 +63,14 @@ class INVSTalkWithUsViewController: UIViewController {
     
     // MARK: Setup
     private func setup() {
-        let viewController = self
-        let interactor = INVSTalkWithUsInteractor()
-        let presenter = INVSTalkWithUsPresenter()
-        let router = INVSRouter()
-        viewController.interactor = interactor
-        viewController.router = router
-        interactor.presenter = presenter
-        presenter.viewController = viewController
+//        let viewController = self
+//        let interactor = INVSTalkWithUsInteractor()
+//        let presenter = INVSTalkWithUsPresenter()
+//        let router = INVSRouter()
+//        viewController.interactor = interactor
+//        viewController.router = router
+//        interactor.presenter = presenter
+//        presenter.viewController = viewController
     }
     
     func setBordedViewBackgrounds() {
@@ -202,36 +202,36 @@ extension INVSTalkWithUsViewController: INVSTalkWithUsViewControllerProtocol {
     func displayErrorAuthentication(titleError: String, messageError: String, shouldRetry: Bool) {
         self.sendOpinionButton.hideLoading()
         self.tabBarController?.tabBar.isHidden = true
-        INVSConnectorHelpers.presentErrorRememberedUserLogged(lastViewController: self, message: messageError, title: titleError, shouldRetry: shouldRetry, successCompletion: {
-            self.tabBarController?.tabBar.isHidden = false
-            self.interactor?.sendOpinion()
-        }) {
-            self.tabBarController?.tabBar.isHidden = false
-            self.goToLogin()
-        }
+//        INVSConnectorHelpers.presentErrorRememberedUserLogged(lastViewController: self, message: messageError, title: titleError, shouldRetry: shouldRetry, successCompletion: {
+//            self.tabBarController?.tabBar.isHidden = false
+//            self.interactor?.sendOpinion()
+//        }) {
+//            self.tabBarController?.tabBar.isHidden = false
+//            self.goToLogin()
+//        }
     }
     
     func displayErrorSettings(titleError: String, messageError: String) {
         self.sendOpinionButton.hideLoading()
         self.tabBarController?.tabBar.isHidden = true
-        INVSConnectorHelpers.presentErrorGoToSettingsRememberedUserLogged(lastViewController: self, message: messageError, title: titleError, finishCompletion: {
-            self.tabBarController?.tabBar.isHidden = false
-            self.goToLogin()
-        })
+//        INVSConnectorHelpers.presentErrorGoToSettingsRememberedUserLogged(lastViewController: self, message: messageError, title: titleError, finishCompletion: {
+//            self.tabBarController?.tabBar.isHidden = false
+//            self.goToLogin()
+//        })
     }
     
     func displayErrorLogout(titleError: String, messageError: String) {
         self.sendOpinionButton.hideLoading()
         self.tabBarController?.tabBar.isHidden = true
-        INVSConnectorHelpers.presentErrorRememberedUserLogged(lastViewController: self) {
-            self.tabBarController?.tabBar.isHidden = false
-            self.goToLogin()
-        }
+//        INVSConnectorHelpers.presentErrorRememberedUserLogged(lastViewController: self) {
+//            self.tabBarController?.tabBar.isHidden = false
+//            self.goToLogin()
+//        }
     }
     
     func goToLogin() {
         self.dismiss(animated: false, completion: nil)
-        router?.routeToLogin()
+       // router?.routeToLogin()
     }
     
     func displaySuccessSendVote(withTitle title:String, andMessage message: String) {

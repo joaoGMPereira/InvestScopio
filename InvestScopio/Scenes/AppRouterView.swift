@@ -28,19 +28,19 @@ struct AppRouterView: View {
                         .tabItem {
                             Image(systemName: SFSymbol.listBullet.rawValue)
                             Text("Simulações")
-                    }
+                    }.navigationViewStyle(StackNavigationViewStyle())
                     SimulationCreationView(viewModel: simulationCreationViewModel, detailViewModel: simulationCreationDetailViewModel, stepViewModel: simulationCreationStepViewModel)
                         .tag(1)
                         .tabItem {
                             Image(systemName: SFSymbol.chartBarFill.rawValue)
                             Text("Simulação")
-                    }
+                    }.navigationViewStyle(StackNavigationViewStyle())
                     TalkWithUsView()
                         .tag(2)
                         .tabItem {
                             Image(systemName: SFSymbol.personFill.rawValue)
                             Text("Fale conosco")
-                    }
+                    }.navigationViewStyle(StackNavigationViewStyle())
                 }
                 .accentColor(Color(.JEWDefault()))
                 .attachEnvironmentOverrides()

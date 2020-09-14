@@ -14,13 +14,14 @@ protocol APICall {
     var method: HTTPMethod { get }
     var headers: [String: String]? { get }
     var sessionToken: Bool { get }
+    var queryItems: [URLQueryItem]? { get }
     func body() -> HTTPRequest?
 }
 
 extension APICall {
-    var sessionToken: Bool {
-        return true
-    }
+    var sessionToken: Bool { true }
+    
+    var queryItems: [URLQueryItem]? { nil }
 }
 
 enum APIError: Error {
@@ -44,10 +45,12 @@ extension APIError: LocalizedError {
 
 extension APICall {
     func urlRequest() throws -> URLRequest {
-        guard let url = route.getRoute() else {
+        guard let url = route.getRoute(), var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
             throw APIError.default
         }
-        var request = URLRequest(url: url)
+        
+        urlComponents.queryItems = queryItems
+        var request = URLRequest(url: urlComponents.url ?? url)
         request.httpMethod = method.rawValue
         var allHeaders = headers
         if sessionToken {
@@ -55,6 +58,7 @@ extension APICall {
         }
         request.allHTTPHeaderFields = allHeaders
         request.httpBody = try setBody()
+        
         return request
     }
     

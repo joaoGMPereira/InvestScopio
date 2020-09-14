@@ -39,7 +39,7 @@ extension SimulationCreationView {
                         firstSteps()
                         middleSteps()
                         finalSteps()
-                        DoubleButtons(firstIsLoading: .constant(false), secondIsLoading: .constant(false), firstModel: .init(title: "Simular", color: Color(.JEWDefault()), isFill: true), secondModel: .init(title: "Nova Simulação", color: Color(.JEWDefault()), isFill: false), background: Color(.JEWBackground()), firstCompletion: {
+                        DoubleButtons(firstIsLoading: .constant(false), secondIsLoading: .constant(false), firstIsEnable: .constant(true), secondIsEnable: .constant(true), firstModel: .init(title: "Simular", color: Color(.JEWDefault()), isFill: true), secondModel: .init(title: "Nova Simulação", color: Color(.JEWDefault()), isFill: false), background: Color(.JEWBackground()), firstCompletion: {
                             self.viewModel.selectFirstButton(completion: { (simulation) in
                                 self.settings.popup = AppPopupSettings()
                                 self.detailViewModel.simulation = simulation
@@ -57,6 +57,7 @@ extension SimulationCreationView {
             .padding(.top, 16)
             .padding(.bottom, 22)
             .navigationBarTitle("Simulação", displayMode: .inline)
+            
             .introspectViewController(customize: { (view) in
                 view.background = .JEWBackground()
             })

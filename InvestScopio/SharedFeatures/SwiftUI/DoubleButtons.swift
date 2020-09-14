@@ -11,6 +11,8 @@ import SwiftUI
 struct DoubleButtons: View {
     @Binding var firstIsLoading: Bool
     @Binding var secondIsLoading: Bool
+    @Binding var firstIsEnable: Bool
+    @Binding var secondIsEnable: Bool
     var firstModel: LoadingButtonModel
     var secondModel: LoadingButtonModel
     var background: Color
@@ -18,8 +20,8 @@ struct DoubleButtons: View {
     var secondCompletion: () -> Void
     var body: some View {
         HStack(spacing: 8) {
-            LoadingButton(isLoading: $firstIsLoading, model: firstModel, action: firstCompletion)
-            LoadingButton(isLoading: $secondIsLoading, model: secondModel, action: secondCompletion)
+            LoadingButton(isLoading: $firstIsLoading, isEnable: $firstIsEnable, model: firstModel, action: firstCompletion)
+            LoadingButton(isLoading: $secondIsLoading, isEnable: $secondIsEnable, model: secondModel, action: secondCompletion)
         }
         .background(background)
         .padding(.horizontal, 16)

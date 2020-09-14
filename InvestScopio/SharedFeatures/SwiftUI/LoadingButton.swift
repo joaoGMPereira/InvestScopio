@@ -11,6 +11,7 @@ import JewFeatures
 struct LoadingButton: View {
     @Environment(\.sizeCategory) private var defaultSizeCategory: ContentSizeCategory
     @Binding var isLoading: Bool
+    @Binding var isEnable: Bool
     var model: LoadingButtonModel
     var action: (() -> Void)?
     var body: some View {
@@ -20,7 +21,7 @@ struct LoadingButton: View {
             Group {
             if isLoading == false {
                 Text(model.title)
-                    .foregroundColor(model.isFill ? .white : model.color)
+                    .foregroundColor(model.isFill ? Color.white.opacity(isEnable ? 1: 0.7) : model.color.opacity(isEnable ? 1: 0.7))
                     .textFont()
             } else {
                 LoadingView(showLoading: $isLoading, shape: .constant(model.isFill ? .white : model.color), size: .constant(22), lineWidth: .constant(2))
@@ -30,9 +31,10 @@ struct LoadingButton: View {
         .frame(maxWidth: .infinity)
         .frame(minHeight: dynamicButtonHeight())
         .background(RoundedRectangle(cornerRadius: 22)
-        .foregroundColor(model.isFill ? model.color : .clear))
+        .foregroundColor(model.isFill ? model.color.opacity(isEnable ? 1: 0.7) : .clear))
         .background(RoundedRectangle(cornerRadius: 22, style: .continuous)
-        .stroke(model.isFill ? .clear : model.color, style: StrokeStyle(lineWidth: model.isFill ? 0 : 2)))
+        .stroke(model.isFill ? .clear : model.color.opacity(isEnable ? 1: 0.7), style: StrokeStyle(lineWidth: model.isFill ? 0 : 2)))
+        .disabled(!isEnable)
     }
     
     func dynamicButtonHeight() -> CGFloat {
@@ -71,7 +73,7 @@ struct LoadingButtonModel {
 
 struct LoadingButton_Previews: PreviewProvider {
     static var previews: some View {
-        LoadingButton(isLoading: .constant(false), model: LoadingButtonModel(title: "Teste", color: Color(.JEWRed()), isFill: true)) {
+        LoadingButton(isLoading: .constant(false), isEnable: .constant(true), model: LoadingButtonModel(title: "Teste", color: Color(.JEWRed()), isFill: true)) {
             
         }.padding()
     }

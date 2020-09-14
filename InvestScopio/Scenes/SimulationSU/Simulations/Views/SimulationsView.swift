@@ -39,7 +39,7 @@ struct SimulationsView: View {
                 } else {
                     LitSimulations(viewModel: viewModel, detailViewModel: detailViewModel)
                 }
-                DoubleButtons(firstIsLoading: .constant(false), secondIsLoading: .constant(false), firstModel: .init(title: "Nova Simulação", color: Color(.JEWDefault()), isFill: true), secondModel: .init(title: "Limpar Histórico", color: Color(.JEWDefault()), isFill: false), background: Color(.JEWBackground()), firstCompletion: {
+                DoubleButtons(firstIsLoading: .constant(false), secondIsLoading: .constant(false), firstIsEnable: .constant(true), secondIsEnable: .constant(self.viewModel.simulations.count > 0), firstModel: .init(title: "Nova Simulação", color: Color(.JEWDefault()), isFill: true), secondModel: .init(title: "Limpar Histórico", color: Color(.JEWDefault()), isFill: false), background: Color(.JEWBackground()), firstCompletion: {
                     self.settings.tabSelection = 1
                 }) {
                     self.viewModel.deleteSimulations(completion: { settings in
@@ -50,23 +50,26 @@ struct SimulationsView: View {
             .introspectViewController(customize: { (view) in
                 view.background = .JEWBackground()
             })
-            .navigationBarTitle("Simulações", displayMode: .large)
-            .navigationBarItems(trailing:
-                Button(action: {
-                    self.viewModel.reload = true
+                .navigationBarTitle("Simulações", displayMode: .large)
+                .navigationBarItems(trailing:
+                    HStack {
+                        Button(action: {
+                            self.viewModel.reload = true
+                            DispatchQueue.main.async {
+                                self.getSimulations()
+                            }
+                        }, label: {
+                            Image(systemName: SFSymbol.arrow2Circlepath.rawValue)
+                                .rotationEffect(Angle(degrees: self.viewModel.reload ? 360.0 : 0.0))
+                                .animation(viewModel.reload ? foreverAnimation : .default)
+                        })
+                        EditButton()
+                    }
+            )
+                .onAppear {
                     DispatchQueue.main.async {
                         self.getSimulations()
                     }
-                }, label: {
-                    Image(systemName: SFSymbol.arrow2Circlepath.rawValue)
-                        .rotationEffect(Angle(degrees: self.viewModel.reload ? 360.0 : 0.0))
-                        .animation(viewModel.reload ? foreverAnimation : .default)
-                })
-            )
-            .onAppear {
-                DispatchQueue.main.async {
-                    self.getSimulations()
-                }
             }
         }
     }
@@ -104,20 +107,38 @@ struct ErrorView: View {
 
 struct LitSimulations: View {
     @EnvironmentObject var reachability: Reachability
+    @EnvironmentObject var settings: AppSettings
     @ObservedObject var viewModel: SimulationsViewModel
     @ObservedObject var detailViewModel: SimulationDetailViewModel
     @State var cellSize = CGSize.zero
     @State private var selection: String? = nil
     var body: some View {
-        List(viewModel.simulations) { simulation in
-            NavigationLink(destination: NavigationLazyView(SimulationDetailView(viewModel: self.detailViewModel)), tag: simulation._id!, selection: self.$selection) {
-                SimulationCell(simulation: simulation, state: self.$viewModel.state, cellSize: self.$cellSize, selectable: true) {
-                    if self.reachability.isConnected {
-                        self.detailViewModel.simulation = simulation
-                        self.selection = simulation._id
-                    }
+        let arrayIndexed = viewModel.simulations.enumerated().map({ $0 })
+        return List {
+            ForEach(arrayIndexed, id: \.element) { index, simulation in
+                NavigationLink(destination: NavigationLazyView(SimulationDetailView(viewModel: self.detailViewModel)), tag: simulation._id ?? UUID().uuidString, selection: self.$selection) {
+                    self.cell(simulation: simulation, index: index)
                 }
+            }.onDelete(perform: delete)
+        }
+    }
+    
+    func cell(simulation: INVSSimulatorModel, index: Int) -> some View {
+        var isLoading = self.$viewModel.state
+        if viewModel.deleteState.index == index && viewModel.deleteState.isDeleting {
+            isLoading = .constant(.loading)
+        }
+        return SimulationCell(simulation: simulation, state: isLoading, cellSize: self.$cellSize, selectable: true) {
+            if self.reachability.isConnected {
+                self.detailViewModel.simulation = simulation
+                self.selection = simulation._id
             }
+        }
+    }
+    
+    func delete(at offsets: IndexSet) {
+        viewModel.deleteSimulation(indexSet: offsets) { (settings) in
+            self.settings.popup = settings
         }
     }
 }

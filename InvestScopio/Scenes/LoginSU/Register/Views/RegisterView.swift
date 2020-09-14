@@ -45,13 +45,13 @@ struct RegisterView: View {
                         .background(GeometryGetter(rect: self.$kGuardian.rects[1]))
                         
                         HStack {
-                            LoadingButton(isLoading: .constant(false), model: LoadingButtonModel(title: "Cancelar", color: Color(.JEWRed()), isFill: false)) {
+                            LoadingButton(isLoading: .constant(false), isEnable: .constant(true), model: LoadingButtonModel(title: "Cancelar", color: Color(.JEWRed()), isFill: false)) {
                                 self.kGuardian.showField = 0
                                 self.viewModel.close = true
                                 self.settings.popup = AppPopupSettings()
                                 UIApplication.shared.endEditing()
                             }
-                            LoadingButton(isLoading: self.$viewModel.showLoading, model: LoadingButtonModel(title: "Cadastrar", color: Color("accent"), isFill: true)) {
+                            LoadingButton(isLoading: self.$viewModel.showLoading, isEnable: .constant(true), model: LoadingButtonModel(title: "Cadastrar", color: Color("accent"), isFill: true)) {
                                 UIApplication.shared.endEditing()
                                 self.viewModel.register(completion: {
                                     self.settings.popup = AppPopupSettings()
@@ -120,6 +120,7 @@ struct RegisterFormView: View {
         .environment(\.horizontalSizeClass, .regular)
         .background(Color(.systemGray6))
         .cornerRadius(16)
+            .shadow(color: Color("accessoryBackground").opacity(0.8), radius: 8)
         .padding()
     }
 }

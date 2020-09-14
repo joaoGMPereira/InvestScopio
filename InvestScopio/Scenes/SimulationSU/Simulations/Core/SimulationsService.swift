@@ -16,6 +16,7 @@ import SwiftUI
 protocol SimulationsServiceProtocol {
     func load(simulations: LoadableSubject<[INVSSimulatorModel]>)
     func delete(simulations: LoadableSubject<DeleteSimulationModel>)
+    func delete(id: String, simulation: LoadableSubject<DeleteSimulationModel>)
 }
 
 struct SimulationsService: SimulationsServiceProtocol {
@@ -33,7 +34,7 @@ struct SimulationsService: SimulationsServiceProtocol {
                 .simulations()
                 .sinkToLoadable { response in
                     guard let value = response.value else {
-                        simulations.wrappedValue = .failed(APIError.customError("Atenção!\nDesculpe, tivemos algum problema, tente novamente mais tarde!"))
+                        simulations.wrappedValue = .failed(APIError.default)
                         return
                     }
                     simulations.wrappedValue = .loaded(value.data)
@@ -48,16 +49,35 @@ struct SimulationsService: SimulationsServiceProtocol {
                 .deleteSimulations()
                 .sinkToLoadable { response in
                     guard let value = response.value else {
-                        simulations.wrappedValue = .failed(APIError.customError("Atenção!\nDesculpe, tivemos algum problema, tente novamente mais tarde!"))
+                        simulations.wrappedValue = .failed(APIError.default)
                         return
                     }
                     simulations.wrappedValue = .loaded(value.data)
             }
             .store(in: cancelBag)
     }
+    
+    func delete(id: String, simulation: LoadableSubject<DeleteSimulationModel>) {
+        let cancelBag = CancelBag()
+        simulation.wrappedValue = .isLoading(last: simulation.wrappedValue.value, cancelBag: cancelBag)
+            self.repository
+                .deleteSimulation(id: id)
+                .sinkToLoadable { response in
+                    guard let value = response.value else {
+                        simulation.wrappedValue = .failed(APIError.default)
+                        return
+                    }
+                    simulation.wrappedValue = .loaded(value.data)
+            }
+            .store(in: cancelBag)
+    }
 }
 
 struct StubSimulationsService: SimulationsServiceProtocol {
+    func delete(id: String, simulation: LoadableSubject<DeleteSimulationModel>) {
+        
+    }
+    
     func delete(simulations: LoadableSubject<DeleteSimulationModel>) {
         
     }
@@ -71,6 +91,10 @@ struct StubSimulationsService: SimulationsServiceProtocol {
 
 
 struct StubSimulationsServiceFailure: SimulationsServiceProtocol {
+    func delete(id: String, simulation: LoadableSubject<DeleteSimulationModel>) {
+        
+    }
+    
     func delete(simulations: LoadableSubject<DeleteSimulationModel>) {
         
     }
@@ -83,6 +107,10 @@ struct StubSimulationsServiceFailure: SimulationsServiceProtocol {
 }
 
 struct StubSimulationsServiceEmptySimulations: SimulationsServiceProtocol {
+    func delete(id: String, simulation: LoadableSubject<DeleteSimulationModel>) {
+        
+    }
+    
     func delete(simulations: LoadableSubject<DeleteSimulationModel>) {
         
     }

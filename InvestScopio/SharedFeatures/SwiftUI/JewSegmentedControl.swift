@@ -37,8 +37,8 @@ struct JewSegmentedControl : View {
     var body: some View {
         ZStack(alignment: .topLeading) {
             ExDivider(color: selectedColor)
-                .frame(width: rects[selectedIndex].size.width - 4, height: dynamicButtonHeight() - 4)
-                .offset(x: rects[selectedIndex].minX + 2, y: 2)
+                .frame(width: rects.indices.contains(selectedIndex) ? rects[selectedIndex].size.width - 4 : 0, height: dynamicButtonHeight() - 4)
+                .offset(x: rects.indices.contains(selectedIndex) ? rects[selectedIndex].minX + 2 : 0, y: 2)
                 .animation(.easeInOut(duration: 0.5))
             
             VStack {
@@ -91,7 +91,7 @@ struct JewSegmentedControl : View {
         GeometryReader { geometry in
             HStack(alignment: .center, spacing: 8, content: {
                 ForEach(0..<self.titles.count) { index in
-                    return SegmentView(selectedIndex: self.$selectedIndex, label: self.titles[index], index: index, isSelected: self.segmentIsSelected(selectedIndex: self.selectedIndex, segmentIndex: index), coordinateSpaceName: self.coordinateSpaceName, size: .constant(CGSize.init(width: ((geometry.size
+                    return SegmentView(selectedIndex: self.$selectedIndex, label: self.titles.indices.contains(index) ? self.titles[index] : String(), index: index, isSelected: self.segmentIsSelected(selectedIndex: self.selectedIndex, segmentIndex: index), coordinateSpaceName: self.coordinateSpaceName, size: .constant(CGSize.init(width: ((geometry.size
                         .width - CGFloat(8*(self.titles.count - 1)))/CGFloat(self.titles.count)), height: self.dynamicButtonHeight())), textFont: self.textFont)
                 }
             })

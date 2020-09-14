@@ -22,13 +22,13 @@ class INVSTalkWithUsInteractor: NSObject, INVSTalkWithUsInteractorProtocol {
     
     func sendOpinion() {
         guard let evaluate = evaluate else {
-            self.presenter?.presentError(withConnectorError: ConnectorError.init(error: .none, title: INVSConstants.TalkWithUsAlertViewController.titleError.rawValue, message: INVSConstants.TalkWithUsAlertViewController.messageInvalidVoteError.rawValue, shouldRetry: false))
+//            self.presenter?.presentError(withConnectorError: ConnectorError.init(error: .none, title: INVSConstants.TalkWithUsAlertViewController.titleError.rawValue, message: INVSConstants.TalkWithUsAlertViewController.messageInvalidVoteError.rawValue, shouldRetry: false))
             return
         }
         worker.sendOpinion(evaluate: evaluate, successCompletion: { evaluateResponse in
             self.presenter?.presentSuccessSendVote(withResponse: evaluateResponse)
         }) { (connectorError) in
-            self.presenter?.presentError(withConnectorError: connectorError)
+           // self.presenter?.presentError(withConnectorError: connectorError)
         }
     }
     
@@ -36,7 +36,7 @@ class INVSTalkWithUsInteractor: NSObject, INVSTalkWithUsInteractorProtocol {
         worker.sendEmail(successCompletion: { appVersion in
             self.presenter?.presentSuccessSendEmail(withFeedback: feedback, appVersion: appVersion)
         }) { (connectorError) in
-            self.presenter?.presentError(withConnectorError: connectorError)
+       //     self.presenter?.presentError(withConnectorError: connectorError)
         }
     }
     

@@ -11,7 +11,7 @@ import UIKit
 
 protocol INVSTalkWithUsPresenterProtocol {
     func presentSuccessSendVote(withResponse evaluate: INVSEvaluateResponse)
-    func presentError(withConnectorError connectorError: ConnectorError)
+   // func presentError(withConnectorError connectorError: ConnectorError)
     func presentSuccessSendEmail(withFeedback feedback: String, appVersion: String)
 }
 
@@ -30,18 +30,18 @@ class INVSTalkWithUsPresenter: NSObject,INVSTalkWithUsPresenterProtocol {
         viewController?.displaySuccessSendEmail(withSubject: subject, recipients: recipients, andMessageBody: messageBody)
     }
     
-    func presentError(withConnectorError connectorError: ConnectorError) {
-        
-        switch connectorError.error {
-        case .none:
-            viewController?.displayErrorDefault(titleError: connectorError.title, messageError: connectorError.message, shouldHideAutomatically: true, popupType: .error)
-        case .authentication, .sessionExpired:
-            viewController?.displayErrorAuthentication(titleError: connectorError.title, messageError: connectorError.message, shouldRetry: connectorError.shouldRetry)
-        case .settings:
-            viewController?.displayErrorSettings(titleError: connectorError.title, messageError: connectorError.message)
-        case .logout:
-            viewController?.displayErrorLogout(titleError: connectorError.title, messageError: connectorError.message)
-            
-        }
-    }
+//    func presentError(withConnectorError connectorError: ConnectorError) {
+//        
+//        switch connectorError.error {
+//        case .none:
+//            viewController?.displayErrorDefault(titleError: connectorError.title, messageError: connectorError.message, shouldHideAutomatically: true, popupType: .error)
+//        case .authentication, .sessionExpired:
+//            viewController?.displayErrorAuthentication(titleError: connectorError.title, messageError: connectorError.message, shouldRetry: connectorError.shouldRetry)
+//        case .settings:
+//            viewController?.displayErrorSettings(titleError: connectorError.title, messageError: connectorError.message)
+//        case .logout:
+//            viewController?.displayErrorLogout(titleError: connectorError.title, messageError: connectorError.message)
+//            
+//        }
+//    }
 }

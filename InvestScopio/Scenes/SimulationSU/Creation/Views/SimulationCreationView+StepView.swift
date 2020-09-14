@@ -88,15 +88,17 @@ extension SimulationCreationView {
                 .clipShape(RoundedRectangle(cornerRadius: 8))
                 .padding()
             }
-        }.background(Color("cellBackground"))
-            .cornerRadius(16)
-            .padding()
+        }
+        .background(Color("cellBackground"))
+        .cornerRadius(16)
+        .padding()
+        .shadow(color: Color("accessoryBackground").opacity(0.8), radius: 8)
     }
     
     func bottomButtons() -> some View {
         Group {
             if self.stepViewModel.isOpened && self.stepViewModel.showBottomButtons {
-                DoubleButtons(firstIsLoading: .constant(false), secondIsLoading: .constant(false), firstModel: .init(title: stepViewModel.firstButtonTitle, color: Color(.JEWDefault()), isFill: true), secondModel: .init(title: stepViewModel.secondButtonTitle, color: Color(.JEWDefault()), isFill: false), background: Color("secondaryBackground"), firstCompletion: {
+                DoubleButtons(firstIsLoading: .constant(false), secondIsLoading: .constant(false), firstIsEnable: .constant(true), secondIsEnable: .constant(true), firstModel: .init(title: stepViewModel.firstButtonTitle, color: Color(.JEWDefault()), isFill: true), secondModel: .init(title: stepViewModel.secondButtonTitle, color: Color(.JEWDefault()), isFill: false), background: Color("secondaryBackground"), firstCompletion: {
                     self.stepViewModel.selectFirstButton { (steps) in
                         self.viewModel.updateSteps(steps: steps)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {

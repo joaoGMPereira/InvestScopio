@@ -50,6 +50,7 @@ struct FloatingTextField: UIViewRepresentable {
         let floatingTextField = JEWFloatingTextField(frame: .zero)
         floatingTextField.textField.isSecureTextEntry = isSecureTextEntry
         floatingTextField.textField.autocapitalizationType = autocapitalizationType
+        floatingTextField.textField.textContentType = . oneTimeCode
 
         let streetNameTextFieldFactory = JEWFloatingTextFieldFactory(withFloatingTextField: floatingTextField)
         let streetNameToolbarBuilder = toolbarBuilder.update(textField: floatingTextField)

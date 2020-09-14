@@ -25,7 +25,7 @@ class INVSStartViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     var animatedLogoView = AnimationView()
-    let router = INVSRouter()
+//    let router = INVSRouter()
     var interactor: INVSStartInteractorProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,64 +61,64 @@ extension INVSStartViewController: INVSStartViewControllerProtocol {
     }
     
     func displayMarketInfoError(witMarketError error: String) {
-        self.router.routeToSimulator()
+     //   self.router.routeToSimulator()
     }
     
     func displaySuccessRememberedUserLogged() {
         animatedLogoView.stop()
-        self.router.routeToSimulator()
+      //  self.router.routeToSimulator()
     }
     
     func displayErrorRememberedUserLogged() {
         animatedLogoView.loopMode = .playOnce
         animatedLogoView.play{ (finished) in
-            self.router.routeToLogin()
+        //    self.router.routeToLogin()
         }
     }
     
     func displayErrorRememberedUserLogged(withError error: AuthenticationError) {
-        let errorViewController = INVSAlertViewController()
-        errorViewController.setup(withHeight: 250, andWidth: 300, andCornerRadius: 8, andContentViewColor: .white)
-        errorViewController.titleAlert = INVSConstants.StartAlertViewController.title.rawValue
-        errorViewController.messageAlert = error.message()
-        errorViewController.hasCancelButton = false
-        errorViewController.view.frame = view.bounds
-        errorViewController.modalPresentationStyle = .overCurrentContext
-        errorViewController.view.backgroundColor = .clear
-        present(errorViewController, animated: true, completion: nil)
-        errorViewController.confirmCallback = { (button) -> () in
-            errorViewController.dismiss(animated: true) {
-
-                error.shouldRetry() == true ? self.interactor?.checkLoggedUser() : self.goToLogin()
-            }
-        }
+      //  let errorViewController = INVSAlertViewController()
+//        errorViewController.setup(withHeight: 250, andWidth: 300, andCornerRadius: 8, andContentViewColor: .white)
+//        errorViewController.titleAlert = INVSConstants.StartAlertViewController.title.rawValue
+//        errorViewController.messageAlert = error.message()
+//        errorViewController.hasCancelButton = false
+//        errorViewController.view.frame = view.bounds
+//        errorViewController.modalPresentationStyle = .overCurrentContext
+//        errorViewController.view.backgroundColor = .clear
+//        present(errorViewController, animated: true, completion: nil)
+//        errorViewController.confirmCallback = { (button) -> () in
+//            errorViewController.dismiss(animated: true) {
+//
+//                error.shouldRetry() == true ? self.interactor?.checkLoggedUser() : self.goToLogin()
+//            }
+ //       }
     }
     
     func displayErrorGoToSettingsRememberedUserLogged(withMessage message: String) {
-        let errorViewController = INVSAlertViewController()
-        errorViewController.setup(withHeight: 250, andWidth: 300, andCornerRadius: 8, andContentViewColor: .white)
-        errorViewController.titleAlert = INVSConstants.StartAlertViewController.titleSettings.rawValue
-        errorViewController.messageAlert = message
-        errorViewController.hasCancelButton = false
-        errorViewController.view.frame = view.bounds
-        errorViewController.modalPresentationStyle = .overCurrentContext
-        errorViewController.view.backgroundColor = .clear
-        present(errorViewController, animated: true, completion: nil)
-        errorViewController.confirmCallback = { (button) -> () in
-            errorViewController.dismiss(animated: true) {
-                self.goToLogin()
-            }
-        }
-        
-        errorViewController.cancelCallback = { (button) -> () in
-            self.goToLogin()
-        }
+//        let errorViewController = INVSAlertViewController()
+//        errorViewController.setup(withHeight: 250, andWidth: 300, andCornerRadius: 8, andContentViewColor: .white)
+//        errorViewController.titleAlert = INVSConstants.StartAlertViewController.titleSettings.rawValue
+//        errorViewController.messageAlert = message
+//        errorViewController.hasCancelButton = false
+//        errorViewController.view.frame = view.bounds
+//        errorViewController.modalPresentationStyle = .overCurrentContext
+//        errorViewController.view.backgroundColor = .clear
+//        present(errorViewController, animated: true, completion: nil)
+//        errorViewController.confirmCallback = { (button) -> () in
+//            errorViewController.dismiss(animated: true) {
+//                self.goToLogin()
+//            }
+//        }
+//
+//        errorViewController.cancelCallback = { (button) -> () in
+//            self.goToLogin()
+//        }
     }
     
     func goToLogin() {
-        self.animatedLogoView.loopMode = .playOnce
-        self.animatedLogoView.play{ (finished) in
-            self.router.routeToLogin()
-        }
+//        self.animatedLogoView.loopMode = .playOnce
+//        self.animatedLogoView.play{ (finished) in
+//            self.router.routeToLogin()
+//        }
     }
 }

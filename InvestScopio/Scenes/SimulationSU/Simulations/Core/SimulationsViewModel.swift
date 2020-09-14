@@ -18,23 +18,29 @@ class SimulationsViewModel: ObservableObject {
             build(state: simulationsLoadable)
         }
     }
-    @Published var deleteSimulationLoadable: Loadable<DeleteSimulationModel> {
+    @Published var deleteSimulationAllLoadable: Loadable<DeleteSimulationModel> {
         didSet {
-            buildDelete(state: deleteSimulationLoadable)
+            buildDeleteAllSimulations(state: deleteSimulationAllLoadable)
         }
     }
+    @Published var deleteSimulationLoadable: Loadable<DeleteSimulationModel> {
+        didSet {
+            buildDeleteSimulation(state: deleteSimulationLoadable)
+        }
+    }
+    @Published var deleteState = DeleteState()
     @Published var state: ViewState = .loading
     @Published var reload = false
-    @Published var messageError = String()
-    @Published var messageSuccess = String()
+    @Published var message = String()
     
     let simulationsService: SimulationsServiceProtocol
     var completion: (() -> Void)?
-    var completionDeleteAll: ((AppPopupSettings) -> Void)?
+    var completionDelete: ((AppPopupSettings) -> Void)?
     var failure:((AppPopupSettings) -> Void)?
-
+    
     init(service: SimulationsServiceProtocol) {
         self._simulationsLoadable = .init(initialValue: .notRequested)
+        self._deleteSimulationAllLoadable = .init(initialValue: .notRequested)
         self._deleteSimulationLoadable = .init(initialValue: .notRequested)
         self.simulationsService = service
     }
@@ -52,13 +58,27 @@ class SimulationsViewModel: ObservableObject {
     }
     
     func deleteSimulations(completion: @escaping (AppPopupSettings) -> Void) {
-        self.completionDeleteAll = completion
+        self.completionDelete = completion
         switch simulationsLoadable {
         case .notRequested, .loaded(_), .failed(_):
             simulationsService
                 .delete(simulations: loadableSubject(\.deleteSimulationLoadable))
             
         case .isLoading(_, _): break
+        }
+    }
+    
+    func deleteSimulation(indexSet: IndexSet, completion: @escaping (AppPopupSettings) -> Void) {
+        self.completionDelete = completion
+        self.deleteState.indexSet = indexSet
+        if let index = self.deleteState.index, let simulationId = simulations[index].id {
+            switch simulationsLoadable {
+            case .notRequested, .loaded(_), .failed(_):
+                simulationsService
+                    .delete(id: simulationId, simulation: loadableSubject(\.deleteSimulationLoadable))
+                
+            case .isLoading(_, _): break
+            }
         }
     }
     
@@ -69,53 +89,94 @@ class SimulationsViewModel: ObservableObject {
             
         case .isLoading(_, _):
             self.state = .loading
-
+            
             break
         case .loaded(let response):
             self.simulations = response
             if self.simulations.count == 0 {
-                messageError = "Atenção!\nNenhuma simulação foi encontrada, realize sua primeira simulação."
-                self.failure?(AppPopupSettings(message: messageError, textColor: .white, backgroundColor: Color(.JEWDarkDefault()), position: .top, show: true))
+                message = "Atenção!\nNenhuma simulação foi encontrada, realize sua primeira simulação."
+                self.failure?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWDarkDefault()), position: .top, show: true))
             } else {
                 self.completion?()
             }
             self.state = .loaded
         case .failed(let error):
             if let apiError = error as? APIError {
-                self.messageError = apiError.errorDescription ?? String()
-                self.failure?(AppPopupSettings(message: messageError, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true))
+                self.message = apiError.errorDescription ?? String()
+                self.failure?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true))
             }
             self.state = .loaded
             break
         }
     }
     
-    func buildDelete(state: Loadable<DeleteSimulationModel>) {
+    func buildDeleteAllSimulations(state: Loadable<DeleteSimulationModel>) {
         switch state {
         case .notRequested:
             break
             
         case .isLoading(_, _):
             self.state = .loading
-
+            
             break
         case .loaded(let response):
             if response.deleted {
-            self.simulations = [INVSSimulatorModel]()
-                messageError = "Atenção!\nTodas suas simulações foram apagadas com sucesso."
-                self.completionDeleteAll?(AppPopupSettings(message: messageError, textColor: .white, backgroundColor: Color(.JEWDarkDefault()), position: .top, show: true))
+                self.simulations = [INVSSimulatorModel]()
+                message = "Atenção!\nTodas suas simulações foram apagadas com sucesso."
+                self.completionDelete?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWDarkDefault()), position: .top, show: true))
             } else {
-                messageError = "Atenção!\nNão foi possível apagar suas Simulações."
-                self.completionDeleteAll?(AppPopupSettings(message: messageError, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true))
+                message = "Atenção!\nNão foi possível apagar suas Simulações."
+                self.completionDelete?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true))
             }
             self.state = .loaded
         case .failed(let error):
             if let apiError = error as? APIError {
-                self.messageError = apiError.errorDescription ?? String()
-                self.completionDeleteAll?(AppPopupSettings(message: messageError, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true))
+                self.message = apiError.errorDescription ?? String()
+                self.completionDelete?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true))
             }
             self.state = .loaded
             break
         }
     }
+    
+    func buildDeleteSimulation(state: Loadable<DeleteSimulationModel>) {
+        switch state {
+        case .notRequested:
+            break
+            
+        case .isLoading(_, _):
+            self.deleteState.isDeleting = true
+            
+            break
+        case .loaded(let response):
+            if response.deleted {
+                if let indexSet = self.deleteState.indexSet {
+                    self.simulations.remove(atOffsets: indexSet)
+                }
+                self.deleteState.indexSet = nil
+                self.deleteState.isDeleting = false
+                message = "Atenção!\nSimulação apagada com sucesso."
+                self.completionDelete?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWDarkDefault()), position: .top, show: true))
+            } else {
+                message = "Atenção!\nNão foi possível apagar a simulação."
+                self.completionDelete?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true))
+            }
+            self.state = .loaded
+        case .failed(let error):
+            if let apiError = error as? APIError {
+                self.message = apiError.errorDescription ?? String()
+                self.completionDelete?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true))
+            }
+            self.state = .loaded
+            break
+        }
+    }
+}
+
+class DeleteState {
+    var index: Int? {
+        self.indexSet?.first
+    }
+    var indexSet: IndexSet? = nil
+    var isDeleting: Bool = false
 }

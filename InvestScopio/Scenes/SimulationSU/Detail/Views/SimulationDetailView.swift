@@ -29,7 +29,7 @@ struct SimulationDetailView: View {
     @State var cellSize = CGSize.zero
     
     @State var chartSize = CGSize.zero
-   
+    
     var body: some View {
         ZStack {
             VStack(spacing: 8) {
@@ -45,10 +45,10 @@ struct SimulationDetailView: View {
                 }
                 if viewModel.typeIndex == 1 {
                     ScrollView {
-                    JewSegmentedControl(selectedIndex: $viewModel.valueIndex, rects: $viewModel.rectsValue, titles: $viewModel.tabValues, selectedColor: Color("accessoryBackgroundSelected"), unselectedColor: Color("accessoryBackground"), coordinateSpaceName: "TabsValues").padding(.horizontal, 16)
-                    
-                    JewSegmentedControl(selectedIndex: $viewModel.monthsIndex, rects: $viewModel.rectsMonths, titles: $viewModel.monthsTabs, selectedColor: Color("accessoryBackgroundSelected"), unselectedColor: Color("accessoryBackground"), coordinateSpaceName: "TabsMonths").padding(.horizontal, 24)
-                    
+                        JewSegmentedControl(selectedIndex: $viewModel.valueIndex, rects: $viewModel.rectsValue, titles: $viewModel.tabValues, selectedColor: Color("accessoryBackgroundSelected"), unselectedColor: Color("accessoryBackground"), coordinateSpaceName: "TabsValues").padding(.horizontal, 16)
+                        
+                        JewSegmentedControl(selectedIndex: $viewModel.monthsIndex, rects: $viewModel.rectsMonths, titles: $viewModel.monthsTabs, selectedColor: Color("accessoryBackgroundSelected"), unselectedColor: Color("accessoryBackground"), coordinateSpaceName: "TabsMonths").padding(.horizontal, 24)
+                        
                         LineChart(entries: viewModel.entries, months: viewModel.monthsValue ?? 0, granularity: viewModel.granularity, axisMaximum: viewModel.maximumValue, label: viewModel.description).setChartDataBase(ChartDataBaseBridge(informationData: ChartInformationDataBridge(leftAxis: LeftAxisBridge(formatter: leftAxisFormatter), xAxis: XAxisBridge(formatter: xAxisFormatter)))).setChartDataSet(LineChartDataSetBaseBridge(xAxisDuration: viewModel.shouldAnimate ? 0.0 : 0, yAxisDuration: viewModel.shouldAnimate ? 0.5 : 0)).frame(width: chartSize.width, height: chartSize.width)
                     }.getContent(size: $chartSize)
                 }
@@ -57,10 +57,10 @@ struct SimulationDetailView: View {
                 view.background = .JEWBackground()
             })
         }.navigationBarTitle("Simulação", displayMode: .large)
-        .onAppear {
-            DispatchQueue.main.async {
-                self.viewModel.simulationDetail()
-            }
+            .onAppear {
+                DispatchQueue.main.async {
+                    self.viewModel.simulationDetail()
+                }
         }.animation(.easeInOut)
     }
 }

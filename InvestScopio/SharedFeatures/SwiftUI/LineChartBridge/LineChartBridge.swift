@@ -123,11 +123,11 @@ struct LineChart: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: LineChartView, context: Context) {
+        setLeftAxys(chartView: uiView)
+        setXAxys(chartView: uiView)
         setInterativeCharts(chartView: uiView)
         setChartsInfo(chartView: uiView)
         setChartsEntries(chartView: uiView)
-        setLeftAxys(chartView: uiView)
-        setXAxys(chartView: uiView)
     }
     
     func makeCoordinator() -> Coordinator {
