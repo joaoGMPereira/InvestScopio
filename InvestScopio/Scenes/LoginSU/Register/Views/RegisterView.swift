@@ -24,7 +24,7 @@ struct RegisterView: View {
                         self.kGuardian.showField = 0
                         self.viewModel.close = false
                         UIApplication.shared.endEditing()
-                    }
+                    }.edgesIgnoringSafeArea(.all)
                     VStack {
                         
                         HStack {
@@ -70,7 +70,6 @@ struct RegisterView: View {
                 .offset(y: self.kGuardian.slide)
                 .animation(.spring())
             }
-            .edgesIgnoringSafeArea(.all)
             PopupView(text: self.$viewModel.messageSuccess, textColor: .constant(Color.white), backgroundColor: .constant(Color(.JEWDarkDefault())), position: .constant(.bottom), show: self.$viewModel.showSuccess)
         }
     }
@@ -86,18 +85,18 @@ struct RegisterFormView: View {
     var body: some View {
         Form {
             Section(header: Text("Digite um email válido").textFont().padding(.top, 16)) {
-                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(), placeholder: .constant("Email"), text: $emailText, formatType: .constant(.none), keyboardType: .constant(.default), close: $close, shouldBecomeFirstResponder: .constant(false)) { textfield, text, isBackspace in
+                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(), placeholder: .constant("Email"), text: $emailText, formatType: .constant(.none), keyboardType: .constant(.default), close: $close, shouldBecomeFirstResponder: .constant(false), onChanged:  { textfield, text, isBackspace in
                     self.emailText = text
-                }
+                })
                 .frame(height: 50)
                 .listRowBackground(Color(.JEWBackground()))
             }
             Section(header: Text("Digite uma senha").textFont()) {
                 FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(), placeholder: .constant("Senha"), text: $passwordText, formatType: .constant(.none), keyboardType: .constant(.default), close: $close, shouldBecomeFirstResponder: .constant(false), isSecureTextEntry: true, didBeginEditing: { textfield in
                     self.passwordText = String()
-                }) { textfield, text, isBackspace in
+                }, onChanged:  { textfield, text, isBackspace in
                     self.passwordText = text
-                }
+                })
                 .frame(height: 50)
                 .listRowBackground(Color(.JEWBackground()))
             }
@@ -106,9 +105,9 @@ struct RegisterFormView: View {
                     self.didRegisterAction()
                 }, didBeginEditing: { textfield in
                     self.passwordConfirmationText = String()
-                }) { textfield, text, isBackspace in
+                }, onChanged:  { textfield, text, isBackspace in
                     self.passwordConfirmationText = text
-                }
+                })
                 .frame(height: 50)
                 .listRowBackground(Color(.JEWBackground()))
                 
@@ -120,7 +119,7 @@ struct RegisterFormView: View {
         .environment(\.horizontalSizeClass, .regular)
         .background(Color(.systemGray6))
         .cornerRadius(16)
-            .shadow(color: Color("accessoryBackground").opacity(0.8), radius: 8)
+        .shadow(color: Color("accessoryBackground").opacity(0.8), radius: 8)
         .padding()
     }
 }

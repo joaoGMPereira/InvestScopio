@@ -25,7 +25,7 @@ struct ResendPasswordView: View {
                         self.viewModel.close = false
                         self.settings.popup = AppPopupSettings()
                         UIApplication.shared.endEditing()
-                    }
+                    }.edgesIgnoringSafeArea(.all)
                     VStack {
                         
                         HStack {
@@ -74,7 +74,6 @@ struct ResendPasswordView: View {
                 .offset(y: self.kGuardian.slide)
                 .animation(.spring())
             }
-            .edgesIgnoringSafeArea(.all)
             PopupView(text: self.$viewModel.messageSuccess, textColor: .constant(Color.white), backgroundColor: .constant(Color(.JEWDarkDefault())), position: .constant(.bottom), show: self.$viewModel.showSuccess, checkReachability: .constant(false))
         }
     }

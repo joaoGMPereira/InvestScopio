@@ -14,8 +14,8 @@ struct TalkWithUsView: View {
         NavigationView {
             ZStack {
                 Color(.JEWBackground())
-            List {
-                Section {
+            ScrollView {
+                ZStack {
                     Button(action: {
                         self.settings.isLogged = false
                     }) {
@@ -24,13 +24,14 @@ struct TalkWithUsView: View {
                             
                             .contentShape(Rectangle())
                     }
+                    .frame(height: 50)
+                    .frame(maxWidth: .infinity)
+                    .background(Color(UIColor.systemGray6))
+                    .cornerRadius(8)
+                    .padding(.horizontal)
                 }
-                .frame(height: 50)
-                .listRowBackground(Color(UIColor.systemGray6))
             }
             .padding(.top, 16)
-            .listStyle(GroupedListStyle())
-            .environment(\.horizontalSizeClass, .regular)
             .navigationBarTitle("Fale Conosco", displayMode: .large)
             }
         }

@@ -62,8 +62,14 @@ struct LoginRouterView_Previews: PreviewProvider {
 
 class AppSettings: ObservableObject {
     @Published var isLogged = false
-    @Published var tabSelection = 1
+    @Published var tabSelection = 1 {
+        didSet {
+            tabSelected?(tabSelection)
+        }
+    }
     @Published var popup = AppPopupSettings()
+    
+    var tabSelected: ((Int) -> Void)?
 }
 
 class AppPopupSettings: ObservableObject {

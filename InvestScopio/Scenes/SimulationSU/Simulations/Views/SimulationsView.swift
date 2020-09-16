@@ -39,10 +39,10 @@ struct SimulationsView: View {
                 } else {
                     LitSimulations(viewModel: viewModel, detailViewModel: detailViewModel)
                 }
-                DoubleButtons(firstIsLoading: .constant(false), secondIsLoading: .constant(false), firstIsEnable: .constant(true), secondIsEnable: .constant(self.viewModel.simulations.count > 0), firstModel: .init(title: "Nova Simulação", color: Color(.JEWDefault()), isFill: true), secondModel: .init(title: "Limpar Histórico", color: Color(.JEWDefault()), isFill: false), background: Color(.JEWBackground()), firstCompletion: {
-                    self.settings.tabSelection = 1
+                DoubleButtons(firstIsLoading: .constant(false), secondIsLoading: .constant(false), firstIsEnable: .constant(true), secondIsEnable: .constant(viewModel.simulations.count > 0), firstModel: .init(title: "Nova Simulação", color: Color(.JEWDefault()), isFill: true), secondModel: .init(title: "Limpar Histórico", color: Color(.JEWDefault()), isFill: false), background: Color(.JEWBackground()), firstCompletion: {
+                    settings.tabSelection = 1
                 }) {
-                    self.viewModel.deleteSimulations(completion: { settings in
+                    viewModel.deleteSimulations(completion: { settings in
                         self.settings.popup = settings
                     })
                 }
@@ -50,36 +50,45 @@ struct SimulationsView: View {
             .introspectViewController(customize: { (view) in
                 view.background = .JEWBackground()
             })
-                .navigationBarTitle("Simulações", displayMode: .large)
-                .navigationBarItems(trailing:
-                    HStack {
-                        Button(action: {
-                            self.viewModel.reload = true
-                            DispatchQueue.main.async {
-                                self.getSimulations()
-                            }
-                        }, label: {
-                            Image(systemName: SFSymbol.arrow2Circlepath.rawValue)
-                                .rotationEffect(Angle(degrees: self.viewModel.reload ? 360.0 : 0.0))
-                                .animation(viewModel.reload ? foreverAnimation : .default)
-                        })
-                        EditButton()
-                    }
+            .navigationBarTitle("Simulações", displayMode: .large)
+            .navigationBarItems(trailing:
+                                    HStack {
+                                        Button(action: {
+                                            viewModel.reload = true
+                                            DispatchQueue.main.async {
+                                                getSimulations()
+                                            }
+                                        }, label: {
+                                            Image(systemName: SFSymbol.arrow2Circlepath.rawValue)
+                                                .rotationEffect(Angle(degrees: viewModel.reload ? 360.0 : 0.0))
+                                                .animation(viewModel.reload ? foreverAnimation : .default)
+                                        })
+                                        EditButton()
+                                    }
             )
-                .onAppear {
-                    DispatchQueue.main.async {
-                        self.getSimulations()
+            .onAppear {
+                DispatchQueue.main.async {
+                    guard #available(iOS 14.0, *) else {
+                        getSimulations()
+                        return
                     }
+                    self.settings.tabSelected = { tab in
+                        if tab == 0 {
+                            getSimulations()
+                        }
+                    }
+                    
+                }
             }
         }
     }
     
     func getSimulations() {
-        self.viewModel.getSimulations(completion: {
-            self.viewModel.reload = false
-            self.settings.popup = AppPopupSettings()
+        viewModel.getSimulations(completion: {
+            viewModel.reload = false
+            settings.popup = AppPopupSettings()
         }) { (settings) in
-            self.viewModel.reload = false
+            viewModel.reload = false
             self.settings.popup = settings
         }
     }
@@ -116,22 +125,24 @@ struct LitSimulations: View {
         let arrayIndexed = viewModel.simulations.enumerated().map({ $0 })
         return List {
             ForEach(arrayIndexed, id: \.element) { index, simulation in
-                NavigationLink(destination: NavigationLazyView(SimulationDetailView(viewModel: self.detailViewModel)), tag: simulation._id ?? UUID().uuidString, selection: self.$selection) {
-                    self.cell(simulation: simulation, index: index)
-                }
-            }.onDelete(perform: delete)
+                    cell(simulation: simulation, index: index)
+                        .background(NavigationLink(destination: NavigationLazyView(SimulationDetailView(viewModel: detailViewModel)), tag: simulation._id ?? UUID().uuidString, selection: $selection) {EmptyView()})
+                        .padding(.horizontal)
+                        .listRowInsets(EdgeInsets())
+                        
+            }.onDelete(perform: delete).background(Color(.JEWBackground()))
         }
     }
     
     func cell(simulation: INVSSimulatorModel, index: Int) -> some View {
-        var isLoading = self.$viewModel.state
+        var isLoading = $viewModel.state
         if viewModel.deleteState.index == index && viewModel.deleteState.isDeleting {
             isLoading = .constant(.loading)
         }
-        return SimulationCell(simulation: simulation, state: isLoading, cellSize: self.$cellSize, selectable: true) {
-            if self.reachability.isConnected {
-                self.detailViewModel.simulation = simulation
-                self.selection = simulation._id
+        return SimulationCell(simulation: simulation, state: isLoading, cellSize: $cellSize, selectable: true) {
+            if reachability.isConnected {
+                detailViewModel.simulation = simulation
+                selection = simulation._id
             }
         }
     }

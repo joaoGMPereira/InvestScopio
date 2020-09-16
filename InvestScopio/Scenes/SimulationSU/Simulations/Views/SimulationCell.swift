@@ -8,6 +8,17 @@
 
 import SwiftUI
 
+struct BlueButtonStyle: ButtonStyle {
+
+  func makeBody(configuration: Self.Configuration) -> some View {
+    configuration.label
+        .font(.headline)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+        .contentShape(Rectangle())
+        .foregroundColor(configuration.isPressed ? Color.white.opacity(0.5) : Color.white)
+        .listRowBackground(configuration.isPressed ? Color.blue.opacity(0.5) : Color.blue)
+  }
+}
 
 
 struct SimulationCell: View {
@@ -20,9 +31,13 @@ struct SimulationCell: View {
     
     var body: some View {
         Button(action: action) {
+            
             VStack(alignment: .leading, spacing: 16) {
-                HeaderSimulationCell(state: $state, simulation: simulation)
-                BodySimulationCell(simulation: simulation, state: $state)
+                ForEach(simulation.generateDynamicContent()) { section in
+                    SectionView(firstTitle: section.firstKey, firstValue: section.firstValue, secondTitle: section.secondKey, secondValue: section.secondValue, state: $state)
+                }
+//                HeaderSimulationCell(state: $state, simulation: simulation)
+//                BodySimulationCell(simulation: simulation, state: $state)
             }
             .getContent(size: $cellSize)
             .padding()
@@ -30,9 +45,10 @@ struct SimulationCell: View {
             .cornerRadius(8)
             .shadow(color: Color("accessoryBackground").opacity(0.8), radius: 8)
             .padding([.top, .bottom], 8)
+            .foregroundColor(Color(.label))
         }
         .allowsHitTesting(selectable)
-            .buttonStyle(PlainButtonStyle())
+        .buttonStyle(PlainButtonStyle())
     }
 }
 

@@ -27,14 +27,15 @@ struct SimulationDetailView: View {
     @ObservedObject var viewModel: SimulationDetailViewModel
     @EnvironmentObject var reachability: Reachability
     @State var cellSize = CGSize.zero
-    
+    @State var showfirstSegment = false
     @State var chartSize = CGSize.zero
     
     var body: some View {
         ZStack {
             VStack(spacing: 8) {
-                
+                if showfirstSegment {
                 JewSegmentedControl(selectedIndex: $viewModel.typeIndex, rects: $viewModel.rectsType, titles: $viewModel.tabs, selectedColor: Color("accessoryBackgroundSelected"), unselectedColor: Color("accessoryBackground"), coordinateSpaceName: "TabsDetail").padding([.top, .horizontal], 8)
+                }
                 if viewModel.typeIndex == 0 {
                     List {
                         SimulationCell(simulation: viewModel.simulation, state: self.$viewModel.state, cellSize: self.$cellSize){}
@@ -58,6 +59,9 @@ struct SimulationDetailView: View {
             })
         }.navigationBarTitle("Simulação", displayMode: .large)
             .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    self.showfirstSegment = true
+                }
                 DispatchQueue.main.async {
                     self.viewModel.simulationDetail()
                 }
