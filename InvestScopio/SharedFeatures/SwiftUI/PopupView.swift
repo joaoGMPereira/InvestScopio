@@ -9,6 +9,24 @@
 import SwiftUI
 import JewFeatures
 
+enum PopupDirection {
+    case down(_ translation: CGFloat)
+    case up(_ translation: CGFloat)
+    
+    static func getDirection(_ translation: CGFloat) -> PopupDirection {
+        return translation > 0 ? .down(translation) : .up(translation)
+    }
+    
+    func finishAnimation() -> Bool {
+        switch self {
+        case .down(let translation):
+            return translation > 20
+        case .up(let translation):
+            return translation < -20
+        }
+    }
+}
+
 enum Position {
     case top
     case bottom
@@ -64,6 +82,7 @@ struct PopupView: View {
     @State var animate: Bool = false
     
     @State var rect: CGRect = .zero
+    @State var dismissMovement: CGFloat = .zero
     let padding: CGFloat = 16
     
     init(text: Binding<String>, textColor: Binding<Color>, backgroundColor: Binding<Color>, position: Binding<Position>, show: Binding<Bool>, checkReachability: Binding<Bool> = .constant(false)) {
@@ -113,11 +132,44 @@ struct PopupView: View {
             
         }
         .edgesIgnoringSafeArea(.all)
-        .offset(y: position.position(show: updatedShow, height: rect.height, safeAreaInsets: geometry.safeAreaInsets))
+        .offset(y: position.position(show: updatedShow, height: rect.height, safeAreaInsets: geometry.safeAreaInsets) - dismissMovement)
         .animation(animate ? Animation.easeInOut(duration: 0.3): .none)
         .onTapGesture {
             self.show = false
         }
+        .gesture(
+            DragGesture()
+                .onChanged({ (value) in
+                    dismissMovement = -value.translation.height
+                    let direction = PopupDirection.getDirection(value.translation.height)
+                
+                    switch direction {
+                    case .down:
+                        if position != .bottom {
+                            dismissMovement = .zero
+                        }
+                    case .up:
+                        if position != .top {
+                            dismissMovement = .zero
+                        }
+                    }
+                })
+                .onEnded({ (value) in
+                    let direction = PopupDirection.getDirection(value.translation.height)
+                    switch direction {
+                    case .down:
+                        if position == .bottom, direction.finishAnimation() {
+                            show = false
+                        }
+                    case .up:
+                        if position == .top, direction.finishAnimation() {
+                            show = false
+                        }
+                    }
+                    
+                    dismissMovement = .zero
+                })
+        )
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.animate = true
