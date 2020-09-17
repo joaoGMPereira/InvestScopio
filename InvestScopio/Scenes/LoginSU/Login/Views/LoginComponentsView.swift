@@ -35,9 +35,9 @@ struct LoginFormView: View {
     var body: some View {
         Form {
             Section(header: Text("Digite seu email").textFont().padding(.top, 16)) {
-                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(), placeholder: .constant("Email"), text: $emailText, formatType: .constant(.none), keyboardType: .constant(.default), close: .constant(false), shouldBecomeFirstResponder: .constant(false)) { textfield, text, isBackspace in
+                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(), placeholder: .constant("Email"), text: $emailText, formatType: .constant(.none), keyboardType: .constant(.default), close: .constant(false), shouldBecomeFirstResponder: .constant(false), onChanged:  { textfield, text, isBackspace in
                     self.emailText = text
-                }
+                })
                 .frame(height: 50)
                 .listRowBackground(Color(.JEWBackground()))
             }
@@ -46,15 +46,21 @@ struct LoginFormView: View {
                     self.didLoginAction()
                 }, didBeginEditing: { textfield in
                     self.passwordText = String()
-                }) { textfield, text, isBackspace in
+                }, onChanged:  { textfield, text, isBackspace in
                     self.passwordText = text
-                }
+                })
                 .frame(height: 50)
                 .listRowBackground(Color(.JEWBackground()))
             }
             Section {
-                Toggle(isOn: $saveData) { Text("Salvar dados").textFont() }
-                    .listRowBackground(Color(.JEWBackground()))
+                if #available(iOS 14.0, *) {
+                    Toggle(isOn: $saveData) { Text("Salvar dados").textFont() }
+                        .toggleStyle(SwitchToggleStyle(tint: Color(.JEWDefault())))
+                        .listRowBackground(Color(.JEWBackground()))
+                } else {
+                    Toggle(isOn: $saveData) { Text("Salvar dados").textFont() }
+                        .listRowBackground(Color(.JEWBackground()))
+                }
             }
         }
         .background(GeometryGetter(rect: self.$rects[0]))
