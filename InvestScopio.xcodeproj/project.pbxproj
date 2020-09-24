@@ -39,10 +39,6 @@
 		4A4C68C12295796200EDC8C6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C68872295796100EDC8C6 /* Images.xcassets */; };
 		4A4C68C32295796200EDC8C6 /* INVSPresentBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C688B2295796100EDC8C6 /* INVSPresentBaseViewController.swift */; };
 		4A4C68C42295796200EDC8C6 /* INVSConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C688D2295796100EDC8C6 /* INVSConstants.swift */; };
-		4A4C68C52295796200EDC8C6 /* INVSFloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C688F2295796100EDC8C6 /* INVSFloatingTextField.swift */; };
-		4A4C68C62295796200EDC8C6 /* INVSFloatingTextFieldValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68902295796100EDC8C6 /* INVSFloatingTextFieldValueType.swift */; };
-		4A4C68C72295796200EDC8C6 /* INVSFloatingTextFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68912295796100EDC8C6 /* INVSFloatingTextFieldType.swift */; };
-		4A4C68C82295796200EDC8C6 /* INVSKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68922295796100EDC8C6 /* INVSKeyboardToolbar.swift */; };
 		4A4C68C92295796200EDC8C6 /* UIColor+INVSPaletteColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68942295796100EDC8C6 /* UIColor+INVSPaletteColors.swift */; };
 		4A4C68CA2295796200EDC8C6 /* UIButton+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68952295796100EDC8C6 /* UIButton+INVSExtension.swift */; };
 		4A4C68CB2295796200EDC8C6 /* UIImage+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68962295796100EDC8C6 /* UIImage+INVSExtension.swift */; };
@@ -102,13 +98,10 @@
 		4AFF3E9722BB23F10056A167 /* String+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C689D2295796100EDC8C6 /* String+INVSExtension.swift */; };
 		4AFF3E9A22BB23F10056A167 /* INVSLoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFEA622B4729100D6A33A /* INVSLoadingButton.swift */; };
 		4AFF3E9D22BB23F10056A167 /* INVSCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E5F22B9B32E0056A167 /* INVSCrypto.swift */; };
-		4AFF3E9E22BB23F10056A167 /* INVSKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68922295796100EDC8C6 /* INVSKeyboardToolbar.swift */; };
-		4AFF3EA022BB23F10056A167 /* INVSFloatingTextFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68912295796100EDC8C6 /* INVSFloatingTextFieldType.swift */; };
 		4AFF3EA122BB23F10056A167 /* INVSCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68A72295796100EDC8C6 /* INVSCodeView.swift */; };
 		4AFF3EA222BB23F10056A167 /* INVSAccessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E6722BA79E90056A167 /* INVSAccessModel.swift */; };
 		4AFF3EA522BB23F10056A167 /* INVSPopupMessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68A02295796100EDC8C6 /* INVSPopupMessageType.swift */; };
 		4AFF3EA822BB23F10056A167 /* INVSStartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A27AA9A229F745C00C45CC5 /* INVSStartPresenter.swift */; };
-		4AFF3EAA22BB23F10056A167 /* INVSFloatingTextFieldValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68902295796100EDC8C6 /* INVSFloatingTextFieldValueType.swift */; };
 		4AFF3EAB22BB23F10056A167 /* UIImage+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68962295796100EDC8C6 /* UIImage+INVSExtension.swift */; };
 		4AFF3EAC22BB23F10056A167 /* MarketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A12631122A7DA7A006133E5 /* MarketModel.swift */; };
 		4AFF3EAE22BB23F10056A167 /* CAShapeLayer+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C689B2295796100EDC8C6 /* CAShapeLayer+INVSExtension.swift */; };
@@ -116,7 +109,6 @@
 		4AFF3EB122BB23F10056A167 /* INVSStartWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B05A5229C19220024F83A /* INVSStartWorker.swift */; };
 		4AFF3EB222BB23F10056A167 /* Double+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C689C2295796100EDC8C6 /* Double+INVSExtension.swift */; };
 		4AFF3EB422BB23F10056A167 /* FirebaseErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFEA422B438B000D6A33A /* FirebaseErrorHandler.swift */; };
-		4AFF3EB522BB23F10056A167 /* INVSFloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C688F2295796100EDC8C6 /* INVSFloatingTextField.swift */; };
 		4AFF3EB822BB23F10056A167 /* UIButton+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68952295796100EDC8C6 /* UIButton+INVSExtension.swift */; };
 		4AFF3EB922BB23F10056A167 /* UIViewController+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68972295796100EDC8C6 /* UIViewController+INVSExtension.swift */; };
 		4AFF3EBC22BB23F10056A167 /* INVSStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C687B2295796100EDC8C6 /* INVSStartViewController.swift */; };
@@ -185,6 +177,16 @@
 		7655A2CE250712C3004B3E0D /* StepModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655A2CC250712C3004B3E0D /* StepModel.swift */; };
 		7655A2D02507FA7B004B3E0D /* SimulationCreationView+StepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655A2CF2507FA7A004B3E0D /* SimulationCreationView+StepView.swift */; };
 		7655A2D12507FA7B004B3E0D /* SimulationCreationView+StepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655A2CF2507FA7A004B3E0D /* SimulationCreationView+StepView.swift */; };
+		766FEF16251B9A88000377C6 /* SUILottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766FEF15251B9A88000377C6 /* SUILottieView.swift */; };
+		766FEF17251B9A88000377C6 /* SUILottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766FEF15251B9A88000377C6 /* SUILottieView.swift */; };
+		766FEF1C251B9EFB000377C6 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766FEF1B251B9EFB000377C6 /* StartView.swift */; };
+		766FEF1D251B9EFB000377C6 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766FEF1B251B9EFB000377C6 /* StartView.swift */; };
+		766FEF25251BAE48000377C6 /* animatedLogoDark.json in Resources */ = {isa = PBXBuildFile; fileRef = 766FEF24251BAE48000377C6 /* animatedLogoDark.json */; };
+		766FEF26251BAE48000377C6 /* animatedLogoDark.json in Resources */ = {isa = PBXBuildFile; fileRef = 766FEF24251BAE48000377C6 /* animatedLogoDark.json */; };
+		766FEF2C251BC8D3000377C6 /* StartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766FEF2B251BC8D3000377C6 /* StartViewModel.swift */; };
+		766FEF2D251BC8D3000377C6 /* StartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766FEF2B251BC8D3000377C6 /* StartViewModel.swift */; };
+		766FEF31251C26DE000377C6 /* StartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766FEF30251C26DE000377C6 /* StartService.swift */; };
+		766FEF32251C26DE000377C6 /* StartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766FEF30251C26DE000377C6 /* StartService.swift */; };
 		767DD86124C3AC14006FDC1A /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767DD85D24C3AC14006FDC1A /* Loadable.swift */; };
 		767DD86224C3AC14006FDC1A /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767DD85D24C3AC14006FDC1A /* Loadable.swift */; };
 		767DD86324C3AC14006FDC1A /* NetworkingHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767DD85E24C3AC14006FDC1A /* NetworkingHelpers.swift */; };
@@ -324,10 +326,6 @@
 		4A4C68872295796100EDC8C6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4A4C688B2295796100EDC8C6 /* INVSPresentBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSPresentBaseViewController.swift; sourceTree = "<group>"; };
 		4A4C688D2295796100EDC8C6 /* INVSConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSConstants.swift; sourceTree = "<group>"; };
-		4A4C688F2295796100EDC8C6 /* INVSFloatingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSFloatingTextField.swift; sourceTree = "<group>"; };
-		4A4C68902295796100EDC8C6 /* INVSFloatingTextFieldValueType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSFloatingTextFieldValueType.swift; sourceTree = "<group>"; };
-		4A4C68912295796100EDC8C6 /* INVSFloatingTextFieldType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSFloatingTextFieldType.swift; sourceTree = "<group>"; };
-		4A4C68922295796100EDC8C6 /* INVSKeyboardToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSKeyboardToolbar.swift; sourceTree = "<group>"; };
 		4A4C68942295796100EDC8C6 /* UIColor+INVSPaletteColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+INVSPaletteColors.swift"; sourceTree = "<group>"; };
 		4A4C68952295796100EDC8C6 /* UIButton+INVSExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+INVSExtension.swift"; sourceTree = "<group>"; };
 		4A4C68962295796100EDC8C6 /* UIImage+INVSExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+INVSExtension.swift"; sourceTree = "<group>"; };
@@ -391,6 +389,11 @@
 		7655A2C925071297004B3E0D /* CreateSimulationSegments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSimulationSegments.swift; sourceTree = "<group>"; };
 		7655A2CC250712C3004B3E0D /* StepModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepModel.swift; sourceTree = "<group>"; };
 		7655A2CF2507FA7A004B3E0D /* SimulationCreationView+StepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SimulationCreationView+StepView.swift"; sourceTree = "<group>"; };
+		766FEF15251B9A88000377C6 /* SUILottieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SUILottieView.swift; sourceTree = "<group>"; };
+		766FEF1B251B9EFB000377C6 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		766FEF24251BAE48000377C6 /* animatedLogoDark.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animatedLogoDark.json; sourceTree = "<group>"; };
+		766FEF2B251BC8D3000377C6 /* StartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
+		766FEF30251C26DE000377C6 /* StartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartService.swift; sourceTree = "<group>"; };
 		767DD85D24C3AC14006FDC1A /* Loadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		767DD85E24C3AC14006FDC1A /* NetworkingHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingHelpers.swift; sourceTree = "<group>"; };
 		767DD85F24C3AC14006FDC1A /* WebRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRepository.swift; sourceTree = "<group>"; };
@@ -618,6 +621,7 @@
 		4A4C686C2295796100EDC8C6 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				766FEF1A251B9ED6000377C6 /* StartSU */,
 				76CAEE6A24E9D7670044508E /* TalkWithUsSU */,
 				76C15C7924C91B3A00045D9A /* SimulationSU */,
 				768D8BEB24C2444E004BEADA /* LoginSU */,
@@ -643,6 +647,7 @@
 		4A4C68862295796100EDC8C6 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				766FEF24251BAE48000377C6 /* animatedLogoDark.json */,
 				4A8E0E6722CD3F6400897D38 /* animatedLoadingPurple.json */,
 				4A8E0E6922CD3F6400897D38 /* animatedLoadingWhite.json */,
 				4A8E0E6B22CD3F6400897D38 /* animatedLogo.json */,
@@ -669,7 +674,6 @@
 				4A12631522A7DC6B006133E5 /* Connector */,
 				4A4C688A2295796100EDC8C6 /* PresentBaseViewController */,
 				4A4C688C2295796100EDC8C6 /* Constants */,
-				4A4C688E2295796100EDC8C6 /* FloatingTextField */,
 				4A4C68932295796100EDC8C6 /* Extensions */,
 				4A4C689F2295796100EDC8C6 /* PopupMessage */,
 				4A4C68A22295796100EDC8C6 /* GradientView */,
@@ -693,17 +697,6 @@
 				4A4C688D2295796100EDC8C6 /* INVSConstants.swift */,
 			);
 			path = Constants;
-			sourceTree = "<group>";
-		};
-		4A4C688E2295796100EDC8C6 /* FloatingTextField */ = {
-			isa = PBXGroup;
-			children = (
-				4A4C688F2295796100EDC8C6 /* INVSFloatingTextField.swift */,
-				4A4C68902295796100EDC8C6 /* INVSFloatingTextFieldValueType.swift */,
-				4A4C68912295796100EDC8C6 /* INVSFloatingTextFieldType.swift */,
-				4A4C68922295796100EDC8C6 /* INVSKeyboardToolbar.swift */,
-			);
-			path = FloatingTextField;
 			sourceTree = "<group>";
 		};
 		4A4C68932295796100EDC8C6 /* Extensions */ = {
@@ -918,6 +911,40 @@
 			path = Extra;
 			sourceTree = "<group>";
 		};
+		766FEF14251B9A88000377C6 /* SUILottie */ = {
+			isa = PBXGroup;
+			children = (
+				766FEF15251B9A88000377C6 /* SUILottieView.swift */,
+			);
+			path = SUILottie;
+			sourceTree = "<group>";
+		};
+		766FEF1A251B9ED6000377C6 /* StartSU */ = {
+			isa = PBXGroup;
+			children = (
+				766FEF2A251BC8A8000377C6 /* Views */,
+				766FEF29251BC849000377C6 /* Core */,
+			);
+			path = StartSU;
+			sourceTree = "<group>";
+		};
+		766FEF29251BC849000377C6 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				766FEF2B251BC8D3000377C6 /* StartViewModel.swift */,
+				766FEF30251C26DE000377C6 /* StartService.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		766FEF2A251BC8A8000377C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				766FEF1B251B9EFB000377C6 /* StartView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		767DD86C24C3AC77006FDC1A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -973,6 +1000,7 @@
 		768D8BFC24C39357004BEADA /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				766FEF14251B9A88000377C6 /* SUILottie */,
 				768B341724FB512A00D80BDE /* Step */,
 				768B340E24FAF7D300D80BDE /* SplitView */,
 				7611A23C24F888730012BE56 /* AnimatedText */,
@@ -1287,6 +1315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A27022A22CD409D005DA22A /* INVSTalkWithUsViewController.xib in Resources */,
+				766FEF25251BAE48000377C6 /* animatedLogoDark.json in Resources */,
 				4A8E0E7422CD3F6500897D38 /* refreshAnimationPurple.json in Resources */,
 				4A8E0E7A22CD3F6500897D38 /* closePlusAnimation.json in Resources */,
 				4AFF3EEA22BC00820056A167 /* GoogleServiceInfoProd.plist in Resources */,
@@ -1308,6 +1337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A27022B22CD409D005DA22A /* INVSTalkWithUsViewController.xib in Resources */,
+				766FEF26251BAE48000377C6 /* animatedLogoDark.json in Resources */,
 				4A8E0E7522CD3F6500897D38 /* refreshAnimationPurple.json in Resources */,
 				4A8E0E7B22CD3F6500897D38 /* closePlusAnimation.json in Resources */,
 				4AFF3ECD22BB23F10056A167 /* Images.xcassets in Resources */,
@@ -1413,6 +1443,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A4C68D52295796200EDC8C6 /* INVSPopupMessage.swift in Sources */,
+				766FEF31251C26DE000377C6 /* StartService.swift in Sources */,
 				767DD86A24C3AC37006FDC1A /* CancelBag.swift in Sources */,
 				7611A14224F1DADD0012BE56 /* INVSSimulatedValueModel.swift in Sources */,
 				4A27022622CD409D005DA22A /* INVSTalkWithUsInteractor.swift in Sources */,
@@ -1427,6 +1458,7 @@
 				768D8C0424C3A2F8004BEADA /* LoginViewModel.swift in Sources */,
 				768B341024FAF7E600D80BDE /* SplitView.swift in Sources */,
 				76CAEE6824E9C8460044508E /* AppRouterView.swift in Sources */,
+				766FEF16251B9A88000377C6 /* SUILottieView.swift in Sources */,
 				4A4C68DC2295796200EDC8C6 /* AppDelegate.swift in Sources */,
 				76D017C824C6681B0092F1A6 /* RegisterRepository.swift in Sources */,
 				4A12631722A7DC7A006133E5 /* INVSConector.swift in Sources */,
@@ -1460,6 +1492,7 @@
 				4A27AA99229F6E4D00C45CC5 /* INVSSession.swift in Sources */,
 				4A4C68CE2295796200EDC8C6 /* UIStackview+INVSExtension.swift in Sources */,
 				76CAEE6C24E9D7880044508E /* TalkWithUsView.swift in Sources */,
+				766FEF2C251BC8D3000377C6 /* StartViewModel.swift in Sources */,
 				7611A21A24F495D30012BE56 /* LineChartBridge.swift in Sources */,
 				76CAEE6024E9C6F20044508E /* zExample.swift in Sources */,
 				7655A2CA25071297004B3E0D /* CreateSimulationSegments.swift in Sources */,
@@ -1476,8 +1509,6 @@
 				768B341924FB513500D80BDE /* Step.swift in Sources */,
 				4AFF3E6022B9B32E0056A167 /* INVSCrypto.swift in Sources */,
 				7611A22F24F5EEBA0012BE56 /* LineChartDataSetBaseBridge.swift in Sources */,
-				4A4C68C82295796200EDC8C6 /* INVSKeyboardToolbar.swift in Sources */,
-				4A4C68C72295796200EDC8C6 /* INVSFloatingTextFieldType.swift in Sources */,
 				4A4C68D82295796200EDC8C6 /* INVSCodeView.swift in Sources */,
 				768D8C0124C393A4004BEADA /* LoginComponentsView.swift in Sources */,
 				4AFF3E6822BA79E90056A167 /* INVSAccessModel.swift in Sources */,
@@ -1496,7 +1527,6 @@
 				4A8E0E6522CD3F1E00897D38 /* INVSConnectorErrorProtocol.swift in Sources */,
 				76E45B3124ECB54200CFACC4 /* SimulationDetailRepository.swift in Sources */,
 				4A27AA9B229F745C00C45CC5 /* INVSStartPresenter.swift in Sources */,
-				4A4C68C62295796200EDC8C6 /* INVSFloatingTextFieldValueType.swift in Sources */,
 				7611A24524F8941D0012BE56 /* SimulationCreationViewType.swift in Sources */,
 				4A4C68CB2295796200EDC8C6 /* UIImage+INVSExtension.swift in Sources */,
 				7698A68524E1B06900A93964 /* HTTPEntities.swift in Sources */,
@@ -1508,12 +1538,12 @@
 				76C15C7724C7A80500045D9A /* ResendPasswordView.swift in Sources */,
 				76C15C7524C7A80500045D9A /* ResendPasswordViewModel.swift in Sources */,
 				767DD86E24C3AE7B006FDC1A /* LoginRepository.swift in Sources */,
+				766FEF1C251B9EFB000377C6 /* StartView.swift in Sources */,
 				4A2B05A6229C19220024F83A /* INVSStartWorker.swift in Sources */,
 				4A4C68D12295796200EDC8C6 /* Double+INVSExtension.swift in Sources */,
 				76E458AC24EA02B500CFACC4 /* SimulationDetailViewModel.swift in Sources */,
 				76069E5924C3EED6009DED56 /* LoadingView.swift in Sources */,
 				4A0FFEA522B438B000D6A33A /* FirebaseErrorHandler.swift in Sources */,
-				4A4C68C52295796200EDC8C6 /* INVSFloatingTextField.swift in Sources */,
 				4A4C68CA2295796200EDC8C6 /* UIButton+INVSExtension.swift in Sources */,
 				4A4C68CC2295796200EDC8C6 /* UIViewController+INVSExtension.swift in Sources */,
 				768D8BF924C34CB4004BEADA /* FloatingTextField.swift in Sources */,
@@ -1543,6 +1573,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AFF3E7522BB23F10056A167 /* INVSPopupMessage.swift in Sources */,
+				766FEF32251C26DE000377C6 /* StartService.swift in Sources */,
 				767DD86B24C3AC37006FDC1A /* CancelBag.swift in Sources */,
 				7611A14324F1DADD0012BE56 /* INVSSimulatedValueModel.swift in Sources */,
 				4A27022722CD409D005DA22A /* INVSTalkWithUsInteractor.swift in Sources */,
@@ -1557,6 +1588,7 @@
 				768D8C0524C3A2F8004BEADA /* LoginViewModel.swift in Sources */,
 				768B341124FAF7E600D80BDE /* SplitView.swift in Sources */,
 				76CAEE6924E9C8460044508E /* AppRouterView.swift in Sources */,
+				766FEF17251B9A88000377C6 /* SUILottieView.swift in Sources */,
 				4AFF3E7B22BB23F10056A167 /* AppDelegate.swift in Sources */,
 				76D017C924C6681B0092F1A6 /* RegisterRepository.swift in Sources */,
 				4AFF3E7D22BB23F10056A167 /* INVSConector.swift in Sources */,
@@ -1590,6 +1622,7 @@
 				4AFF3E9122BB23F10056A167 /* INVSSession.swift in Sources */,
 				4AFF3E9322BB23F10056A167 /* UIStackview+INVSExtension.swift in Sources */,
 				76CAEE6D24E9D7880044508E /* TalkWithUsView.swift in Sources */,
+				766FEF2D251BC8D3000377C6 /* StartViewModel.swift in Sources */,
 				7611A21B24F495D30012BE56 /* LineChartBridge.swift in Sources */,
 				76CAEE6124E9C6F20044508E /* zExample.swift in Sources */,
 				7655A2CB25071297004B3E0D /* CreateSimulationSegments.swift in Sources */,
@@ -1606,8 +1639,6 @@
 				768B341A24FB513500D80BDE /* Step.swift in Sources */,
 				4AFF3E9D22BB23F10056A167 /* INVSCrypto.swift in Sources */,
 				7611A23024F5EEBA0012BE56 /* LineChartDataSetBaseBridge.swift in Sources */,
-				4AFF3E9E22BB23F10056A167 /* INVSKeyboardToolbar.swift in Sources */,
-				4AFF3EA022BB23F10056A167 /* INVSFloatingTextFieldType.swift in Sources */,
 				4AFF3EA122BB23F10056A167 /* INVSCodeView.swift in Sources */,
 				768D8C0224C393A4004BEADA /* LoginComponentsView.swift in Sources */,
 				4AFF3EA222BB23F10056A167 /* INVSAccessModel.swift in Sources */,
@@ -1626,7 +1657,6 @@
 				4A8E0E6622CD3F1E00897D38 /* INVSConnectorErrorProtocol.swift in Sources */,
 				76E45B3224ECB54200CFACC4 /* SimulationDetailRepository.swift in Sources */,
 				4AFF3EA822BB23F10056A167 /* INVSStartPresenter.swift in Sources */,
-				4AFF3EAA22BB23F10056A167 /* INVSFloatingTextFieldValueType.swift in Sources */,
 				7611A24624F8941D0012BE56 /* SimulationCreationViewType.swift in Sources */,
 				4AFF3EAB22BB23F10056A167 /* UIImage+INVSExtension.swift in Sources */,
 				7698A68624E1B06900A93964 /* HTTPEntities.swift in Sources */,
@@ -1638,12 +1668,12 @@
 				76C15C7824C7A80500045D9A /* ResendPasswordView.swift in Sources */,
 				76C15C7624C7A80500045D9A /* ResendPasswordViewModel.swift in Sources */,
 				767DD86F24C3AE7B006FDC1A /* LoginRepository.swift in Sources */,
+				766FEF1D251B9EFB000377C6 /* StartView.swift in Sources */,
 				4AFF3EB122BB23F10056A167 /* INVSStartWorker.swift in Sources */,
 				4AFF3EB222BB23F10056A167 /* Double+INVSExtension.swift in Sources */,
 				76E458AD24EA02B500CFACC4 /* SimulationDetailViewModel.swift in Sources */,
 				76069E5A24C3EED6009DED56 /* LoadingView.swift in Sources */,
 				4AFF3EB422BB23F10056A167 /* FirebaseErrorHandler.swift in Sources */,
-				4AFF3EB522BB23F10056A167 /* INVSFloatingTextField.swift in Sources */,
 				4AFF3EB822BB23F10056A167 /* UIButton+INVSExtension.swift in Sources */,
 				4AFF3EB922BB23F10056A167 /* UIViewController+INVSExtension.swift in Sources */,
 				768D8BFA24C34CB4004BEADA /* FloatingTextField.swift in Sources */,

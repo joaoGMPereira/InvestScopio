@@ -29,6 +29,7 @@ struct LoginService: LoginServiceProtocol {
         userLoadable.wrappedValue = .isLoading(last: userLoadable.wrappedValue.value, cancelBag: cancelBag)
         self.firebaseLogin(userLoadable: userLoadable, email: email.lowercased(), password: password) { (userModel) in
             JEWSession.session.user = userModel
+            
             self.webRepository
                 .login(request: UserRequest(email: userModel.email, uid: userModel.uid, fullName: userModel.fullName, photoURL: userModel.photoURL))
                 .sinkToLoadable { response in

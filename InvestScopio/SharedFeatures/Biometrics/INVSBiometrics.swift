@@ -33,11 +33,6 @@ class INVSBiometrics: NSObject {
         let context = LAContext()
         context.localizedFallbackTitle = fallbackTitle
         
-        // cancel button title
-        if #available(iOS 10.0, *) {
-            context.localizedCancelTitle = cancelTitle
-        }
-        
         // authenticate
         INVSBiometrics.shared.evaluate(policy: LAPolicy.deviceOwnerAuthenticationWithBiometrics, with: context, reason: reasonString, success: successBlock, failure: failureBlock)
     }

@@ -15,10 +15,10 @@ struct UserRequest: Codable, JSONAble {
     let email: String
     let picture: String?
     
-    public init(email: String?, uid: String, fullName: String?, photoURL: URL? = nil) {
+    public init(email: String? = "User Without Email", uid: String, fullName: String? = "User Without Email", photoURL: URL? = nil) {
         self.email = email ?? "User Without Email"
         self.firebaseID = uid
-        self.name = fullName ?? "User Without Name"
+        self.name = fullName ?? "User Without Email"
         self.picture = photoURL?.absoluteString
     }
 }

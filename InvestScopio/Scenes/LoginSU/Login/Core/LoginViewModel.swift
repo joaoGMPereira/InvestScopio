@@ -32,9 +32,7 @@ class LoginViewModel: ObservableObject {
     
     func checkUserSavedEmail() {
         if let email = INVSKeyChainWrapper.retrieve(withKey: INVSConstants.LoginKeyChainConstants.lastLoginEmail.rawValue), let emailDecrypted = INVSCrypto.decryptAES(withText: email) {
-            //DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.email = emailDecrypted
-           // }
         }
         if let enableAuthentication =
             INVSKeyChainWrapper.retrieveBool(withKey: INVSConstants.LoginKeyChainConstants.hasEnableBiometricAuthentication.rawValue) {
@@ -45,7 +43,7 @@ class LoginViewModel: ObservableObject {
     func rememberUser() {
         INVSKeyChainWrapper.saveBool(withValue: saveData, andKey: INVSConstants.LoginKeyChainConstants.hasEnableBiometricAuthentication.rawValue)
         INVSKeyChainWrapper.updateBool(withValue: true, andKey: INVSConstants.LoginKeyChainConstants.hasUserLogged.rawValue)
-        if let emailAES = INVSCrypto.encryptAES(withText: email), let securityAES = INVSCrypto.encryptAES(withText: password) {
+        if let emailAES = INVSCrypto.encryptAES(withText: email), let uid = JEWSession.session.user?.uid, let securityAES = INVSCrypto.encryptAES(withText: uid) {
             INVSKeyChainWrapper.save(withValue: emailAES, andKey: INVSConstants.LoginKeyChainConstants.lastLoginEmail.rawValue)
             INVSKeyChainWrapper.save(withValue: securityAES, andKey: INVSConstants.LoginKeyChainConstants.lastLoginSecurity.rawValue)
         }
@@ -83,14 +81,7 @@ class LoginViewModel: ObservableObject {
             self.showLoading = true
             break
         case .loaded(_):
-            self.showLoading = false
-            if saveData {
-                rememberUser()
-            } else {
-                INVSKeyChainWrapper.clear()
-            }
-            completion?()
-            
+            validateLogin()
         case .failed(let error):
             if let apiError = error as? APIError {
                 self.messageError = apiError.errorDescription ?? String()
@@ -98,6 +89,29 @@ class LoginViewModel: ObservableObject {
             }
             self.showLoading = false
             break
+        }
+    }
+    
+    func validateLogin() {
+        self.showLoading = false
+        rememberUser()
+        if saveData {
+            INVSBiometricsChallenge.checkLoggedUser(reason: "Cadastramento da sua digital") { [self] in
+                completion?()
+            } failureChallenge: { [self] (type) in
+                switch type {
+                case .default, .error(_):
+                    loginLoadable = .failed(APIError.customError("Não foi possível realizar o cadastro da biometria, tente novamente."))
+                    build(state: loginLoadable)
+                    
+                case .goSettings(_):
+                    completion?()
+                }
+                showLoading = false
+            }
+        } else {
+            INVSKeyChainWrapper.clear()
+            completion?()
         }
     }
 }
