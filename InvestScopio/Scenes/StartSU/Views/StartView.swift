@@ -12,7 +12,6 @@ import Lottie
 struct StartView: View {
     @EnvironmentObject var settings: AppSettings
     @ObservedObject var viewModel: StartViewModel
-    @State var state = LottieState.stop
     var body: some View {
         GeometryReader { geometry in
         ZStack {
@@ -25,29 +24,20 @@ struct StartView: View {
                             .offset(y: geometry.size.width * 0.3))
                 .offset(y: -100)
             VStack {
-                SUILottieView(lottieNames: LottieNames(lightName: "animatedLogo", darkName: "animatedLogoDark"), state: $state).offset(y: -100)
+                SUILottieView(lottieNames: LottieNames(lightName: "animatedLogo", darkName: "animatedLogoDark"), state: $viewModel.state).offset(y: -100)
             }
         }
         }
         .edgesIgnoringSafeArea(.all)
         .attachEnvironmentOverrides()
         .onAppear {
-            self.state = .playFrame(fromFrame: 25, toFrame: 25, loopMode: .playOnce, completion: nil)
-
-            viewModel.authentication(completion: { isLoading in
-                if isLoading {
-                    self.state = .play
-                    return
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self.state = .stop
-                    self.settings.hasUserSaved = false
-                    self.settings.isLogged = true
-                }
+            viewModel.authentication(completion: {
+                self.settings.checkUser = false
+                self.settings.isLogged = true
+                settings.popup = AppPopupSettings()
             }) { popup, hasCancelled in
-                self.state = .playFrame(fromFrame: 25, toFrame: 25, loopMode: .playOnce, completion: nil)
                 if hasCancelled {
-                    settings.hasUserSaved = false
+                    settings.checkUser = false
                 }
                 settings.popup = popup
             }

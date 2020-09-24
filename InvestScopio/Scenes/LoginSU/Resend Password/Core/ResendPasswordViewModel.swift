@@ -55,7 +55,7 @@ class ResendPasswordViewModel: ObservableObject {
     
     func hasRequiredFields() -> Bool {
         if email.isEmpty {
-            resendPasswordLoadable = .failed(APIError.customError("Atenção!\nDigite um email válido."))
+            resendPasswordLoadable = .failed(APIError.customError("Digite um email válido."))
             build(state: resendPasswordLoadable)
             return false
         }

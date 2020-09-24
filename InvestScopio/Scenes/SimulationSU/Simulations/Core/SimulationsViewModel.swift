@@ -94,7 +94,7 @@ class SimulationsViewModel: ObservableObject {
         case .loaded(let response):
             self.simulations = response
             if self.simulations.count == 0 {
-                message = "Atenção!\nNenhuma simulação foi encontrada, realize sua primeira simulação."
+                message = "Nenhuma simulação foi encontrada, realize sua primeira simulação."
                 self.failure?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWDarkDefault()), position: .top, show: true))
             } else {
                 self.completion?()
@@ -122,10 +122,10 @@ class SimulationsViewModel: ObservableObject {
         case .loaded(let response):
             if response.deleted {
                 self.simulations = [INVSSimulatorModel]()
-                message = "Atenção!\nTodas suas simulações foram apagadas com sucesso."
+                message = "Todas suas simulações foram apagadas com sucesso."
                 self.completionDelete?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWDarkDefault()), position: .top, show: true))
             } else {
-                message = "Atenção!\nNão foi possível apagar suas Simulações."
+                message = "Não foi possível apagar suas Simulações."
                 self.completionDelete?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true))
             }
             self.state = .loaded
@@ -155,10 +155,10 @@ class SimulationsViewModel: ObservableObject {
                 }
                 self.deleteState.indexSet = nil
                 self.deleteState.isDeleting = false
-                message = "Atenção!\nSimulação apagada com sucesso."
+                message = "Simulação apagada com sucesso."
                 self.completionDelete?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWDarkDefault()), position: .top, show: true))
             } else {
-                message = "Atenção!\nNão foi possível apagar a simulação."
+                message = "Não foi possível apagar a simulação."
                 self.completionDelete?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true))
             }
             self.state = .loaded

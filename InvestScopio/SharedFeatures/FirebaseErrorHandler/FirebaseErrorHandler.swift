@@ -22,21 +22,21 @@ enum FireBaseErrorHandler: Int {
     func getFirebaseMessage() -> String {
         switch self {
         case .codeUserDisabled:
-            return "Atenção!\nEmail desativado!"
+            return "Email desativado!"
         case .codeEmailAlreadyInUse:
-            return "Atenção!\nEmail já cadastrado!"
+            return "Email já cadastrado!"
         case .codeInvalidEmail:
-            return "Atenção!\nEmail inválido!"
+            return "Email inválido!"
         case .codeWrongPassword:
-            return "Atenção!\nSenha incorreta!"
+            return "Senha incorreta!"
         case .codeUserNotFound:
-            return "Atenção!\nEmail não cadastrado!"
+            return "Email não cadastrado!"
         case .codeInvalidUserToken:
-            return "Atenção!\nTente logar novamente em breve!"
+            return "Tente logar novamente em breve!"
         case .codeWeakPassword:
-            return "Atenção!\nSua senha deve ter pelo menos 6 caracteres!"
+            return "Sua senha deve ter pelo menos 6 caracteres!"
         default:
-            return "Atenção!\nDesculpe, tivemos algum problema, tente novamente mais tarde!"
+            return "Desculpe, tivemos algum problema, tente novamente mais tarde!"
         }
         
     }

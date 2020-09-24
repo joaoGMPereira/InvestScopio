@@ -32,7 +32,7 @@ struct StartService: StartServiceProtocol {
                     JEWSession.session.services.publicKey = String()
                     JEWSession.session.services.token = String()
                     JEWSession.session.services.sessionToken = String()
-                    userLoadable.wrappedValue = .failed(APIError.customError("Atenção!\nDesculpe, tivemos algum problema, tente novamente mais tarde!"))
+                    userLoadable.wrappedValue = .failed(APIError.default)
                     return
                 }
                 userLoadable.wrappedValue = .loaded(value)

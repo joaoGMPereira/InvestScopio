@@ -26,6 +26,7 @@ extension APICall {
 
 enum APIError: Error {
     case `default`
+    case invalidData
     case customError(String)
     case logout
 }
@@ -38,7 +39,9 @@ extension APIError: LocalizedError {
         case .logout:
             return "Sessão finalizada!"
         case .default:
-            return "Atenção!\nDesculpe, tivemos algum problema, tente novamente mais tarde!"
+            return "Desculpe, tivemos algum problema, tente novamente mais tarde!"
+        case .invalidData:
+            return "Dados inválidos, tente novamente!"
         }
     }
 }

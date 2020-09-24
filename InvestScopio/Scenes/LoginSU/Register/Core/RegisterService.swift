@@ -33,7 +33,7 @@ struct RegisterService: RegisterServiceProtocol {
                 .register(user: request)
                 .sinkToLoadable { response in
                     guard (response.value != nil) else {
-                        register.wrappedValue = .failed(APIError.customError("Atenção!\nDesculpe, tivemos algum problema, tente novamente mais tarde!"))
+                        register.wrappedValue = .failed(APIError.customError("Desculpe, tivemos algum problema, tente novamente mais tarde!"))
                         return
                     }
                     register.wrappedValue = response

@@ -65,7 +65,7 @@ class LoginViewModel: ObservableObject {
     
     func hasRequiredFields() -> Bool {
         if email.isEmpty || password.isEmpty {
-            loginLoadable = .failed(APIError.customError("Atenção!\nPor favor digite email e senha para prosseguir."))
+            loginLoadable = .failed(APIError.customError("Por favor digite email e senha para prosseguir."))
             build(state: loginLoadable)
             return false
         }

@@ -46,8 +46,9 @@ struct AppRouterView: View {
                 .accentColor(Color(.JEWDefault()))
                 .attachEnvironmentOverrides()
             } else {
-                if settings.hasUserSaved {
+                if settings.checkUser {
                     StartView(viewModel: startViewModel)
+                        
                 } else {
                     LoginView(viewModel: loginViewModel, registerViewModel: registerViewModel, resendPasswordViewModel: resendPasswordViewModel)
                         .attachEnvironmentOverrides()
@@ -67,7 +68,7 @@ struct LoginRouterView_Previews: PreviewProvider {
 
 class AppSettings: ObservableObject {
     @Published var isLogged = false
-    @Published var hasUserSaved: Bool = (INVSKeyChainWrapper.retrieveBool(withKey: INVSConstants.LoginKeyChainConstants.hasUserLogged.rawValue) ?? false)
+    @Published var checkUser: Bool = (INVSKeyChainWrapper.retrieveBool(withKey: INVSConstants.LoginKeyChainConstants.hasUserLogged.rawValue) ?? false)
     @Published var tabSelection = 1 {
         didSet {
             tabSelected?(tabSelection)
@@ -86,7 +87,7 @@ class AppPopupSettings: ObservableObject {
     @Published var show: Bool
     
     init(message: String = String(), textColor: Color = .clear, backgroundColor: Color = .clear, position: Position = .top, show: Bool = false) {
-        self.message = "Atenção\n" + message
+        self.message = "Atenção!\n" + message
         self.textColor = textColor
         self.backgroundColor = backgroundColor
         self.position = position

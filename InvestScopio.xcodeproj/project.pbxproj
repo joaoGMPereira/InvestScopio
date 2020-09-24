@@ -49,7 +49,6 @@
 		4A4C68D02295796200EDC8C6 /* CAShapeLayer+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C689B2295796100EDC8C6 /* CAShapeLayer+INVSExtension.swift */; };
 		4A4C68D12295796200EDC8C6 /* Double+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C689C2295796100EDC8C6 /* Double+INVSExtension.swift */; };
 		4A4C68D22295796200EDC8C6 /* String+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C689D2295796100EDC8C6 /* String+INVSExtension.swift */; };
-		4A4C68D32295796200EDC8C6 /* UIWindow+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C689E2295796100EDC8C6 /* UIWindow+INVSExtension.swift */; };
 		4A4C68D42295796200EDC8C6 /* INVSPopupMessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68A02295796100EDC8C6 /* INVSPopupMessageType.swift */; };
 		4A4C68D52295796200EDC8C6 /* INVSPopupMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68A12295796100EDC8C6 /* INVSPopupMessage.swift */; };
 		4A4C68D62295796200EDC8C6 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68A32295796100EDC8C6 /* GradientView.swift */; };
@@ -105,7 +104,6 @@
 		4AFF3EAB22BB23F10056A167 /* UIImage+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68962295796100EDC8C6 /* UIImage+INVSExtension.swift */; };
 		4AFF3EAC22BB23F10056A167 /* MarketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A12631122A7DA7A006133E5 /* MarketModel.swift */; };
 		4AFF3EAE22BB23F10056A167 /* CAShapeLayer+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C689B2295796100EDC8C6 /* CAShapeLayer+INVSExtension.swift */; };
-		4AFF3EB022BB23F10056A167 /* UIWindow+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C689E2295796100EDC8C6 /* UIWindow+INVSExtension.swift */; };
 		4AFF3EB122BB23F10056A167 /* INVSStartWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B05A5229C19220024F83A /* INVSStartWorker.swift */; };
 		4AFF3EB222BB23F10056A167 /* Double+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C689C2295796100EDC8C6 /* Double+INVSExtension.swift */; };
 		4AFF3EB422BB23F10056A167 /* FirebaseErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFEA422B438B000D6A33A /* FirebaseErrorHandler.swift */; };
@@ -336,7 +334,6 @@
 		4A4C689B2295796100EDC8C6 /* CAShapeLayer+INVSExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAShapeLayer+INVSExtension.swift"; sourceTree = "<group>"; };
 		4A4C689C2295796100EDC8C6 /* Double+INVSExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+INVSExtension.swift"; sourceTree = "<group>"; };
 		4A4C689D2295796100EDC8C6 /* String+INVSExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+INVSExtension.swift"; sourceTree = "<group>"; };
-		4A4C689E2295796100EDC8C6 /* UIWindow+INVSExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+INVSExtension.swift"; sourceTree = "<group>"; };
 		4A4C68A02295796100EDC8C6 /* INVSPopupMessageType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSPopupMessageType.swift; sourceTree = "<group>"; };
 		4A4C68A12295796100EDC8C6 /* INVSPopupMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSPopupMessage.swift; sourceTree = "<group>"; };
 		4A4C68A32295796100EDC8C6 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -712,7 +709,6 @@
 				4A4C689B2295796100EDC8C6 /* CAShapeLayer+INVSExtension.swift */,
 				4A4C689C2295796100EDC8C6 /* Double+INVSExtension.swift */,
 				4A4C689D2295796100EDC8C6 /* String+INVSExtension.swift */,
-				4A4C689E2295796100EDC8C6 /* UIWindow+INVSExtension.swift */,
 				4A45D0D122A44576001383B4 /* NSAttributedString+INVSExtension.swift */,
 				4A0FFE8B22B2D84F00D6A33A /* UIView+INVSExtension.swift */,
 				4AFF3E6A22BA8EB10056A167 /* Jsonable+INVSExtension.swift */,
@@ -1534,7 +1530,6 @@
 				7698A68F24E347C500A93964 /* SUIJewGenericView.swift in Sources */,
 				4A4C68D02295796200EDC8C6 /* CAShapeLayer+INVSExtension.swift in Sources */,
 				767DD87124C3C384006FDC1A /* LoginService.swift in Sources */,
-				4A4C68D32295796200EDC8C6 /* UIWindow+INVSExtension.swift in Sources */,
 				76C15C7724C7A80500045D9A /* ResendPasswordView.swift in Sources */,
 				76C15C7524C7A80500045D9A /* ResendPasswordViewModel.swift in Sources */,
 				767DD86E24C3AE7B006FDC1A /* LoginRepository.swift in Sources */,
@@ -1664,7 +1659,6 @@
 				7698A69024E347C500A93964 /* SUIJewGenericView.swift in Sources */,
 				4AFF3EAE22BB23F10056A167 /* CAShapeLayer+INVSExtension.swift in Sources */,
 				767DD87224C3C384006FDC1A /* LoginService.swift in Sources */,
-				4AFF3EB022BB23F10056A167 /* UIWindow+INVSExtension.swift in Sources */,
 				76C15C7824C7A80500045D9A /* ResendPasswordView.swift in Sources */,
 				76C15C7624C7A80500045D9A /* ResendPasswordViewModel.swift in Sources */,
 				767DD86F24C3AE7B006FDC1A /* LoginRepository.swift in Sources */,
