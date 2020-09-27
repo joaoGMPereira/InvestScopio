@@ -167,6 +167,10 @@
 		7623BA38250D859700A3091E /* DeleteSimulationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623BA36250D859700A3091E /* DeleteSimulationModel.swift */; };
 		7623BA3A250F096C00A3091E /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623BA39250F096C00A3091E /* UserRequest.swift */; };
 		7623BA3B250F096C00A3091E /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623BA39250F096C00A3091E /* UserRequest.swift */; };
+		76541F142520324100DDD1C3 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76541F132520324100DDD1C3 /* AppSettings.swift */; };
+		76541F152520324100DDD1C3 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76541F132520324100DDD1C3 /* AppSettings.swift */; };
+		76541F202520375100DDD1C3 /* DialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76541F1F2520375100DDD1C3 /* DialogView.swift */; };
+		76541F212520375100DDD1C3 /* DialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76541F1F2520375100DDD1C3 /* DialogView.swift */; };
 		7655A2C725070CBC004B3E0D /* SimulationCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655A2C625070CBC004B3E0D /* SimulationCreationViewModel.swift */; };
 		7655A2C825070CBC004B3E0D /* SimulationCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655A2C625070CBC004B3E0D /* SimulationCreationViewModel.swift */; };
 		7655A2CA25071297004B3E0D /* CreateSimulationSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655A2C925071297004B3E0D /* CreateSimulationSegments.swift */; };
@@ -382,6 +386,8 @@
 		7611A24D24F89B130012BE56 /* DoubleButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleButtons.swift; sourceTree = "<group>"; };
 		7623BA36250D859700A3091E /* DeleteSimulationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteSimulationModel.swift; sourceTree = "<group>"; };
 		7623BA39250F096C00A3091E /* UserRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
+		76541F132520324100DDD1C3 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		76541F1F2520375100DDD1C3 /* DialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogView.swift; sourceTree = "<group>"; };
 		7655A2C625070CBC004B3E0D /* SimulationCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationCreationViewModel.swift; sourceTree = "<group>"; };
 		7655A2C925071297004B3E0D /* CreateSimulationSegments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSimulationSegments.swift; sourceTree = "<group>"; };
 		7655A2CC250712C3004B3E0D /* StepModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepModel.swift; sourceTree = "<group>"; };
@@ -598,6 +604,7 @@
 		4A4C686B2295796100EDC8C6 /* InvestScopio */ = {
 			isa = PBXGroup;
 			children = (
+				76541F122520322800DDD1C3 /* Settings */,
 				4AFF3E6C22BB20660056A167 /* FirebaseConfig */,
 				4A27AA97229F6E1F00C45CC5 /* InvestScopioSession */,
 				4A4C68892295796100EDC8C6 /* SharedFeatures */,
@@ -907,6 +914,30 @@
 			path = Extra;
 			sourceTree = "<group>";
 		};
+		76541F122520322800DDD1C3 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				76541F132520324100DDD1C3 /* AppSettings.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		76541F1C2520370A00DDD1C3 /* Admin */ = {
+			isa = PBXGroup;
+			children = (
+				76541F1E2520371E00DDD1C3 /* Views */,
+			);
+			path = Admin;
+			sourceTree = "<group>";
+		};
+		76541F1E2520371E00DDD1C3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				76541F1F2520375100DDD1C3 /* DialogView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		766FEF14251B9A88000377C6 /* SUILottie */ = {
 			isa = PBXGroup;
 			children = (
@@ -977,6 +1008,7 @@
 		768D8BEB24C2444E004BEADA /* LoginSU */ = {
 			isa = PBXGroup;
 			children = (
+				76541F1C2520370A00DDD1C3 /* Admin */,
 				76C15C6A24C7A80500045D9A /* Resend Password */,
 				76D017C424C6034A0092F1A6 /* Register */,
 				76D017C324C603350092F1A6 /* Login */,
@@ -1498,6 +1530,7 @@
 				7698A68D24E347C500A93964 /* SUIJEWLoadingView.swift in Sources */,
 				768D8BE924C22B35004BEADA /* SFSymbols+Extensions.swift in Sources */,
 				4A4C68D22295796200EDC8C6 /* String+INVSExtension.swift in Sources */,
+				76541F142520324100DDD1C3 /* AppSettings.swift in Sources */,
 				4A0FFEA722B4729100D6A33A /* INVSLoadingButton.swift in Sources */,
 				767DD86524C3AC14006FDC1A /* WebRepository.swift in Sources */,
 				767DD86324C3AC14006FDC1A /* NetworkingHelpers.swift in Sources */,
@@ -1537,6 +1570,7 @@
 				4A2B05A6229C19220024F83A /* INVSStartWorker.swift in Sources */,
 				4A4C68D12295796200EDC8C6 /* Double+INVSExtension.swift in Sources */,
 				76E458AC24EA02B500CFACC4 /* SimulationDetailViewModel.swift in Sources */,
+				76541F202520375100DDD1C3 /* DialogView.swift in Sources */,
 				76069E5924C3EED6009DED56 /* LoadingView.swift in Sources */,
 				4A0FFEA522B438B000D6A33A /* FirebaseErrorHandler.swift in Sources */,
 				4A4C68CA2295796200EDC8C6 /* UIButton+INVSExtension.swift in Sources */,
@@ -1627,6 +1661,7 @@
 				7698A68E24E347C500A93964 /* SUIJEWLoadingView.swift in Sources */,
 				768D8BEA24C22B35004BEADA /* SFSymbols+Extensions.swift in Sources */,
 				4AFF3E9722BB23F10056A167 /* String+INVSExtension.swift in Sources */,
+				76541F152520324100DDD1C3 /* AppSettings.swift in Sources */,
 				4AFF3E9A22BB23F10056A167 /* INVSLoadingButton.swift in Sources */,
 				767DD86624C3AC14006FDC1A /* WebRepository.swift in Sources */,
 				767DD86424C3AC14006FDC1A /* NetworkingHelpers.swift in Sources */,
@@ -1666,6 +1701,7 @@
 				4AFF3EB122BB23F10056A167 /* INVSStartWorker.swift in Sources */,
 				4AFF3EB222BB23F10056A167 /* Double+INVSExtension.swift in Sources */,
 				76E458AD24EA02B500CFACC4 /* SimulationDetailViewModel.swift in Sources */,
+				76541F212520375100DDD1C3 /* DialogView.swift in Sources */,
 				76069E5A24C3EED6009DED56 /* LoadingView.swift in Sources */,
 				4AFF3EB422BB23F10056A167 /* FirebaseErrorHandler.swift in Sources */,
 				4AFF3EB822BB23F10056A167 /* UIButton+INVSExtension.swift in Sources */,

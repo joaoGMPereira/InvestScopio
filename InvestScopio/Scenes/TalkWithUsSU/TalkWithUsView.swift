@@ -17,7 +17,7 @@ struct TalkWithUsView: View {
                 ScrollView {
                     ZStack {
                         Button(action: {
-                            self.settings.isLogged = false
+                            self.settings.loggingState = .notLogged
                         }) {
                             Text("Sair")
                                 .foregroundColor(Color.init(.label))

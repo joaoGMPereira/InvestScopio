@@ -15,8 +15,15 @@ class LoginViewModel: ObservableObject {
             build(state: loginLoadable)
         }
     }
+    @Published var loginAdminLoadable: Loadable<HTTPResponse<SessionTokenModel>> {
+        didSet {
+            buildAdmin(state: loginAdminLoadable)
+        }
+    }
     @Published var messageError = String()
     @Published var showLoading = false
+    @Published var adminClose = true
+    @Published var adminLoading = false
     
     let loginService: LoginServiceProtocol
     var email = String()
@@ -27,12 +34,13 @@ class LoginViewModel: ObservableObject {
     
     init(service: LoginServiceProtocol) {
         self._loginLoadable = .init(initialValue: .notRequested)
+        self._loginAdminLoadable = .init(initialValue: .notRequested)
         self.loginService = service
     }
     
     func checkUserSavedEmail() {
         if let email = INVSKeyChainWrapper.retrieve(withKey: INVSConstants.LoginKeyChainConstants.lastLoginEmail.rawValue), let emailDecrypted = INVSCrypto.decryptAES(withText: email) {
-                self.email = emailDecrypted
+            self.email = emailDecrypted
         }
         if let enableAuthentication =
             INVSKeyChainWrapper.retrieveBool(withKey: INVSConstants.LoginKeyChainConstants.hasEnableBiometricAuthentication.rawValue) {
@@ -63,6 +71,18 @@ class LoginViewModel: ObservableObject {
         }
     }
     
+    func loginAdmin(completion: @escaping () -> Void, failure: @escaping (AppPopupSettings) -> Void) {
+        self.completion = completion
+        self.failure = failure
+        switch loginLoadable {
+        case .notRequested, .loaded(_), .failed(_):
+            loginService
+                .load(userLoadable: loadableSubject(\.loginAdminLoadable), email: "admin@investscopio.com.br", password: "Investscopio@123456")
+            
+        case .isLoading(_, _): break
+        }
+    }
+    
     func hasRequiredFields() -> Bool {
         if email.isEmpty || password.isEmpty {
             loginLoadable = .failed(APIError.customError("Por favor digite email e senha para prosseguir."))
@@ -70,6 +90,28 @@ class LoginViewModel: ObservableObject {
             return false
         }
         return true
+    }
+    
+    func buildAdmin(state: Loadable<HTTPResponse<SessionTokenModel>>) {
+        switch state {
+        case .notRequested:
+            break
+            
+        case .isLoading(_, _):
+            self.adminLoading = true
+            break
+        case .loaded(_):
+            self.adminLoading = false
+            self.adminClose = true
+            loginWithCleanInfo()
+        case .failed(let error):
+            if let apiError = error as? APIError {
+                self.messageError = apiError.errorDescription ?? String()
+                self.failure?(AppPopupSettings(message: messageError, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true))
+            }
+            self.adminLoading = false
+            break
+        }
     }
     
     func build(state: Loadable<HTTPResponse<SessionTokenModel>>) {
@@ -98,6 +140,7 @@ class LoginViewModel: ObservableObject {
         if saveData {
             INVSBiometricsChallenge.checkLoggedUser(reason: "Cadastramento da sua digital") { [self] in
                 completion?()
+                self.password = String()
             } failureChallenge: { [self] (type) in
                 switch type {
                 case .default, .error(_):
@@ -106,12 +149,19 @@ class LoginViewModel: ObservableObject {
                     
                 case .goSettings(_):
                     completion?()
+                    self.password = String()
                 }
                 showLoading = false
             }
         } else {
-            INVSKeyChainWrapper.clear()
-            completion?()
+            loginWithCleanInfo()
         }
+    }
+    
+    func loginWithCleanInfo() {
+        INVSKeyChainWrapper.clear()
+        completion?()
+        email = String()
+        password = String()
     }
 }

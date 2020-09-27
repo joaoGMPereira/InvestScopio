@@ -59,10 +59,10 @@ class SimulationsViewModel: ObservableObject {
     
     func deleteSimulations(completion: @escaping (AppPopupSettings) -> Void) {
         self.completionDelete = completion
-        switch simulationsLoadable {
+        switch deleteSimulationAllLoadable {
         case .notRequested, .loaded(_), .failed(_):
             simulationsService
-                .delete(simulations: loadableSubject(\.deleteSimulationLoadable))
+                .delete(simulations: loadableSubject(\.deleteSimulationAllLoadable))
             
         case .isLoading(_, _): break
         }

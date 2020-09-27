@@ -33,7 +33,7 @@ struct StartView: View {
         .onAppear {
             viewModel.authentication(completion: {
                 self.settings.checkUser = false
-                self.settings.isLogged = true
+                self.settings.loggingState = .normal
                 settings.popup = AppPopupSettings()
             }) { popup, hasCancelled in
                 if hasCancelled {
