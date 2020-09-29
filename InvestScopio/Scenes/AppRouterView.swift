@@ -20,6 +20,7 @@ struct AppRouterView: View {
     let simulationCreationViewModel = SimulationCreationViewModel(allSteps: StepModel.allDefaultSteps)
     let simulationCreationDetailViewModel = SimulationDetailViewModel(service: SimulationDetailService(repository: SimulationDetailRepository()))
     let startViewModel = StartViewModel(service: StartService(webRepository: LoginWebRepository()))
+    let talkWithUsViewModel = TalkWithUsViewModel()
     var body: some View {
         ZStack {
             switch settings.loggingState {
@@ -49,7 +50,7 @@ struct AppRouterView: View {
                     Image(systemName: SFSymbol.chartBarFill.rawValue)
                     Text("Simulação")
                 }.navigationViewStyle(StackNavigationViewStyle())
-            TalkWithUsView()
+            TalkWithUsView(viewModel: talkWithUsViewModel)
                 .tag(2)
                 .tabItem {
                     Image(systemName: SFSymbol.personFill.rawValue)
@@ -68,7 +69,7 @@ struct AppRouterView: View {
                     Image(systemName: SFSymbol.chartBarFill.rawValue)
                     Text("Simulação")
                 }.navigationViewStyle(StackNavigationViewStyle())
-            TalkWithUsView()
+            TalkWithUsView(viewModel: talkWithUsViewModel)
                 .tag(2)
                 .tabItem {
                     Image(systemName: SFSymbol.personFill.rawValue)

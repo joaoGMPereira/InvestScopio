@@ -36,8 +36,6 @@ struct SimulationCell: View {
                 ForEach(simulation.generateDynamicContent()) { section in
                     SectionView(firstTitle: section.firstKey, firstValue: section.firstValue, secondTitle: section.secondKey, secondValue: section.secondValue, state: $state)
                 }
-//                HeaderSimulationCell(state: $state, simulation: simulation)
-//                BodySimulationCell(simulation: simulation, state: $state)
             }
             .getContent(size: $cellSize)
             .padding()

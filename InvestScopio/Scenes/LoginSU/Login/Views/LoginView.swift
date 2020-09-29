@@ -86,7 +86,7 @@ struct LoginView: View {
                 self.settings.popup = popupSettings
                 }
             }
-        }
+        }.disabled(self.viewModel.showLoading)
     }
 }
 

@@ -167,6 +167,12 @@
 		7623BA38250D859700A3091E /* DeleteSimulationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623BA36250D859700A3091E /* DeleteSimulationModel.swift */; };
 		7623BA3A250F096C00A3091E /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623BA39250F096C00A3091E /* UserRequest.swift */; };
 		7623BA3B250F096C00A3091E /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623BA39250F096C00A3091E /* UserRequest.swift */; };
+		762C72D52522CB9000A67110 /* TalkWithUsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762C72D42522CB9000A67110 /* TalkWithUsViewModel.swift */; };
+		762C72D62522CB9000A67110 /* TalkWithUsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762C72D42522CB9000A67110 /* TalkWithUsViewModel.swift */; };
+		762C72DD2522D0B300A67110 /* Start.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762C72DC2522D0B300A67110 /* Start.swift */; };
+		762C72E22522D0D300A67110 /* Start.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762C72DC2522D0B300A67110 /* Start.swift */; };
+		762C72E72522D18800A67110 /* NPSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762C72E62522D18800A67110 /* NPSView.swift */; };
+		762C72E82522D18800A67110 /* NPSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762C72E62522D18800A67110 /* NPSView.swift */; };
 		76541F142520324100DDD1C3 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76541F132520324100DDD1C3 /* AppSettings.swift */; };
 		76541F152520324100DDD1C3 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76541F132520324100DDD1C3 /* AppSettings.swift */; };
 		76541F202520375100DDD1C3 /* DialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76541F1F2520375100DDD1C3 /* DialogView.swift */; };
@@ -386,6 +392,9 @@
 		7611A24D24F89B130012BE56 /* DoubleButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleButtons.swift; sourceTree = "<group>"; };
 		7623BA36250D859700A3091E /* DeleteSimulationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteSimulationModel.swift; sourceTree = "<group>"; };
 		7623BA39250F096C00A3091E /* UserRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
+		762C72D42522CB9000A67110 /* TalkWithUsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkWithUsViewModel.swift; sourceTree = "<group>"; };
+		762C72DC2522D0B300A67110 /* Start.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Start.swift; sourceTree = "<group>"; };
+		762C72E62522D18800A67110 /* NPSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NPSView.swift; sourceTree = "<group>"; };
 		76541F132520324100DDD1C3 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		76541F1F2520375100DDD1C3 /* DialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogView.swift; sourceTree = "<group>"; };
 		7655A2C625070CBC004B3E0D /* SimulationCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationCreationViewModel.swift; sourceTree = "<group>"; };
@@ -626,9 +635,9 @@
 			isa = PBXGroup;
 			children = (
 				766FEF1A251B9ED6000377C6 /* StartSU */,
-				76CAEE6A24E9D7670044508E /* TalkWithUsSU */,
-				76C15C7924C91B3A00045D9A /* SimulationSU */,
 				768D8BEB24C2444E004BEADA /* LoginSU */,
+				76C15C7924C91B3A00045D9A /* SimulationSU */,
+				76CAEE6A24E9D7670044508E /* TalkWithUsSU */,
 				4A27021C22CD409C005DA22A /* TalkWithUs */,
 				4A4C687A2295796100EDC8C6 /* Start */,
 				76CAEE6724E9C8460044508E /* AppRouterView.swift */,
@@ -914,6 +923,38 @@
 			path = Extra;
 			sourceTree = "<group>";
 		};
+		762C72D22522CB7500A67110 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				762C72D42522CB9000A67110 /* TalkWithUsViewModel.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		762C72D32522CB7900A67110 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				76CAEE6B24E9D7880044508E /* TalkWithUsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		762C72DB2522D09D00A67110 /* StarShape */ = {
+			isa = PBXGroup;
+			children = (
+				762C72DC2522D0B300A67110 /* Start.swift */,
+			);
+			path = StarShape;
+			sourceTree = "<group>";
+		};
+		762C72E52522D17700A67110 /* NPSView */ = {
+			isa = PBXGroup;
+			children = (
+				762C72E62522D18800A67110 /* NPSView.swift */,
+			);
+			path = NPSView;
+			sourceTree = "<group>";
+		};
 		76541F122520322800DDD1C3 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -1028,6 +1069,8 @@
 		768D8BFC24C39357004BEADA /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				762C72E52522D17700A67110 /* NPSView */,
+				762C72DB2522D09D00A67110 /* StarShape */,
 				766FEF14251B9A88000377C6 /* SUILottie */,
 				768B341724FB512A00D80BDE /* Step */,
 				768B340E24FAF7D300D80BDE /* SplitView */,
@@ -1164,7 +1207,8 @@
 		76CAEE6A24E9D7670044508E /* TalkWithUsSU */ = {
 			isa = PBXGroup;
 			children = (
-				76CAEE6B24E9D7880044508E /* TalkWithUsView.swift */,
+				762C72D32522CB7900A67110 /* Views */,
+				762C72D22522CB7500A67110 /* Core */,
 			);
 			path = TalkWithUsSU;
 			sourceTree = "<group>";
@@ -1486,8 +1530,10 @@
 				768D8C0424C3A2F8004BEADA /* LoginViewModel.swift in Sources */,
 				768B341024FAF7E600D80BDE /* SplitView.swift in Sources */,
 				76CAEE6824E9C8460044508E /* AppRouterView.swift in Sources */,
+				762C72DD2522D0B300A67110 /* Start.swift in Sources */,
 				766FEF16251B9A88000377C6 /* SUILottieView.swift in Sources */,
 				4A4C68DC2295796200EDC8C6 /* AppDelegate.swift in Sources */,
+				762C72D52522CB9000A67110 /* TalkWithUsViewModel.swift in Sources */,
 				76D017C824C6681B0092F1A6 /* RegisterRepository.swift in Sources */,
 				4A12631722A7DC7A006133E5 /* INVSConector.swift in Sources */,
 				76D017CB24C6682D0092F1A6 /* RegisterService.swift in Sources */,
@@ -1502,6 +1548,7 @@
 				4A27022422CD409D005DA22A /* INVSTalkWithUsWorker.swift in Sources */,
 				7611A13F24F1DAB50012BE56 /* INVSSimulatorModel.swift in Sources */,
 				767DD87424C3C800006FDC1A /* Store.swift in Sources */,
+				762C72E72522D18800A67110 /* NPSView.swift in Sources */,
 				76CAEE5B24E9BD250044508E /* SimulationCell.swift in Sources */,
 				76843B8A24FD2C780048F6B3 /* JewSegmentedControl.swift in Sources */,
 				4A4C68C32295796200EDC8C6 /* INVSPresentBaseViewController.swift in Sources */,
@@ -1617,8 +1664,10 @@
 				768D8C0524C3A2F8004BEADA /* LoginViewModel.swift in Sources */,
 				768B341124FAF7E600D80BDE /* SplitView.swift in Sources */,
 				76CAEE6924E9C8460044508E /* AppRouterView.swift in Sources */,
+				762C72E22522D0D300A67110 /* Start.swift in Sources */,
 				766FEF17251B9A88000377C6 /* SUILottieView.swift in Sources */,
 				4AFF3E7B22BB23F10056A167 /* AppDelegate.swift in Sources */,
+				762C72D62522CB9000A67110 /* TalkWithUsViewModel.swift in Sources */,
 				76D017C924C6681B0092F1A6 /* RegisterRepository.swift in Sources */,
 				4AFF3E7D22BB23F10056A167 /* INVSConector.swift in Sources */,
 				76D017CC24C6682D0092F1A6 /* RegisterService.swift in Sources */,
@@ -1633,6 +1682,7 @@
 				4A27022522CD409D005DA22A /* INVSTalkWithUsWorker.swift in Sources */,
 				7611A14024F1DAB50012BE56 /* INVSSimulatorModel.swift in Sources */,
 				767DD87524C3C800006FDC1A /* Store.swift in Sources */,
+				762C72E82522D18800A67110 /* NPSView.swift in Sources */,
 				76CAEE5C24E9BD250044508E /* SimulationCell.swift in Sources */,
 				76843B8B24FD2C780048F6B3 /* JewSegmentedControl.swift in Sources */,
 				4AFF3E8522BB23F10056A167 /* INVSPresentBaseViewController.swift in Sources */,
