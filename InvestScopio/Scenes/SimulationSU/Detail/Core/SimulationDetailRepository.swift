@@ -11,12 +11,12 @@ import Foundation
 import JewFeatures
 
 protocol SimulationDetailRepositoryProtocol: WebRepository {
-    func simulationDetail(simulation: INVSSimulatorModel) -> AnyPublisher<HTTPResponse<[INVSSimulatedValueModel]>, Error>
+    func simulationDetail(simulation: SimulatorModel) -> AnyPublisher<HTTPResponse<[INVSSimulatedValueModel]>, Error>
 }
 
 struct SimulationDetailRepository: SimulationDetailRepositoryProtocol {
     
-    func simulationDetail(simulation: INVSSimulatorModel) -> AnyPublisher<HTTPResponse<[INVSSimulatedValueModel]>, Error> {
+    func simulationDetail(simulation: SimulatorModel) -> AnyPublisher<HTTPResponse<[INVSSimulatedValueModel]>, Error> {
         return call(endpoint: API.simulationDetail(simulation))
     }
 }
@@ -25,7 +25,7 @@ struct SimulationDetailRepository: SimulationDetailRepositoryProtocol {
 
 extension SimulationDetailRepository {
     enum API {
-        case simulationDetail(_ request: INVSSimulatorModel)
+        case simulationDetail(_ request: SimulatorModel)
     }
 }
 

@@ -202,6 +202,11 @@ struct PopupView: View {
     }
     
     var updatedShow: Bool {
+        if show {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                self.show = false
+            }
+        }
         var updatedShow = show
         if checkReachability && !reachability.isConnected {
             updatedShow = true

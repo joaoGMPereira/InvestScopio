@@ -11,14 +11,14 @@ import Foundation
 import JewFeatures
 
 protocol SimulationsRepositoryProtocol: WebRepository {
-    func simulations() -> AnyPublisher<HTTPResponse<[INVSSimulatorModel]>, Error>
+    func simulations() -> AnyPublisher<HTTPResponse<[SimulatorModel]>, Error>
     func deleteSimulations() -> AnyPublisher<HTTPResponse<DeleteSimulationModel>, Error>
     func deleteSimulation(id: String) -> AnyPublisher<HTTPResponse<DeleteSimulationModel>, Error>
 }
 
 struct SimulationsRepository: SimulationsRepositoryProtocol {
 
-    func simulations() -> AnyPublisher<HTTPResponse<[INVSSimulatorModel]>, Error> {
+    func simulations() -> AnyPublisher<HTTPResponse<[SimulatorModel]>, Error> {
         return call(endpoint: API.simulations)
     }
     

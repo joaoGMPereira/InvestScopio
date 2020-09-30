@@ -8,7 +8,7 @@
 
 import Foundation
 import Firebase
-typealias FirebaseError = (titleError:String, messageError:String, shouldHideAutomatically:Bool, popupType:INVSPopupMessageType)
+
 enum FireBaseErrorHandler: Int {
     case codeUserDisabled = 17005
     case codeEmailAlreadyInUse = 17007

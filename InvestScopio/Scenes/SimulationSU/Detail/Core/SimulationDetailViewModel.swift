@@ -23,7 +23,7 @@ extension INVSSimulatedValueModel {
 
 class SimulationDetailViewModel: ObservableObject {
     
-    @Published var simulation: INVSSimulatorModel {
+    @Published var simulation: SimulatorModel {
         didSet {
             self.monthsTabs = setMonthsTabs(totalMonthUser: simulation.totalMonths)
         }
@@ -126,7 +126,7 @@ class SimulationDetailViewModel: ObservableObject {
     init(service: SimulationDetailServiceProtocol) {
         self._simulationDetailLoadable = .init(initialValue: .notRequested)
         self.simulationDetailService = service
-        self.simulation = INVSSimulatorModel.simulationsPlaceholders.first!
+        self.simulation = SimulatorModel.simulationsPlaceholders.first!
         self.monthsTabs = ["3 meses", "6 meses", "12 meses"]
     }
     

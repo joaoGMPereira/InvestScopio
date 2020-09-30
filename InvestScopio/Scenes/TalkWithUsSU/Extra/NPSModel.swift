@@ -7,14 +7,16 @@
 //
 
 import Foundation
+import JewFeatures
 
-struct INVSEvaluateModel: JSONAble {
+struct NPSModel: Codable, JSONAble {
     var rate: Int
-    var version: String
+    var versionApp: String
     var versionSO: String
+    var _id: String?
 }
 
-struct INVSEvaluateResponse: Decodable {
+struct NPSResponse: Codable {
     let message: String
     let evaluated: Bool
 }

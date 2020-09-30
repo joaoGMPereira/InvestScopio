@@ -14,7 +14,7 @@ import Foundation
 import SwiftUI
 
 protocol SimulationDetailServiceProtocol {
-    func load(simulationDetail: LoadableSubject<[INVSSimulatedValueModel]>, simulation: INVSSimulatorModel)
+    func load(simulationDetail: LoadableSubject<[INVSSimulatedValueModel]>, simulation: SimulatorModel)
 }
 
 struct SimulationDetailService: SimulationDetailServiceProtocol {
@@ -25,7 +25,7 @@ struct SimulationDetailService: SimulationDetailServiceProtocol {
         self.repository = repository
     }
     
-    func load(simulationDetail: LoadableSubject<[INVSSimulatedValueModel]>, simulation: INVSSimulatorModel) {
+    func load(simulationDetail: LoadableSubject<[INVSSimulatedValueModel]>, simulation: SimulatorModel) {
         let cancelBag = CancelBag()
         simulationDetail.wrappedValue = .isLoading(last: simulationDetail.wrappedValue.value, cancelBag: cancelBag)
             self.repository
@@ -42,7 +42,7 @@ struct SimulationDetailService: SimulationDetailServiceProtocol {
 }
 
 struct StubSimulationDetailService: SimulationDetailServiceProtocol {
-    func load(simulationDetail: LoadableSubject<[INVSSimulatedValueModel]>, simulation: INVSSimulatorModel) {
+    func load(simulationDetail: LoadableSubject<[INVSSimulatedValueModel]>, simulation: SimulatorModel) {
         
     }
 }

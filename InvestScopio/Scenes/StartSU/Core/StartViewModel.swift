@@ -34,8 +34,8 @@ class StartViewModel: ObservableObject {
         self.failure = failure
         self.state = .playFrame(fromFrame: 25, toFrame: 25, loopMode: .playOnce, completion: nil)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            INVSBiometricsChallenge.checkLoggedUser() { [self] in
-                guard let email = INVSKeyChainWrapper.retrieve(withKey: INVSConstants.LoginKeyChainConstants.lastLoginEmail.rawValue), let emailDecrypted = INVSCrypto.decryptAES(withText: email), let password = INVSKeyChainWrapper.retrieve(withKey: INVSConstants.LoginKeyChainConstants.lastLoginSecurity.rawValue), let passwordDecrypted = INVSCrypto.decryptAES(withText: password) else {
+            JEWBiometricsChallenge.checkLoggedUser(keychainKey: JEWConstants.LoginKeyChainConstants.hasUserLogged.rawValue) { [self] in
+                guard let email = JEWKeyChainWrapper.retrieve(withKey: JEWConstants.LoginKeyChainConstants.lastLoginEmail.rawValue), let emailDecrypted = INVSCrypto.decryptAES(withText: email), let password = JEWKeyChainWrapper.retrieve(withKey: JEWConstants.LoginKeyChainConstants.lastLoginSecurity.rawValue), let passwordDecrypted = INVSCrypto.decryptAES(withText: password) else {
                     self.message = APIError.default.errorDescription ?? String()
                     self.failure?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true), true)
                     return
@@ -50,7 +50,7 @@ class StartViewModel: ObservableObject {
                 case .default:
                     self.message = APIError.default.errorDescription ?? String()
                     self.failure?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true), true)
-                    INVSKeyChainWrapper.clear()
+                    JEWKeyChainWrapper.clear()
                 case .error(let error):
                     if !hasRetry {
                         hasRetry = true
@@ -61,7 +61,7 @@ class StartViewModel: ObservableObject {
                     }
                     message = "Não foi possível identificar sua biometria, faça o login novamente!"
                     self.failure?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true), true)
-                    INVSKeyChainWrapper.clear()
+                    JEWKeyChainWrapper.clear()
                 }
             }
         }

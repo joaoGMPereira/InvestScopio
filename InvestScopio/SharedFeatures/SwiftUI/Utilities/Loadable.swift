@@ -35,6 +35,15 @@ enum Loadable<T> {
 
 extension Loadable {
     
+    func isLoading() -> Bool {
+        switch self {
+        case .isLoading:
+            return true
+        default:
+            return false
+        }
+    }
+    
     mutating func setIsLoading(cancelBag: CancelBag) {
         self = .isLoading(last: value, cancelBag: cancelBag)
     }

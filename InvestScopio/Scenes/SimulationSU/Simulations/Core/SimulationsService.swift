@@ -14,7 +14,7 @@ import Foundation
 import SwiftUI
 
 protocol SimulationsServiceProtocol {
-    func load(simulations: LoadableSubject<[INVSSimulatorModel]>)
+    func load(simulations: LoadableSubject<[SimulatorModel]>)
     func delete(simulations: LoadableSubject<DeleteSimulationModel>)
     func delete(id: String, simulation: LoadableSubject<DeleteSimulationModel>)
 }
@@ -27,7 +27,7 @@ struct SimulationsService: SimulationsServiceProtocol {
         self.repository = repository
     }
     
-    func load(simulations: LoadableSubject<[INVSSimulatorModel]>) {
+    func load(simulations: LoadableSubject<[SimulatorModel]>) {
         let cancelBag = CancelBag()
         simulations.wrappedValue = .isLoading(last: simulations.wrappedValue.value, cancelBag: cancelBag)
             self.repository
@@ -82,9 +82,9 @@ struct StubSimulationsService: SimulationsServiceProtocol {
         
     }
     
-    func load(simulations: LoadableSubject<[INVSSimulatorModel]>) {
+    func load(simulations: LoadableSubject<[SimulatorModel]>) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            simulations.wrappedValue = .loaded(INVSSimulatorModel.simulationsPlaceholders)
+            simulations.wrappedValue = .loaded(SimulatorModel.simulationsPlaceholders)
         }
     }
 }
@@ -99,7 +99,7 @@ struct StubSimulationsServiceFailure: SimulationsServiceProtocol {
         
     }
     
-    func load(simulations: LoadableSubject<[INVSSimulatorModel]>) {
+    func load(simulations: LoadableSubject<[SimulatorModel]>) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             simulations.wrappedValue = .failed(APIError.customError("Error"))
         }
@@ -115,9 +115,9 @@ struct StubSimulationsServiceEmptySimulations: SimulationsServiceProtocol {
         
     }
     
-    func load(simulations: LoadableSubject<[INVSSimulatorModel]>) {
+    func load(simulations: LoadableSubject<[SimulatorModel]>) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            simulations.wrappedValue = .loaded([INVSSimulatorModel]())
+            simulations.wrappedValue = .loaded([SimulatorModel]())
         }
     }
 }

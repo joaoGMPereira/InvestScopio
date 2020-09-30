@@ -8,6 +8,7 @@
 
 import Foundation
 import CryptoSwift
+import JewFeatures
 
 struct UserRequest: Codable, JSONAble {
     let firebaseID: String

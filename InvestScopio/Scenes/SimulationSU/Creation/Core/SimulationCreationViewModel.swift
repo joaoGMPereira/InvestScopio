@@ -13,7 +13,7 @@ class SimulationCreationViewModel: NSObject, ObservableObject {
     
     //MARK: - Properties
     let tag = SimulationCreationViewModel.className
-    @Published var simulation = INVSSimulatorModel()
+    @Published var simulation = SimulatorModel()
     @Published var shouldSimulate: Bool = false
     
     //MARK: - TextField Properties
@@ -66,7 +66,7 @@ class SimulationCreationViewModel: NSObject, ObservableObject {
         }
     }
     
-    func selectFirstButton(completion: @escaping (INVSSimulatorModel) -> Void, failure: @escaping (AppPopupSettings) -> Void) {
+    func selectFirstButton(completion: @escaping (SimulatorModel) -> Void, failure: @escaping (AppPopupSettings) -> Void) {
         guard isValidRequiredSteps() else {
             failure(AppPopupSettings.init(message: "Prencha todos os campos obrigatórios com um valor maior que zero para prosseguir!", textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true))
             return
@@ -155,7 +155,7 @@ class SimulationCreationViewModel: NSObject, ObservableObject {
     
     private func updateTextFields(clean: Bool = false) {
         close = true
-        simulation = INVSSimulatorModel()
+        simulation = SimulatorModel()
         for (index, _) in allSteps.enumerated() {
             if clean {
             allSteps[index].value = String()

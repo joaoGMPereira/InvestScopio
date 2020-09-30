@@ -70,7 +70,7 @@ struct LoginFormView: View {
         .environment(\.horizontalSizeClass, .regular)
         .background(Color(UIColor.systemGray6))
         .cornerRadius(16)
-        .shadow(color: Color("accessoryBackground").opacity(0.8), radius: 8)
+        .shadow(radius: 8)
         .padding()
     }
 }

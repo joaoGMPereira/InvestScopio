@@ -103,7 +103,7 @@ struct ResendPasswordFormView: View {
         .background(Color(.systemGray6))
         .cornerRadius(16)
         .padding()
-        .shadow(color: Color("accessoryBackground").opacity(0.8), radius: 8)
+        .shadow(radius: 8)
     }
 }
 

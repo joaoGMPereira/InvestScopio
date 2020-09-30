@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import JewFeatures
 
 struct HTTPResponse<Value>: Codable where Value: Codable {
     let data: Value

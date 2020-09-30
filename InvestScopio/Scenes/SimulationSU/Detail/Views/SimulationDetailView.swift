@@ -83,7 +83,7 @@ struct SimulatedCell: View {
         .padding()
         .background(Color("cellBackground"))
         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous), style: .init())
-        .shadow(color: Color("accessoryBackground").opacity(0.8), radius: 8)
+        .shadow(radius: 8)
         .padding([.top, .bottom], 8)
     }
 }

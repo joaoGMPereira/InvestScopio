@@ -134,7 +134,7 @@ struct LitSimulations: View {
         }
     }
     
-    func cell(simulation: INVSSimulatorModel, index: Int) -> some View {
+    func cell(simulation: SimulatorModel, index: Int) -> some View {
         var isLoading = $viewModel.state
         if viewModel.deleteState.index == index && viewModel.deleteState.isDeleting {
             isLoading = .constant(.loading)

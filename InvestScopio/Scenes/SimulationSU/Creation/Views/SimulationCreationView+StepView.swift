@@ -12,9 +12,10 @@ import JewFeatures
 //MARK: - Step View
 extension SimulationCreationView {
     func stepView() -> some View {
-        SplitView(isOpened: $stepViewModel.isOpened, minHeight: 22, forceCloseWhenDisappear: true) {
+        SplitView(isOpened: $stepViewModel.isOpened, minHeight: 40, forceCloseWhenDisappear: true) {
             VStack {
                 Color("contrastBackground").cornerRadius(2).frame(width: 40, height: 4).padding(.top, 8)
+                Spacer(minLength: 24)
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 16) {
                         self.header()
@@ -26,18 +27,7 @@ extension SimulationCreationView {
                         Spacer()
                     }
                 }.introspectScrollView { (scrollView) in
-                    switch self.defaultSizeCategory {
-                    case .accessibilityLarge:
-                        scrollView.isScrollEnabled = true
-                    case .accessibilityExtraLarge:
-                        scrollView.isScrollEnabled = true
-                    case .accessibilityExtraExtraLarge:
-                        scrollView.isScrollEnabled = true
-                    case .accessibilityExtraExtraExtraLarge:
-                        scrollView.isScrollEnabled = true
-                    default:
-                        scrollView.isScrollEnabled = false
-                    }
+                    scrollView.isScrollEnabled = shouldMoveScroll()
                 }
                 Spacer()
             }
@@ -45,6 +35,15 @@ extension SimulationCreationView {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.stepViewModel.isOpened = false
             }
+        }
+    }
+    
+    func shouldMoveScroll() -> Bool {
+        switch self.defaultSizeCategory {
+        case .accessibilityLarge, .accessibilityExtraLarge, .accessibilityExtraExtraLarge, .accessibilityExtraExtraExtraLarge:
+            return true
+        default:
+            return false
         }
     }
     
@@ -92,7 +91,7 @@ extension SimulationCreationView {
         .background(Color("cellBackground"))
         .cornerRadius(16)
         .padding()
-        .shadow(color: Color("accessoryBackground").opacity(0.8), radius: 8)
+        .shadow(radius: 8)
     }
     
     func bottomButtons() -> some View {

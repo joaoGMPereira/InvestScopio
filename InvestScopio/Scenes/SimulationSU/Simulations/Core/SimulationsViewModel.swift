@@ -12,8 +12,8 @@ import JewFeatures
 
 class SimulationsViewModel: ObservableObject {
     
-    @Published var simulations = INVSSimulatorModel.simulationsPlaceholders
-    @Published var simulationsLoadable: Loadable<[INVSSimulatorModel]> {
+    @Published var simulations = SimulatorModel.simulationsPlaceholders
+    @Published var simulationsLoadable: Loadable<[SimulatorModel]> {
         didSet {
             build(state: simulationsLoadable)
         }
@@ -82,7 +82,7 @@ class SimulationsViewModel: ObservableObject {
         }
     }
     
-    func build(state: Loadable<[INVSSimulatorModel]>) {
+    func build(state: Loadable<[SimulatorModel]>) {
         switch state {
         case .notRequested:
             break
@@ -121,7 +121,7 @@ class SimulationsViewModel: ObservableObject {
             break
         case .loaded(let response):
             if response.deleted {
-                self.simulations = [INVSSimulatorModel]()
+                self.simulations = [SimulatorModel]()
                 message = "Todas suas simulações foram apagadas com sucesso."
                 self.completionDelete?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWDarkDefault()), position: .top, show: true))
             } else {

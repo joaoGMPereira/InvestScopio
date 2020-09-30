@@ -46,7 +46,8 @@ struct SplitView<Content: View>: View {
         GeometryReader { geometry in
             VStack {
                 Spacer()
-                Color("secondaryBackground").overlay(self.content()).cornerRadius(8, corners: [.topLeft, .topRight]).shadow(color: Color("accessoryBackground").opacity(0.8), radius: 8).frame(height: self.isOpened ? self.updatedHeight : self.minHeight).animation(.easeInOut)
+                Color("secondaryBackground").overlay(self.content()).cornerRadius(8, corners: [.topLeft, .topRight]).shadow(radius: 8).frame(height: self.updatedHeight).animation(.easeInOut)
+                
             }
             .gesture(
                 DragGesture()

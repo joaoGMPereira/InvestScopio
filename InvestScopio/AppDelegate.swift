@@ -25,7 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = .JEWDefault()
         UISwitch.appearance().onTintColor = .JEWDefault()
         UITextField.appearance().tintColor = .JEWDefault()
-        
+        JEWKeyChainWrapperServiceName.instance.uniqueServiceName = "com.br.joao.gabriel.medeiros.pereira.InvestScopio"
+        ConnectorRoutes.setBaseURL()
         setupFirebase()
         return true
     }
@@ -36,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setupFirebase() {
-        if Session.session.isDev() {
+        if JEWSession.session.services.isDev() {
             let filePath = Bundle.main.path(forResource: "GoogleServiceInfoDev", ofType: "plist")
             guard let fileopts = FirebaseOptions(contentsOfFile: filePath!)
                 else { return }

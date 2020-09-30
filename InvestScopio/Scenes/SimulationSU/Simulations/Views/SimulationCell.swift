@@ -22,7 +22,7 @@ struct BlueButtonStyle: ButtonStyle {
 
 
 struct SimulationCell: View {
-    var simulation: INVSSimulatorModel
+    var simulation: SimulatorModel
     @Binding var state: ViewState
     @Binding var cellSize: CGSize
     var selectable: Bool = false
@@ -41,7 +41,7 @@ struct SimulationCell: View {
             .padding()
             .background(Color("cellBackground"))
             .cornerRadius(8)
-            .shadow(color: Color("accessoryBackground").opacity(0.8), radius: 8)
+            .shadow(radius: 8)
             .padding([.top, .bottom], 8)
             .foregroundColor(Color(.label))
         }
@@ -53,7 +53,7 @@ struct SimulationCell: View {
 
 struct HeaderSimulationCell: View {
     @Binding var state: ViewState
-    var simulation: INVSSimulatorModel
+    var simulation: SimulatorModel
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
@@ -72,7 +72,7 @@ struct HeaderSimulationCell: View {
 }
 
 struct BodySimulationCell: View {
-    var simulation: INVSSimulatorModel
+    var simulation: SimulatorModel
     @Binding var state: ViewState
     var body: some View {
         VStack(spacing: 8) {
@@ -117,8 +117,8 @@ struct SimulationCell_Previews: PreviewProvider {
     static var previews: some View {
         WorkingAroundSUI.tableViewWorkingAround()
         return Group {
-            SimulationCell(simulation: INVSSimulatorModel.simulationsPlaceholders.first!, state: .constant(.loaded), cellSize: .constant(CGSize.init(width: 414, height: 200))){}.attachEnvironmentOverrides().previewDevice("iPhone Xs Max")
-            SimulationCell(simulation: INVSSimulatorModel.simulationsPlaceholders.first!, state: .constant(.loaded), cellSize: .constant(CGSize.init(width: 414, height: 200))){}.attachEnvironmentOverrides().previewDevice("iPad Pro (9.7-inch)")
+            SimulationCell(simulation: SimulatorModel.simulationsPlaceholders.first!, state: .constant(.loaded), cellSize: .constant(CGSize.init(width: 414, height: 200))){}.attachEnvironmentOverrides().previewDevice("iPhone Xs Max")
+            SimulationCell(simulation: SimulatorModel.simulationsPlaceholders.first!, state: .constant(.loaded), cellSize: .constant(CGSize.init(width: 414, height: 200))){}.attachEnvironmentOverrides().previewDevice("iPad Pro (9.7-inch)")
         }
     }
 }

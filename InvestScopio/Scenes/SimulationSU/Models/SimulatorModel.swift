@@ -1,5 +1,5 @@
 //
-//  INVSSimulatorModel.swift
+//  SimulatorModel.swift
 //  InvestScopio_Example
 //
 //  Created by Joao Medeiros Pereira on 13/05/19.
@@ -7,8 +7,8 @@
 //
 
 import Foundation
-
-struct INVSSimulatorModel: JSONAble, Codable, Identifiable, Hashable {
+import JewFeatures
+struct SimulatorModel: JSONAble, Codable, Identifiable, Hashable {
     var initialValue: Double = 0.0 {
         didSet {
             initialValue = initialValue.INVSrounded()
@@ -136,7 +136,7 @@ struct SectionModel: Identifiable {
 }
 
 
-extension INVSSimulatorModel {
-    static let simulationsPlaceholders = [INVSSimulatorModel.init(initialValue: 30000, monthValue: 500, interestRate: 3, totalMonths: 30, initialMonthlyRescue: 20, increaseRescue: 50, goalIncreaseRescue: 300, isSimply: false, _id: "placeholder"), INVSSimulatorModel.init(initialValue: 30000, monthValue: 500, interestRate: 3, totalMonths: 30, initialMonthlyRescue: 20, increaseRescue: 50, goalIncreaseRescue: 300, isSimply: false, _id: "placeholder1"), INVSSimulatorModel.init(initialValue: 30000, monthValue: 500, interestRate: 3, totalMonths: 30, initialMonthlyRescue: 20, increaseRescue: 50, goalIncreaseRescue: 300, isSimply: false, _id: "placeholder2"), INVSSimulatorModel.init(initialValue: 30000, monthValue: 500, interestRate: 3, totalMonths: 30, initialMonthlyRescue: 20, increaseRescue: 50, goalIncreaseRescue: 300, isSimply: false, _id: "placeholder3")]
+extension SimulatorModel {
+    static let simulationsPlaceholders = [SimulatorModel.init(initialValue: 30000, monthValue: 500, interestRate: 3, totalMonths: 30, initialMonthlyRescue: 20, increaseRescue: 50, goalIncreaseRescue: 300, isSimply: false, _id: "placeholder"), SimulatorModel.init(initialValue: 30000, monthValue: 500, interestRate: 3, totalMonths: 30, initialMonthlyRescue: 20, increaseRescue: 50, goalIncreaseRescue: 300, isSimply: false, _id: "placeholder1"), SimulatorModel.init(initialValue: 30000, monthValue: 500, interestRate: 3, totalMonths: 30, initialMonthlyRescue: 20, increaseRescue: 50, goalIncreaseRescue: 300, isSimply: false, _id: "placeholder2"), SimulatorModel.init(initialValue: 30000, monthValue: 500, interestRate: 3, totalMonths: 30, initialMonthlyRescue: 20, increaseRescue: 50, goalIncreaseRescue: 300, isSimply: false, _id: "placeholder3")]
     
 }

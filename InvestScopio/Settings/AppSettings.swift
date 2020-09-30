@@ -8,7 +8,7 @@
 
 import Foundation
 import SwiftUI
-
+import JewFeatures
 enum LoggingState {
     case normal
     case admin
@@ -17,8 +17,14 @@ enum LoggingState {
 
 
 class AppSettings: ObservableObject {
-    @Published var loggingState = LoggingState.notLogged
-    @Published var checkUser: Bool = (INVSKeyChainWrapper.retrieveBool(withKey: INVSConstants.LoginKeyChainConstants.hasUserLogged.rawValue) ?? false)
+    @Published var loggingState = LoggingState.notLogged {
+        didSet {
+            if loggingState == .notLogged {
+                didLogout?()
+            }
+        }
+    }
+    @Published var checkUser: Bool = (JEWKeyChainWrapper.retrieveBool(withKey: JEWConstants.LoginKeyChainConstants.hasUserLogged.rawValue) ?? false)
     @Published var tabSelection = 1 {
         didSet {
             tabSelected?(tabSelection)
@@ -27,6 +33,7 @@ class AppSettings: ObservableObject {
     @Published var popup = AppPopupSettings()
     
     var tabSelected: ((Int) -> Void)?
+    var didLogout: (() -> Void)?
 }
 
 class AppPopupSettings: ObservableObject {

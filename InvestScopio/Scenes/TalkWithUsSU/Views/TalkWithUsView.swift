@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import MessageUI
 import EnvironmentOverrides
 struct TalkWithUsView: View {
     @EnvironmentObject var settings: AppSettings
@@ -23,14 +24,19 @@ struct TalkWithUsView: View {
                             Text("o que você acha do nosso aplicativo?".uppercased()).font(Font.footnote.bold())
                             Spacer()
                         }
-                        NPSView(ratings: $viewModel.ratings, selectedRating: $viewModel.selectedRating)
+                        NPSView(ratings: $viewModel.ratings, selectedRating: $viewModel.selectedRating).disabled(viewModel.npsLoadable.isLoading())
                     }.listRowBackground(Color("cellBackground"))
                     
                     Section(header: Text("Feedback").font(.subheadline).bold()) {
                         informationView
                         Group {
                         feedbackView
-                        LoadingButton(isLoading: .constant(false), isEnable: .constant(self.viewModel.selectedFeedback != nil), model: LoadingButtonModel.init(title: "Envie um email", color: Color(.JEWDefault()), isFill: false)).padding(.horizontal, 64)
+                            LoadingButton(isLoading: .constant(false), isEnable: .constant(self.viewModel.selectedFeedback != nil), model: LoadingButtonModel.init(title: "Envie um email", color: Color(.JEWDefault()), isFill: false), action: {
+                                viewModel.isShowingMailView = true
+                            }).padding(.horizontal, 64)
+                            .sheet(isPresented: $viewModel.isShowingMailView) {
+                                MailView(result: $viewModel.result, subject: $viewModel.subject, recipients: $viewModel.recipients, messageBody: $viewModel.messageBody)
+                            }
                         }
                         
                     }.listRowBackground(Color("cellBackground"))
@@ -38,11 +44,15 @@ struct TalkWithUsView: View {
                         exitButton
                     }.listRowBackground(Color("cellBackground"))
                 }
-                
                 .navigationBarTitle("Fale Conosco", displayMode: .large)
                 .cornerRadius(8)
                 .padding(1)
                 .shadow(radius: 8)
+            }.onAppear {
+                self.viewModel.checkNPS()
+                self.viewModel.completion = { popup in
+                    settings.popup = popup
+                }
             }
         }
     }
@@ -90,6 +100,7 @@ struct TalkWithUsView: View {
     var exitButton: some View {
         Button(action: {
             self.settings.loggingState = .notLogged
+            self.settings.popup = AppPopupSettings()
         }) {
             Text("Sair")
                 .foregroundColor(Color.init(.label))
@@ -105,8 +116,8 @@ struct TalkWithUsView: View {
 struct TalkWithUsView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            TalkWithUsView(viewModel: TalkWithUsViewModel()).attachEnvironmentOverrides()
-            TalkWithUsView(viewModel: TalkWithUsViewModel()).previewDevice("iPhone SE (2nd generation)").attachEnvironmentOverrides()
+            TalkWithUsView(viewModel: TalkWithUsViewModel(service: TalkWithUsService(repository: TalkWithUsRepository()))).attachEnvironmentOverrides()
+            TalkWithUsView(viewModel: TalkWithUsViewModel(service: TalkWithUsService(repository: TalkWithUsRepository()))).previewDevice("iPhone SE (2nd generation)").attachEnvironmentOverrides()
         }
     }
 }

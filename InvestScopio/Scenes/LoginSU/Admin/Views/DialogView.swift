@@ -38,7 +38,7 @@ struct DialogView: View {
                         .padding()
                         .background(Color(.systemGray6))
                         .cornerRadius(16)
-                        .shadow(color: Color("accessoryBackground").opacity(0.8), radius: 8)
+                        .shadow(radius: 8)
                         .padding()
                         
                         HStack {

@@ -39,21 +39,21 @@ class LoginViewModel: ObservableObject {
     }
     
     func checkUserSavedEmail() {
-        if let email = INVSKeyChainWrapper.retrieve(withKey: INVSConstants.LoginKeyChainConstants.lastLoginEmail.rawValue), let emailDecrypted = INVSCrypto.decryptAES(withText: email) {
+        if let email = JEWKeyChainWrapper.retrieve(withKey: JEWConstants.LoginKeyChainConstants.lastLoginEmail.rawValue), let emailDecrypted = INVSCrypto.decryptAES(withText: email) {
             self.email = emailDecrypted
         }
         if let enableAuthentication =
-            INVSKeyChainWrapper.retrieveBool(withKey: INVSConstants.LoginKeyChainConstants.hasEnableBiometricAuthentication.rawValue) {
+            JEWKeyChainWrapper.retrieveBool(withKey: JEWConstants.LoginKeyChainConstants.hasEnableBiometricAuthentication.rawValue) {
             saveData = enableAuthentication
         }
     }
     
     func rememberUser() {
-        INVSKeyChainWrapper.saveBool(withValue: saveData, andKey: INVSConstants.LoginKeyChainConstants.hasEnableBiometricAuthentication.rawValue)
-        INVSKeyChainWrapper.updateBool(withValue: true, andKey: INVSConstants.LoginKeyChainConstants.hasUserLogged.rawValue)
+        JEWKeyChainWrapper.saveBool(withValue: saveData, andKey: JEWConstants.LoginKeyChainConstants.hasEnableBiometricAuthentication.rawValue)
+        JEWKeyChainWrapper.updateBool(withValue: true, andKey: JEWConstants.LoginKeyChainConstants.hasUserLogged.rawValue)
         if let emailAES = INVSCrypto.encryptAES(withText: email), let uid = JEWSession.session.user?.uid, let securityAES = INVSCrypto.encryptAES(withText: uid) {
-            INVSKeyChainWrapper.save(withValue: emailAES, andKey: INVSConstants.LoginKeyChainConstants.lastLoginEmail.rawValue)
-            INVSKeyChainWrapper.save(withValue: securityAES, andKey: INVSConstants.LoginKeyChainConstants.lastLoginSecurity.rawValue)
+            JEWKeyChainWrapper.save(withValue: emailAES, andKey: JEWConstants.LoginKeyChainConstants.lastLoginEmail.rawValue)
+            JEWKeyChainWrapper.save(withValue: securityAES, andKey: JEWConstants.LoginKeyChainConstants.lastLoginSecurity.rawValue)
         }
     }
     
@@ -138,7 +138,7 @@ class LoginViewModel: ObservableObject {
         self.showLoading = false
         rememberUser()
         if saveData {
-            INVSBiometricsChallenge.checkLoggedUser(reason: "Cadastramento da sua digital") { [self] in
+            JEWBiometricsChallenge.checkLoggedUser(reason: "Cadastramento da sua digital") { [self] in
                 completion?()
                 self.password = String()
             } failureChallenge: { [self] (type) in
@@ -159,7 +159,7 @@ class LoginViewModel: ObservableObject {
     }
     
     func loginWithCleanInfo() {
-        INVSKeyChainWrapper.clear()
+        JEWKeyChainWrapper.clear()
         completion?()
         email = String()
         password = String()

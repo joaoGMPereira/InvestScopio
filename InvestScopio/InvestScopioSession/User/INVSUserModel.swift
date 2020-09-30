@@ -9,6 +9,7 @@
 import Foundation
 import CryptoSwift
 import Combine
+import JewFeatures
 
 class INVSUserModel: ObservableObject, Codable, JSONAble {
     var email: String = ""
