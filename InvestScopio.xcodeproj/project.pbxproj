@@ -10,7 +10,7 @@
 		4A0FFEA522B438B000D6A33A /* FirebaseErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FFEA422B438B000D6A33A /* FirebaseErrorHandler.swift */; };
 		4A27022C22CD409D005DA22A /* NPSModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A27022222CD409C005DA22A /* NPSModel.swift */; };
 		4A4C68C12295796200EDC8C6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C68872295796100EDC8C6 /* Images.xcassets */; };
-		4A4C68C42295796200EDC8C6 /* INVSConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C688D2295796100EDC8C6 /* INVSConstants.swift */; };
+		4A4C68C42295796200EDC8C6 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C688D2295796100EDC8C6 /* AppConstants.swift */; };
 		4A4C68DA2295796200EDC8C6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4C68A92295796100EDC8C6 /* LaunchScreen.xib */; };
 		4A4C68DC2295796200EDC8C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C68AC2295796100EDC8C6 /* AppDelegate.swift */; };
 		4A8E0E6E22CD3F6500897D38 /* animatedLoadingPurple.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A8E0E6722CD3F6400897D38 /* animatedLoadingPurple.json */; };
@@ -20,7 +20,7 @@
 		4A8E0E7622CD3F6500897D38 /* animatedLogo.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A8E0E6B22CD3F6400897D38 /* animatedLogo.json */; };
 		4A8E0E7822CD3F6500897D38 /* animatedLogoWhite.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A8E0E6C22CD3F6500897D38 /* animatedLogoWhite.json */; };
 		4A8E0E7A22CD3F6500897D38 /* closePlusAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A8E0E6D22CD3F6500897D38 /* closePlusAnimation.json */; };
-		4AFF3E6022B9B32E0056A167 /* INVSCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E5F22B9B32E0056A167 /* INVSCrypto.swift */; };
+		4AFF3E6022B9B32E0056A167 /* LocalCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3E5F22B9B32E0056A167 /* LocalCrypto.swift */; };
 		4AFF3EEA22BC00820056A167 /* GoogleServiceInfoProd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AFF3E6D22BB207E0056A167 /* GoogleServiceInfoProd.plist */; };
 		4AFF3F0422BF12120056A167 /* ConnectorRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF3F0322BF12120056A167 /* ConnectorRoutes.swift */; };
 		76069E5924C3EED6009DED56 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76069E5824C3EED6009DED56 /* LoadingView.swift */; };
@@ -36,7 +36,6 @@
 		7611A22824F5EE210012BE56 /* ChartInterativeDataBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A22724F5EE210012BE56 /* ChartInterativeDataBridge.swift */; };
 		7611A22B24F5EE5F0012BE56 /* ChartInformationDataBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A22A24F5EE5F0012BE56 /* ChartInformationDataBridge.swift */; };
 		7611A22F24F5EEBA0012BE56 /* LineChartDataSetBaseBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A22E24F5EEBA0012BE56 /* LineChartDataSetBaseBridge.swift */; };
-		7611A23424F864F90012BE56 /* advanced-swiftui-animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A23324F864F80012BE56 /* advanced-swiftui-animations.swift */; };
 		7611A23E24F888BE0012BE56 /* AnimatedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A23D24F888BE0012BE56 /* AnimatedText.swift */; };
 		7611A24224F894100012BE56 /* SimulationCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A24124F894100012BE56 /* SimulationCreationView.swift */; };
 		7611A24524F8941D0012BE56 /* SimulationCreationViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611A24424F8941D0012BE56 /* SimulationCreationViewType.swift */; };
@@ -54,6 +53,7 @@
 		76348A3C252408150037513E /* NSAttributedString+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76348A3B252408150037513E /* NSAttributedString+INVSExtension.swift */; };
 		76348A41252408660037513E /* UIFont+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76348A40252408660037513E /* UIFont+INVSExtension.swift */; };
 		76348ABB252417740037513E /* GoogleServiceInfoDev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AFF3EE822BBFF470056A167 /* GoogleServiceInfoDev.plist */; };
+		76348D5A2524EA8E0037513E /* SchemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76348D592524EA8E0037513E /* SchemeView.swift */; };
 		76541F142520324100DDD1C3 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76541F132520324100DDD1C3 /* AppSettings.swift */; };
 		76541F202520375100DDD1C3 /* DialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76541F1F2520375100DDD1C3 /* DialogView.swift */; };
 		7655A2C725070CBC004B3E0D /* SimulationCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655A2C625070CBC004B3E0D /* SimulationCreationViewModel.swift */; };
@@ -103,8 +103,6 @@
 		76CAEE5624E8EC2D0044508E /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 76CAEE5524E8EC2D0044508E /* Introspect */; };
 		76CAEE5824E9B7D80044508E /* AppInitialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAEE5724E9B7D80044508E /* AppInitialization.swift */; };
 		76CAEE5B24E9BD250044508E /* SimulationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAEE5A24E9BD250044508E /* SimulationCell.swift */; };
-		76CAEE6024E9C6F20044508E /* zExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAEE5E24E9C6F20044508E /* zExample.swift */; };
-		76CAEE6224E9C6F20044508E /* UIKitTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAEE5F24E9C6F20044508E /* UIKitTabView.swift */; };
 		76CAEE6824E9C8460044508E /* AppRouterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAEE6724E9C8460044508E /* AppRouterView.swift */; };
 		76CAEE6C24E9D7880044508E /* TalkWithUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAEE6B24E9D7880044508E /* TalkWithUsView.swift */; };
 		76D017C824C6681B0092F1A6 /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D017C724C6681B0092F1A6 /* RegisterRepository.swift */; };
@@ -125,7 +123,7 @@
 		4A27022222CD409C005DA22A /* NPSModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NPSModel.swift; sourceTree = "<group>"; };
 		4A4C68562295784900EDC8C6 /* InvestScopio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InvestScopio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A4C68872295796100EDC8C6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		4A4C688D2295796100EDC8C6 /* INVSConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVSConstants.swift; sourceTree = "<group>"; };
+		4A4C688D2295796100EDC8C6 /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		4A4C68AA2295796100EDC8C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4A4C68AC2295796100EDC8C6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A4C68AD2295796100EDC8C6 /* InvestScopio-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "InvestScopio-Info.plist"; sourceTree = "<group>"; };
@@ -136,7 +134,7 @@
 		4A8E0E6B22CD3F6400897D38 /* animatedLogo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animatedLogo.json; sourceTree = "<group>"; };
 		4A8E0E6C22CD3F6500897D38 /* animatedLogoWhite.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animatedLogoWhite.json; sourceTree = "<group>"; };
 		4A8E0E6D22CD3F6500897D38 /* closePlusAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = closePlusAnimation.json; sourceTree = "<group>"; };
-		4AFF3E5F22B9B32E0056A167 /* INVSCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INVSCrypto.swift; sourceTree = "<group>"; };
+		4AFF3E5F22B9B32E0056A167 /* LocalCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCrypto.swift; sourceTree = "<group>"; };
 		4AFF3E6D22BB207E0056A167 /* GoogleServiceInfoProd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GoogleServiceInfoProd.plist; sourceTree = "<group>"; };
 		4AFF3EE822BBFF470056A167 /* GoogleServiceInfoDev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GoogleServiceInfoDev.plist; sourceTree = "<group>"; };
 		4AFF3F0322BF12120056A167 /* ConnectorRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectorRoutes.swift; sourceTree = "<group>"; };
@@ -153,7 +151,6 @@
 		7611A22724F5EE210012BE56 /* ChartInterativeDataBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartInterativeDataBridge.swift; sourceTree = "<group>"; };
 		7611A22A24F5EE5F0012BE56 /* ChartInformationDataBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartInformationDataBridge.swift; sourceTree = "<group>"; };
 		7611A22E24F5EEBA0012BE56 /* LineChartDataSetBaseBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartDataSetBaseBridge.swift; sourceTree = "<group>"; };
-		7611A23324F864F80012BE56 /* advanced-swiftui-animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "advanced-swiftui-animations.swift"; sourceTree = "<group>"; };
 		7611A23D24F888BE0012BE56 /* AnimatedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedText.swift; sourceTree = "<group>"; };
 		7611A24124F894100012BE56 /* SimulationCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationCreationView.swift; sourceTree = "<group>"; };
 		7611A24424F8941D0012BE56 /* SimulationCreationViewType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulationCreationViewType.swift; sourceTree = "<group>"; };
@@ -172,6 +169,7 @@
 		76348A40252408660037513E /* UIFont+INVSExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+INVSExtension.swift"; sourceTree = "<group>"; };
 		76348AB1252415690037513E /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		76348B552524267B0037513E /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		76348D592524EA8E0037513E /* SchemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeView.swift; sourceTree = "<group>"; };
 		76541F132520324100DDD1C3 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		76541F1F2520375100DDD1C3 /* DialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogView.swift; sourceTree = "<group>"; };
 		7655A2C625070CBC004B3E0D /* SimulationCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationCreationViewModel.swift; sourceTree = "<group>"; };
@@ -219,8 +217,6 @@
 		76C15C9F24CE011800045D9A /* RefreshRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshRepository.swift; sourceTree = "<group>"; };
 		76CAEE5724E9B7D80044508E /* AppInitialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInitialization.swift; sourceTree = "<group>"; };
 		76CAEE5A24E9BD250044508E /* SimulationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationCell.swift; sourceTree = "<group>"; };
-		76CAEE5E24E9C6F20044508E /* zExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = zExample.swift; sourceTree = "<group>"; };
-		76CAEE5F24E9C6F20044508E /* UIKitTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitTabView.swift; sourceTree = "<group>"; };
 		76CAEE6724E9C8460044508E /* AppRouterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouterView.swift; sourceTree = "<group>"; };
 		76CAEE6B24E9D7880044508E /* TalkWithUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkWithUsView.swift; sourceTree = "<group>"; };
 		76D017C724C6681B0092F1A6 /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
@@ -299,17 +295,12 @@
 		4A4C686B2295796100EDC8C6 /* InvestScopio */ = {
 			isa = PBXGroup;
 			children = (
+				76348D362524D9960037513E /* Supporting Files */,
 				76541F122520322800DDD1C3 /* Settings */,
-				4AFF3E6C22BB20660056A167 /* FirebaseConfig */,
 				4A4C68892295796100EDC8C6 /* SharedFeatures */,
 				4A12631522A7DC6B006133E5 /* Routes */,
 				4A4C686C2295796100EDC8C6 /* Scenes */,
 				4A4C68862295796100EDC8C6 /* Assets */,
-				4A4C68A92295796100EDC8C6 /* LaunchScreen.xib */,
-				4A4C68AD2295796100EDC8C6 /* InvestScopio-Info.plist */,
-				4A4C68AC2295796100EDC8C6 /* AppDelegate.swift */,
-				7611A23324F864F80012BE56 /* advanced-swiftui-animations.swift */,
-				768D8BE224C208BF004BEADA /* SceneDelegate.swift */,
 			);
 			path = InvestScopio;
 			sourceTree = "<group>";
@@ -361,7 +352,7 @@
 		4A4C688C2295796100EDC8C6 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				4A4C688D2295796100EDC8C6 /* INVSConstants.swift */,
+				4A4C688D2295796100EDC8C6 /* AppConstants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -369,7 +360,7 @@
 		4AFF3E5E22B9B3150056A167 /* Cripto */ = {
 			isa = PBXGroup;
 			children = (
-				4AFF3E5F22B9B32E0056A167 /* INVSCrypto.swift */,
+				4AFF3E5F22B9B32E0056A167 /* LocalCrypto.swift */,
 			);
 			path = Cripto;
 			sourceTree = "<group>";
@@ -548,6 +539,26 @@
 			path = Extra;
 			sourceTree = "<group>";
 		};
+		76348D362524D9960037513E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4A4C68A92295796100EDC8C6 /* LaunchScreen.xib */,
+				4A4C68AD2295796100EDC8C6 /* InvestScopio-Info.plist */,
+				4A4C68AC2295796100EDC8C6 /* AppDelegate.swift */,
+				768D8BE224C208BF004BEADA /* SceneDelegate.swift */,
+				4AFF3E6C22BB20660056A167 /* FirebaseConfig */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		76348D582524EA820037513E /* SchemeView */ = {
+			isa = PBXGroup;
+			children = (
+				76348D592524EA8E0037513E /* SchemeView.swift */,
+			);
+			path = SchemeView;
+			sourceTree = "<group>";
+		};
 		76541F122520322800DDD1C3 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -665,6 +676,7 @@
 		768D8BFC24C39357004BEADA /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				76348D582524EA820037513E /* SchemeView */,
 				76348721252396C10037513E /* MailView */,
 				762C72E52522D17700A67110 /* NPSView */,
 				762C72DB2522D09D00A67110 /* StarShape */,
@@ -673,7 +685,6 @@
 				768B340E24FAF7D300D80BDE /* SplitView */,
 				7611A23C24F888730012BE56 /* AnimatedText */,
 				7611A21824F495C30012BE56 /* LineChartBridge */,
-				76CAEE5D24E9C6E60044508E /* TabView */,
 				7698A68B24E347C400A93964 /* GenericView */,
 				7698A68924E347C400A93964 /* LoadingView */,
 				767DD86C24C3AC77006FDC1A /* Utilities */,
@@ -790,15 +801,6 @@
 				76C15C9824CCEAE500045D9A /* SimulationsViewModel.swift */,
 			);
 			path = Core;
-			sourceTree = "<group>";
-		};
-		76CAEE5D24E9C6E60044508E /* TabView */ = {
-			isa = PBXGroup;
-			children = (
-				76CAEE5F24E9C6F20044508E /* UIKitTabView.swift */,
-				76CAEE5E24E9C6F20044508E /* zExample.swift */,
-			);
-			path = TabView;
 			sourceTree = "<group>";
 		};
 		76CAEE6A24E9D7670044508E /* TalkWithUsSU */ = {
@@ -1023,7 +1025,6 @@
 				766FEF31251C26DE000377C6 /* StartService.swift in Sources */,
 				767DD86A24C3AC37006FDC1A /* CancelBag.swift in Sources */,
 				7611A14224F1DADD0012BE56 /* INVSSimulatedValueModel.swift in Sources */,
-				7611A23424F864F90012BE56 /* advanced-swiftui-animations.swift in Sources */,
 				76069E5C24C4DA96009DED56 /* LoadingButton.swift in Sources */,
 				76348723252396D40037513E /* MailView.swift in Sources */,
 				76C15C9924CCEAE500045D9A /* SimulationsRepository.swift in Sources */,
@@ -1038,9 +1039,9 @@
 				4A4C68DC2295796200EDC8C6 /* AppDelegate.swift in Sources */,
 				762C72D52522CB9000A67110 /* TalkWithUsViewModel.swift in Sources */,
 				76D017C824C6681B0092F1A6 /* RegisterRepository.swift in Sources */,
+				76348D5A2524EA8E0037513E /* SchemeView.swift in Sources */,
 				76D017CB24C6682D0092F1A6 /* RegisterService.swift in Sources */,
-				4A4C68C42295796200EDC8C6 /* INVSConstants.swift in Sources */,
-				76CAEE6224E9C6F20044508E /* UIKitTabView.swift in Sources */,
+				4A4C68C42295796200EDC8C6 /* AppConstants.swift in Sources */,
 				76348A352524074D0037513E /* String+INVSExtension.swift in Sources */,
 				7611A22524F5EDFD0012BE56 /* ChartDataBaseBridge.swift in Sources */,
 				4A27022C22CD409D005DA22A /* NPSModel.swift in Sources */,
@@ -1060,7 +1061,6 @@
 				76CAEE6C24E9D7880044508E /* TalkWithUsView.swift in Sources */,
 				766FEF2C251BC8D3000377C6 /* StartViewModel.swift in Sources */,
 				7611A21A24F495D30012BE56 /* LineChartBridge.swift in Sources */,
-				76CAEE6024E9C6F20044508E /* zExample.swift in Sources */,
 				7655A2CA25071297004B3E0D /* CreateSimulationSegments.swift in Sources */,
 				7611A23E24F888BE0012BE56 /* AnimatedText.swift in Sources */,
 				7698A68D24E347C500A93964 /* SUIJEWLoadingView.swift in Sources */,
@@ -1071,7 +1071,7 @@
 				7623BA3A250F096C00A3091E /* UserRequest.swift in Sources */,
 				768B341924FB513500D80BDE /* Step.swift in Sources */,
 				76348A3C252408150037513E /* NSAttributedString+INVSExtension.swift in Sources */,
-				4AFF3E6022B9B32E0056A167 /* INVSCrypto.swift in Sources */,
+				4AFF3E6022B9B32E0056A167 /* LocalCrypto.swift in Sources */,
 				7611A22F24F5EEBA0012BE56 /* LineChartDataSetBaseBridge.swift in Sources */,
 				768D8C0124C393A4004BEADA /* LoginComponentsView.swift in Sources */,
 				7655A2CD250712C3004B3E0D /* StepModel.swift in Sources */,
@@ -1265,7 +1265,7 @@
 					"PB_NO_PACKED_STRUCTS=1",
 					"PB_ENABLE_MALLOC=1",
 				);
-				INFOPLIST_FILE = "InvestScopio/InvestScopio-Info.plist";
+				INFOPLIST_FILE = "InvestScopio/Supporting Files/InvestScopio-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1300,7 +1300,7 @@
 					"PB_ENABLE_MALLOC=1",
 					"DEV=0",
 				);
-				INFOPLIST_FILE = "InvestScopio/InvestScopio-Info.plist";
+				INFOPLIST_FILE = "InvestScopio/Supporting Files/InvestScopio-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

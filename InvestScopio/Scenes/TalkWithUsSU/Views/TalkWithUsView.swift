@@ -9,6 +9,8 @@
 import SwiftUI
 import MessageUI
 import EnvironmentOverrides
+import JewFeatures
+
 struct TalkWithUsView: View {
     @EnvironmentObject var settings: AppSettings
     @ObservedObject var viewModel: TalkWithUsViewModel
@@ -100,6 +102,7 @@ struct TalkWithUsView: View {
     var exitButton: some View {
         Button(action: {
             self.settings.loggingState = .notLogged
+            JEWKeyChainWrapper.clear()
             self.settings.popup = AppPopupSettings()
         }) {
             Text("Sair")

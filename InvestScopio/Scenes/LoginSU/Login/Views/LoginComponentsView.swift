@@ -11,15 +11,18 @@ import JewFeatures
 
 struct HeaderView: View {
     var body: some View {
-        HStack {
-            Image("iconBig")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 64, height: 64)
-            Text("InvestScopio")
-                .font(.system(.largeTitle, design: .rounded))
-                .bold()
-            Spacer()
+        VStack {
+            HStack {
+                Image("iconBig")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 64, height: 64)
+                Text("InvestScopio")
+                    .font(.system(.largeTitle, design: .rounded))
+                    .bold()
+                Spacer()
+            }
+            SchemeView()
         }
         .padding(.leading, 16)
         .padding(.top, 30)

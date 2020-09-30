@@ -12,7 +12,7 @@ import Firebase
 struct AppInitialization {
     
     static func initialize() {
-        setupEnvironment()
+        setup(scheme: Scheme.scheme)
         setupFirebase()
         setupColors()
         tableViewWorkingAround()
@@ -20,9 +20,11 @@ struct AppInitialization {
         navbarWorkingAround()
     }
     
-    static func setupEnvironment() {
+    static func setup(scheme: Scheme) {
+        JEWSession.session.services.scheme = scheme
         Scheme.setupConfig(prodURL: AppConstants.ServicesConstants.apiV1.rawValue, debugURL: AppConstants.ServicesConstants.apiV1Dev.rawValue)
         JEWLogger.logger.isDev = Scheme.scheme == .Debug
+        UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
     }
     
     static func setupColors() {
@@ -36,9 +38,8 @@ struct AppInitialization {
     }
     
     static func setupFirebase() {
-        UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
         FirebaseConfiguration.shared.setLoggerLevel(.min)
-        if JEWSession.session.services.scheme == .Debug {
+        if Scheme.scheme == .Debug || Scheme.scheme == .Local {
             let filePath = Bundle.main.path(forResource: "GoogleServiceInfoDev", ofType: "plist")
             guard let fileopts = FirebaseOptions(contentsOfFile: filePath!)
                 else { return }

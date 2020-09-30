@@ -33,37 +33,45 @@ class StartViewModel: ObservableObject {
         self.completion = completion
         self.failure = failure
         self.state = .playFrame(fromFrame: 25, toFrame: 25, loopMode: .playOnce, completion: nil)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            JEWBiometricsChallenge.checkLoggedUser(keychainKey: JEWConstants.LoginKeyChainConstants.hasUserLogged.rawValue) { [self] in
-                guard let email = JEWKeyChainWrapper.retrieve(withKey: JEWConstants.LoginKeyChainConstants.lastLoginEmail.rawValue), let emailDecrypted = INVSCrypto.decryptAES(withText: email), let password = JEWKeyChainWrapper.retrieve(withKey: JEWConstants.LoginKeyChainConstants.lastLoginSecurity.rawValue), let passwordDecrypted = INVSCrypto.decryptAES(withText: password) else {
-                    self.message = APIError.default.errorDescription ?? String()
-                    self.failure?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true), true)
-                    return
-                }
-                startService
-                    .load(userLoadable: loadableSubject(\.loginLoadable), email: emailDecrypted, password: passwordDecrypted)
-            } failureChallenge: { [self] (type) in
-                switch type {
-                case .goSettings(let error):
-                    self.message = error.message()
-                    self.failure?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true), true)
-                case .default:
-                    self.message = APIError.default.errorDescription ?? String()
-                    self.failure?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true), true)
-                    JEWKeyChainWrapper.clear()
-                case .error(let error):
-                    if !hasRetry {
-                        hasRetry = true
-                        message = error.message()
-                        self.failure?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true), false)
-                        authentication(completion: completion, failure: failure)
-                        return
-                    }
-                    message = "Não foi possível identificar sua biometria, faça o login novamente!"
-                    self.failure?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true), true)
-                    JEWKeyChainWrapper.clear()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                JEWBiometricsChallenge.checkLoggedUser(keychainKey: JEWConstants.LoginKeyChainConstants.hasUserLogged.rawValue) { [self] in
+                    callService()
+                } failureChallenge: { [self] (type) in
+                    setBiometryError(type: type, completion: completion, failure: failure)
                 }
             }
+    }
+    
+    func callService() {
+        guard let email = JEWKeyChainWrapper.retrieve(withKey: JEWConstants.LoginKeyChainConstants.lastLoginEmail.rawValue), let emailDecrypted = LocalCrypto.decryptAES(withText: email), let password = JEWKeyChainWrapper.retrieve(withKey: JEWConstants.LoginKeyChainConstants.lastLoginSecurity.rawValue), let passwordDecrypted = LocalCrypto.decryptAES(withText: password) else {
+            self.message = APIError.default.errorDescription ?? String()
+            self.failure?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true), true)
+            return
+        }
+        startService
+            .load(userLoadable: loadableSubject(\.loginLoadable), email: emailDecrypted, password: passwordDecrypted)
+    }
+    
+    func setBiometryError(type: ChallengeFailureType, completion: @escaping () -> Void, failure: @escaping (AppPopupSettings, _ hasCancelled: Bool) -> Void) {
+        switch type {
+        case .goSettings(let error):
+            self.message = error.message()
+            self.failure?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true), true)
+        case .default:
+            self.message = APIError.default.errorDescription ?? String()
+            self.failure?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true), true)
+            JEWKeyChainWrapper.clear()
+        case .error(let error):
+            if !hasRetry {
+                hasRetry = true
+                message = error.message()
+                self.failure?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true), false)
+                authentication(completion: completion, failure: failure)
+                return
+            }
+            message = "Não foi possível identificar sua biometria, faça o login novamente!"
+            self.failure?(AppPopupSettings(message: message, textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true), true)
+            JEWKeyChainWrapper.clear()
         }
     }
     

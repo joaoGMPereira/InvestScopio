@@ -1,5 +1,5 @@
 //
-//  INVSCrypto.swift
+//  LocalCrypto.swift
 //  InvestScopio
 //
 //  Created by Joao Medeiros Pereira on 18/06/19.
@@ -9,7 +9,7 @@
 import Foundation
 import CryptoSwift
 
-class INVSCrypto: NSObject {
+class LocalCrypto: NSObject {
     static let aesKey = "investscopiosect"
     static let aesIV = "sectscopioinvest"
     static let sha256Key = "com.br.joao.gabriel.medeiros.pereira.InvestScopio"
