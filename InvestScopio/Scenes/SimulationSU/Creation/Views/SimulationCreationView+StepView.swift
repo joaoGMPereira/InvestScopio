@@ -68,7 +68,7 @@ extension SimulationCreationView {
             if stepViewModel.showTextField {
                 
                 ZStack {
-                    FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [.cancel, .back], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(placeholderColor: .label), placeholder: .constant(self.stepViewModel.step.setNextStepPlaceHolder()), text: self.$stepViewModel.allSteps[self.stepViewModel.step.rawValue].value, formatType: .constant(self.stepViewModel.step.setFormat()), keyboardType: .constant(.numberPad), close: self.$stepViewModel.close, shouldBecomeFirstResponder: .constant(true), tapOnToolbarButton: { textField, type in
+                    FloatingTextField(toolbarBuilder: JEWToolbarBuilder().setToolbar(leftButtons: [.cancel, .back], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(placeholderColor: .label), placeholder: .constant(self.stepViewModel.step.setNextStepPlaceHolder()), text: self.$stepViewModel.allSteps[self.stepViewModel.step.rawValue].value, formatType: .constant(self.stepViewModel.step.setFormat()), keyboardType: .constant(.numberPad), close: self.$stepViewModel.close, shouldBecomeFirstResponder: .constant(true), tapOnToolbarButton: { textField, type in
                         self.tapOnToolbarStep(textField: textField, type: type)
                     }) { textfield, text, isBackspace in
                         var updatedText = text

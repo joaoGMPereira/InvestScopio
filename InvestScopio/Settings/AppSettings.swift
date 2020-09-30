@@ -9,12 +9,12 @@
 import Foundation
 import SwiftUI
 import JewFeatures
+
 enum LoggingState {
     case normal
     case admin
     case notLogged
 }
-
 
 class AppSettings: ObservableObject {
     @Published var loggingState = LoggingState.notLogged {

@@ -87,7 +87,7 @@ struct ResendPasswordFormView: View {
     var body: some View {
         Form {
             Section(header: Text("Digite seu email").textFont().padding(.top, 16)) {
-                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(), placeholder: .constant("Email"), text: $emailText, formatType: .constant(.none), keyboardType: .constant(.default), close: $close, shouldBecomeFirstResponder: .constant(false),tapOnToolbarButton: { textfield, type in
+                FloatingTextField(toolbarBuilder: JEWToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(), placeholder: .constant("Email"), text: $emailText, formatType: .constant(.none), keyboardType: .constant(.default), close: $close, shouldBecomeFirstResponder: .constant(false),tapOnToolbarButton: { textfield, type in
                     self.didResendPasswordAction()
                 }, onChanged:  { textfield, text, isBackspace in
                     self.emailText = text

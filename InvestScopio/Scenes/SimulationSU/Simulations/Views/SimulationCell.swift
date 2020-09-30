@@ -115,7 +115,7 @@ struct SectionView: View {
 
 struct SimulationCell_Previews: PreviewProvider {
     static var previews: some View {
-        WorkingAroundSUI.tableViewWorkingAround()
+        AppInitialization.initialize()
         return Group {
             SimulationCell(simulation: SimulatorModel.simulationsPlaceholders.first!, state: .constant(.loaded), cellSize: .constant(CGSize.init(width: 414, height: 200))){}.attachEnvironmentOverrides().previewDevice("iPhone Xs Max")
             SimulationCell(simulation: SimulatorModel.simulationsPlaceholders.first!, state: .constant(.loaded), cellSize: .constant(CGSize.init(width: 414, height: 200))){}.attachEnvironmentOverrides().previewDevice("iPad Pro (9.7-inch)")

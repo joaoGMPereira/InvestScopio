@@ -13,3 +13,4 @@
 APPScheme="Release"
 DISPLAY_NAME=InvestScopio
 BUNDLE_ID=com.br.joao.gabriel.medeiros.pereira.InvestScopio
+EXCLUDED_ARCHS[sdk=iphonesimulator*] = arm64

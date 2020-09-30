@@ -85,14 +85,14 @@ struct RegisterFormView: View {
     var body: some View {
         Form {
             Section(header: Text("Digite um email válido").textFont().padding(.top, 16)) {
-                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(), placeholder: .constant("Email"), text: $emailText, formatType: .constant(.none), keyboardType: .constant(.default), close: $close, shouldBecomeFirstResponder: .constant(false), onChanged:  { textfield, text, isBackspace in
+                FloatingTextField(toolbarBuilder: JEWToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(), placeholder: .constant("Email"), text: $emailText, formatType: .constant(.none), keyboardType: .constant(.default), close: $close, shouldBecomeFirstResponder: .constant(false), onChanged:  { textfield, text, isBackspace in
                     self.emailText = text
                 })
                 .frame(height: 50)
                 .listRowBackground(Color(.JEWBackground()))
             }
             Section(header: Text("Digite uma senha").textFont()) {
-                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(), placeholder: .constant("Senha"), text: $passwordText, formatType: .constant(.none), keyboardType: .constant(.default), close: $close, shouldBecomeFirstResponder: .constant(false), isSecureTextEntry: true, didBeginEditing: { textfield in
+                FloatingTextField(toolbarBuilder: JEWToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(), placeholder: .constant("Senha"), text: $passwordText, formatType: .constant(.none), keyboardType: .constant(.default), close: $close, shouldBecomeFirstResponder: .constant(false), isSecureTextEntry: true, didBeginEditing: { textfield in
                     self.passwordText = String()
                 }, onChanged:  { textfield, text, isBackspace in
                     self.passwordText = text
@@ -101,7 +101,7 @@ struct RegisterFormView: View {
                 .listRowBackground(Color(.JEWBackground()))
             }
             Section(header: Text("Confirme sua senha").textFont()) {
-                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(), placeholder: .constant("Confirmar Senha"), text: $passwordConfirmationText, formatType: .constant(.none), keyboardType: .constant(.default), close: $close, shouldBecomeFirstResponder: .constant(false), isSecureTextEntry: true, tapOnToolbarButton: { textfield, type in
+                FloatingTextField(toolbarBuilder: JEWToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(), placeholder: .constant("Confirmar Senha"), text: $passwordConfirmationText, formatType: .constant(.none), keyboardType: .constant(.default), close: $close, shouldBecomeFirstResponder: .constant(false), isSecureTextEntry: true, tapOnToolbarButton: { textfield, type in
                     self.didRegisterAction()
                 }, didBeginEditing: { textfield in
                     self.passwordConfirmationText = String()

@@ -157,7 +157,7 @@ struct LitSimulations: View {
 
 struct SimulationsView_Previews: PreviewProvider {
     static var previews: some View {
-        WorkingAroundSUI.tableViewWorkingAround()
+        AppInitialization.initialize()
         return Group {
             SimulationsView(viewModel: SimulationsViewModel(service:StubSimulationsService())).attachEnvironmentOverrides().previewDevice("iPhone Xs Max")
             SimulationsView(viewModel: SimulationsViewModel(service:StubSimulationsServiceEmptySimulations())).attachEnvironmentOverrides().previewDevice("iPhone Xs Max")

@@ -12,7 +12,7 @@ import JewFeatures
 
 class ResendPasswordViewModel: ObservableObject {
     
-    @Published var user = INVSUserModel(email: "", uid: "")
+    @Published var user = UserModel(email: "", uid: "")
     @Published var resendPasswordLoadable: Loadable<String> {
         didSet {
             build(state: resendPasswordLoadable)

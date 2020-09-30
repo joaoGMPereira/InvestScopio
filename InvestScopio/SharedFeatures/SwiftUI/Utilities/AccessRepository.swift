@@ -76,7 +76,7 @@ extension AccessRepository.API: APICall {
         case .publicKey:
             return nil
         case .accessToken:
-            if let aesCrypto = AES256Crypter.create(), let encryptedAESCryptoString = RSACrypto.encrypt(data: aesCrypto) {
+            if let aesCrypto = AES256Crypter.create(), let encryptedAESCryptoString = RSACrypto.encrypt(publicKey: JEWSession.session.services.publicKey, data: aesCrypto) {
                 return HTTPRequest(data: encryptedAESCryptoString)
             }
         }

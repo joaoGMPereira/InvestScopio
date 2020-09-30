@@ -35,14 +35,14 @@ struct LoginFormView: View {
     var body: some View {
         Form {
             Section(header: Text("Digite seu email").padding(.top, 16)) {
-                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(), placeholder: .constant("Email"), text: $emailText, formatType: .constant(.none), keyboardType: .constant(.default), close: .constant(false), shouldBecomeFirstResponder: .constant(false), onChanged:  { textfield, text, isBackspace in
+                FloatingTextField(toolbarBuilder: JEWToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(), placeholder: .constant("Email"), text: $emailText, formatType: .constant(.none), keyboardType: .constant(.default), close: .constant(false), shouldBecomeFirstResponder: .constant(false), onChanged:  { textfield, text, isBackspace in
                     self.emailText = text
                 })
                 .frame(height: 50)
                 .listRowBackground(Color(.JEWBackground()))
             }
             Section(header: Text("Digite sua senha")) {
-                FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(), placeholder: .constant("Senha"), text: $passwordText, formatType: .constant(.none), keyboardType: .constant(.default), close: .constant(false), shouldBecomeFirstResponder: .constant(false), isSecureTextEntry: true, tapOnToolbarButton: { textfield, type in
+                FloatingTextField(toolbarBuilder: JEWToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(), placeholder: .constant("Senha"), text: $passwordText, formatType: .constant(.none), keyboardType: .constant(.default), close: .constant(false), shouldBecomeFirstResponder: .constant(false), isSecureTextEntry: true, tapOnToolbarButton: { textfield, type in
                     self.didLoginAction()
                 }, didBeginEditing: { textfield in
                     self.passwordText = String()

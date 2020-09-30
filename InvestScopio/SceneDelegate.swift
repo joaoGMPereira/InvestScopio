@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 import SwiftUI
-import EnvironmentOverrides
-import Charts
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -19,8 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let appSettings = AppSettings()
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         if let windowScene = scene as? UIWindowScene {
-            WorkingAroundSUI.setupWorkingArounds()
-            
+            AppInitialization.initialize()
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(rootView:
                 AppRouterView().environmentObject(appSettings).environmentObject(reachability)

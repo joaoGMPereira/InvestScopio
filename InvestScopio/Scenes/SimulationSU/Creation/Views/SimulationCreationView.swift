@@ -97,7 +97,7 @@ extension SimulationCreationView {
     
     fileprivate func stepTextField(index: Int) -> some View {
         ZStack {
-            FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [.cancel, .back], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(placeholderColor: .label), placeholder: .constant(self.viewModel.allSteps[index].type.setNextStepPlaceHolder()), text: self.$viewModel.allSteps[index].value, formatType: .constant(self.viewModel.allSteps[index].type.setFormat()), keyboardType: .constant(.numberPad), close: self.$viewModel.close, shouldBecomeFirstResponder: $viewModel.allSteps[index].shouldBecomeFirstResponder, tapOnToolbarButton: { textField, type in
+            FloatingTextField(toolbarBuilder: JEWToolbarBuilder().setToolbar(leftButtons: [.cancel, .back], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(placeholderColor: .label), placeholder: .constant(self.viewModel.allSteps[index].type.setNextStepPlaceHolder()), text: self.$viewModel.allSteps[index].value, formatType: .constant(self.viewModel.allSteps[index].type.setFormat()), keyboardType: .constant(.numberPad), close: self.$viewModel.close, shouldBecomeFirstResponder: $viewModel.allSteps[index].shouldBecomeFirstResponder, tapOnToolbarButton: { textField, type in
                 self.tapOnToolbar(textField: textField, type: type, index: index)
             }, didBeginEditing: { textField in
                 self.viewModel.didBeginEditing(index: index)

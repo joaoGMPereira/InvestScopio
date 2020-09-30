@@ -17,7 +17,7 @@ def all_pods
   pod 'ZCAnimatedLabel', :git => 'https://github.com/joaoGMPereira/ZCAnimatedLabel.git'
   
   
-  pod 'JewFeatures', :path => '../../JEW-FEATURE'
+  pod 'JewFeatures', :path => '../JEW-FEATURE'
   
   #Resquests
   pod 'Alamofire'
@@ -29,3 +29,8 @@ target 'InvestScopio' do
   all_pods
 end
 
+post_install do |installer|
+  installer.pods_project.build_configurations.each do |config|
+    config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+  end
+end

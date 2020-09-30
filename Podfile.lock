@@ -73,15 +73,30 @@ PODS:
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.4.0)
   - Hero (1.4.0)
-  - JewFeatures (0.0.3):
+  - JewFeatures (1.0.0):
+    - JewFeatures/JEWKit (= 1.0.0)
+  - JewFeatures/CommonKit (1.0.0)
+  - JewFeatures/ConnectionKit (1.0.0):
+    - Alamofire
+    - CryptoSwift
+    - JewFeatures/CommonKit
+    - JewFeatures/LoggerKit
+    - SwiftKeychainWrapper
+    - SwiftyRSA
+  - JewFeatures/JEWKit (1.0.0):
+    - JewFeatures/ConnectionKit
+    - JewFeatures/SessionKit
+    - JewFeatures/UIKit
+  - JewFeatures/LoggerKit (1.0.0)
+  - JewFeatures/SessionKit (1.0.0):
+    - JewFeatures/CommonKit
+  - JewFeatures/UIKit (1.0.0):
     - Alamofire
     - CollectionKit
-    - CryptoSwift
+    - JewFeatures/CommonKit
     - lottie-ios
     - PodAsset
     - SkeletonView
-    - SwiftKeychainWrapper
-    - SwiftyRSA
   - lottie-ios (3.1.8)
   - nanopb (1.30905.0):
     - nanopb/decode (= 1.30905.0)
@@ -106,7 +121,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Hero (from `https://github.com/barrault01/Hero.git`, commit `6220387`)
-  - JewFeatures (from `../../JEW-FEATURE`)
+  - JewFeatures (from `../JEW-FEATURE`)
   - lottie-ios
   - SkeletonView (from `https://github.com/Juanpe/SkeletonView.git`, branch `master`)
   - StepView
@@ -145,7 +160,7 @@ EXTERNAL SOURCES:
     :commit: '6220387'
     :git: https://github.com/barrault01/Hero.git
   JewFeatures:
-    :path: "../../JEW-FEATURE"
+    :path: "../JEW-FEATURE"
   SkeletonView:
     :branch: master
     :git: https://github.com/Juanpe/SkeletonView.git
@@ -183,7 +198,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: e121a3867449ce16b0e35ddf1797ea7a389ffdf2
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
   Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
-  JewFeatures: f03b264556b3c989a998214cebfe19f02dc203fa
+  JewFeatures: 3bcfc76ba199d5fb653635e3fb07523a1ef4903c
   lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PodAsset: c2c2b20013c1edf698fea2bacba6e75a638537a2
@@ -194,6 +209,6 @@ SPEC CHECKSUMS:
   SwiftyRSA: 3b9c9179744217951facc6a3e9ae8d8c97061ffa
   ZCAnimatedLabel: 519b688bef4403fd356bc785f9b61cdfd8e6472d
 
-PODFILE CHECKSUM: 9f40e8a4e797752d0c8b0bf3d338b122fe421865
+PODFILE CHECKSUM: b4ae3ec070803f3a2908e9e8023f92150799f2ff
 
 COCOAPODS: 1.9.3

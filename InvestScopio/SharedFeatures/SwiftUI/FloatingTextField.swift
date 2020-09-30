@@ -15,7 +15,7 @@ struct FloatingTextField_Previews: PreviewProvider {
         JEWUIColor.default.lightDefaultColor = UIColor(named: "accentLight")!
         JEWUIColor.default.darkDefaultColor = UIColor(named: "accentDark")!
         return VStack {
-            FloatingTextField(toolbarBuilder: JEWFloatingTextFieldToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: JEWFloatingTextFieldFormatBuilder().setAll(withPlaceholder: "Testando").setPlaceholderColor(color: .JEWDefault()).setTextFieldTextColor(color: .JEWBlack()).setSelectedColor(color: .JEWDefault()).setTextFieldValueType(type: JEWFloatingTextFieldValueType.percent), placeholder: .constant("Testando"), text: .constant(""), formatType: .constant(.none), keyboardType: .constant(.default), close: .constant(true), shouldBecomeFirstResponder: .constant(false))
+            FloatingTextField(toolbarBuilder: JEWToolbarBuilder().setToolbar(leftButtons: [], rightButtons: [.ok]), formatBuilder: JEWFloatingTextFieldFormatBuilder().setAll(withPlaceholder: "Testando").setPlaceholderColor(color: .JEWDefault()).setTextFieldTextColor(color: .JEWBlack()).setSelectedColor(color: .JEWDefault()).setTextFieldValueType(type: JEWFloatingTextFieldValueType.percent), placeholder: .constant("Testando"), text: .constant(""), formatType: .constant(.none), keyboardType: .constant(.default), close: .constant(true), shouldBecomeFirstResponder: .constant(false))
                 .frame(width: 300, height: 50)
             Spacer()
         }
@@ -25,7 +25,7 @@ struct FloatingTextField_Previews: PreviewProvider {
 
 struct FloatingTextField: UIViewRepresentable {
     
-    var toolbarBuilder: JEWFloatingTextFieldToolbarBuilder
+    var toolbarBuilder: JEWToolbarBuilder
     var formatBuilder: JEWFloatingTextFieldFormatBuilder
     @Binding var placeholder: String
     @Binding var text: String

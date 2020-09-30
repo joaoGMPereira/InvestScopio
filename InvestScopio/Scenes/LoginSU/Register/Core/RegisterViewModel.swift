@@ -12,7 +12,7 @@ import JewFeatures
 
 class RegisterViewModel: ObservableObject {
     
-    @Published var user = INVSUserModel(email: "", uid: "")
+    @Published var user = UserModel(email: "", uid: "")
     @Published var registerLoadable: Loadable<HTTPResponse<JEWUserResponse>> {
         didSet {
             build(state: registerLoadable)
