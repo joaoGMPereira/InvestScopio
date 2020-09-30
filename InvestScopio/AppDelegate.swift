@@ -25,8 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = .JEWDefault()
         UISwitch.appearance().onTintColor = .JEWDefault()
         UITextField.appearance().tintColor = .JEWDefault()
-        JEWKeyChainWrapperServiceName.instance.uniqueServiceName = "com.br.joao.gabriel.medeiros.pereira.InvestScopio"
-        ConnectorRoutes.setBaseURL()
+        Scheme.setupConfig()
         setupFirebase()
         return true
     }

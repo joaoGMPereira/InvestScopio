@@ -29,7 +29,3 @@ target 'InvestScopio' do
   all_pods
 end
 
-target 'InvestScopioDev' do
-  all_pods
-end
-

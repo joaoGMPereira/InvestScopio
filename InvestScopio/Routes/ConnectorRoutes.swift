@@ -54,12 +54,4 @@ enum ConnectorRoutes {
             return JEWConnector.getURL(withRoute: "/nps")
         }
     }
-    
-    static func setBaseURL() {
-        var baseURL = AppConstants.ServicesConstants.apiV1.rawValue
-        if JEWSession.session.services.isDev() {
-            baseURL = JEWSession.session.services.callService == .heroku ? AppConstants.ServicesConstants.apiV1Dev.rawValue : JEWConstants.Services.localHost.rawValue
-        }
-        JEWConnector.connector.baseURL = baseURL
-    }
 }
