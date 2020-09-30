@@ -22,7 +22,7 @@ struct SUIJewGenericView<Content: View>: View {
         case .loaded:
             return AnyView(content().clipped())
         case .loading:
-            return AnyView(content().overlay(SUIJEWLoadingView()).clipped())
+            return AnyView(content().foregroundColor(.clear).overlay(SUIJEWLoadingView()).clipped())
         }
     }
 }

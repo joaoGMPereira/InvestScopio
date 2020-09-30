@@ -15,9 +15,9 @@ struct SUIJEWLoadingView: View {
 var body: some View {
     ZStack {
         GeometryReader.init { proxy in
-            Rectangle().frame(width: proxy.size.width, height: proxy.size.height).foregroundColor((Color.init(red: 230/255, green: 230/255, blue: 230/255)))
+            Rectangle().frame(width: proxy.size.width, height: proxy.size.height).foregroundColor((Color("accessoryBackground")))
             Rectangle().frame(width: proxy.size.width/4, height: proxy.size.height).foregroundColor(.clear).background(BackgroundGeometry())
-                .position(x: self.helloH(proxy: proxy), y: proxy.size.height/2).onPreferenceChange(SizePreferenceKey.self, perform: {
+                .position(x: self.positionX(proxy: proxy), y: proxy.size.height/2).onPreferenceChange(SizePreferenceKey.self, perform: {
                     self.childSize = $0
                     self.moveToRight()
                 }).animation(Animation.easeInOut(duration: 2).repeatForever(autoreverses: false))
@@ -31,7 +31,7 @@ var body: some View {
         }
     }
     
-    func helloH(proxy: GeometryProxy) -> CGFloat {
+    func positionX(proxy: GeometryProxy) -> CGFloat {
         if inStart {
             return -childSize.width/2
         }
@@ -41,8 +41,8 @@ var body: some View {
 }
 
 struct BackgroundGeometry: View {
-    static let backgroundColor = Color.init(red: 200/255, green: 200/255, blue: 200/255)
-    static let backgroundMeioColor = Color.init(red: 100/255, green: 200/255, blue: 200/255)
+    static let backgroundColor = Color("accessoryBackgroundSelected")
+    static let backgroundMeioColor = Color("accessoryBackground")
     static let background01Color = backgroundColor.opacity(0.4)
     static let background02Color = backgroundColor.opacity(0.5)
     static let background03Color = backgroundColor.opacity(0.6)

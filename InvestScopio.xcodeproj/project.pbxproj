@@ -374,13 +374,6 @@
 			path = FirebaseConfig;
 			sourceTree = "<group>";
 		};
-		7611A13524F039F60012BE56 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
 		7611A14424F1DC330012BE56 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -777,7 +770,6 @@
 		76C15C7A24C91B4D00045D9A /* Simulations */ = {
 			isa = PBXGroup;
 			children = (
-				7611A13524F039F60012BE56 /* Router */,
 				76C15C8C24CCEA8D00045D9A /* Core */,
 				76C15C8B24CCEA8400045D9A /* Views */,
 			);
