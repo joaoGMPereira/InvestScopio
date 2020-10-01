@@ -197,12 +197,14 @@ struct LineChart: UIViewRepresentable {
         
         func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
             if self.lastIndexHighlighted != entry.x {
-                self.hideHighlight = false
+                
                 self.selectionFeedback.selectionChanged()
-                self.indexSelected = Int(entry.x)
-                self.positionXSelected = chartView.convert(CGPoint(x: highlight.xPx, y: 0), to: chartView.superview).x
-              //  self.delegate?.updateValuesToPosition(Int(entry.x), highlightXPosition: self.convert(CGPoint(x: highlight.xPx, y: 0), to: self.superview).x)
-                self.lastIndexHighlighted = entry.x
+                DispatchQueue.main.async {
+                    self.hideHighlight = false
+                    self.indexSelected = Int(entry.x)
+                    self.positionXSelected = chartView.convert(CGPoint(x: highlight.xPx, y: 0), to: chartView.superview).x
+                    self.lastIndexHighlighted = entry.x
+                }
             }
         }
 

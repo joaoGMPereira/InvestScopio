@@ -54,11 +54,11 @@ struct SimulationDetailView: View {
                         
                         JewSegmentedControl(selectedIndex: $viewModel.monthsIndex, rects: $viewModel.rectsMonths, titles: $viewModel.monthsTabs, selectedColor: Color("accessoryBackgroundSelected"), unselectedColor: Color("accessoryBackground"), coordinateSpaceName: "TabsMonths").padding(.horizontal, 24)
                         HStack {
-                            Text(hideHighlight ? "\(Int(viewModel.entries.last?.x ?? 0))\nMeses" : "\(Int(viewModel.entries[indexSelected].x))\nMeses").font(Font.subheadline.bold()).multilineTextAlignment(.center)
+                            Text(hideHighlight ? "\(Int(viewModel.entries.last?.x ?? 0))\nMeses" : "\(viewModel.entries.indices.contains(indexSelected) ? Int(viewModel.entries[indexSelected].x) : Int(viewModel.entries.last?.x ?? 0))\nMeses").font(Font.subheadline.bold()).multilineTextAlignment(.center)
                             Spacer()
                             Text(hideHighlight ? "\(viewModel.entries.last?.y.currencyFormat() ?? "RS0,00")\nInvestidos" : "\(viewModel.entries[indexSelected].y.currencyFormat())\nInvestidos").font(Font.subheadline.bold()).multilineTextAlignment(.center)
                         }.padding([.horizontal, .top])
-                        Text("Rentabilidade do mês: \(indexSelected + 1) -> \(viewModel.entries.count)").opacity(hideHighlight ? 0 : 1).animation(.default)
+                        Text("Rentabilidade do mês: \(indexSelected) -> \(Int(viewModel.entries.last?.x ?? 0))").opacity(hideHighlight ? 0 : 1).animation(.default)
                         LineChart(entries: viewModel.entries, months: viewModel.monthsValue ?? 0, granularity: viewModel.granularity, axisMaximum: viewModel.maximumValue, label: viewModel.description, hideHighlight: $hideHighlight, indexSelected: $indexSelected, positionXSelected: $positionXSelected).setChartDataBase(ChartDataBaseBridge(informationData: ChartInformationDataBridge(leftAxis: LeftAxisBridge(formatter: leftAxisFormatter), xAxis: XAxisBridge(formatter: xAxisFormatter)))).setChartDataSet(LineChartDataSetBaseBridge(xAxisDuration: viewModel.shouldAnimate ? 0.0 : 0, yAxisDuration: viewModel.shouldAnimate ? 0.5 : 0)).frame(width: chartSize.width, height: chartSize.width/3)
                     }.getContent(size: $chartSize)
                 }
