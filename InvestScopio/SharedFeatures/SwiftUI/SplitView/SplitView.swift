@@ -32,6 +32,13 @@ struct SplitView<Content: View>: View {
     var forceCloseWhenDisappear: Bool
     @State private var updatedHeight: CGFloat
     @Binding private var isOpened: Bool
+    @State private var isScrolling: Bool = false
+    var finalHeight: CGFloat {
+        if isScrolling {
+            return updatedHeight
+        }
+        return isOpened ? updatedHeight : minHeight
+    }
     
     public init(isOpened: Binding<Bool>, minHeight: CGFloat = 66, forceCloseWhenDisappear: Bool = false, @ViewBuilder content: @escaping () -> Content) {
         self._isOpened = isOpened
@@ -46,12 +53,13 @@ struct SplitView<Content: View>: View {
         GeometryReader { geometry in
             VStack {
                 Spacer()
-                Color("secondaryBackground").overlay(self.content()).cornerRadius(8, corners: [.topLeft, .topRight]).shadow(radius: 8).frame(height: self.updatedHeight).animation(.easeInOut)
+                Color("secondaryBackground").overlay(self.content()).cornerRadius(8, corners: [.topLeft, .topRight]).shadow(radius: 8).frame(height: finalHeight).animation(.easeInOut)
                 
             }
             .gesture(
                 DragGesture()
                     .onChanged({ (value) in
+                        isScrolling = true
                         let contentViewHeight = geometry.frame(in: .global).height
                         var calculatedState: CGFloat = self.isOpened ? contentViewHeight : self.minHeight
                         calculatedState -= value.translation.height
@@ -81,18 +89,24 @@ struct SplitView<Content: View>: View {
                         let contentViewHeight = geometry.frame(in: .global).height
                         if self.updatedHeight > contentViewHeight/2 {
                             self.updatedHeight = contentViewHeight
+                            
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                                 self.isOpened = true
+                                isScrolling = false
                             }
                         } else {
                             self.updatedHeight = self.minHeight
+                            
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                                 self.isOpened = false
+                                isScrolling = false
                             }
                         }
+                
                     })
             )
-        }.onDisappear {
+        }
+        .onDisappear {
             if self.forceCloseWhenDisappear {
                 self.isOpened = false
             }

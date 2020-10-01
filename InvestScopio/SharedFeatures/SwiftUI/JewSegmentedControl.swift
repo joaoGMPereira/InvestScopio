@@ -46,7 +46,9 @@ struct JewSegmentedControl : View {
                 
             }.frame(height: dynamicButtonHeight()).onPreferenceChange(MyTextPreferenceKey.self) { preferences in
                 for p in preferences {
-                    self.rects[p.viewIndex] = p.rect
+                    if self.rects.indices.contains(p.viewIndex) {
+                        self.rects[p.viewIndex] = p.rect
+                    }
                 }
             }
         }.background(unselectedColor).clipShape(Capsule()).coordinateSpace(name: coordinateSpaceName)

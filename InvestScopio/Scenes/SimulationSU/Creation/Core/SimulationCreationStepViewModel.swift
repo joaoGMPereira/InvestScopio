@@ -68,8 +68,8 @@ extension SimulationCreationStepViewModel {
         showTextField = false
         showBottomButtons = true
         allSteps = Array<StepModel>(repeating: StepModel(), count:  SimulationCreationViewType.allCases.count)
-        firstButtonTitle = "Simplificada"
-        secondButtonTitle = "Completa"
+        firstButtonTitle = "Completa"
+        secondButtonTitle = "Simplificada"
     }
     
     func setFirstStep() {
@@ -169,8 +169,8 @@ extension SimulationCreationStepViewModel {
         if step == .lastStep {
             showTextField = false
             showBottomButtons = true
-            firstButtonTitle = "Simular"
-            secondButtonTitle = "Conferir"
+            firstButtonTitle = "Conferir"
+            secondButtonTitle = "Simular"
         }
     }
     
@@ -185,7 +185,7 @@ extension SimulationCreationStepViewModel {
         }
     }
     
-    func selectSecondButton(completion: @escaping (_ allSteps: [StepModel]) -> Void) {
+    func check(completion: @escaping (_ allSteps: [StepModel]) -> Void) {
         if step == .initialStep {
             selectedIndex = 1
         }

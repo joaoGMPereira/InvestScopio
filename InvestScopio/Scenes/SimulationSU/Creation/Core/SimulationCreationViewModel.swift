@@ -66,7 +66,7 @@ class SimulationCreationViewModel: NSObject, ObservableObject {
         }
     }
     
-    func selectFirstButton(completion: @escaping (SimulatorModel) -> Void, failure: @escaping (AppPopupSettings) -> Void) {
+    func simulate(completion: @escaping (SimulatorModel) -> Void, failure: @escaping (AppPopupSettings) -> Void) {
         guard isValidRequiredSteps() else {
             failure(AppPopupSettings.init(message: "Prencha todos os campos obrigatórios com um valor maior que zero para prosseguir!", textColor: .white, backgroundColor: Color(.JEWRed()), position: .top, show: true))
             return

@@ -70,13 +70,13 @@ extension SimulationCreationView {
                 ZStack {
                     FloatingTextField(toolbarBuilder: JEWToolbarBuilder().setToolbar(leftButtons: [.cancel, .back], rightButtons: [.ok]), formatBuilder: FloatingTextField.defaultFormatBuilder(placeholderColor: .label), placeholder: .constant(self.stepViewModel.step.setNextStepPlaceHolder()), text: self.$stepViewModel.allSteps[self.stepViewModel.step.rawValue].value, formatType: .constant(self.stepViewModel.step.setFormat()), keyboardType: .constant(.numberPad), close: self.$stepViewModel.close, shouldBecomeFirstResponder: .constant(true), tapOnToolbarButton: { textField, type in
                         self.tapOnToolbarStep(textField: textField, type: type)
-                    }) { textfield, text, isBackspace in
+                    }, onChanged:  { textfield, text, isBackspace in
                         var updatedText = text
                         if isBackspace && !text.isEmpty {
                             updatedText.removeLast()
                         }
                         self.stepViewModel.updateStep(textField: textfield, text: updatedText)
-                    }
+                    })
                     .frame(height: 50)
                     .padding(8)
                     GeometryReader { geometry in
@@ -97,22 +97,22 @@ extension SimulationCreationView {
     func bottomButtons() -> some View {
         Group {
             if self.stepViewModel.isOpened && self.stepViewModel.showBottomButtons {
-                DoubleButtons(firstIsLoading: .constant(false), secondIsLoading: .constant(false), firstIsEnable: .constant(true), secondIsEnable: .constant(true), firstModel: .init(title: stepViewModel.firstButtonTitle, color: Color(.JEWDefault()), isFill: true), secondModel: .init(title: stepViewModel.secondButtonTitle, color: Color(.JEWDefault()), isFill: false), background: Color("secondaryBackground"), firstCompletion: {
+                DoubleButtons(firstIsLoading: .constant(false), secondIsLoading: .constant(false), firstIsEnable: .constant(true), secondIsEnable: .constant(true), firstModel: .init(title: stepViewModel.firstButtonTitle, color: Color(.JEWDefault()), isFill: false), secondModel: .init(title: stepViewModel.secondButtonTitle, color: Color(.JEWDefault()), isFill: true), background: Color("secondaryBackground"), firstCompletion: {
+                    self.stepViewModel.check { (steps) in
+                        self.viewModel.updateSteps(steps: steps)
+                    }
+                    
+                }) {
                     self.stepViewModel.selectFirstButton { (steps) in
                         self.viewModel.updateSteps(steps: steps)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                            self.viewModel.selectFirstButton(completion: { (simulation) in
+                            self.viewModel.simulate(completion: { (simulation) in
                                 self.settings.popup = AppPopupSettings()
                                 self.detailViewModel.simulation = simulation
                             }, failure: { (settings) in
                                 self.settings.popup = settings
                             })
                         }
-                    }
-                    
-                }) {
-                    self.stepViewModel.selectSecondButton { (steps) in
-                        self.viewModel.updateSteps(steps: steps)
                     }
                 }
             }

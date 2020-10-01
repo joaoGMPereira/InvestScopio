@@ -22,7 +22,7 @@ public class LineChartDataSetBaseBridge: ObservableObject {
     @Published var xAxisDuration: TimeInterval
     @Published var yAxisDuration: TimeInterval
 
-    public init(color: UIColor = .JEWDefault(), colors: [UIColor] = [UIColor.JEWDefault()], circleColor: UIColor = .JEWBlack(), lineWidth: CGFloat = 1, circleRadius: CGFloat = 2, circleHoleRadius: CGFloat = 1, drawCircleHoleEnabled: Bool = true, circleColors: [UIColor] = [UIColor.JEWDefault()], drawValues: Bool = false, valueFont: UIFont = .systemFont(ofSize: 13, weight: .light), xAxisDuration: TimeInterval = 0.5, yAxisDuration: TimeInterval = 0.5) {
+    public init(color: UIColor = .JEWDefault(), colors: [UIColor] = [UIColor.JEWDefault()], circleColor: UIColor = .JEWBlack(), lineWidth: CGFloat = 2, circleRadius: CGFloat = 2, circleHoleRadius: CGFloat = 1, drawCircleHoleEnabled: Bool = true, circleColors: [UIColor] = [UIColor.JEWDefault()], drawValues: Bool = false, valueFont: UIFont = .systemFont(ofSize: 13, weight: .light), xAxisDuration: TimeInterval = 0.5, yAxisDuration: TimeInterval = 0.5) {
         self.color = color
         self.colors = colors
         self.circleColor = circleColor

@@ -39,17 +39,17 @@ extension SimulationCreationView {
                         firstSteps()
                         middleSteps()
                         finalSteps()
-                        DoubleButtons(firstIsLoading: .constant(false), secondIsLoading: .constant(false), firstIsEnable: .constant(true), secondIsEnable: .constant(true), firstModel: .init(title: "Simular", color: Color(.JEWDefault()), isFill: true), secondModel: .init(title: "Nova Simulação", color: Color(.JEWDefault()), isFill: false), background: Color(.JEWBackground()), firstCompletion: {
-                            self.viewModel.selectFirstButton(completion: { (simulation) in
+                        DoubleButtons(firstIsLoading: .constant(false), secondIsLoading: .constant(false), firstIsEnable: .constant(true), secondIsEnable: .constant(true), firstModel: .init(title: "Nova Simulação", color: Color(.JEWDefault()), isFill: false), secondModel: .init(title: "Simular", color: Color(.JEWDefault()), isFill: true), background: Color(.JEWBackground()), firstCompletion: {
+                            self.viewModel.cleanTextFields() {
+                                self.settings.popup = AppPopupSettings()
+                            }
+                        }) {
+                            self.viewModel.simulate(completion: { (simulation) in
                                 self.settings.popup = AppPopupSettings()
                                 self.detailViewModel.simulation = simulation
                             }, failure: { (settings) in
                                 self.settings.popup = settings
                             })
-                        }) {
-                            self.viewModel.cleanTextFields() {
-                                self.settings.popup = AppPopupSettings()
-                            }
                         }
                     }
                 }
@@ -101,13 +101,13 @@ extension SimulationCreationView {
                 self.tapOnToolbar(textField: textField, type: type, index: index)
             }, didBeginEditing: { textField in
                 self.viewModel.didBeginEditing(index: index)
-            }) { textfield, text, isBackspace in
+            }, onChanged:  { textfield, text, isBackspace in
                 var updatedText = text
                 if isBackspace && !text.isEmpty {
                     updatedText.removeLast()
                 }
                 self.viewModel.updateStep(textField: textfield, text: updatedText, index: index)
-            }
+            })
             .frame(height: 50)
             .padding(8)
             GeometryReader { geometry in

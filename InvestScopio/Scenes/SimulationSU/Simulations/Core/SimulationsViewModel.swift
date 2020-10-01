@@ -92,7 +92,6 @@ class SimulationsViewModel: ObservableObject {
             
             break
         case .loaded(let response):
-            DispatchQueue.main.asyncAfter(deadline: .now() + 20) { [self] in
             simulations = response
             if simulations.count == 0 {
                 message = "Nenhuma simulação foi encontrada, realize sua primeira simulação."
@@ -101,7 +100,6 @@ class SimulationsViewModel: ObservableObject {
                 completion?()
             }
             self.state = .loaded
-            }
         case .failed(let error):
             if let apiError = error as? APIError {
                 self.message = apiError.errorDescription ?? String()
