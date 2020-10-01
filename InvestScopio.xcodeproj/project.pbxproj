@@ -54,6 +54,7 @@
 		76348A41252408660037513E /* UIFont+INVSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76348A40252408660037513E /* UIFont+INVSExtension.swift */; };
 		76348ABB252417740037513E /* GoogleServiceInfoDev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AFF3EE822BBFF470056A167 /* GoogleServiceInfoDev.plist */; };
 		76348D5A2524EA8E0037513E /* SchemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76348D592524EA8E0037513E /* SchemeView.swift */; };
+		76348D62252620E70037513E /* ChartMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76348D61252620E70037513E /* ChartMarkerView.swift */; };
 		76541F142520324100DDD1C3 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76541F132520324100DDD1C3 /* AppSettings.swift */; };
 		76541F202520375100DDD1C3 /* DialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76541F1F2520375100DDD1C3 /* DialogView.swift */; };
 		7655A2C725070CBC004B3E0D /* SimulationCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655A2C625070CBC004B3E0D /* SimulationCreationViewModel.swift */; };
@@ -170,6 +171,7 @@
 		76348AB1252415690037513E /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		76348B552524267B0037513E /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		76348D592524EA8E0037513E /* SchemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeView.swift; sourceTree = "<group>"; };
+		76348D61252620E70037513E /* ChartMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartMarkerView.swift; sourceTree = "<group>"; };
 		76541F132520324100DDD1C3 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		76541F1F2520375100DDD1C3 /* DialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogView.swift; sourceTree = "<group>"; };
 		7655A2C625070CBC004B3E0D /* SimulationCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationCreationViewModel.swift; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 		7611A21824F495C30012BE56 /* LineChartBridge */ = {
 			isa = PBXGroup;
 			children = (
+				76348D60252620D60037513E /* Marker */,
 				7611A22024F5EDBC0012BE56 /* Entities */,
 				7611A21924F495D30012BE56 /* LineChartBridge.swift */,
 			);
@@ -550,6 +553,14 @@
 				76348D592524EA8E0037513E /* SchemeView.swift */,
 			);
 			path = SchemeView;
+			sourceTree = "<group>";
+		};
+		76348D60252620D60037513E /* Marker */ = {
+			isa = PBXGroup;
+			children = (
+				76348D61252620E70037513E /* ChartMarkerView.swift */,
+			);
+			path = Marker;
 			sourceTree = "<group>";
 		};
 		76541F122520322800DDD1C3 /* Settings */ = {
@@ -1050,6 +1061,7 @@
 				76C15C6824C7A7F800045D9A /* RegisterView.swift in Sources */,
 				768D8BF024C24490004BEADA /* LoginView.swift in Sources */,
 				7655A2D02507FA7B004B3E0D /* SimulationCreationView+StepView.swift in Sources */,
+				76348D62252620E70037513E /* ChartMarkerView.swift in Sources */,
 				76CAEE6C24E9D7880044508E /* TalkWithUsView.swift in Sources */,
 				766FEF2C251BC8D3000377C6 /* StartViewModel.swift in Sources */,
 				7611A21A24F495D30012BE56 /* LineChartBridge.swift in Sources */,

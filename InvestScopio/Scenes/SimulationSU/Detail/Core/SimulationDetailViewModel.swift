@@ -10,6 +10,12 @@ import Foundation
 import SwiftUI
 import Charts
 
+extension ChartDataEntry {
+    static func emptyEntry(x: Double) -> ChartDataEntry {
+        return ChartDataEntry(x: x, y: 0)
+    }
+}
+
 enum ChartType: Int {
     case profitability
     case rescue
@@ -57,6 +63,30 @@ class SimulationDetailViewModel: ObservableObject {
     @Published var close = true
     @Published var messageError = String()
     @Published var messageSuccess = String()
+    
+    @Published var hideHighlight = true
+    @Published var indexSelected: Int = .zero
+    @Published var positionXSelected: CGFloat = .zero
+    
+    func monthText() -> String {
+        if hideHighlight{
+            return "\(Int(entries.last?.x ?? 0))\nMeses"
+        }
+        if entries.indices.contains(indexSelected) {
+            return "\(Int(entries[indexSelected].x))\nMeses"
+        }
+        return "\(Int(entries.last?.x ?? 0))\nMeses"
+    }
+    func valueText() -> String {
+        if hideHighlight {
+            return "\(entries.last?.y.currencyFormat() ?? "RS0,00")\nInvestidos"
+        }
+        if entries.indices.contains(indexSelected) {
+            return "\(entries[indexSelected].y.currencyFormat())\nInvestidos"
+        }
+        return "\(entries.last?.y.currencyFormat() ?? "RS0,00")\nInvestidos"
+        
+    }
     
     private var lastMonthIndex = 0
     
@@ -117,10 +147,6 @@ class SimulationDetailViewModel: ObservableObject {
         
     }
     
-    var description: String {
-        chartType == .profitability ? "Total Investido" : "Total Resgatado"
-    }
-    
     let simulationDetailService: SimulationDetailServiceProtocol
     
     init(service: SimulationDetailServiceProtocol) {
@@ -143,12 +169,12 @@ class SimulationDetailViewModel: ObservableObject {
     }
     
     private func getEntries(months: Int) -> [ChartDataEntry] {
-        var entries = [ChartDataEntry]()
-        entries.append(ChartDataEntry(x: 0, y: chartType == .profitability ? simulation.initialValue: 0))
+        var entries = [ChartDataEntry.emptyEntry(x: 0), ChartDataEntry.emptyEntry(x: 1), ChartDataEntry.emptyEntry(x: 2), ChartDataEntry.emptyEntry(x: 3), ChartDataEntry.emptyEntry(x: 4)]
+        entries.append(ChartDataEntry(x: 5, y: chartType == .profitability ? simulation.initialValue: 0))
         for month in 0...months-1 {
             if simulateds.indices.contains(month) {
                 let simulatedValue = simulateds[month]
-                entries.append(ChartDataEntry(x: Double(month+1), y: chartType == .profitability ? simulatedValue.total ?? 0 : simulatedValue.totalRescue ?? 0))
+                entries.append(ChartDataEntry(x: Double(month+6), y: chartType == .profitability ? simulatedValue.total ?? 0 : simulatedValue.totalRescue ?? 0))
             }
         }
         return entries

@@ -37,7 +37,7 @@ struct JewSegmentedControl : View {
     var body: some View {
         ZStack(alignment: .topLeading) {
             ExDivider(color: selectedColor)
-                .frame(width: rects.indices.contains(selectedIndex) ? rects[selectedIndex].size.width - 4 : 0, height: dynamicButtonHeight() - 4)
+                .frame(width: widthCalculated(), height: heightCalculated())
                 .offset(x: rects.indices.contains(selectedIndex) ? rects[selectedIndex].minX + 2 : 0, y: 2)
                 .animation(.easeInOut(duration: 0.5))
             
@@ -52,6 +52,19 @@ struct JewSegmentedControl : View {
                 }
             }
         }.background(unselectedColor).clipShape(Capsule()).coordinateSpace(name: coordinateSpaceName)
+    }
+    
+    func widthCalculated() -> CGFloat {
+        if rects.indices.contains(selectedIndex) {
+            let width = rects[selectedIndex].size.width - 4
+            return width <= .zero ? 1 : width
+        }
+        return .zero
+    }
+    
+    func heightCalculated() -> CGFloat {
+        let height = dynamicButtonHeight() - 4
+        return height <= .zero ? 1 : height
     }
     
     func dynamicButtonHeight() -> CGFloat {

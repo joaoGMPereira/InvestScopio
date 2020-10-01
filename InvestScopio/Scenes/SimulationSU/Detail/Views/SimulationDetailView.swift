@@ -30,9 +30,6 @@ struct SimulationDetailView: View {
     @State var cellSize = CGSize.zero
     @State var showfirstSegment = false
     @State var chartSize = CGSize.zero
-    @State var hideHighlight = true
-    @State var indexSelected: Int = .zero
-    @State var positionXSelected: CGFloat = .zero
     
     var body: some View {
         ZStack {
@@ -53,13 +50,12 @@ struct SimulationDetailView: View {
                         JewSegmentedControl(selectedIndex: $viewModel.valueIndex, rects: $viewModel.rectsValue, titles: $viewModel.tabValues, selectedColor: Color("accessoryBackgroundSelected"), unselectedColor: Color("accessoryBackground"), coordinateSpaceName: "TabsValues").padding(.horizontal, 16)
                         
                         JewSegmentedControl(selectedIndex: $viewModel.monthsIndex, rects: $viewModel.rectsMonths, titles: $viewModel.monthsTabs, selectedColor: Color("accessoryBackgroundSelected"), unselectedColor: Color("accessoryBackground"), coordinateSpaceName: "TabsMonths").padding(.horizontal, 24)
-                        HStack {
-                            Text(hideHighlight ? "\(Int(viewModel.entries.last?.x ?? 0))\nMeses" : "\(viewModel.entries.indices.contains(indexSelected) ? Int(viewModel.entries[indexSelected].x) : Int(viewModel.entries.last?.x ?? 0))\nMeses").font(Font.subheadline.bold()).multilineTextAlignment(.center)
+                        VStack {
+                            Text(viewModel.monthText()).font(Font.subheadline.bold()).multilineTextAlignment(.center)
                             Spacer()
-                            Text(hideHighlight ? "\(viewModel.entries.last?.y.currencyFormat() ?? "RS0,00")\nInvestidos" : "\(viewModel.entries.indices.contains(indexSelected) ?  viewModel.entries[indexSelected].y.currencyFormat() : viewModel.entries.last?.y.currencyFormat() ?? "RS0,00")\nInvestidos").font(Font.subheadline.bold()).multilineTextAlignment(.center)
+                            Text(viewModel.valueText()).font(Font.subheadline.bold()).multilineTextAlignment(.center)
                         }.padding([.horizontal, .top])
-                        Text("Rentabilidade do mês: \(indexSelected) -> \(Int(viewModel.entries.last?.x ?? 0))").opacity(hideHighlight ? 0 : 1).animation(.default)
-                        LineChart(entries: viewModel.entries, months: viewModel.monthsValue ?? 0, granularity: viewModel.granularity, axisMaximum: viewModel.maximumValue, label: viewModel.description, hideHighlight: $hideHighlight, indexSelected: $indexSelected, positionXSelected: $positionXSelected).setChartDataBase(ChartDataBaseBridge(informationData: ChartInformationDataBridge(leftAxis: LeftAxisBridge(formatter: leftAxisFormatter), xAxis: XAxisBridge(formatter: xAxisFormatter)))).setChartDataSet(LineChartDataSetBaseBridge(xAxisDuration: viewModel.shouldAnimate ? 0.0 : 0, yAxisDuration: viewModel.shouldAnimate ? 0.5 : 0)).frame(width: chartSize.width, height: chartSize.width/3)
+                        LineChart(viewModel: LineChartViewModel(entries: viewModel.entries, months: viewModel.monthsValue ?? 0, hideHighlight: viewModel.hideHighlight, indexSelected: viewModel.indexSelected, positionXSelected: viewModel.positionXSelected)).frame(width: chartSize.width, height: 88)
                     }.getContent(size: $chartSize)
                 }
             }
