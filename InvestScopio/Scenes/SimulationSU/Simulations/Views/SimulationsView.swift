@@ -23,8 +23,7 @@ struct SimulationsView: View {
     @EnvironmentObject var reachability: Reachability
     @EnvironmentObject var settings: AppSettings
     @ObservedObject var viewModel: SimulationsViewModel
-    
-    let detailViewModel = SimulationDetailViewModel(service: SimulationDetailService(repository: SimulationDetailRepository()))
+    @ObservedObject var detailViewModel: SimulationDetailViewModel
     
     var foreverAnimation: Animation {
         Animation.linear(duration: 2.0)
@@ -159,10 +158,10 @@ struct SimulationsView_Previews: PreviewProvider {
     static var previews: some View {
         AppInitialization.initialize()
         return Group {
-            SimulationsView(viewModel: SimulationsViewModel(service:StubSimulationsService())).attachEnvironmentOverrides().previewDevice("iPhone Xs Max")
-            SimulationsView(viewModel: SimulationsViewModel(service:StubSimulationsServiceEmptySimulations())).attachEnvironmentOverrides().previewDevice("iPhone Xs Max")
-            SimulationsView(viewModel: SimulationsViewModel(service:StubSimulationsServiceFailure())).attachEnvironmentOverrides().previewDevice("iPhone Xs Max")
-            SimulationsView(viewModel: SimulationsViewModel(service:StubSimulationsService())).attachEnvironmentOverrides().previewDevice("iPad Pro (9.7-inch)")
+            SimulationsView(viewModel: SimulationsViewModel(service:StubSimulationsService()), detailViewModel: SimulationDetailViewModel(service: SimulationDetailService(repository: SimulationDetailRepository()))).attachEnvironmentOverrides().previewDevice("iPhone Xs Max")
+            SimulationsView(viewModel: SimulationsViewModel(service:StubSimulationsServiceEmptySimulations()), detailViewModel: SimulationDetailViewModel(service: SimulationDetailService(repository: SimulationDetailRepository()))).attachEnvironmentOverrides().previewDevice("iPhone Xs Max")
+            SimulationsView(viewModel: SimulationsViewModel(service:StubSimulationsServiceFailure()), detailViewModel: SimulationDetailViewModel(service: SimulationDetailService(repository: SimulationDetailRepository()))).attachEnvironmentOverrides().previewDevice("iPhone Xs Max")
+            SimulationsView(viewModel: SimulationsViewModel(service:StubSimulationsService()), detailViewModel: SimulationDetailViewModel(service: SimulationDetailService(repository: SimulationDetailRepository()))).attachEnvironmentOverrides().previewDevice("iPad Pro (9.7-inch)")
         }
     }
 }

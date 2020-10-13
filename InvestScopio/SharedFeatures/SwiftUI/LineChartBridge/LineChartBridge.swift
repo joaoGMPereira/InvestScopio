@@ -25,27 +25,14 @@ extension LineChartView {
     
 }
 
-class LineChartViewModel: ObservableObject {
-    @Published var entries: [ChartDataEntry]
-    @Published var lastMonths: Int = 0
-    @Published var months: Int
-    @Published var hideHighlight: Bool
-    @Published var indexSelected: Int
-    @Published var positionXSelected: CGFloat
-    @Published var shouldAnimate: Bool = true
-    
-    init(entries: [ChartDataEntry], months: Int, hideHighlight: Bool, indexSelected: Int, positionXSelected: CGFloat) {
-        self.entries = entries
-        self.months = months
-        self.hideHighlight = hideHighlight
-        self.indexSelected = indexSelected
-        self.positionXSelected = positionXSelected
-    }
-}
-
 struct LineChart: UIViewRepresentable {
-    
-    @ObservedObject var viewModel: LineChartViewModel
+    var entries: [ChartDataEntry]
+    var lastMonths: Int = 0
+    var months: Int
+    @Binding var hideHighlight: Bool
+    @Binding var indexSelected: Int
+    @Binding var positionXSelected: CGFloat
+    @State var shouldAnimate: Bool = true
     
     func makeUIView(context: Context) -> LineChartView {
         let chartView = LineChartView()
@@ -90,7 +77,7 @@ struct LineChart: UIViewRepresentable {
     }
     
     func setChartsEntries(chartView: LineChartView) {
-        let set = LineChartDataSet(entries: viewModel.entries, label: nil)
+        let set = LineChartDataSet(entries: entries, label: nil)
         set.setColor(.JEWDefault())
         set.lineWidth = 2
         set.drawCirclesEnabled = false
@@ -104,13 +91,13 @@ struct LineChart: UIViewRepresentable {
         let data = LineChartData(dataSets: [set])
         chartView.data = data
         chartView.data?.calcMinMax()
-        chartView.animate(xAxisDuration: viewModel.shouldAnimate ? 0.5 : .zero, yAxisDuration: viewModel.shouldAnimate ? 0.5 : .zero)
+        chartView.animate(xAxisDuration: shouldAnimate ? 0.5 : .zero, yAxisDuration: shouldAnimate ? 0.5 : .zero)
     }
     
     func setLeftAxys(chartView: LineChartView) {
         chartView.leftAxis.enabled = true
         chartView.leftAxis.drawZeroLineEnabled = true
-        chartView.leftAxis.zeroLineColor = UIColor.white
+        chartView.leftAxis.zeroLineColor = UIColor.label
         chartView.leftAxis.zeroLineWidth = 1
         chartView.leftAxis.drawLabelsEnabled = false
         chartView.leftAxis.drawGridLinesEnabled = false
@@ -133,7 +120,7 @@ struct LineChart: UIViewRepresentable {
     }
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(shouldAnimate: $viewModel.shouldAnimate, hideHighlight: $viewModel.hideHighlight, indexSelected: $viewModel.indexSelected, positionXSelected: $viewModel.positionXSelected)
+        return Coordinator(shouldAnimate: $shouldAnimate, hideHighlight: $hideHighlight, indexSelected: $indexSelected, positionXSelected: $positionXSelected)
     }
     
     class Coordinator: NSObject, ChartViewDelegate {
@@ -188,6 +175,6 @@ struct LineChart: UIViewRepresentable {
 
 struct LineChart_Previews: PreviewProvider {
     static var previews: some View {
-        return LineChart(viewModel: LineChartViewModel(entries: [ChartDataEntry(x: 0, y: 0)], months: 10, hideHighlight: true, indexSelected: 0, positionXSelected: .zero))
+        return LineChart(entries: [ChartDataEntry(x: 0, y: 0)], months: 10, hideHighlight: .constant(true), indexSelected: .constant(0), positionXSelected: .constant(.zero))
     }
 }

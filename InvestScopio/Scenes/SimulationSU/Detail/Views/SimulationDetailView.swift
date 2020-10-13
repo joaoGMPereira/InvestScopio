@@ -12,19 +12,6 @@ import JewFeatures
 
 struct SimulationDetailView: View {
     
-    var leftAxisFormatter: NumberFormatter {
-        let formatter = NumberFormatter.currencyDefault()
-        formatter.negativePrefix = "R$ "
-        formatter.positivePrefix = "R$ "
-        return formatter
-    }
-    
-    var xAxisFormatter: NumberFormatter {
-        let formatter = NumberFormatter()
-        formatter.generatesDecimalNumbers = false
-        return formatter
-    }
-    
     @ObservedObject var viewModel: SimulationDetailViewModel
     @EnvironmentObject var reachability: Reachability
     @State var cellSize = CGSize.zero
@@ -51,11 +38,11 @@ struct SimulationDetailView: View {
                         
                         JewSegmentedControl(selectedIndex: $viewModel.monthsIndex, rects: $viewModel.rectsMonths, titles: $viewModel.monthsTabs, selectedColor: Color("accessoryBackgroundSelected"), unselectedColor: Color("accessoryBackground"), coordinateSpaceName: "TabsMonths").padding(.horizontal, 24)
                         VStack {
-                            Text(viewModel.monthText()).font(Font.subheadline.bold()).multilineTextAlignment(.center)
+                            Text(viewModel.monthText()).font(Font.subheadline.bold()).multilineTextAlignment(.center).frame(maxWidth: .infinity)
                             Spacer()
-                            Text(viewModel.valueText()).font(Font.subheadline.bold()).multilineTextAlignment(.center)
+                            Text(viewModel.valueText()).font(Font.subheadline.bold()).multilineTextAlignment(.center).frame(maxWidth: .infinity)
                         }.padding([.horizontal, .top])
-                        LineChart(viewModel: LineChartViewModel(entries: viewModel.entries, months: viewModel.monthsValue ?? 0, hideHighlight: viewModel.hideHighlight, indexSelected: viewModel.indexSelected, positionXSelected: viewModel.positionXSelected)).frame(width: chartSize.width, height: 88)
+                        LineChart(entries: viewModel.entries, months: viewModel.monthsValue ?? 0, hideHighlight: $viewModel.hideHighlight, indexSelected: $viewModel.indexSelected, positionXSelected: $viewModel.positionXSelected).frame(width: chartSize.width, height: 88)
                     }.getContent(size: $chartSize)
                 }
             }
@@ -64,11 +51,11 @@ struct SimulationDetailView: View {
             })
         }.navigationBarTitle("Simulação", displayMode: .large)
             .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    self.showfirstSegment = true
-                }
-                DispatchQueue.main.async {
-                    self.viewModel.simulationDetail()
+                if !viewModel.isLoaded() {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        self.showfirstSegment = true
+                        self.viewModel.simulationDetail()
+                    }
                 }
         }.animation(.easeInOut)
     }

@@ -15,6 +15,7 @@ class AppRouterState {
     var registerViewModel = RegisterViewModel(service: RegisterService(repository: RegisterRepository()))
     var resendPasswordViewModel = ResendPasswordViewModel(service: ResendPasswordService())
     var simulationsViewModel = SimulationsViewModel(service: SimulationsService(repository: SimulationsRepository()))
+    var detailViewModel = SimulationDetailViewModel(service: SimulationDetailService(repository: SimulationDetailRepository()))
     var simulationCreationStepViewModel = SimulationCreationStepViewModel()
     var simulationCreationViewModel = SimulationCreationViewModel(allSteps: StepModel.allDefaultSteps)
     var simulationCreationDetailViewModel = SimulationDetailViewModel(service: SimulationDetailService(repository: SimulationDetailRepository()))
@@ -23,6 +24,7 @@ class AppRouterState {
     
     func cleanLoggedScenes() {
         simulationsViewModel = SimulationsViewModel(service: SimulationsService(repository: SimulationsRepository()))
+        detailViewModel = SimulationDetailViewModel(service: SimulationDetailService(repository: SimulationDetailRepository()))
         simulationCreationStepViewModel = SimulationCreationStepViewModel()
         simulationCreationViewModel = SimulationCreationViewModel(allSteps: StepModel.allDefaultSteps)
         simulationCreationDetailViewModel = SimulationDetailViewModel(service: SimulationDetailService(repository: SimulationDetailRepository()))
@@ -55,7 +57,7 @@ struct AppRouterView: View {
     
     var normalLogging: some View {
         TabView(selection: $settings.tabSelection) {
-            SimulationsView(viewModel: state.simulationsViewModel)
+            SimulationsView(viewModel: state.simulationsViewModel, detailViewModel: state.detailViewModel)
                 .tag(0)
                 .tabItem {
                     Image(systemName: SFSymbol.listBullet.rawValue)

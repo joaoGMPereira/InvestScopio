@@ -28,7 +28,7 @@ extension INVSSimulatedValueModel {
 }
 
 class SimulationDetailViewModel: ObservableObject {
-    
+    @Published var isloaded = false
     @Published var simulation: SimulatorModel {
         didSet {
             self.monthsTabs = setMonthsTabs(totalMonthUser: simulation.totalMonths)
@@ -44,6 +44,8 @@ class SimulationDetailViewModel: ObservableObject {
             }
         }
     }
+    
+    //@Published var chartsViewModel = LineChartViewModel(entries: entries, months: monthsValue ?? 0, hideHighlight: hideHighlight, indexSelected: indexSelected, positionXSelected: positionXSelected)
     
     @Published var valueIndex: Int = .zero
     @Published var monthsIndex: Int = .zero
@@ -68,23 +70,48 @@ class SimulationDetailViewModel: ObservableObject {
     @Published var indexSelected: Int = .zero
     @Published var positionXSelected: CGFloat = .zero
     
+    let emptyValues = [ChartDataEntry.emptyEntry(x: 0), ChartDataEntry.emptyEntry(x: 1), ChartDataEntry.emptyEntry(x: 2), ChartDataEntry.emptyEntry(x: 3), ChartDataEntry.emptyEntry(x: 4)]
+    
     func monthText() -> String {
-        if hideHighlight{
-            return "\(Int(entries.last?.x ?? 0))\nMeses"
+        if hideHighlight {
+            return lastMonthText
         }
         if entries.indices.contains(indexSelected) {
-            return "\(Int(entries[indexSelected].x))\nMeses"
+            if indexSelected < emptyValues.count {
+                return "\(xIndex)\n\(monthSyntax(xIndex))"
+            }
+            return "\(Int(entries[indexSelected].x) - emptyValues.count)\n\(monthSyntax(xIndex))"
         }
-        return "\(Int(entries.last?.x ?? 0))\nMeses"
+        return lastMonthText
     }
+    
+    var xIndex: Int {
+        Int(entries[emptyValues.count].x) - emptyValues.count
+    }
+    
+    var lastMonthText: String {
+        return "\(Int(entries.last?.x ?? 0) - emptyValues.count)\n\(monthSyntax(Int(entries.last?.x ?? 0)))"
+    }
+    
+    func monthSyntax(_ index: Int) -> String {
+        index > 1 ? "Meses" : "Mês"
+    }
+    
+    var investmentType: String {
+        chartType == .profitability ? "Investidos" : "Resgatados"
+    }
+    
     func valueText() -> String {
         if hideHighlight {
-            return "\(entries.last?.y.currencyFormat() ?? "RS0,00")\nInvestidos"
+            return "\(entries.last?.y.currencyFormat() ?? "RS0,00")\n\(investmentType)"
         }
         if entries.indices.contains(indexSelected) {
-            return "\(entries[indexSelected].y.currencyFormat())\nInvestidos"
+            if indexSelected < emptyValues.count {
+                return "\(entries[emptyValues.count].y.currencyFormat())\n\(investmentType)"
+            }
+            return "\(entries[indexSelected].y.currencyFormat())\n\(investmentType)"
         }
-        return "\(entries.last?.y.currencyFormat() ?? "RS0,00")\nInvestidos"
+        return "\(entries.last?.y.currencyFormat() ?? "RS0,00")\n\(investmentType)"
         
     }
     
@@ -169,7 +196,7 @@ class SimulationDetailViewModel: ObservableObject {
     }
     
     private func getEntries(months: Int) -> [ChartDataEntry] {
-        var entries = [ChartDataEntry.emptyEntry(x: 0), ChartDataEntry.emptyEntry(x: 1), ChartDataEntry.emptyEntry(x: 2), ChartDataEntry.emptyEntry(x: 3), ChartDataEntry.emptyEntry(x: 4)]
+        var entries = emptyValues
         entries.append(ChartDataEntry(x: 5, y: chartType == .profitability ? simulation.initialValue: 0))
         for month in 0...months-1 {
             if simulateds.indices.contains(month) {
@@ -232,6 +259,7 @@ class SimulationDetailViewModel: ObservableObject {
             
             break
         case .loaded(let response):
+            isloaded = true
             self.simulateds = response
             if simulateds.last?.totalRescue == 0 {
                 tabValues = ["Investido"]
@@ -242,6 +270,7 @@ class SimulationDetailViewModel: ObservableObject {
             self.showError = false
             self.state = .loaded
         case .failed(let error):
+            isloaded = true
             if let apiError = error as? APIError {
                 self.messageError = apiError.errorDescription ?? String()
                 self.showError = true
@@ -249,5 +278,9 @@ class SimulationDetailViewModel: ObservableObject {
             self.state = .loaded
             break
         }
+    }
+    
+    func isLoaded() -> Bool {
+        return isloaded
     }
 }
