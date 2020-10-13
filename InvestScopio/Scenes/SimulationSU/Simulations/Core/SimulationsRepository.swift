@@ -1,0 +1,73 @@
+//
+//  RegisterRepository.swift
+//  InvestScopio
+//
+//  Created by Joao Gabriel Pereira on 20/07/20.
+//  Copyright © 2020 Joao Medeiros Pereira. All rights reserved.
+//
+
+import Combine
+import Foundation
+import JewFeatures
+
+protocol SimulationsRepositoryProtocol: WebRepository {
+    func simulations() -> AnyPublisher<HTTPResponse<[SimulatorModel]>, Error>
+    func deleteSimulations() -> AnyPublisher<HTTPResponse<DeleteSimulationModel>, Error>
+    func deleteSimulation(id: String) -> AnyPublisher<HTTPResponse<DeleteSimulationModel>, Error>
+}
+
+struct SimulationsRepository: SimulationsRepositoryProtocol {
+
+    func simulations() -> AnyPublisher<HTTPResponse<[SimulatorModel]>, Error> {
+        return call(endpoint: API.simulations)
+    }
+    
+    func deleteSimulations() -> AnyPublisher<HTTPResponse<DeleteSimulationModel>, Error> {
+        return call(endpoint: API.deleteAll)
+    }
+    
+    func deleteSimulation(id: String) -> AnyPublisher<HTTPResponse<DeleteSimulationModel>, Error> {
+        return call(endpoint: API.delete(id))
+    }
+}
+
+// MARK: - Endpoints
+
+extension SimulationsRepository {
+    enum API {
+        case simulations
+        case deleteAll
+        case delete(_ id: String)
+    }
+}
+
+extension SimulationsRepository.API: APICall {
+    
+    var route: ConnectorRoutes {
+        switch self {
+        case .simulations:
+            return .userSimulations
+        case .deleteAll:
+            return .deleteAllSimulations
+        case .delete(let id):
+            return .deleteSimulation(id)
+        }
+    }
+    var method: HTTPMethod {
+        switch self {
+        case .simulations:
+            return .get
+        case .deleteAll:
+            return .delete
+        case .delete:
+            return .delete
+        }
+    }
+    var headers: [String: String]? {
+        return ["Content-Type": "application/json", "session-token": JEWSession.session.services.sessionToken]
+    }
+    
+    func body() -> HTTPRequest? {
+        return nil
+    }
+}
