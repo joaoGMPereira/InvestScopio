@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1e3ac27e-2860-4cd9-84a1-c88b4e2f53d3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/InvestScopio.xcodeproj/project.pbxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio.xcodeproj/project.xcworkspace/contents.xcworkspacedata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio.xcodeproj/xcshareddata/xcschemes/Debug.xcscheme" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio.xcodeproj/xcshareddata/xcschemes/InvestScopio.xcscheme" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio.xcworkspace/contents.xcworkspacedata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio.xcworkspace/xcshareddata/swiftpm/Package.resolved" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/AppIcon.appiconset/1024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/AppIcon.appiconset/114.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/AppIcon.appiconset/120.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/AppIcon.appiconset/180.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/AppIcon.appiconset/29.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/AppIcon.appiconset/40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/AppIcon.appiconset/57.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/AppIcon.appiconset/58.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/AppIcon.appiconset/60.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/AppIcon.appiconset/80.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/AppIcon.appiconset/87.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/Colors/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/Colors/accent.colorset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/Colors/accentDark.colorset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/Colors/accentGradient.colorset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/Colors/accentLight.colorset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/Colors/accessoryBackground.colorset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/Colors/accessoryBackgroundSelected.colorset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/Colors/cellBackground.colorset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/Colors/contrastBackground.colorset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/Colors/primaryBackground.colorset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/Colors/secondaryBackground.colorset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/LaunchImage.launchimage/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/LaunchScreenBackground.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/LaunchScreenBackground.imageset/LaunchScreenBackground.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/arrow.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/arrow.imageset/round_keyboard_arrow_down_white_48pt_1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/arrow.imageset/round_keyboard_arrow_down_white_48pt_2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/arrow.imageset/round_keyboard_arrow_down_white_48pt_3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/chartIcon.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/chartIcon.imageset/round_equalizer_black_36pt_1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/chartIcon.imageset/round_equalizer_black_36pt_2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/chartIcon.imageset/round_equalizer_black_36pt_3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/chartIconGradient.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/chartIconGradient.imageset/chartIconGradient.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/chartIconGradient.imageset/chartIconGradient2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/chartIconGradient.imageset/chartIconGradient3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/closeIconWhite.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/closeIconWhite.imageset/round_close_white_48pt_1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/closeIconWhite.imageset/round_close_white_48pt_2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/closeIconWhite.imageset/round_close_white_48pt_3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/exitAppIconWhite.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/exitAppIconWhite.imageset/outline_exit_to_app_white_48pt_1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/exitAppIconWhite.imageset/outline_exit_to_app_white_48pt_2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/exitAppIconWhite.imageset/outline_exit_to_app_white_48pt_3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/icon.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/icon.imageset/icon2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/icon.imageset/icon3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/iconBig.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/iconBig.imageset/iconBig2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/iconBig.imageset/iconBig3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/iconMedium.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/iconMedium.imageset/iconMedium2x-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/iconMedium.imageset/iconMedium3x-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/iconSmall.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/iconSmall.imageset/iconSmall2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/iconSmall.imageset/iconSmall3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/listIcon.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/listIcon.imageset/round_format_list_bulleted_black_36pt_1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/listIcon.imageset/round_format_list_bulleted_black_36pt_2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/listIcon.imageset/round_format_list_bulleted_black_36pt_3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/talkWithUsIcon.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/talkWithUsIcon.imageset/round_person_white_36pt_1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/talkWithUsIcon.imageset/round_person_white_36pt_2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/Images.xcassets/talkWithUsIcon.imageset/round_person_white_36pt_3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/animatedLoadingPurple.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/animatedLoadingWhite.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/animatedLogo.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/animatedLogoDark.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/animatedLogoWhite.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/closePlusAnimation.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/refreshAnimationPurple.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Assets/star.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Routes/ConnectorRoutes.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/AppRouterView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/Login/Offline/INVSAlertViewController.xib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/LoginSU/Admin/Views/DialogView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/LoginSU/Login/Core/LoginRepository.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/LoginSU/Login/Core/LoginService.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/LoginSU/Login/Core/LoginViewModel.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/LoginSU/Login/Views/LoginComponentsView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/LoginSU/Login/Views/LoginView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/LoginSU/Register/Core/RegisterRepository.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/LoginSU/Register/Core/RegisterService.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/LoginSU/Register/Core/RegisterViewModel.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/LoginSU/Register/Core/UserRequest.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/LoginSU/Register/Views/RegisterView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/LoginSU/Resend Password/Core/ResendPasswordService.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/LoginSU/Resend Password/Core/ResendPasswordViewModel.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/LoginSU/Resend Password/Views/ResendPasswordView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/SimulationSU/Creation/Core/SimulationCreationStepViewModel.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/SimulationSU/Creation/Core/SimulationCreationViewModel.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/SimulationSU/Creation/Extra/CreateSimulationSegments.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/SimulationSU/Creation/Extra/SimulationCreationViewType.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/SimulationSU/Creation/Extra/StepModel.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/SimulationSU/Creation/Views/SimulationCreationView+StepView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/SimulationSU/Creation/Views/SimulationCreationView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/SimulationSU/Detail/Core/SimulationDetailRepository.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/SimulationSU/Detail/Core/SimulationDetailService.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/SimulationSU/Detail/Core/SimulationDetailViewModel.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/SimulationSU/Detail/Views/SimulationDetailView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/SimulationSU/Models/DeleteSimulationModel.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/SimulationSU/Models/INVSSimulatedValueModel.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/SimulationSU/Models/SimulatorModel.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/SimulationSU/Simulations/Core/SimulationsRepository.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/SimulationSU/Simulations/Core/SimulationsService.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/SimulationSU/Simulations/Core/SimulationsViewModel.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/SimulationSU/Simulations/Views/SimulationCell.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/SimulationSU/Simulations/Views/SimulationsView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/StartSU/Core/StartService.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/StartSU/Core/StartViewModel.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/StartSU/Views/StartView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/TalkWithUsSU/Core/TalkWithUsRepository.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/TalkWithUsSU/Core/TalkWithUsService.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/TalkWithUsSU/Core/TalkWithUsViewModel.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/TalkWithUsSU/Extra/NPSModel.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Scenes/TalkWithUsSU/Views/TalkWithUsView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Settings/AppInitialization.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Settings/AppSettings.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Settings/Debug.xcconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Settings/Release.xcconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/BallonMarker/BalloonMarker.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/Constants/AppConstants.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/Cripto/LocalCrypto.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/FirebaseErrorHandler/FirebaseErrorHandler.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/NSAttributedString+INVSExtension.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SFSymbols/SFSymbols+Extensions.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SFSymbols/SFSymbols.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/String+INVSExtension.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/AnimatedText/AnimatedText.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/BlurView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/DoubleButtons.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/FloatingTextField.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/GenericView/SUIJewGenericView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/JewSegmentedControl.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/KeyboardObserver.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/LineChartBridge/Entities/Base/ChartDataBaseBridge.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/LineChartBridge/Entities/Base/LineChartDataSetBaseBridge.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/LineChartBridge/Entities/Information/ChartInformationDataBridge.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/LineChartBridge/Entities/Interative/ChartInterativeDataBridge.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/LineChartBridge/LineChartBridge.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/LineChartBridge/Marker/ChartMarkerView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/LoadingButton.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/LoadingView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/LoadingView/SUIJEWLoadingView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/MailView/MailView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/NPSView/NPSView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/PopupView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/RoundedRadius.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/SUILottie/SUILottieView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/SchemeView/SchemeView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/SplitView/SplitView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/StarShape/Start.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/Step/Step.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/Text+Extensions.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/Utilities/APICall.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/Utilities/AccessRepository.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/Utilities/CancelBag.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/Utilities/HTTPEntities.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/Utilities/Loadable.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/Utilities/NetworkingHelpers.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/Utilities/Reachability.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/Utilities/RefreshRepository.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/Utilities/Store.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/SwiftUI/Utilities/WebRepository.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/SharedFeatures/UIFont+INVSExtension.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Supporting Files/AppDelegate.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Supporting Files/Base.lproj/LaunchScreen.xib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Supporting Files/FirebaseConfig/GoogleServiceInfoDev.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Supporting Files/FirebaseConfig/GoogleServiceInfoProd.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Supporting Files/InvestScopio-Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InvestScopio/Supporting Files/SceneDelegate.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Podfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Podfile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1xj9aCAeIIndXWLO3vxrh9NIyzz" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1e3ac27e-2860-4cd9-84a1-c88b4e2f53d3" name="Default Changelist" comment="" />
+      <created>1630857691806</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1630857691806</updated>
+    </task>
+    <servers />
+  </component>
+</project>
