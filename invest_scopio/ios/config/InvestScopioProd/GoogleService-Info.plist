@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>303392116378-ri4nin8ije4lkjvbtp1uh62b0ljv4l3d.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.303392116378-ri4nin8ije4lkjvbtp1uh62b0ljv4l3d</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>303392116378-sne7ef0fvep35jbg1i6agveq1nou5mvh.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDAkvwILf8RYs6iRvPYIArcWjX_U_yIR4Q</string>
+	<key>GCM_SENDER_ID</key>
+	<string>303392116378</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.br.joao.gabriel.medeiros.pereira.InvestScopio</string>
+	<key>PROJECT_ID</key>
+	<string>investscopio</string>
+	<key>STORAGE_BUCKET</key>
+	<string>investscopio.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:303392116378:ios:f8b42ec7528f7052</string>
+	<key>DATABASE_URL</key>
+	<string>https://investscopio.firebaseio.com</string>
+</dict>
+</plist>
