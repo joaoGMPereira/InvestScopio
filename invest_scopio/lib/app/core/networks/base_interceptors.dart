@@ -58,8 +58,8 @@ class TokenInterceptor extends Interceptor {
   Future<void> onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
     options.headers[Headers.contentTypeHeader] = Headers.jsonContentType;
-    String token = await storage.getToken();
-    token.let((token) => options.headers['Authorization'] = 'Bearer $token}');
+    String? token = await storage.getToken();
+    token?.let((token) => options.headers['Authorization'] = 'Bearer $token}');
 
     super.onRequest(options, handler);
   }

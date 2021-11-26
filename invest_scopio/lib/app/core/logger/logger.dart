@@ -1,37 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:invest_scopio/app/core/logger/logger_button.dart';
 import 'package:invest_scopio/app/core/logger/logger_list.dart';
-import 'package:invest_scopio/app/core/logger/logger_controller.dart';
+import 'package:invest_scopio/app/core/logger/logger_store.dart';
 
 import 'logger_bottom_sheet.dart';
 
 
-class VLogger {
-  final LoggerController _controller;
+class Logger {
+  final LoggerStore _store;
 
-  VLogger(this._controller);
+  Logger(this._store);
 
   debug({String? title, String? message}) {
-    _controller.debug(title: title, message: message);
+    _store.debug(title: title, message: message);
   }
 
   error({String? title, String? message}) {
-    _controller.error(title: title, message: message);
+    _store.error(title: title, message: message);
   }
 
   info({String? title, String? message}) {
-    _controller.info(title: title, message: message);
+    _store.info(title: title, message: message);
   }
 
   toggle() {
-    _controller.toggle();
+    _store.toggle();
   }
 
-  static Widget logButton() {
-    return LoggerButton();
+  static Widget logButton(LoggerStore store) {
+    return LoggerButton(store);
   }
 
-  static showLogList(BuildContext context) {
-    LoggerBottomSheet.showDraggable(context, LoggerList());
+  static showLogList(BuildContext context, LoggerStore store) {
+    LoggerBottomSheet.showDraggable(context, VLoggerList(store));
   }
 }

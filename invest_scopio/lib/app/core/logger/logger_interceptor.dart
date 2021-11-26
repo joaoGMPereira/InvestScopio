@@ -27,7 +27,7 @@ class LoggerRequestOptions {
 
 
 class LoggerInterceptor {
-  final VLogger logger;
+  final Logger logger;
 
   LoggerInterceptor(this.logger);
 

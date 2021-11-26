@@ -1,32 +1,33 @@
-import 'package:get_storage/get_storage.dart';
+import 'package:invest_scopio/app/core/storage/storage_core.dart';
 
 abstract class StorageRepository {
   Future setToken(String data);
 
-  Future<String> getToken();
+  Future<String?> getToken();
 
   Future setUserId(String data);
 
-  Future<String> getUserId();
+  Future<String?> getUserId();
 }
 
 class StorageRepositoryImpl extends StorageRepository {
-  final GetStorage _storage;
+  final StorageCore _storageCore;
 
-  StorageRepositoryImpl(this._storage);
+  StorageRepositoryImpl(this._storageCore);
 
   static const String _token = "@token";
   static const String _userId = "@user_id";
 
   @override
-  Future setToken(String data) => _storage.write(_token, data);
+  Future setToken(String data) => _storageCore.setString(_token, data);
 
   @override
-  Future<String> getToken() => _storage.read(_token);
+  Future<String?> getToken() => _storageCore.getString(_token);
 
   @override
-  Future setUserId(String data) => _storage.write(_userId, data);
+  Future setUserId(String data) =>
+      _storageCore.setString(_userId, data);
 
   @override
-  Future<String> getUserId() => _storage.read(_userId);
+  Future<String?> getUserId() => _storageCore.getString(_userId);
 }

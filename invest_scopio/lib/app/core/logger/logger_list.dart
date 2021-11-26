@@ -2,14 +2,53 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:invest_scopio/app/UI/DesignSystemWidgets/ripple_card.dart';
-import 'package:invest_scopio/app/core/logger/log.dart';
-import 'logger_controller.dart';
+import 'log.dart';
+import 'logger_store.dart';
 
-class LoggerList extends GetView<LoggerController> {
+class VLoggerList extends StatefulWidget {
+  final LoggerStore store;
+
+  VLoggerList(this.store);
+
+  @override
+  _VLoggerListState createState() => _VLoggerListState(store);
+}
+
+class _VLoggerListState extends State<VLoggerList> {
+  LoggerStore _store;
+  final TextEditingController _controller = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
+
+  _VLoggerListState(this._store);
+
+  @override
+  void initState() {
+    super.initState();
+    _store.reset();
+    _controller.addListener(() {
+      _store.filter = _controller.text;
+    });
+
+    _scrollController.addListener(() {
+      if (_scrollController.position.userScrollDirection ==
+          ScrollDirection.forward) {
+        _store.atTop(true);
+      } else if (_scrollController.position.userScrollDirection ==
+          ScrollDirection.reverse) {
+        _store.atTop(false);
+      }
+      if (_scrollController.position.atEdge) {
+        if (_scrollController.position.pixels == 0) {
+          _store.atTop(true);
+        } else {
+          _store.atTop(false);
+        }
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -18,43 +57,43 @@ class LoggerList extends GetView<LoggerController> {
           _headerWidget(),
           SizedBox(height: 8),
           Expanded(
-            child: Obx(
-              () => Stack(
+            child: Observer(
+              builder: (_) => Stack(
                 children: [
                   ListView.builder(
-                      controller: controller.scrollController,
-                      itemCount: controller.filteredLogs.length,
+                      controller: _scrollController,
+                      itemCount: _store.filteredLogs.length,
                       itemBuilder: (context, index) {
                         return _logWidget(index);
                       }),
                   _positionedArrow(Icons.keyboard_arrow_down_rounded,
-                      controller.showTopIndicator.value,
+                      _store.showTopIndicator,
                       top: 0, onTap: () {
-                    controller.scrollController.animateTo(
-                        controller.scrollController.position.maxScrollExtent,
-                        duration: Duration(milliseconds: 300),
-                        curve: Curves.bounceIn);
-                  }),
+                        _scrollController.animateTo(
+                            _scrollController.position.maxScrollExtent,
+                            duration: Duration(milliseconds: 300),
+                            curve: Curves.bounceIn);
+                      }),
                   _positionedArrow(Icons.keyboard_arrow_up_rounded,
-                      controller.showBottomIndicator.value, bottom: 0,
-                      onTap: () {
-                    controller.scrollController.animateTo(
-                        controller.scrollController.initialScrollOffset,
-                        duration: Duration(milliseconds: 300),
-                        curve: Curves.bounceIn);
-                  }),
-                  controller.isCopying.value
+                      _store.showBottomIndicator,
+                      bottom: 0, onTap: () {
+                        _scrollController.animateTo(
+                            _scrollController.initialScrollOffset,
+                            duration: Duration(milliseconds: 300),
+                            curve: Curves.bounceIn);
+                      }),
+                  _store.isCopying
                       ? Positioned(
-                          top: 0,
-                          right: 5,
-                          child: SizedBox(
-                            width: 200,
-                            child: RippleCard(
-                                elevation: 2,
-                                color: Colors.white,
-                                child: _copyingWidget()),
-                          ),
-                        )
+                    top: 0,
+                    right: 5,
+                    child: SizedBox(
+                      width: 200,
+                      child: RippleCard(
+                          elevation: 2,
+                          color: Colors.white,
+                          child: _copyingWidget()),
+                    ),
+                  )
                       : Container(),
                 ],
               ),
@@ -71,15 +110,15 @@ class LoggerList extends GetView<LoggerController> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           _copyOption("Copiar Requests", onTap: () {
-            controller.copyRequests();
+            _store.copyRequests();
           }),
           Divider(height: 1),
           _copyOption("Copiar Responses", onTap: () {
-            controller.copyResponses();
+            _store.copyResponses();
           }),
           Divider(height: 1),
           _copyOption("Copiar Errors", onTap: () {
-            controller.copyErrors();
+            _store.copyErrors();
           })
         ]);
   }
@@ -89,7 +128,7 @@ class LoggerList extends GetView<LoggerController> {
         elevation: 0,
         child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(text, style: Get.theme.textTheme.button)),
+            child: Text(text, style: Theme.of(context).textTheme.button)),
         onTap: onTap);
   }
 
@@ -115,7 +154,7 @@ class LoggerList extends GetView<LoggerController> {
         children: [
           Expanded(
             child: TextField(
-              controller: controller.textEditingController,
+              controller: _controller,
               decoration: InputDecoration(
                 hintText: "Pesquisa",
                 focusedBorder: UnderlineInputBorder(
@@ -123,7 +162,7 @@ class LoggerList extends GetView<LoggerController> {
                 ),
               ),
               onSubmitted: (text) {
-                controller.filter.value = text;
+                _store.filter = text;
               },
             ),
           ),
@@ -131,12 +170,12 @@ class LoggerList extends GetView<LoggerController> {
           Row(
             children: [
               Row(
-                  children: VLogType.values
+                  children: LogType.values
                       .map((value) => _typeItemWidget(value))
                       .toList()),
-              Obx(
-                () => RippleCard(
-                  color: controller.isCopying.value
+              Observer(
+                builder: (_) => RippleCard(
+                  color: _store.isCopying
                       ? Colors.grey.withOpacity(0.1)
                       : Colors.transparent,
                   child: Padding(
@@ -144,7 +183,7 @@ class LoggerList extends GetView<LoggerController> {
                     child: Icon(Icons.copy),
                   ),
                   onTap: () {
-                    controller.isCopying.value = !controller.isCopying.value;
+                    _store.isCopying = !_store.isCopying;
                   },
                 ),
               ),
@@ -155,9 +194,9 @@ class LoggerList extends GetView<LoggerController> {
     );
   }
 
-  Widget _typeItemWidget(VLogType value) {
-    return Obx(
-      () => RippleCard(
+  Widget _typeItemWidget(LogType value) {
+    return Observer(
+      builder: (_) => RippleCard(
         color: _colorTypeItem(value),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -170,40 +209,40 @@ class LoggerList extends GetView<LoggerController> {
     );
   }
 
-  Color _colorTypeItem(VLogType value) {
+  Color _colorTypeItem(LogType value) {
     switch (value) {
-      case VLogType.Debug:
-        return controller.isDebug.value
+      case LogType.Debug:
+        return _store.isDebug
             ? Colors.grey.withOpacity(0.1)
             : Colors.transparent;
-      case VLogType.Error:
-        return controller.isError.value
+      case LogType.Error:
+        return _store.isError
             ? Colors.grey.withOpacity(0.1)
             : Colors.transparent;
-      case VLogType.Info:
-        return controller.isInfo.value
+      case LogType.Info:
+        return _store.isInfo
             ? Colors.grey.withOpacity(0.1)
             : Colors.transparent;
     }
   }
 
-  _onTapTypeItem(VLogType value) {
+  _onTapTypeItem(LogType value) {
     switch (value) {
-      case VLogType.Debug:
-        controller.isDebug.value = !controller.isDebug.value;
+      case LogType.Debug:
+        _store.isDebug = !_store.isDebug;
         break;
-      case VLogType.Error:
-        controller.isError.value = !controller.isError.value;
+      case LogType.Error:
+        _store.isError = !_store.isError;
         break;
-      case VLogType.Info:
-        controller.isInfo.value = !controller.isInfo.value;
+      case LogType.Info:
+        _store.isInfo = !_store.isInfo;
         break;
     }
   }
 
   Widget _logWidget(int index) {
-    if (controller.filteredLogs.length > index) {
-      var log = controller.filteredLogs[index];
+    if (_store.filteredLogs.length > index) {
+      var log = _store.filteredLogs[index];
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: RippleCard(
@@ -216,17 +255,19 @@ class LoggerList extends GetView<LoggerController> {
               children: [
                 Row(
                   children: [
-                    log.type?.icon ?? VLogType.Debug.icon,
+                    log.type?.icon ?? LogType.Debug.icon,
                     SizedBox(width: 8),
                     Expanded(
                       child: Text(log.title ?? "",
-                          style: Get.theme.textTheme.headline5),
+                          style: Theme.of(context).textTheme.headline5),
                     )
                   ],
                 ),
                 Flexible(
                   child: Text(log.message ?? "",
-                      style: Get.theme.textTheme.caption
+                      style: Theme.of(context)
+                          .textTheme
+                          .caption
                           ?.copyWith(fontWeight: FontWeight.w700)),
                 ),
               ],
@@ -245,5 +286,41 @@ class LoggerList extends GetView<LoggerController> {
       );
     }
     return Container();
+  }
+}
+
+class RippleCard extends StatelessWidget {
+  final Widget? child;
+  final Color? color;
+  final BorderSide side;
+  final BorderRadius borderRadius;
+  final double? elevation;
+  final GestureTapCallback? onTap;
+
+  RippleCard(
+      {@required this.child,
+        this.onTap,
+        this.elevation = 1,
+        this.color = Colors.transparent,
+        this.side = BorderSide.none,
+        this.borderRadius = const BorderRadius.all(Radius.circular(8))});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+        elevation: elevation,
+        shape: RoundedRectangleBorder(
+          side: side,
+          borderRadius: borderRadius,
+        ),
+        child: ClipRRect(
+            borderRadius: borderRadius,
+            child: InkWell(
+                borderRadius: borderRadius,
+                child: Ink(
+                    decoration:
+                    BoxDecoration(color: color, borderRadius: borderRadius),
+                    child: child),
+                onTap: onTap)));
   }
 }

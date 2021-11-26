@@ -1,4 +1,3 @@
-import 'package:kotlin_flavor/scope_functions.dart';
 import 'package:flutter/material.dart'
 ;
 class RippleCard extends StatelessWidget {

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-enum VLogType { Debug, Error, Info }
+enum LogType { Debug, Error, Info }
 
-extension VLopTypeExtension on VLogType {
+extension LopTypeExtension on LogType {
   String get separator {
     switch (this) {
-      case VLogType.Debug:
+      case LogType.Debug:
         return "-----------🟠🟠🟠🟠🟠🟠-----------";
-      case VLogType.Error:
+      case LogType.Error:
         return "-----------🔴🔴🔴🔴🔴🔴-----------";
-      case VLogType.Info:
+      case LogType.Info:
         return "-----------🔵🔵🔵🔵🔵🔵-----------";
     }
     return "";
@@ -17,21 +17,21 @@ extension VLopTypeExtension on VLogType {
 
   Icon get icon {
     switch (this) {
-      case VLogType.Debug:
+      case LogType.Debug:
         return Icon(Icons.adb, color: Colors.amber);
-      case VLogType.Error:
+      case LogType.Error:
         return Icon(Icons.error, color: Colors.redAccent);
-      case VLogType.Info:
+      case LogType.Info:
         return Icon(Icons.info, color: Colors.blueAccent);
     }
     return Icon(Icons.info_outline);
   }
 }
 
-class VLog {
+class Log {
   final String? title;
   final String? message;
-  final VLogType? type;
+  final LogType? type;
 
-  VLog({this.title, this.message, this.type});
+  Log({this.title, this.message, this.type});
 }
