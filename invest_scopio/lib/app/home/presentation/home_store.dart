@@ -18,8 +18,15 @@ abstract class _HomeStore extends Disposable with Store {
   @observable
   String? showToast;
 
+  @observable
+  int pageIndex = 0;
+
   @action
   init() async {
+  }
+
+  onBottomNavClick(int index) {
+    pageIndex = index;
   }
 
   @override

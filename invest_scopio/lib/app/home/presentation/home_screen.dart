@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:invest_scopio/app/UI/Core/tab_bar.dart';
 import 'package:invest_scopio/app/core/logger/logger.dart';
 import 'package:invest_scopio/app/home/di/home_module.dart';
+import 'package:invest_scopio/app/home/i18n/localization_ext.dart';
+import 'package:invest_scopio/app/settings/di/settings_module.dart';
+import 'package:invest_scopio/app/simulation_creation/di/simulation_creation_module.dart';
+import 'package:invest_scopio/app/simulations/di/simulations_module.dart';
 import 'package:mobx/mobx.dart';
 
 import 'home_store.dart';
@@ -32,30 +37,27 @@ class _HomeScreenState extends TabBarScreenState<HomeScreen> {
   }
 
   @override
-  Map<String, String> items() => {
-    "home": "home",
-    "marcas": "marcas",
-    "vendedores": "vendedores",
-    "pedidos": "pedidos",
-    "perfil": "perfil",
-  };
+  Map<String, IconData> items() {
+    Map<String, IconData> map = {};
+    HomeTabs.values.forEach((value) {
+      map.addAll({value.label: value.icon});
+    });
+    return map;
+  }
 
   @override
   List<Widget> getPages() {
-    return [
-      SimulationsModule()
-    ];
+    return [SimulationsModule(), SimulationCreationModule(), SettingsModule()];
   }
 
   @override
   onTap(int index) async {
-    //_store.onBottomNavClick(index);
+    _store.onBottomNavClick(index);
   }
 
   @override
   pageIndex() {
-    return 0;
-   // _store.pageIndex;
+    return _store.pageIndex;
   }
 
   void _installListeners() {
@@ -68,89 +70,28 @@ class _HomeScreenState extends TabBarScreenState<HomeScreen> {
   }
 }
 
+enum HomeTabs { Simulations, Creation, Settings }
 
-abstract class TabBarScreen extends StatefulWidget {
-  TabBarScreen({Key? key}) : super(key: key);
-}
-
-abstract class TabBarScreenState<T extends TabBarScreen>
-    extends State<T> {
-  Offset? position;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: Observer(
-          builder: (_) => IndexedStack(
-            index: pageIndex(),
-            children: getPages(),
-          ),
-        ),
-        bottomNavigationBar: Observer(
-          builder: (_) => TabBottomNavigationBar(
-            currentIndex: pageIndex(),
-            onTap: onTap,
-            items: items(),
-          ),
-        ));
+extension HomeTabsExtension on HomeTabs {
+  String get label {
+    switch (this) {
+      case HomeTabs.Simulations:
+        return Strings.simulations_tab_PT_BR.i18n;
+      case HomeTabs.Creation:
+        return Strings.simulation_creation_tab_PT_BR.i18n;
+      case HomeTabs.Settings:
+        return Strings.settings_tab_PT_BR.i18n;
+    }
   }
 
-  int pageIndex();
-
-  Map<String, String> items();
-
-  List<Widget> getPages();
-
-  Future onTap(int index);
-}
-
-
-class TabBottomNavigationBar extends StatelessWidget {
-  final ValueChanged<int> onTap;
-  final int currentIndex;
-  final Map<String, String> items;
-
-  static const double _iconHeight = 24;
-
-  const TabBottomNavigationBar({
-    Key? key,
-    required this.onTap,
-    required this.currentIndex,
-    required this.items,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      type: BottomNavigationBarType.fixed,
-      items: _getBottomNavItems(items),
-      currentIndex: currentIndex,
-      onTap: onTap,
-    );
+  IconData get icon {
+    switch (this) {
+      case HomeTabs.Simulations:
+        return Icons.list;
+      case HomeTabs.Creation:
+        return Icons.bar_chart_rounded;
+      case HomeTabs.Settings:
+        return Icons.settings;
+    }
   }
-
-  List<BottomNavigationBarItem> _getBottomNavItems(Map<String, String> items) =>
-      items.entries
-          .map((entry) => _getBottomNavigationBarItem(entry.key, entry.value))
-          .toList();
-
-  BottomNavigationBarItem _getBottomNavigationBarItem(
-      String assetName,
-      String label,
-      ) =>
-      BottomNavigationBarItem(
-        icon: _getCoreAssetIcon(assetName, isSelected: false),
-        activeIcon: _getCoreAssetIcon(assetName, isSelected: true),
-        label: label,
-      );
-
-  Widget _getCoreAssetIcon(String assetName, {required bool isSelected}) =>
-      Icon(Icons.add,
-        size: _iconHeight,
-        color: isSelected
-            ? Colors.redAccent
-            : Colors.greenAccent,
-      );
 }

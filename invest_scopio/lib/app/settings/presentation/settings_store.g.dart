@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'home_store.dart';
+part of 'settings_store.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,8 +8,8 @@ part of 'home_store.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$HomeStore on _HomeStore, Store {
-  final _$isLoadingAtom = Atom(name: '_HomeStore.isLoading');
+mixin _$SettingsStore on _SettingsStore, Store {
+  final _$isLoadingAtom = Atom(name: '_SettingsStore.isLoading');
 
   @override
   bool get isLoading {
@@ -24,7 +24,7 @@ mixin _$HomeStore on _HomeStore, Store {
     });
   }
 
-  final _$showToastAtom = Atom(name: '_HomeStore.showToast');
+  final _$showToastAtom = Atom(name: '_SettingsStore.showToast');
 
   @override
   String? get showToast {
@@ -39,22 +39,7 @@ mixin _$HomeStore on _HomeStore, Store {
     });
   }
 
-  final _$pageIndexAtom = Atom(name: '_HomeStore.pageIndex');
-
-  @override
-  int get pageIndex {
-    _$pageIndexAtom.reportRead();
-    return super.pageIndex;
-  }
-
-  @override
-  set pageIndex(int value) {
-    _$pageIndexAtom.reportWrite(value, super.pageIndex, () {
-      super.pageIndex = value;
-    });
-  }
-
-  final _$initAsyncAction = AsyncAction('_HomeStore.init');
+  final _$initAsyncAction = AsyncAction('_SettingsStore.init');
 
   @override
   Future init() {
@@ -65,8 +50,7 @@ mixin _$HomeStore on _HomeStore, Store {
   String toString() {
     return '''
 isLoading: ${isLoading},
-showToast: ${showToast},
-pageIndex: ${pageIndex}
+showToast: ${showToast}
     ''';
   }
 }

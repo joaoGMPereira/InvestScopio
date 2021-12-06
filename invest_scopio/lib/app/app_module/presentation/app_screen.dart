@@ -22,6 +22,7 @@ class _AppScreenState extends State<AppScreen> {
 
   @override
   void initState() {
+    _store.init();
     super.initState();
     _installListeners();
   }
@@ -45,9 +46,9 @@ class _AppScreenState extends State<AppScreen> {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: [
-        const Locale('en', "US"), //TODO habilitar quando tiver traducao
+        const Locale('en', "US"),
         const Locale('pt', "BR"),
-        const Locale('es', "ES"), //TODO habilitar quando tiver traducao
+        const Locale('es', "ES")
       ],
     ).modular();
   }

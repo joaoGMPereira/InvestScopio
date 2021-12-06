@@ -24,6 +24,21 @@ mixin _$AppStore on _AppStore, Store {
     });
   }
 
+  final _$_authControllerAtom = Atom(name: '_AppStore._authController');
+
+  @override
+  AuthController? get _authController {
+    _$_authControllerAtom.reportRead();
+    return super._authController;
+  }
+
+  @override
+  set _authController(AuthController? value) {
+    _$_authControllerAtom.reportWrite(value, super._authController, () {
+      super._authController = value;
+    });
+  }
+
   final _$showToastAtom = Atom(name: '_AppStore.showToast');
 
   @override
