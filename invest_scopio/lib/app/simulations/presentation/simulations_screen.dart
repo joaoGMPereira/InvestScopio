@@ -30,13 +30,13 @@ class _SimulationsScreenState extends State<SimulationsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(child: Center(child: TextWidget(text: "Simulações", type: TextWidgetType.Subheadline)));;
+    return Container(
+        child:
+            Center(child: TextWidget(text: "Simulações", style: Style.title)));
+    ;
   }
 
   void _installListeners() {
-    _disposers.add(
-      reaction((_) => _store.showToast, (message) {
-      })
-    );
+    _disposers.add(reaction((_) => _store.showToast, (message) {}));
   }
 }

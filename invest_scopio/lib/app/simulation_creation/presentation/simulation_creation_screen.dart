@@ -34,7 +34,7 @@ class _SimulationCreationScreenState extends State<SimulationCreationScreen> {
     return Container(
         child: Center(
             child:
-                TextWidget(text: "Criação", type: TextWidgetType.Subheadline)));
+                TextWidget(text: "Criação", style: Style.subtitle)));
   }
 
   void _installListeners() {

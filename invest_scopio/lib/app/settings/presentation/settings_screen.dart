@@ -33,7 +33,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Container(
         child: Center(
             child: TextWidget(
-                text: "Configuração", type: TextWidgetType.Subheadline)));
+                text: "Configuração", style: Style.subtitle)));
   }
 
   void _installListeners() {

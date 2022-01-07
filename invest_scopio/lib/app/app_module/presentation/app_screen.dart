@@ -37,9 +37,10 @@ class _AppScreenState extends State<AppScreen> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "InvestScopio",
-      theme: FlexColorScheme
-          .dark(scheme: FlexScheme.bigStone)
-          .toTheme,
+      theme: FlexThemeData.dark(
+        scheme: FlexScheme.bigStone,
+        appBarElevation: 2,
+      ),
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,

@@ -1,29 +1,63 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+
+enum Style {
+  description,
+  title,
+  subtitle,
+  label,
+  note
+}
 
 class TextWidget extends StatelessWidget {
   final String text;
-  final TextWidgetType type;
-  TextWidget({required this.text, required this.type});
+  final Style style;
+  final TextAlign align;
+
+  const TextWidget({required this.text, required this.style,
+      this.align = TextAlign.center, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Text(text, style: type.style(context));
+    return Text(
+      text,
+      textAlign: align,
+      style: _getStyle(),
+    );
   }
-}
 
-enum TextWidgetType { Headline, Subheadline, Body, Caption }
-
-extension TextWidgetTypeExtension on TextWidgetType {
-  TextStyle? style(BuildContext context) {
-    switch(this) {
-      case TextWidgetType.Headline:
-        return Theme.of(context).textTheme.headline5;
-      case TextWidgetType.Subheadline:
-        return Theme.of(context).textTheme.headline3;
-      case TextWidgetType.Body:
-        return Theme.of(context).textTheme.bodyText1;
-      case TextWidgetType.Caption:
-        return Theme.of(context).textTheme.caption;
+  TextStyle _getStyle() {
+    switch (style) {
+      case Style.title:
+        return const TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w300,
+          fontSize: 32.0,
+        );
+      case Style.subtitle:
+        return const TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w300,
+          fontSize: 24.0,
+        );
+      case Style.description:
+        return const TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w300,
+          fontSize: 18.0,
+        );
+      case Style.label:
+        return const TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w300,
+          fontSize: 12.0,
+        );
+      case Style.note:
+        return const TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w200,
+          fontSize: 10.0,
+        );
     }
   }
 }

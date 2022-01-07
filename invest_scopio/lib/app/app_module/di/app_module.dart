@@ -10,6 +10,7 @@ import 'package:invest_scopio/app/core/storage/storage_core.dart';
 import 'package:invest_scopio/app/core/storage/storage_repository.dart';
 import 'package:invest_scopio/app/app_module/presentation/login_widget.dart';
 import 'package:invest_scopio/app/home/di/home_module.dart';
+import 'package:invest_scopio/app/login/presentation/ui/login_screen.dart';
 import 'package:invest_scopio/app/main/app_config.dart';
 import 'package:invest_scopio/app/app_module/data/app_repository.dart';
 import 'package:invest_scopio/app/app_module/data/app_service.dart';
@@ -45,7 +46,7 @@ class AppModule extends Module {
 
   @override
   List<ModularRoute> get routes => [
-        ChildRoute('/', child: (context, args) => LoginWidget(Modular.get())),
+        ChildRoute('/', child: (context, args) => LoginScreen()),
         ModuleRoute('/home', module: HomeModule()),
       ];
 }
