@@ -54,4 +54,31 @@ extension LoginNavigation on LoginWidgetFlow {
         return LoginStatusWidget(vm);
     }
   }
+
+  LoginWidgetFlow? get lastFlow {
+    switch(this) {
+      case LoginWidgetFlow.init:
+        return LoginWidgetFlow.init;
+      case LoginWidgetFlow.login:
+        return LoginWidgetFlow.init;
+      case LoginWidgetFlow.signin:
+        return LoginWidgetFlow.init;
+      case LoginWidgetFlow.login2fa:
+        return LoginWidgetFlow.signin;
+      case LoginWidgetFlow.toogle2fa:
+        return LoginWidgetFlow.login2fa;
+      case LoginWidgetFlow.otpQr:
+        return LoginWidgetFlow.login2fa;
+      case LoginWidgetFlow.forgot:
+        return LoginWidgetFlow.login;
+      case LoginWidgetFlow.registration:
+        return LoginWidgetFlow.forgot;
+      case LoginWidgetFlow.reset:
+        return LoginWidgetFlow.forgot;
+      case LoginWidgetFlow.resetCode:
+        return LoginWidgetFlow.login;
+      case LoginWidgetFlow.status:
+        return null;
+    }
+  }
 }

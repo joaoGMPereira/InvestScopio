@@ -23,11 +23,12 @@ class _LoginToogle2FAWidgetState extends State<LoginToogle2FAWidget>
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (_) {
-      return ViewStateWidget(
-        content: content(),
-        onBackPressed: _onBackPressed,
-        state: widget.viewModel.state,
-      );
+      return Observer(
+          builder: (_) => ViewStateWidget(
+                content: content(),
+                onBackPressed: _onBackPressed,
+                state: widget.viewModel.state,
+              ));
     });
   }
 

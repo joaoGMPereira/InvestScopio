@@ -17,12 +17,12 @@ class Toogle2FAUseCase<T> extends BaseUseCase<T> {
       } else {
         message = "2FA desabilitado";
       }
-      success.call(Pair<StatusModel, bool>(
+      success(Pair<StatusModel, bool>(
           StatusModel(
               message: message, action: "Ok", next: LoginWidgetFlow.otpQr),
           response.data) as T);
     } else {
-      error.call();
+      error(response.exception);
     }
   }
 }

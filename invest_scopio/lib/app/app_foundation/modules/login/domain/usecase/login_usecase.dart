@@ -27,9 +27,9 @@ class LoginUseCase<T> extends BaseUseCase<T> {
                 Session.instance.getKeyChain()),
             cypherSchema: CypherSchema.rsa)));
     if (response.isSuccessfully) {
-      success.call(LoginResponse.fromJson(response.data) as T);
+      success(LoginResponse.fromJson(response.data) as T);
     } else {
-      error.call();
+      error(response.exception);
     }
   }
 }

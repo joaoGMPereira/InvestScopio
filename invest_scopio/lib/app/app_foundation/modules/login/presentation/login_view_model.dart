@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:invest_scopio/app/UI/Core/view_state.dart';
+import 'package:invest_scopio/app/app_foundation/core/data/local_exception.dart';
 import 'package:invest_scopio/app/app_foundation/core/model/pair_model.dart';
 import 'package:invest_scopio/app/app_foundation/core/model/status_model.dart';
 import 'package:invest_scopio/app/app_foundation/core/service/api_exception.dart';
@@ -62,7 +63,7 @@ abstract class _LoginViewModel with Store {
       Session.instance.setKeyChain(CryptoService.instance.generateAESKeys());
       Session.instance.setRSAKey(response);
       getUser();
-    }, error: () {
+    }, error: (ApiException error) {
       state = ViewState.error;
     });
   }
@@ -79,7 +80,7 @@ abstract class _LoginViewModel with Store {
             Modular.to.navigate(Routes.leagues);
           }
         },
-        error: onError);
+        error: onApiError);
   }
 
   void toogle2fa(bool value) async {
@@ -91,7 +92,7 @@ abstract class _LoginViewModel with Store {
           state = ViewState.ready;
           flow = LoginWidgetFlow.status;
         },
-        error: onError);
+        error: onApiError);
   }
 
   void login2fa(String code) async {
@@ -103,7 +104,7 @@ abstract class _LoginViewModel with Store {
             success: (data) {
               status = data;
             },
-            error: onError);
+            error: onApiError);
   }
 
   void signin(String name, String surname, String mail, String password) async {
@@ -116,7 +117,7 @@ abstract class _LoginViewModel with Store {
               state = ViewState.ready;
               flow = LoginWidgetFlow.status;
             },
-            error: onError);
+            error: onApiError);
   }
 
   void forgot(String mail) async {
@@ -127,7 +128,7 @@ abstract class _LoginViewModel with Store {
           flow = LoginWidgetFlow.status;
           state = ViewState.ready;
         },
-        error: onError);
+        error: onApiError);
   }
 
   void reset(String mail, String password, String code) async {
@@ -140,7 +141,7 @@ abstract class _LoginViewModel with Store {
               status = data;
               flow = LoginWidgetFlow.status;
             },
-            error: onError);
+            error: onApiError);
   }
 
   void getUser() async {
@@ -155,18 +156,18 @@ abstract class _LoginViewModel with Store {
           }
           flow = LoginWidgetFlow.login;
         },
-        error: onError);
+        error: onApiError);
   }
 
   void saveUser(String email, String password) async {
     await saveUserUseCase
         .params(email: email, password: password)
-        .invoke(success: (data) {}, error: onError);
+        .invoke(success: (data) {}, error: onLocalError);
   }
 
-  void onError(ApiException error) {
+  void onApiError(ApiException error) {
     status = StatusModel(
-        message: error.message(),
+        message: error.message,
         action: "Ok",
         next: LoginWidgetFlow.init,
         previous: flow);
@@ -177,6 +178,16 @@ abstract class _LoginViewModel with Store {
     } else {
       state = ViewState.error;
     }
+  }
+
+  void onLocalError(LocalException error) {
+    status = StatusModel(
+        message: error.message,
+        action: "Ok",
+        next: LoginWidgetFlow.init,
+        previous: flow);
+
+      state = ViewState.error;
   }
 
   void retry() {

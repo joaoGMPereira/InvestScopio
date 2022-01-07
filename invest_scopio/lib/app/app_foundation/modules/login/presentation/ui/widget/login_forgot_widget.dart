@@ -32,11 +32,12 @@ class _LoginForgotWidgetState extends State<LoginForgotWidget>
 
   @override
   Widget build(BuildContext context) {
-    return ViewStateWidget(
-      content: content(),
-      onBackPressed: _onBackPressed,
-      state: widget.viewModel.state,
-    );
+    return Observer(
+        builder: (_) => ViewStateWidget(
+              content: content(),
+              onBackPressed: _onBackPressed,
+              state: widget.viewModel.state,
+            ));
   }
 
   Future<bool> _onBackPressed() async {

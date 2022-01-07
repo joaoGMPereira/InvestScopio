@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:invest_scopio/app/UI/Core/view_state.dart';
+import 'package:invest_scopio/app/UI/component/ui/icon_button_widget.dart';
 
 import '../login_view_model.dart';
 import 'login_flow.dart';
@@ -28,7 +29,15 @@ class _LoginScreenState extends State<LoginScreen> implements BaseScreen {
     return Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
-          title: const Text('E-racing'),
+          leading: Observer(
+            builder: (_) => viewModel.flow.lastFlow == null
+                ? IconButtonWidget(
+                    icon: Icons.arrow_back_ios_outlined, onPressed: () {
+                      viewModel.flow = viewModel.flow.lastFlow ?? LoginWidgetFlow.init;
+            })
+                : Container(),
+          ),
+          title: const Text('InvestScopio'),
         ),
         body: Observer(builder: (_) {
           return navigate();

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:invest_scopio/app/UI/Core/view_state.dart';
 import 'package:invest_scopio/app/UI/component/state/view_state_widget.dart';
 import 'package:invest_scopio/app/UI/component/ui/bound_widget.dart';
@@ -20,10 +21,12 @@ class _LoginInitialWidgetState extends State<LoginInitialWidget>
     implements BaseSateWidget {
   @override
   Widget build(BuildContext context) {
-    return ViewStateWidget(
-        content: content(),
-        state: widget.viewModel.state,
-        onBackPressed: _onBackPressed);
+    return Observer(
+      builder: (_) => ViewStateWidget(
+          content: content(),
+          state: widget.viewModel.state,
+          onBackPressed: _onBackPressed),
+    );
   }
 
   Future<bool> _onBackPressed() async {

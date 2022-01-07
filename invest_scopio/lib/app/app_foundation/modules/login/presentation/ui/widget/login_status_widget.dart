@@ -22,10 +22,11 @@ class _LoginStatusWidgetState extends State<LoginStatusWidget>
     implements BaseSateWidget {
   @override
   Widget build(BuildContext context) {
-    return ViewStateWidget(
-        content: content(),
-        state: widget.viewModel.state,
-        onBackPressed: _onBackPressed);
+    return Observer(
+        builder: (_) => ViewStateWidget(
+            content: content(),
+            state: widget.viewModel.state,
+            onBackPressed: _onBackPressed));
   }
 
   Widget content() {

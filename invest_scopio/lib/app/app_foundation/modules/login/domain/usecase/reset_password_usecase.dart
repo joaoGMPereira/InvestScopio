@@ -29,9 +29,9 @@ class ResetPasswordUseCase<T> extends BaseUseCase<T> {
     if (response.isSuccessfully) {
       var status = StatusModel(
           message: "Senha resetada", action: "Ok", next: LoginWidgetFlow.login);
-      success.call(status as T);
+      success(status as T);
     } else {
-      error.call();
+      error(response.exception);
     }
   }
 }

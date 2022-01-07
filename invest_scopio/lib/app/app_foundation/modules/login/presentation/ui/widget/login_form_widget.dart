@@ -53,7 +53,8 @@ class _LoginFormWidgetState extends State<LoginFormWidget>
         Form(child: loginForm(), key: _formKey),
         Observer(builder: (_) {
           _emailController.text = widget.viewModel.user?.profile?.email ?? "";
-          _passwordController.text = widget.viewModel.user?.auth?.password ?? "";
+          _passwordController.text =
+              widget.viewModel.user?.auth?.password ?? "";
           return Container();
         }),
       ],

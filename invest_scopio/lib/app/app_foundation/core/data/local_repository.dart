@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:invest_scopio/app/app_foundation/core/data/local_exception.dart';
 import 'package:invest_scopio/app/app_foundation/core/data/store_request.dart';
 import 'package:invest_scopio/app/app_foundation/core/data/store_response.dart';
 import 'package:localstorage/localstorage.dart';
@@ -15,26 +16,36 @@ class LocalRepository {
   Future<StoreResponse> save({@required key, @required data}) async {
     try {
       await storage.setItem(key, data);
-      return StoreResponse(null, true);
-    } catch (e) {
-      return StoreResponse(null, false);
+      return StoreResponse(isSuccessfully: true);
+    } catch (exception, stacktrace) {
+      return StoreResponse(
+          isSuccessfully: false,
+          exception: LocalException.exception(
+              exception, stacktrace, Operation.create));
     }
   }
 
   Future<StoreResponse> get({@required key}) async {
     try {
-      return StoreResponse(await storage.getItem(key), true);
-    } catch (e) {
-      return StoreResponse(null, false);
+      return StoreResponse(
+          data: await storage.getItem(key), isSuccessfully: true);
+    } catch (exception, stacktrace) {
+      return StoreResponse(
+          isSuccessfully: false,
+          exception: LocalException.exception(
+              exception, stacktrace, Operation.select));
     }
   }
 
   Future<StoreResponse> delete({@required key}) async {
     try {
       await storage.deleteItem(key);
-      return StoreResponse(null, true);
-    } catch (e) {
-      return StoreResponse(null, false);
+      return StoreResponse(isSuccessfully: true);
+    } catch (exception, stacktrace) {
+      return StoreResponse(
+          isSuccessfully: false,
+          exception: LocalException.exception(
+              exception, stacktrace, Operation.delete));
     }
   }
 

@@ -10,11 +10,11 @@ class GetPublicKeyUseCase<T> extends BaseUseCase<T> {
         Request(endpoint: "api/v1/auth/rsa/public-key", verb: HTTPVerb.get));
     if (response.isSuccessfully) {
       var data = response.data == null
-          ? error.call()
+          ? error()
           : PublicKeyModel.fromJson(response.data) as T;
-      success.call(data);
+      success(data);
     } else {
-      error.call();
+      error(response.exception);
     }
   }
 }

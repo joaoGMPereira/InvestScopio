@@ -1,13 +1,19 @@
+import 'package:invest_scopio/app/app_foundation/core/service/api_exception.dart';
+
 class HTTPResponse<T> {
   T? data;
-  late bool safe;
-  late bool isSuccessfully;
+  bool safe;
+  bool isSuccessfully;
+  ApiException? exception;
   Response? response;
 
-  HTTPResponse();
+  HTTPResponse({this.safe = false, this.isSuccessfully = false});
 
   HTTPResponse.onResponse(
       this.data, this.response, this.safe, this.isSuccessfully);
+
+  HTTPResponse.onError(
+      {this.safe = false, this.response, this.exception, this.isSuccessfully = false});
 }
 
 class Response {

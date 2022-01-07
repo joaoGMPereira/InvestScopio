@@ -23,9 +23,9 @@ class ForgotPasswordUseCase<T> extends BaseUseCase<T> {
           message: "Enviamos um código de verificação para o seu email ",
           action: "Ok",
           next: LoginWidgetFlow.reset);
-      success.call(status as T);
+      success(status as T);
     } else {
-      error.call();
+      error(response.exception);
     }
   }
 }

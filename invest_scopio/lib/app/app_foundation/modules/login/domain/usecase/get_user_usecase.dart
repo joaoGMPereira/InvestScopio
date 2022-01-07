@@ -10,9 +10,9 @@ class GetUserUseCase<T> extends BaseUseCase<T?> {
     var response = await super.local(StoreRequest("user", Operation.select));
     if (response.isSuccessfully) {
       var data = response.data == null ? null : UserModel.fromJson(response.data) as T ;
-      success.call(data);
+      success(data);
     } else {
-      error.call();
+      error(response.exception);
     }
   }
 }

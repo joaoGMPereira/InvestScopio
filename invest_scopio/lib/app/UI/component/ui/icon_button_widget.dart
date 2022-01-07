@@ -5,7 +5,8 @@ class IconButtonWidget extends StatelessWidget {
   final IconData icon;
   final VoidCallback? onPressed;
 
-  const IconButtonWidget(this.icon, this.onPressed, {Key? key}) : super(key: key);
+  const IconButtonWidget({required this.icon, this.onPressed, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class IconButtonWidget extends StatelessWidget {
   }
 
   Widget normal(BuildContext context) {
-    return  Material(
+    return Material(
       color: Colors.transparent,
       child: Ink(
         decoration: const ShapeDecoration(

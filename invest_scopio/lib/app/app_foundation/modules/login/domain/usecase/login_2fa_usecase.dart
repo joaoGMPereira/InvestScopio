@@ -28,13 +28,13 @@ class Login2FAUseCase<T> extends BaseUseCase<T?> {
     if (response.isSuccessfully) {
       var data =
           response.data == null ? null : UserModel.fromJson(response.data) as T;
-      var wow = StatusModel(
+      var status = StatusModel(
           message: "2FA Logged successfuly",
           action: "ok",
           next: LoginWidgetFlow.init);
-      success.call(wow as T);
+      success(status as T);
     } else {
-      error.call();
+      error(response.exception);
     }
   }
 }

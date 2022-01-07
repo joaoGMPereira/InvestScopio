@@ -22,9 +22,9 @@ class SaveUserUseCase<T> extends BaseUseCase<T> {
             profile: ProfileModel(email: _email),
             auth: AuthModel(password: _password))));
     if (response.isSuccessfully) {
-      success.call(UserModel.fromJson(response.data ?? {}) as T);
+      success(UserModel.fromJson(response.data ?? {}) as T);
     } else {
-      error.call();
+      error(response.exception);
     }
   }
 }

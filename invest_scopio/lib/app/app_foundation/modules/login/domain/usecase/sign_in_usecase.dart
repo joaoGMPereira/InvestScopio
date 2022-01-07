@@ -39,12 +39,12 @@ class SignInUseCase<T> extends BaseUseCase<T> {
         params: HTTPRequesParams(
             data: SigninRequest(user), cypherSchema: CypherSchema.rsa)));
     if (response.isSuccessfully) {
-      success.call(StatusModel(
+      success(StatusModel(
           message: "Conta criada com sucesso",
           action: "Ok",
           next: LoginWidgetFlow.login) as T);
     } else {
-      error.call();
+      error(response.response);
     }
   }
 }

@@ -1,7 +1,4 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-
 import '../text_widget.dart';
 import 'bound_widget.dart';
 
@@ -16,35 +13,32 @@ class _DefaulErrorWidgetState extends State<DefaulErrorWidget> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        child: Observer(builder: (_) {
-          return Align(
-            alignment: Alignment.center,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const TextWidget(
-                    text: "Tente Novamente", style: Style.subtitle),
-                const BoundWidget(BoundType.medium),
-                Material(
-                  color: Colors.transparent,
-                  child: Center(
-                    child: Ink(
-                      decoration: const ShapeDecoration(
-                        shape: CircleBorder(),
-                      ),
-                      child: IconButton(
-                        icon: const Icon(Icons.refresh),
-                        color: Colors.white,
-                        onPressed: () {},
-                      ),
+        child: Align(
+          alignment: Alignment.center,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const TextWidget(text: "Tente Novamente", style: Style.subtitle),
+              const BoundWidget(BoundType.medium),
+              Material(
+                color: Colors.transparent,
+                child: Center(
+                  child: Ink(
+                    decoration: const ShapeDecoration(
+                      shape: CircleBorder(),
+                    ),
+                    child: IconButton(
+                      icon: const Icon(Icons.refresh),
+                      color: Colors.white,
+                      onPressed: () {},
                     ),
                   ),
                 ),
-              ],
-            ),
-          );
-        }),
+              ),
+            ],
+          ),
+        ),
         onWillPop: _onBackPressed);
   }
 

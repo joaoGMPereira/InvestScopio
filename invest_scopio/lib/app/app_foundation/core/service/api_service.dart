@@ -1,9 +1,9 @@
+import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
-
 import 'package:http/http.dart' as http;
 import 'package:invest_scopio/app/app_foundation/core/data/http_request.dart';
 import 'package:invest_scopio/app/app_foundation/core/data/http_response.dart';
+import 'package:invest_scopio/app/app_foundation/core/service/api_exception.dart';
 import 'package:invest_scopio/app/app_foundation/core/tools/crypto/crypto_service.dart';
 import 'package:invest_scopio/app/app_foundation/core/tools/session.dart';
 
@@ -47,30 +47,38 @@ class ApiService extends BaseService {
     try {
       switch (request.verb) {
         case HTTPVerb.get:
-          response = await http.get(
-              parseRequestParams(request.endpoint, request.params?.query),
-              headers: headers());
+          response = await http
+              .get(parseRequestParams(request.endpoint, request.params?.query),
+                  headers: headers())
+              .timeout(Duration(seconds: 2));
           break;
         case HTTPVerb.post:
-          response = await http.post(parseRequest(request.endpoint),
-              headers: headers(), body: jsonEncode(request.params));
+          response = await http
+              .post(parseRequest(request.endpoint),
+                  headers: headers(), body: jsonEncode(request.params))
+              .timeout(Duration(seconds: 2));
           break;
         case HTTPVerb.delete:
-          response = await http.delete(
-              parseRequestParams(request.endpoint, request.params?.query),
-              headers: headers());
+          response = await http
+              .delete(
+                  parseRequestParams(request.endpoint, request.params?.query),
+                  headers: headers())
+              .timeout(Duration(seconds: 2));
           break;
         case HTTPVerb.put:
-          response = await http.put(parseRequest(request.endpoint),
-              headers: headers(), body: jsonEncode(request.params));
+          response = await http
+              .put(parseRequest(request.endpoint),
+                  headers: headers(), body: jsonEncode(request.params))
+              .timeout(Duration(seconds: 2));
           break;
       }
       print("Response URL: ${response.request?.url.path}");
       print("Response Head: ${response.request?.headers}");
       print("Response Status: ${response.statusCode}");
       print("Response body: ${response.body}");
-    } on SocketException {
-      return HTTPResponse();
+    } catch (exception, stacktrace) {
+      return HTTPResponse.onError(
+          exception: ApiException.exception(exception, stacktrace));
     }
     return returnResponses(response);
   }
