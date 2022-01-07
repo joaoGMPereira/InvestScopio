@@ -4,7 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:invest_scopio/app/UI/Core/tab_bar.dart';
-import 'package:invest_scopio/app/core/logger/logger.dart';
+import 'package:invest_scopio/app/app_foundation/core/logger/logger.dart';
 import 'package:invest_scopio/app/home/di/home_module.dart';
 import 'package:invest_scopio/app/home/i18n/localization_ext.dart';
 import 'package:invest_scopio/app/settings/di/settings_module.dart';

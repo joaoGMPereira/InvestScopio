@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:invest_scopio/app/core/logger/logger.dart';
-import 'package:invest_scopio/app/core/logger/logger_button.dart';
+import 'package:invest_scopio/app/app_foundation/core/logger/logger.dart';
+import 'package:invest_scopio/app/app_foundation/core/logger/logger_button.dart';
 import 'package:mobx/mobx.dart';
 
 import 'app_store.dart';

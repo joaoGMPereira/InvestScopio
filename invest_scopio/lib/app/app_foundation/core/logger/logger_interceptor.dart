@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:invest_scopio/app/core/logger/logger.dart';
+import 'package:invest_scopio/app/app_foundation/core/logger/logger.dart';
 
 class LoggerRequest {
   final String? method;

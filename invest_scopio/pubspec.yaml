@@ -26,7 +26,6 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   fluttertoast: ^8.0.8
-  lottie: ^1.2.1
   json_annotation: ^4.1.0
   just_debounce_it: ^4.0.0+2
   equatable: ^2.0.3

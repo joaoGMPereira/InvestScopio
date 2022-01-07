@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:invest_scopio/app/core/logger/logger.dart';
-import 'package:invest_scopio/app/core/logger/logger_store.dart';
+import 'package:invest_scopio/app/app_foundation/core/logger/logger.dart';
+import 'package:invest_scopio/app/app_foundation/core/logger/logger_store.dart';
 
 class LoggerButton extends StatefulWidget {
   final LoggerStore store;

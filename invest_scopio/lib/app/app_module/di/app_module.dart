@@ -1,21 +1,18 @@
 import 'dart:async';
-
-import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:invest_scopio/app/core/logger/logger.dart';
-import 'package:invest_scopio/app/core/logger/logger_interceptor.dart';
-import 'package:invest_scopio/app/core/logger/logger_store.dart';
+import 'package:invest_scopio/app/app_foundation/core/logger/logger.dart';
+import 'package:invest_scopio/app/app_foundation/core/logger/logger_interceptor.dart';
+import 'package:invest_scopio/app/app_foundation/core/logger/logger_store.dart';
 import 'package:invest_scopio/app/core/networks/network.dart';
-import 'package:invest_scopio/app/core/storage/storage_core.dart';
-import 'package:invest_scopio/app/core/storage/storage_repository.dart';
-import 'package:invest_scopio/app/app_module/presentation/login_widget.dart';
+import 'package:invest_scopio/app/app_foundation/core/storage/storage_core.dart';
+import 'package:invest_scopio/app/app_foundation/core/storage/storage_repository.dart';
 import 'package:invest_scopio/app/home/di/home_module.dart';
-import 'package:invest_scopio/app/login/presentation/ui/login_screen.dart';
 import 'package:invest_scopio/app/main/app_config.dart';
 import 'package:invest_scopio/app/app_module/data/app_repository.dart';
 import 'package:invest_scopio/app/app_module/data/app_service.dart';
 import 'package:invest_scopio/app/app_module/domain/app_interactor.dart';
 import 'package:invest_scopio/app/app_module/presentation/app_store.dart';
+import 'package:invest_scopio/app/app_foundation/modules/login/di/login_di.dart';
 
 class AppModule extends Module {
   final AppConfig _appConfig;
@@ -46,7 +43,7 @@ class AppModule extends Module {
 
   @override
   List<ModularRoute> get routes => [
-        ChildRoute('/', child: (context, args) => LoginScreen()),
+        ChildRoute('/', child: (context, args) => LoginModule()),
         ModuleRoute('/home', module: HomeModule()),
       ];
 }

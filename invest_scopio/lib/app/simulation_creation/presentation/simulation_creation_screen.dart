@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:invest_scopio/app/UI/DesignSystemWidgets/text_widget.dart';
+import 'package:invest_scopio/app/UI/component/text_widget.dart';
 import 'package:mobx/mobx.dart';
 
 import 'simulation_creation_store.dart';

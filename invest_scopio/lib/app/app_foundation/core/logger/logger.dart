@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:invest_scopio/app/core/logger/logger_button.dart';
-import 'package:invest_scopio/app/core/logger/logger_list.dart';
-import 'package:invest_scopio/app/core/logger/logger_store.dart';
 
 import 'logger_bottom_sheet.dart';
+import 'logger_button.dart';
+import 'logger_list.dart';
+import 'logger_store.dart';
 
 
 class Logger {

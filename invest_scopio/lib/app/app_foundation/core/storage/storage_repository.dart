@@ -1,4 +1,4 @@
-import 'package:invest_scopio/app/core/storage/storage_core.dart';
+import 'package:invest_scopio/app/app_foundation/core/storage/storage_core.dart';
 
 abstract class StorageRepository {
   Future setToken(String data);

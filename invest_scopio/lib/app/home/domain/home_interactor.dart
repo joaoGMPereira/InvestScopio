@@ -1,4 +1,4 @@
-import 'package:invest_scopio/app/core/storage/storage_repository.dart';
+import 'package:invest_scopio/app/app_foundation/core/storage/storage_repository.dart';
 import 'package:invest_scopio/app/home/data/home_repository.dart';
 
 abstract class HomeInteractor {

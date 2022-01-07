@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:invest_scopio/app/core/logger/logger_interceptor.dart';
-import 'package:invest_scopio/app/core/storage/storage_repository.dart';
+import 'package:invest_scopio/app/app_foundation/core/logger/logger_interceptor.dart';
+import 'package:invest_scopio/app/app_foundation/core/storage/storage_repository.dart';
 import 'package:kotlin_flavor/scope_functions.dart';
 
 extension DioErrorExtension on DioError {

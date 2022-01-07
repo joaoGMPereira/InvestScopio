@@ -1,9 +1,7 @@
-import 'package:invest_scopio/app/core/storage/storage_repository.dart';
+import 'package:invest_scopio/app/app_foundation/core/storage/storage_repository.dart';
 import 'package:invest_scopio/app/app_module/data/app_repository.dart';
 
-abstract class AppInteractor {
-
-}
+abstract class AppInteractor {}
 
 class AppInteractorImpl extends AppInteractor {
   final AppRepository _repository;

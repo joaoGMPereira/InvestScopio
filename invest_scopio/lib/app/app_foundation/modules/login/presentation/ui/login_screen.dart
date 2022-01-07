@@ -1,0 +1,42 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:invest_scopio/app/UI/Core/view_state.dart';
+
+import '../login_view_model.dart';
+import 'login_flow.dart';
+
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> implements BaseScreen {
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+  final viewModel = Modular.get<LoginViewModel>();
+
+  @override
+  void initState() {
+    super.initState();
+    viewModel.getPublickey();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        key: _scaffoldKey,
+        appBar: AppBar(
+          title: const Text('E-racing'),
+        ),
+        body: Observer(builder: (_) {
+          return navigate();
+        }));
+  }
+
+  @override
+  Widget navigate() {
+    return LoginNavigation.flow(viewModel);
+  }
+}
