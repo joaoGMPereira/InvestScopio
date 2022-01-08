@@ -1,4 +1,3 @@
-
 import 'dart:async';
 
 import 'dart:io';
@@ -11,8 +10,11 @@ class ApiException implements Exception {
 
   ApiException({this.message, this.errorType = ErrorType.Default});
 
+  static ApiException genericException() =>
+      ApiException(message: _genericException);
+
   static ApiException exception(dynamic cause, StackTrace stacktrace) {
-    if(_is401Error(cause)) {
+    if (_is401Error(cause)) {
       return ApiException(message: _authException, errorType: ErrorType.Auth);
     }
     try {
@@ -50,7 +52,9 @@ class ApiException implements Exception {
 
   static String get _authException => "Sessão expirada, faça login novamente";
 
-  static String get _timeOutException => "Esta demorando muito para carregar, tente novamente.";
+  static String get _timeOutException =>
+      "Esta demorando muito para carregar, tente novamente.";
 
-  static String get _genericException => "Houve um problema com os dados tente novamente.";
+  static String get _genericException =>
+      "Houve um problema com os dados tente novamente.";
 }

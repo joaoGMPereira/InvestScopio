@@ -10,10 +10,14 @@ class HTTPResponse<T> {
   HTTPResponse({this.safe = false, this.isSuccessfully = false});
 
   HTTPResponse.onResponse(
-      this.data, this.response, this.safe, this.isSuccessfully);
+      this.data, this.response, this.safe, this.isSuccessfully,
+      {this.exception});
 
   HTTPResponse.onError(
-      {this.safe = false, this.response, this.exception, this.isSuccessfully = false});
+      {this.safe = false,
+      this.response,
+      this.exception,
+      this.isSuccessfully = false});
 }
 
 class Response {

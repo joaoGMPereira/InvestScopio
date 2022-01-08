@@ -102,7 +102,8 @@ class ApiService extends BaseService {
             responseJson['data'],
             Response.fromJson(responseJson['response']),
             responseJson['safe'],
-            false);
+            false,
+            exception: ApiException.genericException());
     }
   }
 }

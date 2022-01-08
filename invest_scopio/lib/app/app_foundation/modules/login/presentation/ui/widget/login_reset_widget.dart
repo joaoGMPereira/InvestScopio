@@ -42,7 +42,8 @@ class _LoginResetWidgetState extends State<LoginResetWidget>
         builder: (_) => ViewStateWidget(
             content: content(),
             state: widget.viewModel.state,
-            onBackPressed: _onBackPressed));
+            onBackPressed: _onBackPressed,
+            onPressed: () {}));
   }
 
   @override

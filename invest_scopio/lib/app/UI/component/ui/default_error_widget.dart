@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import '../text_widget.dart';
 import 'bound_widget.dart';
 
-class DefaulErrorWidget extends StatefulWidget {
-  const DefaulErrorWidget({Key? key}) : super(key: key);
+class DefaultErrorWidget extends StatefulWidget {
+  final VoidCallback onPressed;
+
+  const DefaultErrorWidget({required this.onPressed, Key? key})
+      : super(key: key);
 
   @override
-  _DefaulErrorWidgetState createState() => _DefaulErrorWidgetState();
+  _DefaultErrorWidgetState createState() => _DefaultErrorWidgetState();
 }
 
-class _DefaulErrorWidgetState extends State<DefaulErrorWidget> {
+class _DefaultErrorWidgetState extends State<DefaultErrorWidget> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -30,8 +33,7 @@ class _DefaulErrorWidgetState extends State<DefaulErrorWidget> {
                     ),
                     child: IconButton(
                       icon: const Icon(Icons.refresh),
-                      color: Colors.white,
-                      onPressed: () {},
+                      onPressed: widget.onPressed,
                     ),
                   ),
                 ),

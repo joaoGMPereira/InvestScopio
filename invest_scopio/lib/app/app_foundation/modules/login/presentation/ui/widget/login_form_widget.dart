@@ -5,6 +5,8 @@ import 'package:invest_scopio/app/UI/component/state/view_state_widget.dart';
 import 'package:invest_scopio/app/UI/component/ui/bound_widget.dart';
 import 'package:invest_scopio/app/UI/component/ui/button_widget.dart';
 import 'package:invest_scopio/app/UI/component/ui/text_from_widget.dart';
+import 'package:invest_scopio/app/app_foundation/modules/login/domain/model/user_model.dart';
+import 'package:mobx/mobx.dart';
 
 import '../../login_view_model.dart';
 import '../login_flow.dart';
@@ -23,21 +25,25 @@ class _LoginFormWidgetState extends State<LoginFormWidget>
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final List<ReactionDisposer> _disposers = [];
 
   @override
   void initState() {
     _emailController.text = '';
     _passwordController.text = '';
+    _installListeners();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return ViewStateWidget(
-      content: content(),
-      onBackPressed: _onBackPressed,
-      state: widget.viewModel.state,
-    );
+    return Observer(
+        builder: (_) => ViewStateWidget(
+              content: content(),
+              onBackPressed: _onBackPressed,
+              state: widget.viewModel.state,
+              onPressed: () {},
+            ));
   }
 
   Future<bool> _onBackPressed() async {
@@ -49,15 +55,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget>
   Widget content() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Form(child: loginForm(), key: _formKey),
-        Observer(builder: (_) {
-          _emailController.text = widget.viewModel.user?.profile?.email ?? "";
-          _passwordController.text =
-              widget.viewModel.user?.auth?.password ?? "";
-          return Container();
-        }),
-      ],
+      children: [Form(child: loginForm(), key: _formKey)],
     );
   }
 
@@ -106,6 +104,15 @@ class _LoginFormWidgetState extends State<LoginFormWidget>
           ),
         ],
       ),
+    );
+  }
+
+  _installListeners() {
+    _disposers.add(
+      reaction((_) => widget.viewModel.user, (UserModel? userModel) {
+        _emailController.text = widget.viewModel.user?.profile?.email ?? "";
+        _passwordController.text = widget.viewModel.user?.auth?.password ?? "";
+      }),
     );
   }
 }

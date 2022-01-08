@@ -28,6 +28,7 @@ class _LoginToogle2FAWidgetState extends State<LoginToogle2FAWidget>
                 content: content(),
                 onBackPressed: _onBackPressed,
                 state: widget.viewModel.state,
+                onPressed: () {},
               ));
     });
   }

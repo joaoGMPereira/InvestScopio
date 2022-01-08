@@ -45,16 +45,17 @@ class _LoginSigninWidgetState extends State<LoginSigninWidget>
         builder: (_) => ViewStateWidget(
             content: content(),
             state: widget.viewModel.state,
-            onBackPressed: _onBackPressed));
+            onBackPressed: _onBackPressed,
+            onPressed: () {
+              _signin();
+            }));
   }
 
   Widget content() {
-    return Observer(builder: (_) {
-      return Form(
-        child: signinForm(),
-        key: _formKey,
-      );
-    });
+    return Form(
+      child: signinForm(),
+      key: _formKey,
+    );
   }
 
   Widget signinForm() {
@@ -113,19 +114,23 @@ class _LoginSigninWidgetState extends State<LoginSigninWidget>
           ButtonWidget(
             ButtonType.normal,
             () {
-              if (_formKey.currentState?.validate() == true) {
-                widget.viewModel.signin(
-                    _nameController.text,
-                    _surnameController.text,
-                    _mailController.text,
-                    _passwordController.text);
-              }
+              _signin();
             },
             label: "Create account",
           )
         ],
       ),
     );
+  }
+
+  _signin() {
+    if (_formKey.currentState?.validate() == true) {
+      widget.viewModel.signin(
+          _nameController.text,
+          _surnameController.text,
+          _mailController.text,
+          _passwordController.text);
+    }
   }
 
   Future<bool> _onBackPressed() async {

@@ -23,9 +23,10 @@ class _LoginInitialWidgetState extends State<LoginInitialWidget>
   Widget build(BuildContext context) {
     return Observer(
       builder: (_) => ViewStateWidget(
-          content: content(),
-          state: widget.viewModel.state,
-          onBackPressed: _onBackPressed),
+        content: content(),
+        state: widget.viewModel.state,
+        onBackPressed: _onBackPressed,
+        onPressed: () {}),
     );
   }
 

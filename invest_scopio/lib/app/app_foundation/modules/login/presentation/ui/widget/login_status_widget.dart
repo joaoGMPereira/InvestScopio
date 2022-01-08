@@ -26,7 +26,8 @@ class _LoginStatusWidgetState extends State<LoginStatusWidget>
         builder: (_) => ViewStateWidget(
             content: content(),
             state: widget.viewModel.state,
-            onBackPressed: _onBackPressed));
+            onBackPressed: _onBackPressed,
+            onPressed: () {}));
   }
 
   Widget content() {

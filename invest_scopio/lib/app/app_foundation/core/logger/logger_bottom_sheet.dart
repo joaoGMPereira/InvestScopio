@@ -39,7 +39,6 @@ class LoggerBottomSheet {
               )),
           child: Container(
               width: MediaQuery.of(parentContext).size.width,
-              color: Colors.white,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [

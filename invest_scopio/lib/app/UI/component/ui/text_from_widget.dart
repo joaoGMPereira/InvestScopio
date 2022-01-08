@@ -12,19 +12,17 @@ class TextFormWidget extends StatelessWidget {
   final bool obscure;
 
   const TextFormWidget(this.label, this.icon, this.controller, this.validator,
-      {this.borderType = BorderType.normal, this.obscure = false, Key? key})
+      {this.borderType = BorderType.none, this.obscure = false, Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    
     InputDecoration? border;
-    
-    switch(borderType){
+
+    switch (borderType) {
       case BorderType.normal:
         border = InputDecoration(
           labelText: label,
-          fillColor: Colors.white,
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5.0),
             borderSide: const BorderSide(
@@ -40,10 +38,10 @@ class TextFormWidget extends StatelessWidget {
         );
         break;
       case BorderType.none:
-        border = null;
+        border = InputDecoration(labelText: label);
         break;
     }
-    
+
     return Align(
       alignment: Alignment.center,
       child: TextFormField(

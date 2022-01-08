@@ -55,10 +55,10 @@ extension LoginNavigation on LoginWidgetFlow {
     }
   }
 
-  LoginWidgetFlow? get lastFlow {
+  LoginWidgetFlow? get previous {
     switch(this) {
       case LoginWidgetFlow.init:
-        return LoginWidgetFlow.init;
+        return null;
       case LoginWidgetFlow.login:
         return LoginWidgetFlow.init;
       case LoginWidgetFlow.signin:
@@ -78,7 +78,7 @@ extension LoginNavigation on LoginWidgetFlow {
       case LoginWidgetFlow.resetCode:
         return LoginWidgetFlow.login;
       case LoginWidgetFlow.status:
-        return null;
+        return LoginWidgetFlow.init;
     }
   }
 }

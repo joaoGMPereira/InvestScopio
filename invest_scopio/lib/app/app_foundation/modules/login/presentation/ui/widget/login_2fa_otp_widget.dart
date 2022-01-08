@@ -28,6 +28,7 @@ class _Login2FAWidgetState extends State<Login2FAWidget>
               content: content(),
               onBackPressed: _onBackPressed,
               state: widget.viewModel.state,
+              onPressed: () {},
             ));
   }
 

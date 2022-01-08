@@ -26,6 +26,7 @@ class _LoginErrorWidgetState extends State<LoginErrorWidget>
               content: content(),
               onBackPressed: _onBackPressed,
               state: widget.viewModel.state,
+              onPressed: () {},
             ));
   }
 
